@@ -2,7 +2,11 @@ name: Refresh local feed
 
 on:
   schedule:
-    - cron: "*/30 * * * *" # ~every 30 minutes (GitHub may delay)
+    # Eventbrite currently 405-blocks GitHub runner IPs (checked 2026-07-07);
+    # the script fails soft and keeps the last good file. Kept on a light
+    # cadence so it self-heals if the block ever lifts. Real refreshes happen
+    # by running scripts/fetch-events.mjs from a residential IP and pushing.
+    - cron: "17 */4 * * *"
   workflow_dispatch:
 
 permissions:

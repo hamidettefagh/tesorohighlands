@@ -74,7 +74,7 @@
         <button data-aud="free" aria-pressed="false">Free</button>
       </div>
       <div class="evcard"><div id="feedList"><div class="empty">Loading local events…</div></div></div>
-      <div class="evmeta" id="feedMeta">Attendable events near Santa Clarita via Eventbrite · refreshes about every 30 minutes.</div>
+      <div class="evmeta" id="feedMeta">Attendable events near Santa Clarita via Eventbrite · updated regularly.</div>
     </section>
 
     <section class="evsec">
@@ -190,8 +190,8 @@
       renderFeed();
       var meta = document.getElementById("feedMeta");
       if (feed.generatedAt) {
-        var stale = Date.now() - new Date(feed.generatedAt).getTime() > DAY;
-        meta.innerHTML = "Attendable events near Santa Clarita via Eventbrite · refreshes about every 30 minutes · last change " + esc(relTime(feed.generatedAt)) +
+        var stale = Date.now() - new Date(feed.generatedAt).getTime() > 5 * DAY;
+        meta.innerHTML = "Attendable events near Santa Clarita via Eventbrite · last updated " + esc(relTime(feed.generatedAt)) +
           (stale ? ' · <b style="color:var(--cau-fg)">feed may be stale</b>' : "") +
           " · details can change — confirm on the listing.";
       }

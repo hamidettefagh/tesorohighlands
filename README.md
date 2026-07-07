@@ -56,7 +56,7 @@ The dashboard's status logic is deliberately conservative (small routine inciden
 
 `scripts/fetch-events.mjs` scans Eventbrite's public Santa Clarita search pages (embedded `__SERVER_DATA__` JSON), keeps only events at Santa Clarita Valley venues (Santa Clarita, Valencia, Newhall, Saugus, Canyon Country, Castaic, Stevenson Ranch), drops corporate training-mill spam, fetches each event page to extract the real price (`isFree` / `lowPrice`–`highPrice`), and tags every event by audience (toddlers / kids / teens / adults) with keyword rules. It writes `events.json` only when content changed. The GitHub Action runs it about every 30 minutes and commits the diff, which auto-deploys via Vercel. No backend, no keys.
 
-Fragility note: this parses Eventbrite's page structure, which can change; the script fails soft (keeps the last good file) and the page shows a "feed may be stale" note past 24h.
+Fragility notes: this parses Eventbrite's page structure, which can change; the script fails soft (keeps the last good file) and the page shows a "feed may be stale" note past 5 days. As of 2026-07-07 Eventbrite 405-blocks GitHub-hosted runner IPs, so the Action is a light self-healing retry (every 4h) rather than the primary refresh — real refreshes are `node scripts/fetch-events.mjs` from a residential IP, then push (or a scheduled task on a home machine).
 
 ### community-events.json schema
 
