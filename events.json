@@ -1,7 +1,25 @@
 {
-  "generatedAt": "2026-07-07T22:34:40.308Z",
+  "generatedAt": "2026-07-07T23:00:37.932Z",
   "note": "Auto-built from public local RSS feeds by scripts/fetch-events.mjs (GitHub Action, ~every 30 min). Headlines belong to their sources.",
   "news": [
+    {
+      "title": "Driver held to answer to charges in fatal crash",
+      "url": "https://signalscv.com/2026/07/driver-held-to-answer-to-charges-in-fatal-crash/",
+      "published": "2026-07-07T22:40:35.000Z",
+      "source": "The Signal"
+    },
+    {
+      "title": "County OKs $3M settlement in deputy assault",
+      "url": "https://signalscv.com/2026/07/county-oks-3m-settlement-in-deputy-assault/",
+      "published": "2026-07-07T22:38:11.000Z",
+      "source": "The Signal"
+    },
+    {
+      "title": "921 citations, 17 arrested for DUI by CHP Newhall over holiday weekend",
+      "url": "https://signalscv.com/2026/07/921-citations-17-arrested-for-dui-by-chp-newhall-over-holiday-weekend/",
+      "published": "2026-07-07T22:36:10.000Z",
+      "source": "The Signal"
+    },
     {
       "title": "JCI Santa Clarita launches ‘Carry Hope’ initiative",
       "url": "https://signalscv.com/2026/07/jci-santa-clarita-launches-carry-hope-initiative/",
@@ -126,24 +144,6 @@
       "title": "Hart alum selected for TV Academy internship",
       "url": "https://signalscv.com/2026/07/hart-alum-selected-for-tv-academy-internship/",
       "published": "2026-07-06T23:15:39.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "Deputies: Man arrested on suspicion after assault in Canyon Country",
-      "url": "https://signalscv.com/2026/07/deputies-man-arrested-on-suspicion-after-assault-in-canyon-country/",
-      "published": "2026-07-06T23:13:20.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "Planners to discuss city design standards",
-      "url": "https://signalscv.com/2026/07/planners-to-discuss-city-design-standards/",
-      "published": "2026-07-06T23:07:55.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "Panorama City Medical Center recognized for older adult care",
-      "url": "https://signalscv.com/2026/07/panorama-city-medical-center-recognized-for-older-adult-care/",
-      "published": "2026-07-06T19:39:46.000Z",
       "source": "The Signal"
     }
   ]
