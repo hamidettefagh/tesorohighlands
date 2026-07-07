@@ -18,11 +18,12 @@ http
   .createServer((req, res) => {
     let p = decodeURIComponent((req.url || "/").split("?")[0]);
     if (p === "/" || p === "") p = "/index.html";
-    const fp = path.join(dir, p);
+    let fp = path.join(dir, p);
     if (!fp.startsWith(dir)) {
       res.writeHead(403);
       return res.end("forbidden");
     }
+    if (!path.extname(fp)) fp += ".html"; // clean URLs: /fire -> fire.html
     fs.readFile(fp, (err, data) => {
       if (err) {
         res.writeHead(404);

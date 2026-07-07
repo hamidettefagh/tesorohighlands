@@ -32,7 +32,7 @@ Or just open `index.html` directly in a browser — it's a single self-contained
 
 The site is 100% static (all data is fetched client-side from public APIs — no backend, no secrets), so any static host works. To match the hamidettefagh.com setup:
 
-1. **Push to GitHub** (done — `hamidettefagh/tesoro-highlands`).
+1. **Push to GitHub** (done — public repo `hamidettefagh/tesorohighlands`).
 2. **Vercel** → New Project → Import that repo. Framework preset: **Other** (no build command, output = repo root). Deploy.
 3. **Domain** → in the Vercel project, Settings → Domains → add `tesorohighlands.com` (and `www`). Vercel shows the exact DNS records.
 4. **DNS** → at wherever `tesorohighlands.com` is registered, add Vercel's records (typically an `A` record `76.76.21.21` for the apex and a `CNAME` to `cname.vercel-dns.com` for `www`), or point the nameservers to Vercel.
