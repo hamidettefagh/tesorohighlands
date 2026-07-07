@@ -1,29 +1,46 @@
-/* Tesoro Highlands — shared shell: tokens, top nav, live status strip, hub, stubs */
+/* Tesoro Highlands — shared shell: tokens, top nav, live status strip, hub, stubs.
+   Theming: light tokens on :root; dark tokens apply when the user's system is dark
+   (unless they forced light) OR when they forced dark via the nav toggle
+   (html[data-theme] set by /theme.js, persisted in localStorage). */
 *,*::before,*::after{box-sizing:border-box;}
 :root{
   --bg:#f4f5f7; --surface:#fff; --ink:#14161b; --ink-2:#3b414c; --muted:#6b7280;
-  --line:#e6e8ec; --line-2:#eef0f3; --accent:#1f2937;
+  --line:#e6e8ec; --line-2:#eef0f3; --accent:#1f2937; --on-accent:#fff;
+  --tag-bg:rgba(0,0,0,.06);
   --ok-bg:#e8f6ee; --ok-fg:#17703f; --ok-line:#bfe6cd;
   --cau-bg:#fdf2e2; --cau-fg:#a25a09; --cau-line:#f4dcb6;
   --dan-bg:#fdecec; --dan-fg:#b01c1c; --dan-line:#f5c9c9;
   --neu-bg:#eef1f4; --neu-fg:#4b5563; --neu-line:#dfe3e8;
+  --aqi-good:#2f9e57; --aqi-mod:#d6a419; --aqi-usg:#e07b1a;
+  --aqi-un:#d63b3b; --aqi-vun:#8b5cf6; --aqi-haz:#8a1c3b;
   --radius:16px; --shadow:0 1px 2px rgba(16,18,23,.04),0 6px 20px rgba(16,18,23,.05);
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
-@media (prefers-color-scheme:dark){:root{
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1114; --surface:#171a1f; --ink:#f2f4f7; --ink-2:#c4cad3; --muted:#8b94a1;
+    --line:#262b32; --line-2:#20242a; --accent:#e5e7eb; --on-accent:#0f1114;
+    --tag-bg:rgba(255,255,255,.1);
+    --ok-bg:#122a1c;--ok-fg:#5fd68e;--ok-line:#1f4a30; --cau-bg:#2c2010;--cau-fg:#f0b054;--cau-line:#513a17;
+    --dan-bg:#2e1414;--dan-fg:#f38585;--dan-line:#5a2323; --neu-bg:#1d2127;--neu-fg:#aab2bd;--neu-line:#2b3038;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
   --bg:#0f1114; --surface:#171a1f; --ink:#f2f4f7; --ink-2:#c4cad3; --muted:#8b94a1;
-  --line:#262b32; --line-2:#20242a; --accent:#e5e7eb;
+  --line:#262b32; --line-2:#20242a; --accent:#e5e7eb; --on-accent:#0f1114;
+  --tag-bg:rgba(255,255,255,.1);
   --ok-bg:#122a1c;--ok-fg:#5fd68e;--ok-line:#1f4a30; --cau-bg:#2c2010;--cau-fg:#f0b054;--cau-line:#513a17;
   --dan-bg:#2e1414;--dan-fg:#f38585;--dan-line:#5a2323; --neu-bg:#1d2127;--neu-fg:#aab2bd;--neu-line:#2b3038;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
-}}
+}
 
 body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
 .thwrap{max-width:760px;margin:0 auto;padding:0 16px 48px;}
 
 /* top nav */
 .thnav{position:sticky;top:0;z-index:60;background:var(--surface);border-bottom:1px solid var(--line);
-  display:flex;align-items:center;gap:12px;padding:9px 16px;}
+  display:flex;align-items:center;gap:10px;padding:9px 16px;}
 .thnav .brand{display:flex;align-items:center;gap:8px;font-weight:680;font-size:15px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none;flex:none;}
 .thnav .brand svg{width:22px;height:22px;flex:none;border-radius:6px;}
 .thnav .links{display:flex;gap:1px;margin-left:auto;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
@@ -31,6 +48,9 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .thnav .links a{color:var(--ink-2);text-decoration:none;font-size:13px;font-weight:540;padding:6px 10px;border-radius:8px;white-space:nowrap;}
 .thnav .links a:hover{background:var(--neu-bg);}
 .thnav .links a[aria-current="page"]{color:var(--ink);background:var(--neu-bg);font-weight:640;}
+.thnav .themebtn{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+  border-radius:8px;width:32px;height:32px;display:grid;place-items:center;font-size:14px;cursor:pointer;font-family:var(--font);padding:0;line-height:1;}
+.thnav .themebtn:hover{border-color:var(--muted);}
 
 /* live "right now" strip */
 .thstrip{display:flex;align-items:center;gap:9px;padding:9px 16px;font-size:13px;font-weight:540;text-decoration:none;border-bottom:1px solid;}

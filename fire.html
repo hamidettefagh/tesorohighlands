@@ -2,53 +2,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tesoro Highlands — Fire and Air Watch</title>
 <meta name="description" content="Hyper-local wildfire, air quality, and evacuation readiness for the Tesoro Highlands community in Valencia, CA 91354." />
-<meta name="theme-color" content="#14161b" />
+<meta name="theme-color" content="#f4f5f7" />
 <link rel="icon" href="/icon.svg" />
 <link rel="apple-touch-icon" href="/icon.svg" />
+<link rel="canonical" href="https://tesorohighlands.com/fire" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Tesoro Highlands — Fire and Air Watch" />
-<meta property="og:description" content="Live air quality, fire weather, and nearby-fire distance for the Tesoro Highlands community in Valencia." />
-<meta property="og:url" content="https://tesorohighlands.com/" />
+<meta property="og:description" content="Live air quality, fire weather, nearby-fire map, and evacuation status for the Tesoro Highlands community in Valencia." />
+<meta property="og:url" content="https://tesorohighlands.com/fire" />
 
+<script src="/theme.js"></script>
 <link rel="stylesheet" href="/th.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css" />
+<script src="/vendor/leaflet/leaflet.js"></script>
 
 <style>
-  :root {
-    --bg: #f4f5f7;
-    --surface: #ffffff;
-    --ink: #14161b;
-    --ink-2: #3b414c;
-    --muted: #6b7280;
-    --line: #e6e8ec;
-    --line-2: #eef0f3;
-    --accent: #1f2937;
-
-    --ok-bg: #e8f6ee;   --ok-fg: #17703f;   --ok-line: #bfe6cd;
-    --cau-bg: #fdf2e2;  --cau-fg: #a25a09;  --cau-line: #f4dcb6;
-    --dan-bg: #fdecec;  --dan-fg: #b01c1c;  --dan-line: #f5c9c9;
-    --neu-bg: #eef1f4;  --neu-fg: #4b5563;  --neu-line: #dfe3e8;
-
-    --aqi-good:#2f9e57; --aqi-mod:#d6a419; --aqi-usg:#e07b1a;
-    --aqi-un:#d63b3b; --aqi-vun:#8b5cf6; --aqi-haz:#8a1c3b;
-
-    --radius: 16px;
-    --shadow: 0 1px 2px rgba(16,18,23,.04), 0 6px 20px rgba(16,18,23,.05);
-    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg:#0f1114; --surface:#171a1f; --ink:#f2f4f7; --ink-2:#c4cad3;
-      --muted:#8b94a1; --line:#262b32; --line-2:#20242a; --accent:#e5e7eb;
-      --ok-bg:#122a1c; --ok-fg:#5fd68e; --ok-line:#1f4a30;
-      --cau-bg:#2c2010; --cau-fg:#f0b054; --cau-line:#513a17;
-      --dan-bg:#2e1414; --dan-fg:#f38585; --dan-line:#5a2323;
-      --neu-bg:#1d2127; --neu-fg:#aab2bd; --neu-line:#2b3038;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
-    }
-  }
-
+  /* Design tokens (light + dark + manual override) live in /th.css. */
   * { box-sizing: border-box; }
   html, body { margin:0; padding:0; }
   body {
@@ -65,10 +34,9 @@
 
   /* disclaimer strip */
   .strip {
-    background: var(--accent); color: #fff; font-size: 12.5px;
+    background: var(--accent); color: var(--on-accent); font-size: 12.5px;
     padding: 8px 16px; text-align: center; line-height: 1.35;
   }
-  @media (prefers-color-scheme: dark){ .strip{ color:#0f1114; } }
   .strip b { font-weight: 700; }
 
   /* header */
@@ -96,9 +64,8 @@
     padding: 7px 6px; border-radius: 8px; font-size: 12.5px; font-weight:560; font-family: var(--font); line-height:1.2;
   }
   .scn button small { display:block; font-weight:440; color:var(--muted); font-size:10.5px; margin-top:1px; }
-  .scn button[aria-selected="true"] { background: var(--accent); color:#fff; }
-  @media (prefers-color-scheme: dark){ .scn button[aria-selected="true"]{ color:#0f1114 } .scn button[aria-selected="true"] small{ color:#0f1114; opacity:.7 } }
-  .scn button[aria-selected="true"] small { color: rgba(255,255,255,.75); }
+  .scn button[aria-selected="true"] { background: var(--accent); color:var(--on-accent); }
+  .scn button[aria-selected="true"] small { color: var(--on-accent); opacity:.75; }
   .demobar {
     margin-top:8px; font-size:12px; background: var(--cau-bg); color: var(--cau-fg);
     border:1px solid var(--cau-line); border-radius:10px; padding:8px 12px; display:none;
@@ -171,8 +138,7 @@
   .alert.sev-extreme .ev,.alert.sev-severe .ev { color:var(--dan-fg); }
   .alert.sev-moderate .ev { color:var(--cau-fg); }
   .alert .hl { font-size:12.5px; color:var(--ink-2); margin-top:3px; }
-  .alert .tag { font-size:10px; text-transform:uppercase; letter-spacing:.06em; font-weight:700; padding:2px 7px; border-radius:999px; background:rgba(0,0,0,.06); }
-  @media (prefers-color-scheme: dark){ .alert .tag{ background:rgba(255,255,255,.1) } }
+  .alert .tag { font-size:10px; text-transform:uppercase; letter-spacing:.06em; font-weight:700; padding:2px 7px; border-radius:999px; background:var(--tag-bg); }
 
   /* fire list */
   .fire { display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--line-2); align-items:flex-start; }
@@ -199,8 +165,7 @@
 
   .routes { display:flex; flex-direction:column; gap:8px; }
   .route { display:flex; gap:10px; align-items:center; font-size:13px; padding:9px 11px; background:var(--neu-bg); border-radius:10px; border:1px solid var(--neu-line); }
-  .route .rn { flex:none; width:20px; height:20px; border-radius:6px; background:var(--accent); color:#fff; display:grid; place-items:center; font-size:11px; font-weight:700; }
-  @media (prefers-color-scheme: dark){ .route .rn{ color:#0f1114 } }
+  .route .rn { flex:none; width:20px; height:20px; border-radius:6px; background:var(--accent); color:var(--on-accent); display:grid; place-items:center; font-size:11px; font-weight:700; }
 
   /* links */
   .links { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
@@ -228,8 +193,7 @@
   .editor label { flex:1; font-size:11.5px; color:var(--muted); }
   .editor input { width:100%; margin-top:3px; padding:8px 10px; border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--ink); font-size:13px; font-family:var(--font); }
   .editor .ebtns { display:flex; gap:8px; justify-content:flex-end; }
-  .editor .ebtns .primary { background:var(--accent); color:#fff; border:0; }
-  @media (prefers-color-scheme: dark){ .editor .ebtns .primary{ color:#0f1114 } }
+  .editor .ebtns .primary { background:var(--accent); color:var(--on-accent); border:0; }
 
   .skel { color:var(--muted); font-size:13px; }
   .cardtag { float:right; }
@@ -426,6 +390,8 @@
     <a href="https://www.fire.ca.gov/incidents" target="_blank" rel="noopener">CAL FIRE incidents <span>fire.ca.gov ↗</span></a>
     <a href="https://ready.lacounty.gov/" target="_blank" rel="noopener">Sign up for alerts <span>Ready LA ↗</span></a>
     <a href="https://fire.airnow.gov/" target="_blank" rel="noopener">Smoke & air map <span>AirNow ↗</span></a>
+    <a href="https://www.sce.com/outages-safety/outage-center/check-outage-status" target="_blank" rel="noopener">Power outages & PSPS <span>SCE ↗</span></a>
+    <a href="https://www.santaclarita.gov/emergency-management/preparedness-information/" target="_blank" rel="noopener">City alert sign-up <span>santaclarita.gov ↗</span></a>
     <a href="https://www.watchduty.org/" target="_blank" rel="noopener">Live incident map <span>Watch Duty ↗</span></a>
     <a href="tel:911">Emergency <span>Call 911 ↗</span></a>
   </div>
@@ -456,7 +422,7 @@ function loadLoc(){
 }
 let LOC = loadLoc();
 let scenario = "live";
-let live = { air:null, weather:null, alerts:null, fires:[], error:false };
+let live = { air:null, weather:null, alerts:null, fires:[], evac:null, error:false };
 let lastFetch = null;
 
 /* ---------- helpers ---------- */
@@ -505,7 +471,7 @@ function view(){
     wdir: w.wind_direction_10m ?? null,
     alerts: relevantAlerts(),
     fires: (live.fires||[]),
-    evac: { lvl:0, label:"This tool doesn't track evacuation orders yet — look up your Genasys zone and keep Watch Duty alerts on.", zone:"Not monitored here — see official sources" },
+    evac: live.evac || { lvl:0, unknown:true, label:"The live evacuation feed is unavailable right now — check "+GENASYS_LINK+" directly and keep Watch Duty alerts on.", zone:"Feed unavailable — check Genasys" },
     demo: false
   };
   if(scenario==="redflag"){
@@ -590,26 +556,44 @@ function overall(v){
 
 /* ---------- fetch ---------- */
 const FIRE_RADIUS = 45; // miles from home to include
+// Same NIFC/WFIGS feed as the map and the site-wide status strip — one source of truth.
 async function fetchFires(lat, lon){
   const env = `${(lon-2.0).toFixed(3)},${(lat-1.4).toFixed(3)},${(lon+2.0).toFixed(3)},${(lat+1.4).toFixed(3)}`;
-  const url = "https://services9.arcgis.com/RHVPKKiFTONKtxq3/ArcGIS/rest/services/USA_Wildfires_v1/FeatureServer/0/query"
-    + "?where=1%3D1&geometry=" + encodeURIComponent(env)
+  const url = "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query"
+    + "?where=" + encodeURIComponent("IncidentTypeCategory='WF'")
+    + "&geometry=" + encodeURIComponent(env)
     + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects"
-    + "&outFields=IncidentName,DailyAcres,PercentContained,FireDiscoveryDateTime,IncidentTypeCategory"
-    + "&returnGeometry=true&outSR=4326&resultRecordCount=1000&f=json";
+    + "&outFields=IncidentName,IncidentSize,PercentContained,FireDiscoveryDateTime"
+    + "&returnGeometry=true&outSR=4326&resultRecordCount=1000&f=geojson";
   const j = await fetch(url).then(r=>r.json());
   return (j.features||[])
-    .filter(f => (f.attributes.IncidentTypeCategory||"").trim()==="WF")
-    .filter(f => !/^LAC-?\d+$/i.test((f.attributes.IncidentName||"").trim()))  // drop LA County dispatch-number noise
+    .filter(f => f.geometry && f.geometry.coordinates)
+    .filter(f => !/^LAC-?\d+$/i.test((f.properties.IncidentName||"").trim()))  // drop LA County dispatch-number noise
     .map(f => {
-      const g=f.geometry, a=f.attributes;
-      return { name: fireName(a.IncidentName), acres: a.DailyAcres, contain: a.PercentContained,
-        disc: a.FireDiscoveryDateTime, dist: haversine(lat,lon,g.y,g.x),
-        dir: compass(bearingDeg(lat,lon,g.y,g.x)) };
+      const c=f.geometry.coordinates, a=f.properties;
+      return { name: fireName(a.IncidentName), acres: a.IncidentSize, contain: a.PercentContained,
+        disc: a.FireDiscoveryDateTime, dist: haversine(lat,lon,c[1],c[0]),
+        dir: compass(bearingDeg(lat,lon,c[1],c[0])) };
     })
     .filter(f => f.dist <= FIRE_RADIUS)
     .sort((x,y)=> x.dist - y.dist)
     .slice(0, 6);
+}
+// Live evacuation status near home from the Cal OES statewide aggregation (mirrors Genasys zones).
+const GENASYS_LINK = '<a href="https://protect.genasys.com/search?query=Valencia%2C%20CA" target="_blank" rel="noopener">Genasys Protect ↗</a>';
+async function fetchEvac(lat, lon){
+  const env = `${(lon-0.35).toFixed(3)},${(lat-0.35).toFixed(3)},${(lon+0.35).toFixed(3)},${(lat+0.35).toFixed(3)}`;
+  const url = "https://services.arcgis.com/BLN4oKB0N1YSgvY8/arcgis/rest/services/CA_EVACUATIONS_CalOESHosted_view/FeatureServer/0/query"
+    + "?where=1%3D1&geometry=" + encodeURIComponent(env)
+    + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects"
+    + "&outFields=STATUS,ZONE_NAME&returnGeometry=false&f=json";
+  const j = await fetch(url).then(r=>r.json());
+  if(!j || j.error || !j.features) throw new Error("evac feed error");
+  const order = j.features.find(f=>/order/i.test((f.attributes&&f.attributes.STATUS)||""));
+  const warn  = j.features.find(f=>/warning/i.test((f.attributes&&f.attributes.STATUS)||""));
+  if(order) return { lvl:2, label:"Evacuation ORDER for zone "+((order.attributes.ZONE_NAME)||"near you")+" — leave now via your planned route.", zone:"Live · Cal OES statewide feed" };
+  if(warn)  return { lvl:1, label:"Evacuation WARNING for zone "+((warn.attributes.ZONE_NAME)||"near you")+" — be packed and ready to leave.", zone:"Live · Cal OES statewide feed" };
+  return { lvl:0, label:"No active evacuation orders or warnings for this area right now, per the Cal OES statewide feed. Look up your zone name on "+GENASYS_LINK+" so you recognize it in an emergency.", zone:"Live · Cal OES statewide feed" };
 }
 async function fetchAll(){
   const {lat, lon} = LOC;
@@ -617,16 +601,18 @@ async function fetchAll(){
   const wxU  = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FLos_Angeles`;
   const alU  = `https://api.weather.gov/alerts/active?point=${lat},${lon}`;
 
-  const [air, wx, al, fires] = await Promise.allSettled([
+  const [air, wx, al, fires, evac] = await Promise.allSettled([
     fetch(airU).then(r=>r.json()),
     fetch(wxU).then(r=>r.json()),
     fetch(alU, {headers:{Accept:"application/geo+json"}}).then(r=>r.json()).catch(()=>({features:[]})),
-    fetchFires(lat, lon)
+    fetchFires(lat, lon),
+    fetchEvac(lat, lon)
   ]);
   live.air = air.status==="fulfilled" ? air.value : null;
   live.weather = wx.status==="fulfilled" ? wx.value : null;
   live.alerts = al.status==="fulfilled" ? al.value : {features:[]};
   live.fires = fires.status==="fulfilled" ? fires.value : [];
+  live.evac = evac.status==="fulfilled" ? evac.value : null;
   live.error = air.status!=="fulfilled" && wx.status!=="fulfilled";
   lastFetch = Date.now();
 }
@@ -705,10 +691,10 @@ function render(){
 
   // evac
   const evLvl = v.evac.lvl;
-  const evMap = [ {s:"neutral",icon:"🧭"}, {s:"caution",icon:"🎒"}, {s:"danger",icon:"🚗"} ][evLvl];
+  const evMap = v.evac.unknown ? {s:"neutral",icon:"🧭"} : [ {s:"ok",icon:"🏡"}, {s:"caution",icon:"🎒"}, {s:"danger",icon:"🚗"} ][evLvl];
   $("#evacBadge").className="badge "+evMap.s; $("#evacBadge").textContent=evMap.icon;
   $("#evacTxt").className="vtxt "+evMap.s;
-  const evTitle = evLvl===0?"Check your zone" : evLvl===1?"Get ready now" : "Leave now";
+  const evTitle = v.evac.unknown ? "Check your zone" : (evLvl===0?"No — all clear" : evLvl===1?"Get ready now" : "Leave now");
   $("#evacTxt").innerHTML = `<strong>${evTitle}</strong><span>${v.evac.zone}</span>`;
   $("#evacDetail").innerHTML = v.evac.label;
 
@@ -825,8 +811,8 @@ $("#saveEdit").addEventListener("click", async ()=>{
   if(isNaN(lat)||isNaN(lon)) return;
   LOC = { lat, lon, label, sub: lat.toFixed(3)+", "+lon.toFixed(3) };
   localStorage.setItem("tesoro.loc", JSON.stringify(LOC));
-  $("#editor").classList.remove("show");
-  await fetchAll(); render();
+  try{ sessionStorage.removeItem("tesoro.status.v1"); }catch(e){}
+  location.reload(); // re-centers the map and refreshes everything for the new location
 });
 
 /* ---------- boot ---------- */
@@ -858,7 +844,12 @@ boot();
 
   var H = rdLoc();
   var map = L.map("fireMap", { scrollWheelZoom:false }).setView([H.lat,H.lon], 9);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", { subdomains:"abcd", maxZoom:18, attribution:"© OpenStreetMap, © CARTO" }).addTo(map);
+  function tileUrl(){ var eff = window.__theme ? window.__theme.effective() : "light"; return "https://{s}.basemaps.cartocdn.com/" + (eff==="dark"?"dark_all":"light_all") + "/{z}/{x}/{y}{r}.png"; }
+  var tiles = L.tileLayer(tileUrl(), { subdomains:"abcd", maxZoom:18, attribution:"© OpenStreetMap, © CARTO" }).addTo(map);
+  window.addEventListener("themechange", function(){
+    tiles.setUrl(tileUrl());
+    if (typeof render === "function") { try { render(); } catch(e){} } // refresh sparkline/theme-derived colors
+  });
   map.on("click", function(){ map.scrollWheelZoom.enable(); });
   setTimeout(function(){ map.invalidateSize(); }, 500);
   window.addEventListener("load", function(){ setTimeout(function(){ map.invalidateSize(); }, 200); });
@@ -867,11 +858,20 @@ boot();
 
   var legend = document.getElementById("mapLegend");
   var env = "&geometry="+(H.lon-2.0)+","+(H.lat-1.4)+","+(H.lon+2.0)+","+(H.lat+1.4)+"&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326";
-  var nFires=0, nEvac=0, done=0;
+  var nFires=0, nEvac=0, done=0, fireOk=false, evacOk=false;
   function finish(){ if(++done<2) return;
-    var m = nFires+" active wildfire"+(nFires===1?"":"s")+" in view";
-    m += nEvac ? ' · <b style="color:var(--dan-fg)">'+nEvac+' active evacuation zone(s) near you</b>' : ' · <b style="color:var(--ok-fg)">no active evacuation zones near you</b>';
-    legend.innerHTML = '<span style="color:#b91c1c">●</span> fire &nbsp; <span style="color:#a25a09">▧</span> evac warning &nbsp; <span style="color:#b01c1c">▧</span> evac order &nbsp; <span style="color:#2563eb">●</span> your community<br>'+m+'. Live from NIFC/WFIGS + Cal OES · tap the map to zoom.';
+    var key = '<span style="color:#b91c1c">●</span> fire &nbsp; <span style="color:#a25a09">▧</span> evac warning &nbsp; <span style="color:#b01c1c">▧</span> evac order &nbsp; <span style="color:#2563eb">●</span> your community<br>';
+    var when = new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
+    var m;
+    if(!fireOk && !evacOk){
+      m = "Couldn't load live fire or evacuation data right now — refresh to retry, and use the official links below.";
+    } else {
+      m = fireOk ? (nFires+" active wildfire"+(nFires===1?"":"s")+" in view") : "fire feed unavailable";
+      if(evacOk) m += nEvac ? ' · <b style="color:var(--dan-fg)">'+nEvac+' active evacuation zone(s) near you</b>' : ' · <b style="color:var(--ok-fg)">no active evacuation zones near you</b>';
+      else m += ' · evacuation feed unavailable — <a href="https://protect.genasys.com/search?query=Valencia%2C%20CA" target="_blank" rel="noopener">check Genasys</a>';
+      m += '. Live from NIFC/WFIGS + Cal OES · updated '+when+' · tap the map to zoom.';
+    }
+    legend.innerHTML = key + m;
   }
 
   fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Interagency_Perimeters_Current/FeatureServer/0/query?where="+encodeURIComponent("1=1")+"&outFields=poly_IncidentName,poly_GISAcres"+env+"&f=geojson&resultRecordCount=300")
@@ -879,6 +879,7 @@ boot();
 
   fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where="+encodeURIComponent("IncidentTypeCategory='WF'")+"&outFields=IncidentName,IncidentSize,PercentContained"+env+"&f=geojson&resultRecordCount=600")
     .then(function(r){return r.json();}).then(function(j){
+      if(j && j.features) fireOk = true;
       (j.features||[]).forEach(function(ft){
         if(!ft.geometry||!ft.geometry.coordinates) return;
         var c=ft.geometry.coordinates, p=ft.properties||{}, ac=p.IncidentSize;
@@ -894,6 +895,7 @@ boot();
 
   fetch("https://services.arcgis.com/BLN4oKB0N1YSgvY8/arcgis/rest/services/CA_EVACUATIONS_CalOESHosted_view/FeatureServer/0/query?where="+encodeURIComponent("1=1")+"&outFields=STATUS,ZONE_NAME,COUNTY,CITY"+env+"&f=geojson&resultRecordCount=500")
     .then(function(r){return r.json();}).then(function(j){
+      if(j && j.features && !j.error) evacOk = true;
       nEvac = (j.features||[]).length;
       if(nEvac) L.geoJSON(j,{ style:function(f){ var s=(f.properties&&f.properties.STATUS)||""; var ord=/order/i.test(s); return {color:ord?"#b01c1c":"#a25a09",weight:1.5,fillColor:ord?"#ef4444":"#f59e0b",fillOpacity:.3}; }, onEachFeature:function(f,ly){ var pr=f.properties||{}; ly.bindPopup("<b>"+(pr.STATUS||"Evacuation zone")+"</b><br>"+(pr.ZONE_NAME||"")+" "+(pr.CITY||pr.COUNTY||"")); } }).addTo(map);
       finish();

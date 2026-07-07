@@ -1,2 +1,4 @@
-# Local dev only — not part of the static deploy
+# Local dev / CI only — not part of the static deploy
 server.js
+scripts/
+.github/

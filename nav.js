@@ -1,6 +1,8 @@
-/* Tesoro Highlands — shared top nav + live "right now" safety status.
-   Injected on every page. Renders a big hero on the Home hub, a slim strip
-   on other pages, and nothing on the Fire page (which has its own hero). */
+/* Tesoro Highlands — shared top nav, theme toggle, and live "right now" status.
+   Injected on every page. Renders a big hero on the Home hub, a slim strip on
+   other pages, and nothing on the Fire page (which has its own hero).
+   Status is cached in sessionStorage for 5 min for instant paint, then
+   refreshed in the background. */
 (function () {
   "use strict";
 
@@ -27,51 +29,83 @@
     NAV.map(function (n) {
       return '<a href="' + n.href + '"' + (n.on ? ' aria-current="page"' : "") + ">" + n.label + "</a>";
     }).join("") +
-    "</div>";
+    "</div>" +
+    '<button class="themebtn" id="thThemeBtn" type="button"></button>';
   document.body.insertBefore(nav, document.body.firstChild);
 
+  /* ---- theme toggle: auto → dark → light → auto ---- */
+  (function () {
+    var btn = document.getElementById("thThemeBtn");
+    if (!btn || !window.__theme) { if (btn) btn.style.display = "none"; return; }
+    var ICONS = { auto: "◐", light: "☀", dark: "☾" };
+    var NEXT = { auto: "dark", dark: "light", light: "auto" };
+    function label(mode) { return "Theme: " + mode.charAt(0).toUpperCase() + mode.slice(1) + " — click for " + NEXT[mode]; }
+    function paint() {
+      var m = window.__theme.get();
+      btn.textContent = ICONS[m];
+      btn.title = label(m);
+      btn.setAttribute("aria-label", label(m));
+    }
+    btn.addEventListener("click", function () { window.__theme.set(NEXT[window.__theme.get()]); paint(); });
+    paint();
+  })();
+
+  /* ---- live status ---- */
   function haversine(la1, lo1, la2, lo2) {
     var R = 3958.8, t = function (x) { return x * Math.PI / 180; };
     var dla = t(la2 - la1), dlo = t(lo2 - lo1);
-    var h = Math.sin(dla / 2) ** 2 + Math.cos(t(la1)) * Math.cos(t(la2)) * Math.sin(dlo / 2) ** 2;
+    var h = Math.sin(dla / 2) * Math.sin(dla / 2) + Math.cos(t(la1)) * Math.cos(t(la2)) * Math.sin(dlo / 2) * Math.sin(dlo / 2);
     return 2 * R * Math.asin(Math.sqrt(h));
   }
-
   function loc() {
     try { var s = JSON.parse(localStorage.getItem("tesoro.loc")); if (s && s.lat && s.lon) return { lat: s.lat, lon: s.lon }; } catch (e) {}
     return { lat: 34.478, lon: -118.531 };
   }
 
-  // Compact live status: worst of air / NWS alerts / nearby fire / evacuation.
+  var CACHE_KEY = "tesoro.status.v1";
+  var stripEl = null;
+
   async function computeStatus() {
-    var L = loc(), lvl = 0, text = "All clear — air is good and no active alerts.";
+    var L = loc(), lvl = 0, text = "";
+    var okAir = false, okAlerts = false, okFires = false, okEvac = false;
     var jobs = [
       fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + L.lat + "&longitude=" + L.lon + "&current=us_aqi&timezone=America%2FLos_Angeles").then(function (r) { return r.json(); }).then(function (a) {
         var aqi = a.current && a.current.us_aqi;
+        if (aqi == null) return; okAir = true;
         if (aqi > 150) { lvl = Math.max(lvl, 2); text = "Air is unhealthy (AQI " + Math.round(aqi) + ") — limit time outside."; }
         else if (aqi > 100) { lvl = Math.max(lvl, 1); text = "Air unhealthy for sensitive groups (AQI " + Math.round(aqi) + ")."; }
       }).catch(function () {}),
       fetch("https://api.weather.gov/alerts/active?point=" + L.lat + "," + L.lon, { headers: { Accept: "application/geo+json" } }).then(function (r) { return r.json(); }).then(function (al) {
-        var evs = (al.features || []).map(function (f) { return f.properties && f.properties.event; }).filter(Boolean);
+        if (!al || !al.features) return; okAlerts = true;
+        var evs = al.features.map(function (f) { return f.properties && f.properties.event; }).filter(Boolean);
         var red = evs.find(function (e) { return /red flag|fire weather/i.test(e); });
         var warn = evs.find(function (e) { return /warning/i.test(e); });
         if (red) { lvl = Math.max(lvl, 1); text = red + " in effect — elevated fire danger."; }
         else if (warn && lvl < 1) { lvl = 1; text = warn + " in effect."; }
       }).catch(function () {}),
       fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=" + encodeURIComponent("IncidentTypeCategory='WF'") + "&outFields=IncidentName,IncidentSize&geometry=" + (L.lon - 1.3) + "," + (L.lat - 1) + "," + (L.lon + 1.3) + "," + (L.lat + 1) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326&f=geojson").then(function (r) { return r.json(); }).then(function (f) {
-        var fires = (f.features || []).map(function (ft) {
+        if (!f || !f.features) return; okFires = true;
+        var fires = f.features.filter(function (ft) { return ft.geometry && ft.geometry.coordinates; }).map(function (ft) {
           var c = ft.geometry.coordinates;
           return { name: ft.properties.IncidentName, acres: ft.properties.IncidentSize || 0, d: haversine(L.lat, L.lon, c[1], c[0]) };
         }).filter(function (x) { return x.acres >= 50; }).sort(function (a, b) { return a.d - b.d; });
         if (fires[0] && fires[0].d <= 15) { lvl = Math.max(lvl, 1); text = fires[0].name + " Fire ~" + fires[0].d.toFixed(0) + " mi away — stay aware."; }
       }).catch(function () {}),
       fetch("https://services.arcgis.com/BLN4oKB0N1YSgvY8/arcgis/rest/services/CA_EVACUATIONS_CalOESHosted_view/FeatureServer/0/query?where=1%3D1&geometry=" + (L.lon - 0.35) + "," + (L.lat - 0.35) + "," + (L.lon + 0.35) + "," + (L.lat + 0.35) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=STATUS&returnGeometry=false&f=json").then(function (r) { return r.json(); }).then(function (ev) {
-        var zs = (ev.features || []).map(function (x) { return x.attributes.STATUS || ""; });
+        if (!ev || ev.error || !ev.features) return; okEvac = true;
+        var zs = ev.features.map(function (x) { return (x.attributes && x.attributes.STATUS) || ""; });
         if (zs.some(function (s) { return /order/i.test(s); })) { lvl = 2; text = "EVACUATION ORDER active for your area — act now."; }
         else if (zs.some(function (s) { return /warning/i.test(s); })) { lvl = Math.max(lvl, 1); text = "Evacuation WARNING for your area — be ready."; }
       }).catch(function () {})
     ];
     await Promise.allSettled(jobs);
+
+    var okCount = [okAir, okAlerts, okFires, okEvac].filter(Boolean).length;
+    if (lvl === 0) {
+      if (okCount === 4) text = "All clear — air is good and no active alerts.";
+      else if (okCount === 0) return { level: "neutral", text: "Live status unavailable right now — open the dashboard for details." };
+      else return { level: "neutral", text: "No alerts in the live checks that loaded (" + okCount + "/4) — see the dashboard." };
+    }
     return { level: lvl >= 2 ? "danger" : lvl >= 1 ? "caution" : "ok", text: text };
   }
 
@@ -86,13 +120,24 @@
         '<div class="htext">' + st.text + "</div>" +
         '<a class="hlink" href="/fire">Open the full fire &amp; emergency dashboard &rarr;</a>';
     } else {
-      var strip = document.createElement("a");
-      strip.className = "thstrip " + st.level;
-      strip.href = "/fire";
-      strip.innerHTML = '<span class="dot"></span><span class="txt">' + st.text + '</span><span class="arrow">Fire &amp; Emergency &rarr;</span>';
-      nav.parentNode.insertBefore(strip, nav.nextSibling);
+      if (!stripEl) {
+        stripEl = document.createElement("a");
+        stripEl.href = "/fire";
+        nav.parentNode.insertBefore(stripEl, nav.nextSibling);
+      }
+      stripEl.className = "thstrip " + st.level;
+      stripEl.innerHTML = '<span class="dot"></span><span class="txt">' + st.text + '</span><span class="arrow">Fire &amp; Emergency &rarr;</span>';
     }
   }
 
-  if (!isFire) computeStatus().then(render).catch(function () {});
+  if (!isFire) {
+    try {
+      var c = JSON.parse(sessionStorage.getItem(CACHE_KEY));
+      if (c && c.st && Date.now() - c.ts < 5 * 60 * 1000) render(c.st);
+    } catch (e) {}
+    computeStatus().then(function (st) {
+      try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), st: st })); } catch (e) {}
+      render(st);
+    }).catch(function () {});
+  }
 })();

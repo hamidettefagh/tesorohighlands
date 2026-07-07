@@ -1,0 +1,34 @@
+name: Refresh local feed
+
+on:
+  schedule:
+    - cron: "*/30 * * * *" # ~every 30 minutes (GitHub may delay)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: refresh-events
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch feeds
+        run: node scripts/fetch-events.mjs
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- events.json; then
+            echo "No changes."
+          else
+            git config user.name "tesoro-events-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add events.json
+            git commit -m "chore: refresh local feed"
+            git pull --rebase origin main || true
+            git push
+          fi
