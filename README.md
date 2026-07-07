@@ -47,14 +47,16 @@ node server.js       # serves on http://localhost:3100 with /fire-style clean UR
 | Active alerts (Red Flag, Fire Weather, Heat) | NWS `api.weather.gov` | **Live**, no key |
 | Nearby fires — list, map points & perimeters | NIFC/WFIGS ArcGIS (`WFIGS_Incident_Locations_Current`, `WFIGS_Interagency_Perimeters_Current`) | **Live**, no key |
 | Evacuation zone status (Order / Warning) | Cal OES "California Active Evacuation Zones" ArcGIS | **Live**, no key |
-| Local news & happenings feed | KHTS + The Signal RSS via GitHub Action | **Auto**, ~every 30 min |
+| Local attendable events (audience-tagged, priced) | Eventbrite public city pages via GitHub Action | **Auto**, ~every 30 min |
 | Community events | `community-events.json` in git | Curated |
 
 The dashboard's status logic is deliberately conservative (small routine incidents don't turn the page red), and every live panel degrades honestly — a failed feed says "unavailable," never "all clear."
 
-## The local feed pipeline
+## The local events pipeline
 
-`scripts/fetch-events.mjs` pulls public local RSS (KHTS; The Signal filtered to local categories), normalizes/dedupes to `events.json`, and only writes when content changed. The GitHub Action runs it about every 30 minutes and commits the diff, which auto-deploys via Vercel. No backend, no keys.
+`scripts/fetch-events.mjs` scans Eventbrite's public Santa Clarita search pages (embedded `__SERVER_DATA__` JSON), keeps only events at Santa Clarita Valley venues (Santa Clarita, Valencia, Newhall, Saugus, Canyon Country, Castaic, Stevenson Ranch), drops corporate training-mill spam, fetches each event page to extract the real price (`isFree` / `lowPrice`–`highPrice`), and tags every event by audience (toddlers / kids / teens / adults) with keyword rules. It writes `events.json` only when content changed. The GitHub Action runs it about every 30 minutes and commits the diff, which auto-deploys via Vercel. No backend, no keys.
+
+Fragility note: this parses Eventbrite's page structure, which can change; the script fails soft (keeps the last good file) and the page shows a "feed may be stale" note past 24h.
 
 ### community-events.json schema
 

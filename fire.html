@@ -129,6 +129,20 @@
     border-radius:10px; padding:10px 12px; margin-top:12px; }
   .note.santa { background:var(--cau-bg); border-color:var(--cau-line); color:var(--cau-fg); }
 
+  /* 7-day outlook tiles */
+  .owgrid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:6px; margin-top:4px; }
+  @media (max-width:560px){ .owgrid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+  .owd { border:1px solid var(--line-2); border-radius:10px; padding:8px 4px; text-align:center; background:var(--bg); min-width:0; }
+  .owd.cau { background:var(--cau-bg); border-color:var(--cau-line); }
+  .owd.dan { background:var(--dan-bg); border-color:var(--dan-line); }
+  .owd .dw { font-size:11px; font-weight:660; color:var(--muted); }
+  .owd.cau .dw { color:var(--cau-fg); } .owd.dan .dw { color:var(--dan-fg); }
+  .owd .w { font-size:14.5px; font-weight:680; margin-top:3px; letter-spacing:-0.01em; }
+  .owd .w small { font-size:9px; font-weight:540; color:var(--muted); }
+  .owd .g { font-size:10.5px; color:var(--muted); margin-top:1px; }
+  .owd .rh { font-size:10.5px; color:var(--ink-2); margin-top:2px; }
+  .owd .sa { font-size:9.5px; margin-top:3px; font-weight:640; }
+
   /* alerts */
   .alert { border-radius:12px; padding:12px 14px; margin-top:10px; border:1px solid; }
   .alert.sev-extreme,.alert.sev-severe { background:var(--dan-bg); border-color:var(--dan-line); }
@@ -315,6 +329,14 @@
         <div class="stat"><div class="lab">Temperature</div><div class="val" id="fwTemp">–</div></div>
       </div>
       <div id="fwNote"></div>
+    </div>
+
+    <!-- 7-DAY OUTLOOK -->
+    <div class="card" id="owCard">
+      <h3>Next 7 days — fire weather <span class="cardtag pill live">Live</span></h3>
+      <div class="q">Spot Santa Ana setups before they arrive — peak wind, gusts, and how dry the air gets each day</div>
+      <div class="owgrid" id="owGrid"><div class="skel">Loading forecast…</div></div>
+      <div id="owNote"></div>
     </div>
 
     <!-- ALERTS -->
@@ -598,7 +620,7 @@ async function fetchEvac(lat, lon){
 async function fetchAll(){
   const {lat, lon} = LOC;
   const airU = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=us_aqi,pm2_5,pm10&hourly=us_aqi&forecast_days=2&timezone=America%2FLos_Angeles`;
-  const wxU  = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FLos_Angeles`;
+  const wxU  = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m&daily=wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=relative_humidity_2m&forecast_days=7&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FLos_Angeles`;
   const alU  = `https://api.weather.gov/alerts/active?point=${lat},${lon}`;
 
   const [air, wx, al, fires, evac] = await Promise.allSettled([
@@ -750,8 +772,55 @@ function render(){
   // open the smoke playbook automatically when the air is actually bad
   const smoke = $("#smokeCard");
   if(smoke) smoke.open = (aqiInfo(v.aqi).lvl>=2) || scenario==="fire" || v.fires.some(f=>f.dist<=12 && (f.acres||0)>=50);
+
+  renderOutlook();
 }
 function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
+
+/* ---------- 7-day fire-weather outlook (always live, not scenario-driven) ---------- */
+function renderOutlook(){
+  const grid = $("#owGrid"), note = $("#owNote");
+  if(!grid) return;
+  const d = live.weather && live.weather.daily;
+  const h = live.weather && live.weather.hourly;
+  if(!d || !d.time || !d.wind_speed_10m_max){
+    grid.innerHTML = '<div class="skel">Forecast unavailable right now.</div>';
+    if(note) note.innerHTML = "";
+    return;
+  }
+  // daily minimum humidity from the hourly series (24 values per day)
+  const rhMin = d.time.map((_, i) => {
+    if(!h || !h.relative_humidity_2m) return null;
+    const day = h.relative_humidity_2m.slice(i*24, (i+1)*24).filter(x => x != null);
+    return day.length ? Math.min(...day) : null;
+  });
+  let worst = { lvl: 0, i: 0 };
+  grid.innerHTML = d.time.map((t, i) => {
+    const wind = d.wind_speed_10m_max[i], gust = d.wind_gusts_10m_max[i], dir = d.wind_direction_10m_dominant[i], rh = rhMin[i];
+    const fw = fireWx(null, rh, wind, gust);
+    if(fw.lvl > worst.lvl) worst = { lvl: fw.lvl, i };
+    const sa = dir != null && (dir <= 95 || dir >= 340) && fw.lvl >= 1;
+    const cls = fw.lvl >= 2 ? "dan" : fw.lvl === 1 ? "cau" : "";
+    const p = t.split("-"); const dt = new Date(+p[0], +p[1]-1, +p[2]);
+    const dw = i === 0 ? "Today" : dt.toLocaleDateString([], { weekday: "short" });
+    return `<div class="owd ${cls}" title="${fw.name} fire weather">
+      <div class="dw">${dw}</div>
+      <div class="w">${wind!=null?Math.round(wind):"–"}<small> mph ${dir!=null?compass(dir):""}</small></div>
+      <div class="g">gusts ${gust!=null?Math.round(gust):"–"}</div>
+      <div class="rh">${rh!=null?Math.round(rh)+"% RH":"–"}</div>
+      ${sa ? '<div class="sa">🌵 Santa Ana</div>' : ""}
+    </div>`;
+  }).join("");
+  if(note){
+    if(worst.lvl > 0){
+      const p = d.time[worst.i].split("-"); const dt = new Date(+p[0], +p[1]-1, +p[2]);
+      const nm = worst.i === 0 ? "today" : "on " + dt.toLocaleDateString([], { weekday: "long" });
+      note.innerHTML = `<div class="note santa"><b>${worst.lvl>=2?"Extreme":"Elevated"} fire weather ${nm}</b> — winds to ${Math.round(d.wind_speed_10m_max[worst.i])} mph (gusts ${Math.round(d.wind_gusts_10m_max[worst.i])}), humidity down to ${rhMin[worst.i]!=null?Math.round(rhMin[worst.i]):"?"}%. Good day to have the go-bag topped off and the cars fueled.</div>`;
+    } else {
+      note.innerHTML = `<div class="note"><b>Calm week ahead.</b> No elevated fire-weather days in the 7-day forecast.</div>`;
+    }
+  }
+}
 
 /* ---------- checklist ---------- */
 const CHECK_ITEMS = [

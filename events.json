@@ -1,150 +1,215 @@
 {
-  "generatedAt": "2026-07-07T23:00:37.932Z",
-  "note": "Auto-built from public local RSS feeds by scripts/fetch-events.mjs (GitHub Action, ~every 30 min). Headlines belong to their sources.",
-  "news": [
+  "generatedAt": "2026-07-07T22:56:41.353Z",
+  "note": "Attendable events near Santa Clarita, auto-built from Eventbrite's public pages by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
+  "events": [
     {
-      "title": "Driver held to answer to charges in fatal crash",
-      "url": "https://signalscv.com/2026/07/driver-held-to-answer-to-charges-in-fatal-crash/",
-      "published": "2026-07-07T22:40:35.000Z",
-      "source": "The Signal"
+      "title": "Unsweet Perdition presented by  Santa Clarita Shakespeare 2026 Festival",
+      "url": "https://www.eventbrite.com/e/unsweet-perdition-presented-by-santa-clarita-shakespeare-2026-festival-tickets-1987656258375",
+      "start": "2026-07-10T20:00",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$22.23–$28.55",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "County OKs $3M settlement in deputy assault",
-      "url": "https://signalscv.com/2026/07/county-oks-3m-settlement-in-deputy-assault/",
-      "published": "2026-07-07T22:38:11.000Z",
-      "source": "The Signal"
+      "title": "Shrek Jr.",
+      "url": "https://www.eventbrite.com/e/shrek-jr-tickets-1992328045817",
+      "start": "2026-07-11T12:00",
+      "venue": "Canyon High School",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$20",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "921 citations, 17 arrested for DUI by CHP Newhall over holiday weekend",
-      "url": "https://signalscv.com/2026/07/921-citations-17-arrested-for-dui-by-chp-newhall-over-holiday-weekend/",
-      "published": "2026-07-07T22:36:10.000Z",
-      "source": "The Signal"
+      "title": "Voices United - Gospel Music WORKSHOP Series & Concert - 7/11, 8/8, 8/22",
+      "url": "https://www.eventbrite.com/e/voices-united-gospel-music-workshop-series-concert-711-88-822-tickets-1991311924571",
+      "start": "2026-07-11T13:00",
+      "venue": "St Stephen's Episcopal Church",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$55.20–$81.88",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "JCI Santa Clarita launches ‘Carry Hope’ initiative",
-      "url": "https://signalscv.com/2026/07/jci-santa-clarita-launches-carry-hope-initiative/",
-      "published": "2026-07-07T22:31:36.000Z",
-      "source": "The Signal"
+      "title": "Stand Up & Magic! @ Red Dot Pizza",
+      "url": "https://www.eventbrite.com/e/stand-up-magic-red-dot-pizza-tickets-1991750100166",
+      "start": "2026-07-11T20:00",
+      "venue": "Red Dot Pizza Company",
+      "city": "Castaic",
+      "free": false,
+      "price": "$17.85",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "Extremely Quirky Destinations For Santa Clarita Valley Families: Combat Paintball Park",
-      "url": "https://www.hometownstation.com/santa-clarita-latest-news/extremely-quirky-destinations-for-santa-clarita-valley-families-combat-paintball-park-600969",
-      "published": "2026-07-07T22:06:51.000Z",
-      "source": "KHTS"
+      "title": "Playmaker Camp",
+      "url": "https://www.eventbrite.com/e/playmaker-camp-tickets-1992837715252",
+      "start": "2026-07-13T09:00",
+      "venue": "Santa Clarita Athletic Club",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$81.88–$161.90",
+      "audience": [
+        "kids"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "Photos: Independence Day Classic",
-      "url": "https://signalscv.com/2026/07/photos-independence-day-classic/",
-      "published": "2026-07-07T21:15:54.000Z",
-      "source": "The Signal"
+      "title": "Teagen's Sunday Funday An Adult's Field Day  VALENCIA",
+      "url": "https://www.eventbrite.com/e/teagens-sunday-funday-an-adults-field-day-valencia-tickets-1993179680078",
+      "start": "2026-07-17T17:30",
+      "venue": "Navigation Avenue",
+      "city": "Valencia",
+      "free": false,
+      "price": "$17.85–$1282.33",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "Heat Advisory Extended For Santa Clarita As Warm Temperatures Are Forecasted",
-      "url": "https://www.hometownstation.com/santa-clarita-news/weather/heat-advisory-extended-for-santa-clarita-as-warm-temperatures-are-forecasted-600957",
-      "published": "2026-07-07T20:48:27.000Z",
-      "source": "KHTS"
+      "title": "SoCal Etsy Guild Market Valencia",
+      "url": "https://www.eventbrite.com/e/socal-etsy-guild-market-valencia-tickets-1990926790625",
+      "start": "2026-07-18T12:00",
+      "venue": "Valencia Town Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$27.72–$338.82",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "Friends of Castaic Lake announces new board leadership",
-      "url": "https://signalscv.com/2026/07/friends-of-castaic-lake-announces-new-board-leadership/",
-      "published": "2026-07-07T20:25:29.000Z",
-      "source": "The Signal"
+      "title": "Recording Workshop: LA Percussion Rentals & Recording Co-Hosted by G.A.N.G",
+      "url": "https://www.eventbrite.com/e/recording-workshop-la-percussion-rentals-recording-co-hosted-by-gang-tickets-1992000406840",
+      "start": "2026-07-18T13:00",
+      "venue": "L.A. Percussion Rentals & Backline",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$40",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "Today In SCV History: July 7, 1949 – Nonprofit Castaic Saddle Club Incorporated",
-      "url": "https://www.hometownstation.com/santa-clarita-news/community-news/today-in-scv-history/today-in-scv-history-july-7-1949-nonprofit-castaic-saddle-club-incorporated-600947",
-      "published": "2026-07-07T19:30:58.000Z",
-      "source": "KHTS"
+      "title": "Mis Escritos  produced in coordination with CholoVision Productions",
+      "url": "https://www.eventbrite.com/e/mis-escritos-produced-in-coordination-with-cholovision-productions-tickets-1987656816043",
+      "start": "2026-07-24T19:30",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$9.58",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "Know Before You Go: Concerts In The Park Returns This Saturday",
-      "url": "https://www.hometownstation.com/santa-clarita-news/arts-and-entertainment/know-before-you-go-concerts-in-the-park-returns-this-saturday-600870",
-      "published": "2026-07-07T17:34:29.000Z",
-      "source": "KHTS"
+      "title": "Movie Night at the Farm",
+      "url": "https://www.eventbrite.com/e/movie-night-at-the-farm-tickets-1990977865391",
+      "start": "2026-07-25T17:00",
+      "venue": "27803 Lorjen Rd",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "2026-27 COC PAC Spotlight Series Announced",
-      "url": "https://www.hometownstation.com/santa-clarita-news/education/college-of-the-canyons/2026-27-coc-pac-spotlight-series-announced-600938",
-      "published": "2026-07-07T17:15:21.000Z",
-      "source": "KHTS"
+      "title": "Club Wealth - Two Events One Day! | Valencia, CA",
+      "url": "https://www.eventbrite.com/e/club-wealth-two-events-one-day-valencia-ca-tickets-1992055087391",
+      "start": "2026-08-04T08:45",
+      "venue": "SRAR, Southland Regional Association of Realtors",
+      "city": "Valencia",
+      "free": false,
+      "price": "$197",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "Santa Clarita Set To Be The Site Of Five Different Film Productions (7/9-7/12)",
-      "url": "https://www.hometownstation.com/santa-clarita-news/arts-and-entertainment/santa-clarita-set-to-be-the-site-of-five-different-film-productions-7-9-7-12-600789",
-      "published": "2026-07-07T16:23:23.000Z",
-      "source": "KHTS"
+      "title": "The Dresser presented by The Tavern Brawlers",
+      "url": "https://www.eventbrite.com/e/the-dresser-presented-by-the-tavern-brawlers-tickets-1985160127380",
+      "start": "2026-08-07T20:00",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$26.45",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "Recharge Your Mind And Body At BioRecharge In Santa Clarita",
-      "url": "https://www.hometownstation.com/khts-featured/recharge-your-mind-and-body-at-biorecharge-in-santa-clarita-600930",
-      "published": "2026-07-07T15:29:52.000Z",
-      "source": "KHTS"
+      "title": "Punchlines At The MAIN",
+      "url": "https://www.eventbrite.com/e/punchlines-at-the-main-tickets-1983127905951",
+      "start": "2026-08-08T20:00",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$19.07–$24.34",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "Reliable Business Tech Support In Santa Clarita with IntellEdge",
-      "url": "https://www.hometownstation.com/khts-featured/reliable-business-tech-support-in-santa-clarita-with-intelledge-600919",
-      "published": "2026-07-07T15:22:51.000Z",
-      "source": "KHTS"
+      "title": "Mosaic Art Classes Santa Clarita: Turkish Lamp Workshop",
+      "url": "https://www.eventbrite.com/e/mosaic-art-classes-santa-clarita-turkish-lamp-workshop-tickets-1991445744831",
+      "start": "2026-08-14T10:00",
+      "venue": "Hilton Garden Inn Valencia Six Flags",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$64.50–$179",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "Beat The Summer Heat At The Paseo Club In Santa Clarita",
-      "url": "https://www.hometownstation.com/khts-featured/beat-the-summer-heat-at-the-paseo-club-in-santa-clarita-600910",
-      "published": "2026-07-07T15:14:30.000Z",
-      "source": "KHTS"
+      "title": "You Got Older presented by Dig Deep Theatre",
+      "url": "https://www.eventbrite.com/e/you-got-older-presented-by-dig-deep-theatre-tickets-1985160037110",
+      "start": "2026-08-21T20:00",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$22.23–$25.40",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite"
     },
     {
-      "title": "When Migraine Stops Getting The Final Say",
-      "url": "https://www.hometownstation.com/khts-featured/when-migraine-stops-getting-the-final-say-600900",
-      "published": "2026-07-07T15:08:50.000Z",
-      "source": "KHTS"
-    },
-    {
-      "title": "Watch parties to continue as U.S. run comes to end",
-      "url": "https://signalscv.com/2026/07/watch-parties-to-continue-as-u-s-run-comes-to-end/",
-      "published": "2026-07-07T03:01:39.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "Temps to rise through Friday",
-      "url": "https://signalscv.com/2026/07/temps-to-rise-through-friday/",
-      "published": "2026-07-07T02:41:55.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "City announces night-time roadwork near mall",
-      "url": "https://signalscv.com/2026/07/city-announces-night-time-roadwork-near-mall/",
-      "published": "2026-07-07T01:27:54.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "‘Martin’ Fire burns near I-5, Templin Highway",
-      "url": "https://signalscv.com/2026/07/martin-fire-burns-near-i-5-templin-highway/",
-      "published": "2026-07-06T23:55:00.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "COC receives $1.1M donation from The Broad Foundation for ATC",
-      "url": "https://signalscv.com/2026/07/coc-receives-1-1m-donation-from-the-broad-foundation-for-atc/",
-      "published": "2026-07-06T23:30:44.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "CHP: Man arrested on suspicion of DUI, possession of firearm",
-      "url": "https://signalscv.com/2026/07/chp-man-arrested-on-suspicion-of-dui-possession-of-firearm/",
-      "published": "2026-07-06T23:21:45.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "Person trapped after traffic collision in Saugus",
-      "url": "https://signalscv.com/2026/07/person-trapped-after-traffic-collision-in-saugus/",
-      "published": "2026-07-06T23:18:03.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "Hart alum selected for TV Academy internship",
-      "url": "https://signalscv.com/2026/07/hart-alum-selected-for-tv-academy-internship/",
-      "published": "2026-07-06T23:15:39.000Z",
-      "source": "The Signal"
+      "title": "2026 \"BE YOU\" Women's Conference",
+      "url": "https://www.eventbrite.com/e/2026-be-you-womens-conference-tickets-1992456062719",
+      "start": "2026-08-22T12:00",
+      "venue": "University Center Drive",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$34.99–$44.99",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
     }
   ]
 }
