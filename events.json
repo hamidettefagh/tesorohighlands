@@ -1,7 +1,25 @@
 {
-  "generatedAt": "2026-07-07T21:01:11.206Z",
+  "generatedAt": "2026-07-07T22:34:40.308Z",
   "note": "Auto-built from public local RSS feeds by scripts/fetch-events.mjs (GitHub Action, ~every 30 min). Headlines belong to their sources.",
   "news": [
+    {
+      "title": "JCI Santa Clarita launches ‘Carry Hope’ initiative",
+      "url": "https://signalscv.com/2026/07/jci-santa-clarita-launches-carry-hope-initiative/",
+      "published": "2026-07-07T22:31:36.000Z",
+      "source": "The Signal"
+    },
+    {
+      "title": "Extremely Quirky Destinations For Santa Clarita Valley Families: Combat Paintball Park",
+      "url": "https://www.hometownstation.com/santa-clarita-latest-news/extremely-quirky-destinations-for-santa-clarita-valley-families-combat-paintball-park-600969",
+      "published": "2026-07-07T22:06:51.000Z",
+      "source": "KHTS"
+    },
+    {
+      "title": "Photos: Independence Day Classic",
+      "url": "https://signalscv.com/2026/07/photos-independence-day-classic/",
+      "published": "2026-07-07T21:15:54.000Z",
+      "source": "The Signal"
+    },
     {
       "title": "Heat Advisory Extended For Santa Clarita As Warm Temperatures Are Forecasted",
       "url": "https://www.hometownstation.com/santa-clarita-news/weather/heat-advisory-extended-for-santa-clarita-as-warm-temperatures-are-forecasted-600957",
@@ -60,12 +78,6 @@
       "title": "When Migraine Stops Getting The Final Say",
       "url": "https://www.hometownstation.com/khts-featured/when-migraine-stops-getting-the-final-say-600900",
       "published": "2026-07-07T15:08:50.000Z",
-      "source": "KHTS"
-    },
-    {
-      "title": "Why U.S. Lawmakers Are Targeting Sweepstakes Casinos In 2026",
-      "url": "https://www.hometownstation.com/featured-stories/why-u-s-lawmakers-are-targeting-sweepstakes-casinos-in-2026-600860",
-      "published": "2026-07-07T09:57:29.000Z",
       "source": "KHTS"
     },
     {
@@ -132,18 +144,6 @@
       "title": "Panorama City Medical Center recognized for older adult care",
       "url": "https://signalscv.com/2026/07/panorama-city-medical-center-recognized-for-older-adult-care/",
       "published": "2026-07-06T19:39:46.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "Bill aimed at ‘elderly’ parole law moves on",
-      "url": "https://signalscv.com/2026/07/bill-aimed-at-elderly-parole-law-moves-on/",
-      "published": "2026-07-06T18:28:53.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "Golden Valley’s Miguel Mayorga ready to tackle expectations and goals",
-      "url": "https://signalscv.com/2026/07/golden-valleys-miguel-mayorga-ready-to-tackle-expectations-and-goals/",
-      "published": "2026-07-06T16:49:35.000Z",
       "source": "The Signal"
     }
   ]
