@@ -1,7 +1,25 @@
 {
-  "generatedAt": "2026-07-07T18:58:17.698Z",
+  "generatedAt": "2026-07-07T21:01:11.206Z",
   "note": "Auto-built from public local RSS feeds by scripts/fetch-events.mjs (GitHub Action, ~every 30 min). Headlines belong to their sources.",
   "news": [
+    {
+      "title": "Heat Advisory Extended For Santa Clarita As Warm Temperatures Are Forecasted",
+      "url": "https://www.hometownstation.com/santa-clarita-news/weather/heat-advisory-extended-for-santa-clarita-as-warm-temperatures-are-forecasted-600957",
+      "published": "2026-07-07T20:48:27.000Z",
+      "source": "KHTS"
+    },
+    {
+      "title": "Friends of Castaic Lake announces new board leadership",
+      "url": "https://signalscv.com/2026/07/friends-of-castaic-lake-announces-new-board-leadership/",
+      "published": "2026-07-07T20:25:29.000Z",
+      "source": "The Signal"
+    },
+    {
+      "title": "Today In SCV History: July 7, 1949 – Nonprofit Castaic Saddle Club Incorporated",
+      "url": "https://www.hometownstation.com/santa-clarita-news/community-news/today-in-scv-history/today-in-scv-history-july-7-1949-nonprofit-castaic-saddle-club-incorporated-600947",
+      "published": "2026-07-07T19:30:58.000Z",
+      "source": "KHTS"
+    },
     {
       "title": "Know Before You Go: Concerts In The Park Returns This Saturday",
       "url": "https://www.hometownstation.com/santa-clarita-news/arts-and-entertainment/know-before-you-go-concerts-in-the-park-returns-this-saturday-600870",
@@ -9,9 +27,39 @@
       "source": "KHTS"
     },
     {
+      "title": "2026-27 COC PAC Spotlight Series Announced",
+      "url": "https://www.hometownstation.com/santa-clarita-news/education/college-of-the-canyons/2026-27-coc-pac-spotlight-series-announced-600938",
+      "published": "2026-07-07T17:15:21.000Z",
+      "source": "KHTS"
+    },
+    {
       "title": "Santa Clarita Set To Be The Site Of Five Different Film Productions (7/9-7/12)",
       "url": "https://www.hometownstation.com/santa-clarita-news/arts-and-entertainment/santa-clarita-set-to-be-the-site-of-five-different-film-productions-7-9-7-12-600789",
       "published": "2026-07-07T16:23:23.000Z",
+      "source": "KHTS"
+    },
+    {
+      "title": "Recharge Your Mind And Body At BioRecharge In Santa Clarita",
+      "url": "https://www.hometownstation.com/khts-featured/recharge-your-mind-and-body-at-biorecharge-in-santa-clarita-600930",
+      "published": "2026-07-07T15:29:52.000Z",
+      "source": "KHTS"
+    },
+    {
+      "title": "Reliable Business Tech Support In Santa Clarita with IntellEdge",
+      "url": "https://www.hometownstation.com/khts-featured/reliable-business-tech-support-in-santa-clarita-with-intelledge-600919",
+      "published": "2026-07-07T15:22:51.000Z",
+      "source": "KHTS"
+    },
+    {
+      "title": "Beat The Summer Heat At The Paseo Club In Santa Clarita",
+      "url": "https://www.hometownstation.com/khts-featured/beat-the-summer-heat-at-the-paseo-club-in-santa-clarita-600910",
+      "published": "2026-07-07T15:14:30.000Z",
+      "source": "KHTS"
+    },
+    {
+      "title": "When Migraine Stops Getting The Final Say",
+      "url": "https://www.hometownstation.com/khts-featured/when-migraine-stops-getting-the-final-say-600900",
+      "published": "2026-07-07T15:08:50.000Z",
       "source": "KHTS"
     },
     {
@@ -43,12 +91,6 @@
       "url": "https://signalscv.com/2026/07/martin-fire-burns-near-i-5-templin-highway/",
       "published": "2026-07-06T23:55:00.000Z",
       "source": "The Signal"
-    },
-    {
-      "title": "Martins Fire: Vehicle Fire Spreads To Brush Near Castaic, Evacuation Warning Issued",
-      "url": "https://www.hometownstation.com/santa-clarita-news/scv-emergency/santa-clarita-fire/martin-fire-vehicle-fire-spreads-to-brush-near-castaic-600837",
-      "published": "2026-07-06T23:37:01.000Z",
-      "source": "KHTS"
     },
     {
       "title": "COC receives $1.1M donation from The Broad Foundation for ATC",
@@ -87,28 +129,10 @@
       "source": "The Signal"
     },
     {
-      "title": "The Broad Foundation Donates $1.1 Million Toward College Of The Canyons ATC",
-      "url": "https://www.hometownstation.com/santa-clarita-news/education/college-of-the-canyons/the-broad-foundation-donates-1-1-million-toward-college-of-the-canyons-atc-600799",
-      "published": "2026-07-06T21:30:38.000Z",
-      "source": "KHTS"
-    },
-    {
-      "title": "Naked Man Arrested After Defecating On Canyon Country Sidewalk",
-      "url": "https://www.hometownstation.com/santa-clarita-news/crime/naked-man-arrested-after-defecating-on-canyon-country-sidewalk-600771",
-      "published": "2026-07-06T20:38:16.000Z",
-      "source": "KHTS"
-    },
-    {
       "title": "Panorama City Medical Center recognized for older adult care",
       "url": "https://signalscv.com/2026/07/panorama-city-medical-center-recognized-for-older-adult-care/",
       "published": "2026-07-06T19:39:46.000Z",
       "source": "The Signal"
-    },
-    {
-      "title": "Cool Rewards For Positive Choices: LASD, 7-Eleven Bring ‘Operation Chill’ To L.A. County",
-      "url": "https://www.hometownstation.com/santa-clarita-news/community-news/cool-rewards-for-positive-choices-lasd-7-eleven-bring-operation-chill-to-l-a-county-600780",
-      "published": "2026-07-06T19:00:49.000Z",
-      "source": "KHTS"
     },
     {
       "title": "Bill aimed at ‘elderly’ parole law moves on",
@@ -117,33 +141,9 @@
       "source": "The Signal"
     },
     {
-      "title": "CARB Approves $70 Million For Reduced Emissions Off-Road",
-      "url": "https://www.hometownstation.com/santa-clarita-latest-news/carb-approves-70-million-for-reduced-emissions-off-road-600809",
-      "published": "2026-07-06T17:51:15.000Z",
-      "source": "KHTS"
-    },
-    {
-      "title": "Santa Clarita Valley Sees 36 Arrests Over Fourth Of July Weekend, Including Child Luring, Shoplifting Cases",
-      "url": "https://www.hometownstation.com/santa-clarita-news/crime/santa-clarita-valley-sees-36-arrests-over-fourth-of-july-weekend-including-child-luring-shoplifting-cases-600817",
-      "published": "2026-07-06T17:30:27.000Z",
-      "source": "KHTS"
-    },
-    {
       "title": "Golden Valley’s Miguel Mayorga ready to tackle expectations and goals",
       "url": "https://signalscv.com/2026/07/golden-valleys-miguel-mayorga-ready-to-tackle-expectations-and-goals/",
       "published": "2026-07-06T16:49:35.000Z",
-      "source": "The Signal"
-    },
-    {
-      "title": "Season-By-Season HVAC Maintenance For Homes In Stilwell, OK",
-      "url": "https://www.hometownstation.com/featured-stories/season-by-season-hvac-maintenance-for-homes-in-stilwell-ok-600731",
-      "published": "2026-07-06T16:44:36.000Z",
-      "source": "KHTS"
-    },
-    {
-      "title": "Celebrating America’s semiquincentennial birthday, Santa Clarita-style",
-      "url": "https://signalscv.com/2026/07/celebrating-americas-semiquincentennial-birthday-santa-clarita-style/",
-      "published": "2026-07-05T16:50:02.000Z",
       "source": "The Signal"
     }
   ]
