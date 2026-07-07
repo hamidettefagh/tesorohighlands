@@ -47,14 +47,16 @@ node server.js       # serves on http://localhost:3100 with /fire-style clean UR
 | Active alerts (Red Flag, Fire Weather, Heat) | NWS `api.weather.gov` | **Live**, no key |
 | Nearby fires — list, map points & perimeters | NIFC/WFIGS ArcGIS (`WFIGS_Incident_Locations_Current`, `WFIGS_Interagency_Perimeters_Current`) | **Live**, no key |
 | Evacuation zone status (Order / Warning) | Cal OES "California Active Evacuation Zones" ArcGIS | **Live**, no key |
-| Local attendable events (audience-tagged, priced) | Eventbrite public city pages via GitHub Action | **Auto**, ~every 30 min |
+| Local attendable events (audience-tagged, priced) | Eventbrite (4 SCV city searches) + SC Public Library calendar | **Auto** via script |
 | Community events | `community-events.json` in git | Curated |
 
 The dashboard's status logic is deliberately conservative (small routine incidents don't turn the page red), and every live panel degrades honestly — a failed feed says "unavailable," never "all clear."
 
 ## The local events pipeline
 
-`scripts/fetch-events.mjs` scans Eventbrite's public Santa Clarita search pages (embedded `__SERVER_DATA__` JSON), keeps only events at Santa Clarita Valley venues (Santa Clarita, Valencia, Newhall, Saugus, Canyon Country, Castaic, Stevenson Ranch), drops corporate training-mill spam, fetches each event page to extract the real price (`isFree` / `lowPrice`–`highPrice`), and tags every event by audience (toddlers / kids / teens / adults) with keyword rules. It writes `events.json` only when content changed. The GitHub Action runs it about every 30 minutes and commits the diff, which auto-deploys via Vercel. No backend, no keys.
+`scripts/fetch-events.mjs` pulls from two sources: (1) Eventbrite's public search pages for four SCV city slugs (embedded `__SERVER_DATA__` JSON), keeping only Santa Clarita Valley venues, dropping corporate training-mill spam, and fetching each event page for the real price (`isFree` / `lowPrice`–`highPrice`); (2) the Santa Clarita Public Library calendar (santaclarita.librarycalendar.com) via its server-rendered per-day feed — free programs across all branches, using the library's own age-group taxonomy (Babies/Toddler/Preschool/Storytime/Teens/Adults). Everything is tagged by audience (toddlers / kids / teens / adults) for the filter chips, deduped, and written to `events.json` only when content changed. The GitHub Action commits the diff, which auto-deploys via Vercel. No backend, no keys.
+
+Sources checked and rejected for automation: Visit Santa Clarita (no feed/API/JSON-LD — HTML only), KHTS events (no calendar API), SCVNews and santa-clarita.com (bot-blocked), santaclaritaarts.com (no API; its shows appear on Eventbrite anyway).
 
 Fragility notes: this parses Eventbrite's page structure, which can change; the script fails soft (keeps the last good file) and the page shows a "feed may be stale" note past 5 days. As of 2026-07-07 Eventbrite 405-blocks GitHub-hosted runner IPs, so the Action is a light self-healing retry (every 4h) rather than the primary refresh — real refreshes are `node scripts/fetch-events.mjs` from a residential IP, then push (or a scheduled task on a home machine).
 
