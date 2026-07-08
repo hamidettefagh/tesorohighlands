@@ -901,9 +901,17 @@ boot();
 <script>
 (function () {
   "use strict";
-  if (typeof L === "undefined") return;
   var el = document.getElementById("fireMap");
   if (!el) return;
+  var legend = document.getElementById("mapLegend");
+  function mapFail(msg){
+    el.style.display = "none";
+    if (legend) legend.innerHTML = msg + ' <a href="#" onclick="location.reload();return false;"><b>Tap to reload</b></a> — or use the <a href="https://www.watchduty.org/" target="_blank" rel="noopener">Watch Duty app</a>.';
+  }
+  if (typeof L === "undefined") {
+    mapFail("The map library didn't load on this device — usually a stale cached page or a network blocker.");
+    return;
+  }
 
   function rdLoc(){ try{ var s=JSON.parse(localStorage.getItem("tesoro.loc")); if(s&&s.lat&&s.lon) return {lat:s.lat,lon:s.lon,label:s.label}; }catch(e){} return {lat:34.478,lon:-118.531,label:"Tesoro Highlands"}; }
   function hav(la1,lo1,la2,lo2){ var R=3958.8,t=function(x){return x*Math.PI/180;}; var dla=t(la2-la1),dlo=t(lo2-lo1); var h=Math.sin(dla/2)*Math.sin(dla/2)+Math.cos(t(la1))*Math.cos(t(la2))*Math.sin(dlo/2)*Math.sin(dlo/2); return 2*R*Math.asin(Math.sqrt(h)); }
@@ -912,11 +920,28 @@ boot();
   function title(n){ return n ? String(n).replace(/\b\w/g,function(c){return c.toUpperCase();}) : "Unnamed"; }
 
   var H = rdLoc();
-  var map = L.map("fireMap", { scrollWheelZoom:false }).setView([H.lat,H.lon], 9);
+  var map, tiles;
+  try {
+    map = L.map("fireMap", { scrollWheelZoom:false }).setView([H.lat,H.lon], 9);
+  } catch (err) {
+    mapFail("The live map couldn't start on this device (" + ((err && err.message) || "unknown error") + ").");
+    return;
+  }
   function tileUrl(){ var eff = window.__theme ? window.__theme.effective() : "light"; return "https://{s}.basemaps.cartocdn.com/" + (eff==="dark"?"dark_all":"light_all") + "/{z}/{x}/{y}{r}.png"; }
-  var tiles = L.tileLayer(tileUrl(), { subdomains:"abcd", maxZoom:18, attribution:"© OpenStreetMap, © CARTO" }).addTo(map);
+  tiles = L.tileLayer(tileUrl(), { subdomains:"abcd", maxZoom:18, attribution:"© OpenStreetMap, © CARTO" }).addTo(map);
+  // If the Carto tile CDN never delivers a single tile (some mobile networks,
+  // DNS filters, content blockers), switch to openstreetmap.org tiles once.
+  var tileWins = 0, tileFails = 0, fellBack = false;
+  tiles.on("tileload", function(){ tileWins++; });
+  tiles.on("tileerror", function(){
+    tileFails++;
+    if (!fellBack && tileWins === 0 && tileFails >= 3) {
+      fellBack = true;
+      tiles.setUrl("https://tile.openstreetmap.org/{z}/{x}/{y}.png");
+    }
+  });
   window.addEventListener("themechange", function(){
-    tiles.setUrl(tileUrl());
+    if (!fellBack) tiles.setUrl(tileUrl()); // OSM fallback has no dark variant
     if (typeof render === "function") { try { render(); } catch(e){} } // refresh sparkline/theme-derived colors
   });
   map.on("click", function(){ map.scrollWheelZoom.enable(); });
