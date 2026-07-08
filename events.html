@@ -40,6 +40,13 @@
   .chip.today{background:var(--ok-bg);color:var(--ok-fg);}
   .empty{padding:16px 2px;color:var(--muted);font-size:13px;}
 
+  .ttdgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  @media (max-width:520px){.ttdgrid{grid-template-columns:1fr;}}
+  .ttd{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:13px 14px;box-shadow:var(--shadow);color:var(--ink);transition:border-color .15s;}
+  .ttd:hover{border-color:var(--muted);}
+  .ttd h3{margin:0 0 3px;font-size:13.5px;letter-spacing:-0.005em;}
+  .ttd p{margin:0;color:var(--ink-2);font-size:12px;line-height:1.5;}
+  .ttd .chiprow{margin-top:8px;}
   .findgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
   @media (max-width:520px){.findgrid{grid-template-columns:1fr;}}
   .findgrid a{display:flex;justify-content:space-between;align-items:center;text-decoration:none;font-size:13px;color:var(--ink);
@@ -75,6 +82,53 @@
       </div>
       <div class="evcard"><div id="feedList"><div class="empty">Loading local events…</div></div></div>
       <div class="evmeta" id="feedMeta">Attendable events across the Santa Clarita Valley — Eventbrite + the Santa Clarita Public Library — updated regularly.</div>
+    </section>
+
+    <section class="evsec">
+      <div class="sechead"><h2>Family things to do nearby</h2><div class="line"></div></div>
+      <div class="ttdgrid">
+        <a class="ttd" href="https://www.gilchristfarm.com/" target="_blank" rel="noopener">
+          <h3>🚜 Gilchrist Farm <span style="color:var(--muted);font-weight:440">· Saugus</span></h3>
+          <p>Working family farm minutes away — farm animals, seasonal u-pick, and the fall pumpkin patch.</p>
+          <div class="chiprow"><span class="chip">🎨 Kids</span><span class="chip">🧸 Toddlers</span><span class="badge-price">Seasonal · $</span></div>
+        </a>
+        <a class="ttd" href="https://hartmuseum.org/" target="_blank" rel="noopener">
+          <h3>🤠 William S. Hart Park &amp; Museum <span style="color:var(--muted);font-weight:440">· Newhall</span></h3>
+          <p>Free mansion tours, a barnyard with animals, and shady picnic grounds. Tour dates show in the feed above.</p>
+          <div class="chiprow"><span class="chip">All ages</span><span class="badge-price free">Free</span></div>
+        </a>
+        <a class="ttd" href="https://www.homedepot.com/workshops/" target="_blank" rel="noopener">
+          <h3>🔨 Home Depot Kids Workshop</h3>
+          <p>Free hands-on build project for kids the <b>first Saturday of every month</b> — register online, aprons included.</p>
+          <div class="chiprow"><span class="chip">🎨 Kids</span><span class="chip">↻ Monthly</span><span class="badge-price free">Free</span></div>
+        </a>
+        <a class="ttd" href="https://www.santaclarita.librarycalendar.com/" target="_blank" rel="noopener">
+          <h3>📚 Library storytimes &amp; programs</h3>
+          <p>Weekly storytimes, crafts, and teen nights across the Valencia, Old Town Newhall, and Canyon Country branches.</p>
+          <div class="chiprow"><span class="chip">🧸 Toddlers</span><span class="chip">🎨 Kids</span><span class="chip">🎧 Teens</span><span class="badge-price free">Free</span></div>
+        </a>
+        <a class="ttd" href="https://www.placerita.org/" target="_blank" rel="noopener">
+          <h3>🥾 Placerita Canyon Nature Center</h3>
+          <p>Easy family trails, a small nature center with live animals, and ranger programs on weekends.</p>
+          <div class="chiprow"><span class="chip">All ages</span><span class="badge-price free">Free</span></div>
+        </a>
+        <a class="ttd" href="https://parks.lacounty.gov/castaic-lake-state-recreation-area/" target="_blank" rel="noopener">
+          <h3>🏖️ Castaic Lake</h3>
+          <p>Swim beach, fishing, and picnic areas ten minutes up the 5 — parking fee, everything else easy.</p>
+          <div class="chiprow"><span class="chip">All ages</span><span class="badge-price">$ parking</span></div>
+        </a>
+        <a class="ttd" href="https://www.vasquezrocks.com/" target="_blank" rel="noopener">
+          <h3>🪨 Vasquez Rocks <span style="color:var(--muted);font-weight:440">· Agua Dulce</span></h3>
+          <p>The famous tilted rock formations from a hundred movies — easy scrambles kids love, plus an interpretive center.</p>
+          <div class="chiprow"><span class="chip">All ages</span><span class="badge-price free">Free</span></div>
+        </a>
+        <a class="ttd" href="https://atthemain.org/" target="_blank" rel="noopener">
+          <h3>🎭 The MAIN <span style="color:var(--muted);font-weight:440">· Old Town Newhall</span></h3>
+          <p>The city's little theater — family shows, comedy nights, and local productions most weekends.</p>
+          <div class="chiprow"><span class="chip">🎨 Kids</span><span class="chip">🎭 Adults</span><span class="badge-price">$</span></div>
+        </a>
+      </div>
+      <div class="evmeta">Curated by neighbors, not sponsored. Know a good one? Share it in the group chat and it gets added.</div>
     </section>
 
     <section class="evsec">
@@ -175,6 +229,7 @@
           (w.isToday ? '<span class="chip today">Today</span>' : "") +
           '<div class="sub">' + esc([e.venue, e.city].filter(Boolean).join(" · ")) + "</div>" +
           auds.map(function (a) { return '<span class="chip">' + esc(AUD_LABEL[a] || a) + "</span>"; }).join("") +
+          (e.repeats ? '<span class="chip">↻ +' + e.repeats + ' more dates</span>' : "") +
           '</div><div class="price">' + priceBadge(e) + "</div></div>";
       }).join("");
     }

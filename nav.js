@@ -83,7 +83,7 @@
         if (red) { lvl = Math.max(lvl, 1); text = red + " in effect — elevated fire danger."; }
         else if (warn && lvl < 1) { lvl = 1; text = warn + " in effect."; }
       }).catch(function () {}),
-      fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=" + encodeURIComponent("IncidentTypeCategory='WF'") + "&outFields=IncidentName,IncidentSize&geometry=" + (L.lon - 1.3) + "," + (L.lat - 1) + "," + (L.lon + 1.3) + "," + (L.lat + 1) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326&f=geojson").then(function (r) { return r.json(); }).then(function (f) {
+      fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=" + encodeURIComponent("IncidentTypeCategory='WF' AND FireOutDateTime IS NULL AND (PercentContained < 100 OR PercentContained IS NULL)") + "&outFields=IncidentName,IncidentSize&geometry=" + (L.lon - 1.3) + "," + (L.lat - 1) + "," + (L.lon + 1.3) + "," + (L.lat + 1) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326&f=geojson").then(function (r) { return r.json(); }).then(function (f) {
         if (!f || !f.features) return; okFires = true;
         var fires = f.features.filter(function (ft) { return ft.geometry && ft.geometry.coordinates; }).map(function (ft) {
           var c = ft.geometry.coordinates;

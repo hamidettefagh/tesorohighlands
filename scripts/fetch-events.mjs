@@ -28,7 +28,7 @@ const EB_SLUGS = [
 const EB_MAX = 30;        // Eventbrite events kept (after filters)
 const EB_ENRICH = 45;     // max event pages fetched for prices
 const LIB_DAYS = 21;      // how many days of library programs to pull
-const LIB_MAX = 40;       // library events kept
+const LIB_MAX = 25;       // unique library programs kept (after recurring collapse)
 const WINDOW_DAYS = 60;   // how far ahead to look (Eventbrite)
 const SCV = /santa clarita|valencia|newhall|saugus|canyon country|castaic|stevenson ranch|agua dulce|val verde/i;
 // Mass-posted corporate training-mill listings — not real community events.
@@ -212,7 +212,15 @@ async function fetchLibrary() {
       if (i === 0) break; // endpoint down/blocked — don't hammer 21 times
     }
   }
-  return { events: all.slice(0, LIB_MAX), daysOk };
+  // Collapse recurring programs (same title + branch — weekly storytimes etc.)
+  // into one entry carrying the earliest upcoming date and a repeat count.
+  const groups = new Map();
+  for (const e of all) {
+    const k = e.title.toLowerCase().replace(/\W+/g, " ").trim() + "|" + (e.venue || "");
+    if (!groups.has(k)) groups.set(k, e);
+    else { const g = groups.get(k); g.repeats = (g.repeats || 0) + 1; }
+  }
+  return { events: [...groups.values()].slice(0, LIB_MAX), daysOk };
 }
 
 /* ---------------- merge, dedupe, write ---------------- */

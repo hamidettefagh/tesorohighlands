@@ -167,13 +167,29 @@
   .contain { height:6px; border-radius:999px; background:var(--line); overflow:hidden; margin-top:7px; }
   .contain i { display:block; height:100%; background:var(--aqi-usg); }
 
-  /* checklist */
-  .check { display:flex; align-items:flex-start; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-2); cursor:pointer; }
-  .check:last-child{ border-bottom:0; }
-  .check input { margin-top:2px; width:17px; height:17px; accent-color:#17703f; flex:none; }
-  .check .ct { font-size:13px; }
-  .check .ct small { display:block; color:var(--muted); font-size:11.5px; }
-  .check.done .ct { color: var(--muted); text-decoration: line-through; }
+  /* go-bag checklist — compact tappable chips */
+  .checkgrid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  @media (max-width:520px){ .checkgrid { grid-template-columns:1fr; } }
+  .chk { display:flex; align-items:center; gap:9px; padding:9px 11px; border:1px solid var(--line);
+    border-radius:11px; cursor:pointer; background:var(--bg); user-select:none;
+    transition:border-color .12s, background .12s, transform .05s; }
+  .chk:hover { border-color:var(--muted); }
+  .chk:active { transform:scale(.985); }
+  .chk.done { background:var(--ok-bg); border-color:var(--ok-line); }
+  .chk .em { font-size:16px; flex:none; }
+  .chk .t { font-size:12.5px; font-weight:600; color:var(--ink); line-height:1.25; }
+  .chk.done .t { color:var(--ok-fg); }
+  .chk .tick { margin-left:auto; flex:none; width:18px; height:18px; border-radius:50%;
+    border:1.5px solid var(--line); display:grid; place-items:center; font-size:11px; color:transparent; }
+  .chk.done .tick { background:var(--ok-fg); border-color:var(--ok-fg); color:var(--surface); }
+  .chkmore { margin-top:12px; }
+  .chkmore summary { list-style:none; cursor:pointer; font-size:12px; color:var(--muted); font-weight:560; }
+  .chkmore summary::-webkit-details-marker { display:none; }
+  .chkmore summary::after { content:" ▾"; }
+  .chkmore[open] summary::after { content:" ▴"; }
+  .chkmore ul { margin:8px 0 0; padding-left:18px; }
+  .chkmore li { font-size:12px; color:var(--ink-2); line-height:1.55; margin-bottom:6px; }
+  .chkmore li b { color:var(--ink); font-weight:620; }
   .prog { height:7px; background:var(--line); border-radius:999px; overflow:hidden; margin:4px 0 14px; }
   .prog i { display:block; height:100%; background:var(--ok-fg); transition:width .3s; }
 
@@ -306,29 +322,18 @@
         </div>
       </div>
 
-      <!-- EVAC -->
-      <div class="card" id="evacCard">
-        <h3>Do we need to get ready to leave?</h3>
-        <div class="q">Evacuation status for your zone</div>
-        <div class="verdict">
-          <div class="badge neutral" id="evacBadge">…</div>
-          <div class="vtxt" id="evacTxt"><strong class="skel">Checking…</strong><span></span></div>
+      <!-- FIRE WEATHER -->
+      <div class="card" id="fwCard">
+        <h3>Fire weather right now <span class="cardtag pill live">Live</span></h3>
+        <div class="q">The conditions that drive how fast fire spreads</div>
+        <div class="stats">
+          <div class="stat"><div class="lab">Wind</div><div class="val" id="fwWind">–</div></div>
+          <div class="stat"><div class="lab">Gusts</div><div class="val" id="fwGust">–</div></div>
+          <div class="stat"><div class="lab">Humidity</div><div class="val" id="fwRh">–</div></div>
+          <div class="stat"><div class="lab">Temperature</div><div class="val" id="fwTemp">–</div></div>
         </div>
-        <div class="detail" id="evacDetail"></div>
+        <div id="fwNote"></div>
       </div>
-    </div>
-
-    <!-- FIRE WEATHER -->
-    <div class="card" id="fwCard">
-      <h3>Fire weather right now <span class="cardtag pill live">Live</span></h3>
-      <div class="q">The conditions that drive how fast fire spreads — the warning before the fire</div>
-      <div class="stats">
-        <div class="stat"><div class="lab">Wind</div><div class="val" id="fwWind">–</div></div>
-        <div class="stat"><div class="lab">Gusts</div><div class="val" id="fwGust">–</div></div>
-        <div class="stat"><div class="lab">Humidity</div><div class="val" id="fwRh">–</div></div>
-        <div class="stat"><div class="lab">Temperature</div><div class="val" id="fwTemp">–</div></div>
-      </div>
-      <div id="fwNote"></div>
     </div>
 
     <!-- 7-DAY OUTLOOK -->
@@ -373,7 +378,7 @@
   <!-- NEARBY FIRES -->
   <div class="sechead"><h2>Nearby fire activity</h2><div class="line"></div></div>
   <div class="card" id="fireCard" style="margin-top:8px">
-    <div class="q" style="margin-bottom:10px">Live distance &amp; direction to active wildfire incidents near Tesoro Highlands, from the national feed (NIFC / IRWIN). Small, quickly-controlled fires appear here too — most never threaten homes.</div>
+    <div class="q" style="margin-bottom:10px">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Each shows when it was last updated.</div>
     <div id="fireList"></div>
   </div>
 
@@ -389,9 +394,18 @@
 
   <!-- EVAC READINESS -->
   <div class="sechead"><h2>Evacuation readiness</h2><div class="line"></div></div>
-  <div class="card" style="margin-top:8px">
+  <div class="card" id="evacCard" style="margin-top:8px">
+    <h3>Do we need to get ready to leave?</h3>
+    <div class="q">Live evacuation status for your area</div>
+    <div class="verdict">
+      <div class="badge neutral" id="evacBadge">…</div>
+      <div class="vtxt" id="evacTxt"><strong class="skel">Checking…</strong><span></span></div>
+    </div>
+    <div class="detail" id="evacDetail"></div>
+  </div>
+  <div class="card" style="margin-top:12px">
     <h3>Your go-bag <span class="cardtag" id="progPct" style="font-size:12px;color:var(--muted);font-weight:600">0%</span></h3>
-    <div class="q">Saved on this device. Do it once now, not during a fire.</div>
+    <div class="q">Tap what's done — saved on this device. Do it once now, not during a fire.</div>
     <div class="prog"><i id="progBar" style="width:0"></i></div>
     <div id="checklist"></div>
   </div>
@@ -454,6 +468,7 @@ function haversine(lat1,lon1,lat2,lon2){ const R=3958.8,t=x=>x*Math.PI/180; cons
 function bearingDeg(lat1,lon1,lat2,lon2){ const t=x=>x*Math.PI/180,d=x=>x*180/Math.PI; const y=Math.sin(t(lon2-lon1))*Math.cos(t(lat2)); const x=Math.cos(t(lat1))*Math.sin(t(lat2))-Math.sin(t(lat1))*Math.cos(t(lat2))*Math.cos(t(lon2-lon1)); return (d(Math.atan2(y,x))+360)%360; }
 function fireName(n){ if(!n) return "Unnamed incident"; const tc=n.trim().toLowerCase().replace(/\b\w/g,c=>c.toUpperCase()); return /fire$/i.test(tc)?tc:tc+" Fire"; }
 function fmtDate(ts){ const d=new Date(ts); return (d.getMonth()+1)+"/"+d.getDate(); }
+function fmtAgo(ts){ const h=(Date.now()-ts)/3600000; if(h<1) return "within the hour"; if(h<48) return Math.round(h)+"h ago"; return Math.round(h/24)+"d ago"; }
 function fmtHour(iso){ const h=parseInt(iso.slice(11,13),10); const ap=h>=12?"PM":"AM"; const hh=(h%12)||12; return hh+" "+ap; }
 function timeAgo(ts){ if(!ts) return ""; const s=Math.round((Date.now()-ts)/1000); if(s<45) return "updated just now"; if(s<90) return "updated 1 min ago"; if(s<3600) return "updated "+Math.round(s/60)+" min ago"; return "updated "+Math.round(s/3600)+"h ago"; }
 
@@ -578,23 +593,29 @@ function overall(v){
 
 /* ---------- fetch ---------- */
 const FIRE_RADIUS = 45; // miles from home to include
+// Active fires only: not declared out, not fully contained. Shared by the
+// list, the map, and (inlined) the site-wide status strip.
+const FIRE_WHERE = "IncidentTypeCategory='WF' AND FireOutDateTime IS NULL AND (PercentContained < 100 OR PercentContained IS NULL)";
+// Dead initial-attack records: no update in 2 days and never grew past 10 acres.
+function isStaleFire(mod, acres){ return mod != null && (Date.now() - mod) > 48*3600*1000 && (acres == null || acres < 10); }
 // Same NIFC/WFIGS feed as the map and the site-wide status strip — one source of truth.
 async function fetchFires(lat, lon){
   const env = `${(lon-2.0).toFixed(3)},${(lat-1.4).toFixed(3)},${(lon+2.0).toFixed(3)},${(lat+1.4).toFixed(3)}`;
   const url = "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query"
-    + "?where=" + encodeURIComponent("IncidentTypeCategory='WF'")
+    + "?where=" + encodeURIComponent(FIRE_WHERE)
     + "&geometry=" + encodeURIComponent(env)
     + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects"
-    + "&outFields=IncidentName,IncidentSize,PercentContained,FireDiscoveryDateTime"
+    + "&outFields=IncidentName,IncidentSize,PercentContained,FireDiscoveryDateTime,ModifiedOnDateTime_dt"
     + "&returnGeometry=true&outSR=4326&resultRecordCount=1000&f=geojson";
   const j = await fetch(url).then(r=>r.json());
   return (j.features||[])
     .filter(f => f.geometry && f.geometry.coordinates)
     .filter(f => !/^LAC-?\d+$/i.test((f.properties.IncidentName||"").trim()))  // drop LA County dispatch-number noise
+    .filter(f => !isStaleFire(f.properties.ModifiedOnDateTime_dt, f.properties.IncidentSize))
     .map(f => {
       const c=f.geometry.coordinates, a=f.properties;
       return { name: fireName(a.IncidentName), acres: a.IncidentSize, contain: a.PercentContained,
-        disc: a.FireDiscoveryDateTime, dist: haversine(lat,lon,c[1],c[0]),
+        disc: a.FireDiscoveryDateTime, mod: a.ModifiedOnDateTime_dt, dist: haversine(lat,lon,c[1],c[0]),
         dir: compass(bearingDeg(lat,lon,c[1],c[0])) };
     })
     .filter(f => f.dist <= FIRE_RADIUS)
@@ -753,7 +774,8 @@ function render(){
   } else {
     fl.innerHTML = v.fires.map(f=>{
       const acres = (f.acres==null) ? `<span style="color:var(--muted)">size not yet reported</span>` : `${Math.round(f.acres).toLocaleString()} acres`;
-      const meta = f.trend ? `${acres} · ${f.trend}` : (f.disc ? `${acres} · spotted ${fmtDate(f.disc)}` : acres);
+      const upd = f.mod ? ` · updated ${fmtAgo(f.mod)}` : "";
+      const meta = f.trend ? `${acres} · ${f.trend}` : (f.disc ? `${acres} · spotted ${fmtDate(f.disc)}${upd}` : `${acres}${upd}`);
       const bar = (f.contain!=null) ? `<div class="contain"><i style="width:${f.contain}%"></i></div><div class="fs" style="margin-top:4px">${f.contain}% contained</div>` : "";
       const tag = f.demo ? ` <span class="pill demo">Demo</span>` : ` <span class="pill live">Live</span>`;
       return `
@@ -824,15 +846,15 @@ function renderOutlook(){
 
 /* ---------- checklist ---------- */
 const CHECK_ITEMS = [
-  ["Go-bag packed", "Meds, IDs, cash, phone chargers, water, N95 masks for smoke"],
-  ["Documents ready", "Passports, insurance, deed — photos on your phone count"],
-  ["Pets sorted", "Carriers, leashes, food, vet records by the door"],
-  ["Cars fueled & facing out", "Keep tanks over half; back into the driveway"],
-  ["Know your zone", "Look yourself up on protect.genasys.com so you know your zone name"],
-  ["Alerts enabled", "Sign up at ready.lacounty.gov + turn on Wireless Emergency Alerts"],
-  ["Kids briefed", "Meeting spot, one comfort item each in their bag"],
-  ["Home hardened", "Vents screened, gutters clear, nothing flammable against the house"],
-  ["Defensible space", "Brush cut back near the house — and speak up about the common-area brush by the water towers and Avenida Rancho Tesoro"]
+  ["🎒", "Go-bag packed", "Meds, IDs, cash, phone chargers, water, N95 masks for smoke"],
+  ["📄", "Documents ready", "Passports, insurance, deed — photos on your phone count"],
+  ["🐾", "Pets sorted", "Carriers, leashes, food, vet records by the door"],
+  ["⛽", "Cars fueled & facing out", "Keep tanks over half; back into the driveway"],
+  ["📍", "Know your zone", "Look yourself up on protect.genasys.com so you know your zone name"],
+  ["🔔", "Alerts enabled", "Sign up at ready.lacounty.gov + turn on Wireless Emergency Alerts"],
+  ["🧸", "Kids briefed", "Meeting spot, one comfort item each in their bag"],
+  ["🏠", "Home hardened", "Vents screened, gutters clear, nothing flammable against the house"],
+  ["🌿", "Defensible space", "Brush cut back near the house — and speak up about the common-area brush by the water towers and Avenida Rancho Tesoro"]
 ];
 function loadChecks(){ try { return JSON.parse(localStorage.getItem("tesoro.checks"))||{}; } catch(e){ return {}; } }
 function updateProgress(){
@@ -845,18 +867,22 @@ function updateProgress(){
 function renderChecklist(){
   const state = loadChecks();
   const el = $("#checklist");
-  el.innerHTML = CHECK_ITEMS.map((it,i)=>`
-    <label class="check ${state[i]?"done":""}">
-      <input type="checkbox" data-i="${i}" ${state[i]?"checked":""}/>
-      <span class="ct">${it[0]}<small>${it[1]}</small></span>
-    </label>`).join("");
-  el.querySelectorAll("input").forEach(inp=>{
-    inp.addEventListener("change", e=>{
-      const s = loadChecks(); s[e.target.dataset.i] = e.target.checked;
-      localStorage.setItem("tesoro.checks", JSON.stringify(s));
-      e.target.closest(".check").classList.toggle("done", e.target.checked);
-      updateProgress();
-    });
+  el.innerHTML = '<div class="checkgrid">' + CHECK_ITEMS.map((it,i)=>`
+    <div class="chk ${state[i]?"done":""}" role="checkbox" aria-checked="${!!state[i]}" tabindex="0" data-i="${i}" aria-label="${it[1]}">
+      <span class="em">${it[0]}</span><span class="t">${it[1]}</span><span class="tick">✓</span>
+    </div>`).join("") + '</div>'
+    + `<details class="chkmore"><summary>What goes into each one?</summary><ul>${CHECK_ITEMS.map(it=>`<li><b>${it[1]}.</b> ${it[2]}</li>`).join("")}</ul></details>`;
+  function toggle(node){
+    const i = node.dataset.i, s = loadChecks();
+    s[i] = !s[i];
+    localStorage.setItem("tesoro.checks", JSON.stringify(s));
+    node.classList.toggle("done", !!s[i]);
+    node.setAttribute("aria-checked", String(!!s[i]));
+    updateProgress();
+  }
+  el.querySelectorAll(".chk").forEach(n=>{
+    n.addEventListener("click", ()=>toggle(n));
+    n.addEventListener("keydown", e=>{ if(e.key===" "||e.key==="Enter"){ e.preventDefault(); toggle(n); } });
   });
   updateProgress();
 }
@@ -971,18 +997,19 @@ boot();
   fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Interagency_Perimeters_Current/FeatureServer/0/query?where="+encodeURIComponent("1=1")+"&outFields=poly_IncidentName,poly_GISAcres"+env+"&f=geojson&resultRecordCount=300")
     .then(function(r){return r.json();}).then(function(j){ if(j.features&&j.features.length) L.geoJSON(j,{style:{color:"#b91c1c",weight:1.5,fillColor:"#ef4444",fillOpacity:.2}}).addTo(map); }).catch(function(){});
 
-  fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where="+encodeURIComponent("IncidentTypeCategory='WF'")+"&outFields=IncidentName,IncidentSize,PercentContained"+env+"&f=geojson&resultRecordCount=600")
+  fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where="+encodeURIComponent(typeof FIRE_WHERE==="string"?FIRE_WHERE:"IncidentTypeCategory='WF'")+"&outFields=IncidentName,IncidentSize,PercentContained,ModifiedOnDateTime_dt"+env+"&f=geojson&resultRecordCount=600")
     .then(function(r){return r.json();}).then(function(j){
       if(j && j.features) fireOk = true;
       (j.features||[]).forEach(function(ft){
         if(!ft.geometry||!ft.geometry.coordinates) return;
         var c=ft.geometry.coordinates, p=ft.properties||{}, ac=p.IncidentSize;
+        if(typeof isStaleFire==="function" && isStaleFire(p.ModifiedOnDateTime_dt, ac)) return;
         var dist=hav(H.lat,H.lon,c[1],c[0]);
         if(!((ac||0)>=1 || dist<=25)) return;
         nFires++;
         var rad = ac>=1000?9:ac>=100?7:ac>=10?5:4;
         L.circleMarker([c[1],c[0]], { radius:rad, color:"#7f1d1d", weight:1, fillColor:"#ef4444", fillOpacity:.9 }).addTo(map)
-          .bindPopup("<b>"+title(p.IncidentName)+" Fire</b><br>"+(ac!=null?Math.round(ac).toLocaleString()+" acres":"size not yet reported")+(p.PercentContained!=null?" · "+p.PercentContained+"% contained":"")+"<br>"+dist.toFixed(dist<10?1:0)+" mi to your "+comp(brg(H.lat,H.lon,c[1],c[0])));
+          .bindPopup("<b>"+title(p.IncidentName)+" Fire</b><br>"+(ac!=null?Math.round(ac).toLocaleString()+" acres":"size not yet reported")+(p.PercentContained!=null?" · "+p.PercentContained+"% contained":"")+(p.ModifiedOnDateTime_dt&&typeof fmtAgo==="function"?" · updated "+fmtAgo(p.ModifiedOnDateTime_dt):"")+"<br>"+dist.toFixed(dist<10?1:0)+" mi to your "+comp(brg(H.lat,H.lon,c[1],c[0])));
       });
       finish();
     }).catch(function(){ finish(); });
