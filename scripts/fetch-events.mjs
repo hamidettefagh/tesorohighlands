@@ -227,13 +227,29 @@ async function fetchLibrary() {
 const [eb, lib] = await Promise.all([fetchEventbrite(), fetchLibrary()]);
 console.log(`eventbrite: ${eb.events.length} events (${eb.pagesOk} pages ok) | library: ${lib.events.length} events (${lib.daysOk}/${LIB_DAYS} days ok)`);
 
+let old = null;
+try { old = JSON.parse(readFileSync(OUT, "utf8")); } catch {}
+
 if (eb.pagesOk === 0 && lib.daysOk === 0) {
   console.error("All sources failed; keeping last good file.");
   process.exit(0);
 }
 
+// Per-source fallback: if ONE source failed entirely (e.g. Eventbrite 405-blocks
+// GitHub runner IPs while the library still answers), carry forward that
+// source's still-upcoming events from the previous file instead of wiping them.
+const cutoff = new Date(); cutoff.setHours(0, 0, 0, 0);
+function carryForward(source) {
+  if (!old || !Array.isArray(old.events)) return [];
+  const kept = old.events.filter((e) => e.source === source && new Date(e.start).getTime() >= cutoff.getTime());
+  console.error(`${source} fetch failed — carrying forward ${kept.length} previous events.`);
+  return kept;
+}
+const ebEvents = eb.pagesOk === 0 ? carryForward("Eventbrite") : eb.events;
+const libEvents = lib.daysOk === 0 ? carryForward("SC Library") : lib.events;
+
 const seen = new Set();
-const events = [...eb.events, ...lib.events]
+const events = [...ebEvents, ...libEvents]
   .filter((e) => {
     const k = e.title.toLowerCase().replace(/\W+/g, " ").trim() + "|" + e.start;
     if (seen.has(k)) return false;
@@ -242,8 +258,6 @@ const events = [...eb.events, ...lib.events]
   })
   .sort((a, b) => (a.start < b.start ? -1 : 1));
 
-let old = null;
-try { old = JSON.parse(readFileSync(OUT, "utf8")); } catch {}
 if (old && JSON.stringify(old.events) === JSON.stringify(events)) {
   console.log(`No content change (${events.length} events).`);
   process.exit(0);
