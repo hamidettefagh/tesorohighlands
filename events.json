@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T03:44:25.583Z",
+  "generatedAt": "2026-07-08T06:38:46.602Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite's public pages and the Santa Clarita Public Library calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -344,6 +344,215 @@
         "adults"
       ],
       "source": "SC Library"
+    },
+    {
+      "title": "Unsweet Perdition presented by  Santa Clarita Shakespeare 2026 Festival",
+      "url": "https://www.eventbrite.com/e/unsweet-perdition-presented-by-santa-clarita-shakespeare-2026-festival-tickets-1987656258375",
+      "start": "2026-07-10T20:00",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$22.23–$28.55",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Shrek Jr.",
+      "url": "https://www.eventbrite.com/e/shrek-jr-tickets-1992328045817",
+      "start": "2026-07-11T12:00",
+      "venue": "Canyon High School",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$20",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Voices United - Gospel Music WORKSHOP Series & Concert - 7/11, 8/8, 8/22",
+      "url": "https://www.eventbrite.com/e/voices-united-gospel-music-workshop-series-concert-711-88-822-tickets-1991311924571",
+      "start": "2026-07-11T13:00",
+      "venue": "St Stephen's Episcopal Church",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$55.20–$81.88",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Stand Up & Magic! @ Red Dot Pizza",
+      "url": "https://www.eventbrite.com/e/stand-up-magic-red-dot-pizza-tickets-1991750100166",
+      "start": "2026-07-11T20:00",
+      "venue": "Red Dot Pizza Company",
+      "city": "Castaic",
+      "free": false,
+      "price": "$17.85",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Playmaker Camp",
+      "url": "https://www.eventbrite.com/e/playmaker-camp-tickets-1992837715252",
+      "start": "2026-07-13T09:00",
+      "venue": "Santa Clarita Athletic Club",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$81.88–$161.90",
+      "audience": [
+        "kids"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Teagen's Sunday Funday An Adult's Field Day  VALENCIA",
+      "url": "https://www.eventbrite.com/e/teagens-sunday-funday-an-adults-field-day-valencia-tickets-1993179680078",
+      "start": "2026-07-17T17:30",
+      "venue": "Navigation Avenue",
+      "city": "Valencia",
+      "free": false,
+      "price": "$17.85–$1282.33",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "SoCal Etsy Guild Market Valencia",
+      "url": "https://www.eventbrite.com/e/socal-etsy-guild-market-valencia-tickets-1990926790625",
+      "start": "2026-07-18T12:00",
+      "venue": "Valencia Town Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$27.72–$338.82",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Recording Workshop: LA Percussion Rentals & Recording Co-Hosted by G.A.N.G",
+      "url": "https://www.eventbrite.com/e/recording-workshop-la-percussion-rentals-recording-co-hosted-by-gang-tickets-1992000406840",
+      "start": "2026-07-18T13:00",
+      "venue": "L.A. Percussion Rentals & Backline",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$40",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Mis Escritos  produced in coordination with CholoVision Productions",
+      "url": "https://www.eventbrite.com/e/mis-escritos-produced-in-coordination-with-cholovision-productions-tickets-1987656816043",
+      "start": "2026-07-24T19:30",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$9.58",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Movie Night at the Farm",
+      "url": "https://www.eventbrite.com/e/movie-night-at-the-farm-tickets-1990977865391",
+      "start": "2026-07-25T17:00",
+      "venue": "27803 Lorjen Rd",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Club Wealth - Two Events One Day! | Valencia, CA",
+      "url": "https://www.eventbrite.com/e/club-wealth-two-events-one-day-valencia-ca-tickets-1992055087391",
+      "start": "2026-08-04T08:45",
+      "venue": "SRAR, Southland Regional Association of Realtors",
+      "city": "Valencia",
+      "free": false,
+      "price": "$197",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "The Dresser presented by The Tavern Brawlers",
+      "url": "https://www.eventbrite.com/e/the-dresser-presented-by-the-tavern-brawlers-tickets-1985160127380",
+      "start": "2026-08-07T20:00",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$26.45",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Punchlines At The MAIN",
+      "url": "https://www.eventbrite.com/e/punchlines-at-the-main-tickets-1983127905951",
+      "start": "2026-08-08T20:00",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$19.07–$24.34",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Mosaic Art Classes Santa Clarita: Turkish Lamp Workshop",
+      "url": "https://www.eventbrite.com/e/mosaic-art-classes-santa-clarita-turkish-lamp-workshop-tickets-1991445744831",
+      "start": "2026-08-14T10:00",
+      "venue": "Hilton Garden Inn Valencia Six Flags",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$64.50–$179",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "You Got Older presented by Dig Deep Theatre",
+      "url": "https://www.eventbrite.com/e/you-got-older-presented-by-dig-deep-theatre-tickets-1985160037110",
+      "start": "2026-08-21T20:00",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$22.23–$25.40",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "The Society Comedy Troupe",
+      "url": "https://www.eventbrite.com/e/the-society-comedy-troupe-tickets-1987153045251",
+      "start": "2026-09-05T20:00",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$22.23",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite"
     }
   ]
 }
