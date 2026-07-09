@@ -3,6 +3,19 @@
    other pages, and nothing on the Fire page (which has its own hero).
    Status is cached in sessionStorage for 5 min for instant paint, then
    refreshed in the background. */
+
+/* Vercel Web Analytics — anonymous, cookieless visit counts only (no cookies,
+   no IP storage, no personal data, no cross-site tracking). The script route is
+   served by Vercel only when Web Analytics is enabled for the project; it 404s
+   harmlessly elsewhere (e.g. local preview). */
+(function () {
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  var s = document.createElement("script");
+  s.defer = true;
+  s.src = "/_vercel/insights/script.js";
+  (document.head || document.documentElement).appendChild(s);
+})();
+
 (function () {
   "use strict";
 
