@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T07:27:59.871Z",
+  "generatedAt": "2026-07-09T18:08:54.098Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -1159,7 +1159,7 @@
       "free": false,
       "price": "$26.45",
       "audience": [
-        "everyone"
+        "adults"
       ],
       "source": "Eventbrite"
     },
