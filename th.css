@@ -98,6 +98,7 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .goalrow{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line-2);font-size:13px;color:var(--ink-2);line-height:1.55;}
 .goalrow .gi{flex:none;font-size:18px;width:24px;text-align:center;}
 .goalrow b{color:var(--ink);font-weight:620;}
+.goal .ggoal{margin:13px 0 0;padding-top:12px;border-top:1px solid var(--line-2);font-size:13px;color:var(--ink-2);font-style:italic;line-height:1.5;}
 
 /* stubs */
 .stub{padding:44px 0 24px;text-align:center;}
