@@ -98,13 +98,21 @@
       fetch("/community-events.json").then(function (r) { return r.json(); }).catch(function () { return []; })
     ]).then(function (res) {
       var feed = res[0], comm = res[1];
-      var today = new Date(); today.setHours(0, 0, 0, 0);
+      function upMs(s) {
+        if (!s) return null;
+        var dp = s.split("T"), p = dp[0].split("-").map(Number);
+        var t = dp[1]
+          ? new Date(p[0], p[1] - 1, p[2], +dp[1].split(":")[0] || 0, +dp[1].split(":")[1] || 0).getTime()
+          : new Date(p[0], p[1] - 1, p[2], 23, 59).getTime();
+        return t >= Date.now() - 45 * 60000 ? t : null;
+      }
       var evs = ((feed && feed.events) || []).concat(Array.isArray(comm) ? comm.map(function (e) { return { title: e.title, start: e.date }; }) : [])
-        .filter(function (e) {
-          if (!e.start || !e.title) return false;
-          var p = e.start.split("T")[0].split("-");
-          return new Date(+p[0], +p[1] - 1, +p[2]).getTime() >= today.getTime();
+        .map(function (e) {
+          if (!e.title) return null;
+          var ds = (e.dates && e.dates.length ? e.dates : [e.start]).filter(upMs).sort();
+          return ds.length ? { title: e.title, start: ds[0] } : null;
         })
+        .filter(Boolean)
         .sort(function (a, b) { return a.start < b.start ? -1 : 1; })
         .slice(0, 2);
       if (!evs.length) return;

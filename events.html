@@ -80,6 +80,12 @@
         <button data-aud="adults" aria-pressed="false">🎭 Adults</button>
         <button data-aud="free" aria-pressed="false">Free</button>
       </div>
+      <div class="chips" id="dateChips" role="group" aria-label="Filter events by date">
+        <button data-when="any" aria-pressed="true">Any time</button>
+        <button data-when="today" aria-pressed="false">Today</button>
+        <button data-when="weekend" aria-pressed="false">This weekend</button>
+        <button data-when="week" aria-pressed="false">Next 7 days</button>
+      </div>
       <div class="evcard"><div id="feedList"><div class="empty">Loading local events…</div></div></div>
       <div class="evmeta" id="feedMeta">Attendable events across the Santa Clarita Valley — Eventbrite + the Santa Clarita Public Library — updated regularly.</div>
     </section>
@@ -183,6 +189,13 @@
       var w = parseStart(s);
       return '<div class="when">' + esc(w.d.toLocaleDateString([], { weekday: "short" })) + "<b>" + esc(w.d.toLocaleDateString([], { month: "short", day: "numeric" })) + "</b>" + (w.time ? esc(w.time) : "") + "</div>";
     }
+    function startMs(s) {
+      var dp = (s || "").split("T");
+      var p = dp[0].split("-").map(Number);
+      if (dp[1]) { var hm = dp[1].split(":").map(Number); return new Date(p[0], p[1] - 1, p[2], hm[0] || 0, hm[1] || 0).getTime(); }
+      var d = new Date(p[0], p[1] - 1, p[2]); d.setHours(23, 59, 59, 0); return d.getTime();
+    }
+    function stillUp(s) { return s && startMs(s) >= Date.now() - 45 * 60000; }
 
     // ---- Community events (git-maintained JSON) ----
     fetch("/community-events.json").then(function (r) { return r.json(); }).then(function (list) {
@@ -202,34 +215,49 @@
       document.getElementById("commList").innerHTML = '<div class="empty">Nothing on the community calendar right now.</div>';
     });
 
-    // ---- Auto-updated attendable events, filterable by audience ----
-    var allEvents = [], currentFilter = "all";
+    // ---- Auto-updated attendable events, filterable by audience + date ----
+    var allEvents = [], currentFilter = "all", currentWhen = "any";
     function priceBadge(e) {
       if (e.free) return '<span class="badge-price free">Free</span>';
       if (e.price) return '<span class="badge-price">' + esc(e.price) + "</span>";
       return '<span class="badge-price">Tickets ↗</span>';
     }
+    function inWhen(ms) {
+      if (currentWhen === "any") return true;
+      var now = new Date();
+      var endToday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59).getTime();
+      if (currentWhen === "today") return ms <= endToday;
+      if (currentWhen === "week") return ms <= endToday + 7 * 86400000;
+      if (currentWhen === "weekend") {
+        var dow = now.getDay(); // 0 Sun … 6 Sat
+        var satOffset = dow === 0 ? -1 : (6 - dow);
+        var sat = new Date(now.getFullYear(), now.getMonth(), now.getDate() + satOffset);
+        var sunEnd = new Date(sat.getFullYear(), sat.getMonth(), sat.getDate() + 1, 23, 59, 59).getTime();
+        return ms >= sat.getTime() && ms <= sunEnd;
+      }
+      return true;
+    }
     function renderFeed() {
       var el = document.getElementById("feedList");
       var list = allEvents.filter(function (e) {
+        if (!inWhen(startMs(e._start))) return false;
         if (currentFilter === "all") return true;
         if (currentFilter === "free") return !!e.free;
         return (e.audience || []).indexOf(currentFilter) >= 0;
       });
       if (!list.length) {
-        var what = currentFilter === "all" ? "events" : currentFilter === "free" ? "free events" : currentFilter + " events";
-        el.innerHTML = '<div class="empty">No ' + esc(what) + " in the next couple of months — tap All, or check the links below.</div>";
+        el.innerHTML = '<div class="empty">Nothing matches those filters — try All + Any time, or check the links below.</div>';
         return;
       }
       el.innerHTML = list.map(function (e) {
-        var w = parseStart(e.start);
+        var w = parseStart(e._start);
         var auds = (e.audience || []).filter(function (a) { return a !== "everyone"; });
-        return '<div class="evitem">' + whenHtml(e.start) +
+        return '<div class="evitem">' + whenHtml(e._start) +
           '<div class="what"><a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.title) + "</a>" +
           (w.isToday ? '<span class="chip today">Today</span>' : "") +
           '<div class="sub">' + esc([e.venue, e.city].filter(Boolean).join(" · ")) + "</div>" +
           auds.map(function (a) { return '<span class="chip">' + esc(AUD_LABEL[a] || a) + "</span>"; }).join("") +
-          (e.repeats ? '<span class="chip">↻ +' + e.repeats + ' more dates</span>' : "") +
+          (e._repeats ? '<span class="chip">↻ +' + e._repeats + ' more dates</span>' : "") +
           '</div><div class="price">' + priceBadge(e) + "</div></div>";
       }).join("");
     }
@@ -239,9 +267,22 @@
       this.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
       renderFeed();
     });
+    document.getElementById("dateChips").addEventListener("click", function (ev) {
+      var b = ev.target.closest("button"); if (!b) return;
+      currentWhen = b.dataset.when;
+      this.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      renderFeed();
+    });
 
     fetch("/events.json").then(function (r) { return r.json(); }).then(function (feed) {
-      allEvents = (feed && feed.events) || [];
+      // roll each event to its next still-upcoming occurrence; drop fully-past ones
+      allEvents = (((feed && feed.events) || []).map(function (e) {
+        var ds = (e.dates && e.dates.length ? e.dates : [e.start]).filter(stillUp).sort();
+        if (!ds.length) return null;
+        e._start = ds[0];
+        e._repeats = ds.length - 1;
+        return e;
+      })).filter(Boolean).sort(function (a, b) { return a._start < b._start ? -1 : 1; });
       renderFeed();
       var meta = document.getElementById("feedMeta");
       if (feed.generatedAt) {

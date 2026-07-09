@@ -217,8 +217,8 @@ async function fetchLibrary() {
   const groups = new Map();
   for (const e of all) {
     const k = e.title.toLowerCase().replace(/\W+/g, " ").trim() + "|" + (e.venue || "");
-    if (!groups.has(k)) groups.set(k, e);
-    else { const g = groups.get(k); g.repeats = (g.repeats || 0) + 1; }
+    if (!groups.has(k)) { e.dates = [e.start]; groups.set(k, e); }
+    else { const g = groups.get(k); g.dates.push(e.start); g.repeats = g.dates.length - 1; }
   }
   return { events: [...groups.values()].slice(0, LIB_MAX), daysOk };
 }
