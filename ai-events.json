@@ -1,6 +1,200 @@
 {
-  "generatedAt": null,
-  "model": null,
-  "note": "AI-assisted event discovery — populated by scripts/fetch-ai-events.mjs when the ANTHROPIC_API_KEY repo secret is set. A supplement to the verified feeds in events.json; not shown on the site unless wired in. Every item links to its source page.",
-  "events": []
+  "generatedAt": "2026-07-09T10:20:43.232Z",
+  "model": "claude-haiku-4-5",
+  "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
+  "events": [
+    {
+      "title": "Celebrate Series - Argentina",
+      "url": "https://santaclarita.gov/arts-and-culture/events/celebrate-series/",
+      "start": "2026-07-10T18:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Canyon Country",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://newhallfarmersmarket.com",
+      "start": "2026-07-11T08:30",
+      "venue": "Old Town Newhall Library",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Concerts in the Park - Dreaming of You (Selena Tribute)",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-07-11T19:00",
+      "venue": "Central Park, Fields 7 & 8",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-07-12T08:00",
+      "venue": "College of the Canyons, Parking Lot 5",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
+      "start": "2026-07-12T08:30",
+      "venue": "The Porch, Magic Mountain Parkway and Navigation Avenue",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "SCV Farmers Markets"
+    },
+    {
+      "title": "SENSES Block Party - Christmas in July",
+      "url": "https://oldtownnewhall.com/senses-block-party/",
+      "start": "2026-07-16T19:00",
+      "venue": "Main Street between Market Street and Sixth Street, Old Town Newhall",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita / Old Town Newhall"
+    },
+    {
+      "title": "Concerts in the Park - The FABBA Show (ABBA Tribute)",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-07-18T19:00",
+      "venue": "Central Park, Fields 7 & 8",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Concerts in the Park - Rag Dolls (Aerosmith Tribute)",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-07-25T19:00",
+      "venue": "Central Park, Fields 7 & 8",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Concerts in the Park - Gold Rush Country",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-01T19:00",
+      "venue": "Central Park, Fields 7 & 8",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Concerts in the Park - Blue Breeze Band",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-08T19:00",
+      "venue": "Central Park, Fields 7 & 8",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Celebrate Series - Jamaica",
+      "url": "https://santaclarita.gov/arts-and-culture/events/celebrate-series/",
+      "start": "2026-08-14T18:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Canyon Country",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Concerts in the Park - Paramore! At the Disco",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-15T19:00",
+      "venue": "Central Park, Fields 7 & 8",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "SENSES Block Party - Time Machine",
+      "url": "https://oldtownnewhall.com/senses-block-party/",
+      "start": "2026-08-20T19:00",
+      "venue": "Main Street between Market Street and Sixth Street, Old Town Newhall",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita / Old Town Newhall"
+    }
+  ]
 }
