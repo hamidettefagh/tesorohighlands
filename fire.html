@@ -600,7 +600,7 @@ function overall(v){
   if (v.evac.lvl >= 2) { lvl = 2; title = "Evacuation order — leave now"; text = "An evacuation order covers this area. Go now via your planned route and follow official direction."; }
   else if (air.lvl >= 3) { lvl = 2; title = "Unhealthy air right now"; text = "Keep everyone inside with windows closed and the AC on recirculate. The smoke playbook below has the rest."; }
   else if (frisk >= 2) { lvl = 2; title = "A sizable fire is burning close by"; text = "Check the map below, keep phones charged, and know where the go-bag is."; }
-  else if (v.evac.lvl === 1) { lvl = 1; title = "Evacuation warning nearby"; text = "Be packed and ready to leave, and watch official channels closely."; }
+  else if (v.evac.lvl === 1) { lvl = 1; title = "Evacuation warning for our zone"; text = "Be packed and ready to leave, and watch official channels closely."; }
   else if (frisk === 1) { lvl = 1; title = "Fire activity in the area"; text = "Nothing at our doorstep, but there's an active fire worth watching — details below."; }
   else if (redFlag || fw.lvl >= 2) { lvl = 1; title = redFlag || "High fire-risk weather"; text = "Dry, windy conditions where a spark spreads fast — skip open flames and yard equipment today."; }
   else if (air.lvl === 2) { lvl = 1; title = "Air is unhealthy for sensitive groups"; text = "Kids, seniors, and anyone with asthma should take it easy outside today."; }
@@ -651,13 +651,47 @@ async function fetchEvac(lat, lon){
   const url = "https://services.arcgis.com/BLN4oKB0N1YSgvY8/arcgis/rest/services/CA_EVACUATIONS_CalOESHosted_view/FeatureServer/0/query"
     + "?where=1%3D1&geometry=" + encodeURIComponent(env)
     + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects"
-    + "&outFields=STATUS,ZONE_NAME&returnGeometry=false&f=json";
+    + "&outFields=STATUS,NOTES,COUNTY,ZONE_ID&returnGeometry=true&outSR=4326&f=json";
   const j = await fetch(url).then(r=>r.json());
   if(!j || j.error || !j.features) throw new Error("evac feed error");
-  const order = j.features.find(f=>/order/i.test((f.attributes&&f.attributes.STATUS)||""));
-  const warn  = j.features.find(f=>/warning/i.test((f.attributes&&f.attributes.STATUS)||""));
-  if(order) return { lvl:2, label:"Evacuation ORDER for zone "+((order.attributes.ZONE_NAME)||"near you")+" — leave now via your planned route.", zone:"Live · Cal OES statewide feed" };
-  if(warn)  return { lvl:1, label:"Evacuation WARNING for zone "+((warn.attributes.ZONE_NAME)||"near you")+" — be packed and ready to leave.", zone:"Live · Cal OES statewide feed" };
+  // Home must be INSIDE a zone polygon for it to count as "our zone"; anything
+  // else in the search box is reported as nearby context with distance/direction.
+  const inPoly = (px, py, rings) => {
+    let inside = false;
+    for (const g of rings) for (let i = 0, jx = g.length - 1; i < g.length; jx = i++) {
+      const xi = g[i][0], yi = g[i][1], xj = g[jx][0], yj = g[jx][1];
+      if (((yi > py) !== (yj > py)) && (px < (xj - xi) * (py - yi) / (yj - yi) + xi)) inside = !inside;
+    }
+    return inside;
+  };
+  const zones = [];
+  for (const f of j.features) {
+    const a = f.attributes || {}, rings = (f.geometry && f.geometry.rings) || [];
+    const st = String(a.STATUS || "");
+    const isOrder = /order/i.test(st), isWarn = /warning/i.test(st);
+    if ((!isOrder && !isWarn) || !rings.length) continue;
+    let cx = 0, cy = 0, n = 0;
+    for (const ring of rings) for (const p of ring) { cx += p[0]; cy += p[1]; n++; }
+    cx /= n; cy /= n;
+    zones.push({
+      order: isOrder,
+      covers: inPoly(lon, lat, rings),
+      dist: haversine(lat, lon, cy, cx),
+      dir: compass(bearingDeg(lat, lon, cy, cx)),
+      notes: String(a.NOTES || "").trim(),
+      county: String(a.COUNTY || "").trim()
+    });
+  }
+  zones.sort((a, b) => a.dist - b.dist);
+  const covOrder = zones.find(z => z.order && z.covers);
+  const covWarn  = zones.find(z => !z.order && z.covers);
+  const nearOrder = zones.find(z => z.order);
+  const nearWarn  = zones.find(z => !z.order);
+  const why = z => (z.notes ? " — " + z.notes : "") + (z.county ? ", " + z.county + " County" : "");
+  if (covOrder) return { lvl:2, label:"Evacuation ORDER for our zone" + why(covOrder) + ". Leave now via your planned route.", zone:"Live · Cal OES statewide feed" };
+  if (covWarn)  return { lvl:1, label:"Evacuation WARNING includes our zone" + why(covWarn) + ". Be packed and ready to leave.", zone:"Live · Cal OES statewide feed" };
+  if (nearOrder) return { lvl:0, label:"Our zone has no order or warning. Nearby: an evacuation ORDER is active ~" + Math.round(nearOrder.dist) + " mi to our " + nearOrder.dir + why(nearOrder) + ". Watch it on the map above and " + GENASYS_LINK + ".", zone:"Live · Cal OES statewide feed" };
+  if (nearWarn)  return { lvl:0, label:"Our zone has no order or warning. Nearby: an evacuation warning ~" + Math.round(nearWarn.dist) + " mi to our " + nearWarn.dir + why(nearWarn) + ". Watch it on the map above.", zone:"Live · Cal OES statewide feed" };
   return { lvl:0, label:"No active evacuation orders or warnings for this area right now, per the Cal OES statewide feed. Look up your zone name on "+GENASYS_LINK+" so you recognize it in an emergency.", zone:"Live · Cal OES statewide feed" };
 }
 async function fetchAll(){
@@ -1010,7 +1044,7 @@ boot();
       m = "Couldn't load live fire or evacuation data right now — refresh to retry, and use the official links below.";
     } else {
       m = fireOk ? (nFires+" active wildfire"+(nFires===1?"":"s")+" in view") : "fire feed unavailable";
-      if(evacOk) m += nEvac ? ' · <b style="color:var(--dan-fg)">'+nEvac+' active evacuation zone(s) near you</b>' : ' · <b style="color:var(--ok-fg)">no active evacuation zones near you</b>';
+      if(evacOk) m += nEvac ? ' · <b style="color:var(--dan-fg)">'+nEvac+' evacuation zone(s) on the map</b>' : ' · <b style="color:var(--ok-fg)">no active evacuation zones in view</b>';
       else m += ' · evacuation feed unavailable — <a href="https://protect.genasys.com/search?query=Valencia%2C%20CA" target="_blank" rel="noopener">check Genasys</a>';
       m += '. Live from NIFC/WFIGS + Cal OES · updated '+when+' · tap the map to zoom.';
     }

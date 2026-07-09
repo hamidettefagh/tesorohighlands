@@ -93,11 +93,53 @@
         }).filter(function (x) { return x.acres >= 50; }).sort(function (a, b) { return a.d - b.d; });
         if (fires[0] && fires[0].d <= 15) { lvl = Math.max(lvl, 1); text = fires[0].name + " Fire ~" + fires[0].d.toFixed(0) + " mi away — stay aware."; }
       }).catch(function () {}),
-      fetch("https://services.arcgis.com/BLN4oKB0N1YSgvY8/arcgis/rest/services/CA_EVACUATIONS_CalOESHosted_view/FeatureServer/0/query?where=1%3D1&geometry=" + (L.lon - 0.35) + "," + (L.lat - 0.35) + "," + (L.lon + 0.35) + "," + (L.lat + 0.35) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=STATUS&returnGeometry=false&f=json").then(function (r) { return r.json(); }).then(function (ev) {
+      fetch("https://services.arcgis.com/BLN4oKB0N1YSgvY8/arcgis/rest/services/CA_EVACUATIONS_CalOESHosted_view/FeatureServer/0/query?where=1%3D1&geometry=" + (L.lon - 0.35) + "," + (L.lat - 0.35) + "," + (L.lon + 0.35) + "," + (L.lat + 0.35) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=STATUS,NOTES&returnGeometry=true&outSR=4326&f=json").then(function (r) { return r.json(); }).then(function (ev) {
         if (!ev || ev.error || !ev.features) return; okEvac = true;
-        var zs = ev.features.map(function (x) { return (x.attributes && x.attributes.STATUS) || ""; });
-        if (zs.some(function (s) { return /order/i.test(s); })) { lvl = 2; text = "EVACUATION ORDER active for your area — act now."; }
-        else if (zs.some(function (s) { return /warning/i.test(s); })) { lvl = Math.max(lvl, 1); text = "Evacuation WARNING for your area — be ready."; }
+        // "Our zone" means home is INSIDE the polygon — a zone merely inside the
+        // search box gets distance-and-direction wording instead (a warning 13 mi
+        // away in another county is context, not "your area").
+        function inPoly(px, py, rings) {
+          var inside = false;
+          for (var r = 0; r < rings.length; r++) {
+            var g = rings[r];
+            for (var i = 0, j = g.length - 1; i < g.length; j = i++) {
+              var xi = g[i][0], yi = g[i][1], xj = g[j][0], yj = g[j][1];
+              if (((yi > py) !== (yj > py)) && (px < (xj - xi) * (py - yi) / (yj - yi) + xi)) inside = !inside;
+            }
+          }
+          return inside;
+        }
+        var COMPASS = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
+        var zones = [];
+        for (var i = 0; i < ev.features.length; i++) {
+          var f = ev.features[i], a = f.attributes || {}, rings = (f.geometry && f.geometry.rings) || [];
+          var st = String(a.STATUS || "");
+          var isOrder = /order/i.test(st), isWarn = /warning/i.test(st);
+          if ((!isOrder && !isWarn) || !rings.length) continue;
+          var cx = 0, cy = 0, n = 0;
+          for (var r2 = 0; r2 < rings.length; r2++) for (var p = 0; p < rings[r2].length; p++) { cx += rings[r2][p][0]; cy += rings[r2][p][1]; n++; }
+          cx /= n; cy /= n;
+          var yb = Math.sin((cx - L.lon) * Math.PI / 180) * Math.cos(cy * Math.PI / 180);
+          var xb = Math.cos(L.lat * Math.PI / 180) * Math.sin(cy * Math.PI / 180) - Math.sin(L.lat * Math.PI / 180) * Math.cos(cy * Math.PI / 180) * Math.cos((cx - L.lon) * Math.PI / 180);
+          zones.push({
+            order: isOrder,
+            covers: inPoly(L.lon, L.lat, rings),
+            dist: haversine(L.lat, L.lon, cy, cx),
+            dir: COMPASS[Math.round(((Math.atan2(yb, xb) * 180 / Math.PI + 360) % 360) / 22.5) % 16],
+            notes: String(a.NOTES || "").trim()
+          });
+        }
+        zones.sort(function (a, b) { return a.dist - b.dist; });
+        var covOrder = null, covWarn = null, nearOrder = null, nearWarn = null;
+        for (var k = 0; k < zones.length; k++) {
+          var z = zones[k];
+          if (z.order) { if (z.covers && !covOrder) covOrder = z; if (!nearOrder) nearOrder = z; }
+          else { if (z.covers && !covWarn) covWarn = z; if (!nearWarn) nearWarn = z; }
+        }
+        if (covOrder) { lvl = 2; text = "EVACUATION ORDER for our zone — leave now."; }
+        else if (covWarn) { lvl = Math.max(lvl, 1); text = "Evacuation WARNING includes our zone" + (covWarn.notes ? " (" + covWarn.notes + ")" : "") + " — be packed and ready."; }
+        else if (nearOrder) { lvl = Math.max(lvl, 1); text = "Evacuation ORDER ~" + Math.round(nearOrder.dist) + " mi to our " + nearOrder.dir + (nearOrder.notes ? " (" + nearOrder.notes + ")" : "") + " — not our zone; stay aware."; }
+        else if (nearWarn) { lvl = Math.max(lvl, 1); text = "Evacuation warning ~" + Math.round(nearWarn.dist) + " mi " + nearWarn.dir + " of us" + (nearWarn.notes ? " (" + nearWarn.notes + ")" : "") + " — not our zone."; }
       }).catch(function () {})
     ];
     await Promise.allSettled(jobs);
