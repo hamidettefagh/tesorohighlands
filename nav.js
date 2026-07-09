@@ -4,16 +4,23 @@
    Status is cached in sessionStorage for 5 min for instant paint, then
    refreshed in the background. */
 
-/* Vercel Web Analytics — anonymous, cookieless visit counts only (no cookies,
-   no IP storage, no personal data, no cross-site tracking). The script route is
-   served by Vercel only when Web Analytics is enabled for the project; it 404s
-   harmlessly elsewhere (e.g. local preview). */
+/* Vercel Web Analytics + Speed Insights — both anonymous and cookieless (no
+   cookies, no IP storage, no personal data, no cross-site tracking): Analytics
+   counts visits/pages, Speed Insights measures real page-load performance. Each
+   script route is served by Vercel only when that feature is enabled for the
+   project; it 404s harmlessly elsewhere (e.g. local preview). */
 (function () {
+  var head = document.head || document.documentElement;
+  // Web Analytics
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  var s = document.createElement("script");
-  s.defer = true;
-  s.src = "/_vercel/insights/script.js";
-  (document.head || document.documentElement).appendChild(s);
+  var a = document.createElement("script");
+  a.defer = true; a.src = "/_vercel/insights/script.js";
+  head.appendChild(a);
+  // Speed Insights
+  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  var p = document.createElement("script");
+  p.defer = true; p.src = "/_vercel/speed-insights/script.js";
+  head.appendChild(p);
 })();
 
 (function () {
