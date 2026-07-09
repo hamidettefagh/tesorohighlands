@@ -90,6 +90,12 @@
       <div class="evmeta" id="feedMeta">Attendable events across the Santa Clarita Valley — the City calendar, Eventbrite, and the Santa Clarita Public Library — updated regularly.</div>
     </section>
 
+    <section class="evsec" id="aiSec" hidden>
+      <div class="sechead"><h2>Found around the web</h2><span class="pill" style="background:var(--cau-bg);color:var(--cau-fg)">AI-assisted</span></div>
+      <div class="evcard"><div id="aiList"></div></div>
+      <div class="evmeta" id="aiMeta">Found by an AI web search of local venue &amp; community pages. Details can be wrong — always confirm on the linked page.</div>
+    </section>
+
     <section class="evsec">
       <div class="sechead"><h2>Family things to do nearby</h2><div class="line"></div></div>
       <div class="ttdgrid">
@@ -279,6 +285,52 @@
       renderFeed();
     });
 
+    // ---- AI-discovered extras: shown only when they add something the main
+    // feed doesn't already have (title+date dedupe), clearly labeled. ----
+    function normTitle(s) {
+      return String(s || "").toLowerCase()
+        .replace(/\b(the|a|an|at|of|in|and|series|presents?|show|tribute)\b/g, " ")
+        .replace(/\W+/g, " ").trim();
+    }
+    function dupOfMain(ai) {
+      var an = normTitle(ai.title), ad = (ai.start || "").split("T")[0];
+      if (!an) return true;
+      for (var i = 0; i < allEvents.length; i++) {
+        var e = allEvents[i];
+        var dates = (e.dates && e.dates.length ? e.dates : [e.start]).map(function (s) { return (s || "").split("T")[0]; });
+        if (dates.indexOf(ad) < 0) continue;
+        var mn = normTitle(e.title);
+        if (mn && (mn.indexOf(an) >= 0 || an.indexOf(mn) >= 0)) return true;
+      }
+      return false;
+    }
+    function loadAiEvents() {
+      fetch("/ai-events.json").then(function (r) { return r.json(); }).then(function (ai) {
+        var list = ((ai && ai.events) || [])
+          .filter(function (e) { return e && e.title && e.url && stillUp(e.start); })
+          .filter(function (e) { return !dupOfMain(e); })
+          .sort(function (a, b) { return a.start < b.start ? -1 : 1; })
+          .slice(0, 10);
+        if (!list.length) return;
+        document.getElementById("aiList").innerHTML = list.map(function (e) {
+          var w = parseStart(e.start);
+          var auds = (e.audience || []).filter(function (a) { return a !== "everyone"; });
+          return '<div class="evitem">' + whenHtml(e.start) +
+            '<div class="what"><a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.title) + "</a>" +
+            (w.isToday ? '<span class="chip today">Today</span>' : "") +
+            '<div class="sub">' + esc([e.venue, e.city].filter(Boolean).join(" · ")) + (e.via ? " · via " + esc(e.via) : "") + "</div>" +
+            auds.map(function (a) { return '<span class="chip">' + esc(AUD_LABEL[a] || a) + "</span>"; }).join("") +
+            '</div><div class="price">' + priceBadge(e) + "</div></div>";
+        }).join("");
+        document.getElementById("aiSec").hidden = false;
+        if (ai.generatedAt) {
+          document.getElementById("aiMeta").innerHTML =
+            "Found by an AI web search of local venue &amp; community pages · last search " + esc(relTime(ai.generatedAt)) +
+            " · <b>details can be wrong — always confirm on the linked page.</b>";
+        }
+      }).catch(function () {});
+    }
+
     fetch("/events.json").then(function (r) { return r.json(); }).then(function (feed) {
       // roll each event to its next still-upcoming occurrence; drop fully-past ones
       allEvents = (((feed && feed.events) || []).map(function (e) {
@@ -296,6 +348,7 @@
           (stale ? ' · <b style="color:var(--cau-fg)">feed may be stale</b>' : "") +
           " · details can change — confirm on the listing.";
       }
+      loadAiEvents();
     }).catch(function () {
       document.getElementById("feedList").innerHTML = '<div class="empty">Couldn&#39;t load the events feed right now — try the links below.</div>';
     });

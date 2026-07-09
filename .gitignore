@@ -6,3 +6,4 @@ Thumbs.db
 # tooling
 node_modules/
 .vercel/
+scripts/package-lock.json

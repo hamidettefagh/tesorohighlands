@@ -366,6 +366,16 @@
     </div>
   </div>
 
+  <!-- ROADS -->
+  <div class="card" style="margin-top:12px" id="roadsCard">
+    <h3>Our freeways — I-5 &amp; SR-14 <span class="cardtag pill live">Auto</span></h3>
+    <div class="q">Planned Caltrans roadwork within ~12 miles — mostly overnight ramp and lane closures. For live traffic and emergency closures, use QuickMap.</div>
+    <div id="roadsList"><div class="note">Loading planned closures…</div></div>
+    <div class="links" style="margin-top:10px">
+      <a href="https://quickmap.dot.ca.gov/" target="_blank" rel="noopener">Live conditions &amp; incidents <span>Caltrans QuickMap ↗</span></a>
+    </div>
+  </div>
+
   <!-- NEARBY FIRES -->
   <div class="sechead"><h2>Nearby fire activity</h2><div class="line"></div></div>
   <div class="card" id="fireCard" style="margin-top:8px">
@@ -381,6 +391,21 @@
     <div class="commfact"><span class="ci">📖</span><div><b>Why it matters.</b> Last year the Hughes Fire started 6–7 mi away and its evacuation zones reached within 3–4 mi as it blew past 10,000 acres in a single day. Two fires in two years have come within about 4 miles.</div></div>
     <div class="commfact"><span class="ci">📱</span><div><b>Neighbors recommend Watch Duty</b> for real-time fire alerts — pair it with this page.</div></div>
     <div class="src">Community notes shared by neighbors — local knowledge, not an official source.</div>
+  </div>
+
+  <!-- FIRE HISTORY (baked from the NIFC interagency perimeter archive, Jul 2026) -->
+  <div class="card" style="margin-top:12px">
+    <h3>Fire history around us <span class="cardtag" style="font-size:11px;color:var(--muted);font-weight:600">archive snapshot · Jul 2026</span></h3>
+    <div class="q">Every wildfire footprint in the national interagency archive that reached within ~10 miles of Tesoro Highlands.</div>
+    <div class="stats">
+      <div class="stat"><div class="lab">On record (all time)</div><div class="val">439</div></div>
+      <div class="stat"><div class="lab">Since 2000</div><div class="val">124</div></div>
+      <div class="stat"><div class="lab">Since 2015</div><div class="val">43</div></div>
+      <div class="stat"><div class="lab">1,000+ acres since 2000</div><div class="val">22</div></div>
+    </div>
+    <div class="detail">The big ones since 2000: Simi '03 (107,570 ac), Ranch '07 (58,410), Sand '16 (41,383), Buckweed '07 (38,347), Powerhouse '13 (30,268), Copper '02 (19,102), Creek '17, Sesnon '08, Sayre '08, Saddle Ridge '19, Rye '17, Tick '19. And the archive lags a few years — the 2022 Route and 2025 Hughes fires aren't even in it yet.</div>
+    <div class="detail" style="margin-top:8px"><b>Why this matters for the brush by the water towers:</b> fire reaching this valley is a return interval, not a possibility. California's defensible-space standard (Public Resources Code 4291) calls for up to 100 feet of managed space around homes — clearing the common-area brush is exactly what that standard exists for.</div>
+    <div class="src">Source: NIFC Interagency Fire Perimeter History — footprints intersecting a 10-mile box, deduplicated by name and year. Numbers baked July 2026; rerun the query to refresh.</div>
   </div>
 
   <!-- EVAC READINESS -->
@@ -1021,3 +1046,42 @@ boot();
     }).catch(function(){ finish(); });
 })();
 </script>
+<script>
+/* Planned freeway closures (roads.json, baked by scripts/fetch-roads.mjs). */
+(function () {
+  "use strict";
+  var el = document.getElementById("roadsList");
+  if (!el) return;
+  function d(ep) { return new Date(ep * 1000); }
+  function fD(ep) { return d(ep).toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" }); }
+  function fT(ep) { return d(ep).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }); }
+  fetch("/roads.json").then(function (r) { return r.json(); }).then(function (j) {
+    var now = Date.now() / 1000;
+    var cs = ((j && j.closures) || []).filter(function (c) { return c.endEpoch > now; });
+    if (!cs.length) {
+      el.innerHTML = '<div class="note"><b>No planned I-5 / SR-14 closures</b> within ~12 miles right now.</div>';
+      return;
+    }
+    var extra = cs.length > 5 ? cs.length - 5 : 0;
+    el.innerHTML = cs.slice(0, 5).map(function (c) {
+      var what = c.facility === "Mainline"
+        ? "lane " + (c.lanes || "?") + " of " + (c.total || "?") + " closed"
+        : (c.facility || "closure").toLowerCase() + (String(c.type).toLowerCase() === "full" ? " fully closed" : " partly closed");
+      var when = fD(c.startEpoch) + " " + fT(c.startEpoch) + " – " +
+        (d(c.endEpoch).toDateString() === d(c.startEpoch).toDateString() ? fT(c.endEpoch) : fD(c.endEpoch) + " " + fT(c.endEpoch));
+      var live = (c.startEpoch <= now && now <= c.endEpoch) ? ' <span class="pill live">Now</span>' : "";
+      return '<div class="commfact"><span class="ci">🚧</span><div><b>' + c.route + " " + (c.dir || "") + "</b> at " + c.at +
+        (c.place ? " (" + c.place + ")" : "") + live +
+        '<br><span style="color:var(--muted);font-size:12px">' + when + " · " + what + " · " + (c.work || "roadwork").toLowerCase() +
+        (c.moreWindows ? " · recurring" : "") + "</span></div></div>";
+    }).join("") + (extra ? '<div class="src">…and ' + extra + " more planned closures in the next 10 days.</div>" : "");
+    if (j.generatedAt && Date.now() - new Date(j.generatedAt).getTime() > 36 * 3600 * 1000) {
+      el.innerHTML += '<div class="src">Closure list last refreshed ' + Math.round((Date.now() - new Date(j.generatedAt).getTime()) / 3600000) + "h ago.</div>";
+    }
+  }).catch(function () {
+    el.innerHTML = '<div class="note">Planned-closure feed unavailable right now — use QuickMap below for live conditions.</div>';
+  });
+})();
+</script>
+</body>
+</html>

@@ -54,6 +54,9 @@ node server.js       # serves on http://localhost:3100 with /fire-style clean UR
 | Nearby fires — list, map points & perimeters | NIFC/WFIGS ArcGIS (`WFIGS_Incident_Locations_Current`, `WFIGS_Interagency_Perimeters_Current`) | **Live**, no key |
 | Evacuation zone status (Order / Warning) | Cal OES "California Active Evacuation Zones" ArcGIS | **Live**, no key |
 | Local attendable events (audience-tagged, priced) | City of Santa Clarita calendar (Localist JSON) + Eventbrite (4 SCV searches) + SC Public Library calendar | **Auto** via script |
+| Extra events found on the wider web | Claude API web search → `ai-events.json` (own labeled section, deduped vs main feed) | **Auto**, opt-in (needs `ANTHROPIC_API_KEY` secret) |
+| Planned I-5 / SR-14 closures near the community | Caltrans District 7 Lane Closure System (`cwwp2.dot.ca.gov` JSON) → `roads.json` | **Auto** via script |
+| Fire history around the community (439 fires on record) | NIFC Interagency Fire Perimeter History — numbers baked into the page | Baked snapshot (Jul 2026) |
 | Community events | `community-events.json` in git | Curated |
 
 The dashboard's status logic is deliberately conservative (small routine incidents don't turn the page red), and every live panel degrades honestly — a failed feed says "unavailable," never "all clear."
@@ -68,7 +71,7 @@ Fragility notes: this parses Eventbrite's page structure, which can change; the 
 
 ### Optional: AI-assisted discovery (supplement, not backbone)
 
-`scripts/fetch-ai-events.mjs` uses the Claude API's built-in web search (`web_search_20260209` on `claude-opus-4-8`) to find local events the structured feeds can't reach — venue pages, farms, Macaroni KID, churches, community orgs with no feed. Claude searches, then returns results through a strict-schema `submit_events` tool; the script validates hard (real URL, in-window date, SCV city) and writes a **separate** `ai-events.json`. It is a supplement — every item links to its source page, and it is **not** merged into the live feed unless a human wires it in.
+`scripts/fetch-ai-events.mjs` uses the Claude API's built-in web search to find local events the structured feeds can't reach — venue pages, farms, Macaroni KID, churches, community orgs with no feed. Claude searches, then returns results through a strict-schema `submit_events` tool; the script validates hard (real URL, in-window date, SCV city) and writes a **separate** `ai-events.json`. The events page renders it as its own clearly-labeled **"Found around the web · AI-assisted"** section, client-side deduped against the main feed (title+date) so only net-new finds show, each linking to its source page with a "details can be wrong — confirm at the source" note.
 
 - Runs from `.github/workflows/refresh-ai-events.yml` (manual `workflow_dispatch` to start; uncomment the schedule to automate). The web search runs on Anthropic's servers, so this works fine from CI runner IPs — it sidesteps the Eventbrite runner-IP block.
 - Requires the `ANTHROPIC_API_KEY` repo secret (Settings → Secrets and variables → Actions). Without it the script exits cleanly and commits nothing.
