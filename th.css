@@ -73,6 +73,14 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .hub-hero.ok .eyebrow,.hub-hero.ok .htext{color:var(--ok-fg);} .hub-hero.caution .eyebrow,.hub-hero.caution .htext{color:var(--cau-fg);} .hub-hero.danger .eyebrow,.hub-hero.danger .htext{color:var(--dan-fg);}
 .hub-hero .htext{font-size:17px;font-weight:620;letter-spacing:-0.01em;margin:4px 0 10px;line-height:1.35;}
 .hub-hero .hlink{font-size:13px;font-weight:640;text-decoration:none;color:inherit;opacity:.9;}
+.today{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;}
+@media(max-width:560px){.today{grid-template-columns:1fr;}}
+.tcell{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:11px 13px;color:var(--ink);box-shadow:var(--shadow);transition:border-color .15s;}
+.tcell:hover{border-color:var(--muted);}
+.tcell .tico{font-size:14px;margin-right:6px;vertical-align:-1px;}
+.tcell .tlab{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;}
+.tcell .tval{display:block;margin-top:5px;font-size:12.5px;color:var(--ink-2);line-height:1.45;}
+.tcell .tval b{color:var(--ink);}
 .hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
 @media(max-width:560px){.hub-grid{grid-template-columns:1fr;}}
 .hub-card{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);color:var(--ink);transition:border-color .15s,transform .05s;}

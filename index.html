@@ -28,6 +28,12 @@
       <div class="htext">Checking current conditions…</div>
     </div>
 
+    <div class="today" id="thToday">
+      <a class="tcell" href="/fire"><span class="tico">🫁</span><span class="tlab">Air today</span><span class="tval" id="tdAir">—</span></a>
+      <a class="tcell" href="/fire"><span class="tico">🌬️</span><span class="tlab">Fire weather</span><span class="tval" id="tdFw">—</span></a>
+      <a class="tcell" href="/events"><span class="tico">📅</span><span class="tlab">Coming up</span><span class="tval" id="tdEv">—</span></a>
+    </div>
+
     <div class="hub-grid">
       <a class="hub-card" href="/fire">
         <div class="ico">🔥</div>
@@ -60,5 +66,56 @@
     </footer>
   </div>
   <script src="/nav.js" defer></script>
+  <script>
+  // "Today" digest: air, fire weather, next events — small live glances.
+  (function () {
+    "use strict";
+    var $ = function (s) { return document.querySelector(s); };
+    function loc() {
+      try { var s = JSON.parse(localStorage.getItem("tesoro.loc")); if (s && s.lat && s.lon) return s; } catch (e) {}
+      return { lat: 34.478, lon: -118.531 };
+    }
+    var L = loc();
+
+    fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + L.lat + "&longitude=" + L.lon + "&current=us_aqi&timezone=America%2FLos_Angeles")
+      .then(function (r) { return r.json(); }).then(function (a) {
+        var q = a.current && a.current.us_aqi;
+        if (q == null) return;
+        var cat = q <= 50 ? "Good" : q <= 100 ? "Moderate" : q <= 150 ? "Unhealthy for sensitive groups" : "Unhealthy";
+        $("#tdAir").innerHTML = "<b>AQI " + Math.round(q) + "</b> · " + cat;
+      }).catch(function () {});
+
+    fetch("https://api.open-meteo.com/v1/forecast?latitude=" + L.lat + "&longitude=" + L.lon + "&current=relative_humidity_2m,wind_speed_10m,wind_gusts_10m&wind_speed_unit=mph&timezone=America%2FLos_Angeles")
+      .then(function (r) { return r.json(); }).then(function (w) {
+        var c = w.current; if (!c) return;
+        var rh = c.relative_humidity_2m, wind = c.wind_speed_10m, gust = c.wind_gusts_10m;
+        var lvl = (rh < 15 && (wind >= 25 || gust >= 35)) ? "Extreme" : (rh < 15 || wind >= 25 || gust >= 35 || (rh < 20 && wind >= 20)) ? "Elevated" : "Normal";
+        $("#tdFw").innerHTML = "<b>" + Math.round(wind) + " mph</b> wind · " + Math.round(rh) + "% RH · " + lvl;
+      }).catch(function () {});
+
+    Promise.all([
+      fetch("/events.json").then(function (r) { return r.json(); }).catch(function () { return null; }),
+      fetch("/community-events.json").then(function (r) { return r.json(); }).catch(function () { return []; })
+    ]).then(function (res) {
+      var feed = res[0], comm = res[1];
+      var today = new Date(); today.setHours(0, 0, 0, 0);
+      var evs = ((feed && feed.events) || []).concat(Array.isArray(comm) ? comm.map(function (e) { return { title: e.title, start: e.date }; }) : [])
+        .filter(function (e) {
+          if (!e.start || !e.title) return false;
+          var p = e.start.split("T")[0].split("-");
+          return new Date(+p[0], +p[1] - 1, +p[2]).getTime() >= today.getTime();
+        })
+        .sort(function (a, b) { return a.start < b.start ? -1 : 1; })
+        .slice(0, 2);
+      if (!evs.length) return;
+      $("#tdEv").innerHTML = evs.map(function (e) {
+        var p = e.start.split("T")[0].split("-");
+        var d = new Date(+p[0], +p[1] - 1, +p[2]);
+        var t = e.title.length > 32 ? e.title.slice(0, 31) + "…" : e.title;
+        return "<b>" + d.toLocaleDateString([], { weekday: "short" }) + "</b> " + t;
+      }).join("<br>");
+    }).catch(function () {});
+  })();
+  </script>
 </body>
 </html>

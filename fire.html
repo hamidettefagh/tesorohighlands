@@ -166,6 +166,10 @@
   .fire .fdist .dir { font-size:11px; color:var(--muted); }
   .contain { height:6px; border-radius:999px; background:var(--line); overflow:hidden; margin-top:7px; }
   .contain i { display:block; height:100%; background:var(--aqi-usg); }
+  .smokeline { display:inline-block; font-size:11px; font-weight:620; margin-top:7px; padding:2px 9px; border-radius:999px; }
+  .smokeline.toward { background:var(--cau-bg); color:var(--cau-fg); border:1px solid var(--cau-line); }
+  .smokeline.away { background:var(--ok-bg); color:var(--ok-fg); border:1px solid var(--ok-line); }
+  .smokeline.calm { background:var(--neu-bg); color:var(--neu-fg); border:1px solid var(--neu-line); }
 
   /* go-bag checklist — compact tappable chips */
   .checkgrid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
@@ -375,6 +379,16 @@
     <div id="mapLegend" class="q" style="padding:11px 14px;margin:0;border-top:1px solid var(--line-2)">Loading live fire &amp; evacuation data…</div>
   </div>
 
+  <!-- FIRE CAMERAS -->
+  <div class="card" style="margin-top:12px">
+    <h3>Watch the hills — live fire cameras</h3>
+    <div class="q">Pan-tilt wildfire cameras sit on the ridgelines around the Santa Clarita Valley. When something's burning, you can see it with your own eyes instead of guessing from rumors.</div>
+    <div class="links">
+      <a href="https://cameras.alertcalifornia.org/" target="_blank" rel="noopener">Ridge cameras near us <span>ALERTCalifornia ↗</span></a>
+      <a href="https://www.watchduty.org/" target="_blank" rel="noopener">Cameras on live incidents <span>Watch Duty ↗</span></a>
+    </div>
+  </div>
+
   <!-- NEARBY FIRES -->
   <div class="sechead"><h2>Nearby fire activity</h2><div class="line"></div></div>
   <div class="card" id="fireCard" style="margin-top:8px">
@@ -571,6 +585,19 @@ function fireRisk(fires){
     else if(f.dist<=6 && ac>=20) lvl=Math.max(lvl,1);
   }
   return lvl;
+}
+// Is the wind at our location coming FROM a fire's direction? Rough but honest:
+// wind direction is measured where we are, so phrase it as "could carry".
+function smokeChip(f, wdir, wind){
+  if (wdir == null || f.dist > 30) return "";
+  const DEG = {N:0,NNE:22.5,NE:45,ENE:67.5,E:90,ESE:112.5,SE:135,SSE:157.5,S:180,SSW:202.5,SW:225,WSW:247.5,W:270,WNW:292.5,NW:315,NNW:337.5};
+  const b = DEG[f.dir];
+  if (b == null) return "";
+  let d = Math.abs(wdir - b) % 360; if (d > 180) d = 360 - d;
+  if (wind != null && wind < 4) return `<div class="smokeline calm">🌬️ light wind — smoke may linger near the fire</div>`;
+  if (d <= 45)  return `<div class="smokeline toward">🌬️ wind could carry smoke our way</div>`;
+  if (d >= 135) return `<div class="smokeline away">🌬️ wind pushing smoke away from us</div>`;
+  return ""; // crosswind — don't guess
 }
 function overall(v){
   const air = aqiInfo(v.aqi);
@@ -785,6 +812,7 @@ function render(){
           <div class="fn">${f.name}${tag}</div>
           <div class="fs">${meta}</div>
           ${bar}
+          ${smokeChip(f, v.wdir, v.wind)}
         </div>
         <div class="fdist"><div class="d">${f.dist.toFixed(f.dist<10?1:0)} mi</div><div class="dir">to your ${f.dir}</div></div>
       </div>`;

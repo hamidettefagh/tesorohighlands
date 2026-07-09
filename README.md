@@ -4,6 +4,12 @@ A neighbor-built hub for the **Tesoro Highlands community, Valencia CA 91354**. 
 
 The hub answers the questions a household in a fire-zone community actually asks — **Can the kids play outside? What are we breathing? Do we need to get ready to leave?** — and grows from there into everyday community info: local events, amenities, and HOA transparency.
 
+## How it's built
+
+![Architecture diagram](stack.svg)
+
+(The live copy of this diagram is at [tesorohighlands.com/stack.svg](https://tesorohighlands.com/stack.svg).)
+
 ## Pages
 
 ```
