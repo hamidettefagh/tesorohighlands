@@ -32,7 +32,9 @@ jobs:
       - name: Discover events
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          # ANTHROPIC_MODEL: claude-haiku-4-5   # uncomment to cut cost ~5x
+          # Model defaults to claude-haiku-4-5 (cheap). For higher-quality
+          # discovery at ~5x cost, uncomment:
+          # ANTHROPIC_MODEL: claude-opus-4-8
         run: node scripts/fetch-ai-events.mjs
       - name: Commit if changed
         run: |

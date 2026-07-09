@@ -72,7 +72,7 @@ Fragility notes: this parses Eventbrite's page structure, which can change; the 
 
 - Runs from `.github/workflows/refresh-ai-events.yml` (manual `workflow_dispatch` to start; uncomment the schedule to automate). The web search runs on Anthropic's servers, so this works fine from CI runner IPs — it sidesteps the Eventbrite runner-IP block.
 - Requires the `ANTHROPIC_API_KEY` repo secret (Settings → Secrets and variables → Actions). Without it the script exits cleanly and commits nothing.
-- Cost: web search is capped at 8 uses/run (~$0.08). Per run ≈ **$0.40 on `claude-opus-4-8`**, ≈ **$0.15 on `claude-haiku-4-5`** (set `ANTHROPIC_MODEL=claude-haiku-4-5` in the workflow env to switch). Manual runs cost only when you click; a daily schedule is ~$12/mo (Opus) or ~$4.50/mo (Haiku).
+- Cost: web search is capped at 8 uses/run (~$0.08). The default model is **`claude-haiku-4-5`** (≈ **$0.15/run**); set `ANTHROPIC_MODEL=claude-opus-4-8` in the workflow env for higher-quality discovery (≈ $0.40/run). The web-search tool version auto-switches by model (Haiku → basic `web_search_20250305`, Opus → dynamic-filtering `web_search_20260209`). Manual runs cost only when you click; a daily schedule is ~$4.50/mo (Haiku) or ~$12/mo (Opus).
 - The SDK lives in `scripts/package.json` (installed with `npm install --prefix scripts`) so the site's static Vercel deploy is untouched.
 
 ### community-events.json schema

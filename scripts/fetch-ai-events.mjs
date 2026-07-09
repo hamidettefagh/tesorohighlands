@@ -17,14 +17,16 @@
 //
 //   node scripts/fetch-ai-events.mjs
 //
-// Model: defaults to claude-opus-4-8. Set ANTHROPIC_MODEL=claude-haiku-4-5 to
-// cut the cost of this background task ~5x (see README for the math).
+// Model: defaults to claude-haiku-4-5 (cheap and plenty for this extraction).
+// Set ANTHROPIC_MODEL=claude-opus-4-8 for higher-quality discovery at ~5x cost.
+// The web-search tool version auto-switches by model — Haiku uses the basic
+// variant, Opus/Sonnet-tier use the newer dynamic-filtering one.
 
 import Anthropic from "@anthropic-ai/sdk";
 import { readFileSync, writeFileSync } from "node:fs";
 
 const OUT = new URL("../ai-events.json", import.meta.url);
-const MODEL = process.env.ANTHROPIC_MODEL || "claude-opus-4-8";
+const MODEL = process.env.ANTHROPIC_MODEL || "claude-haiku-4-5";
 const WINDOW_DAYS = 42;
 const MAX_EVENTS = 25;
 const SCV = /santa clarita|valencia|newhall|saugus|canyon country|castaic|stevenson ranch|agua dulce|val verde/i;
@@ -88,8 +90,14 @@ When you have gathered what you can confidently confirm, call the submit_events 
 
 const client = new Anthropic();
 
+// Dynamic-filtering web search (web_search_20260209) requires Opus 4.6+ /
+// Sonnet 4.6+; Haiku and older models use the basic web_search_20250305.
+const WEB_SEARCH_TYPE = /opus-4-6|opus-4-7|opus-4-8|sonnet-5|sonnet-4-6|fable-5|mythos-5/.test(MODEL)
+  ? "web_search_20260209"
+  : "web_search_20250305";
+
 const tools = [
-  { type: "web_search_20260209", name: "web_search", max_uses: 8 },
+  { type: WEB_SEARCH_TYPE, name: "web_search", max_uses: 8 },
   {
     name: "submit_events",
     description: "Record the confirmed local events you found. Call this exactly once when done.",
