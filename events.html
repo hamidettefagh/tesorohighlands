@@ -87,7 +87,7 @@
         <button data-when="week" aria-pressed="false">Next 7 days</button>
       </div>
       <div class="evcard"><div id="feedList"><div class="empty">Loading local events…</div></div></div>
-      <div class="evmeta" id="feedMeta">Attendable events across the Santa Clarita Valley — Eventbrite + the Santa Clarita Public Library — updated regularly.</div>
+      <div class="evmeta" id="feedMeta">Attendable events across the Santa Clarita Valley — the City calendar, Eventbrite, and the Santa Clarita Public Library — updated regularly.</div>
     </section>
 
     <section class="evsec">
@@ -287,7 +287,7 @@
       var meta = document.getElementById("feedMeta");
       if (feed.generatedAt) {
         var stale = Date.now() - new Date(feed.generatedAt).getTime() > 5 * DAY;
-        meta.innerHTML = "Events across the Santa Clarita Valley — Eventbrite + the SC Public Library · last updated " + esc(relTime(feed.generatedAt)) +
+        meta.innerHTML = "Events across the Santa Clarita Valley — City of Santa Clarita, Eventbrite &amp; the SC Public Library · last updated " + esc(relTime(feed.generatedAt)) +
           (stale ? ' · <b style="color:var(--cau-fg)">feed may be stale</b>' : "") +
           " · details can change — confirm on the listing.";
       }

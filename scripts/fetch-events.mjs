@@ -29,6 +29,8 @@ const EB_MAX = 30;        // Eventbrite events kept (after filters)
 const EB_ENRICH = 45;     // max event pages fetched for prices
 const LIB_DAYS = 21;      // how many days of library programs to pull
 const LIB_MAX = 25;       // unique library programs kept (after recurring collapse)
+const LOCALIST_HOST = "calendar.santaclarita.gov"; // official City of Santa Clarita calendar (Localist)
+const LOCALIST_MAX = 30;
 const WINDOW_DAYS = 60;   // how far ahead to look (Eventbrite)
 const SCV = /santa clarita|valencia|newhall|saugus|canyon country|castaic|stevenson ranch|agua dulce|val verde/i;
 // Mass-posted corporate training-mill listings — not real community events.
@@ -40,7 +42,7 @@ const AUDIENCES = [
   { key: "toddlers", rx: /\btoddlers?\b|\bpre-?school(ers)?\b|\bpre-?k\b|story ?time|\btiny tots?\b|little ones|mommy (&|and) me|\bages? 0\b|\bbab(y|ies)\b/i },
   { key: "kids", rx: /\bkids?\b|\bchild(ren)?\b|\bfamily\b|\byouth\b|\bjunior\b|\bjr\.?\b|elementary|\btweens?\b|summer camp|\bcamps?\b|face ?paint|storybook|\bages? [4-9]\b/i },
   { key: "teens", rx: /\bteens?\b|\bteenagers?\b|high school|\bages? 1[3-7]\b/i },
-  { key: "adults", rx: /\b21\s*\+|\b18\s*\+|\badult'?s?\b|\bwine\b|\bbeer\b|brewery|cocktail|comedy|stand-?up|nightlife|singles|networking|happy hour|bar crawl|\bcasino\b/i },
+  { key: "adults", rx: /\b21\s*\+|\b18\s*\+|\badult'?s?\b|\bwine(ry)?\b|\bbeer\b|brew(ing|ery|s)?|taproom|distillery|\bpub\b|tavern|cocktail|comedy|stand-?up|nightlife|singles|networking|happy hour|bar crawl|\bcasino\b/i },
 ];
 function classify(text) {
   const hits = AUDIENCES.filter((a) => a.rx.test(text)).map((a) => a.key);
@@ -223,14 +225,55 @@ async function fetchLibrary() {
   return { events: [...groups.values()].slice(0, LIB_MAX), daysOk };
 }
 
+/* ---------------- Source 3: City of Santa Clarita calendar (Localist JSON) ---------------- */
+async function fetchLocalist() {
+  const events = [];
+  let ok = false;
+  try {
+    const res = await fetch(`https://${LOCALIST_HOST}/api/2/events?days=${WINDOW_DAYS}&pp=100`, {
+      headers: { "User-Agent": UA, Accept: "application/json" },
+      signal: AbortSignal.timeout(25000),
+    });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const j = await res.json();
+    ok = true;
+    for (const wrap of (j.events || [])) {
+      const e = wrap && wrap.event;
+      if (!e || !e.title || e.status === "cancelled") continue;
+      const insts = (e.event_instances || [])
+        .map((i) => i.event_instance && i.event_instance.start)
+        .filter(Boolean).map((s) => s.slice(0, 16)).sort();
+      if (!insts.length) continue;
+      const filters = ((e.filters && e.filters.event_calendar) || []).map((f) => f.name).join(" ");
+      const cost = e.ticket_cost && String(e.ticket_cost).trim();
+      events.push({
+        title: e.title.trim(),
+        url: e.localist_url || `https://${LOCALIST_HOST}/event/${e.urlname}`,
+        start: insts[0],
+        dates: insts,
+        repeats: insts.length - 1,
+        venue: e.location_name || null,
+        city: "Santa Clarita",
+        free: !!e.free,
+        price: e.free ? "Free" : (cost || null),
+        audience: classify([e.title, e.description_text, filters, e.location_name].join(" ")),
+        source: "City of Santa Clarita",
+      });
+    }
+  } catch (err) {
+    console.error("localist:", String(err).slice(0, 100));
+  }
+  return { events: events.slice(0, LOCALIST_MAX), ok };
+}
+
 /* ---------------- merge, dedupe, write ---------------- */
-const [eb, lib] = await Promise.all([fetchEventbrite(), fetchLibrary()]);
-console.log(`eventbrite: ${eb.events.length} events (${eb.pagesOk} pages ok) | library: ${lib.events.length} events (${lib.daysOk}/${LIB_DAYS} days ok)`);
+const [eb, lib, loc] = await Promise.all([fetchEventbrite(), fetchLibrary(), fetchLocalist()]);
+console.log(`eventbrite: ${eb.events.length} (${eb.pagesOk} pages) | library: ${lib.events.length} (${lib.daysOk}/${LIB_DAYS} days) | city: ${loc.events.length} (${loc.ok ? "ok" : "FAILED"})`);
 
 let old = null;
 try { old = JSON.parse(readFileSync(OUT, "utf8")); } catch {}
 
-if (eb.pagesOk === 0 && lib.daysOk === 0) {
+if (eb.pagesOk === 0 && lib.daysOk === 0 && !loc.ok) {
   console.error("All sources failed; keeping last good file.");
   process.exit(0);
 }
@@ -247,9 +290,10 @@ function carryForward(source) {
 }
 const ebEvents = eb.pagesOk === 0 ? carryForward("Eventbrite") : eb.events;
 const libEvents = lib.daysOk === 0 ? carryForward("SC Library") : lib.events;
+const locEvents = !loc.ok ? carryForward("City of Santa Clarita") : loc.events;
 
 const seen = new Set();
-const events = [...ebEvents, ...libEvents]
+const events = [...ebEvents, ...libEvents, ...locEvents]
   .filter((e) => {
     const k = e.title.toLowerCase().replace(/\W+/g, " ").trim() + "|" + e.start;
     if (seen.has(k)) return false;
@@ -268,7 +312,7 @@ writeFileSync(
   JSON.stringify(
     {
       generatedAt: new Date().toISOString(),
-      note: "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite's public pages and the Santa Clarita Public Library calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
+      note: "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
       events,
     },
     null,
