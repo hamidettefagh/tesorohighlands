@@ -1,0 +1,8 @@
+{
+  "name": "tesoro-highlands-scripts",
+  "private": true,
+  "description": "Build-time scripts for the Tesoro Highlands community site. Kept in scripts/ (excluded from the Vercel deploy) so the site stays a plain static build.",
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "generatedAt": null,
+  "model": null,
+  "note": "AI-assisted event discovery — populated by scripts/fetch-ai-events.mjs when the ANTHROPIC_API_KEY repo secret is set. A supplement to the verified feeds in events.json; not shown on the site unless wired in. Every item links to its source page.",
+  "events": []
+}

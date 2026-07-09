@@ -1,0 +1,48 @@
+name: Refresh AI-found events
+
+# Optional, opt-in AI event discovery (scripts/fetch-ai-events.mjs). Uses the
+# Claude API's web search to find local events the structured feeds miss. The
+# search runs on Anthropic's servers, so this works from CI runner IPs (unlike
+# the Eventbrite scraper). Requires the ANTHROPIC_API_KEY repo secret — without
+# it the script exits cleanly and nothing is committed.
+#
+# Manual-run only to start (click "Run workflow" in the Actions tab) so you can
+# review ai-events.json and control cost. Uncomment the schedule to automate.
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "23 13 * * *"   # ~6:23am PT daily — costs a few cents/run (see README)
+
+permissions:
+  contents: write
+
+concurrency: refresh-ai-events
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install the Anthropic SDK
+        run: npm install --prefix scripts --no-audit --no-fund
+      - name: Discover events
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # ANTHROPIC_MODEL: claude-haiku-4-5   # uncomment to cut cost ~5x
+        run: node scripts/fetch-ai-events.mjs
+      - name: Commit if changed
+        run: |
+          git add ai-events.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git config user.name "tesoro-events-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore: refresh AI-found events"
+            git pull --rebase origin main || true
+            git push
+          fi

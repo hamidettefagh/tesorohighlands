@@ -66,6 +66,15 @@ Sources checked and rejected for automation: Visit Santa Clarita (no feed/API/JS
 
 Fragility notes: this parses Eventbrite's page structure, which can change; the script fails soft (keeps the last good file) and the page shows a "feed may be stale" note past 5 days. As of 2026-07-07 Eventbrite 405-blocks GitHub-hosted runner IPs, so the Action is a light self-healing retry (every 4h) rather than the primary refresh — real refreshes are `node scripts/fetch-events.mjs` from a residential IP, then push (or a scheduled task on a home machine).
 
+### Optional: AI-assisted discovery (supplement, not backbone)
+
+`scripts/fetch-ai-events.mjs` uses the Claude API's built-in web search (`web_search_20260209` on `claude-opus-4-8`) to find local events the structured feeds can't reach — venue pages, farms, Macaroni KID, churches, community orgs with no feed. Claude searches, then returns results through a strict-schema `submit_events` tool; the script validates hard (real URL, in-window date, SCV city) and writes a **separate** `ai-events.json`. It is a supplement — every item links to its source page, and it is **not** merged into the live feed unless a human wires it in.
+
+- Runs from `.github/workflows/refresh-ai-events.yml` (manual `workflow_dispatch` to start; uncomment the schedule to automate). The web search runs on Anthropic's servers, so this works fine from CI runner IPs — it sidesteps the Eventbrite runner-IP block.
+- Requires the `ANTHROPIC_API_KEY` repo secret (Settings → Secrets and variables → Actions). Without it the script exits cleanly and commits nothing.
+- Cost: web search is capped at 8 uses/run (~$0.08). Per run ≈ **$0.40 on `claude-opus-4-8`**, ≈ **$0.15 on `claude-haiku-4-5`** (set `ANTHROPIC_MODEL=claude-haiku-4-5` in the workflow env to switch). Manual runs cost only when you click; a daily schedule is ~$12/mo (Opus) or ~$4.50/mo (Haiku).
+- The SDK lives in `scripts/package.json` (installed with `npm install --prefix scripts`) so the site's static Vercel deploy is untouched.
+
 ### community-events.json schema
 
 ```json
