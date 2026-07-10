@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T04:14:04.779Z",
+  "generatedAt": "2026-07-10T07:53:02.150Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -28,7 +28,7 @@
       "total": "1",
       "startEpoch": 1783648860,
       "endEpoch": 1783688340,
-      "moreWindows": 61
+      "moreWindows": 64
     },
     {
       "route": "I-5",
@@ -42,7 +42,7 @@
       "total": "1",
       "startEpoch": 1783648860,
       "endEpoch": 1783691940,
-      "moreWindows": 25
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -60,62 +60,6 @@
     },
     {
       "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1783648860,
-      "endEpoch": 1783688340,
-      "moreWindows": 89
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1783648860,
-      "endEpoch": 1783688340,
-      "moreWindows": 39
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Magic Mountain Parkway, Route 126",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1783648860,
-      "endEpoch": 1783688340,
-      "moreWindows": 23
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Rye Canyon Rd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1783648860,
-      "endEpoch": 1783688340,
-      "moreWindows": 6
-    },
-    {
-      "route": "I-5",
       "dir": "North",
       "at": "Gavin Canyon",
       "place": "Newhall",
@@ -126,7 +70,21 @@
       "total": "4",
       "startEpoch": 1783652460,
       "endEpoch": 1783688340,
-      "moreWindows": 9
+      "moreWindows": 8
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Soundwall Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1783652460,
+      "endEpoch": 1783688340,
+      "moreWindows": 38
     },
     {
       "route": "I-5",
@@ -143,32 +101,74 @@
       "moreWindows": 1
     },
     {
-      "route": "SR-14",
+      "route": "I-5",
       "dir": "South",
-      "at": "Antelope Valley Freeway, Route 14",
-      "place": "Sylmar",
-      "facility": "Truck Connector",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Valencia",
+      "facility": "Connector",
       "type": "Full",
-      "work": "Electrical Work",
+      "work": "Roadway Excavation",
       "lanes": "All",
-      "total": "2",
-      "startEpoch": 1783652460,
-      "endEpoch": 1783688340,
-      "moreWindows": 1
+      "total": "1",
+      "startEpoch": 1783656060,
+      "endEpoch": 1783684740,
+      "moreWindows": 87
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Road Survey",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1783688460,
+      "endEpoch": 1783720740,
+      "moreWindows": 27
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Parker Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Electrical Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1783688460,
+      "endEpoch": 1783720740,
+      "moreWindows": 17
     },
     {
       "route": "I-5",
       "dir": "North",
       "at": "Lyons Ave",
       "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Soundwall Work",
-      "lanes": "3, 4",
-      "total": "4",
-      "startEpoch": 1783663260,
-      "endEpoch": 1783684740,
-      "moreWindows": 17
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1783699260,
+      "endEpoch": 1783720740,
+      "moreWindows": 18
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1783699260,
+      "endEpoch": 1783720740,
+      "moreWindows": 21
     }
   ]
 }
