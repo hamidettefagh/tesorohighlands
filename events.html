@@ -62,8 +62,11 @@
     padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:var(--surface);}
   .findgrid a:hover{border-color:var(--muted);}
   .findgrid a span{color:var(--muted);}
-  .clubs{font-size:13.5px;color:var(--ink-2);line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);}
-  .clubs b{color:var(--ink);}
+  .jumpnav{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin:2px 0 18px;-webkit-overflow-scrolling:touch;}
+  .jumpnav::-webkit-scrollbar{display:none;}
+  .jumpnav a{flex:none;text-decoration:none;font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 13px;white-space:nowrap;}
+  .jumpnav a:hover{border-color:var(--muted);color:var(--ink);}
+  section[id]{scroll-margin-top:64px;}
 </style>
 </head>
 <body class="th">
@@ -73,13 +76,41 @@
       <p>Things you can actually go to — here and around Santa Clarita.</p>
     </div>
 
-    <section class="evsec">
+    <nav class="jumpnav" aria-label="Jump to a section">
+      <a href="#community">🏘️ Community</a>
+      <a href="#clubs">👥 Clubs &amp; groups</a>
+      <a href="#around">📅 Around SCV</a>
+      <a href="#family">🎨 Family outings</a>
+    </nav>
+
+    <section class="evsec" id="community">
       <div class="sechead"><h2>In the community</h2><div class="line"></div></div>
       <div class="evcard"><div id="commList"><div class="empty">Loading…</div></div></div>
       <div class="evmeta">Neighbor-run list. Got something coming up — a social, a game night, pickleball? Share it in the community group chat and it gets added here.</div>
     </section>
 
-    <section class="evsec">
+    <section class="evsec" id="clubs">
+      <div class="sechead"><h2>Clubs &amp; groups</h2><div class="line"></div></div>
+      <div class="grouplist">
+        <div class="grouprow">
+          <div class="gmeta"><b>🚺 Women's Group</b><span>WhatsApp</span></div>
+          <p>For the women of Tesoro Highlands — meetups, support, and everyday conversation.</p>
+          <span class="gjoin">To join: ask an admin in the community chat to add you.</span>
+        </div>
+        <div class="grouprow">
+          <div class="gmeta"><b>🍼 Mommy &amp; Me</b><span>WhatsApp</span></div>
+          <p>Moms with little ones — playdates, tips, and support close to home.</p>
+          <span class="gjoin">To join: ask an admin in the community chat to add you.</span>
+        </div>
+        <div class="grouprow">
+          <div class="gmeta"><b>🎾 Pickleball &amp; socials</b></div>
+          <p>Games on the community courts, plus ice-cream Sundays and block parties — all coordinated in the main group chat.</p>
+        </div>
+      </div>
+      <div class="evmeta">We don't post the raw group-invite links here — a neighbor admits you, so bots and non-residents can't wander in. New to Tesoro Highlands? Ask any neighbor for the main community WhatsApp. Run a group and want it listed? Share it in the chat.</div>
+    </section>
+
+    <section class="evsec" id="around">
       <div class="sechead"><h2>Around Santa Clarita</h2><span class="pill">Auto-updated</span></div>
       <div class="chips" id="audChips" role="group" aria-label="Filter events by audience">
         <button data-aud="all" aria-pressed="true">All</button>
@@ -105,7 +136,7 @@
       <div class="evmeta" id="aiMeta">Found by an AI web search of local venue &amp; community pages. Details can be wrong — always confirm on the linked page.</div>
     </section>
 
-    <section class="evsec">
+    <section class="evsec" id="family">
       <div class="sechead"><h2>Family things to do nearby</h2><div class="line"></div></div>
       <div class="ttdgrid">
         <a class="ttd" href="https://santaclarita.macaronikid.com/" target="_blank" rel="noopener">
@@ -165,27 +196,6 @@
         <a href="https://www.eventbrite.com/d/ca--santa-clarita/all-events/" target="_blank" rel="noopener">Everything nearby <span>Eventbrite ↗</span></a>
         <a href="https://www.hometownstation.com/" target="_blank" rel="noopener">Local happenings <span>KHTS ↗</span></a>
       </div>
-    </section>
-
-    <section class="evsec">
-      <div class="sechead"><h2>Clubs &amp; groups</h2><div class="line"></div></div>
-      <div class="grouplist">
-        <div class="grouprow">
-          <div class="gmeta"><b>🚺 Women's Group</b><span>WhatsApp</span></div>
-          <p>For the women of Tesoro Highlands — meetups, support, and everyday conversation.</p>
-          <span class="gjoin">To join: ask an admin in the community chat to add you.</span>
-        </div>
-        <div class="grouprow">
-          <div class="gmeta"><b>🍼 Mommy &amp; Me</b><span>WhatsApp</span></div>
-          <p>Moms with little ones — playdates, tips, and support close to home.</p>
-          <span class="gjoin">To join: ask an admin in the community chat to add you.</span>
-        </div>
-        <div class="grouprow">
-          <div class="gmeta"><b>🎾 Pickleball &amp; socials</b></div>
-          <p>Games on the community courts, plus ice-cream Sundays and block parties — all coordinated in the main group chat.</p>
-        </div>
-      </div>
-      <div class="evmeta">We don't post the raw group-invite links here — a neighbor admits you, so bots and non-residents can't wander in. New to Tesoro Highlands? Ask any neighbor for the main community WhatsApp. Run a group and want it listed? Share it in the chat.</div>
     </section>
 
     <footer class="thfoot"><p><b>A neighbor project — not the official HOA.</b> Event listings belong to their organizers and can change — always confirm on the linked page before heading out. &nbsp;<a href="/">← Back to the hub</a></p></footer>
