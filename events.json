@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T07:52:52.997Z",
+  "generatedAt": "2026-07-10T14:51:26.015Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -423,19 +423,6 @@
       "audience": [
         "kids",
         "teens"
-      ],
-      "source": "Eventbrite"
-    },
-    {
-      "title": "Voices United - Gospel Music WORKSHOP Series & Concert - 7/11, 8/8, 8/22",
-      "url": "https://www.eventbrite.com/e/voices-united-gospel-music-workshop-series-concert-711-88-822-tickets-1991311924571",
-      "start": "2026-07-11T13:00",
-      "venue": "St Stephen's Episcopal Church",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$55.20–$81.88",
-      "audience": [
-        "everyone"
       ],
       "source": "Eventbrite"
     },
@@ -1158,6 +1145,19 @@
       "price": "$26.45",
       "audience": [
         "adults"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "UPDATE: Voices United - Gospel Music WORKSHOP Series & Concert - 8/8, 8/22",
+      "url": "https://www.eventbrite.com/e/update-voices-united-gospel-music-workshop-series-concert-88-822-tickets-1993629236714",
+      "start": "2026-08-08T13:00",
+      "venue": "St Stephen's Episcopal Church",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$41.86–$81.88",
+      "audience": [
+        "everyone"
       ],
       "source": "Eventbrite"
     },
