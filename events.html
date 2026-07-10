@@ -47,6 +47,15 @@
   .ttd h3{margin:0 0 3px;font-size:13.5px;letter-spacing:-0.005em;}
   .ttd p{margin:0;color:var(--ink-2);font-size:12px;line-height:1.5;}
   .ttd .chiprow{margin-top:8px;}
+  .grouplist{display:flex;flex-direction:column;gap:10px;}
+  .grouprow{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:13px 15px;box-shadow:var(--shadow);}
+  .grouprow .gmeta{display:flex;align-items:center;gap:8px;font-size:14px;}
+  .grouprow .gmeta b{color:var(--ink);letter-spacing:-0.005em;}
+  .grouprow .gmeta span{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ok-fg);background:var(--ok-bg);border:1px solid var(--ok-line);padding:1px 7px;border-radius:999px;}
+  .grouprow p{margin:5px 0 0;color:var(--ink-2);font-size:12.5px;line-height:1.5;}
+  .grouprow .gjoin{display:inline-block;margin-top:9px;font-size:12px;color:var(--muted);}
+  .grouprow a.gjoin{color:var(--accent);text-decoration:none;font-weight:600;border:1px solid var(--line);padding:5px 11px;border-radius:8px;}
+  .grouprow a.gjoin:hover{border-color:var(--muted);}
   .findgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
   @media (max-width:520px){.findgrid{grid-template-columns:1fr;}}
   .findgrid a{display:flex;justify-content:space-between;align-items:center;text-decoration:none;font-size:13px;color:var(--ink);
@@ -160,10 +169,23 @@
 
     <section class="evsec">
       <div class="sechead"><h2>Clubs &amp; groups</h2><div class="line"></div></div>
-      <div class="clubs">
-        <b>Pickleball</b> runs on the community courts — coordination happens in the group chat. <b>Socials</b> (ice-cream Sundays, block parties) get organized there too.
-        New to Tesoro Highlands? Ask any neighbor for an invite to the WhatsApp groups — that's where the day-to-day chatter lives, and this page will always hold the essentials.
+      <div class="grouplist">
+        <div class="grouprow">
+          <div class="gmeta"><b>🚺 Women's Group</b><span>WhatsApp</span></div>
+          <p>For the women of Tesoro Highlands — meetups, support, and everyday conversation.</p>
+          <span class="gjoin">To join: ask an admin in the community chat to add you.</span>
+        </div>
+        <div class="grouprow">
+          <div class="gmeta"><b>🍼 Mommy &amp; Me</b><span>WhatsApp</span></div>
+          <p>Moms with little ones — playdates, tips, and support close to home.</p>
+          <span class="gjoin">To join: ask an admin in the community chat to add you.</span>
+        </div>
+        <div class="grouprow">
+          <div class="gmeta"><b>🎾 Pickleball &amp; socials</b></div>
+          <p>Games on the community courts, plus ice-cream Sundays and block parties — all coordinated in the main group chat.</p>
+        </div>
       </div>
+      <div class="evmeta">We don't post the raw group-invite links here — a neighbor admits you, so bots and non-residents can't wander in. New to Tesoro Highlands? Ask any neighbor for the main community WhatsApp. Run a group and want it listed? Share it in the chat.</div>
     </section>
 
     <footer class="thfoot"><p><b>A neighbor project — not the official HOA.</b> Event listings belong to their organizers and can change — always confirm on the linked page before heading out. &nbsp;<a href="/">← Back to the hub</a></p></footer>
