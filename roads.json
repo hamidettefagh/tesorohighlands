@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T21:20:06.958Z",
+  "generatedAt": "2026-07-11T03:42:26.497Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,21 +14,7 @@
       "total": "1",
       "startEpoch": 1783407660,
       "endEpoch": 1785999540,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Road Survey",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1783688460,
-      "endEpoch": 1783720740,
-      "moreWindows": 31
+      "moreWindows": 6
     },
     {
       "route": "I-5",
@@ -47,20 +33,6 @@
     {
       "route": "I-5",
       "dir": "North",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1783735260,
-      "endEpoch": 1783774740,
-      "moreWindows": 21
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
       "at": "Magic Mountain Parkway, Route 126",
       "place": "Valencia",
       "facility": "On Ramp",
@@ -70,7 +42,7 @@
       "total": "1",
       "startEpoch": 1783735260,
       "endEpoch": 1783778340,
-      "moreWindows": 23
+      "moreWindows": 25
     },
     {
       "route": "I-5",
@@ -84,7 +56,21 @@
       "total": "1",
       "startEpoch": 1783735260,
       "endEpoch": 1783774740,
-      "moreWindows": 5
+      "moreWindows": 6
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1783735260,
+      "endEpoch": 1783774740,
+      "moreWindows": 33
     },
     {
       "route": "I-5",
@@ -98,21 +84,7 @@
       "total": "1",
       "startEpoch": 1783735260,
       "endEpoch": 1783814340,
-      "moreWindows": 82
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Parker Rd",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1783735260,
-      "endEpoch": 1783789140,
-      "moreWindows": 17
+      "moreWindows": 83
     },
     {
       "route": "I-5",
@@ -126,7 +98,7 @@
       "total": "1",
       "startEpoch": 1783735260,
       "endEpoch": 1783781940,
-      "moreWindows": 37
+      "moreWindows": 40
     },
     {
       "route": "I-5",
@@ -140,35 +112,63 @@
       "total": "1",
       "startEpoch": 1783735260,
       "endEpoch": 1783785540,
-      "moreWindows": 21
+      "moreWindows": 23
     },
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Lyons Ave",
-      "place": "Stevenson Ranch",
+      "at": "Rye Canyon Rd",
+      "place": "Valencia",
       "facility": "On Ramp",
       "type": "Full",
       "work": "Roadway Excavation",
       "lanes": "All",
       "total": "2",
       "startEpoch": 1783735260,
-      "endEpoch": 1783814340,
-      "moreWindows": 34
+      "endEpoch": 1783789140,
+      "moreWindows": 6
     },
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
+      "at": "Parker Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Road Survey",
+      "lanes": "3, 4",
+      "total": "4",
+      "startEpoch": 1783738860,
+      "endEpoch": 1783785540,
+      "moreWindows": 18
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Sylmar",
+      "facility": "Truck Connector",
       "type": "Full",
-      "work": "Roadway Excavation",
+      "work": "Electrical Work",
       "lanes": "All",
-      "total": "1",
-      "startEpoch": 1783735260,
-      "endEpoch": 1783814340,
-      "moreWindows": 16
+      "total": "2",
+      "startEpoch": 1783738860,
+      "endEpoch": 1783774740,
+      "moreWindows": 5
+    },
+    {
+      "route": "SR-14",
+      "dir": "South",
+      "at": "Antelope Valley Freeway, Route 14",
+      "place": "Sylmar",
+      "facility": "Truck Connector",
+      "type": "Full",
+      "work": "Electrical Work",
+      "lanes": "All",
+      "total": "2",
+      "startEpoch": 1783738860,
+      "endEpoch": 1783774740,
+      "moreWindows": 5
     }
   ]
 }
