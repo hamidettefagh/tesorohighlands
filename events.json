@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T13:54:14.199Z",
+  "generatedAt": "2026-07-11T21:06:15.851Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -154,20 +154,6 @@
         "2026-07-25T11:00"
       ],
       "repeats": 2
-    },
-    {
-      "title": "Shrek Jr.",
-      "url": "https://www.eventbrite.com/e/shrek-jr-tickets-1992328045817",
-      "start": "2026-07-11T12:00",
-      "venue": "Canyon High School",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "kids",
-        "teens"
-      ],
-      "source": "Eventbrite"
     },
     {
       "title": "Hart Mansion Tour 12:00p.m.",
@@ -1160,6 +1146,19 @@
       "price": "$19.07–$24.34",
       "audience": [
         "adults"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "Mosaic Art Classes Santa Clarita: Turkish Lamp Workshop",
+      "url": "https://www.eventbrite.com/e/mosaic-art-classes-santa-clarita-turkish-lamp-workshop-tickets-1991445744831",
+      "start": "2026-08-14T10:00",
+      "venue": "Hilton Garden Inn Valencia Six Flags",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$64.50–$179",
+      "audience": [
+        "everyone"
       ],
       "source": "Eventbrite"
     },
