@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T06:26:14.194Z",
+  "generatedAt": "2026-07-11T09:48:21.631Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -19,20 +19,6 @@
     {
       "route": "I-5",
       "dir": "North",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1783735260,
-      "endEpoch": 1783774740,
-      "moreWindows": 56
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
       "at": "Magic Mountain Parkway, Route 126",
       "place": "Valencia",
       "facility": "On Ramp",
@@ -47,6 +33,20 @@
     {
       "route": "I-5",
       "dir": "North",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Valencia",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1783735260,
+      "endEpoch": 1783774740,
+      "moreWindows": 54
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
       "at": "Truck Weigh Station",
       "place": "Valencia",
       "facility": "On Ramp",
@@ -56,48 +56,6 @@
       "total": "1",
       "startEpoch": 1783735260,
       "endEpoch": 1783774740,
-      "moreWindows": 6
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1783735260,
-      "endEpoch": 1783814340,
-      "moreWindows": 82
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Magic Mountain Parkway, Route 126",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1783735260,
-      "endEpoch": 1783785540,
-      "moreWindows": 24
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Rye Canyon Rd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1783735260,
-      "endEpoch": 1783789140,
       "moreWindows": 6
     },
     {
@@ -158,17 +116,59 @@
     },
     {
       "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Valencia",
+      "facility": "Connector",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1783742460,
+      "endEpoch": 1783778340,
+      "moreWindows": 80
+    },
+    {
+      "route": "I-5",
       "dir": "North",
-      "at": "Gavin Canyon",
-      "place": "Newhall",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
       "facility": "Mainline",
       "type": "Lane",
-      "work": "Shoulder Work",
+      "work": "Roadway Excavation",
       "lanes": "4",
       "total": "4",
-      "startEpoch": 1783742460,
-      "endEpoch": 1783781940,
-      "moreWindows": 13
+      "startEpoch": 1783774860,
+      "endEpoch": 1783796340,
+      "moreWindows": 31
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Rye Canyon Rd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "2",
+      "startEpoch": 1783814460,
+      "endEpoch": 1783875540,
+      "moreWindows": 5
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Lyons Ave",
+      "place": "Stevenson Ranch",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1783818060,
+      "endEpoch": 1783875540,
+      "moreWindows": 35
     }
   ]
 }
