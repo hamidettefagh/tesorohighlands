@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T13:54:15.197Z",
+  "generatedAt": "2026-07-11T17:15:23.407Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1783407660,
       "endEpoch": 1785999540,
-      "moreWindows": 6
+      "moreWindows": 7
     },
     {
       "route": "I-5",
@@ -28,35 +28,7 @@
       "total": "4",
       "startEpoch": 1783774860,
       "endEpoch": 1783796340,
-      "moreWindows": 32
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Parker Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Electrical Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1783774860,
-      "endEpoch": 1783807140,
-      "moreWindows": 18
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1783785660,
-      "endEpoch": 1783807140,
-      "moreWindows": 79
+      "moreWindows": 34
     },
     {
       "route": "I-5",
@@ -70,7 +42,7 @@
       "total": "4",
       "startEpoch": 1783810860,
       "endEpoch": 1783879140,
-      "moreWindows": 22
+      "moreWindows": 23
     },
     {
       "route": "I-5",
@@ -117,6 +89,20 @@
     {
       "route": "I-5",
       "dir": "South",
+      "at": "Parker Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Road Survey",
+      "lanes": "3, 4",
+      "total": "4",
+      "startEpoch": 1783818060,
+      "endEpoch": 1783875540,
+      "moreWindows": 17
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
       "at": "Lyons Ave",
       "place": "Stevenson Ranch",
       "facility": "On Ramp",
@@ -141,6 +127,20 @@
       "startEpoch": 1783821660,
       "endEpoch": 1783871940,
       "moreWindows": 20
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Castaic",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1783821660,
+      "endEpoch": 1783900740,
+      "moreWindows": 78
     },
     {
       "route": "I-5",
