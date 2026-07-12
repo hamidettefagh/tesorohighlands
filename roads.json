@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T21:06:16.970Z",
+  "generatedAt": "2026-07-12T03:56:55.041Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1783407660,
       "endEpoch": 1785999540,
-      "moreWindows": 7
+      "moreWindows": 8
     },
     {
       "route": "I-5",
@@ -28,20 +28,20 @@
       "total": "4",
       "startEpoch": 1783810860,
       "endEpoch": 1783879140,
-      "moreWindows": 23
+      "moreWindows": 25
     },
     {
       "route": "I-5",
       "dir": "South",
       "at": "Hasley Canyon Rd",
       "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1783810860,
-      "endEpoch": 1783879140,
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Soundwall Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1783814460,
+      "endEpoch": 1783882740,
       "moreWindows": 38
     },
     {
@@ -56,7 +56,7 @@
       "total": "2",
       "startEpoch": 1783814460,
       "endEpoch": 1783875540,
-      "moreWindows": 5
+      "moreWindows": 6
     },
     {
       "route": "I-5",
@@ -84,7 +84,7 @@
       "total": "4",
       "startEpoch": 1783818060,
       "endEpoch": 1783875540,
-      "moreWindows": 17
+      "moreWindows": 18
     },
     {
       "route": "I-5",
@@ -98,7 +98,7 @@
       "total": "1",
       "startEpoch": 1783818060,
       "endEpoch": 1783875540,
-      "moreWindows": 35
+      "moreWindows": 38
     },
     {
       "route": "I-5",
@@ -112,13 +112,13 @@
       "total": "4",
       "startEpoch": 1783821660,
       "endEpoch": 1783871940,
-      "moreWindows": 20
+      "moreWindows": 23
     },
     {
       "route": "I-5",
       "dir": "South",
       "at": "Golden State Freeway, Route 5",
-      "place": "Castaic",
+      "place": "Newhall",
       "facility": "Off Ramp",
       "type": "Full",
       "work": "Roadway Excavation",
@@ -126,7 +126,7 @@
       "total": "1",
       "startEpoch": 1783821660,
       "endEpoch": 1783900740,
-      "moreWindows": 78
+      "moreWindows": 82
     },
     {
       "route": "I-5",
@@ -140,7 +140,7 @@
       "total": "1",
       "startEpoch": 1783821660,
       "endEpoch": 1783879140,
-      "moreWindows": 6
+      "moreWindows": 7
     },
     {
       "route": "I-5",
@@ -154,21 +154,21 @@
       "total": "1",
       "startEpoch": 1783825260,
       "endEpoch": 1783900740,
-      "moreWindows": 8
+      "moreWindows": 9
     },
     {
       "route": "I-5",
-      "dir": "North",
-      "at": "Weldon Canyon",
-      "place": "Granada Hills",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4, 5",
-      "total": "5",
+      "dir": "South",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
       "startEpoch": 1783825260,
-      "endEpoch": 1783861140,
-      "moreWindows": 11
+      "endEpoch": 1783900740,
+      "moreWindows": 15
     }
   ]
 }
