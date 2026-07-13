@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T18:06:25.057Z",
+  "generatedAt": "2026-07-13T21:12:51.483Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -112,7 +112,7 @@
       "total": "1",
       "startEpoch": 1783994460,
       "endEpoch": 1784037540,
-      "moreWindows": 21
+      "moreWindows": 22
     },
     {
       "route": "I-5",
@@ -140,7 +140,7 @@
       "total": "1",
       "startEpoch": 1783994460,
       "endEpoch": 1784033940,
-      "moreWindows": 52
+      "moreWindows": 59
     },
     {
       "route": "I-5",
