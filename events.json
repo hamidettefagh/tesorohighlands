@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T10:02:44.215Z",
+  "generatedAt": "2026-07-13T03:59:43.823Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -1101,6 +1101,19 @@
       "source": "Eventbrite"
     },
     {
+      "title": "ENCHANTED: It's The Blank Show",
+      "url": "https://www.eventbrite.com/e/enchanted-its-the-blank-show-tickets-1993623772370",
+      "start": "2026-08-06T19:00",
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$22.23",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
+    },
+    {
       "title": "The Dresser presented by The Tavern Brawlers",
       "url": "https://www.eventbrite.com/e/the-dresser-presented-by-the-tavern-brawlers-tickets-1985160127380",
       "start": "2026-08-07T20:00",
@@ -1173,6 +1186,19 @@
       "city": "Santa Clarita",
       "free": false,
       "price": "$15.18–$28.52",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite"
+    },
+    {
+      "title": "SCV Music Festival",
+      "url": "https://www.eventbrite.com/e/scv-music-festival-tickets-1992603068417",
+      "start": "2026-08-28T18:00",
+      "venue": "California Institute of the Arts",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$14.64–$1015.56",
       "audience": [
         "everyone"
       ],
