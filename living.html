@@ -4,33 +4,155 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Living Here — Tesoro Highlands</title>
-<meta name="description" content="Everyday local info for Tesoro Highlands residents — coming soon." />
+<meta name="description" content="Everyday practical info for Tesoro Highlands residents — utilities, trash days, schools, hospitals, and fire-zone insurance help. A neighbor project, in progress." />
 <meta name="theme-color" content="#f4f5f7" />
 <link rel="icon" href="/icon.svg" />
 <link rel="canonical" href="https://tesorohighlands.com/living" />
 <script src="/theme.js"></script>
 <link rel="stylesheet" href="/th.css" />
+<style>
+  .preview{display:flex;gap:9px;align-items:flex-start;background:var(--cau-bg);color:var(--cau-fg);border:1px solid var(--cau-line);
+    border-radius:12px;padding:11px 14px;font-size:12.5px;line-height:1.5;margin:14px 0 6px;}
+  .preview b{font-weight:680;}
+  .jumpnav{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin:14px 0 4px;-webkit-overflow-scrolling:touch;}
+  .jumpnav::-webkit-scrollbar{display:none;}
+  .jumpnav a{flex:none;text-decoration:none;font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--surface);
+    border:1px solid var(--line);border-radius:999px;padding:6px 13px;white-space:nowrap;}
+  .jumpnav a:hover{border-color:var(--muted);color:var(--ink);}
+  section[id]{scroll-margin-top:64px;}
+  .sechead{display:flex;align-items:center;gap:8px;margin:26px 2px 8px;}
+  .sechead h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:680;}
+  .sechead .line{flex:1;height:1px;background:var(--line);}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:6px 16px;box-shadow:var(--shadow);}
+  .card.pad{padding:15px 16px;}
+  .card + .card{margin-top:12px;}
+  .svc{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line-2);}
+  .svc:first-child{border-top:0;}
+  .svc .ic{font-size:19px;flex:none;width:26px;text-align:center;line-height:1.4;}
+  .svc .bd{flex:1;min-width:0;}
+  .svc .nm{font-size:14px;font-weight:620;color:var(--ink);letter-spacing:-0.005em;}
+  .svc .dt{font-size:12.5px;color:var(--ink-2);line-height:1.55;margin-top:2px;}
+  .svc .dt a{color:var(--accent);text-decoration:none;font-weight:600;}
+  .svc .dt a:hover{text-decoration:underline;}
+  .svc .em{color:var(--dan-fg);font-weight:660;white-space:nowrap;}
+  .clist{list-style:none;margin:0;padding:2px 0;}
+  .clist li{font-size:13.5px;color:var(--ink-2);line-height:1.55;padding:9px 0 9px 30px;position:relative;border-top:1px solid var(--line-2);}
+  .clist li:first-child{border-top:0;}
+  .clist li:before{content:"○";position:absolute;left:6px;top:9px;color:var(--muted);font-size:13px;}
+  .clist b{color:var(--ink);font-weight:620;}
+  .clist a{color:var(--accent);text-decoration:none;font-weight:600;}
+  .note{font-size:12px;color:var(--muted);line-height:1.55;margin:8px 2px 0;}
+  .callout{background:var(--ok-bg);border:1px solid var(--ok-line);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:12.5px;line-height:1.55;color:var(--ok-fg);}
+  .callout b{font-weight:680;}
+  .links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
+  @media (max-width:520px){.links{grid-template-columns:1fr;}}
+  .links a{display:flex;justify-content:space-between;align-items:center;gap:8px;text-decoration:none;font-size:13px;color:var(--ink);
+    padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:var(--surface);}
+  .links a:hover{border-color:var(--muted);}
+  .links a span{color:var(--muted);font-size:12px;flex:none;}
+</style>
 </head>
 <body class="th">
   <div class="thwrap">
-    <div class="stub">
-      <div class="ico">🏡</div>
+    <div class="hub-head">
       <h1>Living Here</h1>
-      <p class="lede">The everyday-info corner of the hub — the stuff that's annoying to hunt down when you need it.</p>
-      <div class="soon">Coming soon</div>
-      <div class="planned">
-        <h2>What's planned</h2>
-        <ul>
-          <li><b>Trash, recycling &amp; street-sweeping days</b> at a glance.</li>
-          <li><b>Amenities</b> — pickleball, pool, and clubhouse hours &amp; rules.</li>
-          <li><b>Gate &amp; visitor info</b> and key HOA / management contacts.</li>
-          <li><b>Fire-zone home insurance</b> help — CA FAIR Plan, non-renewals, roof-inspection denials.</li>
-          <li><b>Trusted local recommendations</b> — vetted vendors, services, and nannies.</li>
-          <li><b>New-build notes</b> — Lennar warranty tips and known issues.</li>
+      <p>The practical stuff — utilities, trash days, schools, and the fire-zone details that are a pain to hunt down.</p>
+    </div>
+
+    <div class="preview"><span>🚧</span><div><b>Preview — still coming together.</b> Everything here points to an official source; always confirm important details there. Spot something wrong or missing? Tell me in the group chat and I'll fix it.</div></div>
+
+    <nav class="jumpnav" aria-label="Jump to a section">
+      <a href="#setup">🆕 New here</a>
+      <a href="#utilities">🔌 Utilities</a>
+      <a href="#trash">♻️ Trash</a>
+      <a href="#schools">🎓 Schools</a>
+      <a href="#health">🏥 Health</a>
+      <a href="#fire">🔥 Fire &amp; insurance</a>
+      <a href="#city">🏛️ City</a>
+    </nav>
+
+    <section id="setup">
+      <div class="sechead"><h2>New here? Start here</h2><div class="line"></div></div>
+      <div class="card pad">
+        <ul class="clist">
+          <li><b>Set up your utilities</b> — water, power, gas, and trash. Numbers and links are just below.</li>
+          <li><b>Turn on emergency alerts</b> — register at <a href="https://ready.lacounty.gov/" target="_blank" rel="noopener">Ready LA County ↗</a> and enable Wireless Emergency Alerts on your phone.</li>
+          <li><b>Find your evacuation zone</b> — look yourself up on <a href="https://protect.genasys.com/search?query=Valencia%2C%20CA" target="_blank" rel="noopener">Genasys Protect ↗</a> so you recognize it in a fire. The <a href="/fire">Fire &amp; Emergency</a> page tracks it live.</li>
+          <li><b>Confirm your trash day</b> and your kids' assigned schools — see the sections below.</li>
+          <li><b>Save this site to your home screen</b> so it's one tap when something's happening.</li>
         </ul>
       </div>
-    </div>
-    <footer class="thfoot"><p><b>A neighbor project — not the official HOA.</b> &nbsp;<a href="/">← Back to the hub</a></p></footer>
+    </section>
+
+    <section id="utilities">
+      <div class="sechead"><h2>Utilities &amp; who to call</h2><div class="line"></div></div>
+      <div class="card">
+        <div class="svc"><span class="ic">💧</span><div class="bd"><div class="nm">Water — SCV Water</div><div class="dt">The regional water agency (formerly Valencia Water). <a href="https://www.yourscvwater.com/" target="_blank" rel="noopener">yourscvwater.com ↗</a> · Customer service (661) 294-0828</div></div></div>
+        <div class="svc"><span class="ic">⚡</span><div class="bd"><div class="nm">Electricity — Southern California Edison (SCE)</div><div class="dt"><a href="https://www.sce.com/" target="_blank" rel="noopener">sce.com ↗</a> · Report an outage <span class="em">1-800-611-1911</span> · <a href="https://www.sce.com/outages-safety/outage-center/check-outage-status" target="_blank" rel="noopener">Outage &amp; PSPS map ↗</a></div></div></div>
+        <div class="svc"><span class="ic">🔥</span><div class="bd"><div class="nm">Gas — SoCalGas</div><div class="dt"><a href="https://www.socalgas.com/" target="_blank" rel="noopener">socalgas.com ↗</a> · <b>Smell gas? Leave the area, then call</b> <span class="em">1-800-427-2200</span> (24/7) — or 911.</div></div></div>
+        <div class="svc"><span class="ic">🗑️</span><div class="bd"><div class="nm">Trash &amp; recycling — Burrtec</div><div class="dt">The city's exclusive hauler. <a href="https://www.burrtec.com/scv/" target="_blank" rel="noopener">burrtec.com/scv ↗</a> · Start service / missed pickup (661) 222-2249</div></div></div>
+        <div class="svc"><span class="ic">🌐</span><div class="bd"><div class="nm">Internet &amp; TV</div><div class="dt">Multiple providers serve the area (Spectrum, AT&amp;T Fiber where available, and others). Check your exact address with each for what's on your street.</div></div></div>
+      </div>
+    </section>
+
+    <section id="trash">
+      <div class="sechead"><h2>Trash, recycling &amp; big stuff</h2><div class="line"></div></div>
+      <div class="card pad">
+        <ul class="clist">
+          <li><b>Three carts</b> — trash, recycling, and organics (yard + food waste). Out by 6 a.m. on your collection day, back in that evening.</li>
+          <li><b>Your collection day</b> — one day covers the whole community. <a href="https://www.burrtec.com/scv/" target="_blank" rel="noopener">Look it up on Burrtec ↗</a> <span style="color:var(--muted)">(we'll post the exact day here once it's confirmed).</span></li>
+          <li><b>Free bulky-item pickup</b> — up to 4 times a year, 3 large items each (furniture, appliances, branches). Schedule at least 48 hours ahead via <a href="https://greensantaclarita.com/trash-and-recycling/residential-trash-and-recycling/residential-waste-services/" target="_blank" rel="noopener">Green Santa Clarita ↗</a>.</li>
+          <li><b>Paint, batteries, electronics, propane</b> — never in the carts. Drop-off at Burrtec, 26000 Springbrook Ave (Mon–Fri, plus the 3rd Saturday morning).</li>
+          <li><b>Illegal dumping</b> in the common areas — report to the City Stormwater Hotline, (661) 222-7222.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="schools">
+      <div class="sechead"><h2>Schools</h2><div class="line"></div></div>
+      <div class="card">
+        <div class="svc"><span class="ic">🎒</span><div class="bd"><div class="nm">Elementary (K–6) — Newhall School District</div><div class="dt">Serves Valencia; the closest campus is usually Valencia Valley Elementary. <a href="https://www.newhallschooldistrict.com/" target="_blank" rel="noopener">newhallschooldistrict.com ↗</a></div></div></div>
+        <div class="svc"><span class="ic">🎓</span><div class="bd"><div class="nm">Junior high &amp; high (7–12) — Wm. S. Hart Union HSD</div><div class="dt">Rio Norte Junior High and Canyon High are both in 91354. <a href="https://www.hartdistrict.org/" target="_blank" rel="noopener">hartdistrict.org ↗</a></div></div></div>
+        <div class="svc"><span class="ic">📍</span><div class="bd"><div class="nm">Not sure which school is yours?</div><div class="dt">Attendance areas go by exact address and can change — confirm with the district office before you count on a campus.</div></div></div>
+      </div>
+    </section>
+
+    <section id="health">
+      <div class="sechead"><h2>Health &amp; emergency near us</h2><div class="line"></div></div>
+      <div class="card">
+        <div class="svc"><span class="ic">🏥</span><div class="bd"><div class="nm">Henry Mayo Newhall Hospital — ER, open 24/7</div><div class="dt">Our valley's hospital. 23845 McBean Pkwy, Valencia · (661) 200-2000 · <a href="https://www.henrymayo.com/medical-services/emergency/" target="_blank" rel="noopener">henrymayo.com ↗</a></div></div></div>
+        <div class="svc"><span class="ic">🩺</span><div class="bd"><div class="nm">Henry Mayo Urgent Care</div><div class="dt">For non-emergencies. 23929 McBean Pkwy, #102 · (661) 200-2500 · <a href="https://www.henrymayo.com/medical-services/urgent-care/" target="_blank" rel="noopener">hours &amp; wait times ↗</a></div></div></div>
+        <div class="svc"><span class="ic">🚓</span><div class="bd"><div class="nm">SCV Sheriff's Station</div><div class="dt">Non-emergency (661) 260-4000 · 26201 Golden Valley Rd · <a href="https://lasd.org/santa-clarita-valley/" target="_blank" rel="noopener">lasd.org ↗</a></div></div></div>
+        <div class="svc"><span class="ic">🚨</span><div class="bd"><div class="nm">Life-threatening emergency</div><div class="dt"><b>Call 911.</b> For live fire, smoke, air quality, and evacuation status, see the <a href="/fire">Fire &amp; Emergency</a> page.</div></div></div>
+      </div>
+    </section>
+
+    <section id="fire">
+      <div class="sechead"><h2>Living in a fire zone — staying insured</h2><div class="line"></div></div>
+      <div class="card pad">
+        <ul class="clist">
+          <li><b>We're in high fire-hazard country.</b> CAL FIRE maps much of the Santa Clarita Valley — including around Tesoro Highlands — as high or very-high fire hazard. Check your parcel: <a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones/" target="_blank" rel="noopener">CAL FIRE hazard-zone map ↗</a>.</li>
+          <li><b>It's why insurers are getting strict.</b> Non-renewals and steep premiums are common here. The single biggest lever you control is mitigation.</li>
+          <li><b>Harden your home &amp; clear defensible space</b> — California's standard is up to 100 feet (Public Resources Code 4291). This is exactly what the common-area brush by the water towers is about. Start with <a href="https://www.readyforwildfire.org/" target="_blank" rel="noopener">CAL FIRE's Ready for Wildfire ↗</a>.</li>
+          <li><b>Document it for a discount.</b> The state's <a href="https://www.insurance.ca.gov/" target="_blank" rel="noopener">"Safer from Wildfires" program (CA Dept. of Insurance) ↗</a> requires insurers to credit specific mitigation steps — and can move a home from "uninsurable" back to insurable.</li>
+          <li><b>Can't find coverage?</b> The <a href="https://www.cfpnet.com/" target="_blank" rel="noopener">California FAIR Plan ↗</a> is the state's insurer of last resort — (800) 339-4099.</li>
+        </ul>
+        <div class="callout">💡 <b>A community win worth chasing:</b> if Tesoro Highlands earns <a href="https://www.nfpa.org/education-and-research/wildfire/firewise-usa" target="_blank" rel="noopener" style="color:inherit;font-weight:700">Firewise USA ↗</a> recognition, many insurers apply a <b>5–15% premium discount</b> to every home in the neighborhood — and it builds directly on the brush-clearance work. One for the HOA agenda.</div>
+        <div class="note">General resources, not insurance advice — talk to a licensed agent about your own policy.</div>
+      </div>
+    </section>
+
+    <section id="city">
+      <div class="sechead"><h2>City services &amp; getting around</h2><div class="line"></div></div>
+      <div class="links">
+        <a href="https://santaclarita.gov/" target="_blank" rel="noopener">City services &amp; report a problem <span>santaclarita.gov ↗</span></a>
+        <a href="https://santaclarita.librarycalendar.com/" target="_blank" rel="noopener">Library branches &amp; programs <span>SC Public Library ↗</span></a>
+        <a href="https://www.metrolinktrains.com/" target="_blank" rel="noopener">Commuter rail (Santa Clarita line) <span>Metrolink ↗</span></a>
+        <a href="https://santaclaritatransit.com/" target="_blank" rel="noopener">Local buses &amp; commuter routes <span>Santa Clarita Transit ↗</span></a>
+      </div>
+    </section>
+
+    <footer class="thfoot"><p><b>A neighbor project — not the official HOA, and not professional advice.</b> Info here is gathered from official public sources and can change — always confirm with the provider or agency before you rely on it. Found an error? Share it in the community group chat. &nbsp;<a href="/">← Back to the hub</a></p></footer>
   </div>
   <script src="/nav.js" defer></script>
 </body>
