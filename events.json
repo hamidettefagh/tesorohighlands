@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T07:36:46.726Z",
+  "generatedAt": "2026-07-14T03:32:51.314Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -18,19 +18,6 @@
         "adults"
       ],
       "source": "City of Santa Clarita"
-    },
-    {
-      "title": "Playmaker Camp",
-      "url": "https://www.eventbrite.com/e/playmaker-camp-tickets-1992837715252",
-      "start": "2026-07-13T09:00",
-      "venue": "Santa Clarita Athletic Club",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$81.88–$161.90",
-      "audience": [
-        "kids"
-      ],
-      "source": "Eventbrite"
     },
     {
       "title": "Lunch at the Library",
