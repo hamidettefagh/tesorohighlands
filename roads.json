@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T03:32:52.346Z",
+  "generatedAt": "2026-07-14T06:24:26.649Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -18,20 +18,6 @@
     },
     {
       "route": "I-5",
-      "dir": "South",
-      "at": "Magic Mountain Parkway, Route 126",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1783994460,
-      "endEpoch": 1784037540,
-      "moreWindows": 22
-    },
-    {
-      "route": "I-5",
       "dir": "North",
       "at": "Golden State Freeway, Route 5",
       "place": "Valencia",
@@ -42,7 +28,7 @@
       "total": "1",
       "startEpoch": 1783994460,
       "endEpoch": 1784033940,
-      "moreWindows": 53
+      "moreWindows": 52
     },
     {
       "route": "I-5",
@@ -85,6 +71,20 @@
       "startEpoch": 1783998060,
       "endEpoch": 1784033940,
       "moreWindows": 20
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Drainage Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1783998060,
+      "endEpoch": 1784033940,
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -140,7 +140,7 @@
       "total": "4",
       "startEpoch": 1783998060,
       "endEpoch": 1784033940,
-      "moreWindows": 30
+      "moreWindows": 32
     },
     {
       "route": "I-5",
@@ -154,21 +154,21 @@
       "total": "4",
       "startEpoch": 1784005260,
       "endEpoch": 1784033940,
-      "moreWindows": 11
+      "moreWindows": 10
     },
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Hasley Canyon Rd",
+      "at": "Parker Rd",
       "place": "Castaic",
       "facility": "Mainline",
       "type": "Lane",
-      "work": "Sawcutting Operation",
-      "lanes": "3, 4",
+      "work": "Shoulder Reconstruction",
+      "lanes": "4",
       "total": "4",
-      "startEpoch": 1784005260,
-      "endEpoch": 1784030340,
-      "moreWindows": 30
+      "startEpoch": 1784034060,
+      "endEpoch": 1784066340,
+      "moreWindows": 15
     }
   ]
 }
