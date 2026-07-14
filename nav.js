@@ -39,10 +39,11 @@
     { href: "/hoa", label: "HOA", on: path === "/hoa" }
   ];
   var BRAND =
-    '<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#14161b"/><circle cx="43" cy="21" r="6.5" fill="#e8a33d"/><path d="M3 53 L21 29 L31 41 L41 27 L61 53 Z" fill="#e7e9ee"/></svg>';
+    '<svg aria-hidden="true" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#14161b"/><circle cx="43" cy="21" r="6.5" fill="#e8a33d"/><path d="M3 53 L21 29 L31 41 L41 27 L61 53 Z" fill="#e7e9ee"/></svg>';
 
   var nav = document.createElement("nav");
   nav.className = "thnav";
+  nav.setAttribute("aria-label", "Primary");
   nav.innerHTML =
     '<a class="brand" href="/">' + BRAND + "<span>Tesoro Highlands</span></a>" +
     '<div class="links">' +

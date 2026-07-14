@@ -116,3 +116,17 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .thfoot{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:11.5px;line-height:1.6;}
 .thfoot a{color:var(--muted);}
 .thfoot b{color:var(--ink-2);}
+
+/* keyboard focus — a clear, consistent ring (brand amber, visible on any bg) */
+a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--aqi-usg);outline-offset:2px;border-radius:6px;}
+
+/* print — drop the app chrome, ink-friendly, keep the content */
+@media print{
+  .thnav,.thstrip,.themebtn,.jumpnav{display:none !important;}
+  body.th{background:#fff;color:#000;}
+  .thwrap{max-width:100%;padding:0 0 12px;}
+  a{color:#000;}
+  .hub-card,.card,.goal,.svc,.stub .planned,.callout,.note,.preview{box-shadow:none !important;break-inside:avoid;}
+  details:not([open]) > *{display:block;}
+}
