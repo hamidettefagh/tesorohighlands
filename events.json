@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T10:10:17.983Z",
+  "generatedAt": "2026-07-14T21:14:46.089Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -1001,6 +1001,23 @@
       "source": "City of Santa Clarita"
     },
     {
+      "title": "California Two Five O at Rancho Camulos Museum",
+      "url": "https://calendar.santaclarita.gov/event/california-two-five-o-at-rancho-camulos-museum",
+      "start": "2026-07-19T12:00",
+      "dates": [
+        "2026-07-19T12:00"
+      ],
+      "repeats": 0,
+      "venue": "Rancho Camulos Museum",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita"
+    },
+    {
       "title": "Community Art Day",
       "url": "https://calendar.santaclarita.gov/event/community-art-day",
       "start": "2026-07-19T12:00",
@@ -1031,23 +1048,6 @@
       "price": null,
       "audience": [
         "adults"
-      ],
-      "source": "City of Santa Clarita"
-    },
-    {
-      "title": "SCAA General Meeting and Watercolor Demonstation",
-      "url": "https://calendar.santaclarita.gov/event/scaa-general-meeting-and-watercolor-demonstation",
-      "start": "2026-07-20T18:00",
-      "dates": [
-        "2026-07-20T18:00"
-      ],
-      "repeats": 0,
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
       ],
       "source": "City of Santa Clarita"
     },
