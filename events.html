@@ -60,7 +60,6 @@
   .badge-price.free{background:var(--ok-bg);color:var(--ok-fg);}
   .chip{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:1px 7px;border-radius:999px;background:var(--neu-bg);color:var(--neu-fg);margin:4px 4px 0 0;}
   .chip.today{background:var(--ok-bg);color:var(--ok-fg);}
-  .chip.ai{background:var(--cau-bg);color:var(--cau-fg);}
   .empty{padding:16px 2px;color:var(--muted);font-size:13px;}
 
   .ttdgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
@@ -315,10 +314,9 @@
         return '<div class="evitem">' + whenHtml(e._start) +
           '<div class="what"><a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.title) + "</a>" +
           (w.isToday ? '<span class="chip today">Today</span>' : "") +
-          '<div class="sub">' + esc([e.venue, e.city].filter(Boolean).join(" · ")) + (e._ai && e.via ? " · via " + esc(e.via) : "") + "</div>" +
+          '<div class="sub">' + esc([e.venue, e.city].filter(Boolean).join(" · ")) + "</div>" +
           auds.map(function (a) { return '<span class="chip">' + esc(AUD_LABEL[a] || a) + "</span>"; }).join("") +
           (e._repeats ? '<span class="chip">↻ +' + e._repeats + ' more dates</span>' : "") +
-          (e._ai ? '<span class="chip ai" title="Found by an AI web search — confirm on the linked page">✨ AI find</span>' : "") +
           '</div><div class="price">' + priceBadge(e) + "</div></div>";
       }).join("");
     }
@@ -372,12 +370,12 @@
         return e;
       })).filter(Boolean);
 
-      // AI-found events: keep only what the official feed doesn't already have,
-      // and tag them so they render with a "✨ AI find" badge.
+      // AI-found events: keep only what the official feed doesn't already have
+      // (dupOfMain), then blend them into the same list as everything else.
       var aiList = (((ai && ai.events) || [])
         .filter(function (e) { return e && e.title && e.url && stillUp(e.start); })
         .filter(function (e) { return !dupOfMain(e, main); }))
-        .map(function (e) { e._start = e.start; e._repeats = 0; e._ai = true; return e; });
+        .map(function (e) { e._start = e.start; e._repeats = 0; return e; });
 
       allEvents = main.concat(aiList).sort(function (a, b) { return a._start < b._start ? -1 : 1; });
       renderFeed();
@@ -389,7 +387,7 @@
       var stale = feed && feed.generatedAt && Date.now() - new Date(feed.generatedAt).getTime() > 5 * DAY;
       document.getElementById("feedMeta").innerHTML =
         "Across the Santa Clarita Valley — City of Santa Clarita, Eventbrite &amp; the SC Public Library" +
-        (aiList.length ? ", plus web listings found by AI (tagged <b>✨ AI find</b>)" : "") +
+        (aiList.length ? ", plus listings found by AI web search" : "") +
         (when.length ? " · updated " + esc(when.join(" · ")) : "") +
         (stale ? ' · <b style="color:var(--cau-fg)">feed may be stale</b>' : "") +
         " · details can change — confirm on the listing.";
