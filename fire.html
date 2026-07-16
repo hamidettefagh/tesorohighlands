@@ -397,7 +397,7 @@
   <!-- NEARBY FIRES -->
   <div class="sechead"><h2>Nearby fire activity</h2><div class="line"></div></div>
   <div class="card" id="fireCard" style="margin-top:8px">
-    <div class="q" style="margin-bottom:10px">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Each shows when it was last updated.</div>
+    <div class="q" style="margin-bottom:10px">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Acreage and containment come from <b>CAL FIRE</b> where they have the incident; the national feed often opens a record for a local fire without ever sizing it, so a fresh one can show "size not yet reported" for a while. Each shows when it was last updated.</div>
     <div id="fireList"></div>
   </div>
 
@@ -472,7 +472,8 @@
     </div>
     <p id="foot">
       All live: air quality &amp; fire weather via Open-Meteo, weather alerts via NWS (weather.gov), nearby fires via the
-      NIFC / IRWIN national wildfire feed, and evacuation status via the Cal OES statewide zone feed (verify your zone at
+      NIFC / IRWIN national wildfire feed with acreage &amp; containment from CAL FIRE, and evacuation status via the
+      Cal OES statewide zone feed (verify your zone at
       Genasys Protect). Community notes (water tanks, brush, history) come from neighbors, not an official source.
       This tool does not replace official warnings — always follow CAL FIRE, LA County Fire, and Sheriff orders, and
       call 911 in an emergency.
