@@ -637,8 +637,43 @@ const FIRE_RADIUS = 45; // miles from home to include
 // Active fires only: not declared out, not fully contained. Shared by the
 // list, the map, and (inlined) the site-wide status strip.
 const FIRE_WHERE = "IncidentTypeCategory='WF' AND FireOutDateTime IS NULL AND (PercentContained < 100 OR PercentContained IS NULL)";
-// Dead initial-attack records: no update in 2 days and never grew past 10 acres.
-function isStaleFire(mod, acres){ return mod != null && (Date.now() - mod) > 48*3600*1000 && (acres == null || acres < 10); }
+// Is this record a fire, or just litter?
+//
+// County dispatch opens an IRWIN record for every brush call and usually never
+// closes it — the Lopez fire was touched once, ten minutes after dispatch, then
+// abandoned; it shows up "active" days later having been out the whole time.
+// But record silence alone does NOT mean out: the federal feed abandoned the
+// Pointe Fire's record two minutes after dispatch while it was still growing to
+// 58 acres. What separates them is whether anyone is still *sizing* the fire —
+// CAL FIRE tracks the real ones, and enrichFires() refreshes `mod` from it. So:
+// a fire nobody has ever sized, gone quiet for half a day, is out. A sized fire
+// gets the benefit of the doubt for two days.
+function isStaleFire(mod, acres){
+  if(mod == null) return false;
+  const quietFor = Date.now() - mod;
+  const sized = acres != null && acres >= 10;
+  return quietFor > (sized ? 48 : 12) * 3600 * 1000;
+}
+// IRWIN can carry the same fire twice when two agencies both report it (the Lime
+// fire lands twice at the same spot). Collapse by name + location, keeping
+// whichever record actually has numbers, then the fresher one.
+function dedupeFires(fires){
+  const out = [];
+  for(const f of fires){
+    const i = out.findIndex(o => normFireName(o.name)===normFireName(f.name) && haversine(o.lat,o.lon,f.lat,f.lon) < 1.5);
+    if(i < 0){ out.push(f); continue; }
+    const score = x => (x.acres!=null?2:0) + (x.contain!=null?1:0);
+    if(score(f) > score(out[i]) || (score(f)===score(out[i]) && (f.mod||0) > (out[i].mod||0))) out[i] = f;
+  }
+  return out;
+}
+// "0 acres" is nonsense for a tenth-of-an-acre spot fire; say what we mean.
+function acresText(a){
+  if(a == null) return `<span style="color:var(--muted)">size not yet reported</span>`;
+  if(a < 1) return "under an acre";
+  const n = Math.round(a);
+  return `${n.toLocaleString()} acre${n===1?"":"s"}`;
+}
 // CAL FIRE carries real acreage + containment for California incidents that the
 // federal feed leaves null — it opens a stub for fast local county fires and
 // often never fills it in. Their API sends no CORS header, so /api/calfire
@@ -694,7 +729,7 @@ async function fetchFires(lat, lon){
     });
   // Enrich before the staleness test: a fire CAL FIRE is actively sizing is not a
   // dead initial-attack record, even if WFIGS hasn't touched it in two days.
-  return enrichFires(raw, cal)
+  return dedupeFires(enrichFires(raw, cal))
     .filter(f => !isStaleFire(f.mod, f.acres))
     .filter(f => f.dist <= FIRE_RADIUS)
     .sort((x,y)=> x.dist - y.dist)
@@ -892,7 +927,7 @@ function render(){
     fl.innerHTML = `<div class="note"><b>No active wildfire incidents within ${FIRE_RADIUS} miles</b> of Tesoro Highlands right now, per the national feed. That's the normal, good state.</div>`;
   } else {
     fl.innerHTML = v.fires.map(f=>{
-      const acres = (f.acres==null) ? `<span style="color:var(--muted)">size not yet reported</span>` : `${Math.round(f.acres).toLocaleString()} acres`;
+      const acres = acresText(f.acres);
       const upd = f.mod ? ` · updated ${fmtAgo(f.mod)}` : "";
       const meta = f.trend ? `${acres} · ${f.trend}` : (f.disc ? `${acres} · spotted ${fmtDate(f.disc)}${upd}` : `${acres}${upd}`);
       const bar = (f.contain!=null) ? `<div class="contain"><i style="width:${f.contain}%"></i></div><div class="fs" style="margin-top:4px">${f.contain}% contained</div>` : "";
@@ -1129,7 +1164,7 @@ boot();
         nFires++;
         var rad = ac>=1000?9:ac>=100?7:ac>=10?5:4;
         L.circleMarker([c[1],c[0]], { radius:rad, color:"#7f1d1d", weight:1, fillColor:"#ef4444", fillOpacity:.9 }).addTo(map)
-          .bindPopup("<b>"+title(p.IncidentName)+" Fire</b><br>"+(ac!=null?Math.round(ac).toLocaleString()+" acres":"size not yet reported")+(e.contain!=null?" · "+e.contain+"% contained":"")+(e.mod&&typeof fmtAgo==="function"?" · updated "+fmtAgo(e.mod):"")+"<br>"+dist.toFixed(dist<10?1:0)+" mi to your "+comp(brg(H.lat,H.lon,c[1],c[0])));
+          .bindPopup("<b>"+title(p.IncidentName)+" Fire</b><br>"+(typeof acresText==="function"?acresText(ac):(ac!=null?Math.round(ac).toLocaleString()+" acres":"size not yet reported"))+(e.contain!=null?" · "+e.contain+"% contained":"")+(e.mod&&typeof fmtAgo==="function"?" · updated "+fmtAgo(e.mod):"")+"<br>"+dist.toFixed(dist<10?1:0)+" mi to your "+comp(brg(H.lat,H.lon,c[1],c[0])));
       });
       finish();
     }).catch(function(){ finish(); });

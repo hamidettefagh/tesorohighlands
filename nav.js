@@ -89,12 +89,17 @@
   async function computeStatus() {
     var L = loc(), lvl = 0, text = "";
     var okAir = false, okAlerts = false, okFires = false, okEvac = false;
+    // The checks race each other, so choose what to SAY by priority rather than by
+    // whichever request happened to land last: an evacuation outranks a fire, and
+    // a fire outranks the air it is busy smoking up.
+    var said = -1;
+    function say(prio, level, msg) { lvl = Math.max(lvl, level); if (prio > said) { said = prio; text = msg; } }
     var jobs = [
       fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + L.lat + "&longitude=" + L.lon + "&current=us_aqi&timezone=America%2FLos_Angeles").then(function (r) { return r.json(); }).then(function (a) {
         var aqi = a.current && a.current.us_aqi;
         if (aqi == null) return; okAir = true;
-        if (aqi > 150) { lvl = Math.max(lvl, 2); text = "Air is unhealthy (AQI " + Math.round(aqi) + ") — limit time outside."; }
-        else if (aqi > 100) { lvl = Math.max(lvl, 1); text = "Air unhealthy for sensitive groups (AQI " + Math.round(aqi) + ")."; }
+        if (aqi > 150) { say(80, 2, "Air is unhealthy (AQI " + Math.round(aqi) + ") — limit time outside."); }
+        else if (aqi > 100) { say(40, 1, "Air unhealthy for sensitive groups (AQI " + Math.round(aqi) + ")."); }
       }).catch(function () {}),
       fetch("https://api.weather.gov/alerts/active?point=" + L.lat + "," + L.lon, { headers: { Accept: "application/geo+json" } }).then(function (r) { return r.json(); }).then(function (al) {
         if (!al || !al.features) return; okAlerts = true;
@@ -102,17 +107,44 @@
         var red = evs.find(function (e) { return /red flag|fire weather/i.test(e); });
         var heat = evs.find(function (e) { return /heat/i.test(e); });
         var warn = evs.find(function (e) { return /warning/i.test(e) && !/heat/i.test(e); });
-        if (red) { lvl = Math.max(lvl, 1); text = red + " in effect — elevated fire danger."; }
-        else if (heat && lvl < 1) { lvl = 1; text = heat + " — hydrate and plan around the heat."; }
-        else if (warn && lvl < 1) { lvl = 1; text = warn + " in effect."; }
+        if (red) { say(60, 1, red + " in effect — elevated fire danger."); }
+        else if (heat) { say(30, 1, heat + " — hydrate and plan around the heat."); }
+        else if (warn) { say(20, 1, warn + " in effect."); }
       }).catch(function () {}),
-      fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=" + encodeURIComponent("IncidentTypeCategory='WF' AND FireOutDateTime IS NULL AND (PercentContained < 100 OR PercentContained IS NULL)") + "&outFields=IncidentName,IncidentSize&geometry=" + (L.lon - 1.3) + "," + (L.lat - 1) + "," + (L.lon + 1.3) + "," + (L.lat + 1) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326&f=geojson").then(function (r) { return r.json(); }).then(function (f) {
+      Promise.all([
+        fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=" + encodeURIComponent("IncidentTypeCategory='WF' AND FireOutDateTime IS NULL AND (PercentContained < 100 OR PercentContained IS NULL)") + "&outFields=IncidentName,IncidentSize,ModifiedOnDateTime_dt&geometry=" + (L.lon - 1.3) + "," + (L.lat - 1) + "," + (L.lon + 1.3) + "," + (L.lat + 1) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326&f=geojson").then(function (r) { return r.json(); }),
+        // This strip only speaks up at 50+ acres, and the federal feed leaves local
+        // fires unsized — so without CAL FIRE the hero silently missed a 58-acre
+        // fire five miles away. See /api/calfire.
+        fetch("/api/calfire").then(function (r) { return r.json(); }).catch(function () { return null; })
+      ]).then(function (res) {
+        var f = res[0], cal = (res[1] && res[1].fires) || [];
         if (!f || !f.features) return; okFires = true;
+        function nrm(s) { return String(s || "").toUpperCase().replace(/\bFIRE\b/g, " ").replace(/[^A-Z0-9]/g, ""); }
         var fires = f.features.filter(function (ft) { return ft.geometry && ft.geometry.coordinates; }).map(function (ft) {
-          var c = ft.geometry.coordinates;
-          return { name: ft.properties.IncidentName, acres: ft.properties.IncidentSize || 0, d: haversine(L.lat, L.lon, c[1], c[0]) };
-        }).filter(function (x) { return x.acres >= 50; }).sort(function (a, b) { return a.d - b.d; });
-        if (fires[0] && fires[0].d <= 15) { lvl = Math.max(lvl, 1); text = fires[0].name + " Fire ~" + fires[0].d.toFixed(0) + " mi away — stay aware."; }
+          var c = ft.geometry.coordinates, p = ft.properties || {};
+          var acres = p.IncidentSize, mod = p.ModifiedOnDateTime_dt;
+          if (acres == null || acres === 0) {
+            for (var i = 0; i < cal.length; i++) {
+              var cf = cal[i];
+              if (cf.acres == null || nrm(cf.name) !== nrm(p.IncidentName)) continue;
+              if (cf.lat == null || cf.lon == null || haversine(c[1], c[0], cf.lat, cf.lon) > 15) continue;  // same name, but ours?
+              acres = cf.acres;
+              var cu = cf.updated ? Date.parse(cf.updated) : NaN;
+              if (!isNaN(cu) && (mod == null || cu > mod)) mod = cu;
+              break;
+            }
+          }
+          return { name: p.IncidentName, acres: acres || 0, mod: mod, d: haversine(L.lat, L.lon, c[1], c[0]) };
+        }).filter(function (x) {
+          // Sizable and still being reported on — a record nobody has touched in two
+          // days is a fire that's out but never got flagged out.
+          return x.acres >= 50 && (x.mod == null || (Date.now() - x.mod) < 48 * 3600 * 1000);
+        }).sort(function (a, b) { return a.d - b.d; });
+        if (fires[0] && fires[0].d <= 15) {
+          var nm = String(fires[0].name || "").toLowerCase().replace(/\b[a-z]/g, function (m) { return m.toUpperCase(); });
+          say(70, 1, nm + " Fire ~" + fires[0].d.toFixed(0) + " mi away — stay aware.");
+        }
       }).catch(function () {}),
       fetch("https://services.arcgis.com/BLN4oKB0N1YSgvY8/arcgis/rest/services/CA_EVACUATIONS_CalOESHosted_view/FeatureServer/0/query?where=1%3D1&geometry=" + (L.lon - 0.35) + "," + (L.lat - 0.35) + "," + (L.lon + 0.35) + "," + (L.lat + 0.35) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=STATUS,NOTES&returnGeometry=true&outSR=4326&f=json").then(function (r) { return r.json(); }).then(function (ev) {
         if (!ev || ev.error || !ev.features) return; okEvac = true;
@@ -157,10 +189,10 @@
           if (z.order) { if (z.covers && !covOrder) covOrder = z; if (!nearOrder) nearOrder = z; }
           else { if (z.covers && !covWarn) covWarn = z; if (!nearWarn) nearWarn = z; }
         }
-        if (covOrder) { lvl = 2; text = "EVACUATION ORDER for our zone — leave now."; }
-        else if (covWarn) { lvl = Math.max(lvl, 1); text = "Evacuation WARNING includes our zone" + (covWarn.notes ? " (" + covWarn.notes + ")" : "") + " — be packed and ready."; }
-        else if (nearOrder) { lvl = Math.max(lvl, 1); text = "Evacuation ORDER ~" + Math.round(nearOrder.dist) + " mi to our " + nearOrder.dir + (nearOrder.notes ? " (" + nearOrder.notes + ")" : "") + " — not our zone; stay aware."; }
-        else if (nearWarn) { lvl = Math.max(lvl, 1); text = "Evacuation warning ~" + Math.round(nearWarn.dist) + " mi " + nearWarn.dir + " of us" + (nearWarn.notes ? " (" + nearWarn.notes + ")" : "") + " — not our zone."; }
+        if (covOrder) { say(100, 2, "EVACUATION ORDER for our zone — leave now."); }
+        else if (covWarn) { say(90, 1, "Evacuation WARNING includes our zone" + (covWarn.notes ? " (" + covWarn.notes + ")" : "") + " — be packed and ready."); }
+        else if (nearOrder) { say(50, 1, "Evacuation ORDER ~" + Math.round(nearOrder.dist) + " mi to our " + nearOrder.dir + (nearOrder.notes ? " (" + nearOrder.notes + ")" : "") + " — not our zone; stay aware."); }
+        else if (nearWarn) { say(50, 1, "Evacuation warning ~" + Math.round(nearWarn.dist) + " mi " + nearWarn.dir + " of us" + (nearWarn.notes ? " (" + nearWarn.notes + ")" : "") + " — not our zone."); }
       }).catch(function () {})
     ];
     await Promise.allSettled(jobs);
