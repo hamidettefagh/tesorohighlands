@@ -9,7 +9,7 @@
 <link rel="dns-prefetch" href="https://services3.arcgis.com" />
 <link rel="dns-prefetch" href="https://services.arcgis.com" />
 <title>HOA & Resources — Tesoro Highlands</title>
-<meta name="description" content="Plain, factual pointers for navigating the Tesoro Highlands HOA — who to contact, where official documents live, and homeowner rights in California. Unofficial, resident-run." />
+<meta name="description" content="Plain, factual pointers for navigating the Tesoro Highlands HOA — your documents, your rights under California law, and how to get involved. Unofficial, resident-run." />
 <meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#14161b" media="(prefers-color-scheme: dark)" />
 <link rel="icon" href="/icon.svg" />
@@ -20,7 +20,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Tesoro Highlands" />
 <meta property="og:title" content="HOA &amp; Resources — Tesoro Highlands" />
-<meta property="og:description" content="Plain, factual pointers for navigating our HOA — who to contact, where the official documents live, and the rights every California homeowner has. Unofficial, resident-run." />
+<meta property="og:description" content="Plain, factual pointers for navigating our HOA — your documents, your rights under California law, and how to get involved. Unofficial, resident-run." />
 <meta property="og:url" content="https://tesorohighlands.com/hoa" />
 <meta property="og:image" content="https://tesorohighlands.com/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -28,28 +28,134 @@
 <meta property="og:image:alt" content="Tesoro Highlands — a neighbor project for our community in Valencia, CA" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="HOA &amp; Resources — Tesoro Highlands" />
-<meta name="twitter:description" content="Who to contact, where the official documents live, and the rights every California homeowner has. Unofficial, resident-run." />
+<meta name="twitter:description" content="Your documents, your rights under California law, and how to get involved. Unofficial, resident-run." />
 <meta name="twitter:image" content="https://tesorohighlands.com/og-image.png" />
 <script src="/theme.js"></script>
 <link rel="stylesheet" href="/th.css" />
+<style>
+  .preview{display:flex;gap:9px;align-items:flex-start;background:var(--cau-bg);color:var(--cau-fg);border:1px solid var(--cau-line);
+    border-radius:12px;padding:11px 14px;font-size:12.5px;line-height:1.5;margin:14px 0 6px;}
+  .preview b{font-weight:680;}
+  .jumpnav{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin:14px 0 4px;-webkit-overflow-scrolling:touch;}
+  .jumpnav::-webkit-scrollbar{display:none;}
+  .jumpnav a{flex:none;text-decoration:none;font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--surface);
+    border:1px solid var(--line);border-radius:999px;padding:6px 13px;white-space:nowrap;}
+  .jumpnav a:hover{border-color:var(--muted);color:var(--ink);}
+  section[id]{scroll-margin-top:64px;}
+  .sechead{display:flex;align-items:center;gap:8px;margin:26px 2px 8px;}
+  .sechead h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:680;}
+  .sechead .line{flex:1;height:1px;background:var(--line);}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:6px 16px;box-shadow:var(--shadow);}
+  .card.pad{padding:15px 16px;}
+  .card + .card{margin-top:12px;}
+  .svc{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line-2);}
+  .svc:first-child{border-top:0;}
+  .svc .ic{font-size:19px;flex:none;width:26px;text-align:center;line-height:1.4;}
+  .svc .bd{flex:1;min-width:0;}
+  .svc .nm{font-size:14px;font-weight:620;color:var(--ink);letter-spacing:-0.005em;}
+  .svc .nm .code{font-size:10.5px;font-weight:700;color:var(--muted);background:var(--neu-bg);border-radius:999px;padding:1px 8px;margin-left:6px;white-space:nowrap;vertical-align:1px;}
+  .svc .dt{font-size:12.5px;color:var(--ink-2);line-height:1.55;margin-top:2px;}
+  .svc .dt a{color:var(--accent);text-decoration:none;font-weight:600;}
+  .svc .dt a:hover{text-decoration:underline;}
+  .clist{list-style:none;margin:0;padding:2px 0;}
+  .clist li{font-size:13.5px;color:var(--ink-2);line-height:1.55;padding:9px 0 9px 30px;position:relative;border-top:1px solid var(--line-2);}
+  .clist li:first-child{border-top:0;}
+  .clist li:before{content:"○";position:absolute;left:6px;top:9px;color:var(--muted);font-size:13px;}
+  .clist b{color:var(--ink);font-weight:620;}
+  .clist a{color:var(--accent);text-decoration:none;font-weight:600;}
+  .steps{counter-reset:step;list-style:none;margin:0;padding:2px 0;}
+  .steps li{font-size:13.5px;color:var(--ink-2);line-height:1.55;padding:10px 0 10px 36px;position:relative;border-top:1px solid var(--line-2);counter-increment:step;}
+  .steps li:first-child{border-top:0;}
+  .steps li:before{content:counter(step);position:absolute;left:2px;top:10px;width:22px;height:22px;border-radius:999px;
+    background:var(--neu-bg);color:var(--neu-fg);font-size:11.5px;font-weight:700;display:grid;place-items:center;}
+  .steps b{color:var(--ink);font-weight:620;}
+  .note{font-size:12px;color:var(--muted);line-height:1.55;margin:8px 2px 0;}
+  .callout{background:var(--ok-bg);border:1px solid var(--ok-line);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:12.5px;line-height:1.55;color:var(--ok-fg);}
+  .callout b{font-weight:680;}
+  .links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
+  @media (max-width:520px){.links{grid-template-columns:1fr;}}
+  .links a{display:flex;justify-content:space-between;align-items:center;gap:8px;text-decoration:none;font-size:13px;color:var(--ink);
+    padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:var(--surface);}
+  .links a:hover{border-color:var(--muted);}
+  .links a span{color:var(--muted);font-size:12px;flex:none;}
+</style>
 </head>
 <body class="th">
   <div class="thwrap">
-    <div class="stub">
-      <div class="ico">🏛️</div>
+    <div class="hub-head">
       <h1>HOA &amp; Resources</h1>
-      <p class="lede">A plain, factual place to get oriented with our HOA — who to contact, where the official documents live, and the rights every California homeowner has.</p>
-      <div class="soon">Coming soon</div>
-      <div class="planned">
-        <h2>What's planned</h2>
-        <ul>
-          <li><b>Who to contact</b> — the management company and the common questions they handle (dues, architectural requests, common-area upkeep), once confirmed from official sources.</li>
-          <li><b>Where the documents live</b> — pointers to the CC&amp;Rs, bylaws, and architectural guidelines every homeowner receives.</li>
-          <li><b>Know your rights</b> — plain summaries of the California laws that protect homeowners, including the Davis-Stirling Act and Civil Code 4515, which protects residents speaking up on community matters.</li>
+      <p>Get oriented with how our HOA works — and the rights every California homeowner has.</p>
+    </div>
+
+    <div class="preview"><span>🚧</span><div><b>Preview — still coming together.</b> Everything here is general California law and standard HOA practice, not legal advice and not specific to any current community matter. Spot an error? Tell me in the group chat.</div></div>
+
+    <nav class="jumpnav" aria-label="Jump to a section">
+      <a href="#docs">📄 Your documents</a>
+      <a href="#rights">⚖️ Your rights</a>
+      <a href="#disputes">🤝 Disagreements</a>
+      <a href="#involved">🙋 Get involved</a>
+      <a href="#resources">📚 Learn more</a>
+    </nav>
+
+    <section id="docs">
+      <div class="sechead"><h2>Know your documents</h2><div class="line"></div></div>
+      <div class="card">
+        <div class="svc"><span class="ic">📜</span><div class="bd"><div class="nm">CC&amp;Rs — the rulebook that runs with your deed</div><div class="dt">Covenants, Conditions &amp; Restrictions: what you can and can't do with your property, what the HOA maintains, and how assessments work. You agreed to these when you bought — worth actually reading once.</div></div></div>
+        <div class="svc"><span class="ic">🏛️</span><div class="bd"><div class="nm">Bylaws — how the association itself runs</div><div class="dt">Board size, terms, officer roles, meeting and election mechanics. This is the document to check when you wonder "can the board even do that?"</div></div></div>
+        <div class="svc"><span class="ic">🎨</span><div class="bd"><div class="nm">Architectural guidelines &amp; operating rules</div><div class="dt">Paint palettes, landscaping standards, parking rules, and the approval process for exterior changes. Submit the request <b>before</b> the work — retroactive approvals are the hard way.</div></div></div>
+        <div class="svc"><span class="ic">📥</span><div class="bd"><div class="nm">Where to get them</div><div class="dt">They're in your escrow/closing packet, and every owner is entitled to copies from the association (California Civil Code 5205) — request them through the management company. Buying or selling? The seller must provide them.</div></div></div>
+      </div>
+    </section>
+
+    <section id="rights">
+      <div class="sechead"><h2>Your rights under California law</h2><div class="line"></div></div>
+      <div class="card">
+        <div class="svc"><span class="ic">🚪</span><div class="bd"><div class="nm">Board meetings are open to you <span class="code">Civil Code 4900–4955</span></div><div class="dt">The Open Meeting Act: members may attend board meetings, agendas are posted in advance, and there's an open forum where any member can speak. Boards can only handle limited topics (like personnel or litigation) in closed executive session.</div></div></div>
+        <div class="svc"><span class="ic">🗂️</span><div class="bd"><div class="nm">You can inspect the records <span class="code">Civil Code 5200–5240</span></div><div class="dt">Budgets, meeting minutes, vendor contracts, reserve studies, and more — put the request in writing and the association must produce them. This is how "where do our dues go?" gets answered with documents instead of rumors.</div></div></div>
+        <div class="svc"><span class="ic">📣</span><div class="bd"><div class="nm">You can speak up and organize <span class="code">Civil Code 4515</span></div><div class="dt">Peacefully assembling, canvassing neighbors, distributing flyers about community matters, and criticizing the board are all protected — the association can't retaliate or charge you a fee for it.</div></div></div>
+        <div class="svc"><span class="ic">🗳️</span><div class="bd"><div class="nm">Elections have real rules <span class="code">Civil Code 5100–5145</span></div><div class="dt">Director elections use secret ballots with independent inspectors of elections, and members can inspect the voter list and ballots afterward.</div></div></div>
+        <div class="svc"><span class="ic">☀️</span><div class="bd"><div class="nm">Improvements they can shape but not ban</div><div class="dt">California protects <b>solar panels</b> (Civil Code 714), <b>EV chargers</b> (4745), <b>drought-tolerant landscaping</b> (4735), and even <b>clotheslines</b> (4750). The HOA can apply reasonable aesthetic standards — it can't say no outright.</div></div></div>
+      </div>
+      <div class="note">Section numbers refer to the California Civil Code (the "Davis-Stirling Act"). Always read the actual text — linked below — before acting on it.</div>
+    </section>
+
+    <section id="disputes">
+      <div class="sechead"><h2>If you disagree with the HOA</h2><div class="line"></div></div>
+      <div class="card pad">
+        <ol class="steps">
+          <li><b>Start a paper trail.</b> Write to the management company — email is fine — and keep it factual: what happened, what you're asking for, by when. Most issues end here.</li>
+          <li><b>Ask for IDR — "internal dispute resolution."</b> A free, informal meet-and-confer between you and a board member. The association <b>must</b> participate if you request it (Civil Code 5910).</li>
+          <li><b>ADR before court.</b> For most enforcement disputes, California requires an offer of alternative dispute resolution (mediation or arbitration) before anyone can sue (Civil Code 5930).</li>
+          <li><b>Small claims still works.</b> For money disputes up to the small-claims limit, you can go directly — no lawyer needed.</li>
+        </ol>
+        <div class="note">Worth knowing: California has <b>no state agency that regulates HOAs</b> — the Davis-Stirling Act is enforced by members, through exactly these steps. That's why the paper trail matters.</div>
+      </div>
+    </section>
+
+    <section id="involved">
+      <div class="sechead"><h2>The productive path — get involved</h2><div class="line"></div></div>
+      <div class="card pad">
+        <ul class="clist">
+          <li><b>Show up once a quarter.</b> A board meeting with members in the room runs differently than an empty one. Bring one clear question.</li>
+          <li><b>Read the minutes.</b> Fifteen minutes of minutes beats an hour of group-chat speculation about what the board decided.</li>
+          <li><b>Run for the board.</b> Boards are volunteers from this community — if you have opinions and a spreadsheet habit, that's the qualification.</li>
+          <li><b>Bring an agenda item.</b> One with real money attached: <a href="/living#fire">Firewise USA recognition</a> can earn every home here a 5–15% insurance discount and builds directly on the brush-clearance work.</li>
         </ul>
       </div>
-    </div>
-    <footer class="thfoot"><p><b>Important:</b> this is an <b>unofficial, resident-run</b> page — not the HOA, its board, or its management company, and not a substitute for official HOA communications. It will stick to verifiable facts and public documents, and won't publish anyone's personal information. &nbsp;<a href="/">← Back to the hub</a></p></footer>
+      <div class="callout">📬 <b>Who to contact:</b> every owner receives the management company's contact info in their welcome packet and billing statements. We'll list the confirmed contact here once it's verified — until then, check your closing documents or ask in the community chat.</div>
+    </section>
+
+    <section id="resources">
+      <div class="sechead"><h2>Learn more</h2><div class="line"></div></div>
+      <div class="links">
+        <a href="https://leginfo.legislature.ca.gov/faces/codesTOCSelected.xhtml?tocCode=CIV&division=4.&title=&part=5.&chapter=&article=" target="_blank" rel="noopener">The Davis-Stirling Act, full text <span>CA Legislature ↗</span></a>
+        <a href="https://www.davis-stirling.com/" target="_blank" rel="noopener">Plain-English law library <span>Adams | Stirling ↗</span></a>
+        <a href="https://www.caionline.org/" target="_blank" rel="noopener">HOA education &amp; research <span>CAI ↗</span></a>
+        <a href="/living#fire">Fire-zone insurance help <span>Living Here</span></a>
+      </div>
+    </section>
+
+    <footer class="thfoot"><p><b>Important: this is an unofficial, resident-run page</b> — not the HOA, its board, or its management company, and not legal advice; for community-specific questions, rely on official HOA communications. <b>Deliberately not published here:</b> board meeting schedules and internal community matters — neighbors asked that those stay off the public internet, so this page sticks to public law and general how-to. It won't publish anyone's personal information. &nbsp;<a href="/">← Back to the hub</a></p></footer>
   </div>
   <script src="/nav.js" defer></script>
 </body>
