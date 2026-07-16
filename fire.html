@@ -700,10 +700,14 @@ function enrichFires(fires, cal){
     }
     if(!best || bestD > 15) return f;
     const out = Object.assign({}, f);
-    if((out.acres==null || out.acres===0) && best.acres!=null) out.acres = best.acres;
-    if(out.contain==null && best.contained!=null) out.contain = best.contained;
     const cu = best.updated ? Date.parse(best.updated) : NaN;
-    if(!isNaN(cu) && (out.mod==null || cu > out.mod)) out.mod = cu;  // CAL FIRE is usually the fresher timestamp
+    const calFresher = !isNaN(cu) && (out.mod == null || cu >= out.mod);
+    // CAL FIRE wins on gaps, and wins outright when it's the fresher of the two —
+    // the federal feed often freezes a local fire at its dispatch-time 0.1 acres
+    // and walks away (Zebra sat at 0.1 there while CAL FIRE had it at 25).
+    if(best.acres != null && (out.acres == null || out.acres === 0 || calFresher)) out.acres = best.acres;
+    if(best.contained != null && (out.contain == null || calFresher)) out.contain = best.contained;
+    if(!isNaN(cu) && (out.mod == null || cu > out.mod)) out.mod = cu;
     return out;
   });
 }

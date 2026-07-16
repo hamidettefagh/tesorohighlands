@@ -124,16 +124,17 @@
         var fires = f.features.filter(function (ft) { return ft.geometry && ft.geometry.coordinates; }).map(function (ft) {
           var c = ft.geometry.coordinates, p = ft.properties || {};
           var acres = p.IncidentSize, mod = p.ModifiedOnDateTime_dt;
-          if (acres == null || acres === 0) {
-            for (var i = 0; i < cal.length; i++) {
-              var cf = cal[i];
-              if (cf.acres == null || nrm(cf.name) !== nrm(p.IncidentName)) continue;
-              if (cf.lat == null || cf.lon == null || haversine(c[1], c[0], cf.lat, cf.lon) > 15) continue;  // same name, but ours?
-              acres = cf.acres;
-              var cu = cf.updated ? Date.parse(cf.updated) : NaN;
-              if (!isNaN(cu) && (mod == null || cu > mod)) mod = cu;
-              break;
-            }
+          for (var i = 0; i < cal.length; i++) {
+            var cf = cal[i];
+            if (cf.acres == null || nrm(cf.name) !== nrm(p.IncidentName)) continue;
+            if (cf.lat == null || cf.lon == null || haversine(c[1], c[0], cf.lat, cf.lon) > 15) continue;  // same name, but ours?
+            var cu = cf.updated ? Date.parse(cf.updated) : NaN;
+            // CAL FIRE wins on gaps and when it's fresher: the federal feed often
+            // freezes a local fire at its dispatch-time 0.1 acres and walks away,
+            // which would keep it under this strip's 50-acre bar forever.
+            if (acres == null || acres === 0 || (!isNaN(cu) && (mod == null || cu >= mod))) acres = cf.acres;
+            if (!isNaN(cu) && (mod == null || cu > mod)) mod = cu;
+            break;
           }
           return { name: p.IncidentName, acres: acres || 0, mod: mod, d: haversine(L.lat, L.lon, c[1], c[0]) };
         }).filter(function (x) {
