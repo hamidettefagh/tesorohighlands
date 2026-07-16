@@ -1,3 +1,6 @@
+<!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://air-quality-api.open-meteo.com" crossorigin />
@@ -6,7 +9,7 @@
 <link rel="preconnect" href="https://basemaps.cartocdn.com" crossorigin />
 <link rel="dns-prefetch" href="https://services3.arcgis.com" />
 <link rel="dns-prefetch" href="https://services.arcgis.com" />
-<title>Tesoro Highlands — Fire and Air Watch</title>
+<title>Fire &amp; Emergency — Tesoro Highlands</title>
 <meta name="description" content="Hyper-local wildfire, air quality, and evacuation readiness for the Tesoro Highlands community in Valencia, CA 91354." />
 <meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#14161b" media="(prefers-color-scheme: dark)" />
@@ -17,7 +20,7 @@
 <link rel="canonical" href="https://tesorohighlands.com/fire" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Tesoro Highlands" />
-<meta property="og:title" content="Tesoro Highlands — Fire and Air Watch" />
+<meta property="og:title" content="Fire &amp; Emergency — Tesoro Highlands" />
 <meta property="og:description" content="Live air quality, fire weather, nearby-fire map, and evacuation status for the Tesoro Highlands community in Valencia." />
 <meta property="og:url" content="https://tesorohighlands.com/fire" />
 <meta property="og:image" content="https://tesorohighlands.com/og-image.png" />
@@ -25,7 +28,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Tesoro Highlands — a neighbor project for our community in Valencia, CA" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Tesoro Highlands — Fire and Air Watch" />
+<meta name="twitter:title" content="Fire &amp; Emergency — Tesoro Highlands" />
 <meta name="twitter:description" content="Live air quality, fire weather, nearby-fire map, and evacuation status for our community in Valencia." />
 <meta name="twitter:image" content="https://tesorohighlands.com/og-image.png" />
 
@@ -253,7 +256,30 @@
   .commfact:last-of-type { border-bottom:0; }
   .commfact b { color:var(--ink); font-weight:620; }
   .commfact .ci { flex:none; font-size:17px; width:24px; text-align:center; }
+
+  /* neutral hero — the honest "we don't know" state */
+  .hero.neutral { background:var(--neu-bg); border-color:var(--neu-line); }
+  .hero.neutral .eyebrow, .hero.neutral h2 { color:var(--neu-fg); }
+  .hero .hact { display:inline-block; margin-top:10px; font-size:13px; font-weight:640; color:inherit; text-decoration:none; opacity:.9; }
+
+  /* jump nav (same pattern as the other pages) */
+  .jumpnav { display:flex; gap:7px; overflow-x:auto; scrollbar-width:none; margin:12px 0 2px; -webkit-overflow-scrolling:touch; }
+  .jumpnav::-webkit-scrollbar { display:none; }
+  .jumpnav a { flex:none; text-decoration:none; font-size:12.5px; font-weight:600; color:var(--ink-2); background:var(--surface);
+    border:1px solid var(--line); border-radius:999px; padding:6px 13px; white-space:nowrap; }
+  .jumpnav a:hover { border-color:var(--muted); color:var(--ink); }
+  .sechead[id], .card[id], .cards[id] { scroll-margin-top:12px; }
+
+  /* collapsed methodology note */
+  .how { margin-bottom:10px; }
+  .how summary { cursor:pointer; font-size:11.5px; color:var(--muted); font-weight:600; list-style:none; }
+  .how summary::-webkit-details-marker { display:none; }
+  .how summary::before { content:"▸ "; }
+  .how[open] summary::before { content:"▾ "; }
+  .how .q { margin:6px 0 0; }
 </style>
+</head>
+<body>
 
 <div class="strip">
   <b>Community tool — not an official warning system.</b> In an emergency call 911 and follow CAL FIRE, LA County Fire, and Sheriff evacuation orders.
@@ -274,22 +300,34 @@
     </div>
   </header>
 
-  <div class="hero ok" id="hero">
-    <div class="eyebrow" id="heroEy">Overall status</div>
+  <div class="hero neutral" id="hero">
+    <div class="eyebrow" id="heroEy">Checking</div>
     <h2 id="heroTitle">Checking conditions…</h2>
     <p id="heroText">Pulling live air quality, fire weather, and alerts for your location.</p>
+    <a class="hact" id="heroAct" href="#evac" hidden>Evacuation status, go-bag &amp; routes ↓</a>
   </div>
+
+  <nav class="jumpnav" aria-label="Jump to a section">
+    <a href="#fires">🔥 Fires</a>
+    <a href="#air">🫁 Air &amp; weather</a>
+    <a href="#alerts">⚠️ Alerts</a>
+    <a href="#map">🗺️ Map</a>
+    <a href="#evac">🎒 Evacuation</a>
+    <a href="#community">🏘️ Community</a>
+  </nav>
 
   <!-- NEARBY FIRES — the question this page exists to answer, so it goes first.
        On a quiet day the "nothing within 45 miles" line is the reassurance people
        came for; on a bad day it's the headline. -->
-  <div class="sechead" style="margin-top:18px"><h2>Nearby fire activity</h2><div class="line"></div></div>
+  <div class="sechead" id="fires" style="margin-top:16px"><h2>Nearby fire activity</h2><div class="line"></div></div>
   <div class="card" id="fireCard" style="margin-top:8px">
-    <div class="q" style="margin-bottom:10px">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Acreage and containment come from <b>CAL FIRE</b> where they have the incident (small local fires often never get sized — the 🛰️ chip shows whether a <b>NASA satellite</b> actually detected heat there in the last 24 hours). Fire names link to the official CAL FIRE page when there is one.</div>
+    <details class="how"><summary>How this list works</summary>
+      <div class="q">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Acreage and containment come from <b>CAL FIRE</b> where they have the incident (small local fires often never get sized — the 🛰️ chip shows whether a <b>NASA satellite</b> actually detected heat there in the last 24 hours). Fire names link to the official CAL FIRE page when there is one.</div>
+    </details>
     <div id="fireList"></div>
   </div>
 
-  <div class="cards">
+  <div class="cards" id="air">
     <div class="grid2">
       <!-- AIR -->
       <div class="card" id="airCard">
@@ -325,6 +363,7 @@
          heat) and says plainly who should take it easy. This is what survives of
          the old "Can the kids play outside?" card, minus the duplication. -->
     <div class="advice neutral" id="airAdvice"><span class="ai">⏳</span><div class="at skel">Checking conditions…</div></div>
+    <div class="note" style="margin:-4px 2px 0">General guidance based on public air-quality standards — not medical advice; follow your doctor's advice for your own conditions.</div>
 
     <!-- SMOKE PLAYBOOK — kept right under the air it answers; opens itself when the air turns -->
     <details class="card playbook" id="smokeCard">
@@ -343,7 +382,7 @@
     </details>
 
     <!-- ALERTS -->
-    <div class="card" id="alertCard">
+    <div class="card" id="alerts">
       <h3>Active alerts <span class="cardtag pill live">Live · NWS</span></h3>
       <div class="q">Red Flag Warnings, fire weather, and heat advisories from the National Weather Service</div>
       <div id="alertList"><div class="skel">Checking National Weather Service…</div></div>
@@ -359,7 +398,7 @@
   </div>
 
   <!-- FIRE MAP -->
-  <div class="sechead"><h2>Fire &amp; evacuation map</h2><div class="line"></div></div>
+  <div class="sechead" id="map"><h2>Fire &amp; evacuation map</h2><div class="line"></div></div>
   <div class="card" style="margin-top:8px;padding:0;overflow:hidden">
     <div id="fireMap" style="height:360px;width:100%;background:var(--neu-bg)"></div>
     <div id="mapLegend" class="q" style="padding:11px 14px;margin:0;border-top:1px solid var(--line-2)">Loading live fire &amp; evacuation data…</div>
@@ -377,7 +416,7 @@
 
   <!-- EVAC READINESS — everything about leaving lives together: are we in a zone,
        is the bag packed, which way out, and what the freeways look like. -->
-  <div class="sechead"><h2>Evacuation readiness</h2><div class="line"></div></div>
+  <div class="sechead" id="evac"><h2>Evacuation readiness</h2><div class="line"></div></div>
   <div class="card" id="evacCard" style="margin-top:8px">
     <h3>Do we need to get ready to leave?</h3>
     <div class="q">Live evacuation status for your area</div>
@@ -414,7 +453,7 @@
   </div>
 
   <!-- YOUR COMMUNITY -->
-  <div class="sechead"><h2>Your community</h2><div class="line"></div></div>
+  <div class="sechead" id="community"><h2>Your community</h2><div class="line"></div></div>
   <div class="card" id="commCard" style="margin-top:8px">
     <div class="commfact"><span class="ci">🚁</span><div><b>Four shared water tanks</b> in the community. Helicopters may refill here during a fire — that low, loud pass overhead is them working, not a reason to panic.</div></div>
     <div class="commfact"><span class="ci">⚠️</span><div><b>Known brush hazard.</b> Dried brush sits in the common areas by the water towers and up Avenida Rancho Tesoro. It's the closest fuel to our homes — report it and push to clear it before peak season.</div></div>
@@ -457,9 +496,9 @@
     </div>
     <p id="foot">
       All live: air quality &amp; fire weather via Open-Meteo, weather alerts via NWS (weather.gov), nearby fires via the
-      NIFC / IRWIN national wildfire feed with acreage &amp; containment from CAL FIRE, and evacuation status via the
-      Cal OES statewide zone feed (verify your zone at
-      Genasys Protect). Community notes (water tanks, brush, history) come from neighbors, not an official source.
+      NIFC / IRWIN national wildfire feed with acreage &amp; containment from CAL FIRE and heat detections from NASA (VIIRS)
+      satellites, evacuation status via the Cal OES statewide zone feed (verify your zone at
+      Genasys Protect), and planned road closures via Caltrans. Community notes (water tanks, brush, history) come from neighbors, not an official source.
       This tool does not replace official warnings — always follow CAL FIRE, LA County Fire, and Sheriff orders, and
       call 911 in an emergency.
     </p>
@@ -511,6 +550,15 @@ function fireWx(temp, rh, wind, gust){
 }
 
 /* ---------- scenario overlays ---------- */
+// Feed strings (fire names, alert headlines, evac notes) render into innerHTML —
+// escape them all; a poisoned upstream record must never become script here.
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function safeHttp(u){ return /^https:\/\//i.test(String(u||"")) ? u : null; }
+// Spell compass points out — "SSE" is sailor jargon, "south-southeast" is a direction.
+const DIR_WORD = { N:"north", NNE:"north-northeast", NE:"northeast", ENE:"east-northeast", E:"east", ESE:"east-southeast",
+  SE:"southeast", SSE:"south-southeast", S:"south", SSW:"south-southwest", SW:"southwest", WSW:"west-southwest",
+  W:"west", WNW:"west-northwest", NW:"northwest", NNW:"north-northwest" };
+function dirWord(d){ return DIR_WORD[d] || d; }
 function view(){
   // base = live data
   const a = live.air && live.air.current ? live.air.current : {};
@@ -533,7 +581,9 @@ function view(){
 
 function relevantAlerts(){
   if(!live.alerts || !live.alerts.features) return [];
-  const keep = /red flag|fire weather|evacuation|excessive heat|heat warning|high wind|wind advisory|extreme/i;
+  // Anything fire-, air-, heat-, or wind-shaped is relevant here. Plain "Heat
+  // Advisory" and "Air Quality Alert" used to slip through this filter.
+  const keep = /red flag|fire|evacuation|heat|wind|smoke|air quality|dust|extreme/i;
   return live.alerts.features.filter(f => keep.test(f.properties.event||"")).map(f => ({
     event: f.properties.event,
     sev: (f.properties.severity||"unknown").toLowerCase(),
@@ -758,6 +808,8 @@ async function fetchFires(lat, lon){
     + "&outFields=IncidentName,IncidentSize,PercentContained,FireDiscoveryDateTime,ModifiedOnDateTime_dt,FireBehaviorGeneral,TotalIncidentPersonnel"
     + "&returnGeometry=true&outSR=4326&resultRecordCount=1000&f=geojson";
   const [j, cal, viirs] = await Promise.all([ fetch(url).then(r=>r.json()), fetchCalFire(), fetchViirs(lat, lon) ]);
+  // An ArcGIS error payload has no .features — that's a failed feed, not zero fires.
+  if(!j || !Array.isArray(j.features)) throw new Error("fire feed error");
   const raw = (j.features||[])
     .filter(f => f.geometry && f.geometry.coordinates)
     .filter(f => !/^LAC-?\d+$/i.test((f.properties.IncidentName||"").trim()))  // drop LA County dispatch-number noise
@@ -801,29 +853,36 @@ async function fetchEvac(lat, lon){
   for (const f of j.features) {
     const a = f.attributes || {}, rings = (f.geometry && f.geometry.rings) || [];
     const st = String(a.STATUS || "");
-    const isOrder = /order/i.test(st), isWarn = /warning/i.test(st);
-    if ((!isOrder && !isWarn) || !rings.length) continue;
+    // Cal OES also publishes "Shelter in Place" (hazmat, police activity, some
+    // fire scenarios) — dropping it showed "all clear" during an active order.
+    const isOrder = /order/i.test(st), isShelter = /shelter/i.test(st), isWarn = /warning/i.test(st);
+    if ((!isOrder && !isWarn && !isShelter) || !rings.length) continue;
     let cx = 0, cy = 0, n = 0;
     for (const ring of rings) for (const p of ring) { cx += p[0]; cy += p[1]; n++; }
     cx /= n; cy /= n;
     zones.push({
       order: isOrder,
+      shelter: isShelter && !isOrder,
       covers: inPoly(lon, lat, rings),
       dist: haversine(lat, lon, cy, cx),
       dir: compass(bearingDeg(lat, lon, cy, cx)),
-      notes: String(a.NOTES || "").trim(),
-      county: String(a.COUNTY || "").trim()
+      notes: esc(String(a.NOTES || "").trim()),   // feed text — escaped at the source, every render is innerHTML
+      county: esc(String(a.COUNTY || "").trim())
     });
   }
   zones.sort((a, b) => a.dist - b.dist);
   const covOrder = zones.find(z => z.order && z.covers);
-  const covWarn  = zones.find(z => !z.order && z.covers);
+  const covShelter = zones.find(z => z.shelter && z.covers);
+  const covWarn  = zones.find(z => !z.order && !z.shelter && z.covers);
   const nearOrder = zones.find(z => z.order);
-  const nearWarn  = zones.find(z => !z.order);
+  const nearShelter = zones.find(z => z.shelter);
+  const nearWarn  = zones.find(z => !z.order && !z.shelter);
   const why = z => (z.notes ? " — " + z.notes : "") + (z.county ? ", " + z.county + " County" : "");
   if (covOrder) return { lvl:2, label:"Evacuation ORDER for our zone" + why(covOrder) + ". Leave now via your planned route.", zone:"Live · Cal OES statewide feed" };
+  if (covShelter) return { lvl:2, label:"SHELTER IN PLACE for our zone" + why(covShelter) + ". Stay inside with doors and windows closed and follow official direction — this is not an all-clear.", zone:"Live · Cal OES statewide feed" };
   if (covWarn)  return { lvl:1, label:"Evacuation WARNING includes our zone" + why(covWarn) + ". Be packed and ready to leave.", zone:"Live · Cal OES statewide feed" };
   if (nearOrder) return { lvl:0, label:"Our zone has no order or warning. Nearby: an evacuation ORDER is active ~" + Math.round(nearOrder.dist) + " mi to our " + nearOrder.dir + why(nearOrder) + ". Watch it on the map above and " + GENASYS_LINK + ".", zone:"Live · Cal OES statewide feed" };
+  if (nearShelter) return { lvl:0, label:"Our zone has no order or warning. Nearby: a shelter-in-place is active ~" + Math.round(nearShelter.dist) + " mi to our " + nearShelter.dir + why(nearShelter) + ". Watch it on the map above.", zone:"Live · Cal OES statewide feed" };
   if (nearWarn)  return { lvl:0, label:"Our zone has no order or warning. Nearby: an evacuation warning ~" + Math.round(nearWarn.dist) + " mi to our " + nearWarn.dir + why(nearWarn) + ". Watch it on the map above.", zone:"Live · Cal OES statewide feed" };
   return { lvl:0, label:"No active evacuation orders or warnings for this area right now, per the Cal OES statewide feed. Look up your zone name on "+GENASYS_LINK+" so you recognize it in an emergency.", zone:"Live · Cal OES statewide feed" };
 }
@@ -836,15 +895,19 @@ async function fetchAll(){
   const [air, wx, al, fires, evac] = await Promise.allSettled([
     fetch(airU).then(r=>r.json()),
     fetch(wxU).then(r=>r.json()),
-    fetch(alU, {headers:{Accept:"application/geo+json"}}).then(r=>r.json()).catch(()=>({features:[]})),
+    // No .catch here on purpose: a failed alerts fetch must register as FAILED,
+    // not as an empty (all-clear) list — same principle for every feed below.
+    fetch(alU, {headers:{Accept:"application/geo+json"}}).then(r=>r.json()).then(j=>{ if(!j || !Array.isArray(j.features)) throw new Error("alerts feed error"); return j; }),
     fetchFires(lat, lon),
     fetchEvac(lat, lon)
   ]);
   live.air = air.status==="fulfilled" ? air.value : null;
   live.weather = wx.status==="fulfilled" ? wx.value : null;
-  live.alerts = al.status==="fulfilled" ? al.value : {features:[]};
-  live.fires = fires.status==="fulfilled" ? fires.value : [];
+  live.alerts = al.status==="fulfilled" ? al.value : null;
+  live.fires = fires.status==="fulfilled" ? fires.value : null;
   live.evac = evac.status==="fulfilled" ? evac.value : null;
+  // Which checks actually loaded — render() refuses to claim "all clear" without them.
+  live.ok = { air: air.status==="fulfilled", wx: wx.status==="fulfilled", alerts: al.status==="fulfilled", fires: fires.status==="fulfilled", evac: evac.status==="fulfilled" };
   live.error = air.status!=="fulfilled" && wx.status!=="fulfilled";
   lastFetch = Date.now();
 }
@@ -892,17 +955,29 @@ function render(){
   // header
   $("#locName").textContent = LOC.label;
   $("#locSub").textContent = LOC.sub || (LOC.lat.toFixed(3)+", "+LOC.lon.toFixed(3));
-  $("#updated").textContent = live.error ? "live data unavailable" : timeAgo(lastFetch);
+  const ok = live.ok || {};
+  const coreOk = ok.air && ok.alerts && ok.fires && ok.evac;
+  $("#updated").textContent = live.error ? "live data unavailable" : (coreOk ? timeAgo(lastFetch) : "some feeds unavailable");
 
-  // hero
-  const ov = overall(v);
+  // hero — an all-clear is only claimable when every check that could contradict
+  // it actually loaded; otherwise the honest answer is "unknown", not green.
+  let ov = overall(v);
+  if(ov.lvl === 0 && !coreOk){
+    ov = { ...ov, klass:"neutral", ey:"Status unknown",
+      title:"Some live checks aren't loading",
+      text:"Nothing bad in the checks that did load, but one or more feeds is unreachable — treat this as unknown, not all-clear. Try refresh, and keep Watch Duty handy." };
+  }
   const hero = $("#hero"); hero.className = "hero "+ov.klass;
   $("#heroEy").textContent = ov.ey;
   $("#heroTitle").textContent = ov.title;
   $("#heroText").textContent = ov.text;
+  // In a danger state, give the hero something tappable: the evacuation section.
+  const hact = $("#heroAct");
+  if(hact) hact.hidden = ov.lvl < 2;
 
-  // kids
-  const adv = airAdvice(v);
+  // who should take it easy — but only when there's real air data to judge from
+  const adv = ok.air ? airAdvice(v)
+    : { s:"neutral", icon:"🧭", txt:"<b>Live air data is unavailable right now,</b> so conditions can't be judged. If you can see or smell smoke, act as if the air is bad." };
   $("#airAdvice").className = "advice " + adv.s;
   $("#airAdvice").innerHTML = `<span class="ai">${adv.icon}</span><div class="at">${adv.txt}</div>`;
 
@@ -950,34 +1025,40 @@ function render(){
     }).filter(Boolean).join(" · ");
     return parts ? `<div class="hl" style="margin-top:5px"><b>Forecast highs:</b> ${parts}</div>` : "";
   };
-  if(v.alerts.length===0){
+  if(!ok.alerts){
+    al.innerHTML = `<div class="note"><b>Couldn't reach the National Weather Service</b> just now — that's unknown, not all-clear. <a href="https://www.weather.gov/lox/" target="_blank" rel="noopener">Check weather.gov ↗</a></div>`;
+  } else if(v.alerts.length===0){
     al.innerHTML = `<div class="note"><b>No active fire, wind, or heat alerts</b> for your location right now.</div>`;
   } else {
     al.innerHTML = v.alerts.map(a=>`
-      <div class="alert sev-${a.sev}">
-        <div class="ev"><span>${a.event}</span><span class="tag">${a.sev}</span></div>
-        <div class="hl">${(a.headline||"").slice(0,240)}</div>
+      <div class="alert sev-${esc(a.sev)}">
+        <div class="ev"><span>${esc(a.event)}</span><span class="tag">${esc(a.sev)}</span></div>
+        <div class="hl">${esc((a.headline||"").slice(0,240))}</div>
         ${heatLine(a)}
       </div>`).join("");
   }
 
-  // nearby fires (live from NIFC feed, or demo overlay)
+  // nearby fires — a failed feed must say so, never masquerade as a quiet day
   const fl = $("#fireList");
-  if(v.fires.length===0){
+  if(!ok.fires){
+    fl.innerHTML = `<div class="note"><b>The live fire feed is unreachable right now</b> — that's unknown, not all-clear. <a href="https://www.watchduty.org/" target="_blank" rel="noopener">Check Watch Duty ↗</a></div>`;
+  } else if(v.fires.length===0){
     fl.innerHTML = `<div class="note"><b>No active wildfire incidents within ${FIRE_RADIUS} miles</b> of Tesoro Highlands right now, per the national feed. That's the normal, good state.</div>`;
   } else {
     fl.innerHTML = v.fires.map(f=>{
       const acres = acresText(f.acres);
       const upd = f.mod ? ` · updated ${fmtAgo(f.mod)}` : "";
-      const meta = f.trend ? `${acres} · ${f.trend}` : (f.disc ? `${acres} · spotted ${fmtDate(f.disc)}${upd}` : `${acres}${upd}`);
+      const meta = f.trend ? `${acres} · ${esc(f.trend)}` : (f.disc ? `${acres} · spotted ${fmtDate(f.disc)}${upd}` : `${acres}${upd}`);
       // Big incidents report crew size and behavior — worth a line when present.
       const ops = [
-        f.behavior ? `burning: ${String(f.behavior).toLowerCase()}` : null,
+        f.behavior ? `burning: ${esc(String(f.behavior).toLowerCase())}` : null,
         f.personnel ? `${Number(f.personnel).toLocaleString()} personnel assigned` : null
       ].filter(Boolean).join(" · ");
-      const bar = (f.contain!=null) ? `<div class="contain"><i style="width:${f.contain}%"></i></div><div class="fs" style="margin-top:4px">${f.contain}% contained</div>` : "";
+      const pct = f.contain!=null ? Math.max(0, Math.min(100, Math.round(Number(f.contain)))) : null;
+      const bar = (pct!=null && !isNaN(pct)) ? `<div class="contain"><i style="width:${pct}%"></i></div><div class="fs" style="margin-top:4px">${pct}% contained</div>` : "";
       const tag = ` <span class="pill live">Live</span>`;
-      const nm = f.url ? `<a href="${f.url}" target="_blank" rel="noopener" title="Open the CAL FIRE incident page">${f.name} ↗</a>` : f.name;
+      const link = safeHttp(f.url);
+      const nm = link ? `<a href="${esc(link)}" target="_blank" rel="noopener" title="Open the CAL FIRE incident page">${esc(f.name)} ↗</a>` : esc(f.name);
       return `
       <div class="fire">
         <div class="fi">🔥</div>
@@ -988,7 +1069,7 @@ function render(){
           ${bar}
           ${satChip(f)}${smokeChip(f, v.wdir, v.wind)}
         </div>
-        <div class="fdist"><div class="d">${f.dist.toFixed(f.dist<10?1:0)} mi</div><div class="dir">to your ${f.dir}</div></div>
+        <div class="fdist"><div class="d">${f.dist.toFixed(f.dist<10?1:0)} mi</div><div class="dir">${esc(dirWord(f.dir))} of us</div></div>
       </div>`;
     }).join("");
   }
@@ -1099,6 +1180,13 @@ async function boot(){
   await fetchAll();
   render();
   setInterval(async ()=>{ await fetchAll(); render(); }, 10*60*1000);
+  // Phones pause timers in background tabs — refetch when the tab comes back if
+  // the data is older than 5 minutes, so a reopened page isn't quietly stale.
+  document.addEventListener("visibilitychange", async ()=>{
+    if(document.visibilityState==="visible" && lastFetch && Date.now()-lastFetch > 5*60*1000){
+      await fetchAll(); render();
+    }
+  });
 }
 boot();
 </script>
@@ -1198,7 +1286,7 @@ boot();
         nFires++;
         var rad = ac>=1000?9:ac>=100?7:ac>=10?5:4;
         L.circleMarker([c[1],c[0]], { radius:rad, color:"#7f1d1d", weight:1, fillColor:"#ef4444", fillOpacity:.9 }).addTo(map)
-          .bindPopup("<b>"+title(p.IncidentName)+" Fire</b><br>"+(typeof acresText==="function"?acresText(ac):(ac!=null?Math.round(ac).toLocaleString()+" acres":"size not yet reported"))+(e.contain!=null?" · "+e.contain+"% contained":"")+(e.mod&&typeof fmtAgo==="function"?" · updated "+fmtAgo(e.mod):"")+"<br>"+dist.toFixed(dist<10?1:0)+" mi to your "+comp(brg(H.lat,H.lon,c[1],c[0])));
+          .bindPopup("<b>"+(typeof esc==="function"?esc(title(p.IncidentName)):title(p.IncidentName))+" Fire</b><br>"+(typeof acresText==="function"?acresText(ac):(ac!=null?Math.round(ac).toLocaleString()+" acres":"size not yet reported"))+(e.contain!=null?" · "+(Math.max(0,Math.min(100,Math.round(Number(e.contain)))||0))+"% contained":"")+(e.mod&&typeof fmtAgo==="function"?" · updated "+fmtAgo(e.mod):"")+"<br>"+dist.toFixed(dist<10?1:0)+" mi "+(typeof dirWord==="function"?dirWord(comp(brg(H.lat,H.lon,c[1],c[0]))):comp(brg(H.lat,H.lon,c[1],c[0])))+" of us");
       });
       finish();
     }).catch(function(){ finish(); });
@@ -1207,7 +1295,7 @@ boot();
     .then(function(r){return r.json();}).then(function(j){
       if(j && j.features && !j.error) evacOk = true;
       nEvac = (j.features||[]).length;
-      if(nEvac) L.geoJSON(j,{ style:function(f){ var s=(f.properties&&f.properties.STATUS)||""; var ord=/order/i.test(s); return {color:ord?"#b01c1c":"#a25a09",weight:1.5,fillColor:ord?"#ef4444":"#f59e0b",fillOpacity:.3}; }, onEachFeature:function(f,ly){ var pr=f.properties||{}; ly.bindPopup("<b>"+(pr.STATUS||"Evacuation zone")+"</b><br>"+(pr.ZONE_NAME||"")+" "+(pr.CITY||pr.COUNTY||"")); } }).addTo(map);
+      if(nEvac) L.geoJSON(j,{ style:function(f){ var s=(f.properties&&f.properties.STATUS)||""; var ord=/order/i.test(s); return {color:ord?"#b01c1c":"#a25a09",weight:1.5,fillColor:ord?"#ef4444":"#f59e0b",fillOpacity:.3}; }, onEachFeature:function(f,ly){ var pr=f.properties||{}; var E=(typeof esc==="function")?esc:function(x){return x;}; ly.bindPopup("<b>"+E(pr.STATUS||"Evacuation zone")+"</b><br>"+E(pr.ZONE_NAME||"")+" "+E(pr.CITY||pr.COUNTY||"")); } }).addTo(map);
       finish();
     }).catch(function(){ finish(); });
 })();

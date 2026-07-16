@@ -62,7 +62,7 @@
         <div class="ico">🏡</div>
         <h3>Living Here</h3>
         <p>Trash days, utilities, schools, hospitals, and fire-zone insurance help for our area.</p>
-        <span class="tag">Coming soon</span>
+        <span class="tag">Preview</span>
       </a>
       <a class="hub-card" href="/events">
         <div class="ico">📅</div>
@@ -98,6 +98,8 @@
   (function () {
     "use strict";
     var $ = function (s) { return document.querySelector(s); };
+    // Event titles come from external feeds and are rendered via innerHTML — escape them.
+    var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
     function loc() {
       try { var s = JSON.parse(localStorage.getItem("tesoro.loc")); if (s && s.lat && s.lon) return s; } catch (e) {}
       return { lat: 34.478, lon: -118.531 };
@@ -110,15 +112,15 @@
         if (q == null) return;
         var cat = q <= 50 ? "Good" : q <= 100 ? "Moderate" : q <= 150 ? "Unhealthy for sensitive groups" : "Unhealthy";
         $("#tdAir").innerHTML = "<b>AQI " + Math.round(q) + "</b> · " + cat;
-      }).catch(function () {});
+      }).catch(function () { $("#tdAir").textContent = "unavailable right now"; });
 
     fetch("https://api.open-meteo.com/v1/forecast?latitude=" + L.lat + "&longitude=" + L.lon + "&current=relative_humidity_2m,wind_speed_10m,wind_gusts_10m&wind_speed_unit=mph&timezone=America%2FLos_Angeles")
       .then(function (r) { return r.json(); }).then(function (w) {
         var c = w.current; if (!c) return;
         var rh = c.relative_humidity_2m, wind = c.wind_speed_10m, gust = c.wind_gusts_10m;
         var lvl = (rh < 15 && (wind >= 25 || gust >= 35)) ? "Extreme" : (rh < 15 || wind >= 25 || gust >= 35 || (rh < 20 && wind >= 20)) ? "Elevated" : "Normal";
-        $("#tdFw").innerHTML = "<b>" + Math.round(wind) + " mph</b> wind · " + Math.round(rh) + "% RH · " + lvl;
-      }).catch(function () {});
+        $("#tdFw").innerHTML = "<b>" + Math.round(wind) + " mph</b> wind · " + Math.round(rh) + "% humidity · " + lvl;
+      }).catch(function () { $("#tdFw").textContent = "unavailable right now"; });
 
     Promise.all([
       fetch("/events.json").then(function (r) { return r.json(); }).catch(function () { return null; }),
@@ -147,9 +149,9 @@
         var p = e.start.split("T")[0].split("-");
         var d = new Date(+p[0], +p[1] - 1, +p[2]);
         var t = e.title.length > 32 ? e.title.slice(0, 31) + "…" : e.title;
-        return "<b>" + d.toLocaleDateString([], { weekday: "short" }) + "</b> " + t;
+        return "<b>" + d.toLocaleDateString([], { weekday: "short" }) + "</b> " + esc(t);
       }).join("<br>");
-    }).catch(function () {});
+    }).catch(function () { $("#tdEv").textContent = "unavailable right now"; });
   })();
   </script>
 </body>

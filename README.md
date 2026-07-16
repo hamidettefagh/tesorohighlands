@@ -2,7 +2,7 @@
 
 A neighbor-built hub for the **Tesoro Highlands community, Valencia CA 91354**. Lives at **tesorohighlands.com**.
 
-The hub answers the questions a household in a fire-zone community actually asks — **Can the kids play outside? What are we breathing? Do we need to get ready to leave?** — and grows from there into everyday community info: local events, amenities, and HOA transparency.
+The hub answers the questions a household in a fire-zone community actually asks — **What's burning near us? What are we breathing? Do we need to get ready to leave?** — and grows from there into everyday community info: local events, practical living info, and HOA resources.
 
 ## How it's built
 
@@ -13,11 +13,18 @@ The hub answers the questions a household in a fire-zone community actually asks
 ## Pages
 
 ```
-/            landing hub — live "right now" safety status + section cards
-/fire        the full fire & emergency dashboard (live map, air, weather, evac, checklist)
-/events      community events + auto-updated local Santa Clarita feed
-/living      everyday local info (coming soon)
-/hoa         HOA transparency (coming soon; unofficial, resident-run)
+/            landing hub — live "right now" safety status + alert chips + section cards
+/fire        the full fire & emergency dashboard (live fires w/ CAL FIRE + NASA VIIRS
+             enrichment, air, weather, evac zones, map, go-bag checklist, roads)
+/events      community events + auto-updated local feed (City calendar, Eventbrite,
+             SC library) + daily AI web-search sweep (ai-events.json), merged client-side
+/living      everyday local info — utilities, trash, schools, health, fire insurance
+/hoa         HOA & Resources — CA homeowner rights, documents, dispute ladder
+             (unofficial, resident-run; deliberately no board schedules/internal matters)
+
+api/calfire.js   the one serverless function: proxies incidents.fire.ca.gov (no CORS
+                 upstream), CDN-cached ~2 min — fills in acreage/containment the
+                 federal feed leaves null on local fires
 ```
 
 ## Project layout

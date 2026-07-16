@@ -115,7 +115,10 @@ async function fetchEventbrite() {
     }
   }
 
-  const today = new Date(); today.setHours(0, 0, 0, 0);
+  // "Today" must be the LA calendar day, not the runner's. Event starts are LA
+  // wall-clock strings; on a UTC runner, runner-midnight rolls over at 5pm PT and
+  // used to drop the rest of the evening's events from the feed.
+  const today = new Date(laDate(0) + "T00:00:00");
   const maxT = today.getTime() + WINDOW_DAYS * 86400000;
   let events = [...seen.values()]
     .filter((e) => { const t = new Date(e.start).getTime(); return t >= today.getTime() && t <= maxT; })
@@ -281,7 +284,7 @@ if (eb.pagesOk === 0 && lib.daysOk === 0 && !loc.ok) {
 // Per-source fallback: if ONE source failed entirely (e.g. Eventbrite 405-blocks
 // GitHub runner IPs while the library still answers), carry forward that
 // source's still-upcoming events from the previous file instead of wiping them.
-const cutoff = new Date(); cutoff.setHours(0, 0, 0, 0);
+const cutoff = new Date(laDate(0) + "T00:00:00");  // LA midnight, not runner midnight
 function carryForward(source) {
   if (!old || !Array.isArray(old.events)) return [];
   const kept = old.events.filter((e) => e.source === source && new Date(e.start).getTime() >= cutoff.getTime());

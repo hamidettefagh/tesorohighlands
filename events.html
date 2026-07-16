@@ -245,7 +245,9 @@
       var p = dp[0].split("-").map(Number);
       var d = new Date(p[0], p[1] - 1, p[2]);
       var time = "";
-      if (dp[1]) {
+      // A T00:00 start is an all-day listing, not a midnight event — showing
+      // "12 AM" (and expiring it at 00:45 on its own day) misreads the data.
+      if (dp[1] && dp[1].slice(0, 5) !== "00:00") {
         var hm = dp[1].split(":").map(Number);
         var ap = hm[0] >= 12 ? "PM" : "AM";
         time = ((hm[0] % 12) || 12) + (hm[1] ? ":" + String(hm[1]).padStart(2, "0") : "") + " " + ap;
@@ -259,7 +261,7 @@
     function startMs(s) {
       var dp = (s || "").split("T");
       var p = dp[0].split("-").map(Number);
-      if (dp[1]) { var hm = dp[1].split(":").map(Number); return new Date(p[0], p[1] - 1, p[2], hm[0] || 0, hm[1] || 0).getTime(); }
+      if (dp[1] && dp[1].slice(0, 5) !== "00:00") { var hm = dp[1].split(":").map(Number); return new Date(p[0], p[1] - 1, p[2], hm[0] || 0, hm[1] || 0).getTime(); }
       var d = new Date(p[0], p[1] - 1, p[2]); d.setHours(23, 59, 59, 0); return d.getTime();
     }
     function stillUp(s) { return s && startMs(s) >= Date.now() - 45 * 60000; }
@@ -270,7 +272,7 @@
       var today = new Date(); today.setHours(0, 0, 0, 0);
       var up = (Array.isArray(list) ? list : []).filter(function (e) { return e && e.date && parseStart(e.date).d.getTime() >= today.getTime(); });
       up.sort(function (a, b) { return parseStart(a.date).d - parseStart(b.date).d; });
-      if (!up.length) { el.innerHTML = '<div class="empty">Nothing on the community calendar right now.</div>'; return; }
+      if (!up.length) { el.innerHTML = '<div class="empty">Nothing scheduled right now — got a block party, playdate, or game night coming up? Share it in the group chat and it shows up here.</div>'; return; }
       el.innerHTML = up.map(function (e) {
         var w = parseStart(e.date);
         return '<div class="evitem">' + whenHtml(e.date) +
@@ -279,7 +281,8 @@
           '<div class="sub">' + esc([e.time, e.place, e.note].filter(Boolean).join(" · ")) + "</div></div></div>";
       }).join("");
     }).catch(function () {
-      document.getElementById("commList").innerHTML = '<div class="empty">Nothing on the community calendar right now.</div>';
+      // A failed load is unknown, not "nothing scheduled".
+      document.getElementById("commList").innerHTML = '<div class="empty">Couldn&#39;t load the community list right now — try a refresh.</div>';
     });
 
     // ---- Auto-updated attendable events, filterable by audience + date ----
@@ -338,8 +341,10 @@
     function itemHtml(e) {
       var w = parseStart(e._start);
       var auds = (e.audience || []).filter(function (a) { return a !== "everyone"; });
+      // Only ever link to real web URLs — a poisoned feed must not mint javascript: links.
+      var u = /^https?:\/\//i.test(e.url || "") ? e.url : null;
       return '<div class="evitem">' + whenHtml(e._start) +
-        '<div class="what"><a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.title) + "</a>" +
+        '<div class="what">' + (u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(e.title) + "</a>" : '<a>' + esc(e.title) + "</a>") +
         (w.isToday ? '<span class="chip today">Today</span>' : "") +
         '<div class="sub">' + esc([e.venue, e.city].filter(Boolean).join(" · ")) + "</div>" +
         auds.map(function (a) { return '<span class="chip">' + esc(AUD_LABEL[a] || a) + "</span>"; }).join("") +
@@ -414,7 +419,8 @@
       var when = [];
       if (feed && feed.generatedAt) when.push("official calendars " + relTime(feed.generatedAt));
       if (aiList.length && ai && ai.generatedAt) when.push("AI search " + relTime(ai.generatedAt));
-      var stale = feed && feed.generatedAt && Date.now() - new Date(feed.generatedAt).getTime() > 5 * DAY;
+      var stale = (feed && feed.generatedAt && Date.now() - new Date(feed.generatedAt).getTime() > 5 * DAY) ||
+                  (aiList.length && ai && ai.generatedAt && Date.now() - new Date(ai.generatedAt).getTime() > 5 * DAY);
       document.getElementById("feedMeta").innerHTML =
         "Across the Santa Clarita Valley — City of Santa Clarita, Eventbrite &amp; the SC Public Library" +
         (aiList.length ? ", plus listings found by AI web search" : "") +

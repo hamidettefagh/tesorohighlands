@@ -84,6 +84,8 @@
   }
 
   var CACHE_KEY = "tesoro.status.v2";  // v2 carries the active-alert list
+  // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
+  function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   var stripEl = null;
 
   async function computeStatus() {
@@ -106,7 +108,7 @@
       }).catch(function () {}),
       fetch("https://api.weather.gov/alerts/active?point=" + L.lat + "," + L.lon, { headers: { Accept: "application/geo+json" } }).then(function (r) { return r.json(); }).then(function (al) {
         if (!al || !al.features) return; okAlerts = true;
-        var evs = al.features.map(function (f) { return f.properties && f.properties.event; }).filter(Boolean);
+        var evs = al.features.map(function (f) { return f.properties && f.properties.event; }).filter(Boolean).map(escT);
         activeAlerts = evs.filter(function (e, i) { return evs.indexOf(e) === i; });
         var red = evs.find(function (e) { return /red flag|fire weather/i.test(e); });
         var heat = evs.find(function (e) { return /heat/i.test(e); });
@@ -114,6 +116,9 @@
         if (red) { say(60, 1, red + " in effect — elevated fire danger."); }
         else if (heat) { say(30, 1, heat + " — hydrate and plan around the heat."); }
         else if (warn) { say(20, 1, warn + " in effect."); }
+        // Anything else active (Air Quality Alert, Dense Smoke Advisory, …) still
+        // counts — otherwise the strip claims "no active alerts" while one is up.
+        else if (evs.length) { say(15, 1, evs[0] + " in effect."); }
       }).catch(function () {}),
       Promise.all([
         fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=" + encodeURIComponent("IncidentTypeCategory='WF' AND FireOutDateTime IS NULL AND (PercentContained < 100 OR PercentContained IS NULL)") + "&outFields=IncidentName,IncidentSize,ModifiedOnDateTime_dt&geometry=" + (L.lon - 1.3) + "," + (L.lat - 1) + "," + (L.lon + 1.3) + "," + (L.lat + 1) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326&f=geojson").then(function (r) { return r.json(); }),
@@ -172,8 +177,9 @@
         for (var i = 0; i < ev.features.length; i++) {
           var f = ev.features[i], a = f.attributes || {}, rings = (f.geometry && f.geometry.rings) || [];
           var st = String(a.STATUS || "");
-          var isOrder = /order/i.test(st), isWarn = /warning/i.test(st);
-          if ((!isOrder && !isWarn) || !rings.length) continue;
+          // Cal OES also publishes "Shelter in Place" — dropping it read as all-clear.
+          var isOrder = /order/i.test(st), isShelter = /shelter/i.test(st), isWarn = /warning/i.test(st);
+          if ((!isOrder && !isWarn && !isShelter) || !rings.length) continue;
           var cx = 0, cy = 0, n = 0;
           for (var r2 = 0; r2 < rings.length; r2++) for (var p = 0; p < rings[r2].length; p++) { cx += rings[r2][p][0]; cy += rings[r2][p][1]; n++; }
           cx /= n; cy /= n;
@@ -181,22 +187,26 @@
           var xb = Math.cos(L.lat * Math.PI / 180) * Math.sin(cy * Math.PI / 180) - Math.sin(L.lat * Math.PI / 180) * Math.cos(cy * Math.PI / 180) * Math.cos((cx - L.lon) * Math.PI / 180);
           zones.push({
             order: isOrder,
+            shelter: isShelter && !isOrder,
             covers: inPoly(L.lon, L.lat, rings),
             dist: haversine(L.lat, L.lon, cy, cx),
             dir: COMPASS[Math.round(((Math.atan2(yb, xb) * 180 / Math.PI + 360) % 360) / 22.5) % 16],
-            notes: String(a.NOTES || "").trim()
+            notes: escT(String(a.NOTES || "").trim())
           });
         }
         zones.sort(function (a, b) { return a.dist - b.dist; });
-        var covOrder = null, covWarn = null, nearOrder = null, nearWarn = null;
+        var covOrder = null, covShelter = null, covWarn = null, nearOrder = null, nearShelter = null, nearWarn = null;
         for (var k = 0; k < zones.length; k++) {
           var z = zones[k];
           if (z.order) { if (z.covers && !covOrder) covOrder = z; if (!nearOrder) nearOrder = z; }
+          else if (z.shelter) { if (z.covers && !covShelter) covShelter = z; if (!nearShelter) nearShelter = z; }
           else { if (z.covers && !covWarn) covWarn = z; if (!nearWarn) nearWarn = z; }
         }
         if (covOrder) { say(100, 2, "EVACUATION ORDER for our zone — leave now."); }
+        else if (covShelter) { say(95, 2, "SHELTER IN PLACE for our zone" + (covShelter.notes ? " (" + covShelter.notes + ")" : "") + " — stay inside, doors and windows closed."); }
         else if (covWarn) { say(90, 1, "Evacuation WARNING includes our zone" + (covWarn.notes ? " (" + covWarn.notes + ")" : "") + " — be packed and ready."); }
         else if (nearOrder) { say(50, 1, "Evacuation ORDER ~" + Math.round(nearOrder.dist) + " mi to our " + nearOrder.dir + (nearOrder.notes ? " (" + nearOrder.notes + ")" : "") + " — not our zone; stay aware."); }
+        else if (nearShelter) { say(50, 1, "Shelter-in-place ~" + Math.round(nearShelter.dist) + " mi " + nearShelter.dir + " of us" + (nearShelter.notes ? " (" + nearShelter.notes + ")" : "") + " — not our zone."); }
         else if (nearWarn) { say(50, 1, "Evacuation warning ~" + Math.round(nearWarn.dist) + " mi " + nearWarn.dir + " of us" + (nearWarn.notes ? " (" + nearWarn.notes + ")" : "") + " — not our zone."); }
       }).catch(function () {})
     ];
@@ -239,14 +249,27 @@
     }
   }
 
+  function refreshStatus() {
+    computeStatus().then(function (st) {
+      try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), st: st })); } catch (e) {}
+      render(st);
+    }).catch(function () {});
+  }
   if (!isFire) {
     try {
       var c = JSON.parse(sessionStorage.getItem(CACHE_KEY));
       if (c && c.st && Date.now() - c.ts < 5 * 60 * 1000) render(c.st);
     } catch (e) {}
-    computeStatus().then(function (st) {
-      try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), st: st })); } catch (e) {}
-      render(st);
-    }).catch(function () {});
+    refreshStatus();
+    // Phones pause background tabs — recheck when the tab comes back if the
+    // cached status is older than 5 minutes, so the strip can't silently age.
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState !== "visible") return;
+      try {
+        var c2 = JSON.parse(sessionStorage.getItem(CACHE_KEY));
+        if (c2 && Date.now() - c2.ts < 5 * 60 * 1000) return;
+      } catch (e) {}
+      refreshStatus();
+    });
   }
 })();
