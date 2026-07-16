@@ -56,7 +56,7 @@
   .svc .dt{font-size:12.5px;color:var(--ink-2);line-height:1.55;margin-top:2px;}
   .svc .dt a{color:var(--accent);text-decoration:none;font-weight:600;}
   .svc .dt a:hover{text-decoration:underline;}
-  .svc .em{color:var(--dan-fg);font-weight:660;white-space:nowrap;}
+  .svc .em, .svc .dt a.em{color:var(--dan-fg);font-weight:660;white-space:nowrap;}
   .clist{list-style:none;margin:0;padding:2px 0;}
   .clist li{font-size:13.5px;color:var(--ink-2);line-height:1.55;padding:9px 0 9px 30px;position:relative;border-top:1px solid var(--line-2);}
   .clist li:first-child{border-top:0;}
@@ -118,10 +118,10 @@
     <section id="utilities">
       <div class="sechead"><h2>Utilities &amp; who to call</h2><div class="line"></div></div>
       <div class="card">
-        <div class="svc"><span class="ic">💧</span><div class="bd"><div class="nm">Water — SCV Water</div><div class="dt">The regional water agency (formerly Valencia Water). <a href="https://www.yourscvwater.com/" target="_blank" rel="noopener">yourscvwater.com ↗</a> · Customer service (661) 294-0828</div></div></div>
-        <div class="svc"><span class="ic">⚡</span><div class="bd"><div class="nm">Electricity — Southern California Edison (SCE)</div><div class="dt"><a href="https://www.sce.com/" target="_blank" rel="noopener">sce.com ↗</a> · Report an outage <span class="em">1-800-611-1911</span> · <a href="https://www.sce.com/outages-safety/outage-center/check-outage-status" target="_blank" rel="noopener">Outage &amp; PSPS map ↗</a></div></div></div>
-        <div class="svc"><span class="ic">🔥</span><div class="bd"><div class="nm">Gas — SoCalGas</div><div class="dt"><a href="https://www.socalgas.com/" target="_blank" rel="noopener">socalgas.com ↗</a> · <b>Smell gas? Leave the area, then call</b> <span class="em">1-800-427-2200</span> (24/7) — or 911.</div></div></div>
-        <div class="svc"><span class="ic">🗑️</span><div class="bd"><div class="nm">Trash &amp; recycling — Burrtec</div><div class="dt">The city's exclusive hauler. <a href="https://www.burrtec.com/scv/" target="_blank" rel="noopener">burrtec.com/scv ↗</a> · Start service / missed pickup (661) 222-2249</div></div></div>
+        <div class="svc"><span class="ic">💧</span><div class="bd"><div class="nm">Water — SCV Water</div><div class="dt">The regional water agency (formerly Valencia Water). <a href="https://www.yourscvwater.com/" target="_blank" rel="noopener">yourscvwater.com ↗</a> · Customer service <a href="tel:+16612940828">(661) 294-0828</a></div></div></div>
+        <div class="svc"><span class="ic">⚡</span><div class="bd"><div class="nm">Electricity — Southern California Edison (SCE)</div><div class="dt"><a href="https://www.sce.com/" target="_blank" rel="noopener">sce.com ↗</a> · Report an outage <a class="em" href="tel:+18006111911">1-800-611-1911</a> · <a href="https://www.sce.com/outages-safety/outage-center/check-outage-status" target="_blank" rel="noopener">Outage &amp; PSPS map ↗</a></div></div></div>
+        <div class="svc"><span class="ic">🔥</span><div class="bd"><div class="nm">Gas — SoCalGas</div><div class="dt"><a href="https://www.socalgas.com/" target="_blank" rel="noopener">socalgas.com ↗</a> · <b>Smell gas? Leave the area, then call</b> <a class="em" href="tel:+18004272200">1-800-427-2200</a> (24/7) — or 911.</div></div></div>
+        <div class="svc"><span class="ic">🗑️</span><div class="bd"><div class="nm">Trash &amp; recycling — Burrtec</div><div class="dt">The city's exclusive hauler. <a href="https://www.burrtec.com/scv/" target="_blank" rel="noopener">burrtec.com/scv ↗</a> · Start service / missed pickup <a href="tel:+16612222249">(661) 222-2249</a></div></div></div>
         <div class="svc"><span class="ic">🌐</span><div class="bd"><div class="nm">Internet &amp; TV</div><div class="dt">Multiple providers serve the area (Spectrum, AT&amp;T Fiber where available, and others). Check your exact address with each for what's on your street.</div></div></div>
       </div>
     </section>
@@ -132,9 +132,9 @@
         <ul class="clist">
           <li><b>Three carts</b> — trash, recycling, and organics (yard + food waste). Out by 6 a.m. on your collection day, back in that evening.</li>
           <li><b>Your collection day</b> — one day covers the whole community. <a href="https://www.burrtec.com/scv/" target="_blank" rel="noopener">Look it up on Burrtec ↗</a> <span style="color:var(--muted)">(we'll post the exact day here once it's confirmed).</span></li>
-          <li><b>Free bulky-item pickup</b> — up to 4 times a year, 3 large items each (furniture, appliances, branches). Schedule at least 48 hours ahead via <a href="https://greensantaclarita.com/trash-and-recycling/residential-trash-and-recycling/residential-waste-services/" target="_blank" rel="noopener">Green Santa Clarita ↗</a>.</li>
+          <li><b>Free bulky-item pickup</b> — up to 4 times a year, 3 large items each (furniture, appliances, branches). Schedule at least 48 hours ahead with <a href="https://www.burrtec.com/residential-services/#bulky-item-pickup" target="_blank" rel="noopener">Burrtec ↗</a> or call <a href="tel:+16612222249">(661) 222-2249</a>.</li>
           <li><b>Paint, batteries, electronics, propane</b> — never in the carts. Drop-off at Burrtec, 26000 Springbrook Ave (Mon–Fri, plus the 3rd Saturday morning).</li>
-          <li><b>Illegal dumping</b> in the common areas — report to the City Stormwater Hotline, (661) 222-7222.</li>
+          <li><b>Illegal dumping</b> in the common areas — report to the City Stormwater Hotline, <a href="tel:+16612227222">(661) 222-7222</a>.</li>
         </ul>
       </div>
     </section>
@@ -151,9 +151,9 @@
     <section id="health">
       <div class="sechead"><h2>Health &amp; emergency near us</h2><div class="line"></div></div>
       <div class="card">
-        <div class="svc"><span class="ic">🏥</span><div class="bd"><div class="nm">Henry Mayo Newhall Hospital — ER, open 24/7</div><div class="dt">Our valley's hospital. 23845 McBean Pkwy, Valencia · (661) 200-2000 · <a href="https://www.henrymayo.com/medical-services/emergency/" target="_blank" rel="noopener">henrymayo.com ↗</a></div></div></div>
-        <div class="svc"><span class="ic">🩺</span><div class="bd"><div class="nm">Henry Mayo Urgent Care</div><div class="dt">For non-emergencies. 23929 McBean Pkwy, #102 · (661) 200-2500 · <a href="https://www.henrymayo.com/medical-services/urgent-care/" target="_blank" rel="noopener">hours &amp; wait times ↗</a></div></div></div>
-        <div class="svc"><span class="ic">🚓</span><div class="bd"><div class="nm">SCV Sheriff's Station</div><div class="dt">Non-emergency (661) 260-4000 · 26201 Golden Valley Rd · <a href="https://lasd.org/santa-clarita-valley/" target="_blank" rel="noopener">lasd.org ↗</a></div></div></div>
+        <div class="svc"><span class="ic">🏥</span><div class="bd"><div class="nm">Henry Mayo Newhall Hospital — ER, open 24/7</div><div class="dt">Our valley's hospital. 23845 McBean Pkwy, Valencia · <a href="tel:+16612002000">(661) 200-2000</a> · <a href="https://www.henrymayo.com/medical-services/emergency/" target="_blank" rel="noopener">henrymayo.com ↗</a></div></div></div>
+        <div class="svc"><span class="ic">🩺</span><div class="bd"><div class="nm">Henry Mayo Urgent Care</div><div class="dt">For non-emergencies. 23929 McBean Pkwy, #102 · <a href="tel:+16612002500">(661) 200-2500</a> · <a href="https://www.henrymayo.com/medical-services/urgent-care/" target="_blank" rel="noopener">hours &amp; wait times ↗</a></div></div></div>
+        <div class="svc"><span class="ic">🚓</span><div class="bd"><div class="nm">SCV Sheriff's Station</div><div class="dt">Non-emergency <a href="tel:+16612604000">(661) 260-4000</a> · 26201 Golden Valley Rd · <a href="https://lasd.org/santa-clarita-valley/" target="_blank" rel="noopener">lasd.org ↗</a></div></div></div>
         <div class="svc"><span class="ic">🚨</span><div class="bd"><div class="nm">Life-threatening emergency</div><div class="dt"><b>Call 911.</b> For live fire, smoke, air quality, and evacuation status, see the <a href="/fire">Fire &amp; Emergency</a> page.</div></div></div>
       </div>
     </section>
@@ -166,7 +166,7 @@
           <li><b>It's why insurers are getting strict.</b> Non-renewals and steep premiums are common here. The single biggest lever you control is mitigation.</li>
           <li><b>Harden your home &amp; clear defensible space</b> — California's standard is up to 100 feet (Public Resources Code 4291). This is exactly what the common-area brush by the water towers is about. Start with <a href="https://www.readyforwildfire.org/" target="_blank" rel="noopener">CAL FIRE's Ready for Wildfire ↗</a>.</li>
           <li><b>Document it for a discount.</b> The state's <a href="https://www.insurance.ca.gov/" target="_blank" rel="noopener">"Safer from Wildfires" program (CA Dept. of Insurance) ↗</a> requires insurers to credit specific mitigation steps — and can move a home from "uninsurable" back to insurable.</li>
-          <li><b>Can't find coverage?</b> The <a href="https://www.cfpnet.com/" target="_blank" rel="noopener">California FAIR Plan ↗</a> is the state's insurer of last resort — (800) 339-4099.</li>
+          <li><b>Can't find coverage?</b> The <a href="https://www.cfpnet.com/" target="_blank" rel="noopener">California FAIR Plan ↗</a> is the state's insurer of last resort — <a href="tel:+18003394099">(800) 339-4099</a>.</li>
         </ul>
         <div class="callout">💡 <b>A community win worth chasing:</b> if Tesoro Highlands earns <a href="https://www.nfpa.org/education-and-research/wildfire/firewise-usa" target="_blank" rel="noopener" style="color:inherit;font-weight:700">Firewise USA ↗</a> recognition, many insurers apply a <b>5–15% premium discount</b> to every home in the neighborhood — and it builds directly on the brush-clearance work. One for the HOA agenda.</div>
         <div class="note">General resources, not insurance advice — talk to a licensed agent about your own policy.</div>
