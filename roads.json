@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T06:31:13.342Z",
+  "generatedAt": "2026-07-16T10:21:05.199Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -158,17 +158,17 @@
     },
     {
       "route": "I-5",
-      "dir": "North",
-      "at": "Antelope Valley Freeway, Route 14",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Road Maintenance",
-      "lanes": "2, 3",
-      "total": "3",
-      "startEpoch": 1784185260,
-      "endEpoch": 1784203140,
-      "moreWindows": 0
+      "dir": "South",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784217660,
+      "endEpoch": 1784239140,
+      "moreWindows": 9
     }
   ]
 }
