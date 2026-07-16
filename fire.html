@@ -162,13 +162,15 @@
   .fire .fi { flex:none; width:38px; height:38px; border-radius:10px; background:var(--dan-bg); display:grid; place-items:center; font-size:18px; }
   .fire .fmeta { flex:1; min-width:0; }
   .fire .fmeta .fn { font-weight:620; font-size:14px; }
+  .fire .fmeta .fn a { color:inherit; text-decoration:none; border-bottom:1px dotted var(--muted); }
+  .fire .fmeta .fn a:hover { border-bottom-style:solid; }
   .fire .fmeta .fs { font-size:12px; color:var(--muted); margin-top:1px; }
   .fire .fdist { text-align:right; flex:none; }
   .fire .fdist .d { font-size:16px; font-weight:660; }
   .fire .fdist .dir { font-size:11px; color:var(--muted); }
   .contain { height:6px; border-radius:999px; background:var(--line); overflow:hidden; margin-top:7px; }
   .contain i { display:block; height:100%; background:var(--aqi-usg); }
-  .smokeline { display:inline-block; font-size:11px; font-weight:620; margin-top:7px; padding:2px 9px; border-radius:999px; }
+  .smokeline { display:inline-block; font-size:11px; font-weight:620; margin-top:7px; margin-right:5px; padding:2px 9px; border-radius:999px; }
   .smokeline.toward { background:var(--cau-bg); color:var(--cau-fg); border:1px solid var(--cau-line); }
   .smokeline.away { background:var(--ok-bg); color:var(--ok-fg); border:1px solid var(--ok-line); }
   .smokeline.calm { background:var(--neu-bg); color:var(--neu-fg); border:1px solid var(--neu-line); }
@@ -283,7 +285,7 @@
        came for; on a bad day it's the headline. -->
   <div class="sechead" style="margin-top:18px"><h2>Nearby fire activity</h2><div class="line"></div></div>
   <div class="card" id="fireCard" style="margin-top:8px">
-    <div class="q" style="margin-bottom:10px">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Acreage and containment come from <b>CAL FIRE</b> where they have the incident; the national feed often opens a record for a local fire without ever sizing it, so a fresh one can show "size not yet reported" for a while. Each shows when it was last updated.</div>
+    <div class="q" style="margin-bottom:10px">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Acreage and containment come from <b>CAL FIRE</b> where they have the incident (small local fires often never get sized — the 🛰️ chip shows whether a <b>NASA satellite</b> actually detected heat there in the last 24 hours). Fire names link to the official CAL FIRE page when there is one.</div>
     <div id="fireList"></div>
   </div>
 
@@ -686,6 +688,38 @@ async function fetchCalFire(){
   }catch(e){ return []; }
 }
 function normFireName(s){ return String(s||"").toUpperCase().replace(/\bFIRE\b/g," ").replace(/[^A-Z0-9]/g,""); }
+// NASA VIIRS satellite heat detections (Esri Living Atlas mirror, CORS-open).
+// The satellites pass ~4x a day, so this answers the question records can't:
+// is the fire actually still hot? Failure is non-fatal — chips just don't show.
+async function fetchViirs(lat, lon){
+  try{
+    const env = `${(lon-0.85).toFixed(2)},${(lat-0.75).toFixed(2)},${(lon+0.85).toFixed(2)},${(lat+0.75).toFixed(2)}`;
+    const u = "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/Satellite_VIIRS_Thermal_Hotspots_and_Fire_Activity/FeatureServer/0/query"
+      + "?where=" + encodeURIComponent("hours_old <= 24")
+      + "&geometry=" + encodeURIComponent(env)
+      + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects"
+      + "&outFields=latitude,longitude,hours_old&returnGeometry=false&resultRecordCount=2000&f=json";
+    const j = await fetch(u).then(r=>r.json());
+    return (j.features||[]).map(f=>f.attributes).filter(a=>a && a.latitude!=null);
+  }catch(e){ return []; }
+}
+// Newest satellite detection within ~1.5 mi of the fire point, else null.
+function satAge(f, viirs){
+  let best = null;
+  for(const h of viirs){
+    if(haversine(f.lat, f.lon, h.latitude, h.longitude) > 1.5) continue;
+    if(best==null || h.hours_old < best) best = h.hours_old;
+  }
+  return best;
+}
+function satChip(f){
+  if(f.sat != null){
+    const when = f.sat < 1 ? "within the hour" : "~" + Math.round(f.sat) + "h ago";
+    return `<div class="smokeline toward">🛰️ satellite saw heat ${when}</div>`;
+  }
+  if(f.acres == null) return `<div class="smokeline calm">🛰️ no satellite heat in 24h — likely small</div>`;
+  return "";
+}
 // Fill in the gaps from CAL FIRE. A name match must also land within 15 miles,
 // so a same-named fire up north can never overwrite the one next door.
 function enrichFires(fires, cal){
@@ -709,6 +743,7 @@ function enrichFires(fires, cal){
     if(best.acres != null && (out.acres == null || out.acres === 0 || calFresher)) out.acres = best.acres;
     if(best.contained != null && (out.contain == null || calFresher)) out.contain = best.contained;
     if(!isNaN(cu) && (out.mod == null || cu > out.mod)) out.mod = cu;
+    if(best.url) out.url = best.url;  // CAL FIRE's incident page — the official detail view
     return out;
   });
 }
@@ -720,9 +755,9 @@ async function fetchFires(lat, lon){
     + "?where=" + encodeURIComponent(FIRE_WHERE)
     + "&geometry=" + encodeURIComponent(env)
     + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects"
-    + "&outFields=IncidentName,IncidentSize,PercentContained,FireDiscoveryDateTime,ModifiedOnDateTime_dt"
+    + "&outFields=IncidentName,IncidentSize,PercentContained,FireDiscoveryDateTime,ModifiedOnDateTime_dt,FireBehaviorGeneral,TotalIncidentPersonnel"
     + "&returnGeometry=true&outSR=4326&resultRecordCount=1000&f=geojson";
-  const [j, cal] = await Promise.all([ fetch(url).then(r=>r.json()), fetchCalFire() ]);
+  const [j, cal, viirs] = await Promise.all([ fetch(url).then(r=>r.json()), fetchCalFire(), fetchViirs(lat, lon) ]);
   const raw = (j.features||[])
     .filter(f => f.geometry && f.geometry.coordinates)
     .filter(f => !/^LAC-?\d+$/i.test((f.properties.IncidentName||"").trim()))  // drop LA County dispatch-number noise
@@ -730,6 +765,7 @@ async function fetchFires(lat, lon){
       const c=f.geometry.coordinates, a=f.properties;
       return { name: fireName(a.IncidentName), acres: a.IncidentSize, contain: a.PercentContained,
         disc: a.FireDiscoveryDateTime, mod: a.ModifiedOnDateTime_dt, lat: c[1], lon: c[0],
+        behavior: a.FireBehaviorGeneral, personnel: a.TotalIncidentPersonnel,
         dist: haversine(lat,lon,c[1],c[0]), dir: compass(bearingDeg(lat,lon,c[1],c[0])) };
     });
   // Enrich before the staleness test: a fire CAL FIRE is actively sizing is not a
@@ -738,7 +774,8 @@ async function fetchFires(lat, lon){
     .filter(f => !isStaleFire(f.mod, f.acres))
     .filter(f => f.dist <= FIRE_RADIUS)
     .sort((x,y)=> x.dist - y.dist)
-    .slice(0, 6);
+    .slice(0, 6)
+    .map(f => { f.sat = satAge(f, viirs); return f; });
 }
 // Live evacuation status near home from the Cal OES statewide aggregation (mirrors Genasys zones).
 const GENASYS_LINK = '<a href="https://protect.genasys.com/search?query=Valencia%2C%20CA" target="_blank" rel="noopener">Genasys Protect ↗</a>';
@@ -933,16 +970,23 @@ function render(){
       const acres = acresText(f.acres);
       const upd = f.mod ? ` · updated ${fmtAgo(f.mod)}` : "";
       const meta = f.trend ? `${acres} · ${f.trend}` : (f.disc ? `${acres} · spotted ${fmtDate(f.disc)}${upd}` : `${acres}${upd}`);
+      // Big incidents report crew size and behavior — worth a line when present.
+      const ops = [
+        f.behavior ? `burning: ${String(f.behavior).toLowerCase()}` : null,
+        f.personnel ? `${Number(f.personnel).toLocaleString()} personnel assigned` : null
+      ].filter(Boolean).join(" · ");
       const bar = (f.contain!=null) ? `<div class="contain"><i style="width:${f.contain}%"></i></div><div class="fs" style="margin-top:4px">${f.contain}% contained</div>` : "";
       const tag = ` <span class="pill live">Live</span>`;
+      const nm = f.url ? `<a href="${f.url}" target="_blank" rel="noopener" title="Open the CAL FIRE incident page">${f.name} ↗</a>` : f.name;
       return `
       <div class="fire">
         <div class="fi">🔥</div>
         <div class="fmeta">
-          <div class="fn">${f.name}${tag}</div>
+          <div class="fn">${nm}${tag}</div>
           <div class="fs">${meta}</div>
+          ${ops ? `<div class="fs">${ops}</div>` : ""}
           ${bar}
-          ${smokeChip(f, v.wdir, v.wind)}
+          ${satChip(f)}${smokeChip(f, v.wdir, v.wind)}
         </div>
         <div class="fdist"><div class="d">${f.dist.toFixed(f.dist<10?1:0)} mi</div><div class="dir">to your ${f.dir}</div></div>
       </div>`;
