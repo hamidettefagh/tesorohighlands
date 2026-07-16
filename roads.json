@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T21:14:53.280Z",
+  "generatedAt": "2026-07-16T03:36:17.893Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1783407660,
       "endEpoch": 1785999540,
-      "moreWindows": 8
+      "moreWindows": 10
     },
     {
       "route": "I-5",
@@ -23,12 +23,12 @@
       "place": "Castaic",
       "facility": "Mainline",
       "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4",
+      "work": "Roadway Excavation",
+      "lanes": "3, 4",
       "total": "4",
-      "startEpoch": 1784120460,
-      "endEpoch": 1784152740,
-      "moreWindows": 27
+      "startEpoch": 1784167260,
+      "endEpoch": 1784206740,
+      "moreWindows": 30
     },
     {
       "route": "I-5",
@@ -42,7 +42,7 @@
       "total": "4",
       "startEpoch": 1784167260,
       "endEpoch": 1784206740,
-      "moreWindows": 11
+      "moreWindows": 13
     },
     {
       "route": "I-5",
@@ -56,7 +56,7 @@
       "total": "1",
       "startEpoch": 1784167260,
       "endEpoch": 1784206740,
-      "moreWindows": 20
+      "moreWindows": 27
     },
     {
       "route": "I-5",
@@ -70,21 +70,7 @@
       "total": "1",
       "startEpoch": 1784167260,
       "endEpoch": 1784210340,
-      "moreWindows": 14
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Lyons Ave",
-      "place": "Stevenson Ranch",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784167260,
-      "endEpoch": 1784206740,
-      "moreWindows": 19
+      "moreWindows": 17
     },
     {
       "route": "I-5",
@@ -98,49 +84,7 @@
       "total": "1",
       "startEpoch": 1784167260,
       "endEpoch": 1784206740,
-      "moreWindows": 39
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784167260,
-      "endEpoch": 1784206740,
-      "moreWindows": 12
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Valencia Blvd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784167260,
-      "endEpoch": 1784206740,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Shoulder Reconstruction",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784167260,
-      "endEpoch": 1784206740,
-      "moreWindows": 6
+      "moreWindows": 64
     },
     {
       "route": "I-5",
@@ -154,7 +98,7 @@
       "total": "2",
       "startEpoch": 1784167260,
       "endEpoch": 1784206740,
-      "moreWindows": 40
+      "moreWindows": 79
     },
     {
       "route": "I-5",
@@ -168,7 +112,63 @@
       "total": "1",
       "startEpoch": 1784167260,
       "endEpoch": 1784206740,
-      "moreWindows": 3
+      "moreWindows": 6
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Valencia Blvd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Electrical Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784167260,
+      "endEpoch": 1784206740,
+      "moreWindows": 14
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Gavin Canyon",
+      "place": "Newhall",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Drainage Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1784170860,
+      "endEpoch": 1784206740,
+      "moreWindows": 7
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Reconstruction",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1784170860,
+      "endEpoch": 1784206740,
+      "moreWindows": 20
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Lyons Ave",
+      "place": "Stevenson Ranch",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Sawcutting Operation",
+      "lanes": "4, 5",
+      "total": "5",
+      "startEpoch": 1784170860,
+      "endEpoch": 1784206740,
+      "moreWindows": 30
     }
   ]
 }
