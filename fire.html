@@ -222,14 +222,14 @@
   .pill.live { background:var(--ok-bg); color:var(--ok-fg); }
   .pill.demo { background:var(--cau-bg); color:var(--cau-fg); }
 
-  /* "who should take it easy" advisory, inside the air card */
-  .advice { display:flex; gap:8px; align-items:flex-start; margin-top:11px; padding:9px 11px; border-radius:10px; border:1px solid; }
+  /* "who should take it easy" — reads the air + fire-weather cards above it */
+  .advice { display:flex; gap:10px; align-items:flex-start; padding:13px 15px; border-radius:var(--radius); border:1px solid; box-shadow:var(--shadow); }
   .advice.ok { background:var(--ok-bg); border-color:var(--ok-line); color:var(--ok-fg); }
   .advice.caution { background:var(--cau-bg); border-color:var(--cau-line); color:var(--cau-fg); }
   .advice.danger { background:var(--dan-bg); border-color:var(--dan-line); color:var(--dan-fg); }
   .advice.neutral { background:var(--neu-bg); border-color:var(--neu-line); color:var(--neu-fg); }
-  .advice .ai { flex:none; font-size:14px; line-height:1.45; }
-  .advice .at { font-size:12.5px; line-height:1.5; }
+  .advice .ai { flex:none; font-size:16px; line-height:1.4; }
+  .advice .at { font-size:13px; line-height:1.55; }
   .advice .at b { font-weight:700; }
 
   .skel { color:var(--muted); font-size:13px; }
@@ -292,13 +292,12 @@
       <!-- AIR -->
       <div class="card" id="airCard">
         <h3>What are we breathing? <span class="cardtag pill live">Live</span></h3>
-        <div class="q">US Air Quality Index — and who should take it easy</div>
+        <div class="q">US Air Quality Index</div>
         <div class="aqinum">
           <span class="n" id="aqiN">–</span>
           <span class="cat unk" id="aqiCat">Loading</span>
         </div>
         <div class="spark" id="aqiSpark"></div>
-        <div class="advice neutral" id="airAdvice"><span class="ai">⏳</span><div class="at skel">Checking…</div></div>
         <div class="outlook" id="aqiOutlook"></div>
         <div class="pmrow">
           <div>PM2.5<b id="pm25">–</b></div>
@@ -319,6 +318,11 @@
         <div id="fwNote"></div>
       </div>
     </div>
+
+    <!-- WHAT IT MEANS — reads both cards above (air, fire weather, nearby fires,
+         heat) and says plainly who should take it easy. This is what survives of
+         the old "Can the kids play outside?" card, minus the duplication. -->
+    <div class="advice neutral" id="airAdvice"><span class="ai">⏳</span><div class="at skel">Checking conditions…</div></div>
 
     <!-- SMOKE PLAYBOOK — kept right under the air it answers; opens itself when the air turns -->
     <details class="card playbook" id="smokeCard">
