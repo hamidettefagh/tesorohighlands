@@ -61,6 +61,13 @@
   .chip{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:1px 7px;border-radius:999px;background:var(--neu-bg);color:var(--neu-fg);margin:4px 4px 0 0;}
   .chip.today{background:var(--ok-bg);color:var(--ok-fg);}
   .empty{padding:16px 2px;color:var(--muted);font-size:13px;}
+  .evsearch{width:100%;padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+    color:var(--ink);font-size:13px;font-family:var(--font);margin:0 0 10px;}
+  .evsearch::placeholder{color:var(--muted);}
+  .dayhead{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);
+    padding:13px 2px 3px;}
+  .dayhead b{color:var(--ink-2);}
+  .dayhead + .evitem{border-top:1px solid var(--line-2);}
 
   .ttdgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   @media (max-width:520px){.ttdgrid{grid-template-columns:1fr;}}
@@ -148,6 +155,7 @@
         <button data-when="weekend" aria-pressed="false">This weekend</button>
         <button data-when="week" aria-pressed="false">Next 7 days</button>
       </div>
+      <input class="evsearch" id="evSearch" type="search" placeholder="🔎 Search events — try “market”, “comedy”, “storytime”…" aria-label="Search events" />
       <div class="evcard"><div id="feedList"><div class="empty">Loading local events…</div></div></div>
       <div class="evmeta" id="feedMeta">Attendable events across the Santa Clarita Valley — the City calendar, Eventbrite, and the Santa Clarita Public Library — updated regularly.</div>
     </section>
@@ -275,7 +283,17 @@
     });
 
     // ---- Auto-updated attendable events, filterable by audience + date ----
-    var allEvents = [], currentFilter = "all", currentWhen = "any";
+    var allEvents = [], currentFilter = "all", currentWhen = "any", currentQuery = "";
+    function dayLabel(dstr) {
+      var p = dstr.split("-").map(Number);
+      var d = new Date(p[0], p[1] - 1, p[2]);
+      var today = new Date(); today.setHours(0,0,0,0);
+      var diff = Math.round((d - today) / 86400000);
+      var pretty = d.toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" });
+      if (diff === 0) return "<b>Today</b> · " + pretty;
+      if (diff === 1) return "<b>Tomorrow</b> · " + pretty;
+      return pretty;
+    }
     function priceBadge(e) {
       if (e.free) return '<span class="badge-price free">Free</span>';
       if (e.price) return '<span class="badge-price">' + esc(e.price) + "</span>";
@@ -300,26 +318,38 @@
       var el = document.getElementById("feedList");
       var list = allEvents.filter(function (e) {
         if (!inWhen(startMs(e._start))) return false;
+        if (currentQuery && ((e.title || "") + " " + (e.venue || "") + " " + (e.city || "")).toLowerCase().indexOf(currentQuery) < 0) return false;
         if (currentFilter === "all") return true;
         if (currentFilter === "free") return !!e.free;
         return (e.audience || []).indexOf(currentFilter) >= 0;
       });
       if (!list.length) {
-        el.innerHTML = '<div class="empty">Nothing matches those filters — try All + Any time, or check the links below.</div>';
+        el.innerHTML = '<div class="empty">Nothing matches — try clearing the search, or All + Any time.</div>';
         return;
       }
+      var lastDay = null;
       el.innerHTML = list.map(function (e) {
-        var w = parseStart(e._start);
-        var auds = (e.audience || []).filter(function (a) { return a !== "everyone"; });
-        return '<div class="evitem">' + whenHtml(e._start) +
-          '<div class="what"><a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.title) + "</a>" +
-          (w.isToday ? '<span class="chip today">Today</span>' : "") +
-          '<div class="sub">' + esc([e.venue, e.city].filter(Boolean).join(" · ")) + "</div>" +
-          auds.map(function (a) { return '<span class="chip">' + esc(AUD_LABEL[a] || a) + "</span>"; }).join("") +
-          (e._repeats ? '<span class="chip">↻ +' + e._repeats + ' more dates</span>' : "") +
-          '</div><div class="price">' + priceBadge(e) + "</div></div>";
+        var day = (e._start || "").split("T")[0];
+        var head = "";
+        if (day !== lastDay) { lastDay = day; head = '<div class="dayhead">' + dayLabel(day) + "</div>"; }
+        return head + itemHtml(e);
       }).join("");
     }
+    function itemHtml(e) {
+      var w = parseStart(e._start);
+      var auds = (e.audience || []).filter(function (a) { return a !== "everyone"; });
+      return '<div class="evitem">' + whenHtml(e._start) +
+        '<div class="what"><a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.title) + "</a>" +
+        (w.isToday ? '<span class="chip today">Today</span>' : "") +
+        '<div class="sub">' + esc([e.venue, e.city].filter(Boolean).join(" · ")) + "</div>" +
+        auds.map(function (a) { return '<span class="chip">' + esc(AUD_LABEL[a] || a) + "</span>"; }).join("") +
+        (e._repeats ? '<span class="chip">↻ +' + e._repeats + ' more dates</span>' : "") +
+        '</div><div class="price">' + priceBadge(e) + "</div></div>";
+    }
+    document.getElementById("evSearch").addEventListener("input", function () {
+      currentQuery = this.value.trim().toLowerCase();
+      renderFeed();
+    });
     document.getElementById("audChips").addEventListener("click", function (ev) {
       var b = ev.target.closest("button"); if (!b) return;
       currentFilter = b.dataset.aud;

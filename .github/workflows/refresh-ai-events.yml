@@ -6,13 +6,14 @@ name: Refresh AI-found events
 # the Eventbrite scraper). Requires the ANTHROPIC_API_KEY repo secret — without
 # it the script exits cleanly and nothing is committed.
 #
-# Manual-run only to start (click "Run workflow" in the Actions tab) so you can
-# review ai-events.json and control cost. Uncomment the schedule to automate.
+# Runs daily (plus manual "Run workflow"). Each run costs a few cents on
+# Haiku (see README) — the venue-targeted sweep is what catches the events
+# no structured feed carries.
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: "23 13 * * *"   # ~6:23am PT daily — costs a few cents/run (see README)
+  schedule:
+    - cron: "23 13 * * *"   # ~6:23am PT daily
 
 permissions:
   contents: write

@@ -76,7 +76,14 @@ const PROMPT = `You are helping a Santa Clarita Valley community website find LO
 
 Today is ${ymd(today)}. Find events happening between ${ymd(today)} and ${ymd(windowEnd)} in the Santa Clarita Valley — the California cities of Santa Clarita, Valencia, Newhall, Saugus, Canyon Country, Castaic, Stevenson Ranch, and Agua Dulce.
 
-Use web search to find real events. Good places to look: local venue pages, Macaroni KID Santa Clarita, the City of Santa Clarita arts/events pages, Visit Santa Clarita, community organizations, farms (e.g. Gilchrist Farm), breweries and restaurants that host events, churches, schools, and local event roundups.
+Use web search to find real events. PRIORITIZE these local venues — they publish events only on their own pages, so no calendar feed ever picks them up:
+- Six Flags Magic Mountain (concerts, festivals, special nights — not regular park hours)
+- Canyon Theatre Guild (canyontheatre.org) and The MAIN in Old Town Newhall (current shows and their dates)
+- LA County Library branches in Castaic and Stevenson Ranch (storytimes, kids programs)
+- Gilchrist Farm, local farmers markets, and seasonal farm events
+- Breweries and taprooms that host events: Pocock Brewing, Brewery Draconum, Lucky Luke, Telco, Wolf Creek
+- Valencia Town Center and Westfield-area happenings, Old Town Newhall street events (SENSES block party), city Concerts in the Park
+Also check: Macaroni KID Santa Clarita, Visit Santa Clarita, community organizations, churches, schools, and local event roundups.
 
 INCLUDE things a family or an adult can physically show up to: festivals, farmers markets, live music, comedy, kids' activities and classes, story times, farm events, holiday events, community and rec events.
 EXCLUDE online/virtual events, corporate training or professional certification courses, anything outside the Santa Clarita Valley, and anything that has already happened.
@@ -97,7 +104,7 @@ const WEB_SEARCH_TYPE = /opus-4-6|opus-4-7|opus-4-8|sonnet-5|sonnet-4-6|fable-5|
   : "web_search_20250305";
 
 const tools = [
-  { type: WEB_SEARCH_TYPE, name: "web_search", max_uses: 8 },
+  { type: WEB_SEARCH_TYPE, name: "web_search", max_uses: 12 },
   {
     name: "submit_events",
     description: "Record the confirmed local events you found. Call this exactly once when done.",
