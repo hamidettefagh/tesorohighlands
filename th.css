@@ -73,6 +73,10 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .hub-hero.ok .eyebrow,.hub-hero.ok .htext{color:var(--ok-fg);} .hub-hero.caution .eyebrow,.hub-hero.caution .htext{color:var(--cau-fg);} .hub-hero.danger .eyebrow,.hub-hero.danger .htext{color:var(--dan-fg);}
 .hub-hero .htext{font-size:17px;font-weight:620;letter-spacing:-0.01em;margin:4px 0 10px;line-height:1.35;}
 .hub-hero .hlink{font-size:13px;font-weight:640;text-decoration:none;color:inherit;opacity:.9;}
+/* every active NWS alert, so heat/red-flag stay visible behind a bigger headline */
+.hub-hero .halerts{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 11px;}
+.hub-hero .halert{font-size:11.5px;font-weight:640;padding:2px 9px;border-radius:999px;
+  border:1px solid currentColor;color:inherit;opacity:.75;white-space:nowrap;}
 .today{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;}
 @media(max-width:560px){.today{grid-template-columns:1fr;}}
 .tcell{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:11px 13px;color:var(--ink);box-shadow:var(--shadow);transition:border-color .15s;}

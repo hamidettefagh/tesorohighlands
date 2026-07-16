@@ -222,14 +222,15 @@
   .pill.live { background:var(--ok-bg); color:var(--ok-fg); }
   .pill.demo { background:var(--cau-bg); color:var(--cau-fg); }
 
-  /* location editor */
-  .editor { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px; margin-top:10px; display:none; }
-  .editor.show{ display:block; }
-  .editor .row { display:flex; gap:8px; margin-bottom:8px; }
-  .editor label { flex:1; font-size:11.5px; color:var(--muted); }
-  .editor input { width:100%; margin-top:3px; padding:8px 10px; border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--ink); font-size:13px; font-family:var(--font); }
-  .editor .ebtns { display:flex; gap:8px; justify-content:flex-end; }
-  .editor .ebtns .primary { background:var(--accent); color:var(--on-accent); border:0; }
+  /* "who should take it easy" advisory, inside the air card */
+  .advice { display:flex; gap:8px; align-items:flex-start; margin-top:11px; padding:9px 11px; border-radius:10px; border:1px solid; }
+  .advice.ok { background:var(--ok-bg); border-color:var(--ok-line); color:var(--ok-fg); }
+  .advice.caution { background:var(--cau-bg); border-color:var(--cau-line); color:var(--cau-fg); }
+  .advice.danger { background:var(--dan-bg); border-color:var(--dan-line); color:var(--dan-fg); }
+  .advice.neutral { background:var(--neu-bg); border-color:var(--neu-line); color:var(--neu-fg); }
+  .advice .ai { flex:none; font-size:14px; line-height:1.45; }
+  .advice .at { font-size:12.5px; line-height:1.5; }
+  .advice .at b { font-weight:700; }
 
   .skel { color:var(--muted); font-size:13px; }
   .cardtag { float:right; }
@@ -267,24 +268,9 @@
       </div>
     </div>
     <div class="hbtns">
-      <button class="iconbtn" id="editBtn" title="Change location">📍 Edit</button>
       <button class="iconbtn" id="refreshBtn" title="Refresh">↻</button>
     </div>
   </header>
-
-  <div class="editor" id="editor">
-    <div class="row">
-      <label>Latitude<input id="inLat" type="number" step="0.0001" /></label>
-      <label>Longitude<input id="inLon" type="number" step="0.0001" /></label>
-    </div>
-    <div class="row">
-      <label>Label<input id="inLabel" type="text" placeholder="Street or neighborhood" /></label>
-    </div>
-    <div class="ebtns">
-      <button class="iconbtn" id="cancelEdit">Cancel</button>
-      <button class="iconbtn primary" id="saveEdit">Save & refresh</button>
-    </div>
-  </div>
 
   <div class="hero ok" id="hero">
     <div class="eyebrow" id="heroEy">Overall status</div>
@@ -292,28 +278,27 @@
     <p id="heroText">Pulling live air quality, fire weather, and alerts for your location.</p>
   </div>
 
-  <div class="cards">
-    <!-- KIDS -->
-    <div class="card" id="kidsCard">
-      <h3>Can the kids play outside?</h3>
-      <div class="q">Air quality + fire weather, judged for children</div>
-      <div class="verdict">
-        <div class="badge neutral" id="kidsBadge">…</div>
-        <div class="vtxt" id="kidsTxt"><strong class="skel">Checking…</strong><span></span></div>
-      </div>
-      <div class="detail" id="kidsDetail"></div>
-    </div>
+  <!-- NEARBY FIRES — the question this page exists to answer, so it goes first.
+       On a quiet day the "nothing within 45 miles" line is the reassurance people
+       came for; on a bad day it's the headline. -->
+  <div class="sechead" style="margin-top:18px"><h2>Nearby fire activity</h2><div class="line"></div></div>
+  <div class="card" id="fireCard" style="margin-top:8px">
+    <div class="q" style="margin-bottom:10px">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Acreage and containment come from <b>CAL FIRE</b> where they have the incident; the national feed often opens a record for a local fire without ever sizing it, so a fresh one can show "size not yet reported" for a while. Each shows when it was last updated.</div>
+    <div id="fireList"></div>
+  </div>
 
+  <div class="cards">
     <div class="grid2">
       <!-- AIR -->
       <div class="card" id="airCard">
         <h3>What are we breathing? <span class="cardtag pill live">Live</span></h3>
-        <div class="q">US Air Quality Index</div>
+        <div class="q">US Air Quality Index — and who should take it easy</div>
         <div class="aqinum">
           <span class="n" id="aqiN">–</span>
           <span class="cat unk" id="aqiCat">Loading</span>
         </div>
         <div class="spark" id="aqiSpark"></div>
+        <div class="advice neutral" id="airAdvice"><span class="ai">⏳</span><div class="at skel">Checking…</div></div>
         <div class="outlook" id="aqiOutlook"></div>
         <div class="pmrow">
           <div>PM2.5<b id="pm25">–</b></div>
@@ -335,13 +320,21 @@
       </div>
     </div>
 
-    <!-- 7-DAY OUTLOOK -->
-    <div class="card" id="owCard">
-      <h3>Next 7 days — fire weather <span class="cardtag pill live">Live</span></h3>
-      <div class="q">Spot Santa Ana setups before they arrive — peak wind, gusts, and how dry the air gets each day</div>
-      <div class="owgrid" id="owGrid"><div class="skel">Loading forecast…</div></div>
-      <div id="owNote"></div>
-    </div>
+    <!-- SMOKE PLAYBOOK — kept right under the air it answers; opens itself when the air turns -->
+    <details class="card playbook" id="smokeCard">
+      <summary><span class="pbtitle">🫁 When it's smoky — the playbook</span><span class="pbhint">tap to open</span></summary>
+      <div class="src">Shared by a neighbor in the community group chat, lightly edited.</div>
+      <ul class="plist">
+        <li><b>Seal the house.</b> Close all windows and doors.</li>
+        <li><b>AC on recirculate.</b> Set it to "Circulate," and switch the fan from Auto to <b>On</b> so it keeps filtering. Skip whole-house fans — they pull smoke in.</li>
+        <li><b>Run air purifiers.</b> Box fans help push the clean air around.</li>
+        <li><b>Don't make indoor smoke.</b> No candles, fireplace, frying or broiling, and no vacuuming until the air clears.</li>
+        <li><b>Outside, wear a real N95 or N100</b> — snug to the face. Cloth and surgical masks don't stop smoke. N95s don't fit babies or toddlers, so keep little ones in your cleanest room.</li>
+        <li><b>Drink plenty of water.</b> Smoke dries out eyes, throat, and sinuses.</li>
+        <li><b>Watch the vulnerable</b> — kids, older neighbors, and anyone with asthma or heart or lung issues.</li>
+        <li><b>If it gets thick and hot,</b> leave for cleaner air instead of toughing it out.</li>
+      </ul>
+    </details>
 
     <!-- ALERTS -->
     <div class="card" id="alertCard">
@@ -349,23 +342,15 @@
       <div class="q">Red Flag Warnings, fire weather, and heat advisories from the National Weather Service</div>
       <div id="alertList"><div class="skel">Checking National Weather Service…</div></div>
     </div>
-  </div>
 
-  <!-- SMOKE PLAYBOOK (neighbor advice) -->
-  <details class="card playbook" id="smokeCard" style="margin-top:12px">
-    <summary><span class="pbtitle">🫁 When it's smoky — the playbook</span><span class="pbhint">tap to open</span></summary>
-    <div class="src">Shared by a neighbor in the community group chat, lightly edited.</div>
-    <ul class="plist">
-      <li><b>Seal the house.</b> Close all windows and doors.</li>
-      <li><b>AC on recirculate.</b> Set it to "Circulate," and switch the fan from Auto to <b>On</b> so it keeps filtering. Skip whole-house fans — they pull smoke in.</li>
-      <li><b>Run air purifiers.</b> Box fans help push the clean air around.</li>
-      <li><b>Don't make indoor smoke.</b> No candles, fireplace, frying or broiling, and no vacuuming until the air clears.</li>
-      <li><b>Outside, wear a real N95 or N100</b> — snug to the face. Cloth and surgical masks don't stop smoke. N95s don't fit babies or toddlers, so keep little ones in your cleanest room.</li>
-      <li><b>Drink plenty of water.</b> Smoke dries out eyes, throat, and sinuses.</li>
-      <li><b>Watch the vulnerable</b> — kids, older neighbors, and anyone with asthma or heart or lung issues.</li>
-      <li><b>If it gets thick and hot,</b> leave for cleaner air instead of toughing it out.</li>
-    </ul>
-  </details>
+    <!-- 7-DAY OUTLOOK -->
+    <div class="card" id="owCard">
+      <h3>Next 7 days — fire weather <span class="cardtag pill live">Live</span></h3>
+      <div class="q">Spot Santa Ana setups before they arrive — peak wind, gusts, and how dry the air gets each day</div>
+      <div class="owgrid" id="owGrid"><div class="skel">Loading forecast…</div></div>
+      <div id="owNote"></div>
+    </div>
+  </div>
 
   <!-- FIRE MAP -->
   <div class="sechead"><h2>Fire &amp; evacuation map</h2><div class="line"></div></div>
@@ -384,7 +369,35 @@
     </div>
   </div>
 
-  <!-- ROADS -->
+  <!-- EVAC READINESS — everything about leaving lives together: are we in a zone,
+       is the bag packed, which way out, and what the freeways look like. -->
+  <div class="sechead"><h2>Evacuation readiness</h2><div class="line"></div></div>
+  <div class="card" id="evacCard" style="margin-top:8px">
+    <h3>Do we need to get ready to leave?</h3>
+    <div class="q">Live evacuation status for your area</div>
+    <div class="verdict">
+      <div class="badge neutral" id="evacBadge">…</div>
+      <div class="vtxt" id="evacTxt"><strong class="skel">Checking…</strong><span></span></div>
+    </div>
+    <div class="detail" id="evacDetail"></div>
+  </div>
+  <div class="card" style="margin-top:12px">
+    <h3>Your go-bag <span class="cardtag" id="progPct" style="font-size:12px;color:var(--muted);font-weight:600">0%</span></h3>
+    <div class="q">Tap what's done — saved on this device. Do it once now, not during a fire.</div>
+    <div class="prog"><i id="progBar" style="width:0"></i></div>
+    <div id="checklist"></div>
+  </div>
+  <div class="card" style="margin-top:12px">
+    <h3>If you get the order — leave early</h3>
+    <div class="q">Suggested routes out of Tesoro Highlands. Verify your official zone at protect.genasys.com.</div>
+    <div class="routes">
+      <div class="route"><span class="rn">1</span><div><b>Copper Hill Dr → McBean Pkwy → I-5 South</b></div></div>
+      <div class="route"><span class="rn">2</span><div><b>Newhall Ranch Rd → I-5 (north or south)</b></div></div>
+      <div class="route"><span class="rn">!</span><div>Leave on the first <b>warning</b>, not the order. Roads gridlock fast in the SCV.</div></div>
+    </div>
+  </div>
+
+  <!-- ROADS — the state of the way out, so it sits with the routes -->
   <div class="card" style="margin-top:12px" id="roadsCard">
     <h3>Our freeways — I-5 &amp; SR-14 <span class="cardtag pill live">Auto</span></h3>
     <div class="q">Planned Caltrans roadwork within ~12 miles — mostly overnight ramp and lane closures. For live traffic and emergency closures, use QuickMap.</div>
@@ -392,13 +405,6 @@
     <div class="links" style="margin-top:10px">
       <a href="https://quickmap.dot.ca.gov/" target="_blank" rel="noopener">Live conditions &amp; incidents <span>Caltrans QuickMap ↗</span></a>
     </div>
-  </div>
-
-  <!-- NEARBY FIRES -->
-  <div class="sechead"><h2>Nearby fire activity</h2><div class="line"></div></div>
-  <div class="card" id="fireCard" style="margin-top:8px">
-    <div class="q" style="margin-bottom:10px">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Acreage and containment come from <b>CAL FIRE</b> where they have the incident; the national feed often opens a record for a local fire without ever sizing it, so a fresh one can show "size not yet reported" for a while. Each shows when it was last updated.</div>
-    <div id="fireList"></div>
   </div>
 
   <!-- YOUR COMMUNITY -->
@@ -424,33 +430,6 @@
     <div class="detail">The big ones since 2000: Simi '03 (107,570 ac), Ranch '07 (58,410), Sand '16 (41,383), Buckweed '07 (38,347), Powerhouse '13 (30,268), Copper '02 (19,102), Creek '17, Sesnon '08, Sayre '08, Saddle Ridge '19, Rye '17, Tick '19. And the archive lags a few years — the 2022 Route and 2025 Hughes fires aren't even in it yet.</div>
     <div class="detail" style="margin-top:8px"><b>Why this matters for the brush by the water towers:</b> fire reaching this valley is a return interval, not a possibility. California's defensible-space standard (Public Resources Code 4291) calls for up to 100 feet of managed space around homes — clearing the common-area brush is exactly what that standard exists for.</div>
     <div class="src">Source: NIFC Interagency Fire Perimeter History — footprints intersecting a 10-mile box, deduplicated by name and year. Numbers baked July 2026; rerun the query to refresh.</div>
-  </div>
-
-  <!-- EVAC READINESS -->
-  <div class="sechead"><h2>Evacuation readiness</h2><div class="line"></div></div>
-  <div class="card" id="evacCard" style="margin-top:8px">
-    <h3>Do we need to get ready to leave?</h3>
-    <div class="q">Live evacuation status for your area</div>
-    <div class="verdict">
-      <div class="badge neutral" id="evacBadge">…</div>
-      <div class="vtxt" id="evacTxt"><strong class="skel">Checking…</strong><span></span></div>
-    </div>
-    <div class="detail" id="evacDetail"></div>
-  </div>
-  <div class="card" style="margin-top:12px">
-    <h3>Your go-bag <span class="cardtag" id="progPct" style="font-size:12px;color:var(--muted);font-weight:600">0%</span></h3>
-    <div class="q">Tap what's done — saved on this device. Do it once now, not during a fire.</div>
-    <div class="prog"><i id="progBar" style="width:0"></i></div>
-    <div id="checklist"></div>
-  </div>
-  <div class="card" style="margin-top:12px">
-    <h3>If you get the order — leave early</h3>
-    <div class="q">Suggested routes out of Tesoro Highlands. Verify your official zone at protect.genasys.com.</div>
-    <div class="routes">
-      <div class="route"><span class="rn">1</span><div><b>Copper Hill Dr → McBean Pkwy → I-5 South</b></div></div>
-      <div class="route"><span class="rn">2</span><div><b>Newhall Ranch Rd → I-5 (north or south)</b></div></div>
-      <div class="route"><span class="rn">!</span><div>Leave on the first <b>warning</b>, not the order. Roads gridlock fast in the SCV.</div></div>
-    </div>
   </div>
 
   <!-- SOURCES -->
@@ -484,13 +463,13 @@
 <script>
 "use strict";
 
-/* ---------- config / location ---------- */
-const DEFAULT_LOC = { lat: 34.478, lon: -118.531, label: "Tesoro Highlands", sub: "Valencia, CA 91354" };
-function loadLoc(){
-  try { const s = JSON.parse(localStorage.getItem("tesoro.loc")); if(s && s.lat && s.lon) return {...DEFAULT_LOC, ...s}; } catch(e){}
-  return {...DEFAULT_LOC};
-}
-let LOC = loadLoc();
+/* ---------- config / location ----------
+   Fixed, deliberately. There used to be a lat/lon editor here — a holdover from
+   when this was a generic tool. It earned nothing for a single gated community:
+   nobody knows their own coordinates, every home sits inside the same half mile
+   so the readings come out identical, and a mistyped value silently pinned you to
+   some other town's air and fire distances forever via localStorage. */
+const LOC = { lat: 34.478, lon: -118.531, label: "Tesoro Highlands", sub: "Valencia, CA 91354" };
 let live = { air:null, weather:null, alerts:null, fires:[], evac:null, error:false };
 let lastFetch = null;
 
@@ -556,26 +535,44 @@ function relevantAlerts(){
   }));
 }
 
-/* ---------- verdict logic ---------- */
-function kidsVerdict(v){
+/* ---------- who should take it easy ----------
+   The interpretation layer that turns a bare AQI number into something you can
+   act on. This was once a separate "Can the kids play outside?" card sitting
+   right next to the air card and restating it — and kids were never the only
+   people who need the warning. Now it lives inside the air card and names
+   everyone it applies to. The hero owns the fire/evacuation headline; this stays
+   about breathing and heat. */
+const SENSITIVE = "kids, older neighbors, pregnant people, and anyone with asthma or heart or lung conditions";
+function airAdvice(v){
   const air = aqiInfo(v.aqi);
   const fw = fireWx(v.temp, v.rh, v.wind, v.gust);
-  let lvl = 0, why = "";
-  if(v.evac.lvl>=1){ lvl=2; why="An evacuation warning is active — keep kids close and be ready to leave, not outside."; }
-  else if(air.lvl>=3){ lvl=2; why="The air is unhealthy for everyone. Keep kids indoors with windows closed. N95 masks don't fit toddlers, so put little ones in your cleanest room and run a purifier."; }
-  else if(air.lvl===2){ lvl=1; why="Air is unhealthy for sensitive groups, and kids are sensitive. Short outdoor sessions only, no hard running, come in if anyone coughs. N95s don't seal on small kids, so keep toddlers inside."; }
-  else if(v.fires.some(f=>f.dist<=12 && (f.acres||0)>=50)){ lvl=Math.max(lvl,1); why="There's a sizable fire within a dozen miles and smoke can shift fast. Keep it short and watch the sky."; }
-  else if(fw.lvl>=2){ lvl=1; why="Air is okay now, but fire weather is extreme — smoke could arrive with little warning. Stay close to home."; }
-  else if(v.alerts.some(a=>/heat/i.test(a.event||""))){ lvl=1; why="Heat alert today — play early or late, lots of water, shade breaks in between." + (todayHigh()!=null ? " High near "+todayHigh()+"°." : ""); }
-  else if(air.lvl===1){ lvl=0; why="Air is moderate. Fine for most kids; unusually sensitive kids can take breaks."; }
-  else { lvl=0; why="Clean air and calm fire weather. Good day to be outside."; }
-
-  const map = [
-    { s:"ok",      icon:"🪁", title:"Yes — good to play" },
-    { s:"caution", icon:"🧢", title:"Okay, but keep it short" },
-    { s:"danger",  icon:"🏠", title:"Better to stay inside" }
-  ][lvl];
-  return { ...map, lvl, why, air, fw };
+  const hi = todayHigh();
+  let s, icon, txt;
+  if(air.lvl>=3){
+    s="danger"; icon="🏠";
+    txt=`<b>Unhealthy for everyone.</b> Stay in with the windows closed and skip outdoor exercise — most of all ${SENSITIVE}. N95s don't seal on small children, so keep little ones in your cleanest room with a purifier running.`;
+  } else if(air.lvl===2){
+    s="caution"; icon="😷";
+    txt=`<b>Unhealthy for sensitive groups.</b> ${cap(SENSITIVE)} should keep it short and skip hard exercise — head in if anyone starts coughing. Everyone else is fine outside.`;
+  } else if(v.fires.some(f=>f.dist<=12 && (f.acres||0)>=50)){
+    s="caution"; icon="🌬️";
+    txt=`<b>Air reads clean, but there's a sizable fire within a dozen miles</b> — smoke can shift with the wind. Fine to be out; just watch the sky, and ${SENSITIVE} should stay close to home.`;
+  } else if(fw.lvl>=2){
+    s="caution"; icon="🌬️";
+    txt=`<b>Air is clean, but fire weather is extreme.</b> If something starts, smoke can arrive with little warning — worth staying close to home today.`;
+  } else if(air.lvl===1){
+    s="ok"; icon="🙂";
+    txt=`<b>Moderate.</b> Fine for almost everyone. The unusually sensitive — ${SENSITIVE} — may want an easy day.`;
+  } else {
+    s="ok"; icon="✅";
+    txt=`<b>Clean air.</b> Good for everyone, including ${SENSITIVE}.`;
+  }
+  // Heat rides along, because it's the other thing that decides whether you go out.
+  if(v.alerts.some(a=>/heat/i.test(a.event||"")) || (hi!=null && hi>=95)){
+    txt += ` <b>It's hot${hi!=null?` — high near ${hi}°`:""}.</b> Save anything strenuous for early or late, drink more than you think you need, and check on older neighbors.`;
+    if(s==="ok"){ s="caution"; icon="🌡️"; }
+  }
+  return { s, icon, txt };
 }
 function fireRisk(fires){
   let lvl=0;
@@ -864,11 +861,9 @@ function render(){
   $("#heroText").textContent = ov.text;
 
   // kids
-  const k = kidsVerdict(v);
-  $("#kidsBadge").className = "badge "+k.s; $("#kidsBadge").textContent = k.icon;
-  $("#kidsTxt").className = "vtxt "+k.s;
-  $("#kidsTxt").innerHTML = `<strong>${k.title}</strong><span>${aqiInfo(v.aqi).name} air · fire weather ${k.fw.name.toLowerCase()}</span>`;
-  $("#kidsDetail").innerHTML = k.why;
+  const adv = airAdvice(v);
+  $("#airAdvice").className = "advice " + adv.s;
+  $("#airAdvice").innerHTML = `<span class="ai">${adv.icon}</span><div class="at">${adv.txt}</div>`;
 
   // air
   const air = aqiInfo(v.aqi);
@@ -1048,19 +1043,6 @@ function renderChecklist(){
 
 /* ---------- events ---------- */
 $("#refreshBtn").addEventListener("click", async ()=>{ $("#refreshBtn").textContent="…"; await fetchAll(); $("#refreshBtn").textContent="↻"; render(); });
-$("#editBtn").addEventListener("click", ()=>{
-  const ed=$("#editor"); ed.classList.toggle("show");
-  $("#inLat").value=LOC.lat; $("#inLon").value=LOC.lon; $("#inLabel").value=LOC.label;
-});
-$("#cancelEdit").addEventListener("click", ()=> $("#editor").classList.remove("show"));
-$("#saveEdit").addEventListener("click", async ()=>{
-  const lat=parseFloat($("#inLat").value), lon=parseFloat($("#inLon").value), label=$("#inLabel").value.trim()||"My location";
-  if(isNaN(lat)||isNaN(lon)) return;
-  LOC = { lat, lon, label, sub: lat.toFixed(3)+", "+lon.toFixed(3) };
-  localStorage.setItem("tesoro.loc", JSON.stringify(LOC));
-  try{ sessionStorage.removeItem("tesoro.status.v1"); }catch(e){}
-  location.reload(); // re-centers the map and refreshes everything for the new location
-});
 
 /* ---------- boot ---------- */
 async function boot(){
@@ -1091,7 +1073,7 @@ boot();
     return;
   }
 
-  function rdLoc(){ try{ var s=JSON.parse(localStorage.getItem("tesoro.loc")); if(s&&s.lat&&s.lon) return {lat:s.lat,lon:s.lon,label:s.label}; }catch(e){} return {lat:34.478,lon:-118.531,label:"Tesoro Highlands"}; }
+  function rdLoc(){ return {lat:34.478,lon:-118.531,label:"Tesoro Highlands"}; }
   function hav(la1,lo1,la2,lo2){ var R=3958.8,t=function(x){return x*Math.PI/180;}; var dla=t(la2-la1),dlo=t(lo2-lo1); var h=Math.sin(dla/2)*Math.sin(dla/2)+Math.cos(t(la1))*Math.cos(t(la2))*Math.sin(dlo/2)*Math.sin(dlo/2); return 2*R*Math.asin(Math.sqrt(h)); }
   function brg(la1,lo1,la2,lo2){ var t=function(x){return x*Math.PI/180;},dg=function(x){return x*180/Math.PI;}; var y=Math.sin(t(lo2-lo1))*Math.cos(t(la2)); var x=Math.cos(t(la1))*Math.sin(t(la2))-Math.sin(t(la1))*Math.cos(t(la2))*Math.cos(t(lo2-lo1)); return (dg(Math.atan2(y,x))+360)%360; }
   function comp(d){ return ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"][Math.round(d/22.5)%16]; }

@@ -83,7 +83,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v1";
+  var CACHE_KEY = "tesoro.status.v2";  // v2 carries the active-alert list
   var stripEl = null;
 
   async function computeStatus() {
@@ -94,6 +94,9 @@
     // a fire outranks the air it is busy smoking up.
     var said = -1;
     function say(prio, level, msg) { lvl = Math.max(lvl, level); if (prio > said) { said = prio; text = msg; } }
+    // Every active NWS alert, not just the headline one — a Red Flag or Extreme
+    // Heat Warning shouldn't vanish because a fire outranked it for the one line.
+    var activeAlerts = [];
     var jobs = [
       fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + L.lat + "&longitude=" + L.lon + "&current=us_aqi&timezone=America%2FLos_Angeles").then(function (r) { return r.json(); }).then(function (a) {
         var aqi = a.current && a.current.us_aqi;
@@ -104,6 +107,7 @@
       fetch("https://api.weather.gov/alerts/active?point=" + L.lat + "," + L.lon, { headers: { Accept: "application/geo+json" } }).then(function (r) { return r.json(); }).then(function (al) {
         if (!al || !al.features) return; okAlerts = true;
         var evs = al.features.map(function (f) { return f.properties && f.properties.event; }).filter(Boolean);
+        activeAlerts = evs.filter(function (e, i) { return evs.indexOf(e) === i; });
         var red = evs.find(function (e) { return /red flag|fire weather/i.test(e); });
         var heat = evs.find(function (e) { return /heat/i.test(e); });
         var warn = evs.find(function (e) { return /warning/i.test(e) && !/heat/i.test(e); });
@@ -201,10 +205,10 @@
     var okCount = [okAir, okAlerts, okFires, okEvac].filter(Boolean).length;
     if (lvl === 0) {
       if (okCount === 4) text = "All clear — air is good and no active alerts.";
-      else if (okCount === 0) return { level: "neutral", text: "Live status unavailable right now — open the dashboard for details." };
-      else return { level: "neutral", text: "No alerts in the live checks that loaded (" + okCount + "/4) — see the dashboard." };
+      else if (okCount === 0) return { level: "neutral", text: "Live status unavailable right now — open the dashboard for details.", alerts: [] };
+      else return { level: "neutral", text: "No alerts in the live checks that loaded (" + okCount + "/4) — see the dashboard.", alerts: activeAlerts };
     }
-    return { level: lvl >= 2 ? "danger" : lvl >= 1 ? "caution" : "ok", text: text };
+    return { level: lvl >= 2 ? "danger" : lvl >= 1 ? "caution" : "ok", text: text, alerts: activeAlerts };
   }
 
   function render(st) {
@@ -213,9 +217,16 @@
       var hero = document.getElementById("th-hero");
       if (!hero) return;
       hero.className = "hub-hero " + st.level;
+      // Every active alert gets its own chip, so an Extreme Heat Warning or a Red
+      // Flag stays visible even when a fire owns the one-line headline.
+      var chips = (st.alerts || []).map(function (a) {
+        var ico = /heat/i.test(a) ? "🌡️" : /red flag|fire/i.test(a) ? "🚩" : /wind/i.test(a) ? "💨" : "⚠️";
+        return '<span class="halert">' + ico + " " + a + "</span>";
+      }).join("");
       hero.innerHTML =
         '<div class="eyebrow">Right now in Tesoro Highlands</div>' +
         '<div class="htext">' + st.text + "</div>" +
+        (chips ? '<div class="halerts">' + chips + "</div>" : "") +
         '<a class="hlink" href="/fire">Open the full fire &amp; emergency dashboard &rarr;</a>';
     } else {
       if (!stripEl) {
