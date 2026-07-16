@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T14:22:35.690Z",
+  "generatedAt": "2026-07-16T17:40:01.214Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -28,7 +28,7 @@
       "total": "4",
       "startEpoch": 1784206860,
       "endEpoch": 1784239140,
-      "moreWindows": 28
+      "moreWindows": 29
     },
     {
       "route": "I-5",
@@ -46,6 +46,20 @@
     },
     {
       "route": "I-5",
+      "dir": "North",
+      "at": "1.5 miles North of Lake Hughes Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Guardrail Repair",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1784215800,
+      "endEpoch": 1784228460,
+      "moreWindows": 0
+    },
+    {
+      "route": "I-5",
       "dir": "South",
       "at": "McBean Parkway",
       "place": "Valencia",
@@ -56,7 +70,7 @@
       "total": "1",
       "startEpoch": 1784217660,
       "endEpoch": 1784239140,
-      "moreWindows": 9
+      "moreWindows": 10
     },
     {
       "route": "I-5",
@@ -70,7 +84,7 @@
       "total": "1",
       "startEpoch": 1784217660,
       "endEpoch": 1784239140,
-      "moreWindows": 17
+      "moreWindows": 18
     },
     {
       "route": "I-5",
@@ -98,7 +112,7 @@
       "total": "1",
       "startEpoch": 1784217660,
       "endEpoch": 1784239140,
-      "moreWindows": 29
+      "moreWindows": 30
     },
     {
       "route": "I-5",
@@ -112,7 +126,7 @@
       "total": "1",
       "startEpoch": 1784217660,
       "endEpoch": 1784239140,
-      "moreWindows": 65
+      "moreWindows": 67
     },
     {
       "route": "I-5",
@@ -126,7 +140,7 @@
       "total": "1",
       "startEpoch": 1784217660,
       "endEpoch": 1784239140,
-      "moreWindows": 19
+      "moreWindows": 20
     },
     {
       "route": "I-5",
@@ -140,7 +154,7 @@
       "total": "1",
       "startEpoch": 1784217660,
       "endEpoch": 1784239140,
-      "moreWindows": 10
+      "moreWindows": 11
     },
     {
       "route": "I-5",
@@ -155,20 +169,6 @@
       "startEpoch": 1784217660,
       "endEpoch": 1784239140,
       "moreWindows": 10
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1784217660,
-      "endEpoch": 1784239140,
-      "moreWindows": 79
     }
   ]
 }
