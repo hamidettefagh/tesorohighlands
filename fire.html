@@ -638,7 +638,41 @@ const FIRE_RADIUS = 45; // miles from home to include
 const FIRE_WHERE = "IncidentTypeCategory='WF' AND FireOutDateTime IS NULL AND (PercentContained < 100 OR PercentContained IS NULL)";
 // Dead initial-attack records: no update in 2 days and never grew past 10 acres.
 function isStaleFire(mod, acres){ return mod != null && (Date.now() - mod) > 48*3600*1000 && (acres == null || acres < 10); }
-// Same NIFC/WFIGS feed as the map and the site-wide status strip — one source of truth.
+// CAL FIRE carries real acreage + containment for California incidents that the
+// federal feed leaves null — it opens a stub for fast local county fires and
+// often never fills it in. Their API sends no CORS header, so /api/calfire
+// proxies it. Failure is non-fatal: we keep whatever WFIGS gave us.
+async function fetchCalFire(){
+  try{
+    const j = await fetch("/api/calfire").then(r=>r.json());
+    return Array.isArray(j.fires) ? j.fires : [];
+  }catch(e){ return []; }
+}
+function normFireName(s){ return String(s||"").toUpperCase().replace(/\bFIRE\b/g," ").replace(/[^A-Z0-9]/g,""); }
+// Fill in the gaps from CAL FIRE. A name match must also land within 15 miles,
+// so a same-named fire up north can never overwrite the one next door.
+function enrichFires(fires, cal){
+  if(!cal.length) return fires;
+  return fires.map(f=>{
+    const fn = normFireName(f.name);
+    if(!fn) return f;
+    let best=null, bestD=Infinity;
+    for(const c of cal){
+      if(!c || normFireName(c.name)!==fn) continue;
+      const d = (c.lat!=null && c.lon!=null) ? haversine(f.lat,f.lon,c.lat,c.lon) : Infinity;
+      if(d < bestD){ bestD=d; best=c; }
+    }
+    if(!best || bestD > 15) return f;
+    const out = Object.assign({}, f);
+    if((out.acres==null || out.acres===0) && best.acres!=null) out.acres = best.acres;
+    if(out.contain==null && best.contained!=null) out.contain = best.contained;
+    const cu = best.updated ? Date.parse(best.updated) : NaN;
+    if(!isNaN(cu) && (out.mod==null || cu > out.mod)) out.mod = cu;  // CAL FIRE is usually the fresher timestamp
+    return out;
+  });
+}
+// Same NIFC/WFIGS feed as the map and the site-wide status strip — one source of
+// truth for what's burning — with CAL FIRE filling in the numbers it omits.
 async function fetchFires(lat, lon){
   const env = `${(lon-2.0).toFixed(3)},${(lat-1.4).toFixed(3)},${(lon+2.0).toFixed(3)},${(lat+1.4).toFixed(3)}`;
   const url = "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query"
@@ -647,17 +681,20 @@ async function fetchFires(lat, lon){
     + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects"
     + "&outFields=IncidentName,IncidentSize,PercentContained,FireDiscoveryDateTime,ModifiedOnDateTime_dt"
     + "&returnGeometry=true&outSR=4326&resultRecordCount=1000&f=geojson";
-  const j = await fetch(url).then(r=>r.json());
-  return (j.features||[])
+  const [j, cal] = await Promise.all([ fetch(url).then(r=>r.json()), fetchCalFire() ]);
+  const raw = (j.features||[])
     .filter(f => f.geometry && f.geometry.coordinates)
     .filter(f => !/^LAC-?\d+$/i.test((f.properties.IncidentName||"").trim()))  // drop LA County dispatch-number noise
-    .filter(f => !isStaleFire(f.properties.ModifiedOnDateTime_dt, f.properties.IncidentSize))
     .map(f => {
       const c=f.geometry.coordinates, a=f.properties;
       return { name: fireName(a.IncidentName), acres: a.IncidentSize, contain: a.PercentContained,
-        disc: a.FireDiscoveryDateTime, mod: a.ModifiedOnDateTime_dt, dist: haversine(lat,lon,c[1],c[0]),
-        dir: compass(bearingDeg(lat,lon,c[1],c[0])) };
-    })
+        disc: a.FireDiscoveryDateTime, mod: a.ModifiedOnDateTime_dt, lat: c[1], lon: c[0],
+        dist: haversine(lat,lon,c[1],c[0]), dir: compass(bearingDeg(lat,lon,c[1],c[0])) };
+    });
+  // Enrich before the staleness test: a fire CAL FIRE is actively sizing is not a
+  // dead initial-attack record, even if WFIGS hasn't touched it in two days.
+  return enrichFires(raw, cal)
+    .filter(f => !isStaleFire(f.mod, f.acres))
     .filter(f => f.dist <= FIRE_RADIUS)
     .sort((x,y)=> x.dist - y.dist)
     .slice(0, 6);
@@ -1072,19 +1109,26 @@ boot();
   fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Interagency_Perimeters_Current/FeatureServer/0/query?where="+encodeURIComponent("1=1")+"&outFields=poly_IncidentName,poly_GISAcres"+env+"&f=geojson&resultRecordCount=300")
     .then(function(r){return r.json();}).then(function(j){ if(j.features&&j.features.length) L.geoJSON(j,{style:{color:"#b91c1c",weight:1.5,fillColor:"#ef4444",fillOpacity:.2}}).addTo(map); }).catch(function(){});
 
-  fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where="+encodeURIComponent(typeof FIRE_WHERE==="string"?FIRE_WHERE:"IncidentTypeCategory='WF'")+"&outFields=IncidentName,IncidentSize,PercentContained,ModifiedOnDateTime_dt"+env+"&f=geojson&resultRecordCount=600")
-    .then(function(r){return r.json();}).then(function(j){
+  Promise.all([
+    fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where="+encodeURIComponent(typeof FIRE_WHERE==="string"?FIRE_WHERE:"IncidentTypeCategory='WF'")+"&outFields=IncidentName,IncidentSize,PercentContained,ModifiedOnDateTime_dt"+env+"&f=geojson&resultRecordCount=600").then(function(r){return r.json();}),
+    (typeof fetchCalFire==="function" ? fetchCalFire() : Promise.resolve([]))
+  ]).then(function(res){
+      var j=res[0], cal=res[1]||[];
       if(j && j.features) fireOk = true;
       (j.features||[]).forEach(function(ft){
         if(!ft.geometry||!ft.geometry.coordinates) return;
-        var c=ft.geometry.coordinates, p=ft.properties||{}, ac=p.IncidentSize;
-        if(typeof isStaleFire==="function" && isStaleFire(p.ModifiedOnDateTime_dt, ac)) return;
+        var c=ft.geometry.coordinates, p=ft.properties||{};
+        // Same CAL FIRE fill-in the list uses, so a popup can never disagree with it.
+        var e = { name:p.IncidentName, acres:p.IncidentSize, contain:p.PercentContained, mod:p.ModifiedOnDateTime_dt, lat:c[1], lon:c[0] };
+        if(typeof enrichFires==="function") e = enrichFires([e], cal)[0];
+        var ac = e.acres;
+        if(typeof isStaleFire==="function" && isStaleFire(e.mod, ac)) return;
         var dist=hav(H.lat,H.lon,c[1],c[0]);
         if(!((ac||0)>=1 || dist<=25)) return;
         nFires++;
         var rad = ac>=1000?9:ac>=100?7:ac>=10?5:4;
         L.circleMarker([c[1],c[0]], { radius:rad, color:"#7f1d1d", weight:1, fillColor:"#ef4444", fillOpacity:.9 }).addTo(map)
-          .bindPopup("<b>"+title(p.IncidentName)+" Fire</b><br>"+(ac!=null?Math.round(ac).toLocaleString()+" acres":"size not yet reported")+(p.PercentContained!=null?" · "+p.PercentContained+"% contained":"")+(p.ModifiedOnDateTime_dt&&typeof fmtAgo==="function"?" · updated "+fmtAgo(p.ModifiedOnDateTime_dt):"")+"<br>"+dist.toFixed(dist<10?1:0)+" mi to your "+comp(brg(H.lat,H.lon,c[1],c[0])));
+          .bindPopup("<b>"+title(p.IncidentName)+" Fire</b><br>"+(ac!=null?Math.round(ac).toLocaleString()+" acres":"size not yet reported")+(e.contain!=null?" · "+e.contain+"% contained":"")+(e.mod&&typeof fmtAgo==="function"?" · updated "+fmtAgo(e.mod):"")+"<br>"+dist.toFixed(dist<10?1:0)+" mi to your "+comp(brg(H.lat,H.lon,c[1],c[0])));
       });
       finish();
     }).catch(function(){ finish(); });
