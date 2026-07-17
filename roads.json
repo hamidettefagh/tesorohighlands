@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T10:11:48.360Z",
+  "generatedAt": "2026-07-17T14:02:35.558Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -19,48 +19,6 @@
     {
       "route": "I-5",
       "dir": "North",
-      "at": "Magic Mountain Parkway, Route 126",
-      "place": "Valencia",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Reconstruction",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1784257260,
-      "endEpoch": 1784293140,
-      "moreWindows": 25
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Magic Mountain Parkway, Route 126",
-      "place": "Valencia",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Joint Assembly Work",
-      "lanes": "1",
-      "total": "4",
-      "startEpoch": 1784257260,
-      "endEpoch": 1784293140,
-      "moreWindows": 31
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Connector",
-      "type": "Full",
-      "work": "Shoulder Reconstruction",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784260860,
-      "endEpoch": 1784289540,
-      "moreWindows": 85
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
       "at": "Hasley Canyon Rd",
       "place": "Castaic",
       "facility": "Mainline",
@@ -70,7 +28,7 @@
       "total": "4",
       "startEpoch": 1784293260,
       "endEpoch": 1784325540,
-      "moreWindows": 31
+      "moreWindows": 32
     },
     {
       "route": "I-5",
@@ -84,7 +42,35 @@
       "total": "4",
       "startEpoch": 1784293260,
       "endEpoch": 1784325540,
-      "moreWindows": 18
+      "moreWindows": 19
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Foothill Freeway, Route 210",
+      "place": "Sylmar",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Landscape Work",
+      "lanes": "6",
+      "total": "6",
+      "startEpoch": 1784295900,
+      "endEpoch": 1784323800,
+      "moreWindows": 0
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Shoulder Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784304060,
+      "endEpoch": 1784325540,
+      "moreWindows": 23
     },
     {
       "route": "I-5",
@@ -155,6 +141,20 @@
       "startEpoch": 1784304060,
       "endEpoch": 1784325540,
       "moreWindows": 10
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Castaic",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Shoulder Reconstruction",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784304060,
+      "endEpoch": 1784325540,
+      "moreWindows": 84
     },
     {
       "route": "I-5",
