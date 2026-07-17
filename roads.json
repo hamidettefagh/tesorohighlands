@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T21:15:43.960Z",
+  "generatedAt": "2026-07-17T03:36:51.930Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -23,12 +23,12 @@
       "place": "Castaic",
       "facility": "Mainline",
       "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4",
+      "work": "Roadway Excavation",
+      "lanes": "3, 4",
       "total": "4",
-      "startEpoch": 1784206860,
-      "endEpoch": 1784239140,
-      "moreWindows": 33
+      "startEpoch": 1784253660,
+      "endEpoch": 1784293140,
+      "moreWindows": 34
     },
     {
       "route": "I-5",
@@ -42,7 +42,7 @@
       "total": "4",
       "startEpoch": 1784253660,
       "endEpoch": 1784293140,
-      "moreWindows": 18
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -56,7 +56,7 @@
       "total": "1",
       "startEpoch": 1784253660,
       "endEpoch": 1784293140,
-      "moreWindows": 26
+      "moreWindows": 28
     },
     {
       "route": "I-5",
@@ -70,7 +70,7 @@
       "total": "1",
       "startEpoch": 1784253660,
       "endEpoch": 1784296740,
-      "moreWindows": 19
+      "moreWindows": 21
     },
     {
       "route": "I-5",
@@ -84,7 +84,7 @@
       "total": "1",
       "startEpoch": 1784253660,
       "endEpoch": 1784293140,
-      "moreWindows": 36
+      "moreWindows": 40
     },
     {
       "route": "I-5",
@@ -98,35 +98,7 @@
       "total": "1",
       "startEpoch": 1784253660,
       "endEpoch": 1784293140,
-      "moreWindows": 69
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784253660,
-      "endEpoch": 1784293140,
-      "moreWindows": 18
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Valencia Blvd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784253660,
-      "endEpoch": 1784293140,
-      "moreWindows": 10
+      "moreWindows": 71
     },
     {
       "route": "I-5",
@@ -140,7 +112,7 @@
       "total": "1",
       "startEpoch": 1784253660,
       "endEpoch": 1784332740,
-      "moreWindows": 16
+      "moreWindows": 18
     },
     {
       "route": "I-5",
@@ -154,7 +126,7 @@
       "total": "2",
       "startEpoch": 1784253660,
       "endEpoch": 1784293140,
-      "moreWindows": 80
+      "moreWindows": 87
     },
     {
       "route": "I-5",
@@ -168,7 +140,35 @@
       "total": "1",
       "startEpoch": 1784253660,
       "endEpoch": 1784293140,
-      "moreWindows": 5
+      "moreWindows": 6
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Valencia Blvd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Electrical Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784253660,
+      "endEpoch": 1784293140,
+      "moreWindows": 16
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784257260,
+      "endEpoch": 1784332740,
+      "moreWindows": 10
     }
   ]
 }
