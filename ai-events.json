@@ -1,38 +1,24 @@
 {
-  "generatedAt": "2026-07-16T15:17:01.012Z",
+  "generatedAt": "2026-07-17T14:55:20.759Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Butterfly Encounter at Gilchrist Farm",
-      "url": "https://www.gilchristfarm.com/",
-      "start": "2026-07-16T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
+      "title": "Celebrate America 250 - Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-07-17T18:00",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
       "free": false,
-      "price": "Varies by activity",
+      "price": "Regular park admission required",
       "audience": [
-        "kids"
+        "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Gilchrist Farm"
+      "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "SENSES Block Party: Christmas in July",
-      "url": "https://oldtownnewhall.com/senses-block-party/",
-      "start": "2026-07-16T19:00",
-      "venue": "Main Street (between Market Street and Sixth Street)",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall/City of Santa Clarita"
-    },
-    {
-      "title": "Concerts in the Park: FABBA – ABBA Tribute",
+      "title": "Concerts in the Park - FABBA (ABBA Tribute)",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-07-18T19:00",
       "venue": "Central Park",
@@ -46,21 +32,35 @@
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-07-19T08:30",
-      "venue": "Valencia by FivePoint (27426 Navigation Ave)",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-07-19T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
       "city": "Valencia",
-      "free": false,
-      "price": "Varies by vendor",
+      "free": true,
+      "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Ventura County Certified Farmers Market Association"
     },
     {
-      "title": "Concerts in the Park: RagDolls – Aerosmith Tribute",
+      "title": "Celebrate America 250 - Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-07-24T18:00",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Regular park admission required",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain"
+    },
+    {
+      "title": "Concerts in the Park - RagDolls (Aerosmith Tribute)",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-07-25T19:00",
       "venue": "Central Park",
@@ -74,27 +74,27 @@
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-07-26T08:30",
-      "venue": "Valencia by FivePoint (27426 Navigation Ave)",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-07-26T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
       "city": "Valencia",
-      "free": false,
-      "price": "Varies by vendor",
+      "free": true,
+      "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Ventura County Certified Farmers Market Association"
     },
     {
-      "title": "Celebrate America 250 at Six Flags Magic Mountain",
+      "title": "Celebrate America 250 - Six Flags Magic Mountain",
       "url": "https://www.sixflags.com/magicmountain/events",
       "start": "2026-07-31T18:00",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "Regular park admission",
+      "price": "Regular park admission required",
       "audience": [
         "everyone"
       ],
@@ -102,7 +102,37 @@
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Concerts in the Park: Gold Rush Country – Top 40 Country Hits",
+      "title": "Coriolanus - Santa Clarita Shakespeare Festival",
+      "url": "https://atthemain.org/",
+      "start": "2026-07-31T19:00",
+      "venue": "The MAIN",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Coriolanus - Santa Clarita Shakespeare Festival",
+      "url": "https://atthemain.org/",
+      "start": "2026-08-01T14:00",
+      "venue": "The MAIN",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Concerts in the Park - Gold Rush Country (Top 40 Country Hits)",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-01T19:00",
       "venue": "Central Park",
@@ -116,27 +146,42 @@
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-02T08:30",
-      "venue": "Valencia by FivePoint (27426 Navigation Ave)",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-02T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
       "city": "Valencia",
-      "free": false,
-      "price": "Varies by vendor",
+      "free": true,
+      "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Ventura County Certified Farmers Market Association"
     },
     {
-      "title": "Celebrate America 250 at Six Flags Magic Mountain",
+      "title": "Coriolanus - Santa Clarita Shakespeare Festival",
+      "url": "https://atthemain.org/",
+      "start": "2026-08-02T14:00",
+      "venue": "The MAIN",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Celebrate America 250 - Six Flags Magic Mountain",
       "url": "https://www.sixflags.com/magicmountain/events",
       "start": "2026-08-07T18:00",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "Regular park admission",
+      "price": "Regular park admission required",
       "audience": [
         "everyone"
       ],
@@ -144,7 +189,7 @@
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Concerts in the Park: Blue Breeze Band – Soul, Motown and R&B Hits",
+      "title": "Concerts in the Park - Blue Breeze Band (Soul, Motown and R&B Hits)",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-08T19:00",
       "venue": "Central Park",
@@ -158,21 +203,21 @@
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-09T08:30",
-      "venue": "Valencia by FivePoint (27426 Navigation Ave)",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-09T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
       "city": "Valencia",
-      "free": false,
-      "price": "Varies by vendor",
+      "free": true,
+      "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Ventura County Certified Farmers Market Association"
     },
     {
-      "title": "Concerts in the Park: Paramore! At the Disco – Paramore and Panic! At The Disco Tribute",
+      "title": "Concerts in the Park - Paramore! At the Disco",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-15T19:00",
       "venue": "Central Park",
@@ -186,24 +231,24 @@
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-16T08:30",
-      "venue": "Valencia by FivePoint (27426 Navigation Ave)",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-16T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
       "city": "Valencia",
-      "free": false,
-      "price": "Varies by vendor",
+      "free": true,
+      "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Ventura County Certified Farmers Market Association"
     },
     {
-      "title": "SENSES Block Party: Time Machine",
+      "title": "SENSES Block Party - Time Machine",
       "url": "https://oldtownnewhall.com/senses-block-party/",
       "start": "2026-08-20T19:00",
-      "venue": "Main Street (between Market Street and Sixth Street)",
+      "venue": "Main Street, Old Town Newhall",
       "city": "Newhall",
       "free": true,
       "price": "Free",
@@ -211,10 +256,10 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall/City of Santa Clarita"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Concerts in the Park: Kenny Metcalf as Elton John – Elton John Tribute",
+      "title": "Concerts in the Park - Final Concert",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-22T19:00",
       "venue": "Central Park",
@@ -228,21 +273,21 @@
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-23T08:30",
-      "venue": "Valencia by FivePoint (27426 Navigation Ave)",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-23T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
       "city": "Valencia",
-      "free": false,
-      "price": "Varies by vendor",
+      "free": true,
+      "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Ventura County Certified Farmers Market Association"
     },
     {
-      "title": "Concerts in the Park: The Police Experience – Tribute to The Police",
+      "title": "Concerts in the Park - Closing Night",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-29T19:00",
       "venue": "Central Park",
