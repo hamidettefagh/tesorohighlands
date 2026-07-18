@@ -1,257 +1,224 @@
 {
-  "generatedAt": "2026-07-17T14:55:20.759Z",
+  "generatedAt": "2026-07-18T14:33:53.369Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Celebrate America 250 - Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-07-17T18:00",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-07-18T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Celebrate America 250 at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events/celebrate-america-s-250th",
+      "start": "2026-07-18T18:00",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "Regular park admission required",
+      "price": null,
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Concerts in the Park - FABBA (ABBA Tribute)",
+      "title": "Concerts in the Park - FABBA: ABBA Tribute",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-07-18T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park Fields 7 & 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita",
-      "start": "2026-07-19T08:00",
-      "venue": "College of the Canyons Parking Lot 5",
-      "city": "Valencia",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-07-25T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Ventura County Certified Farmers Market Association"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Celebrate America 250 - Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-07-24T18:00",
+      "title": "Celebrate America 250 at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events/celebrate-america-s-250th",
+      "start": "2026-07-25T18:00",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "Regular park admission required",
+      "price": null,
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Concerts in the Park - RagDolls (Aerosmith Tribute)",
+      "title": "Concerts in the Park - RagDolls: Aerosmith Tribute",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-07-25T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park Fields 7 & 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita",
-      "start": "2026-07-26T08:00",
-      "venue": "College of the Canyons Parking Lot 5",
-      "city": "Valencia",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-08-01T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Ventura County Certified Farmers Market Association"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Celebrate America 250 - Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-07-31T18:00",
+      "title": "Celebrate America 250 at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events/celebrate-america-s-250th",
+      "start": "2026-08-01T18:00",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "Regular park admission required",
+      "price": null,
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Coriolanus - Santa Clarita Shakespeare Festival",
-      "url": "https://atthemain.org/",
-      "start": "2026-07-31T19:00",
-      "venue": "The MAIN",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults",
-        "teens"
-      ],
-      "source": "Web (AI)",
-      "via": "The MAIN"
-    },
-    {
-      "title": "Coriolanus - Santa Clarita Shakespeare Festival",
-      "url": "https://atthemain.org/",
-      "start": "2026-08-01T14:00",
-      "venue": "The MAIN",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults",
-        "teens"
-      ],
-      "source": "Web (AI)",
-      "via": "The MAIN"
-    },
-    {
-      "title": "Concerts in the Park - Gold Rush Country (Top 40 Country Hits)",
+      "title": "Concerts in the Park - Gold Rush Country: Top 40 Country Hits",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-01T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park Fields 7 & 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita",
-      "start": "2026-08-02T08:00",
-      "venue": "College of the Canyons Parking Lot 5",
-      "city": "Valencia",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-08-08T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Ventura County Certified Farmers Market Association"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Coriolanus - Santa Clarita Shakespeare Festival",
-      "url": "https://atthemain.org/",
-      "start": "2026-08-02T14:00",
-      "venue": "The MAIN",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults",
-        "teens"
-      ],
-      "source": "Web (AI)",
-      "via": "The MAIN"
-    },
-    {
-      "title": "Celebrate America 250 - Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-08-07T18:00",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "Regular park admission required",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
-    },
-    {
-      "title": "Concerts in the Park - Blue Breeze Band (Soul, Motown and R&B Hits)",
+      "title": "Concerts in the Park - Blue Breeze Band: Soul, Motown and R&B Hits",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-08T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park Fields 7 & 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita",
-      "start": "2026-08-09T08:00",
-      "venue": "College of the Canyons Parking Lot 5",
-      "city": "Valencia",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-08-15T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Ventura County Certified Farmers Market Association"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Concerts in the Park - Paramore! At the Disco",
+      "title": "Concerts in the Park - Paramore! At the Disco Tribute",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-15T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park Fields 7 & 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita",
-      "start": "2026-08-16T08:00",
-      "venue": "College of the Canyons Parking Lot 5",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Ventura County Certified Farmers Market Association"
     },
     {
       "title": "SENSES Block Party - Time Machine",
       "url": "https://oldtownnewhall.com/senses-block-party/",
       "start": "2026-08-20T19:00",
-      "venue": "Main Street, Old Town Newhall",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
+      "venue": "Main Street between Market Street and Sixth Street",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
       "audience": [
         "adults"
       ],
@@ -259,43 +226,65 @@
       "via": "Old Town Newhall"
     },
     {
-      "title": "Concerts in the Park - Final Concert",
-      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
-      "start": "2026-08-22T19:00",
-      "venue": "Central Park",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-08-22T08:30",
+      "venue": "Old Town Newhall Library parking lot",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Concerts in the Park - Kenny Metcalf as Elton John Tribute",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-22T19:00",
+      "venue": "Central Park Fields 7 & 8",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita",
-      "start": "2026-08-23T08:00",
-      "venue": "College of the Canyons Parking Lot 5",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Ventura County Certified Farmers Market Association"
-    },
-    {
-      "title": "Concerts in the Park - Closing Night",
-      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
-      "start": "2026-08-29T19:00",
-      "venue": "Central Park",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-08-29T08:30",
+      "venue": "Old Town Newhall Library parking lot",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Concerts in the Park - The Police Experience: Tribute to The Police",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-29T19:00",
+      "venue": "Central Park Fields 7 & 8",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
