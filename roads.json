@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T13:48:17.012Z",
+  "generatedAt": "2026-07-18T17:14:08.386Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,34 +14,6 @@
       "total": "1",
       "startEpoch": 1783407660,
       "endEpoch": 1785999540,
-      "moreWindows": 18
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Gavin Canyon",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Drainage Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1784347260,
-      "endEpoch": 1784386740,
-      "moreWindows": 11
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784376060,
-      "endEpoch": 1784411940,
       "moreWindows": 17
     },
     {
@@ -56,35 +28,21 @@
       "total": "4",
       "startEpoch": 1784379660,
       "endEpoch": 1784411940,
-      "moreWindows": 27
+      "moreWindows": 26
     },
     {
       "route": "I-5",
       "dir": "North",
       "at": "Magic Mountain Parkway, Route 126",
       "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Shoulder Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784390460,
-      "endEpoch": 1784411940,
-      "moreWindows": 24
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Castaic",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Utility Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784393940,
-      "endEpoch": 1784411940,
-      "moreWindows": 75
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Reconstruction",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1784415660,
+      "endEpoch": 1784483940,
+      "moreWindows": 23
     },
     {
       "route": "I-5",
@@ -117,6 +75,20 @@
     {
       "route": "I-5",
       "dir": "North",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Valencia",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Road Maintenance",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784426460,
+      "endEpoch": 1784476740,
+      "moreWindows": 76
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
       "at": "Weldon Canyon",
       "place": "Granada Hills",
       "facility": "Mainline",
@@ -127,6 +99,20 @@
       "startEpoch": 1784426460,
       "endEpoch": 1784476740,
       "moreWindows": 11
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Gavin Canyon",
+      "place": "Newhall",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Drainage Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1784426460,
+      "endEpoch": 1784476740,
+      "moreWindows": 10
     },
     {
       "route": "I-5",
@@ -159,6 +145,20 @@
     {
       "route": "I-5",
       "dir": "North",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784426460,
+      "endEpoch": 1784465940,
+      "moreWindows": 17
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
       "at": "Valencia Blvd",
       "place": "Valencia",
       "facility": "On Ramp",
@@ -168,7 +168,7 @@
       "total": "1",
       "startEpoch": 1784426460,
       "endEpoch": 1784505540,
-      "moreWindows": 10
+      "moreWindows": 11
     }
   ]
 }
