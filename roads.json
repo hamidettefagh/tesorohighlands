@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T06:18:15.908Z",
+  "generatedAt": "2026-07-18T09:44:50.998Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -19,20 +19,6 @@
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Sylmar",
-      "facility": "Truck Connector",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1784343660,
-      "endEpoch": 1784376060,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
       "at": "Magic Mountain Parkway, Route 126",
       "place": "Valencia",
       "facility": "Mainline",
@@ -43,34 +29,6 @@
       "startEpoch": 1784343660,
       "endEpoch": 1784393940,
       "moreWindows": 33
-    },
-    {
-      "route": "SR-14",
-      "dir": "South",
-      "at": "Antelope Valley Freeway, Route 14",
-      "place": "Sylmar",
-      "facility": "Truck Connector",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1784343660,
-      "endEpoch": 1784379540,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Weldon Canyon",
-      "place": "Granada Hills",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4, 5",
-      "total": "5",
-      "startEpoch": 1784347260,
-      "endEpoch": 1784386740,
-      "moreWindows": 13
     },
     {
       "route": "I-5",
@@ -99,34 +57,6 @@
       "startEpoch": 1784347260,
       "endEpoch": 1784383140,
       "moreWindows": 88
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Magic Mountain Parkway, Route 126",
-      "place": "Valencia",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Reconstruction",
-      "lanes": "3, 4",
-      "total": "4",
-      "startEpoch": 1784350860,
-      "endEpoch": 1784379540,
-      "moreWindows": 24
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Newhall",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784358060,
-      "endEpoch": 1784383140,
-      "moreWindows": 75
     },
     {
       "route": "I-5",
@@ -168,6 +98,76 @@
       "total": "4",
       "startEpoch": 1784379660,
       "endEpoch": 1784411940,
+      "moreWindows": 18
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Shoulder Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784390460,
+      "endEpoch": 1784411940,
+      "moreWindows": 23
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Castaic",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Utility Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784393940,
+      "endEpoch": 1784411940,
+      "moreWindows": 75
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Rye Canyon Rd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784422860,
+      "endEpoch": 1784483940,
+      "moreWindows": 5
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Weldon Canyon",
+      "place": "Granada Hills",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "5",
+      "total": "5",
+      "startEpoch": 1784426460,
+      "endEpoch": 1784476740,
+      "moreWindows": 11
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Drainage Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1784426460,
+      "endEpoch": 1784480340,
       "moreWindows": 18
     }
   ]
