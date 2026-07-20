@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T18:19:05.143Z",
+  "generatedAt": "2026-07-20T21:32:04.275Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -29,20 +29,6 @@
       "startEpoch": 1784552460,
       "endEpoch": 1784584740,
       "moreWindows": 22
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784563260,
-      "endEpoch": 1784584740,
-      "moreWindows": 4
     },
     {
       "route": "I-5",
@@ -169,6 +155,20 @@
       "startEpoch": 1784599260,
       "endEpoch": 1784638740,
       "moreWindows": 5
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784599260,
+      "endEpoch": 1784638740,
+      "moreWindows": 17
     }
   ]
 }
