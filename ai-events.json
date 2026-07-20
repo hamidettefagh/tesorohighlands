@@ -1,301 +1,72 @@
 {
-  "generatedAt": "2026-07-19T14:36:38.272Z",
+  "generatedAt": "2026-07-20T15:24:37.001Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-07-19T08:30",
-      "venue": "Valencia FivePoint Community",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-07-22T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Newhall Saturday Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-07-25T08:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Concerts in the Park - RagDolls (Aerosmith Tribute)",
+      "title": "Concerts in the Park: RagDolls - Aerosmith Tribute",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-07-25T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park, Fields 7 and 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-07-26T08:30",
-      "venue": "Valencia FivePoint Community",
+      "title": "Celebrate America 250 at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-07-31T18:00",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain"
+    },
+    {
+      "title": "DEAF & ASL Event at Pocock Brewing Company",
+      "url": "https://deafcal.org/venue/pocock-brewing-company/",
+      "start": "2026-08-01T17:00",
+      "venue": "Pocock Brewing Company",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "DeafCal"
     },
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-07-29T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Newhall Saturday Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-08-01T08:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Concerts in the Park - Gold Rush Country (Top 40 Country Hits)",
+      "title": "Concerts in the Park: Gold Rush Country - Top 40 Country Hits",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-01T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park, Fields 7 and 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-08-02T08:30",
-      "venue": "Valencia FivePoint Community",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-08-05T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Newhall Saturday Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-08-08T08:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Concerts in the Park - Blue Breeze Band (Soul, Motown and R&B Hits)",
-      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
-      "start": "2026-08-08T19:00",
-      "venue": "Central Park",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-08-09T08:30",
-      "venue": "Valencia FivePoint Community",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-08-12T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Newhall Saturday Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-08-15T08:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Concerts in the Park - Paramore! At the Disco Tribute",
-      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
-      "start": "2026-08-15T19:00",
-      "venue": "Central Park",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-08-16T08:30",
-      "venue": "Valencia FivePoint Community",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-08-19T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "SENSES Block Party - Time Machine",
-      "url": "https://oldtownnewhall.com/senses-block-party/",
-      "start": "2026-08-20T19:00",
-      "venue": "Main Street (between Market and Sixth Street)",
+      "title": "The Dresser at The MAIN",
+      "url": "https://atthemain.org/",
+      "start": "2026-08-07",
+      "venue": "The MAIN Theatre",
       "city": "Newhall",
       "free": false,
       "price": null,
@@ -303,99 +74,105 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "The MAIN"
     },
     {
-      "title": "Newhall Saturday Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-08-22T08:30",
-      "venue": "Old Town Newhall Library",
+      "title": "You Got Older at The MAIN",
+      "url": "https://atthemain.org/",
+      "start": "2026-08-08",
+      "venue": "The MAIN Theatre",
       "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Concerts in the Park: Blue Breeze Band - Soul, Motown and R&B Hits",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-08T19:00",
+      "venue": "Central Park, Fields 7 and 8",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Concerts in the Park - Kenny Metcalf as Elton John Tribute",
+      "title": "Concerts in the Park: Paramore! At the Disco Tribute",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-15T19:00",
+      "venue": "Central Park, Fields 7 and 8",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "SENSES Block Party: Time Machine",
+      "url": "https://santaclarita.gov/blog/2026/03/13/senses-block-party-returns-to-old-town-newhall-with-new-themes/",
+      "start": "2026-08-20T19:00",
+      "venue": "Main Street between Market Street and Sixth Street",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Change the Station at The MAIN",
+      "url": "https://atthemain.org/",
+      "start": "2026-08-21",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Concerts in the Park: Kenny Metcalf as Elton John Tribute",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-22T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park, Fields 7 and 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-08-23T08:30",
-      "venue": "Valencia FivePoint Community",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-08-26T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Newhall Saturday Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-08-29T08:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Concerts in the Park - The Police Experience Tribute",
+      "title": "Concerts in the Park: The Police Experience Tribute",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-29T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park, Fields 7 and 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
