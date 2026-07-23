@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-22T15:19:40.493Z",
+  "generatedAt": "2026-07-23T15:29:27.172Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "City Cinemas: Cars",
+      "title": "City Cinemas in the Park - Cars",
       "url": "https://santaclarita.gov/blog/2026/05/22/city-cinemas-returns-to-the-big-screen/",
       "start": "2026-07-24T20:00",
       "venue": "Central Park",
@@ -13,129 +13,145 @@
       "price": "Free",
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Celebrate America 250 at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/celebrate-america-s-250th",
-      "start": "2026-07-25T18:00",
+      "title": "Concerts in the Park - RagDolls (Aerosmith Tribute)",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-07-25T19:00",
+      "venue": "Central Park, Fields 7 & 8",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-07-26T08:00",
+      "venue": "College of the Canyons, Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM"
+    },
+    {
+      "title": "Celebrate America 250",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-07-31T18:00",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": null,
+      "price": "Theme park admission required",
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "Six Flags Magic Mountain Events"
     },
     {
-      "title": "Concerts in the Park: RagDolls - Aerosmith Tribute",
-      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
-      "start": "2026-07-25T19:00",
-      "venue": "Central Park",
-      "city": "Santa Clarita",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-08-01T08:30",
+      "venue": "Old Town Newhall Library",
+      "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-07-26T08:30",
-      "venue": "Valencia FivePoint Community (Magic Mountain Parkway at Navigation Avenue)",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Concerts in the Park: Gold Rush Country - Top 40 Country Hits",
+      "title": "Concerts in the Park - Gold Rush Country (Top 40 Country Hits)",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-01T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park, Fields 7 & 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-02T08:30",
-      "venue": "Valencia FivePoint Community (Magic Mountain Parkway at Navigation Avenue)",
-      "city": "Valencia",
+      "title": "Canyon Country Farmers Market",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-08-05T16:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Canyon Country",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "City of Santa Clarita"
     },
     {
-      "title": "Concerts in the Park: Blue Breeze Band - Soul, Motown and R&B Hits",
+      "title": "Concerts in the Park - Blue Breeze Band (Soul, Motown and R&B)",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-08T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park, Fields 7 & 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-09T08:30",
-      "venue": "Valencia FivePoint Community (Magic Mountain Parkway at Navigation Avenue)",
-      "city": "Valencia",
+      "title": "Concerts in the Park - Paramore! At the Disco Tribute",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-15T19:00",
+      "venue": "Central Park, Fields 7 & 8",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Valencia Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-16T08:30",
-      "venue": "Valencia FivePoint Community (Magic Mountain Parkway at Navigation Avenue)",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "City of Santa Clarita"
     },
     {
       "title": "SENSES Block Party - Time Machine",
       "url": "https://oldtownnewhall.com/senses-block-party/",
       "start": "2026-08-20T19:00",
-      "venue": "Main Street between Market and Sixth Streets",
+      "venue": "Main Street",
       "city": "Newhall",
       "free": true,
       "price": "Free",
@@ -146,13 +162,13 @@
       "via": "Old Town Newhall"
     },
     {
-      "title": "Out on the Mountain - LGBTQ+ Pride Event at Six Flags",
+      "title": "Out on the Mountain - LGBTQ Pride Event",
       "url": "https://en.wikipedia.org/wiki/Out_on_the_Mountain",
       "start": "2026-08-21",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": null,
+      "price": "Theme park admission required",
       "audience": [
         "adults"
       ],
@@ -160,35 +176,23 @@
       "via": "Wikipedia"
     },
     {
-      "title": "Concerts in the Park: Kenny Metcalf as Elton John - Elton John Tribute",
+      "title": "Concerts in the Park - Kenny Metcalf as Elton John",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-22T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park, Fields 7 & 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-23T08:30",
-      "venue": "Valencia FivePoint Community (Magic Mountain Parkway at Navigation Avenue)",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "City Cinemas: Jurassic Park",
+      "title": "City Cinemas in the Park - Jurassic Park",
       "url": "https://santaclarita.gov/blog/2026/05/22/city-cinemas-returns-to-the-big-screen/",
       "start": "2026-08-28T19:30",
       "venue": "William S. Hart Park",
@@ -197,38 +201,41 @@
       "price": "Free",
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Concerts in the Park: The Police Experience - Tribute to The Police",
+      "title": "Concerts in the Park - The Police Experience",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-29T19:00",
-      "venue": "Central Park",
+      "venue": "Central Park, Fields 7 & 8",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-30T08:30",
-      "venue": "Valencia FivePoint Community (Magic Mountain Parkway at Navigation Avenue)",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
+      "title": "10 by 10 Variety Show",
+      "url": "https://atthemain.org/events-at-the-main/",
+      "start": "2026-09-03",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
       "audience": [
-        "everyone"
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "The MAIN Theatre"
     }
   ]
 }
