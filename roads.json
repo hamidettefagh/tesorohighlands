@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T14:30:45.284Z",
+  "generatedAt": "2026-07-23T17:45:29.720Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -28,7 +28,7 @@
       "total": "4",
       "startEpoch": 1784811660,
       "endEpoch": 1784843940,
-      "moreWindows": 24
+      "moreWindows": 25
     },
     {
       "route": "I-5",
@@ -42,7 +42,21 @@
       "total": "4",
       "startEpoch": 1784811660,
       "endEpoch": 1784843940,
-      "moreWindows": 17
+      "moreWindows": 18
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Templin Highway",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Guardrail Repair",
+      "lanes": "1",
+      "total": "4",
+      "startEpoch": 1784817900,
+      "endEpoch": 1784840460,
+      "moreWindows": 0
     },
     {
       "route": "I-5",
@@ -56,7 +70,7 @@
       "total": "1",
       "startEpoch": 1784822460,
       "endEpoch": 1784843940,
-      "moreWindows": 71
+      "moreWindows": 73
     },
     {
       "route": "I-5",
@@ -70,7 +84,7 @@
       "total": "1",
       "startEpoch": 1784822460,
       "endEpoch": 1784843940,
-      "moreWindows": 18
+      "moreWindows": 20
     },
     {
       "route": "I-5",
@@ -84,7 +98,7 @@
       "total": "1",
       "startEpoch": 1784822460,
       "endEpoch": 1784843940,
-      "moreWindows": 11
+      "moreWindows": 12
     },
     {
       "route": "I-5",
@@ -98,7 +112,7 @@
       "total": "1",
       "startEpoch": 1784822460,
       "endEpoch": 1784843940,
-      "moreWindows": 23
+      "moreWindows": 24
     },
     {
       "route": "I-5",
@@ -112,7 +126,7 @@
       "total": "1",
       "startEpoch": 1784822460,
       "endEpoch": 1784843940,
-      "moreWindows": 95
+      "moreWindows": 101
     },
     {
       "route": "I-5",
@@ -126,7 +140,7 @@
       "total": "1",
       "startEpoch": 1784822460,
       "endEpoch": 1784843940,
-      "moreWindows": 17
+      "moreWindows": 18
     },
     {
       "route": "I-5",
@@ -140,7 +154,7 @@
       "total": "1",
       "startEpoch": 1784822460,
       "endEpoch": 1784843940,
-      "moreWindows": 11
+      "moreWindows": 12
     },
     {
       "route": "I-5",
@@ -154,21 +168,7 @@
       "total": "1",
       "startEpoch": 1784822460,
       "endEpoch": 1784843940,
-      "moreWindows": 39
-    },
-    {
-      "route": "SR-14",
-      "dir": "North / South",
-      "at": "Placerita Canyon Rd",
-      "place": "Newhall",
-      "facility": "Conventional Hwy",
-      "type": "Lane",
-      "work": "Electrical Work",
-      "lanes": "2",
-      "total": "2",
-      "startEpoch": 1784822460,
-      "endEpoch": 1784844060,
-      "moreWindows": 0
+      "moreWindows": 41
     }
   ]
 }
