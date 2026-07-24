@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T03:43:19.955Z",
+  "generatedAt": "2026-07-24T06:39:12.574Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1783407660,
       "endEpoch": 1785999540,
-      "moreWindows": 15
+      "moreWindows": 16
     },
     {
       "route": "I-5",
@@ -28,7 +28,7 @@
       "total": "1",
       "startEpoch": 1784858460,
       "endEpoch": 1784897940,
-      "moreWindows": 69
+      "moreWindows": 73
     },
     {
       "route": "I-5",
@@ -42,7 +42,7 @@
       "total": "1",
       "startEpoch": 1784858460,
       "endEpoch": 1784897940,
-      "moreWindows": 25
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -70,7 +70,7 @@
       "total": "2",
       "startEpoch": 1784858460,
       "endEpoch": 1784897940,
-      "moreWindows": 92
+      "moreWindows": 95
     },
     {
       "route": "I-5",
@@ -84,7 +84,7 @@
       "total": "1",
       "startEpoch": 1784858460,
       "endEpoch": 1784897940,
-      "moreWindows": 19
+      "moreWindows": 20
     },
     {
       "route": "I-5",
@@ -126,7 +126,7 @@
       "total": "4",
       "startEpoch": 1784862060,
       "endEpoch": 1784897940,
-      "moreWindows": 32
+      "moreWindows": 33
     },
     {
       "route": "I-5",
@@ -145,30 +145,30 @@
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4, 5",
-      "total": "5",
-      "startEpoch": 1784869260,
-      "endEpoch": 1784897940,
-      "moreWindows": 23
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Weldon Canyon",
-      "place": "Granada Hills",
+      "at": "Lyons Ave",
+      "place": "Stevenson Ranch",
       "facility": "Mainline",
       "type": "Lane",
       "work": "Sawcutting Operation",
       "lanes": "3, 4, 5",
       "total": "5",
-      "startEpoch": 1784869260,
+      "startEpoch": 1784872860,
       "endEpoch": 1784894340,
-      "moreWindows": 12
+      "moreWindows": 40
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1784898060,
+      "endEpoch": 1784930340,
+      "moreWindows": 23
     }
   ]
 }
