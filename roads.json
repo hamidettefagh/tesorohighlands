@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T06:39:12.574Z",
+  "generatedAt": "2026-07-24T10:28:14.438Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -28,7 +28,7 @@
       "total": "1",
       "startEpoch": 1784858460,
       "endEpoch": 1784897940,
-      "moreWindows": 73
+      "moreWindows": 74
     },
     {
       "route": "I-5",
@@ -144,20 +144,6 @@
     },
     {
       "route": "I-5",
-      "dir": "South",
-      "at": "Lyons Ave",
-      "place": "Stevenson Ranch",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Sawcutting Operation",
-      "lanes": "3, 4, 5",
-      "total": "5",
-      "startEpoch": 1784872860,
-      "endEpoch": 1784894340,
-      "moreWindows": 40
-    },
-    {
-      "route": "I-5",
       "dir": "North",
       "at": "Hasley Canyon Rd",
       "place": "Castaic",
@@ -169,6 +155,20 @@
       "startEpoch": 1784898060,
       "endEpoch": 1784930340,
       "moreWindows": 23
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Parker Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1784898060,
+      "endEpoch": 1784930340,
+      "moreWindows": 17
     }
   ]
 }
