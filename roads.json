@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T09:59:55.827Z",
+  "generatedAt": "2026-07-25T14:01:27.375Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,21 +14,7 @@
       "total": "1",
       "startEpoch": 1783407660,
       "endEpoch": 1785999540,
-      "moreWindows": 15
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Newhall",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Road Survey",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784944860,
-      "endEpoch": 1784984340,
-      "moreWindows": 73
+      "moreWindows": 14
     },
     {
       "route": "I-5",
@@ -40,93 +26,9 @@
       "work": "Shoulder Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1784944860,
-      "endEpoch": 1784991540,
-      "moreWindows": 25
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Truck Weigh Station",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Shoulder Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784944860,
-      "endEpoch": 1784984340,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Rye Canyon Rd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1784944860,
-      "endEpoch": 1784984340,
-      "moreWindows": 6
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1784948460,
-      "endEpoch": 1784984340,
-      "moreWindows": 35
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Sylmar",
-      "facility": "Truck Connector",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1784948460,
-      "endEpoch": 1784984340,
-      "moreWindows": 5
-    },
-    {
-      "route": "SR-14",
-      "dir": "South",
-      "at": "Antelope Valley Freeway, Route 14",
-      "place": "Sylmar",
-      "facility": "Truck Connector",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1784948460,
-      "endEpoch": 1784984340,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Gavin Canyon",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Sawcutting Operation",
-      "lanes": "3, 4",
-      "total": "4",
-      "startEpoch": 1784959260,
-      "endEpoch": 1784984340,
-      "moreWindows": 1
+      "startEpoch": 1784984460,
+      "endEpoch": 1785016740,
+      "moreWindows": 23
     },
     {
       "route": "I-5",
@@ -140,7 +42,7 @@
       "total": "4",
       "startEpoch": 1784984460,
       "endEpoch": 1785020340,
-      "moreWindows": 24
+      "moreWindows": 25
     },
     {
       "route": "I-5",
@@ -169,6 +71,104 @@
       "startEpoch": 1784984460,
       "endEpoch": 1785016740,
       "moreWindows": 90
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Valencia Blvd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Shoulder Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784984460,
+      "endEpoch": 1785016740,
+      "moreWindows": 17
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784984460,
+      "endEpoch": 1785016740,
+      "moreWindows": 11
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Lyons Ave",
+      "place": "Stevenson Ranch",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drain Inspection",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784984460,
+      "endEpoch": 1785016740,
+      "moreWindows": 39
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Shoulder Reconstruction",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784987940,
+      "endEpoch": 1785016740,
+      "moreWindows": 23
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Newhall",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Road Survey",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784995260,
+      "endEpoch": 1785023940,
+      "moreWindows": 71
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Sawcutting Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784995260,
+      "endEpoch": 1785016740,
+      "moreWindows": 20
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Valencia Blvd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1784995260,
+      "endEpoch": 1785016740,
+      "moreWindows": 11
     }
   ]
 }
