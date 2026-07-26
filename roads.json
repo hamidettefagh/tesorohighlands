@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T10:13:03.890Z",
+  "generatedAt": "2026-07-26T13:55:46.655Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1783407660,
       "endEpoch": 1785999540,
-      "moreWindows": 16
+      "moreWindows": 14
     },
     {
       "route": "I-5",
@@ -23,26 +23,12 @@
       "place": "Newhall",
       "facility": "Off Ramp",
       "type": "Full",
-      "work": "Paving Operation",
+      "work": "Road Survey",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785034860,
-      "endEpoch": 1785085140,
-      "moreWindows": 75
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Gavin Canyon",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Sawcutting Operation",
-      "lanes": "3, 4",
-      "total": "4",
-      "startEpoch": 1785038460,
-      "endEpoch": 1785067140,
-      "moreWindows": 0
+      "startEpoch": 1785081660,
+      "endEpoch": 1785110340,
+      "moreWindows": 74
     },
     {
       "route": "I-5",
@@ -169,6 +155,20 @@
       "startEpoch": 1785168060,
       "endEpoch": 1785189540,
       "moreWindows": 34
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Loop Installation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785168060,
+      "endEpoch": 1785189540,
+      "moreWindows": 24
     }
   ]
 }
