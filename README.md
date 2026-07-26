@@ -39,7 +39,13 @@ events.json           auto-built local feed (see pipeline below) — do not edit
 community-events.json neighbor events, maintained via git (schema below)
 vendor/leaflet/       self-hosted Leaflet 1.9.4 (no CDN dependency during an emergency)
 scripts/fetch-events.mjs   feed builder (Node, no deps)
-.github/workflows/refresh-events.yml   ~30-min cron that refreshes events.json
+scripts/alert-watch.mjs    ~10-min cron: detects evac/fire/red-flag for our area,
+                           writes alert.json (one-tap WhatsApp share on /fire),
+                           optional admin phone ping via ntfy.sh (NTFY_TOPIC secret)
+scripts/weekend-roundup.mjs Friday AI agent: curates 5-7 weekend picks from the
+                           verified feed BY INDEX (hallucination-proof), writes
+                           roundup.json (Copy-for-WhatsApp card on /events)
+.github/workflows/refresh-events.yml   ~4-hour cron that refreshes events.json
 server.js             tiny static server for LOCAL dev only (clean URLs like Vercel)
 vercel.json           static deploy config (headers, clean URLs)
 sitemap.xml / robots.txt

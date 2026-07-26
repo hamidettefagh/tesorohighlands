@@ -1,0 +1,45 @@
+name: Neighborhood alert watch
+
+# Checks the official evac/fire/red-flag feeds for Tesoro Highlands every ~10
+# minutes and commits alert.json on state changes — which deploys the one-tap
+# "Share on WhatsApp" card on the fire page. Optionally pings an admin phone
+# via ntfy.sh when the NTFY_TOPIC secret is set. Public repo = free minutes.
+#
+# Honest limits: GitHub cron can run 5–20 minutes late. This is the
+# neighborhood-specific layer, not a replacement for Watch Duty or official
+# emergency alerts.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/10 * * * *"
+
+permissions:
+  contents: write
+
+concurrency: alert-watch
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check feeds
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: node scripts/alert-watch.mjs
+      - name: Commit on state change
+        run: |
+          git add alert.json
+          if git diff --cached --quiet; then
+            echo "No change."
+          else
+            git config user.name "tesoro-alert-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "alert: state change"
+            git pull --rebase origin main || true
+            git push
+          fi

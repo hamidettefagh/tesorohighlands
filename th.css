@@ -61,6 +61,8 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .thstrip.neutral{background:var(--neu-bg);color:var(--neu-fg);border-color:var(--neu-line);} .thstrip.neutral .dot{background:var(--muted);}
 .thstrip .txt{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .thstrip .arrow{opacity:.65;font-size:12px;font-weight:600;flex:none;}
+/* on phones an evacuation message must never be cut off mid-sentence */
+@media(max-width:560px){.thstrip .txt{white-space:normal;line-height:1.4;}}
 
 /* hub landing */
 .hub-head{padding:26px 0 4px;}

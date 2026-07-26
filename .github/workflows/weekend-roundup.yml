@@ -1,0 +1,42 @@
+name: Weekend roundup
+
+# Friday 8:23am PT: the AI agent curates 5-7 weekend picks from the site's own
+# verified events feed and writes roundup.json — the events page renders it
+# with a one-tap "Copy for WhatsApp" card. Costs a few cents per run on Haiku.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 15 * * 5"
+
+permissions:
+  contents: write
+
+concurrency: weekend-roundup
+
+jobs:
+  curate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install the Anthropic SDK
+        run: npm install --prefix scripts --no-audit --no-fund
+      - name: Curate the weekend
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/weekend-roundup.mjs
+      - name: Commit if changed
+        run: |
+          git add roundup.json
+          if git diff --cached --quiet; then
+            echo "No change."
+          else
+            git config user.name "tesoro-events-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore: weekend roundup"
+            git pull --rebase origin main || true
+            git push
+          fi

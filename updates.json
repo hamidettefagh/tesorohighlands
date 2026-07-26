@@ -1,4 +1,6 @@
 [
+  { "date": "2026-07-26", "text": "Neighborhood alerts — evac, fire, and red-flag warnings auto-detected with a one-tap WhatsApp share on the Fire page", "href": "/fire" },
+  { "date": "2026-07-26", "text": "Weekend picks — an AI curates the best local events every Friday, ready to copy into the group chat", "href": "/events" },
   { "date": "2026-07-25", "text": "The home page now leads with what's coming up — live numbers, next events, and what's new since your last visit", "href": "/" },
   { "date": "2026-07-16", "text": "Local pros — a neighbor-shared solar & battery company on Living Here", "href": "/living#pros" },
   { "date": "2026-07-15", "text": "Fires now show acreage & containment from CAL FIRE, plus NASA satellite heat checks", "href": "/fire#fires" },

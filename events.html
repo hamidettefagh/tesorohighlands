@@ -66,6 +66,23 @@
   .chiprow .chips{margin:0;flex:none;flex-wrap:nowrap;}
   .chipdiv{flex:none;width:1px;align-self:stretch;background:var(--line);margin:2px 3px;}
   .morewrap{padding:12px 0 8px;text-align:center;}
+  .roundup{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);margin:2px 0 14px;}
+  .roundup .rhead{display:flex;align-items:center;gap:8px;margin-bottom:2px;}
+  .roundup .rhead h3{margin:0;font-size:14.5px;letter-spacing:-0.005em;}
+  .roundup .rhead .pill{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:999px;background:var(--cau-bg);color:var(--cau-fg);flex:none;}
+  .roundup .rintro{font-size:12.5px;color:var(--ink-2);margin:2px 0 8px;}
+  .rpick{display:flex;gap:9px;padding:7px 0;border-top:1px solid var(--line-2);font-size:13px;color:var(--ink-2);line-height:1.45;}
+  .rpick:first-of-type{border-top:0;}
+  .rpick .re{flex:none;width:22px;text-align:center;}
+  .rpick b{color:var(--ink);font-weight:640;}
+  .rpick a{color:inherit;text-decoration:none;}
+  .rpick a:hover{color:var(--ink);}
+  .rbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+  .wabtn{display:inline-block;text-decoration:none;background:#1faa55;color:#fff;font-weight:700;font-size:13px;padding:8px 15px;border-radius:10px;}
+  .wabtn:hover{filter:brightness(1.06);}
+  .copybtn{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:10px;padding:8px 13px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font);}
+  .copybtn:hover{border-color:var(--muted);}
+  .roundup .rmeta{font-size:11px;color:var(--muted);margin-top:8px;}
   .showall{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:999px;
     padding:8px 18px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:var(--font);}
   .showall:hover{border-color:var(--muted);color:var(--ink);}
@@ -150,6 +167,17 @@
 
     <section class="evsec" id="around">
       <div class="sechead"><h2>Around Santa Clarita</h2><span class="pill">Auto-updated</span></div>
+      <div class="roundup" id="roundup" hidden>
+        <div class="rhead"><h3>🌵 This weekend's picks</h3><span class="pill">AI-curated Fridays</span></div>
+        <div class="rintro" id="rIntro"></div>
+        <div id="rPicks"></div>
+        <div class="rbtns">
+          <a class="wabtn" id="rShare" target="_blank" rel="noopener">Share on WhatsApp</a>
+          <button class="copybtn" id="rCopy" type="button">Copy for WhatsApp</button>
+        </div>
+        <div class="rmeta">Curated by AI every Friday from the verified events feed — details can change, confirm on the listing.</div>
+      </div>
+
       <input class="evsearch" id="evSearch" type="search" placeholder="🔎 Search events — try “market”, “comedy”, “storytime”…" aria-label="Search events" />
       <div class="chiprow">
         <div class="chips" id="audChips" role="group" aria-label="Filter events by audience">
@@ -400,6 +428,35 @@
       showAllEvents = true;
       renderFeed();
     });
+
+    // ---- Weekend roundup (roundup.json, written by the Friday AI agent) ----
+    fetch("/roundup.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (ru) {
+      if (!ru || !ru.waText || !Array.isArray(ru.picks) || !ru.picks.length) return;
+      // Show Friday through Sunday night of its own weekend, then retire.
+      var p = String(ru.weekendOf || "").split("-").map(Number);
+      if (p.length === 3) {
+        var sunEnd = new Date(p[0], p[1] - 1, p[2] + 2, 23, 59, 59).getTime();
+        if (Date.now() > sunEnd) return;
+      }
+      if (ru.intro) document.getElementById("rIntro").textContent = ru.intro;
+      document.getElementById("rPicks").innerHTML = ru.picks.map(function (k) {
+        var when = [k.day, k.time].filter(Boolean).join(" ");
+        var body = "<b>" + esc(when) + "</b> — " + esc(k.title) + (k.price ? " <span style='color:var(--muted)'>(" + esc(k.price) + ")</span>" : "");
+        var u = /^https?:\/\//i.test(k.url || "") ? k.url : null;
+        return '<div class="rpick"><span class="re">' + esc(k.emoji || "📍") + "</span><div>" +
+          (u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + body + "</a>" : body) +
+          (k.note ? '<div style="font-size:12px;color:var(--muted)">' + esc(k.note) + "</div>" : "") +
+          "</div></div>";
+      }).join("");
+      document.getElementById("rShare").href = "https://wa.me/?text=" + encodeURIComponent(ru.waText);
+      document.getElementById("rCopy").addEventListener("click", function () {
+        var btn = this;
+        function done() { btn.textContent = "Copied ✓"; setTimeout(function () { btn.textContent = "Copy for WhatsApp"; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(ru.waText).then(done, done); }
+        else { var ta = document.createElement("textarea"); ta.value = ru.waText; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); done(); }
+      });
+      document.getElementById("roundup").hidden = false;
+    }).catch(function () {});
     document.getElementById("audChips").addEventListener("click", function (ev) {
       var b = ev.target.closest("button"); if (!b) return;
       currentFilter = b.dataset.aud;
