@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T09:59:46.269Z",
+  "generatedAt": "2026-07-26T06:48:25.765Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -17,7 +17,8 @@
       "audience": [
         "adults"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Motorcycles and Coffee",
@@ -34,7 +35,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Hart Mansion Group Tour 10:00a.m.",
@@ -59,7 +61,8 @@
         "2026-08-13T10:00",
         "2026-08-14T10:00"
       ],
-      "repeats": 8
+      "repeats": 8,
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Sit and Stitch",
@@ -77,7 +80,8 @@
         "2026-07-25T10:00",
         "2026-08-08T10:00"
       ],
-      "repeats": 1
+      "repeats": 1,
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Hart Mansion Tour 11:00a.m.",
@@ -99,7 +103,8 @@
         "2026-08-08T11:00",
         "2026-08-09T11:00"
       ],
-      "repeats": 5
+      "repeats": 5,
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Family Storytime",
@@ -116,7 +121,8 @@
       "source": "SC Library",
       "dates": [
         "2026-07-25T11:00"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Hart Mansion Tour 12:00p.m.",
@@ -147,7 +153,8 @@
         "2026-08-13T12:00",
         "2026-08-14T12:00"
       ],
-      "repeats": 14
+      "repeats": 14,
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Hart Mansion Tour 1:00p.m.",
@@ -178,7 +185,8 @@
         "2026-08-13T13:00",
         "2026-08-14T13:00"
       ],
-      "repeats": 14
+      "repeats": 14,
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Blank Page Writing Group",
@@ -194,7 +202,8 @@
       "source": "SC Library",
       "dates": [
         "2026-07-25T13:00"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Hart Mansion Tour 2:00p.m.",
@@ -225,7 +234,8 @@
         "2026-08-13T14:00",
         "2026-08-14T14:00"
       ],
-      "repeats": 14
+      "repeats": 14,
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "DIY Mini Lighthouse",
@@ -241,7 +251,8 @@
       "source": "SC Library",
       "dates": [
         "2026-07-25T14:00"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "AAA Santa Clarita Japan Expo",
@@ -258,7 +269,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Santa Clarita Latine Fest presented by Santa Clarita Shakespeare",
@@ -275,7 +287,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Hart Mansion Tour 3:00p.m.",
@@ -297,7 +310,8 @@
         "2026-08-08T15:00",
         "2026-08-09T15:00"
       ],
-      "repeats": 5
+      "repeats": 5,
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Movie Night at the Farm",
@@ -310,7 +324,8 @@
       "audience": [
         "kids"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Greater Thursdays & Saturdays at Greater Pacific Restaurant",
@@ -327,7 +342,8 @@
       "audience": [
         "adults"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Concerts in the Park, presented by Logix Federal Credit Union: Aerosmith Tribute",
@@ -344,7 +360,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center",
@@ -361,7 +378,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Live Music at Pocock Brewing Company",
@@ -378,7 +396,8 @@
       "audience": [
         "adults"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Santa Clarita Latine Fest presented by Santa Clarita Shakespeare",
@@ -395,7 +414,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Stand Up & Magic! @ Red Dot Pizza",
@@ -408,7 +428,8 @@
       "audience": [
         "adults"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Visit The Gentle Barn",
@@ -425,7 +446,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Santa Clarita Certified Farmers Market",
@@ -442,7 +464,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Valencia FivePoint Farmers' Market",
@@ -459,7 +482,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "CBS Film Series presents \"Once Upon My Mother\"",
@@ -476,7 +500,8 @@
       "audience": [
         "kids"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center",
@@ -493,7 +518,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Foster Children's Resource Center Community Open House",
@@ -510,7 +536,8 @@
       "audience": [
         "kids"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Santa Clarita Latine Fest presented by Santa Clarita Shakespeare",
@@ -527,7 +554,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Movie Night",
@@ -544,7 +572,8 @@
       "audience": [
         "kids"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Trivia Nights",
@@ -561,7 +590,8 @@
       "audience": [
         "adults"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Trivia Nights",
@@ -578,7 +608,8 @@
       "audience": [
         "adults"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Trivia Nights",
@@ -595,7 +626,8 @@
       "audience": [
         "adults"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Hart Mansion Group Tour 11:00a.m.",
@@ -620,7 +652,8 @@
         "2026-08-13T11:00",
         "2026-08-14T11:00"
       ],
-      "repeats": 8
+      "repeats": 8,
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "English Conversation Club",
@@ -639,7 +672,8 @@
         "2026-08-05T11:00",
         "2026-08-12T11:00"
       ],
-      "repeats": 2
+      "repeats": 2,
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Drop In TTRPG Table",
@@ -656,7 +690,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Karaoke Wednesdays at Oggi's",
@@ -673,7 +708,8 @@
       "audience": [
         "adults"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Salsa on One presents Latin Wednesdays",
@@ -690,7 +726,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Greater Thursdays & Saturdays at Greater Pacific Restaurant",
@@ -707,7 +744,8 @@
       "audience": [
         "adults"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Bingo with Budds",
@@ -724,7 +762,8 @@
       "audience": [
         "adults"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Borderline Country Line Dancing Night",
@@ -741,7 +780,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Objectively Speaking: A Fine Art Exhibition",
@@ -758,7 +798,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Live Music at Lucky Luke Brewing",
@@ -775,7 +816,8 @@
       "audience": [
         "adults"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Coriolanus presented by Santa Clarita Shakespeare 2026 Festival",
@@ -792,7 +834,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Stella Rowe Solo Art Exhibit at Canyon Theater Guild",
@@ -809,7 +852,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "City of Santa Clarita"
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Afternoon Acoustic Jam",
@@ -825,7 +869,8 @@
       "source": "SC Library",
       "dates": [
         "2026-08-02T13:00"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Club Wealth - Two Events One Day! | Valencia, CA",
@@ -838,7 +883,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Valencia TAB",
@@ -855,7 +901,8 @@
       "source": "SC Library",
       "dates": [
         "2026-08-04T16:30"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Canyon Country TAB",
@@ -872,7 +919,8 @@
       "source": "SC Library",
       "dates": [
         "2026-08-05T16:30"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Thrilled to Read Book Club",
@@ -888,7 +936,8 @@
       "source": "SC Library",
       "dates": [
         "2026-08-05T18:00"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Newhall TAB",
@@ -905,7 +954,8 @@
       "source": "SC Library",
       "dates": [
         "2026-08-06T16:00"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Club de Mujeres Latinas en Literatura",
@@ -921,7 +971,8 @@
       "source": "SC Library",
       "dates": [
         "2026-08-06T18:30"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "ENCHANTED: It's The Blank Show",
@@ -934,7 +985,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Community Passport Fair at the Canyon Country Library",
@@ -950,7 +1002,8 @@
       "source": "SC Library",
       "dates": [
         "2026-08-07T12:00"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "The Dresser presented by The Tavern Brawlers",
@@ -963,7 +1016,8 @@
       "audience": [
         "adults"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "B.A.B.E. Book Club",
@@ -979,7 +1033,8 @@
       "source": "SC Library",
       "dates": [
         "2026-08-08T10:30"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "UPDATE: Voices United - Gospel Music WORKSHOP Series & Concert - 8/8, 8/22",
@@ -992,7 +1047,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Tales From the Dark Stacks",
@@ -1008,7 +1064,8 @@
       "source": "SC Library",
       "dates": [
         "2026-08-08T13:00"
-      ]
+      ],
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Punchlines At The MAIN",
@@ -1021,7 +1078,8 @@
       "audience": [
         "adults"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Mosaic Art Classes Santa Clarita: Turkish Lamp Workshop",
@@ -1034,7 +1092,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "You Got Older presented by Dig Deep Theatre",
@@ -1047,7 +1106,8 @@
       "audience": [
         "adults"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "2026 \"BE YOU\" Women's Conference",
@@ -1060,7 +1120,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Voice United - Gospel Music CONCERT!",
@@ -1073,7 +1134,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "SCV Music Festival",
@@ -1086,7 +1148,8 @@
       "audience": [
         "everyone"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "The Society Comedy Troupe",
@@ -1099,7 +1162,8 @@
       "audience": [
         "adults"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     },
     {
       "title": "Change the Station Presented by The Big Sandwich Theatre Company",
@@ -1112,7 +1176,8 @@
       "audience": [
         "adults"
       ],
-      "source": "Eventbrite"
+      "source": "Eventbrite",
+      "added": "2026-07-25T09:59:46.269Z"
     }
   ]
 }
