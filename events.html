@@ -55,8 +55,8 @@
   .evitem .what a{color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:580;line-height:1.4;}
   .evitem .what a:hover{text-decoration:underline;}
   .evitem .sub{font-size:12px;color:var(--muted);margin-top:2px;}
-  .evitem .price{flex:none;text-align:right;}
-  .badge-price{display:inline-block;font-size:11px;font-weight:680;padding:2px 9px;border-radius:999px;background:var(--neu-bg);color:var(--neu-fg);white-space:nowrap;}
+  .evitem .price{flex:none;text-align:right;max-width:112px;}
+  .badge-price{display:inline-block;font-size:11px;font-weight:680;padding:2px 9px;border-radius:999px;background:var(--neu-bg);color:var(--neu-fg);white-space:normal;line-height:1.35;}
   .badge-price.free{background:var(--ok-bg);color:var(--ok-fg);}
   .chip{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:1px 7px;border-radius:999px;background:var(--neu-bg);color:var(--neu-fg);margin:4px 4px 0 0;}
   .chip.today{background:var(--ok-bg);color:var(--ok-fg);}
@@ -321,7 +321,16 @@
     }
     function priceBadge(e) {
       if (e.free) return '<span class="badge-price free">Free</span>';
-      if (e.price) return '<span class="badge-price">' + esc(e.price) + "</span>";
+      if (e.price) {
+        var p = String(e.price);
+        // Some feeds send a whole pricing paragraph ("Adults $25, Kids $15, …") —
+        // summarize to the lowest listed price; details live on the linked page.
+        if (p.length > 16) {
+          var amts = (p.match(/\$\s?\d+(?:\.\d{2})?/g) || []).map(function (s) { return parseFloat(s.replace(/[^\d.]/g, "")); }).filter(function (n) { return !isNaN(n); });
+          p = amts.length ? "from $" + Math.min.apply(null, amts) : "See listing";
+        }
+        return '<span class="badge-price">' + esc(p) + "</span>";
+      }
       return '<span class="badge-price">Tickets ↗</span>';
     }
     function inWhen(ms) {
