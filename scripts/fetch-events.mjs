@@ -305,6 +305,23 @@ const events = [...ebEvents, ...libEvents, ...locEvents]
   })
   .sort((a, b) => (a.start < b.start ? -1 : 1));
 
+// Stamp when each event first appeared in the feed, so the site can badge
+// "new since your last visit". Identity is title+venue (NOT start — recurring
+// events roll their start forward and must not re-badge as new every week).
+// Events already in the previous file inherit their old stamp, or that file's
+// generatedAt if they predate this feature — only genuinely new arrivals get
+// stamped with the current run time.
+{
+  const idOf = (e) => e.title.toLowerCase().replace(/\W+/g, " ").trim() + "|" + String(e.venue || "").toLowerCase();
+  const prior = new Map();
+  for (const e of (old && Array.isArray(old.events) ? old.events : [])) prior.set(idOf(e), e.added || (old && old.generatedAt) || null);
+  const nowIso = new Date().toISOString();
+  for (const e of events) {
+    const was = prior.get(idOf(e));
+    e.added = prior.has(idOf(e)) ? (was || nowIso) : nowIso;
+  }
+}
+
 if (old && JSON.stringify(old.events) === JSON.stringify(events)) {
   console.log(`No content change (${events.length} events).`);
   process.exit(0);

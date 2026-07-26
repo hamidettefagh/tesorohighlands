@@ -60,6 +60,15 @@
   .badge-price.free{background:var(--ok-bg);color:var(--ok-fg);}
   .chip{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:1px 7px;border-radius:999px;background:var(--neu-bg);color:var(--neu-fg);margin:4px 4px 0 0;}
   .chip.today{background:var(--ok-bg);color:var(--ok-fg);}
+  .chip.new{background:var(--cau-bg);color:var(--cau-fg);}
+  .chiprow{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:2px 0 10px;-webkit-overflow-scrolling:touch;align-items:center;}
+  .chiprow::-webkit-scrollbar{display:none;}
+  .chiprow .chips{margin:0;flex:none;flex-wrap:nowrap;}
+  .chipdiv{flex:none;width:1px;align-self:stretch;background:var(--line);margin:2px 3px;}
+  .morewrap{padding:12px 0 8px;text-align:center;}
+  .showall{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:999px;
+    padding:8px 18px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:var(--font);}
+  .showall:hover{border-color:var(--muted);color:var(--ink);}
   .empty{padding:16px 2px;color:var(--muted);font-size:13px;}
   .evsearch{width:100%;padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
     color:var(--ink);font-size:13px;font-family:var(--font);margin:0 0 10px;}
@@ -141,21 +150,24 @@
 
     <section class="evsec" id="around">
       <div class="sechead"><h2>Around Santa Clarita</h2><span class="pill">Auto-updated</span></div>
-      <div class="chips" id="audChips" role="group" aria-label="Filter events by audience">
-        <button data-aud="all" aria-pressed="true">All</button>
-        <button data-aud="toddlers" aria-pressed="false">🧸 Toddlers</button>
-        <button data-aud="kids" aria-pressed="false">🎨 Kids</button>
-        <button data-aud="teens" aria-pressed="false">🎧 Teens</button>
-        <button data-aud="adults" aria-pressed="false">🎭 Adults</button>
-        <button data-aud="free" aria-pressed="false">Free</button>
-      </div>
-      <div class="chips" id="dateChips" role="group" aria-label="Filter events by date">
-        <button data-when="any" aria-pressed="true">Any time</button>
-        <button data-when="today" aria-pressed="false">Today</button>
-        <button data-when="weekend" aria-pressed="false">This weekend</button>
-        <button data-when="week" aria-pressed="false">Next 7 days</button>
-      </div>
       <input class="evsearch" id="evSearch" type="search" placeholder="🔎 Search events — try “market”, “comedy”, “storytime”…" aria-label="Search events" />
+      <div class="chiprow">
+        <div class="chips" id="audChips" role="group" aria-label="Filter events by audience">
+          <button data-aud="all" aria-pressed="true">All</button>
+          <button data-aud="toddlers" aria-pressed="false">🧸 Toddlers</button>
+          <button data-aud="kids" aria-pressed="false">🎨 Kids</button>
+          <button data-aud="teens" aria-pressed="false">🎧 Teens</button>
+          <button data-aud="adults" aria-pressed="false">🎭 Adults</button>
+          <button data-aud="free" aria-pressed="false">Free</button>
+        </div>
+        <span class="chipdiv" aria-hidden="true"></span>
+        <div class="chips" id="dateChips" role="group" aria-label="Filter events by date">
+          <button data-when="any" aria-pressed="true">Any time</button>
+          <button data-when="today" aria-pressed="false">Today</button>
+          <button data-when="weekend" aria-pressed="false">This weekend</button>
+          <button data-when="week" aria-pressed="false">Next 7 days</button>
+        </div>
+      </div>
       <div class="evcard"><div id="feedList"><div class="empty">Loading local events…</div></div></div>
       <div class="evmeta" id="feedMeta">Attendable events across the Santa Clarita Valley — the City calendar, Eventbrite, and the Santa Clarita Public Library — updated regularly.</div>
     </section>
@@ -286,7 +298,17 @@
     });
 
     // ---- Auto-updated attendable events, filterable by audience + date ----
-    var allEvents = [], currentFilter = "all", currentWhen = "any", currentQuery = "";
+    var allEvents = [], currentFilter = "all", currentWhen = "any", currentQuery = "", showAllEvents = false;
+    // Last-visit snapshot (shared semantics with the home page): whichever page
+    // loads first this session bumps tesoro.seenAt, so read the session snapshot.
+    var seenAt = +(sessionStorage.getItem("tesoro.seenSnap") || 0);
+    if (!seenAt) {
+      seenAt = +localStorage.getItem("tesoro.seenAt") || -1;
+      try { sessionStorage.setItem("tesoro.seenSnap", String(seenAt)); } catch (e) {}
+      try { localStorage.setItem("tesoro.seenAt", String(Date.now())); } catch (e) {}
+    }
+    if (seenAt < 0) seenAt = 0;
+    function isNew(e) { return !!(seenAt && e.added && Date.parse(e.added) > seenAt); }
     function dayLabel(dstr) {
       var p = dstr.split("-").map(Number);
       var d = new Date(p[0], p[1] - 1, p[2]);
@@ -330,13 +352,21 @@
         el.innerHTML = '<div class="empty">Nothing matches — try clearing the search, or All + Any time.</div>';
         return;
       }
+      // Default view is the next two weeks — the long tail is one tap away, and
+      // the sections below the feed stop being buried under a two-month scroll.
+      var hiddenCount = 0, total = list.length;
+      if (currentWhen === "any" && !currentQuery && !showAllEvents) {
+        var limit = Date.now() + 14 * 86400000;
+        var near = list.filter(function (e) { return startMs(e._start) <= limit; });
+        if (near.length && near.length < list.length) { hiddenCount = list.length - near.length; list = near; }
+      }
       var lastDay = null;
       el.innerHTML = list.map(function (e) {
         var day = (e._start || "").split("T")[0];
         var head = "";
         if (day !== lastDay) { lastDay = day; head = '<div class="dayhead">' + dayLabel(day) + "</div>"; }
         return head + itemHtml(e);
-      }).join("");
+      }).join("") + (hiddenCount ? '<div class="morewrap"><button type="button" class="showall" id="showAllBtn">Show all ' + total + " events →</button></div>" : "");
     }
     function itemHtml(e) {
       var w = parseStart(e._start);
@@ -346,6 +376,7 @@
       return '<div class="evitem">' + whenHtml(e._start) +
         '<div class="what">' + (u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(e.title) + "</a>" : '<a>' + esc(e.title) + "</a>") +
         (w.isToday ? '<span class="chip today">Today</span>' : "") +
+        (isNew(e) ? '<span class="chip new">✨ New</span>' : "") +
         '<div class="sub">' + esc([e.venue, e.city].filter(Boolean).join(" · ")) + "</div>" +
         auds.map(function (a) { return '<span class="chip">' + esc(AUD_LABEL[a] || a) + "</span>"; }).join("") +
         (e._repeats ? '<span class="chip">↻ +' + e._repeats + ' more dates</span>' : "") +
@@ -353,6 +384,11 @@
     }
     document.getElementById("evSearch").addEventListener("input", function () {
       currentQuery = this.value.trim().toLowerCase();
+      renderFeed();
+    });
+    document.getElementById("feedList").addEventListener("click", function (ev) {
+      if (!ev.target.closest("#showAllBtn")) return;
+      showAllEvents = true;
       renderFeed();
     });
     document.getElementById("audChips").addEventListener("click", function (ev) {

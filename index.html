@@ -48,7 +48,13 @@
     <div class="today" id="thToday">
       <a class="tcell" href="/fire"><span class="tico">🫁</span><span class="tlab">Air today</span><span class="tval" id="tdAir">—</span></a>
       <a class="tcell" href="/fire"><span class="tico">🌬️</span><span class="tlab">Fire weather</span><span class="tval" id="tdFw">—</span></a>
-      <a class="tcell" href="/events"><span class="tico">📅</span><span class="tlab">Coming up</span><span class="tval" id="tdEv">—</span></a>
+    </div>
+    <div class="asof"><span class="livedot"></span><span id="asof">checking live data…</span></div>
+
+    <div class="week" id="wkCard" hidden>
+      <div class="wkhead"><h2>📅 Coming up</h2><a href="/events">All events →</a></div>
+      <div id="wkList"></div>
+      <div class="wknew" id="wkNew" hidden></div>
     </div>
 
     <div class="hub-grid">
@@ -56,6 +62,7 @@
         <div class="ico">🔥</div>
         <h3>Fire &amp; Emergency</h3>
         <p>Live air quality, fire weather, a nearby-fire map, evacuation status, and a saved go-bag checklist.</p>
+        <span class="cardlive" id="clFire" hidden></span>
         <span class="tag live">Live data</span>
       </a>
       <a class="hub-card" href="/living">
@@ -68,6 +75,7 @@
         <div class="ico">📅</div>
         <h3>Events &amp; Clubs</h3>
         <p>Local events you can actually attend — tagged for toddlers, kids, teens, and adults, free or paid — plus community happenings.</p>
+        <span class="cardlive" id="clEvents" hidden></span>
         <span class="tag live">Auto-updating</span>
       </a>
       <a class="hub-card" href="/hoa">
@@ -78,15 +86,20 @@
       </a>
     </div>
 
-    <section class="goal">
-      <h2>Why this exists</h2>
+    <div class="sitenews" id="siteNews" hidden>
+      <h2>🆕 New on this site</h2>
+      <div id="snList"></div>
+    </div>
+
+    <details class="goal">
+      <summary><h2>Why this exists</h2><span class="ghint">tap to read</span></summary>
       <p class="glede">One calm place for the things that matter to our community — instead of hunting across a dozen apps and group chats when it counts.</p>
       <div class="goalrow"><span class="gi">🛡️</span><div><b>Safety, centralized.</b> Air quality, fire weather, active fires, and evacuation status pulled from several official sources and brought into one view — tuned to Tesoro Highlands, not a whole region.</div></div>
       <div class="goalrow"><span class="gi">🏘️</span><div><b>Everyday life, too.</b> Local events for every age and the neighborhood know-how that usually lives buried in chat threads.</div></div>
       <div class="goalrow"><span class="gi">🤝</span><div><b>Honest and private.</b> Every source is official and public — nothing invented. No accounts, no ads, no cookies — just anonymous visit counts so we can see if it's helping, nothing personal about you. And if a feed goes down, the page says so instead of faking an all-clear.</div></div>
       <div class="goalrow"><span class="gi">✍️</span><div><b>By neighbors, for neighbors.</b> Built and curated by neighbors, and open to ideas. Spot something wrong, know a great local spot, or want a new feature? Share it in the group chat — this grows with us.</div></div>
       <p class="ggoal">The goal: the first thing you open when something feels off — and still worth a look when everything's fine.</p>
-    </section>
+    </details>
 
     <footer class="thfoot">
       <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> In an emergency, call 911 and follow CAL FIRE, LA County Fire, and Sheriff evacuation orders. Live fire, air, and weather data come from public government feeds and can lag or be incomplete — always confirm with official sources. Ideas for the site? Bring them to the community group chat.</p>
@@ -105,22 +118,40 @@
       return { lat: 34.478, lon: -118.531 };
     }
     var L = loc();
+    // Freshness line under the tiles — the first successful check wins "just now".
+    var asofPending = 2, asofOk = false;
+    function asofDone(ok) {
+      if (ok && !asofOk) { asofOk = true; $("#asof").textContent = "live · checked just now"; }
+      if (--asofPending <= 0 && !asofOk) $("#asof").textContent = "live checks unavailable right now";
+    }
+    // The Fire hub card shows a live one-liner built from whichever checks land.
+    var liveBits = { air: null, fw: null };
+    function paintFireCard() {
+      var el = $("#clFire");
+      if (!el || (!liveBits.air && !liveBits.fw)) return;
+      el.innerHTML = "Right now: " + [liveBits.air, liveBits.fw].filter(Boolean).join(" · ");
+      el.hidden = false;
+    }
 
     fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + L.lat + "&longitude=" + L.lon + "&current=us_aqi&timezone=America%2FLos_Angeles")
       .then(function (r) { return r.json(); }).then(function (a) {
         var q = a.current && a.current.us_aqi;
-        if (q == null) return;
+        if (q == null) { asofDone(false); return; }
         var cat = q <= 50 ? "Good" : q <= 100 ? "Moderate" : q <= 150 ? "Unhealthy for sensitive groups" : "Unhealthy";
         $("#tdAir").innerHTML = "<b>AQI " + Math.round(q) + "</b> · " + cat;
-      }).catch(function () { $("#tdAir").textContent = "unavailable right now"; });
+        liveBits.air = "<b>AQI " + Math.round(q) + "</b> " + cat.toLowerCase();
+        paintFireCard(); asofDone(true);
+      }).catch(function () { $("#tdAir").textContent = "unavailable right now"; asofDone(false); });
 
     fetch("https://api.open-meteo.com/v1/forecast?latitude=" + L.lat + "&longitude=" + L.lon + "&current=relative_humidity_2m,wind_speed_10m,wind_gusts_10m&wind_speed_unit=mph&timezone=America%2FLos_Angeles")
       .then(function (r) { return r.json(); }).then(function (w) {
-        var c = w.current; if (!c) return;
+        var c = w.current; if (!c) { asofDone(false); return; }
         var rh = c.relative_humidity_2m, wind = c.wind_speed_10m, gust = c.wind_gusts_10m;
         var lvl = (rh < 15 && (wind >= 25 || gust >= 35)) ? "Extreme" : (rh < 15 || wind >= 25 || gust >= 35 || (rh < 20 && wind >= 20)) ? "Elevated" : "Normal";
         $("#tdFw").innerHTML = "<b>" + Math.round(wind) + " mph</b> wind · " + Math.round(rh) + "% humidity · " + lvl;
-      }).catch(function () { $("#tdFw").textContent = "unavailable right now"; });
+        liveBits.fw = lvl.toLowerCase() + " fire weather";
+        paintFireCard(); asofDone(true);
+      }).catch(function () { $("#tdFw").textContent = "unavailable right now"; asofDone(false); });
 
     Promise.all([
       fetch("/events.json").then(function (r) { return r.json(); }).catch(function () { return null; }),
@@ -135,23 +166,72 @@
           : new Date(p[0], p[1] - 1, p[2], 23, 59).getTime();
         return t >= Date.now() - 45 * 60000 ? t : null;
       }
+      // Every event rolled to its next still-upcoming occurrence.
       var evs = ((feed && feed.events) || []).concat(Array.isArray(comm) ? comm.map(function (e) { return { title: e.title, start: e.date }; }) : [])
         .map(function (e) {
           if (!e.title) return null;
           var ds = (e.dates && e.dates.length ? e.dates : [e.start]).filter(upMs).sort();
-          return ds.length ? { title: e.title, start: ds[0] } : null;
+          return ds.length ? { title: e.title, start: ds[0], added: e.added } : null;
         })
         .filter(Boolean)
-        .sort(function (a, b) { return a.start < b.start ? -1 : 1; })
-        .slice(0, 2);
+        .sort(function (a, b) { return a.start < b.start ? -1 : 1; });
       if (!evs.length) return;
-      $("#tdEv").innerHTML = evs.map(function (e) {
-        var p = e.start.split("T")[0].split("-");
+
+      // "Coming up" strip: the next five, with a plain day + time.
+      var today = new Date(); today.setHours(0, 0, 0, 0);
+      function dayHtml(s) {
+        var p = s.split("T")[0].split("-");
         var d = new Date(+p[0], +p[1] - 1, +p[2]);
-        var t = e.title.length > 32 ? e.title.slice(0, 31) + "…" : e.title;
-        return "<b>" + d.toLocaleDateString([], { weekday: "short" }) + "</b> " + esc(t);
-      }).join("<br>");
-    }).catch(function () { $("#tdEv").textContent = "unavailable right now"; });
+        var diff = Math.round((d - today) / 86400000);
+        var big = diff === 0 ? "Today" : diff === 1 ? "Tomorrow" : d.toLocaleDateString([], { weekday: "short" });
+        return '<span class="wkday">' + big + "<small>" + d.toLocaleDateString([], { month: "short", day: "numeric" }) + "</small></span>";
+      }
+      function timeStr(s) {
+        var t = s.split("T")[1];
+        if (!t || t.slice(0, 5) === "00:00") return "";
+        var hm = t.split(":").map(Number);
+        return ((hm[0] % 12) || 12) + (hm[1] ? ":" + String(hm[1]).padStart(2, "0") : "") + " " + (hm[0] >= 12 ? "PM" : "AM");
+      }
+      $("#wkList").innerHTML = evs.slice(0, 5).map(function (e) {
+        var t = timeStr(e.start);
+        return '<a class="wkrow" href="/events">' + dayHtml(e.start) + '<span class="wkt">' + (t ? t + " · " : "") + esc(e.title) + "</span></a>";
+      }).join("");
+      $("#wkCard").hidden = false;
+
+      // "New since your last visit" — powered by the feed's per-event added stamps.
+      // Session-snapshot the last-visit time: whichever page loads first bumps the
+      // stored value, so later pages this session must read the snapshot instead.
+      var seenAt = +(sessionStorage.getItem("tesoro.seenSnap") || 0);
+      if (!seenAt) {
+        seenAt = +localStorage.getItem("tesoro.seenAt") || -1;
+        try { sessionStorage.setItem("tesoro.seenSnap", String(seenAt)); } catch (e) {}
+        try { localStorage.setItem("tesoro.seenAt", String(Date.now())); } catch (e) {}
+      }
+      if (seenAt < 0) seenAt = 0;
+      var newCount = seenAt ? evs.filter(function (e) { return e.added && Date.parse(e.added) > seenAt; }).length : 0;
+      if (newCount) {
+        $("#wkNew").textContent = "✨ " + newCount + " added since your last visit";
+        $("#wkNew").hidden = false;
+      }
+
+      // Live one-liner on the Events hub card.
+      var twoWeeks = Date.now() + 14 * 86400000;
+      var near = evs.filter(function (e) { var m = upMs(e.start); return m != null && m <= twoWeeks; }).length;
+      var cl = $("#clEvents");
+      cl.innerHTML = "<b>" + near + " event" + (near === 1 ? "" : "s") + "</b> in the next two weeks" + (newCount ? " · " + newCount + " new" : "");
+      cl.hidden = false;
+    }).catch(function () {});
+
+    // "New on this site" — a tiny changelog kept in updates.json.
+    fetch("/updates.json").then(function (r) { return r.json(); }).then(function (list) {
+      if (!Array.isArray(list) || !list.length) return;
+      $("#snList").innerHTML = list.slice(0, 3).map(function (u) {
+        var p = String(u.date || "").split("-");
+        var d = p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString([], { month: "short", day: "numeric" }) : "";
+        return '<a href="' + esc(u.href || "/") + '"><span class="nd">' + esc(d) + "</span>" + esc(u.text || "") + "</a>";
+      }).join("");
+      $("#siteNews").hidden = false;
+    }).catch(function () {});
   })();
   </script>
 </body>
