@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-07-26T09:16:57.241Z",
+  "weekendOf": "2026-07-26",
+  "model": "claude-haiku-4-5",
+  "intro": "Great weekend for families and fun in Santa Clarita.",
+  "picks": [
+    {
+      "emoji": "🎭",
+      "day": "Sun",
+      "time": "2 PM",
+      "title": "Santa Clarita Latine Fest presented by Santa Clarita Shakespeare",
+      "price": "$9.58 ga",
+      "note": "Santa Clarita Latine Fest—local culture and entertainment.",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-latine-fest-presented-by-santa-clarita-shakespeare"
+    },
+    {
+      "emoji": "🏛️",
+      "day": "Sun",
+      "time": "11 AM",
+      "title": "Hart Mansion Tour 11:00a.m.",
+      "price": "free",
+      "note": "Free Hart Mansion Tour—perfect for families learning history.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1100am-33596"
+    },
+    {
+      "emoji": "❄️",
+      "day": "Sun",
+      "time": "2 PM",
+      "title": "Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center",
+      "price": "",
+      "note": "Disney's Frozen Broadway Musical—special weekend treat for kids.",
+      "url": "https://calendar.santaclarita.gov/event/disneys-frozen-the-broadway-musical-at-the-santa-clarita-performing-arts-center"
+    },
+    {
+      "emoji": "🥕",
+      "day": "Sun",
+      "time": "8 AM",
+      "title": "Santa Clarita Certified Farmers Market",
+      "price": "",
+      "note": "Santa Clarita Certified Farmers Market—fresh local food and community.",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195"
+    },
+    {
+      "emoji": "🎬",
+      "day": "Sun",
+      "time": "8 PM",
+      "title": "Movie Night",
+      "price": "free",
+      "note": "Movie Night at Lock House—free family entertainment evening.",
+      "url": "https://calendar.santaclarita.gov/event/movie-night"
+    }
+  ],
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nGreat weekend for families and fun in Santa Clarita.\n\n🎭 *Sun 2 PM* — Santa Clarita Latine Fest presented by Santa Clarita Shakespeare ($9.58 ga)\n   Santa Clarita Latine Fest—local culture and entertainment.\n🏛️ *Sun 11 AM* — Hart Mansion Tour 11:00a.m. (free)\n   Free Hart Mansion Tour—perfect for families learning history.\n❄️ *Sun 2 PM* — Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center\n   Disney's Frozen Broadway Musical—special weekend treat for kids.\n🥕 *Sun 8 AM* — Santa Clarita Certified Farmers Market\n   Santa Clarita Certified Farmers Market—fresh local food and community.\n🎬 *Sun 8 PM* — Movie Night (free)\n   Movie Night at Lock House—free family entertainment evening.\n\nFull list → https://tesorohighlands.com/events"
+}
