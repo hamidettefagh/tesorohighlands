@@ -83,7 +83,9 @@ const TOOL = {
     properties: {
       intro: { type: "string", description: "One warm, plain opening line for the neighborhood (max 90 chars). No hype words, no exclamation overload." },
       picks: {
-        type: "array", minItems: 4, maxItems: 7,
+        // no minItems/maxItems: strict tool schemas only allow 0/1 there —
+        // counts are enforced by the prompt and by validation below instead
+        type: "array",
         items: {
           type: "object", additionalProperties: false, required: ["index", "emoji", "note"],
           properties: {
@@ -142,7 +144,7 @@ function shortPrice(c) {
 
 const picks = [];
 const used = new Set();
-for (const p of call.input.picks || []) {
+for (const p of (call.input.picks || []).slice(0, 7)) {
   const c = candidates[p.index];
   if (!c || used.has(p.index)) continue;   // out-of-range or duplicate index → dropped, never invented
   used.add(p.index);
