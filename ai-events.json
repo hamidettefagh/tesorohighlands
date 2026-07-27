@@ -1,169 +1,144 @@
 {
-  "generatedAt": "2026-07-26T14:46:40.617Z",
+  "generatedAt": "2026-07-27T15:57:06.117Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-07-26T08:30",
-      "venue": "27426 Navigation Ave (The Porch at Magic Mountain Parkway & Navigation)",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Celebrate America 250 at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/celebrate-americas-250th",
-      "start": "2026-07-26T18:00",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "Park admission required",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
-    },
-    {
-      "title": "Santa Clarita Shakespeare Festival - Coriolanus",
-      "url": "https://atthemain.org/",
-      "start": "2026-07-31T19:00",
-      "venue": "The MAIN",
-      "city": "Newhall",
-      "free": false,
-      "price": "$9.58 (students/seniors) - $13.80 (general)",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "The MAIN / Santa Clarita Shakespeare Festival"
-    },
-    {
-      "title": "Concerts in the Park - Gold Rush Country (Top 40 Country Hits)",
+      "title": "Gold Rush Country - Top 40 Country Hits (Concerts in the Park)",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-01T19:00",
-      "venue": "Central Park, Fields 7 and 8",
+      "venue": "Central Park",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Santa Clarita Shakespeare Festival - Coriolanus",
-      "url": "https://atthemain.org/",
-      "start": "2026-08-01T19:00",
-      "venue": "The MAIN",
-      "city": "Newhall",
-      "free": false,
-      "price": "$9.58 (students/seniors) - $13.80 (general)",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-02T08:00",
+      "venue": "College of the Canyons (Parking Lot 5)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
       "audience": [
-        "teens",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
-      "via": "The MAIN / Santa Clarita Shakespeare Festival"
+      "via": "VCCFMA"
     },
     {
-      "title": "Valencia FivePoint Farmers Market",
+      "title": "Valencia FivePoint Farmers' Market",
       "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
       "start": "2026-08-02T08:30",
-      "venue": "27426 Navigation Ave (The Porch at Magic Mountain Parkway & Navigation)",
+      "venue": "Valencia FivePoint",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Santa Clarita Shakespeare Festival - Coriolanus",
-      "url": "https://atthemain.org/",
-      "start": "2026-08-02T14:00",
+      "title": "Punchlines Comedy Show",
+      "url": "https://atthemain.org/events-at-the-main/",
+      "start": "2026-08-08",
       "venue": "The MAIN",
       "city": "Newhall",
       "free": false,
-      "price": "$9.58 (students/seniors) - $13.80 (general)",
+      "price": null,
       "audience": [
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "The MAIN / Santa Clarita Shakespeare Festival"
+      "via": "The MAIN"
     },
     {
-      "title": "Concerts in the Park - Blue Breeze Band (Soul, Motown and R&B Hits)",
+      "title": "Blue Breeze Band - Soul, Motown and R&B Hits (Concerts in the Park)",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-08T19:00",
-      "venue": "Central Park, Fields 7 and 8",
+      "venue": "Central Park",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers Market",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-09T08:00",
+      "venue": "College of the Canyons (Parking Lot 5)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFMA"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
       "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
       "start": "2026-08-09T08:30",
-      "venue": "27426 Navigation Ave (The Porch at Magic Mountain Parkway & Navigation)",
+      "venue": "Valencia FivePoint",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Concerts in the Park - Paramore! At the Disco Tribute",
+      "title": "Paramore! At the Disco - Tribute (Concerts in the Park)",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-15T19:00",
-      "venue": "Central Park, Fields 7 and 8",
+      "venue": "Central Park",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers Market",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-16T08:00",
+      "venue": "College of the Canyons (Parking Lot 5)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFMA"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
       "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
       "start": "2026-08-16T08:30",
-      "venue": "27426 Navigation Ave (The Porch at Magic Mountain Parkway & Navigation)",
+      "venue": "Valencia FivePoint",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Community Calendar"
@@ -172,101 +147,154 @@
       "title": "SENSES Block Party - Time Machine",
       "url": "https://oldtownnewhall.com/senses-block-party/",
       "start": "2026-08-20T19:00",
-      "venue": "Main Street, Old Town Newhall",
+      "venue": "Main Street (between Market Street and Sixth Street)",
       "city": "Newhall",
-      "free": false,
-      "price": "Free entry, food/drinks available for purchase",
+      "free": true,
+      "price": "Free",
       "audience": [
-        "adults"
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita / Old Town Newhall"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Out on the Mountain - LGBTQ Pride Night at Six Flags Magic Mountain",
-      "url": "https://www.outonthemountain.com/",
-      "start": "2026-08-21T18:00",
+      "title": "Out on the Mountain - Pride Event",
+      "url": "https://en.wikipedia.org/wiki/Out_on_the_Mountain",
+      "start": "2026-08-21",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "$74 (general) - $160 (VIP)",
+      "price": null,
       "audience": [
-        "adults"
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
-      "via": "Out on the Mountain / Six Flags Magic Mountain"
+      "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Concerts in the Park - Kenny Metcalf as Elton John Tribute",
+      "title": "Kenny Metcalf as Elton John - Elton John Tribute (Concerts in the Park)",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-22T19:00",
-      "venue": "Central Park, Fields 7 and 8",
+      "venue": "Central Park",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers Market",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-23T08:00",
+      "venue": "College of the Canyons (Parking Lot 5)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFMA"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
       "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
       "start": "2026-08-23T08:30",
-      "venue": "27426 Navigation Ave (The Porch at Magic Mountain Parkway & Navigation)",
+      "venue": "Valencia FivePoint",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Concerts in the Park - The Police Experience Tribute",
+      "title": "The Police Experience - Police Tribute (Concerts in the Park)",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-29T19:00",
-      "venue": "Central Park, Fields 7 and 8",
+      "venue": "Central Park",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers Market",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-30T08:00",
+      "venue": "College of the Canyons (Parking Lot 5)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFMA"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
       "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
       "start": "2026-08-30T08:30",
-      "venue": "27426 Navigation Ave (The Porch at Magic Mountain Parkway & Navigation)",
+      "venue": "Valencia FivePoint",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Valencia FivePoint Farmers Market",
+      "title": "Interrobang Sketch Comedy",
+      "url": "https://atthemain.org/events-at-the-main/",
+      "start": "2026-09-03",
+      "venue": "The MAIN",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-09-06T08:00",
+      "venue": "College of the Canyons (Parking Lot 5)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFMA"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
       "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
       "start": "2026-09-06T08:30",
-      "venue": "27426 Navigation Ave (The Porch at Magic Mountain Parkway & Navigation)",
+      "venue": "Valencia FivePoint",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Community Calendar"
