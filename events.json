@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T07:50:00.715Z",
+  "generatedAt": "2026-07-27T21:29:16.116Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -1014,6 +1014,23 @@
       ],
       "source": "Eventbrite",
       "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Silent Book Club",
+      "url": "https://santaclarita.librarycalendar.com/event/hold-adult-silent-book-club-23814",
+      "start": "2026-08-16T14:30",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-08-16T14:30"
+      ],
+      "added": "2026-07-27T21:29:16.115Z"
     },
     {
       "title": "You Got Older presented by Dig Deep Theatre",

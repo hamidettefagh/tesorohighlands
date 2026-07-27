@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T17:55:07.907Z",
+  "generatedAt": "2026-07-27T21:29:21.635Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -29,20 +29,6 @@
       "startEpoch": 1785157260,
       "endEpoch": 1785189540,
       "moreWindows": 24
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Valencia Blvd",
-      "place": "Stevenson Ranch",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Emergency Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1785169800,
-      "endEpoch": 1785182460,
-      "moreWindows": 0
     },
     {
       "route": "I-5",
@@ -169,6 +155,20 @@
       "startEpoch": 1785204060,
       "endEpoch": 1785243540,
       "moreWindows": 10
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Truck Weigh Station",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785204060,
+      "endEpoch": 1785243540,
+      "moreWindows": 5
     }
   ]
 }
