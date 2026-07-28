@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T14:36:29.881Z",
+  "generatedAt": "2026-07-28T17:45:16.629Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -29,6 +29,20 @@
       "startEpoch": 1785243660,
       "endEpoch": 1785275940,
       "moreWindows": 21
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Stevenson Ranch",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Landscape Work",
+      "lanes": "All",
+      "total": "2",
+      "startEpoch": 1785252600,
+      "endEpoch": 1785277800,
+      "moreWindows": 0
     },
     {
       "route": "I-5",
@@ -155,20 +169,6 @@
       "startEpoch": 1785254460,
       "endEpoch": 1785275940,
       "moreWindows": 74
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Valencia Blvd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1785254460,
-      "endEpoch": 1785275940,
-      "moreWindows": 14
     }
   ]
 }
