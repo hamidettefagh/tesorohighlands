@@ -1,25 +1,7 @@
 {
-  "generatedAt": "2026-07-27T21:29:16.116Z",
+  "generatedAt": "2026-07-28T10:44:52.340Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-07-27T00:00",
-      "dates": [
-        "2026-07-27T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-07-25T09:59:46.269Z"
-    },
     {
       "title": "Trivia Nights",
       "url": "https://calendar.santaclarita.gov/event/trivia-nights",
@@ -774,6 +756,24 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-07-27T07:50:00.715Z"
+    },
+    {
+      "title": "The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild",
+      "url": "https://calendar.santaclarita.gov/event/the-lightning-thief-the-percy-jackson-musical-at-canyon-theatre-guild",
+      "start": "2026-08-02T14:00",
+      "dates": [
+        "2026-08-02T14:00"
+      ],
+      "repeats": 0,
+      "venue": "Canyon Theatre Guild",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-07-26T10:12:58.915Z"
     },
     {
       "title": "Club Wealth - Two Events One Day! | Valencia, CA",
