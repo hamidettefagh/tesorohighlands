@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T17:47:41.574Z",
+  "generatedAt": "2026-07-30T21:31:23.565Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -28,7 +28,7 @@
       "total": "4",
       "startEpoch": 1785416460,
       "endEpoch": 1785448740,
-      "moreWindows": 27
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -37,12 +37,12 @@
       "place": "Castaic",
       "facility": "On Ramp",
       "type": "Full",
-      "work": "Roadway Excavation",
+      "work": "Electrical Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785427260,
-      "endEpoch": 1785448740,
-      "moreWindows": 32
+      "startEpoch": 1785463260,
+      "endEpoch": 1785502740,
+      "moreWindows": 31
     },
     {
       "route": "I-5",
@@ -54,9 +54,9 @@
       "work": "Loop Installation",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785427260,
-      "endEpoch": 1785448740,
-      "moreWindows": 31
+      "startEpoch": 1785463260,
+      "endEpoch": 1785502740,
+      "moreWindows": 30
     },
     {
       "route": "I-5",
@@ -68,9 +68,23 @@
       "work": "Shoulder Work",
       "lanes": "4",
       "total": "4",
-      "startEpoch": 1785427260,
-      "endEpoch": 1785448740,
-      "moreWindows": 19
+      "startEpoch": 1785463260,
+      "endEpoch": 1785502740,
+      "moreWindows": 18
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785463260,
+      "endEpoch": 1785502740,
+      "moreWindows": 18
     },
     {
       "route": "I-5",
@@ -79,12 +93,12 @@
       "place": "Stevenson Ranch",
       "facility": "On Ramp",
       "type": "Full",
-      "work": "Drainage Work",
+      "work": "Utility Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785427260,
-      "endEpoch": 1785448740,
-      "moreWindows": 42
+      "startEpoch": 1785463260,
+      "endEpoch": 1785502740,
+      "moreWindows": 40
     },
     {
       "route": "I-5",
@@ -96,9 +110,9 @@
       "work": "Utility Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785427260,
-      "endEpoch": 1785448740,
-      "moreWindows": 24
+      "startEpoch": 1785463260,
+      "endEpoch": 1785502740,
+      "moreWindows": 23
     },
     {
       "route": "I-5",
@@ -110,9 +124,9 @@
       "work": "Road Survey",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785427260,
-      "endEpoch": 1785448740,
-      "moreWindows": 76
+      "startEpoch": 1785463260,
+      "endEpoch": 1785502740,
+      "moreWindows": 74
     },
     {
       "route": "I-5",
@@ -124,9 +138,9 @@
       "work": "Road Maintenance",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785427260,
-      "endEpoch": 1785448740,
-      "moreWindows": 25
+      "startEpoch": 1785463260,
+      "endEpoch": 1785502740,
+      "moreWindows": 23
     },
     {
       "route": "I-5",
@@ -138,37 +152,23 @@
       "work": "Electrical Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785427260,
-      "endEpoch": 1785448740,
-      "moreWindows": 12
+      "startEpoch": 1785463260,
+      "endEpoch": 1785502740,
+      "moreWindows": 11
     },
     {
       "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Road Survey",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1785427260,
-      "endEpoch": 1785448740,
-      "moreWindows": 95
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Valencia Blvd",
+      "dir": "North",
+      "at": "Truck Weigh Station",
       "place": "Valencia",
       "facility": "On Ramp",
       "type": "Full",
       "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785427260,
-      "endEpoch": 1785448740,
-      "moreWindows": 18
+      "startEpoch": 1785463260,
+      "endEpoch": 1785502740,
+      "moreWindows": 5
     }
   ]
 }
