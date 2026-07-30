@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T03:27:45.379Z",
+  "generatedAt": "2026-07-30T06:41:04.854Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1783407660,
       "endEpoch": 1785999540,
-      "moreWindows": 20
+      "moreWindows": 22
     },
     {
       "route": "I-5",
@@ -28,7 +28,7 @@
       "total": "1",
       "startEpoch": 1785376860,
       "endEpoch": 1785416340,
-      "moreWindows": 31
+      "moreWindows": 33
     },
     {
       "route": "I-5",
@@ -51,12 +51,12 @@
       "place": "Castaic",
       "facility": "Mainline",
       "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4",
+      "work": "K-Rail Installation",
+      "lanes": "1, 2",
       "total": "4",
       "startEpoch": 1785376860,
       "endEpoch": 1785416340,
-      "moreWindows": 20
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -70,21 +70,7 @@
       "total": "1",
       "startEpoch": 1785376860,
       "endEpoch": 1785416340,
-      "moreWindows": 73
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Road Maintenance",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1785376860,
-      "endEpoch": 1785416340,
-      "moreWindows": 24
+      "moreWindows": 75
     },
     {
       "route": "I-5",
@@ -112,7 +98,7 @@
       "total": "2",
       "startEpoch": 1785376860,
       "endEpoch": 1785416340,
-      "moreWindows": 89
+      "moreWindows": 90
     },
     {
       "route": "I-5",
@@ -154,7 +140,7 @@
       "total": "4",
       "startEpoch": 1785376860,
       "endEpoch": 1785416340,
-      "moreWindows": 31
+      "moreWindows": 29
     },
     {
       "route": "I-5",
@@ -169,6 +155,20 @@
       "startEpoch": 1785380460,
       "endEpoch": 1785416340,
       "moreWindows": 32
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1785380460,
+      "endEpoch": 1785416340,
+      "moreWindows": 20
     }
   ]
 }
