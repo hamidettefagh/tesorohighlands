@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T07:13:57.098Z",
+  "generatedAt": "2026-07-31T10:50:47.337Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -70,7 +70,7 @@
       "total": "1",
       "startEpoch": 1785463260,
       "endEpoch": 1785502740,
-      "moreWindows": 74
+      "moreWindows": 75
     },
     {
       "route": "I-5",
@@ -145,20 +145,6 @@
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Sylmar",
-      "facility": "Truck Connector",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1785466860,
-      "endEpoch": 1785502740,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
       "at": "Parker Rd",
       "place": "Castaic",
       "facility": "Mainline",
@@ -169,6 +155,20 @@
       "startEpoch": 1785513660,
       "endEpoch": 1785535140,
       "moreWindows": 17
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Lyons Ave",
+      "place": "Stevenson Ranch",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785513660,
+      "endEpoch": 1785535140,
+      "moreWindows": 40
     }
   ]
 }
