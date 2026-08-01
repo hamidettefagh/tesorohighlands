@@ -1,53 +1,44 @@
 {
-  "generatedAt": "2026-07-31T17:00:52.714Z",
+  "generatedAt": "2026-08-01T00:50:33.328Z",
   "weekendOf": "2026-07-31",
   "model": "claude-haiku-4-5",
-  "intro": "Great stuff happening in Tesoro Highlands and around Santa Clarita this weekend.",
+  "intro": "Good weekend picks for the neighborhood—something for everyone.",
   "picks": [
     {
-      "emoji": "🧑‍\ud83c",
+      "emoji": "🧑‍🌾",
       "day": "Sat",
       "time": "8:30 AM",
       "title": "Old Town Newhall Farmers Market",
       "price": "free",
-      "note": "Saturday farmers market plus browsing local vendors",
+      "note": "Fresh local produce, coffee, and community vibe.",
       "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/"
     },
     {
-      "emoji": "🎭",
+      "emoji": "❄️",
       "day": "Sat",
       "time": "2 PM",
       "title": "Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center",
       "price": "",
-      "note": "Kids love Frozen; Saturday matinee with family",
+      "note": "Kids love Frozen—a Broadway-level treat this weekend.",
       "url": "https://calendar.santaclarita.gov/event/disneys-frozen-the-broadway-musical-at-the-santa-clarita-performing-arts-center"
     },
     {
-      "emoji": "🏍️",
-      "day": "Sat",
-      "time": "9 AM",
-      "title": "Motorcycles and Coffee",
-      "price": "free",
-      "note": "Free Saturday morning, cool bikes and community vibes",
-      "url": "https://calendar.santaclarita.gov/event/motorcycles-and-coffee"
-    },
-    {
-      "emoji": "🎪",
-      "day": "Sun",
-      "time": "2 PM",
+      "emoji": "🎭",
+      "day": "Fri",
+      "time": "7 PM",
       "title": "Coriolanus presented by Santa Clarita Shakespeare 2026 Festival",
       "price": "free",
-      "note": "Shakespeare festival; free Sunday matinee for everyone",
+      "note": "Free Shakespeare under the stars, great for culture.",
       "url": "https://calendar.santaclarita.gov/event/coriolanus-presented-by-santa-clarita-shakespeare-2026-festival"
     },
     {
-      "emoji": "🎸",
-      "day": "Sun",
-      "time": "1 PM",
-      "title": "Afternoon Acoustic Jam",
-      "price": "free",
-      "note": "Casual acoustic jam Sunday afternoon, adults relax",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-afternoon-acoustic-jam-29175"
+      "emoji": "🎵",
+      "day": "Sat",
+      "time": "7 PM",
+      "title": "Concerts in the Park, presented by Logix Federal Credit Union: Top 40 Country",
+      "price": "",
+      "note": "Live country music in the park with the family.",
+      "url": "https://calendar.santaclarita.gov/event/concerts-in-the-park-presented-by-logix-federal-credit-union-1130"
     },
     {
       "emoji": "🐑",
@@ -55,9 +46,27 @@
       "time": "",
       "title": "Visit The Gentle Barn",
       "price": "from $15",
-      "note": "Animal sanctuary visit; kids and families enjoy",
+      "note": "Kids can meet animals; peaceful weekend activity.",
       "url": "https://calendar.santaclarita.gov/event/visit_the_gentle_barn_5048"
+    },
+    {
+      "emoji": "🎸",
+      "day": "Sun",
+      "time": "1 PM",
+      "title": "Afternoon Acoustic Jam",
+      "price": "free",
+      "note": "Acoustic jam for adults who want live local music.",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-afternoon-acoustic-jam-29175"
+    },
+    {
+      "emoji": "🎪",
+      "day": "Sun",
+      "time": "2 PM",
+      "title": "Coriolanus presented by Santa Clarita Shakespeare 2026 Festival",
+      "price": "free",
+      "note": "Another chance to catch the free Shakespeare matinee.",
+      "url": "https://calendar.santaclarita.gov/event/coriolanus-presented-by-santa-clarita-shakespeare-2026-festival"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nGreat stuff happening in Tesoro Highlands and around Santa Clarita this weekend.\n\n🧑‍\ud83c *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Saturday farmers market plus browsing local vendors\n🎭 *Sat 2 PM* — Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center\n   Kids love Frozen; Saturday matinee with family\n🏍️ *Sat 9 AM* — Motorcycles and Coffee (free)\n   Free Saturday morning, cool bikes and community vibes\n🎪 *Sun 2 PM* — Coriolanus presented by Santa Clarita Shakespeare 2026 Festival (free)\n   Shakespeare festival; free Sunday matinee for everyone\n🎸 *Sun 1 PM* — Afternoon Acoustic Jam (free)\n   Casual acoustic jam Sunday afternoon, adults relax\n🐑 *Sun* — Visit The Gentle Barn (from $15)\n   Animal sanctuary visit; kids and families enjoy\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nGood weekend picks for the neighborhood—something for everyone.\n\n🧑‍🌾 *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Fresh local produce, coffee, and community vibe.\n❄️ *Sat 2 PM* — Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center\n   Kids love Frozen—a Broadway-level treat this weekend.\n🎭 *Fri 7 PM* — Coriolanus presented by Santa Clarita Shakespeare 2026 Festival (free)\n   Free Shakespeare under the stars, great for culture.\n🎵 *Sat 7 PM* — Concerts in the Park, presented by Logix Federal Credit Union: Top 40 Country\n   Live country music in the park with the family.\n🐑 *Sun* — Visit The Gentle Barn (from $15)\n   Kids can meet animals; peaceful weekend activity.\n🎸 *Sun 1 PM* — Afternoon Acoustic Jam (free)\n   Acoustic jam for adults who want live local music.\n🎪 *Sun 2 PM* — Coriolanus presented by Santa Clarita Shakespeare 2026 Festival (free)\n   Another chance to catch the free Shakespeare matinee.\n\nFull list → https://tesorohighlands.com/events"
 }
