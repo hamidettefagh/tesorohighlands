@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T03:49:13.864Z",
+  "generatedAt": "2026-08-01T06:42:21.202Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,21 +14,7 @@
       "total": "1",
       "startEpoch": 1783407660,
       "endEpoch": 1785999540,
-      "moreWindows": 29
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1785549660,
-      "endEpoch": 1785571140,
-      "moreWindows": 32
+      "moreWindows": 31
     },
     {
       "route": "I-5",
@@ -47,20 +33,6 @@
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Parker Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1785549660,
-      "endEpoch": 1785592740,
-      "moreWindows": 18
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
       "at": "Magic Mountain Parkway, Route 126",
       "place": "Valencia",
       "facility": "On Ramp",
@@ -70,7 +42,91 @@
       "total": "1",
       "startEpoch": 1785549660,
       "endEpoch": 1785589140,
-      "moreWindows": 19
+      "moreWindows": 20
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Newhall",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Road Survey",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785549660,
+      "endEpoch": 1785589140,
+      "moreWindows": 76
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Valencia",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Weeding",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785549660,
+      "endEpoch": 1785589140,
+      "moreWindows": 91
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1785553260,
+      "endEpoch": 1785589140,
+      "moreWindows": 37
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Reconstruction",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1785553260,
+      "endEpoch": 1785589140,
+      "moreWindows": 29
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Parker Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1785600060,
+      "endEpoch": 1785621540,
+      "moreWindows": 18
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Lyons Ave",
+      "place": "Stevenson Ranch",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785600060,
+      "endEpoch": 1785621540,
+      "moreWindows": 39
     },
     {
       "route": "I-5",
@@ -82,23 +138,9 @@
       "work": "Utility Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785549660,
-      "endEpoch": 1785589140,
-      "moreWindows": 24
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Newhall",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Road Survey",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1785549660,
-      "endEpoch": 1785589140,
-      "moreWindows": 77
+      "startEpoch": 1785600060,
+      "endEpoch": 1785621540,
+      "moreWindows": 23
     },
     {
       "route": "I-5",
@@ -110,65 +152,23 @@
       "work": "Road Maintenance",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785549660,
-      "endEpoch": 1785589140,
-      "moreWindows": 24
+      "startEpoch": 1785600060,
+      "endEpoch": 1785621540,
+      "moreWindows": 23
     },
     {
       "route": "I-5",
       "dir": "North",
-      "at": "Truck Weigh Station",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1785549660,
-      "endEpoch": 1785589140,
-      "moreWindows": 6
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Road Survey",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1785549660,
-      "endEpoch": 1785589140,
-      "moreWindows": 94
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Rye Canyon Rd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1785549660,
-      "endEpoch": 1785589140,
-      "moreWindows": 6
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
       "at": "Valencia Blvd",
       "place": "Valencia",
       "facility": "On Ramp",
       "type": "Full",
-      "work": "Drainage Work",
+      "work": "Electrical Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1785549660,
-      "endEpoch": 1785589140,
-      "moreWindows": 19
+      "startEpoch": 1785600060,
+      "endEpoch": 1785621540,
+      "moreWindows": 11
     }
   ]
 }
