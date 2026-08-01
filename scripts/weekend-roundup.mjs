@@ -143,11 +143,13 @@ function shortPrice(c) {
 }
 
 const picks = [];
-const used = new Set();
+const used = new Set(), usedTitles = new Set();
 for (const p of (call.input.picks || []).slice(0, 7)) {
   const c = candidates[p.index];
   if (!c || used.has(p.index)) continue;   // out-of-range or duplicate index → dropped, never invented
-  used.add(p.index);
+  const tkey = c.title.toLowerCase().replace(/\W+/g, " ").trim();
+  if (usedTitles.has(tkey)) continue;      // same show on two days counts as one pick
+  used.add(p.index); usedTitles.add(tkey);
   // Emoji must be handled by CODE POINT, never by UTF-16 unit: slicing a
   // compound emoji like 🧑‍🌾 mid-surrogate leaves a lone surrogate that makes
   // encodeURIComponent throw in the browser (this exact bug hid the card once).
