@@ -148,7 +148,12 @@ for (const p of (call.input.picks || []).slice(0, 7)) {
   const c = candidates[p.index];
   if (!c || used.has(p.index)) continue;   // out-of-range or duplicate index → dropped, never invented
   used.add(p.index);
-  picks.push({ emoji: String(p.emoji || "📍").slice(0, 4), day: fmtDay(c.start), time: fmtTime(c.start),
+  // Emoji must be handled by CODE POINT, never by UTF-16 unit: slicing a
+  // compound emoji like 🧑‍🌾 mid-surrogate leaves a lone surrogate that makes
+  // encodeURIComponent throw in the browser (this exact bug hid the card once).
+  const emojiPts = [...String(p.emoji || "📍")];
+  picks.push({ emoji: emojiPts.length && emojiPts.length <= 4 ? emojiPts.join("") : "📍",
+    day: fmtDay(c.start), time: fmtTime(c.start),
     title: c.title, price: shortPrice(c), note: String(p.note || "").trim().slice(0, 90), url: c.url });
 }
 if (picks.length < 3) { console.error(`Only ${picks.length} valid picks after validation; nothing written.`); process.exit(1); }
@@ -159,7 +164,12 @@ const lines = picks.map((p) => {
   const tail = p.price ? ` (${p.price})` : "";
   return `${p.emoji} *${when}* — ${p.title}${tail}${p.note ? `\n   ${p.note}` : ""}`;
 });
-const waText = `🌵 *This weekend in Tesoro Highlands*\n${intro ? intro + "\n" : ""}\n${lines.join("\n")}\n\nFull list → ${SITE}/events`;
+// Final safety net: strip any lone surrogates so the text is always valid
+// Unicode — a malformed emoji anywhere must never break downstream encoding.
+const stripLone = (s) => s
+  .replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])/g, "")
+  .replace(/(^|[^\uD800-\uDBFF])([\uDC00-\uDFFF])/g, "$1");
+const waText = stripLone(`🌵 *This weekend in Tesoro Highlands*\n${intro ? intro + "\n" : ""}\n${lines.join("\n")}\n\nFull list → ${SITE}/events`);
 
 writeFileSync(root("roundup.json"), JSON.stringify({
   generatedAt: new Date().toISOString(),
