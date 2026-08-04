@@ -1,25 +1,7 @@
 {
-  "generatedAt": "2026-08-03T07:45:34.461Z",
+  "generatedAt": "2026-08-04T10:49:54.163Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-08-03T00:00",
-      "dates": [
-        "2026-08-03T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-07-25T09:59:46.269Z"
-    },
     {
       "title": "Trivia Nights",
       "url": "https://calendar.santaclarita.gov/event/trivia-nights",
@@ -924,6 +906,24 @@
       ],
       "repeats": 0,
       "venue": "Valencia FivePoint Farmers' Market",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Objectively Speaking: A Fine Art Exhibition",
+      "url": "https://calendar.santaclarita.gov/event/objectively-speaking-a-fine-art-exhibition",
+      "start": "2026-08-09T11:00",
+      "dates": [
+        "2026-08-09T11:00"
+      ],
+      "repeats": 0,
+      "venue": "SCAA Gallery",
       "city": "Santa Clarita",
       "free": false,
       "price": null,
