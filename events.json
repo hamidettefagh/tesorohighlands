@@ -1,75 +1,7 @@
 {
-  "generatedAt": "2026-08-04T10:49:54.163Z",
+  "generatedAt": "2026-08-05T10:45:45.920Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-08-04T00:00",
-      "dates": [
-        "2026-08-04T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "Club Wealth - Two Events One Day! | Valencia, CA",
-      "url": "https://www.eventbrite.com/e/club-wealth-two-events-one-day-valencia-ca-tickets-1992055087391",
-      "start": "2026-08-04T08:45",
-      "venue": "SRAR, Southland Regional Association of Realtors",
-      "city": "Valencia",
-      "free": false,
-      "price": "$197",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Eventbrite",
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "Café con Leche",
-      "url": "https://calendar.santaclarita.gov/event/cafe-con-leche-57",
-      "start": "2026-08-04T09:00",
-      "dates": [
-        "2026-08-04T09:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "Members: $10.00 & Non-Members: $20.00",
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-07-30T10:33:42.966Z"
-    },
-    {
-      "title": "Valencia TAB",
-      "url": "https://santaclarita.librarycalendar.com/event/valencia-tab-26812",
-      "start": "2026-08-04T16:30",
-      "venue": "Valencia Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-08-04T16:30"
-      ],
-      "added": "2026-07-25T09:59:46.269Z"
-    },
     {
       "title": "Trivia Nights",
       "url": "https://calendar.santaclarita.gov/event/trivia-nights",
@@ -929,6 +861,42 @@
       "price": null,
       "audience": [
         "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center",
+      "url": "https://calendar.santaclarita.gov/event/disneys-frozen-the-broadway-musical-at-the-santa-clarita-performing-arts-center",
+      "start": "2026-08-09T14:00",
+      "dates": [
+        "2026-08-09T14:00"
+      ],
+      "repeats": 0,
+      "venue": "Santa Clarita Performing Arts Center at College of the Canyons",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "The Dresser presented by The Tavern Brawlers",
+      "url": "https://calendar.santaclarita.gov/event/the-dresser-presented-by-the-tavern-brawlers",
+      "start": "2026-08-09T14:00",
+      "dates": [
+        "2026-08-09T14:00"
+      ],
+      "repeats": 0,
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$26.45",
+      "audience": [
+        "adults"
       ],
       "source": "City of Santa Clarita",
       "added": "2026-07-25T09:59:46.269Z"

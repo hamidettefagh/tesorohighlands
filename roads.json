@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05T06:41:16.039Z",
+  "generatedAt": "2026-08-05T10:45:46.948Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -18,20 +18,6 @@
     },
     {
       "route": "I-5",
-      "dir": "South",
-      "at": "Lake Hughes Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Guardrail Repair",
-      "lanes": "1",
-      "total": "5",
-      "startEpoch": 1785868200,
-      "endEpoch": 1785931260,
-      "moreWindows": 0
-    },
-    {
-      "route": "I-5",
       "dir": "North",
       "at": "Golden State Freeway, Route 5",
       "place": "Newhall",
@@ -42,7 +28,7 @@
       "total": "1",
       "startEpoch": 1785895260,
       "endEpoch": 1785938340,
-      "moreWindows": 54
+      "moreWindows": 52
     },
     {
       "route": "I-5",
@@ -129,34 +115,6 @@
       "moreWindows": 29
     },
     {
-      "route": "SR-14",
-      "dir": "South",
-      "at": "Antelope Valley Freeway, Route 14",
-      "place": "Sylmar",
-      "facility": "Truck Connector",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1785898860,
-      "endEpoch": 1785934740,
-      "moreWindows": 3
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Lyons Ave",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Paving Operation",
-      "lanes": "3, 4",
-      "total": "4",
-      "startEpoch": 1785902460,
-      "endEpoch": 1785934740,
-      "moreWindows": 17
-    },
-    {
       "route": "I-5",
       "dir": "South",
       "at": "Parker Rd",
@@ -169,6 +127,48 @@
       "startEpoch": 1785934860,
       "endEpoch": 1785967140,
       "moreWindows": 12
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Lyons Ave",
+      "place": "Stevenson Ranch",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785945660,
+      "endEpoch": 1785967140,
+      "moreWindows": 24
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785945660,
+      "endEpoch": 1785967140,
+      "moreWindows": 26
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Shoulder Reconstruction",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785945660,
+      "endEpoch": 1785967140,
+      "moreWindows": 15
     }
   ]
 }
