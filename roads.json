@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05T21:31:59.319Z",
+  "generatedAt": "2026-08-06T03:35:40.581Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,21 +14,7 @@
       "total": "1",
       "startEpoch": 1783407660,
       "endEpoch": 1785999540,
-      "moreWindows": 30
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Reconstruction",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1785934860,
-      "endEpoch": 1785967140,
-      "moreWindows": 27
+      "moreWindows": 31
     },
     {
       "route": "I-5",
@@ -42,7 +28,7 @@
       "total": "1",
       "startEpoch": 1785981660,
       "endEpoch": 1786024740,
-      "moreWindows": 83
+      "moreWindows": 86
     },
     {
       "route": "I-5",
@@ -70,91 +56,21 @@
       "total": "1",
       "startEpoch": 1785981660,
       "endEpoch": 1786021140,
-      "moreWindows": 27
+      "moreWindows": 28
     },
     {
       "route": "I-5",
-      "dir": "South",
-      "at": "Lyons Ave",
-      "place": "Stevenson Ranch",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1785981660,
-      "endEpoch": 1786021140,
-      "moreWindows": 38
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Parker Rd",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
       "place": "Castaic",
       "facility": "Mainline",
       "type": "Lane",
-      "work": "Shoulder Work",
+      "work": "Shoulder Reconstruction",
       "lanes": "3, 4",
       "total": "4",
       "startEpoch": 1785981660,
       "endEpoch": 1786021140,
-      "moreWindows": 18
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1785981660,
-      "endEpoch": 1786021140,
-      "moreWindows": 41
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Shoulder Reconstruction",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1785981660,
-      "endEpoch": 1786021140,
-      "moreWindows": 23
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sign Installation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1785981660,
-      "endEpoch": 1786021140,
-      "moreWindows": 34
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Valencia Blvd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sign Installation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1785981660,
-      "endEpoch": 1786021140,
-      "moreWindows": 8
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -168,7 +84,91 @@
       "total": "1",
       "startEpoch": 1785981660,
       "endEpoch": 1786021140,
-      "moreWindows": 5
+      "moreWindows": 6
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Valencia",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785981660,
+      "endEpoch": 1786021140,
+      "moreWindows": 87
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Valencia Blvd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1785981660,
+      "endEpoch": 1786021140,
+      "moreWindows": 12
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Weldon Canyon",
+      "place": "Granada Hills",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Road Maintenance",
+      "lanes": "5",
+      "total": "5",
+      "startEpoch": 1785985260,
+      "endEpoch": 1786021140,
+      "moreWindows": 12
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Grinding",
+      "lanes": "1",
+      "total": "4",
+      "startEpoch": 1785985260,
+      "endEpoch": 1786021140,
+      "moreWindows": 42
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4, 5",
+      "total": "5",
+      "startEpoch": 1785985260,
+      "endEpoch": 1786021140,
+      "moreWindows": 24
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Sylmar",
+      "facility": "Truck Connector",
+      "type": "Full",
+      "work": "Electrical Work",
+      "lanes": "All",
+      "total": "2",
+      "startEpoch": 1785985260,
+      "endEpoch": 1786021140,
+      "moreWindows": 2
     }
   ]
 }
