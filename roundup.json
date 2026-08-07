@@ -1,17 +1,35 @@
 {
-  "generatedAt": "2026-08-01T00:51:36.877Z",
-  "weekendOf": "2026-07-31",
+  "generatedAt": "2026-08-07T16:13:36.895Z",
+  "weekendOf": "2026-08-07",
   "model": "claude-haiku-4-5",
-  "intro": "Great weekend ahead for the neighborhood—something for everyone.",
+  "intro": "Great weekend ahead—live music, family shows, farmers markets, and more in Santa Clarita.",
   "picks": [
     {
-      "emoji": "🌱",
+      "emoji": "🥕",
       "day": "Sat",
       "time": "8:30 AM",
-      "title": "Old Town Newhall Farmers Market",
+      "title": "Newhall Farmers Market",
       "price": "free",
-      "note": "Fresh local produce, community vibe, perfect Saturday morning.",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/"
+      "note": "Fresh local produce, kids love exploring the market stalls.",
+      "url": "https://santaclarita.gov/arts-and-culture/events/"
+    },
+    {
+      "emoji": "🎵",
+      "day": "Sat",
+      "time": "7 PM",
+      "title": "Concerts in the Park - Blue Breeze Band",
+      "price": "free",
+      "note": "Free outdoor concert with family-friendly soul and R&B vibes.",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/"
+    },
+    {
+      "emoji": "⚡",
+      "day": "Sat",
+      "time": "2 PM",
+      "title": "The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild",
+      "price": "",
+      "note": "Percy Jackson comes to life—perfect for kids and families.",
+      "url": "https://calendar.santaclarita.gov/event/the-lightning-thief-the-percy-jackson-musical-at-canyon-theatre-guild"
     },
     {
       "emoji": "🏍️",
@@ -19,45 +37,27 @@
       "time": "9 AM",
       "title": "Motorcycles and Coffee",
       "price": "free",
-      "note": "Free, fun gathering for car and bike enthusiasts of all ages.",
+      "note": "Coffee and motorcycles—casual fun for adults and gear enthusiasts.",
       "url": "https://calendar.santaclarita.gov/event/motorcycles-and-coffee"
+    },
+    {
+      "emoji": "😂",
+      "day": "Sat",
+      "time": "8 PM",
+      "title": "Punchlines At The MAIN",
+      "price": "$19.07–$24.34",
+      "note": "Standup comedy at The MAIN for a solid Saturday night.",
+      "url": "https://www.eventbrite.com/e/punchlines-at-the-main-tickets-1983127905951"
     },
     {
       "emoji": "❄️",
       "day": "Sat",
-      "time": "2 PM",
+      "time": "7 PM",
       "title": "Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center",
       "price": "",
-      "note": "Frozen comes to life—kids and families will love it.",
+      "note": "Broadway magic: Frozen is a must-see for the whole family.",
       "url": "https://calendar.santaclarita.gov/event/disneys-frozen-the-broadway-musical-at-the-santa-clarita-performing-arts-center"
-    },
-    {
-      "emoji": "🎸",
-      "day": "Sat",
-      "time": "7 PM",
-      "title": "Concerts in the Park, presented by Logix Federal Credit Union: Top 40 Country",
-      "price": "",
-      "note": "Live country music in the park, great summer evening out.",
-      "url": "https://calendar.santaclarita.gov/event/concerts-in-the-park-presented-by-logix-federal-credit-union-1130"
-    },
-    {
-      "emoji": "🎵",
-      "day": "Sun",
-      "time": "1 PM",
-      "title": "Afternoon Acoustic Jam",
-      "price": "free",
-      "note": "Laid-back acoustic jam, free and perfect for adult relaxation.",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-afternoon-acoustic-jam-29175"
-    },
-    {
-      "emoji": "🎭",
-      "day": "Sun",
-      "time": "2 PM",
-      "title": "Coriolanus presented by Santa Clarita Shakespeare 2026 Festival",
-      "price": "free",
-      "note": "Shakespeare outdoors, family-friendly take on a classic play.",
-      "url": "https://calendar.santaclarita.gov/event/coriolanus-presented-by-santa-clarita-shakespeare-2026-festival"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nGreat weekend ahead for the neighborhood—something for everyone.\n\n🌱 *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Fresh local produce, community vibe, perfect Saturday morning.\n🏍️ *Sat 9 AM* — Motorcycles and Coffee (free)\n   Free, fun gathering for car and bike enthusiasts of all ages.\n❄️ *Sat 2 PM* — Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center\n   Frozen comes to life—kids and families will love it.\n🎸 *Sat 7 PM* — Concerts in the Park, presented by Logix Federal Credit Union: Top 40 Country\n   Live country music in the park, great summer evening out.\n🎵 *Sun 1 PM* — Afternoon Acoustic Jam (free)\n   Laid-back acoustic jam, free and perfect for adult relaxation.\n🎭 *Sun 2 PM* — Coriolanus presented by Santa Clarita Shakespeare 2026 Festival (free)\n   Shakespeare outdoors, family-friendly take on a classic play.\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nGreat weekend ahead—live music, family shows, farmers markets, and more in Santa Clarita.\n\n🥕 *Sat 8:30 AM* — Newhall Farmers Market (free)\n   Fresh local produce, kids love exploring the market stalls.\n🎵 *Sat 7 PM* — Concerts in the Park - Blue Breeze Band (free)\n   Free outdoor concert with family-friendly soul and R&B vibes.\n⚡ *Sat 2 PM* — The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild\n   Percy Jackson comes to life—perfect for kids and families.\n🏍️ *Sat 9 AM* — Motorcycles and Coffee (free)\n   Coffee and motorcycles—casual fun for adults and gear enthusiasts.\n😂 *Sat 8 PM* — Punchlines At The MAIN ($19.07–$24.34)\n   Standup comedy at The MAIN for a solid Saturday night.\n❄️ *Sat 7 PM* — Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center\n   Broadway magic: Frozen is a must-see for the whole family.\n\nFull list → https://tesorohighlands.com/events"
 }
