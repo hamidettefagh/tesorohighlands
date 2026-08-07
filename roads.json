@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T05:50:02.416Z",
+  "generatedAt": "2026-08-07T09:14:57.994Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -42,7 +42,7 @@
       "total": "1",
       "startEpoch": 1786068060,
       "endEpoch": 1786107540,
-      "moreWindows": 88
+      "moreWindows": 87
     },
     {
       "route": "I-5",
@@ -56,7 +56,7 @@
       "total": "1",
       "startEpoch": 1786068060,
       "endEpoch": 1786107540,
-      "moreWindows": 34
+      "moreWindows": 33
     },
     {
       "route": "I-5",
@@ -84,7 +84,7 @@
       "total": "4",
       "startEpoch": 1786068060,
       "endEpoch": 1786107540,
-      "moreWindows": 29
+      "moreWindows": 31
     },
     {
       "route": "I-5",
@@ -98,21 +98,7 @@
       "total": "1",
       "startEpoch": 1786071540,
       "endEpoch": 1786107540,
-      "moreWindows": 28
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Weldon Canyon",
-      "place": "Granada Hills",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Road Maintenance",
-      "lanes": "5",
-      "total": "5",
-      "startEpoch": 1786071660,
-      "endEpoch": 1786107540,
-      "moreWindows": 13
+      "moreWindows": 27
     },
     {
       "route": "I-5",
@@ -126,7 +112,7 @@
       "total": "4",
       "startEpoch": 1786071660,
       "endEpoch": 1786107540,
-      "moreWindows": 27
+      "moreWindows": 25
     },
     {
       "route": "I-5",
@@ -169,6 +155,20 @@
       "startEpoch": 1786071660,
       "endEpoch": 1786107540,
       "moreWindows": 25
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Sylmar",
+      "facility": "Truck Connector",
+      "type": "Full",
+      "work": "Electrical Work",
+      "lanes": "All",
+      "total": "2",
+      "startEpoch": 1786071660,
+      "endEpoch": 1786107540,
+      "moreWindows": 5
     }
   ]
 }
