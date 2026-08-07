@@ -1,146 +1,27 @@
 {
-  "generatedAt": "2026-08-06T15:34:24.434Z",
+  "generatedAt": "2026-08-07T14:28:17.852Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-08-08T08:30",
-      "venue": "Old Town Newhall Library parking lot",
+      "title": "Interrobang Sketch Comedy",
+      "url": "https://atthemain.org/events-at-the-main/",
+      "start": "2026-08-08",
+      "venue": "The MAIN Theatre",
       "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall Farmers Market"
-    },
-    {
-      "title": "Concerts in the Park",
-      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
-      "start": "2026-08-08T19:00",
-      "venue": "Central Park, Fields 7 & 8",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-08-09T08:30",
-      "venue": "Magic Mountain Parkway at Navigation Avenue",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Valencia FivePoint"
-    },
-    {
-      "title": "Celebrate Jamaica",
-      "url": "https://santaclarita.gov/arts-and-culture/events/celebrate-series/",
-      "start": "2026-08-14T18:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-08-15T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall Farmers Market"
-    },
-    {
-      "title": "Concerts in the Park",
-      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
-      "start": "2026-08-15T19:00",
-      "venue": "Central Park, Fields 7 & 8",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-08-16T08:30",
-      "venue": "Magic Mountain Parkway at Navigation Avenue",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Valencia FivePoint"
-    },
-    {
-      "title": "SENSES Block Party - Time Machine",
-      "url": "https://oldtownnewhall.com/senses-block-party/",
-      "start": "2026-08-20T19:00",
-      "venue": "Main Street between Market Street and Sixth Street",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita / Old Town Newhall"
-    },
-    {
-      "title": "Out on the Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-08-21",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Santa Clarita",
       "free": false,
       "price": null,
       "audience": [
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "The MAIN"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-08-22T08:30",
-      "venue": "Old Town Newhall Library parking lot",
+      "title": "Newhall Farmers Market",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-08-08T08:30",
+      "venue": "Old Town Newhall Library",
       "city": "Newhall",
       "free": true,
       "price": "Free",
@@ -149,13 +30,13 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall Farmers Market"
+      "via": "City of Santa Clarita"
     },
     {
-      "title": "Concerts in the Park",
+      "title": "Concerts in the Park - Blue Breeze Band",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
-      "start": "2026-08-22T19:00",
-      "venue": "Central Park, Fields 7 & 8",
+      "start": "2026-08-08T19:00",
+      "venue": "Central Park",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -167,40 +48,10 @@
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-08-23T08:30",
-      "venue": "Magic Mountain Parkway at Navigation Avenue",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Valencia FivePoint"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-08-29T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall Farmers Market"
-    },
-    {
-      "title": "Concerts in the Park",
-      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
-      "start": "2026-08-29T19:00",
-      "venue": "Central Park, Fields 7 & 8",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-09T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -209,57 +60,12 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita"
+      "via": "VCCFM"
     },
     {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-08-30T08:30",
-      "venue": "Magic Mountain Parkway at Navigation Avenue",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Valencia FivePoint"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-05T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall Farmers Market"
-    },
-    {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-09-06T08:30",
-      "venue": "Magic Mountain Parkway at Navigation Avenue",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Valencia FivePoint"
-    },
-    {
-      "title": "Celebrate Mexico",
-      "url": "https://santaclarita.gov/arts-and-culture/events/celebrate-series/",
-      "start": "2026-09-10T18:00",
+      "title": "Canyon Country Farmers Market",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-08-12T16:00",
       "venue": "Canyon Country Community Center",
       "city": "Canyon Country",
       "free": true,
@@ -272,26 +78,72 @@
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-12T08:30",
-      "venue": "Old Town Newhall Library parking lot",
+      "title": "The Lightning Thief: The Percy Jackson Musical",
+      "url": "https://www.canyontheatre.org/thelightningthief",
+      "start": "2026-08-15",
+      "venue": "Canyon Theatre Guild Playhouse",
+      "city": "Newhall",
+      "free": false,
+      "price": "$24",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild"
+    },
+    {
+      "title": "Concerts in the Park - Paramore! At the Disco",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-15T19:00",
+      "venue": "Central Park",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "SENSES Block Party: Time Machine",
+      "url": "https://oldtownnewhall.com/senses-block-party/",
+      "start": "2026-08-20T19:00",
+      "venue": "Main Street",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall Farmers Market"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-09-13T08:30",
-      "venue": "Magic Mountain Parkway at Navigation Avenue",
+      "title": "Out on the Mountain",
+      "url": "https://en.wikipedia.org/wiki/Out_on_the_Mountain",
+      "start": "2026-08-21",
+      "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Wikipedia - Out on the Mountain"
+    },
+    {
+      "title": "Concerts in the Park - Kenny Metcalf as Elton John",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-22T19:00",
+      "venue": "Central Park",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
@@ -299,25 +151,72 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Valencia FivePoint"
+      "via": "City of Santa Clarita"
     },
     {
-      "title": "SENSES Block Party - Oktoberfest",
+      "title": "Concerts in the Park - The Police Experience",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-29T19:00",
+      "venue": "Central Park",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "The 10 by 10 Variety Show",
+      "url": "https://atthemain.org/events-at-the-main/",
+      "start": "2026-09-03",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "SENSES Block Party: Oktoberfest",
       "url": "https://oldtownnewhall.com/senses-block-party/",
       "start": "2026-09-17T19:00",
-      "venue": "Main Street between Market Street and Sixth Street",
+      "venue": "Main Street",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
+        "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita / Old Town Newhall"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "GraceFest - Music & Message Festival",
-      "url": "https://www.gracefest.org/",
+      "title": "Fright Fest presented by SNICKERS",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-09-18",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain Events"
+    },
+    {
+      "title": "GraceFest Music & Message Festival",
+      "url": "https://www.eventbrite.com/e/gracefest-music-message-festival-tickets-1991972644803",
       "start": "2026-09-19T13:30",
       "venue": "Castaic Lake State Recreation Area",
       "city": "Castaic",
@@ -328,7 +227,7 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "GraceFest"
+      "via": "Eventbrite/GraceFest"
     }
   ]
 }
