@@ -1,4 +1,5 @@
 [
+  { "date": "2026-08-01", "text": "Real measured air quality (the EPA monitor in Santa Clarita), live power-outage tracking, and earthquake awareness", "href": "/fire" },
   { "date": "2026-07-26", "text": "Neighborhood alerts — evac, fire, and red-flag warnings auto-detected with a one-tap WhatsApp share on the Fire page", "href": "/fire" },
   { "date": "2026-07-26", "text": "Weekend picks — an AI curates the best local events every Friday, ready to copy into the group chat", "href": "/events" },
   { "date": "2026-07-25", "text": "The home page now leads with what's coming up — live numbers, next events, and what's new since your last visit", "href": "/" },

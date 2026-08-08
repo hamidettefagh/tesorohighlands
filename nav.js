@@ -100,8 +100,23 @@
     // Heat Warning shouldn't vanish because a fire outranked it for the one line.
     var activeAlerts = [];
     var jobs = [
-      fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + L.lat + "&longitude=" + L.lon + "&current=us_aqi&timezone=America%2FLos_Angeles").then(function (r) { return r.json(); }).then(function (a) {
-        var aqi = a.current && a.current.us_aqi;
+      Promise.all([
+        fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + L.lat + "&longitude=" + L.lon + "&current=us_aqi&timezone=America%2FLos_Angeles").then(function (r) { return r.json(); }).catch(function () { return null; }),
+        // Real EPA monitor first — the model routinely overshoots the measured air.
+        fetch("https://services.arcgis.com/cJ9YHowT8TU7DUyn/arcgis/rest/services/Air%20Now%20Current%20Monitor%20Data%20Public/FeatureServer/0/query?where=" + encodeURIComponent("OZONEPM_AQI IS NOT NULL") + "&geometry=" + (L.lon - 0.35) + "," + (L.lat - 0.30) + "," + (L.lon + 0.35) + "," + (L.lat + 0.30) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=OZONEPM_AQI,ValidTime&returnGeometry=true&outSR=4326&f=json").then(function (r) { return r.json(); }).catch(function () { return null; })
+      ]).then(function (res) {
+        var a = res[0], an = res[1], aqi = null;
+        if (an && an.features) {
+          var best = null, bestD = 99;
+          for (var i = 0; i < an.features.length; i++) {
+            var f = an.features[i], at = f.attributes || {}, g = f.geometry || {};
+            if (at.OZONEPM_AQI == null || at.ValidTime == null || Date.now() - at.ValidTime > 2.5 * 3600 * 1000) continue;
+            var d = haversine(L.lat, L.lon, g.y, g.x);
+            if (d <= 15 && d < bestD) { bestD = d; best = at.OZONEPM_AQI; }
+          }
+          if (best != null) aqi = best;
+        }
+        if (aqi == null) aqi = a && a.current ? a.current.us_aqi : null;
         if (aqi == null) return; okAir = true;
         if (aqi > 150) { say(80, 2, "Air is unhealthy (AQI " + Math.round(aqi) + ") — limit time outside."); }
         else if (aqi > 100) { say(40, 1, "Air unhealthy for sensitive groups (AQI " + Math.round(aqi) + ")."); }

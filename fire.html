@@ -363,6 +363,7 @@
           <span class="n" id="aqiN">–</span>
           <span class="cat unk" id="aqiCat">Loading</span>
         </div>
+        <div class="outlook" id="aqiSrc" style="margin-top:2px"></div>
         <div class="spark" id="aqiSpark"></div>
         <div class="outlook" id="aqiOutlook"></div>
         <div class="pmrow">
@@ -412,6 +413,20 @@
       <h3>Active alerts <span class="cardtag pill live">Live · NWS</span></h3>
       <div class="q">Red Flag Warnings, fire weather, and heat advisories from the National Weather Service</div>
       <div id="alertList"><div class="skel">Checking National Weather Service…</div></div>
+    </div>
+
+    <!-- POWER — the #1 non-fire "what's going on" question, incl. PSPS shutoffs -->
+    <div class="card" id="powerCard">
+      <h3>Power — outages nearby <span class="cardtag pill live">Live · Cal OES</span></h3>
+      <div class="q">Active outage reports within ~12 miles, from the state's statewide utility feed</div>
+      <div id="powerList"><div class="skel">Checking…</div></div>
+    </div>
+
+    <!-- QUAKES — appears only when something actually shook nearby recently -->
+    <div class="card" id="quakeCard" hidden>
+      <h3>Recent shaking <span class="cardtag pill live">Live · USGS</span></h3>
+      <div class="q">Earthquakes M2.5+ within ~40 miles, last 3 days</div>
+      <div id="quakeList"></div>
     </div>
 
     <!-- 7-DAY OUTLOOK -->
@@ -521,10 +536,11 @@
       <span><span class="pill live">Live</span> real data, refreshed automatically</span>
     </div>
     <p id="foot">
-      All live: air quality &amp; fire weather via Open-Meteo, weather alerts via NWS (weather.gov), nearby fires via the
+      All live: air quality measured at EPA AirNow monitors (modeled backup &amp; forecasts via Open-Meteo), fire weather via
+      Open-Meteo, weather alerts via NWS (weather.gov), nearby fires via the
       NIFC / IRWIN national wildfire feed with acreage &amp; containment from CAL FIRE and heat detections from NASA (VIIRS)
       satellites, evacuation status via the Cal OES statewide zone feed (verify your zone at
-      Genasys Protect), and planned road closures via Caltrans. Community notes (water tanks, brush, history) come from neighbors, not an official source.
+      Genasys Protect), power outages via the Cal OES statewide utility feed, earthquakes via USGS, and planned road closures via Caltrans. Community notes (water tanks, brush, history) come from neighbors, not an official source.
       This tool does not replace official warnings — always follow CAL FIRE, LA County Fire, and Sheriff orders, and
       call 911 in an emergency.
     </p>
@@ -590,7 +606,11 @@ function view(){
   const a = live.air && live.air.current ? live.air.current : {};
   const w = live.weather && live.weather.current ? live.weather.current : {};
   let v = {
-    aqi: a.us_aqi ?? null,
+    // Headline AQI: the real EPA monitor when one nearby is reporting fresh
+    // data; the model is the fallback and still powers the hourly forecast.
+    aqi: (live.airnow && live.airnow.aqi != null) ? live.airnow.aqi : (a.us_aqi ?? null),
+    aqiStation: live.airnow || null,
+    modelAqi: a.us_aqi ?? null,
     pm25: a.pm2_5 ?? null,
     pm10: a.pm10 ?? null,
     temp: w.temperature_2m ?? null,
@@ -855,6 +875,61 @@ async function fetchFires(lat, lon){
     .slice(0, 6)
     .map(f => { f.sat = satAge(f, viirs); return f; });
 }
+// Nearest EPA AirNow monitor with a fresh reading — real measured air, not a
+// model. The Santa Clarita station sits ~6.5 mi from home; the model routinely
+// overshoots it, so when a monitor is reporting it owns the headline number.
+async function fetchAirNow(lat, lon){
+  const env = `${(lon-0.35).toFixed(2)},${(lat-0.30).toFixed(2)},${(lon+0.35).toFixed(2)},${(lat+0.30).toFixed(2)}`;
+  const u = "https://services.arcgis.com/cJ9YHowT8TU7DUyn/arcgis/rest/services/Air%20Now%20Current%20Monitor%20Data%20Public/FeatureServer/0/query"
+    + "?where=" + encodeURIComponent("OZONEPM_AQI IS NOT NULL")
+    + "&geometry=" + encodeURIComponent(env)
+    + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects"
+    + "&outFields=SiteName,OZONEPM_AQI,PM25_AQI,OZONE_AQI,ValidTime&returnGeometry=true&outSR=4326&f=json";
+  const j = await fetch(u).then(r=>r.json());
+  if(!j || j.error || !Array.isArray(j.features)) throw new Error("airnow feed error");
+  const now = Date.now();
+  const sites = j.features.map(f=>{
+    const a=f.attributes||{}, g=f.geometry||{};
+    return { name:String(a.SiteName||"monitor"), aqi:a.OZONEPM_AQI, valid:a.ValidTime,
+      dist:haversine(lat,lon,g.y,g.x) };
+  }).filter(s => s.aqi!=null && s.dist<=15 && s.valid!=null && (now-s.valid) < 2.5*3600*1000)
+    .sort((a,b)=>a.dist-b.dist);
+  return sites[0] || null;
+}
+
+// Earthquakes M2.5+ within ~40 mi over the last 3 days (USGS, keyless).
+async function fetchQuakes(lat, lon){
+  const start = new Date(Date.now() - 72*3600*1000).toISOString();
+  const u = `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&latitude=${lat}&longitude=${lon}`
+    + `&maxradiuskm=64&minmagnitude=2.5&orderby=time&starttime=${encodeURIComponent(start)}&limit=10`;
+  const j = await fetch(u).then(r=>r.json());
+  if(!j || !Array.isArray(j.features)) throw new Error("quake feed error");
+  return j.features.map(f=>{
+    const c = (f.geometry && f.geometry.coordinates) || [0,0];
+    return { mag:f.properties.mag, place:String(f.properties.place||""), time:f.properties.time,
+      url:safeHttp(f.properties.url), dist:haversine(lat,lon,c[1],c[0]), dir:compass(bearingDeg(lat,lon,c[1],c[0])) };
+  }).filter(q => q.mag != null).sort((a,b)=>b.mag-a.mag);
+}
+
+// Active power outages within ~12 mi from the Cal OES statewide feed — the
+// same CORS-open org as the evacuation layer. Covers SCE incl. PSPS events.
+async function fetchOutages(lat, lon){
+  const env = `${(lon-0.3).toFixed(2)},${(lat-0.25).toFixed(2)},${(lon+0.3).toFixed(2)},${(lat+0.25).toFixed(2)}`;
+  const u = "https://services.arcgis.com/BLN4oKB0N1YSgvY8/arcgis/rest/services/Power_Outages_%28View%29/FeatureServer/0/query"
+    + "?where=1%3D1&geometry=" + encodeURIComponent(env)
+    + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects"
+    + "&outFields=UtilityCompany,StartDate,EstimatedRestoreDate,Cause,ImpactedCustomers,OutageStatus,OutageType&returnGeometry=true&outSR=4326&f=json";
+  const j = await fetch(u).then(r=>r.json());
+  if(!j || j.error || !Array.isArray(j.features)) throw new Error("outage feed error");
+  return j.features.map(f=>{
+    const a=f.attributes||{}, g=f.geometry||{};
+    return { util:String(a.UtilityCompany||"Utility"), start:a.StartDate, eta:a.EstimatedRestoreDate,
+      cause:String(a.Cause||"").trim(), cust:a.ImpactedCustomers, status:String(a.OutageStatus||""),
+      type:String(a.OutageType||""), dist:haversine(lat,lon,g.y,g.x), dir:compass(bearingDeg(lat,lon,g.y,g.x)) };
+  }).filter(o => /active/i.test(o.status) && o.dist <= 12)
+    .sort((a,b)=>a.dist-b.dist).slice(0,3);
+}
+
 // Live evacuation status near home from the Cal OES statewide aggregation (mirrors Genasys zones).
 const GENASYS_LINK = '<a href="https://protect.genasys.com/search?query=Valencia%2C%20CA" target="_blank" rel="noopener">Genasys Protect ↗</a>';
 async function fetchEvac(lat, lon){
@@ -918,22 +993,29 @@ async function fetchAll(){
   const wxU  = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m&daily=wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,temperature_2m_max&hourly=relative_humidity_2m&forecast_days=7&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FLos_Angeles`;
   const alU  = `https://api.weather.gov/alerts/active?point=${lat},${lon}`;
 
-  const [air, wx, al, fires, evac] = await Promise.allSettled([
+  const [air, wx, al, fires, evac, airnow, quakes, outages] = await Promise.allSettled([
     fetch(airU).then(r=>r.json()),
     fetch(wxU).then(r=>r.json()),
     // No .catch here on purpose: a failed alerts fetch must register as FAILED,
     // not as an empty (all-clear) list — same principle for every feed below.
     fetch(alU, {headers:{Accept:"application/geo+json"}}).then(r=>r.json()).then(j=>{ if(!j || !Array.isArray(j.features)) throw new Error("alerts feed error"); return j; }),
     fetchFires(lat, lon),
-    fetchEvac(lat, lon)
+    fetchEvac(lat, lon),
+    fetchAirNow(lat, lon),
+    fetchQuakes(lat, lon),
+    fetchOutages(lat, lon)
   ]);
   live.air = air.status==="fulfilled" ? air.value : null;
   live.weather = wx.status==="fulfilled" ? wx.value : null;
   live.alerts = al.status==="fulfilled" ? al.value : null;
   live.fires = fires.status==="fulfilled" ? fires.value : null;
   live.evac = evac.status==="fulfilled" ? evac.value : null;
+  live.airnow = airnow.status==="fulfilled" ? airnow.value : null;   // null also = no fresh nearby monitor
+  live.quakes = quakes.status==="fulfilled" ? quakes.value : null;
+  live.outages = outages.status==="fulfilled" ? outages.value : null;
   // Which checks actually loaded — render() refuses to claim "all clear" without them.
-  live.ok = { air: air.status==="fulfilled", wx: wx.status==="fulfilled", alerts: al.status==="fulfilled", fires: fires.status==="fulfilled", evac: evac.status==="fulfilled" };
+  live.ok = { air: air.status==="fulfilled", wx: wx.status==="fulfilled", alerts: al.status==="fulfilled", fires: fires.status==="fulfilled", evac: evac.status==="fulfilled",
+    airnow: airnow.status==="fulfilled", quakes: quakes.status==="fulfilled", outages: outages.status==="fulfilled" };
   live.error = air.status!=="fulfilled" && wx.status!=="fulfilled";
   lastFetch = Date.now();
 }
@@ -982,7 +1064,9 @@ function render(){
   $("#locName").textContent = LOC.label;
   $("#locSub").textContent = LOC.sub || (LOC.lat.toFixed(3)+", "+LOC.lon.toFixed(3));
   const ok = live.ok || {};
-  const coreOk = ok.air && ok.alerts && ok.fires && ok.evac;
+  // A fresh monitor reading counts as knowing the air even if the model failed.
+  const airKnown = ok.air || !!(live.airnow && live.airnow.aqi != null);
+  const coreOk = airKnown && ok.alerts && ok.fires && ok.evac;
   $("#updated").textContent = live.error ? "live data unavailable" : (coreOk ? timeAgo(lastFetch) : "some feeds unavailable");
 
   // hero — an all-clear is only claimable when every check that could contradict
@@ -1002,7 +1086,7 @@ function render(){
   if(hact) hact.hidden = ov.lvl < 2;
 
   // who should take it easy — but only when there's real air data to judge from
-  const adv = ok.air ? airAdvice(v)
+  const adv = airKnown ? airAdvice(v)
     : { s:"neutral", icon:"🧭", txt:"<b>Live air data is unavailable right now,</b> so conditions can't be judged. If you can see or smell smoke, act as if the air is bad." };
   $("#airAdvice").className = "advice " + adv.s;
   $("#airAdvice").innerHTML = `<span class="ai">${adv.icon}</span><div class="at">${adv.txt}</div>`;
@@ -1011,6 +1095,15 @@ function render(){
   const air = aqiInfo(v.aqi);
   $("#aqiN").textContent = v.aqi==null?"–":Math.round(v.aqi);
   const catEl=$("#aqiCat"); catEl.className="cat "+air.klass; catEl.textContent=air.name;
+  const srcEl=$("#aqiSrc");
+  if(v.aqiStation){
+    srcEl.innerHTML = `📡 Measured at the <b>${esc(v.aqiStation.name)}</b> monitor · ${v.aqiStation.dist.toFixed(1)} mi · ${fmtAgo(v.aqiStation.valid)}` +
+      (v.modelAqi!=null && Math.abs(v.modelAqi - v.aqiStation.aqi) >= 15 ? ` <span style="color:var(--muted)">(model estimate: ${Math.round(v.modelAqi)})</span>` : "");
+  } else if(airKnown){
+    srcEl.innerHTML = `Modeled estimate — no nearby monitor reporting right now.`;
+  } else {
+    srcEl.textContent = "";
+  }
   $("#pm25").textContent = v.pm25==null?"–":Math.round(v.pm25)+" µg";
   $("#pm10").textContent = v.pm10==null?"–":Math.round(v.pm10)+" µg";
   sparkline(v);
@@ -1098,6 +1191,38 @@ function render(){
         <div class="fdist"><div class="d">${f.dist.toFixed(f.dist<10?1:0)} mi</div><div class="dir">${esc(dirWord(f.dir))} of us</div></div>
       </div>`;
     }).join("");
+  }
+
+  // power outages — a failed feed says so; "none nearby" is a real claim
+  const pl = $("#powerList");
+  if(!ok.outages){
+    pl.innerHTML = `<div class="note"><b>The outage feed is unreachable right now</b> — that's unknown, not all-clear. <a href="https://www.sce.com/outage-center/check-outage-status" target="_blank" rel="noopener">Check SCE's map ↗</a></div>`;
+  } else if(!live.outages || !live.outages.length){
+    pl.innerHTML = `<div class="note"><b>No active outages within 12 miles</b> right now, per the Cal OES statewide feed.</div>`;
+  } else {
+    pl.innerHTML = live.outages.map(o=>{
+      const psps = /psps|public safety/i.test(o.type + " " + o.cause);
+      const kind = psps ? `<b style="color:var(--cau-fg)">⚠️ PSPS shutoff</b>` : (/planned/i.test(o.type) && !/not/i.test(o.type) ? "planned work" : "<b>unplanned outage</b>");
+      const eta = o.eta ? ` · est. restore ${new Date(o.eta).toLocaleString([], {weekday:"short", hour:"numeric", minute:"2-digit"})}` : "";
+      return `<div class="fs" style="padding:6px 0;font-size:12.5px;color:var(--ink-2)">⚡ <b>${esc(o.util)}</b> ${kind} ~${o.dist.toFixed(o.dist<10?1:0)} mi ${esc(dirWord(o.dir))}` +
+        `${o.cause ? ` · ${esc(o.cause)}` : ""}${o.cust ? ` · ~${Number(o.cust).toLocaleString()} customers` : ""}` +
+        `<br><span style="color:var(--muted)">started ${fmtAgo(o.start)}${eta}</span></div>`;
+    }).join("");
+  }
+
+  // recent earthquakes — card only appears when something actually shook
+  const qs = (ok.quakes && live.quakes) || [];
+  if(qs.length){
+    const q = qs[0];
+    const mag = (Math.round(q.mag*10)/10).toFixed(1);
+    const nm = `<b>M${mag}</b> — ${esc(q.place)}`;
+    $("#quakeList").innerHTML =
+      `<div class="fs" style="font-size:13.5px;color:var(--ink)">${q.url ? `<a href="${esc(q.url)}" target="_blank" rel="noopener" style="color:inherit">${nm} ↗</a>` : nm}</div>` +
+      `<div class="fs">${q.dist.toFixed(0)} mi ${esc(dirWord(q.dir))} of us · ${fmtAgo(q.time)}${qs.length>1 ? ` · +${qs.length-1} smaller nearby` : ""}</div>` +
+      `<div class="fs" style="margin-top:4px;color:var(--muted)">${q.mag >= 4.5 ? "If you felt it: check for gas smell and make sure the water heater is strapped." : "Normal SoCal seismicity — nothing to do."}</div>`;
+    $("#quakeCard").hidden = false;
+  } else {
+    $("#quakeCard").hidden = true;
   }
 
   // open the smoke playbook automatically when the air is actually bad

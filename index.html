@@ -133,15 +133,34 @@
       el.hidden = false;
     }
 
-    fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + L.lat + "&longitude=" + L.lon + "&current=us_aqi&timezone=America%2FLos_Angeles")
-      .then(function (r) { return r.json(); }).then(function (a) {
-        var q = a.current && a.current.us_aqi;
-        if (q == null) { asofDone(false); return; }
-        var cat = q <= 50 ? "Good" : q <= 100 ? "Moderate" : q <= 150 ? "Unhealthy for sensitive groups" : "Unhealthy";
-        $("#tdAir").innerHTML = "<b>AQI " + Math.round(q) + "</b> · " + cat;
-        liveBits.air = "<b>AQI " + Math.round(q) + "</b> " + cat.toLowerCase();
-        paintFireCard(); asofDone(true);
-      }).catch(function () { $("#tdAir").textContent = "unavailable right now"; asofDone(false); });
+    var hav = function (la1, lo1, la2, lo2) {
+      var R = 3958.8, t = function (x) { return x * Math.PI / 180; };
+      var h = Math.sin(t(la2 - la1) / 2) * Math.sin(t(la2 - la1) / 2) + Math.cos(t(la1)) * Math.cos(t(la2)) * Math.sin(t(lo2 - lo1) / 2) * Math.sin(t(lo2 - lo1) / 2);
+      return 2 * R * Math.asin(Math.sqrt(h));
+    };
+    Promise.all([
+      fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + L.lat + "&longitude=" + L.lon + "&current=us_aqi&timezone=America%2FLos_Angeles").then(function (r) { return r.json(); }).catch(function () { return null; }),
+      // Real EPA monitor first (the Santa Clarita station is ~6.5 mi out); the
+      // model routinely overshoots the measured number.
+      fetch("https://services.arcgis.com/cJ9YHowT8TU7DUyn/arcgis/rest/services/Air%20Now%20Current%20Monitor%20Data%20Public/FeatureServer/0/query?where=" + encodeURIComponent("OZONEPM_AQI IS NOT NULL") + "&geometry=" + (L.lon - 0.35) + "," + (L.lat - 0.30) + "," + (L.lon + 0.35) + "," + (L.lat + 0.30) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=OZONEPM_AQI,ValidTime&returnGeometry=true&outSR=4326&f=json").then(function (r) { return r.json(); }).catch(function () { return null; })
+    ]).then(function (res) {
+      var a = res[0], an = res[1], q = null, measured = false;
+      if (an && an.features) {
+        var bestD = 99;
+        for (var i = 0; i < an.features.length; i++) {
+          var f = an.features[i], at = f.attributes || {}, g = f.geometry || {};
+          if (at.OZONEPM_AQI == null || at.ValidTime == null || Date.now() - at.ValidTime > 2.5 * 3600 * 1000) continue;
+          var d = hav(L.lat, L.lon, g.y, g.x);
+          if (d <= 15 && d < bestD) { bestD = d; q = at.OZONEPM_AQI; measured = true; }
+        }
+      }
+      if (q == null) { q = a && a.current ? a.current.us_aqi : null; }
+      if (q == null) { $("#tdAir").textContent = "unavailable right now"; asofDone(false); return; }
+      var cat = q <= 50 ? "Good" : q <= 100 ? "Moderate" : q <= 150 ? "Unhealthy for sensitive groups" : "Unhealthy";
+      $("#tdAir").innerHTML = "<b>AQI " + Math.round(q) + "</b> · " + cat + ' <span style="color:var(--muted);font-size:11px">' + (measured ? "measured" : "modeled") + "</span>";
+      liveBits.air = "<b>AQI " + Math.round(q) + "</b> " + cat.toLowerCase();
+      paintFireCard(); asofDone(true);
+    }).catch(function () { $("#tdAir").textContent = "unavailable right now"; asofDone(false); });
 
     fetch("https://api.open-meteo.com/v1/forecast?latitude=" + L.lat + "&longitude=" + L.lon + "&current=relative_humidity_2m,wind_speed_10m,wind_gusts_10m&wind_speed_unit=mph&timezone=America%2FLos_Angeles")
       .then(function (r) { return r.json(); }).then(function (w) {

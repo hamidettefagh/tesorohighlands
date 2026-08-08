@@ -157,11 +157,56 @@ async function checkNws() {
   return out;
 }
 
+async function checkQuakes() {
+  // Only quakes people definitely felt: M4.5+ within ~40 mi, last 2 hours.
+  const start = new Date(Date.now() - 2 * 3600 * 1000).toISOString();
+  const j = await getJson(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&latitude=${HOME.lat}&longitude=${HOME.lon}&maxradiuskm=64&minmagnitude=4.5&orderby=time&starttime=${encodeURIComponent(start)}`);
+  if (!j || !Array.isArray(j.features)) throw new Error("quake feed error");
+  return j.features.map((f) => {
+    const c = f.geometry?.coordinates || [0, 0];
+    const dist = haversine(HOME.lat, HOME.lon, c[1], c[0]);
+    const dir = bearingWord(HOME.lat, HOME.lon, c[1], c[0]);
+    const m = (Math.round((f.properties?.mag || 0) * 10) / 10).toFixed(1);
+    return { id: `quake:${f.id}`, prio: 55, level: "caution",
+      title: `M${m} earthquake ~${Math.round(dist)} mi ${dir} of us`,
+      text: `🫨 *M${m} earthquake* — ${String(f.properties?.place || "").trim()}, ~${Math.round(dist)} mi ${dir} of Tesoro Highlands.\nIf you felt it: check for gas smell and make sure the water heater is strapped. Aftershocks are possible.\nDetails: ${f.properties?.url || "https://earthquake.usgs.gov"}\n${SITE}/fire` };
+  });
+}
+
+async function checkOutages() {
+  const env = `${HOME.lon - 0.3},${HOME.lat - 0.25},${HOME.lon + 0.3},${HOME.lat + 0.25}`;
+  const u = "https://services.arcgis.com/BLN4oKB0N1YSgvY8/arcgis/rest/services/Power_Outages_%28View%29/FeatureServer/0/query" +
+    `?where=1%3D1&geometry=${env}&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects` +
+    "&outFields=UtilityCompany,Cause,ImpactedCustomers,OutageStatus,OutageType,IncidentId&returnGeometry=true&outSR=4326&f=json";
+  const j = await getJson(u);
+  if (!j || j.error || !Array.isArray(j.features)) throw new Error("outage feed error");
+  const out = [];
+  for (const f of j.features) {
+    const a = f.attributes || {}, g = f.geometry || {};
+    if (!/active/i.test(String(a.OutageStatus || ""))) continue;
+    const dist = haversine(HOME.lat, HOME.lon, g.y, g.x);
+    const dir = bearingWord(HOME.lat, HOME.lon, g.y, g.x);
+    const psps = /psps|public safety/i.test(`${a.OutageType} ${a.Cause}`);
+    const cust = Number(a.ImpactedCustomers) || 0;
+    const iid = String(a.IncidentId || `${(g.y||0).toFixed(3)},${(g.x||0).toFixed(3)}`);
+    if (psps && dist <= 10) {
+      out.push({ id: `psps:${iid}`, prio: 65, level: "caution",
+        title: `PSPS power shutoff ~${Math.round(dist)} mi ${dir} of us`,
+        text: `⚡ *PSPS Public Safety Power Shutoff* reported ~${Math.round(dist)} mi ${dir} of Tesoro Highlands${cust ? ` (~${cust.toLocaleString()} customers)` : ""}.\nCharge phones and backups now; fridge stays cold ~4 hours unopened.\nSCE status: sce.com/psps\nLive info: ${SITE}/fire` });
+    } else if (!psps && dist <= 8 && cust >= 500) {
+      out.push({ id: `outage:${iid}`, prio: 45, level: "caution",
+        title: `Large SCE outage ~${Math.round(dist)} mi ${dir} of us`,
+        text: `⚡ *Large power outage* — ~${cust.toLocaleString()} customers, ~${Math.round(dist)} mi ${dir} of Tesoro Highlands${a.Cause ? ` (${String(a.Cause).trim()})` : ""}.\nOutage map: sce.com/outages\nLive info: ${SITE}/fire` });
+    }
+  }
+  return out;
+}
+
 /* ---------- main ---------- */
 let prev = { sig: "", active: false };
 try { prev = JSON.parse(readFileSync(OUT, "utf8")); } catch {}
 
-const results = await Promise.allSettled([checkEvac(), checkFires(), checkNws()]);
+const results = await Promise.allSettled([checkEvac(), checkFires(), checkNws(), checkQuakes(), checkOutages()]);
 const failed = results.filter((r) => r.status === "rejected");
 // If EVERY check failed we know nothing — keep previous state rather than
 // declaring a false all-clear (same honesty rule as the site).
