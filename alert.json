@@ -1,5 +1,10 @@
 {
-  "active": false,
-  "sig": "",
-  "updatedAt": "2026-08-08T17:49:46.876Z"
+  "active": true,
+  "sig": "fire:HOLSER",
+  "level": "danger",
+  "title": "Holser Fire ~11 mi west-southwest of us",
+  "text": "🔥 Holser Fire — about 20 acres, ~11 mi west-southwest of Tesoro Highlands.\nNot an evacuation notice — stay aware, keep phones charged, check your go-bag.\nLive map & evacuation status: https://tesorohighlands.com/fire",
+  "waText": "🔥 *Holser Fire* — about 20 acres, ~11 mi west-southwest of Tesoro Highlands.\nNot an evacuation notice — stay aware, keep phones charged, check your go-bag.\nLive map & evacuation status: https://tesorohighlands.com/fire",
+  "others": [],
+  "updatedAt": "2026-08-08T21:13:30.547Z"
 }
