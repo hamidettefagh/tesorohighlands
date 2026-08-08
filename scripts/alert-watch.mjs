@@ -81,7 +81,10 @@ async function checkEvac() {
     const covers = inPoly(HOME.lon, HOME.lat, rings);
     const dist = haversine(HOME.lat, HOME.lon, cy, cx);
     const dir = bearingWord(HOME.lat, HOME.lon, cy, cx);
-    const notes = String(a.NOTES || "").trim();
+    // NOTES can be a full public alert paragraph — reduce to the fire name.
+    const rawNotes = String(a.NOTES || "").trim();
+    const notes = rawNotes.length <= 48 ? rawNotes
+      : (rawNotes.match(/([A-Z][A-Za-z']+(?:\s+[A-Z][A-Za-z']+){0,3}\s+(?:Brush\s+)?Fire)\b/) || [,""])[1];
     const zid = String(a.ZONE_ID || `${cy.toFixed(3)},${cx.toFixed(3)}`);
     const why = notes ? ` (${notes})` : "";
     if (covers && isOrder) out.push({ id: `order-our:${zid}`, prio: 100, level: "danger",

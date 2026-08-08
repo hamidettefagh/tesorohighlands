@@ -595,6 +595,15 @@ function fireWx(temp, rh, wind, gust){
 // Feed strings (fire names, alert headlines, evac notes) render into innerHTML —
 // escape them all; a poisoned upstream record must never become script here.
 function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+// Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW…") — never
+// echo that in our copy. Short notes pass through; long ones reduce to the
+// fire name if one is present, otherwise nothing.
+function briefNote(s){
+  s = String(s==null?"":s).trim();
+  if(s.length <= 48) return s;
+  const m = s.match(/([A-Z][A-Za-z']+(?:\s+[A-Z][A-Za-z']+){0,3}\s+(?:Brush\s+)?Fire)\b/);
+  return m ? m[1] : "";
+}
 function safeHttp(u){ return /^https:\/\//i.test(String(u||"")) ? u : null; }
 // Spell compass points out — "SSE" is sailor jargon, "south-southeast" is a direction.
 const DIR_WORD = { N:"north", NNE:"north-northeast", NE:"northeast", ENE:"east-northeast", E:"east", ESE:"east-southeast",
@@ -967,7 +976,7 @@ async function fetchEvac(lat, lon){
       covers: inPoly(lon, lat, rings),
       dist: haversine(lat, lon, cy, cx),
       dir: compass(bearingDeg(lat, lon, cy, cx)),
-      notes: esc(String(a.NOTES || "").trim()),   // feed text — escaped at the source, every render is innerHTML
+      notes: esc(briefNote(a.NOTES)),   // feed text — briefed + escaped at the source, every render is innerHTML
       county: esc(String(a.COUNTY || "").trim())
     });
   }
@@ -975,9 +984,11 @@ async function fetchEvac(lat, lon){
   const covOrder = zones.find(z => z.order && z.covers);
   const covShelter = zones.find(z => z.shelter && z.covers);
   const covWarn  = zones.find(z => !z.order && !z.shelter && z.covers);
-  const nearOrder = zones.find(z => z.order);
-  const nearShelter = zones.find(z => z.shelter);
-  const nearWarn  = zones.find(z => !z.order && !z.shelter);
+  // Zones we're merely NEAR only get mentioned within a real-awareness radius —
+  // an order across the valley belongs on the map, not in this card's verdict.
+  const nearOrder = zones.find(z => z.order && z.dist <= 15);
+  const nearShelter = zones.find(z => z.shelter && z.dist <= 10);
+  const nearWarn  = zones.find(z => !z.order && !z.shelter && z.dist <= 10);
   const why = z => (z.notes ? " — " + z.notes : "") + (z.county ? ", " + z.county + " County" : "");
   if (covOrder) return { lvl:2, label:"Evacuation ORDER for our zone" + why(covOrder) + ". Leave now via your planned route.", zone:"Live · Cal OES statewide feed" };
   if (covShelter) return { lvl:2, label:"SHELTER IN PLACE for our zone" + why(covShelter) + ". Stay inside with doors and windows closed and follow official direction — this is not an all-clear.", zone:"Live · Cal OES statewide feed" };

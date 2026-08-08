@@ -86,6 +86,15 @@
   var CACHE_KEY = "tesoro.status.v2";  // v2 carries the active-alert list
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
+  // safety is in danger…") — never echo that inside OUR banner. Keep short
+  // notes as-is, extract just the fire name from long ones, else drop it.
+  function briefNote(s) {
+    s = String(s == null ? "" : s).trim();
+    if (s.length <= 48) return s;
+    var m = s.match(/([A-Z][A-Za-z']+(?:\s+[A-Z][A-Za-z']+){0,3}\s+(?:Brush\s+)?Fire)\b/);
+    return m ? m[1] : "";
+  }
   var stripEl = null;
 
   async function computeStatus() {
@@ -206,16 +215,19 @@
             covers: inPoly(L.lon, L.lat, rings),
             dist: haversine(L.lat, L.lon, cy, cx),
             dir: COMPASS[Math.round(((Math.atan2(yb, xb) * 180 / Math.PI + 360) % 360) / 22.5) % 16],
-            notes: escT(String(a.NOTES || "").trim())
+            notes: escT(briefNote(a.NOTES))
           });
         }
         zones.sort(function (a, b) { return a.dist - b.dist; });
         var covOrder = null, covShelter = null, covWarn = null, nearOrder = null, nearShelter = null, nearWarn = null;
+        // A zone we're INSIDE always counts. A zone we're merely NEAR only makes
+        // the headline within a real-awareness radius — an order 28 mi across the
+        // valley is map context, not a banner for our street.
         for (var k = 0; k < zones.length; k++) {
           var z = zones[k];
-          if (z.order) { if (z.covers && !covOrder) covOrder = z; if (!nearOrder) nearOrder = z; }
-          else if (z.shelter) { if (z.covers && !covShelter) covShelter = z; if (!nearShelter) nearShelter = z; }
-          else { if (z.covers && !covWarn) covWarn = z; if (!nearWarn) nearWarn = z; }
+          if (z.order) { if (z.covers && !covOrder) covOrder = z; if (!nearOrder && z.dist <= 15) nearOrder = z; }
+          else if (z.shelter) { if (z.covers && !covShelter) covShelter = z; if (!nearShelter && z.dist <= 10) nearShelter = z; }
+          else { if (z.covers && !covWarn) covWarn = z; if (!nearWarn && z.dist <= 10) nearWarn = z; }
         }
         if (covOrder) { say(100, 2, "EVACUATION ORDER for our zone — leave now."); }
         else if (covShelter) { say(95, 2, "SHELTER IN PLACE for our zone" + (covShelter.notes ? " (" + covShelter.notes + ")" : "") + " — stay inside, doors and windows closed."); }
