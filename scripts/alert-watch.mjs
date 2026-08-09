@@ -95,7 +95,7 @@ async function checkEvac() {
       text: `🚨 *SHELTER IN PLACE — Tesoro Highlands*${why}\nStay inside with doors and windows closed and follow official direction.\nLive status: ${SITE}/fire` });
     else if (covers && isWarn) out.push({ id: `warn-our:${zid}`, prio: 90, level: "danger",
       title: "Evacuation WARNING — our zone",
-      text: `⚠️ *Evacuation WARNING includes our zone*${why}\nBe packed and ready to leave. Watch official channels closely.\nZone lookup: protect.genasys.com\nLive status: ${SITE}/fire` });
+      text: `⚠️ *Evacuation WARNING includes our zone*${why}\nBe packed and ready to leave. Those needing extra time — older neighbors, mobility needs, large animals — should leave NOW.\nZone lookup: protect.genasys.com\nLive status: ${SITE}/fire` });
     else if (isOrder && dist <= 10) out.push({ id: `order-near:${zid}`, prio: 60, level: "caution",
       title: `Evacuation order ~${Math.round(dist)} mi ${dir} of us`,
       text: `⚠️ *Evacuation ORDER ~${Math.round(dist)} mi ${dir} of us*${why} — not our zone, but close. Worth knowing tonight.\nLive map: ${SITE}/fire` });

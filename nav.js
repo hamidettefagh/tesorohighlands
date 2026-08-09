@@ -83,7 +83,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v3";  // v3: evac distance gates + brief notes — old cached text must not linger
+  var CACHE_KEY = "tesoro.status.v4";  // v4: extra-time evac copy — keep in step with the nav.js?v=N bump
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -231,7 +231,7 @@
         }
         if (covOrder) { say(100, 2, "EVACUATION ORDER for our zone — leave now."); }
         else if (covShelter) { say(95, 2, "SHELTER IN PLACE for our zone" + (covShelter.notes ? " (" + covShelter.notes + ")" : "") + " — stay inside, doors and windows closed."); }
-        else if (covWarn) { say(90, 1, "Evacuation WARNING includes our zone" + (covWarn.notes ? " (" + covWarn.notes + ")" : "") + " — be packed and ready."); }
+        else if (covWarn) { say(90, 1, "Evacuation WARNING includes our zone" + (covWarn.notes ? " (" + covWarn.notes + ")" : "") + " — be packed and ready; those needing extra time should leave now."); }
         else if (nearOrder) { say(50, 1, "Evacuation ORDER ~" + Math.round(nearOrder.dist) + " mi to our " + nearOrder.dir + (nearOrder.notes ? " (" + nearOrder.notes + ")" : "") + " — not our zone; stay aware."); }
         else if (nearShelter) { say(50, 1, "Shelter-in-place ~" + Math.round(nearShelter.dist) + " mi " + nearShelter.dir + " of us" + (nearShelter.notes ? " (" + nearShelter.notes + ")" : "") + " — not our zone."); }
         else if (nearWarn) { say(50, 1, "Evacuation warning ~" + Math.round(nearWarn.dist) + " mi " + nearWarn.dir + " of us" + (nearWarn.notes ? " (" + nearWarn.notes + ")" : "") + " — not our zone."); }
@@ -269,6 +269,7 @@
       if (!stripEl) {
         stripEl = document.createElement("a");
         stripEl.href = "/fire";
+        stripEl.setAttribute("aria-live", "polite");
         nav.parentNode.insertBefore(stripEl, nav.nextSibling);
       }
       stripEl.className = "thstrip " + st.level;

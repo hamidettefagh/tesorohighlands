@@ -40,7 +40,7 @@
       <p>A neighbor-built hub for our community · Valencia, CA 91354</p>
     </div>
 
-    <div id="th-hero" class="hub-hero neutral">
+    <div id="th-hero" class="hub-hero neutral" aria-live="polite">
       <div class="eyebrow">Right now in Tesoro Highlands</div>
       <div class="htext">Checking current conditions…</div>
     </div>
@@ -105,7 +105,7 @@
       <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> In an emergency, call 911 and follow CAL FIRE, LA County Fire, and Sheriff evacuation orders. Live fire, air, and weather data come from public government feeds and can lag or be incomplete — always confirm with official sources. Ideas for the site? Bring them to the community group chat.</p>
     </footer>
   </div>
-  <script src="/nav.js?v=3" defer></script>
+  <script src="/nav.js?v=4" defer></script>
   <script>
   // "Today" digest: air, fire weather, next events — small live glances.
   (function () {
@@ -166,7 +166,7 @@
       .then(function (r) { return r.json(); }).then(function (w) {
         var c = w.current; if (!c) { asofDone(false); return; }
         var rh = c.relative_humidity_2m, wind = c.wind_speed_10m, gust = c.wind_gusts_10m;
-        var lvl = (rh < 15 && (wind >= 25 || gust >= 35)) ? "Extreme" : (rh < 15 || wind >= 25 || gust >= 35 || (rh < 20 && wind >= 20)) ? "Elevated" : "Normal";
+        var lvl = ((rh < 15 && (wind >= 25 || gust >= 35)) || (rh <= 10 && (wind >= 15 || gust >= 25))) ? "Extreme" : (rh < 15 || wind >= 25 || gust >= 35 || (rh < 20 && wind >= 20)) ? "Elevated" : "Normal";
         $("#tdFw").innerHTML = "<b>" + Math.round(wind) + " mph</b> wind · " + Math.round(rh) + "% humidity · " + lvl;
         liveBits.fw = lvl.toLowerCase() + " fire weather";
         paintFireCard(); asofDone(true);

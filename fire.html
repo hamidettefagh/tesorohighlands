@@ -68,6 +68,7 @@
   .dot { width: 8px; height: 8px; border-radius: 50%; display:inline-block; }
   .dot.live { background: #2f9e57; box-shadow: 0 0 0 3px rgba(47,158,87,.18); animation: pulse 2.2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
+  @media (prefers-reduced-motion: reduce) { .dot.live { animation: none; } }
   .hbtns { display:flex; gap:6px; }
   .iconbtn {
     border:1px solid var(--line); background: var(--surface); color: var(--ink-2);
@@ -113,6 +114,8 @@
   .aqinum { display:flex; align-items:baseline; gap:10px; margin: 4px 0 2px; }
   .aqinum .n { font-size: 40px; font-weight: 720; letter-spacing:-0.03em; line-height:1; }
   .aqinum .cat { font-size: 13.5px; font-weight:620; padding:3px 9px; border-radius:999px; color:#fff; }
+  /* EPA convention + WCAG: dark text on the light categories, white on the dark */
+  .cat.good, .cat.mod, .cat.usg { color:#111417; }
   .cat.good{background:var(--aqi-good)} .cat.mod{background:var(--aqi-mod)} .cat.usg{background:var(--aqi-usg)}
   .cat.un{background:var(--aqi-un)} .cat.vun{background:var(--aqi-vun)} .cat.haz{background:var(--aqi-haz)} .cat.unk{background:var(--muted)}
   .spark { margin-top:10px; }
@@ -277,7 +280,7 @@
   .sharecard.danger h3 { color:var(--dan-fg); }
   .sharecard .q { margin:0 0 10px; }
   .sharebtns { display:flex; gap:8px; flex-wrap:wrap; }
-  .wabtn { display:inline-block; text-decoration:none; background:#1faa55; color:#fff; font-weight:700; font-size:13px;
+  .wabtn { display:inline-block; text-decoration:none; background:#128a43; color:#fff; font-weight:700; font-size:13px;
     padding:9px 16px; border-radius:10px; }
   .wabtn:hover { filter:brightness(1.06); }
   .copybtn { border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:10px;
@@ -312,11 +315,11 @@
       </div>
     </div>
     <div class="hbtns">
-      <button class="iconbtn" id="refreshBtn" title="Refresh">↻</button>
+      <button class="iconbtn" id="refreshBtn" title="Refresh" aria-label="Refresh live data">↻</button>
     </div>
   </header>
 
-  <div class="hero neutral" id="hero">
+  <div class="hero neutral" id="hero" aria-live="polite">
     <div class="eyebrow" id="heroEy">Checking</div>
     <h2 id="heroTitle">Checking conditions…</h2>
     <p id="heroText">Pulling live air quality, fire weather, and alerts for your location.</p>
@@ -352,6 +355,22 @@
     </details>
     <div id="fireList"></div>
   </div>
+
+  <!-- The scariest moment: you smell smoke and this list is empty. Feeds lag a
+       brand-new fire by 15–30 min — this card owns that gap. Collapsed on quiet
+       days; auto-opens only when the fire feed itself is unreachable. -->
+  <details class="card playbook" id="smokeHelp" style="margin-top:12px">
+    <summary><span class="pbtitle">👃 Smell smoke but nothing listed here?</span><span class="pbhint">tap to open</span></summary>
+    <div class="src">Official feeds can lag a brand-new fire by 15–30 minutes. Don't wait on this page — do this instead:</div>
+    <ul class="plist">
+      <li><b>Trust your nose.</b> If smoke is strong, close, or getting worse — act first, verify later.</li>
+      <li><b>Look with your own eyes:</b> <a href="https://cameras.alertcalifornia.org/" target="_blank" rel="noopener">the ridge cameras ↗</a> and <a href="https://www.watchduty.org/" target="_blank" rel="noopener">Watch Duty ↗</a> usually beat the official feeds by minutes.</li>
+      <li><b>Step outside for 30 seconds.</b> Any glow? Which direction is the smell coming from? Which way is the wind pushing?</li>
+      <li><b>See flames or a smoke column? Call 911.</b> You might genuinely be the first report — that call matters.</li>
+      <li><b>If your gut says get ready:</b> dress, load the go-bag, back the car in. Being early costs nothing; being late costs everything.</li>
+      <li><b>Re-check here in ~10 minutes</b> — this page refreshes itself, and new incidents appear as the feeds catch up. Distant smoke also drifts in from fires far away; the smoke chips above show wind direction when a fire is listed.</li>
+    </ul>
+  </details>
 
   <div class="cards" id="air">
     <div class="grid2">
@@ -441,7 +460,7 @@
   <!-- FIRE MAP -->
   <div class="sechead" id="map"><h2>Fire &amp; evacuation map</h2><div class="line"></div></div>
   <div class="card" style="margin-top:8px;padding:0;overflow:hidden">
-    <div id="fireMap" style="height:360px;width:100%;background:var(--neu-bg)"></div>
+    <div id="fireMap" role="region" aria-label="Live fire and evacuation map" style="height:360px;width:100%;background:var(--neu-bg)"></div>
     <div id="mapLegend" class="q" style="padding:11px 14px;margin:0;border-top:1px solid var(--line-2)">Loading live fire &amp; evacuation data…</div>
   </div>
 
@@ -586,6 +605,9 @@ function fireWx(temp, rh, wind, gust){
   if(rh!=null){ if(rh<15){lvl=Math.max(lvl,1); why.push("very dry air ("+Math.round(rh)+"% humidity)");} else if(rh<25){ why.push(Math.round(rh)+"% humidity");} }
   if(wind!=null && wind>=25 || gust>=35){ lvl=Math.max(lvl,1); }
   if(rh!=null && rh<15 && (wind>=25 || gust>=35)){ lvl=2; }
+  // NWS Los Angeles' second Red Flag criteria set: humidity ≤10% is critically
+  // dry on its own — with even moderate wind it's extreme fire weather.
+  if(rh!=null && rh<=10){ lvl = Math.max(lvl, (wind>=15 || gust>=25) ? 2 : 1); }
   if(rh!=null && rh<20 && (wind>=20 || gust>=30)){ lvl=Math.max(lvl,1); }
   const names=["Normal","Elevated","Extreme"];
   return { lvl, name:names[lvl], why };
@@ -994,7 +1016,7 @@ async function fetchEvac(lat, lon){
   const why = z => (z.notes ? " — " + z.notes : "") + (z.county ? ", " + z.county + " County" : "");
   if (covOrder) return { lvl:2, label:"Evacuation ORDER for our zone" + why(covOrder) + ". Leave now via your planned route.", zone:"Live · Cal OES statewide feed" };
   if (covShelter) return { lvl:2, label:"SHELTER IN PLACE for our zone" + why(covShelter) + ". Stay inside with doors and windows closed and follow official direction — this is not an all-clear.", zone:"Live · Cal OES statewide feed" };
-  if (covWarn)  return { lvl:1, label:"Evacuation WARNING includes our zone" + why(covWarn) + ". Be packed and ready to leave.", zone:"Live · Cal OES statewide feed" };
+  if (covWarn)  return { lvl:1, label:"Evacuation WARNING includes our zone" + why(covWarn) + ". Be packed and ready to leave. Those needing extra time to evacuate — older neighbors, anyone with mobility needs, large animals — should leave now.", zone:"Live · Cal OES statewide feed" };
   if (nearOrder) return { lvl:0, label:"Our zone has no order or warning. Nearby: an evacuation ORDER is active ~" + Math.round(nearOrder.dist) + " mi to our " + nearOrder.dir + why(nearOrder) + ". Watch it on the map above and " + GENASYS_LINK + ".", zone:"Live · Cal OES statewide feed" };
   if (nearShelter) return { lvl:0, label:"Our zone has no order or warning. Nearby: a shelter-in-place is active ~" + Math.round(nearShelter.dist) + " mi to our " + nearShelter.dir + why(nearShelter) + ". Watch it on the map above.", zone:"Live · Cal OES statewide feed" };
   if (nearWarn)  return { lvl:0, label:"Our zone has no order or warning. Nearby: an evacuation warning ~" + Math.round(nearWarn.dist) + " mi to our " + nearWarn.dir + why(nearWarn) + ". Watch it on the map above.", zone:"Live · Cal OES statewide feed" };
@@ -1241,6 +1263,12 @@ function render(){
   // open the smoke playbook automatically when the air is actually bad
   const smoke = $("#smokeCard");
   if(smoke) smoke.open = (aqiInfo(v.aqi).lvl>=2) || v.fires.some(f=>f.dist<=12 && (f.acres||0)>=50);
+  // the "smell smoke?" triage card opens itself only when the fire feed is down
+  // (unknown ≠ quiet); on normal days it stays a one-line collapsed prompt.
+  // live.ok must EXIST — before the first fetch completes, "not loaded yet"
+  // must not read as "failed".
+  const sh = $("#smokeHelp");
+  if(sh && live.ok && !live.ok.fires) sh.open = true;
 
   renderOutlook();
 }
@@ -1380,7 +1408,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=3" defer></script>
+<script src="/nav.js?v=4" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>
