@@ -115,16 +115,18 @@ async function checkFires() {
   ]);
   if (!j || !Array.isArray(j.features)) throw new Error("fire feed error");
   const calList = (Array.isArray(cal) ? cal : cal?.Incidents || []).filter((i) => i && i.Latitude && i.Longitude);
-  const out = [];
+  const cands = [];
   for (const f of j.features) {
     if (!f.geometry?.coordinates) continue;
     const p = f.properties || {}, c = f.geometry.coordinates;
     const nm = String(p.IncidentName || "").trim();
     if (/^LAC-?\d+$/i.test(nm)) continue;
-    let acres = p.IncidentSize, mod = p.ModifiedOnDateTime_dt;
+    let acres = p.IncidentSize, mod = p.ModifiedOnDateTime_dt, calDist = null;
     for (const cf of calList) {
       if (normName(cf.Name) !== normName(nm)) continue;
-      if (haversine(c[1], c[0], cf.Latitude, cf.Longitude) > 15) continue;
+      const cd = haversine(c[1], c[0], cf.Latitude, cf.Longitude);
+      if (cd > 15) continue;
+      calDist = cd;
       const cu = Date.parse(cf.Updated || "");
       if (cf.AcresBurned != null && (acres == null || acres === 0 || (!isNaN(cu) && (mod == null || cu >= mod)))) acres = cf.AcresBurned;
       if (!isNaN(cu) && (mod == null || cu > mod)) mod = cu;
@@ -135,12 +137,36 @@ async function checkFires() {
       const quiet = Date.now() - mod, sized = acres != null && acres >= 10;
       if (quiet > (sized ? 48 : 12) * 3600 * 1000) continue;
     }
-    const dist = haversine(HOME.lat, HOME.lon, c[1], c[0]);
-    if (dist > 12 || (acres || 0) < 20) continue;
-    const dir = bearingWord(HOME.lat, HOME.lon, c[1], c[0]);
-    out.push({ id: `fire:${normName(nm)}`, prio: 70, level: "danger",
-      title: `${title(nm)} Fire ~${dist.toFixed(dist < 10 ? 1 : 0)} mi ${dir} of us`,
-      text: `🔥 *${title(nm)} Fire* — about ${Math.round(acres).toLocaleString()} acres, ~${dist.toFixed(dist < 10 ? 1 : 0)} mi ${dir} of Tesoro Highlands.\nNot an evacuation notice — stay aware, keep phones charged, check your go-bag.\nLive map & evacuation status: ${SITE}/fire` });
+    cands.push({ nm, norm: normName(nm), acres, mod, calDist, lat: c[1], lon: c[0] });
+  }
+  // IRWIN's duplicate records for one fire can sit miles apart (Holser's two
+  // were 3.7 mi apart — the site listed one, this watcher alerted from the
+  // other). Same rule as the site's list: same name within 10 mi = one fire,
+  // keep the sized record, then the fresher — so the alert and the page can
+  // never disagree on where a fire is.
+  const kept = [];
+  for (const c of cands) {
+    const i = kept.findIndex((o) => o.norm === c.norm && haversine(o.lat, o.lon, c.lat, c.lon) < 10);
+    if (i < 0) { kept.push(c); continue; }
+    // score → nearest to CAL FIRE's authoritative point → freshest (enrichment
+    // gives both duplicates the same timestamp, so mod alone ties on feed order)
+    const score = (x) => (x.acres != null && x.acres > 0 ? 1 : 0);
+    const dA = kept[i].calDist ?? Infinity, dB = c.calDist ?? Infinity;
+    if (score(c) > score(kept[i]) || (score(c) === score(kept[i]) && dB < dA) ||
+        (score(c) === score(kept[i]) && dB === dA && (c.mod || 0) > (kept[i].mod || 0))) kept[i] = c;
+  }
+  const out = [];
+  for (const k of kept) {
+    const dist = haversine(HOME.lat, HOME.lon, k.lat, k.lon);
+    if (dist > 12 || (k.acres || 0) < 20) continue;
+    const dir = bearingWord(HOME.lat, HOME.lon, k.lat, k.lon);
+    // Growth tier lives in the condition id: a fire crossing 50/100/250/1000
+    // acres changes the sig, so the message re-composes with CURRENT numbers
+    // (the Holser alert froze at "about 20 acres" while the fire grew to 167).
+    const tier = k.acres >= 1000 ? 4 : k.acres >= 250 ? 3 : k.acres >= 100 ? 2 : k.acres >= 50 ? 1 : 0;
+    out.push({ id: `fire:${k.norm}:t${tier}`, prio: 70, level: "danger",
+      title: `${title(k.nm)} Fire ~${dist.toFixed(dist < 10 ? 1 : 0)} mi ${dir} of us`,
+      text: `🔥 *${title(k.nm)} Fire* — about ${Math.round(k.acres).toLocaleString()} acres, ~${dist.toFixed(dist < 10 ? 1 : 0)} mi ${dir} of Tesoro Highlands.\nNot an evacuation notice — stay aware, keep phones charged, check your go-bag.\nLive map & evacuation status: ${SITE}/fire` });
   }
   return out;
 }

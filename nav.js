@@ -83,7 +83,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v4";  // v4: extra-time evac copy — keep in step with the nav.js?v=N bump
+  var CACHE_KEY = "tesoro.status.v5";  // v5: fire dedupe parity — keep in step with the nav.js?v=N bump
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -156,11 +156,14 @@
         function nrm(s) { return String(s || "").toUpperCase().replace(/\bFIRE\b/g, " ").replace(/[^A-Z0-9]/g, ""); }
         var fires = f.features.filter(function (ft) { return ft.geometry && ft.geometry.coordinates; }).map(function (ft) {
           var c = ft.geometry.coordinates, p = ft.properties || {};
-          var acres = p.IncidentSize, mod = p.ModifiedOnDateTime_dt;
+          var acres = p.IncidentSize, mod = p.ModifiedOnDateTime_dt, calDist = null;
           for (var i = 0; i < cal.length; i++) {
             var cf = cal[i];
             if (cf.acres == null || nrm(cf.name) !== nrm(p.IncidentName)) continue;
-            if (cf.lat == null || cf.lon == null || haversine(c[1], c[0], cf.lat, cf.lon) > 15) continue;  // same name, but ours?
+            if (cf.lat == null || cf.lon == null) continue;
+            var cd = haversine(c[1], c[0], cf.lat, cf.lon);
+            if (cd > 15) continue;  // same name, but ours?
+            calDist = cd;
             var cu = cf.updated ? Date.parse(cf.updated) : NaN;
             // CAL FIRE wins on gaps and when it's fresher: the federal feed often
             // freezes a local fire at its dispatch-time 0.1 acres and walks away,
@@ -169,8 +172,25 @@
             if (!isNaN(cu) && (mod == null || cu > mod)) mod = cu;
             break;
           }
-          return { name: p.IncidentName, acres: acres || 0, mod: mod, d: haversine(L.lat, L.lon, c[1], c[0]) };
-        }).filter(function (x) {
+          return { name: p.IncidentName, acres: acres || 0, mod: mod, calDist: calDist, lat: c[1], lon: c[0], d: haversine(L.lat, L.lon, c[1], c[0]) };
+        });
+        // IRWIN can carry one fire as two records miles apart — same name within
+        // 10 mi is one fire; keep the sized record, then the fresher (the SAME
+        // rule as the fire page and the watcher, so all three agree on distance).
+        var kept = [];
+        for (var k2 = 0; k2 < fires.length; k2++) {
+          var c2 = fires[k2], hit = -1;
+          for (var j2 = 0; j2 < kept.length; j2++) {
+            if (nrm(kept[j2].name) === nrm(c2.name) && haversine(kept[j2].lat, kept[j2].lon, c2.lat, c2.lon) < 10) { hit = j2; break; }
+          }
+          if (hit < 0) { kept.push(c2); continue; }
+          // score → nearest to CAL FIRE's authoritative point → freshest
+          // (enrichment gives both dupes the same timestamp, so mod alone ties)
+          var sA = kept[hit].acres > 0 ? 1 : 0, sB = c2.acres > 0 ? 1 : 0;
+          var dA = kept[hit].calDist == null ? 1e9 : kept[hit].calDist, dB = c2.calDist == null ? 1e9 : c2.calDist;
+          if (sB > sA || (sB === sA && dB < dA) || (sB === sA && dB === dA && (c2.mod || 0) > (kept[hit].mod || 0))) kept[hit] = c2;
+        }
+        fires = kept.filter(function (x) {
           // Sizable and still being reported on — a record nobody has touched in two
           // days is a fire that's out but never got flagged out.
           return x.acres >= 50 && (x.mod == null || (Date.now() - x.mod) < 48 * 3600 * 1000);

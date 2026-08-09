@@ -794,8 +794,18 @@ function dedupeFires(fires){
   for(const f of fires){
     const i = out.findIndex(o => normFireName(o.name)===normFireName(f.name) && haversine(o.lat,o.lon,f.lat,f.lon) < 10);
     if(i < 0){ out.push(f); continue; }
+    // Tiebreak chain: real numbers > proximity to CAL FIRE's authoritative
+    // point > freshness. (Enrichment stamps BOTH duplicates with CAL FIRE's
+    // timestamp, so "fresher" alone degrades to feed order — which made the
+    // page and the WhatsApp alert disagree on where Holser was.)
     const score = x => (x.acres!=null?2:0) + (x.contain!=null?1:0);
-    if(score(f) > score(out[i]) || (score(f)===score(out[i]) && (f.mod||0) > (out[i].mod||0))) out[i] = f;
+    const better = (a,b) => {
+      if(score(a) !== score(b)) return score(a) > score(b);
+      const ca = a.calDist ?? Infinity, cb = b.calDist ?? Infinity;
+      if(ca !== cb) return ca < cb;
+      return (a.mod||0) > (b.mod||0);
+    };
+    if(better(f, out[i])) out[i] = f;
   }
   return out;
 }
@@ -873,6 +883,7 @@ function enrichFires(fires, cal){
     if(best.contained != null && (out.contain == null || calFresher)) out.contain = best.contained;
     if(!isNaN(cu) && (out.mod == null || cu > out.mod)) out.mod = cu;
     if(best.url) out.url = best.url;  // CAL FIRE's incident page — the official detail view
+    out.calDist = bestD;              // how close this record sits to CAL FIRE's authoritative point
     return out;
   });
 }
@@ -1408,7 +1419,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=4" defer></script>
+<script src="/nav.js?v=5" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>
