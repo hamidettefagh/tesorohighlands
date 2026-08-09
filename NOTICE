@@ -1,0 +1,20 @@
+Tesoro Highlands Community Hub
+Copyright 2026 The Tesoro Highlands Community Hub contributors
+
+This product includes software developed by neighbors of the
+Tesoro Highlands community, Valencia, California.
+
+This site is an unofficial, resident-run community project. It is not the
+homeowners association, its board, or its management company, and it is not
+an official emergency-warning system.
+
+Portions of this repository are not covered by this project's license:
+
+  - vendor/leaflet/ is Leaflet (https://leafletjs.com), BSD-2-Clause,
+    Copyright Vladimir Agafonkin and Leaflet contributors.
+
+  - The generated data files (events.json, ai-events.json, roads.json,
+    alert.json, roundup.json) are built from public third-party feeds.
+    Event listings belong to their organizers; agency data belongs to the
+    issuing agencies (NIFC/WFIGS, CAL FIRE, Cal OES, NWS, USGS, EPA AirNow,
+    NASA, Caltrans, City of Santa Clarita, Santa Clarita Public Library).

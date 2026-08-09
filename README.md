@@ -1,112 +1,182 @@
 # Tesoro Highlands — Community Hub
 
-A neighbor-built hub for the **Tesoro Highlands community, Valencia CA 91354**. Lives at **tesorohighlands.com**.
+A neighbor-built hub for **Tesoro Highlands, Valencia CA 91354**, living at
+**[tesorohighlands.com](https://tesorohighlands.com)**.
 
-The hub answers the questions a household in a fire-zone community actually asks — **What's burning near us? What are we breathing? Do we need to get ready to leave?** — and grows from there into everyday community info: local events, practical living info, and HOA resources.
+It answers the questions a household in wildfire country actually asks — *what's
+burning near us, what are we breathing, do we need to get ready to leave* — and grows
+from there into the everyday stuff: local events, practical living info, and plain
+English about your rights as a California homeowner.
+
+**Not official.** This isn't the HOA and isn't an emergency-warning system. Always
+follow CAL FIRE, LA County Fire, and Sheriff evacuation orders, and call 911 in an
+emergency.
+
+*Last reviewed: 2026-08-09. If you change a workflow cadence, a data source, or a cost
+figure, please update this file in the same commit.*
+
+## Want to help?
+
+See **[CONTRIBUTING.md](CONTRIBUTING.md)**. Short version: fork it, open a pull
+request, no special access needed. There are rules in there that aren't obvious —
+worth a skim before touching the fire logic.
+
+## Fork it for your own neighborhood
+
+That's an explicit goal. It's plain HTML, CSS and JavaScript with no build step, so
+you can read the whole thing. The pieces you'd change are the coordinates in
+`fire.html` / `nav.js`, the local phone numbers in `living.html`, and the event
+sources in `scripts/fetch-events.mjs`. Apache-2.0 licensed, so go ahead — just note
+the license asks you to mark files you've changed, and please don't imply your fork
+is this site.
 
 ## How it's built
 
 ![Architecture diagram](stack.svg)
 
-(The live copy of this diagram is at [tesorohighlands.com/stack.svg](https://tesorohighlands.com/stack.svg).)
+*(Live copy: [tesorohighlands.com/stack.svg](https://tesorohighlands.com/stack.svg))*
+
+Plain HTML/CSS/JS. No framework, no build step, no bundler. One serverless function.
+Data refreshes come from scheduled GitHub Actions that commit JSON back to the repo,
+which redeploys the site. Everything a visitor's browser fetches is either a static
+file or a public government API.
 
 ## Pages
 
 ```
-/            landing hub — live "right now" safety status + alert chips + section cards
-/fire        the full fire & emergency dashboard (live fires w/ CAL FIRE + NASA VIIRS
-             enrichment, air, weather, evac zones, map, go-bag checklist, roads)
-/events      community events + auto-updated local feed (City calendar, Eventbrite,
-             SC library) + daily AI web-search sweep (ai-events.json), merged client-side
-/living      everyday local info — utilities, trash, schools, health, fire insurance
-/hoa         HOA & Resources — CA homeowner rights, documents, dispute ladder
-             (unofficial, resident-run; deliberately no board schedules/internal matters)
-
-api/calfire.js   the one serverless function: proxies incidents.fire.ca.gov (no CORS
-                 upstream), CDN-cached ~2 min — fills in acreage/containment the
-                 federal feed leaves null on local fires
+/            hub — live "right now" status, alert chips, what's coming up,
+             live one-liners per section, "new on this site" changelog
+/fire        the dashboard — nearby fires (CAL FIRE acreage/containment + NASA VIIRS
+             satellite heat), measured air quality, fire weather, NWS alerts, 7-day
+             outlook, Leaflet fire/evac map, evacuation status + routes + go-bag
+             checklist, road closures, power outages, earthquakes
+/events      community events + auto-built local feed + AI-found extras (merged into
+             one list) + the Friday AI weekend roundup with Copy-for-WhatsApp
+/living      utilities, trash, schools, health, fire-zone insurance, amenities,
+             neighbor-recommended local pros
+/hoa         CA homeowner rights, your documents, the dispute ladder
+             (deliberately no board schedules or internal community matters)
 ```
 
 ## Project layout
 
 ```
-index.html / fire.html / events.html / living.html / hoa.html
-th.css                shared design tokens (light/dark/manual) + shell styles
-theme.js              theme boot — auto/light/dark, persisted, no flash (loads first in <head>)
-nav.js                injected top nav + theme toggle + live status strip (5-min session cache)
-icon.svg              favicon
-events.json           auto-built local feed (see pipeline below) — do not edit by hand
-community-events.json neighbor events, maintained via git (schema below)
-vendor/leaflet/       self-hosted Leaflet 1.9.4 (no CDN dependency during an emergency)
-scripts/fetch-events.mjs   feed builder (Node, no deps)
-scripts/alert-watch.mjs    ~10-min cron: detects evac/fire/red-flag for our area,
-                           writes alert.json (one-tap WhatsApp share on /fire),
-                           optional admin phone ping via ntfy.sh (NTFY_TOPIC secret)
-scripts/weekend-roundup.mjs Friday AI agent: curates 5-7 weekend picks from the
-                           verified feed BY INDEX (hallucination-proof), writes
-                           roundup.json (Copy-for-WhatsApp card on /events)
-.github/workflows/refresh-events.yml   ~4-hour cron that refreshes events.json
-server.js             tiny static server for LOCAL dev only (clean URLs like Vercel)
-vercel.json           static deploy config (headers, clean URLs)
-sitemap.xml / robots.txt
+index.html fire.html events.html living.html hoa.html 404.html
+th.css                the only stylesheet — design tokens (light/dark) + shell
+theme.js              theme boot, runs before first paint so there's no flash
+nav.js                injected nav, theme toggle, site-wide live status strip
+                      (loaded as /nav.js?v=N — bump N when you change it)
+api/calfire.js        the one serverless function: proxies incidents.fire.ca.gov
+                      (no CORS upstream), CDN-cached ~2 min
+server.js             tiny static server for LOCAL dev only (mimics clean URLs)
+vendor/leaflet/       self-hosted Leaflet 1.9.4 — no CDN dependency in an emergency
+scripts/*.mjs         the data builders (see below)
+community-events.json neighbor events, hand-maintained (schema below)
+events.json ai-events.json roads.json alert.json roundup.json
+                      bot-written — never hand-edit, they get overwritten
+updates.json          the "new on this site" changelog, hand-maintained
 ```
 
-## Run it locally
+## Scheduled jobs
 
-```
-node server.js       # serves on http://localhost:3100 with /fire-style clean URLs
-```
+| Workflow | Cadence | What it does | Costs money? |
+|---|---|---|---|
+| `refresh-events.yml` | every 4h | Rebuilds `events.json` + `roads.json` | No |
+| `alert-watch.yml` | every 10 min | Checks evac/fire/red-flag/quake/PSPS for our area, writes `alert.json` (the one-tap WhatsApp share card), optional phone ping via ntfy | No |
+| `refresh-ai-events.yml` | daily ~6:23am PT | Claude web-search sweep for events the feeds miss → `ai-events.json` | Yes |
+| `weekend-roundup.yml` | Fridays ~8:23am PT | Claude curates 5–7 weekend picks → `roundup.json` | Yes |
+
+**Running cost:** roughly **$5–8/month** total on `claude-haiku-4-5` — the daily events
+sweep (~$0.15–0.20/run with web search capped at 12 uses) plus the Friday roundup
+(a few cents). Both need the `ANTHROPIC_API_KEY` repo secret; without it they exit
+cleanly and commit nothing. Everything else on the site is free and keyless.
 
 ## What's live vs. curated
 
 | Panel | Source | Status |
 |---|---|---|
-| Air quality (US AQI, PM2.5/PM10, hourly outlook) | Open-Meteo Air Quality API | **Live**, no key |
+| Air quality (US AQI) | **EPA AirNow monitor** ~6.5 mi away, with Open-Meteo as fallback and for the hourly outlook | **Live**, no key |
 | Fire weather (wind, gusts, humidity, temp) | Open-Meteo Forecast API | **Live**, no key |
-| Active alerts (Red Flag, Fire Weather, Heat) | NWS `api.weather.gov` | **Live**, no key |
-| Nearby fires — list, map points & perimeters | NIFC/WFIGS ArcGIS (`WFIGS_Incident_Locations_Current`, `WFIGS_Interagency_Perimeters_Current`) | **Live**, no key |
-| Evacuation zone status (Order / Warning) | Cal OES "California Active Evacuation Zones" ArcGIS | **Live**, no key |
-| Local attendable events (audience-tagged, priced) | City of Santa Clarita calendar (Localist JSON) + Eventbrite (4 SCV searches) + SC Public Library calendar | **Auto** via script |
-| Extra events found on the wider web | Claude API web search → `ai-events.json` (own labeled section, deduped vs main feed) | **Auto**, opt-in (needs `ANTHROPIC_API_KEY` secret) |
-| Planned I-5 / SR-14 closures near the community | Caltrans District 7 Lane Closure System (`cwwp2.dot.ca.gov` JSON) → `roads.json` | **Auto** via script |
-| Fire history around the community (439 fires on record) | NIFC Interagency Fire Perimeter History — numbers baked into the page | Baked snapshot (Jul 2026) |
-| Community events | `community-events.json` in git | Curated |
+| Active alerts (Red Flag, heat, wind, smoke) | NWS `api.weather.gov` | **Live**, no key |
+| Nearby fires — list, map points, perimeters | NIFC/WFIGS ArcGIS | **Live**, no key |
+| Fire acreage + containment | CAL FIRE via `api/calfire` proxy | **Live**, no key |
+| Satellite heat detection | NASA VIIRS (Esri Living Atlas mirror) | **Live**, no key |
+| Evacuation status (Order / Warning / Shelter) | Cal OES statewide evacuation zones | **Live**, no key |
+| Power outages incl. PSPS | Cal OES statewide utility feed | **Live**, no key |
+| Earthquakes | USGS | **Live**, no key |
+| Road closures | Caltrans D7 Lane Closure System → `roads.json` | **Auto** |
+| Local events | City of Santa Clarita (Localist) + Eventbrite + SC Public Library → `events.json` | **Auto** |
+| Extra events from the wider web | Claude web search → `ai-events.json`, merged into the main list | **Auto** (needs key) |
+| Weekend picks | Claude, choosing by index from our own verified feed → `roundup.json` | **Auto** (needs key) |
+| Fire history (439 fires on record) | NIFC Interagency Fire Perimeter History | Baked snapshot (Jul 2026) |
+| Community events | `community-events.json` | Curated |
 
-The dashboard's status logic is deliberately conservative (small routine incidents don't turn the page red), and every live panel degrades honestly — a failed feed says "unavailable," never "all clear."
+Every live panel degrades honestly: **a failed feed says "unavailable," never "all
+clear."** The status logic is deliberately conservative, and alert thresholds are
+tuned so a distant fire informs without alarming.
 
 ## The local events pipeline
 
-`scripts/fetch-events.mjs` pulls from three sources: (1) the **City of Santa Clarita** official calendar at `calendar.santaclarita.gov` (a Localist install) via its public `/api/2/events` JSON — city events, cultural nights, brewery/restaurant happenings, Concerts in the Park, each with a `free` flag; (2) **Eventbrite**'s public search pages for four SCV city slugs (embedded `__SERVER_DATA__` JSON), keeping only Santa Clarita Valley venues, dropping corporate training-mill spam, and fetching each event page for the real price (`isFree` / `lowPrice`–`highPrice`); (3) the **Santa Clarita Public Library** calendar (`santaclarita.librarycalendar.com`) via its server-rendered per-day feed — free programs across all branches, using the library's own age-group taxonomy (Babies/Toddler/Preschool/Storytime/Teens/Adults). Everything is tagged by audience (toddlers / kids / teens / adults) for the filter chips, recurring programs carry all their dates so they roll forward, results are deduped, and `events.json` is written only when content changed. Each source fails soft and carries its previous events forward. No backend, no keys.
+`scripts/fetch-events.mjs` pulls three sources: the **City of Santa Clarita** calendar
+(a Localist install, public `/api/2/events` JSON); **Eventbrite** public search pages
+for four SCV city slugs (embedded `__SERVER_DATA__`, filtered to SCV venues, spam
+dropped, each event page fetched for real pricing); and the **Santa Clarita Public
+Library** per-day feed (using the library's own age taxonomy). Everything is tagged by
+audience, recurring programs carry all their dates so they roll forward, results are
+deduped, and the file is written only when content actually changed. Each source fails
+soft and carries its previous events forward.
 
-Sources checked and rejected for automation: Visit Santa Clarita (no feed/API/JSON-LD — HTML only), KHTS events (no calendar API), SCVNews and santa-clarita.com (bot-blocked), santaclaritaarts.com / The MAIN (events page 404s, no working API — its shows appear on Eventbrite anyway), College of the Canyons / canyonspac (no public calendar API found), Patch / SCVTV / Senior Center (no feed), SCV Chamber (unreachable), AllEvents.in and Meetup (JSON-LD present but third-party aggregators / JS-heavy and ToS-gray — the City's Localist covers the same official ground). Old Town Newhall also runs on Localist, but its events already flow through the City calendar.
+**Sources checked and rejected** (so nobody re-litigates them): Visit Santa Clarita
+(no feed), KHTS (no API), SCVNews and santa-clarita.com (bot-blocked), The MAIN (404s;
+shows appear on Eventbrite anyway), College of the Canyons (no public API), Patch /
+SCVTV / Senior Center (no feed), SCV Chamber (unreachable), AllEvents.in and Meetup
+(aggregators, ToS-gray), LA County Library (JS-only Communico app), Canyon Theatre
+Guild (no event schema).
 
-Fragility notes: this parses Eventbrite's page structure, which can change; the script fails soft (keeps the last good file) and the page shows a "feed may be stale" note past 5 days. As of 2026-07-07 Eventbrite 405-blocks GitHub-hosted runner IPs, so the Action is a light self-healing retry (every 4h) rather than the primary refresh — real refreshes are `node scripts/fetch-events.mjs` from a residential IP, then push (or a scheduled task on a home machine).
+**Fragility note:** the Eventbrite step parses page structure, which can change, and
+Eventbrite 405-blocks GitHub runner IPs intermittently. The script fails soft and the
+page shows "feed may be stale" past 5 days.
 
-### Optional: AI-assisted discovery (supplement, not backbone)
+### AI-assisted discovery
 
-`scripts/fetch-ai-events.mjs` uses the Claude API's built-in web search to find local events the structured feeds can't reach — venue pages, farms, Macaroni KID, churches, community orgs with no feed. Claude searches, then returns results through a strict-schema `submit_events` tool; the script validates hard (real URL, in-window date, SCV city) and writes a **separate** `ai-events.json`. The events page renders it as its own clearly-labeled **"Found around the web · AI-assisted"** section, client-side deduped against the main feed (title+date) so only net-new finds show, each linking to its source page with a "details can be wrong — confirm at the source" note.
+`scripts/fetch-ai-events.mjs` uses Claude's web search for events no feed carries —
+venue pages, farms, breweries, churches. Results come back through a strict-schema
+tool, get validated hard (real URL, in-window date, SCV city), and land in a separate
+`ai-events.json` that the events page merges into the main list.
 
-- Runs from `.github/workflows/refresh-ai-events.yml` (manual `workflow_dispatch` to start; uncomment the schedule to automate). The web search runs on Anthropic's servers, so this works fine from CI runner IPs — it sidesteps the Eventbrite runner-IP block.
-- Requires the `ANTHROPIC_API_KEY` repo secret (Settings → Secrets and variables → Actions). Without it the script exits cleanly and commits nothing.
-- Cost: web search is capped at 8 uses/run (~$0.08). The default model is **`claude-haiku-4-5`** (≈ **$0.15/run**); set `ANTHROPIC_MODEL=claude-opus-4-8` in the workflow env for higher-quality discovery (≈ $0.40/run). The web-search tool version auto-switches by model (Haiku → basic `web_search_20250305`, Opus → dynamic-filtering `web_search_20260209`). Manual runs cost only when you click; a daily schedule is ~$4.50/mo (Haiku) or ~$12/mo (Opus).
-- The SDK lives in `scripts/package.json` (installed with `npm install --prefix scripts`) so the site's static Vercel deploy is untouched.
+`scripts/weekend-roundup.mjs` is hallucination-proof by construction: Claude picks
+events **by index** from our own verified feed and writes only a short note. Every
+title, day, time and price is formatted from our data, so the model cannot invent an
+event that doesn't exist.
 
 ### community-events.json schema
 
 ```json
-[{ "title": "Ice-cream social", "date": "2026-07-12", "time": "4:00 PM", "place": "The park", "note": "BYO toppings", "url": "" }]
+[{ "title": "Ice-cream social", "date": "2026-07-12", "time": "4:00 PM",
+   "place": "The park", "note": "BYO toppings", "url": "" }]
 ```
 
 Past-dated entries drop off automatically; keeping history in the file is fine.
 
 ## Theming
 
-Light/dark follows the visitor's system by default; the nav toggle (◐/☀/☾) forces light or dark, persisted per device in localStorage. Tokens live once in `th.css`; the map swaps to dark basemap tiles automatically.
+Light/dark follows the system by default; the nav toggle (◐/☀/☾) forces one, persisted
+per device. Tokens live once in `th.css`, and the map swaps basemap tiles to match.
 
 ## Neighbor knowledge
 
-Some fire-safety content is adapted from guidance neighbors shared in the community group chat, credited in-app as local knowledge (not official) and kept anonymous.
+Some fire-safety content is adapted from guidance neighbors shared in the community
+group chat, credited in-app as local knowledge (not official) and kept anonymous.
 
-## Not an official source
+## License
 
-This is a community tool, not an emergency-warning system, and not the HOA. Always follow CAL FIRE, LA County Fire, and Sheriff evacuation orders. In an emergency call 911.
+Apache-2.0 — see [LICENSE](LICENSE).
+
+This covers the site's own code and writing. It does **not** cover: the data files
+built from third-party feeds (`events.json`, `ai-events.json`, `roads.json`,
+`alert.json`), whose listings belong to their organizers and agencies; or
+`vendor/leaflet/`, which is Leaflet under BSD-2-Clause.
+
+Note that a code license protects against "I forked your code and it broke." It has
+nothing to do with someone reading the website — that's what the on-page disclaimers
+are for.
