@@ -762,13 +762,15 @@ function isStaleFire(mod, acres){
   const sized = acres != null && acres >= 10;
   return quietFor > (sized ? 48 : 12) * 3600 * 1000;
 }
-// IRWIN can carry the same fire twice when two agencies both report it (the Lime
-// fire lands twice at the same spot). Collapse by name + location, keeping
-// whichever record actually has numbers, then the fresher one.
+// IRWIN can carry the same fire twice when two agencies both report it — and
+// their points can sit MILES apart (Holser's two records were 3.7 mi apart).
+// Same normalized name within 10 mi = same fire; two genuinely different fires
+// sharing a name inside 10 miles is implausible, and if it ever happened,
+// showing one is a smaller error than listing the same fire twice.
 function dedupeFires(fires){
   const out = [];
   for(const f of fires){
-    const i = out.findIndex(o => normFireName(o.name)===normFireName(f.name) && haversine(o.lat,o.lon,f.lat,f.lon) < 1.5);
+    const i = out.findIndex(o => normFireName(o.name)===normFireName(f.name) && haversine(o.lat,o.lon,f.lat,f.lon) < 10);
     if(i < 0){ out.push(f); continue; }
     const score = x => (x.acres!=null?2:0) + (x.contain!=null?1:0);
     if(score(f) > score(out[i]) || (score(f)===score(out[i]) && (f.mod||0) > (out[i].mod||0))) out[i] = f;
