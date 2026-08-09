@@ -37,4 +37,11 @@ jobs:
             git commit -m "chore: refresh local feeds"
             git pull --rebase origin main || true
             git push
+            # Tell IndexNow (Bing / DuckDuckGo / Yandex) the content changed, so
+            # a site that updates itself doesn't sit in a stale index. Best
+            # effort — never fail the run over it.
+            curl -s -X POST "https://api.indexnow.org/IndexNow" \
+              -H "Content-Type: application/json; charset=utf-8" \
+              -d '{"host":"tesorohighlands.com","key":"fc6aefb138293ec09242c5e391d2e353","keyLocation":"https://tesorohighlands.com/fc6aefb138293ec09242c5e391d2e353.txt","urlList":["https://tesorohighlands.com/","https://tesorohighlands.com/events"]}' \
+              -o /dev/null -w "IndexNow: %{http_code}\n" || true
           fi
