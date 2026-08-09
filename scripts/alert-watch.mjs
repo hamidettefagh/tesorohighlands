@@ -158,15 +158,31 @@ async function checkFires() {
   const out = [];
   for (const k of kept) {
     const dist = haversine(HOME.lat, HOME.lon, k.lat, k.lon);
-    if (dist > 12 || (k.acres || 0) < 20) continue;
+    const acres = k.acres || 0;
+    // WhatsApp-worthy only when genuinely action-relevant for THIS neighborhood.
+    // A moderate fire 11 miles out belongs on the site, not in the group chat:
+    //   close and real:      ≤6 mi and ≥20 acres   → urgent tone
+    //   mid and substantial: ≤10 mi and ≥100 acres → watchful tone
+    //   far but major:       ≤15 mi and ≥500 acres → awareness tone
+    let level = null;
+    if (dist <= 6 && acres >= 20) level = "danger";
+    else if (dist <= 10 && acres >= 100) level = "caution";
+    else if (dist <= 15 && acres >= 500) level = "caution";
+    else continue;
     const dir = bearingWord(HOME.lat, HOME.lon, k.lat, k.lon);
+    const dTxt = dist.toFixed(dist < 10 ? 1 : 0);
     // Growth tier lives in the condition id: a fire crossing 50/100/250/1000
-    // acres changes the sig, so the message re-composes with CURRENT numbers
-    // (the Holser alert froze at "about 20 acres" while the fire grew to 167).
-    const tier = k.acres >= 1000 ? 4 : k.acres >= 250 ? 3 : k.acres >= 100 ? 2 : k.acres >= 50 ? 1 : 0;
-    out.push({ id: `fire:${k.norm}:t${tier}`, prio: 70, level: "danger",
-      title: `${title(k.nm)} Fire ~${dist.toFixed(dist < 10 ? 1 : 0)} mi ${dir} of us`,
-      text: `🔥 *${title(k.nm)} Fire* — about ${Math.round(k.acres).toLocaleString()} acres, ~${dist.toFixed(dist < 10 ? 1 : 0)} mi ${dir} of Tesoro Highlands.\nNot an evacuation notice — stay aware, keep phones charged, check your go-bag.\nLive map & evacuation status: ${SITE}/fire` });
+    // acres changes the sig, so the message re-composes with CURRENT numbers.
+    const tier = acres >= 1000 ? 4 : acres >= 250 ? 3 : acres >= 100 ? 2 : acres >= 50 ? 1 : 0;
+    // A caution-tier fire ranks BELOW a real evacuation order near us (prio 60):
+    // someone 8 miles away being ordered out matters more than distant flames.
+    out.push(level === "danger"
+      ? { id: `fire:${k.norm}:t${tier}`, prio: 70, level,
+          title: `${title(k.nm)} Fire ~${dTxt} mi ${dir} of us`,
+          text: `🔥 *${title(k.nm)} Fire* — about ${Math.round(acres).toLocaleString()} acres, ~${dTxt} mi ${dir} of Tesoro Highlands (straight-line).\nNot an evacuation notice — stay aware, keep phones charged, check your go-bag.\nLive map & evacuation status: ${SITE}/fire` }
+      : { id: `fire:${k.norm}:t${tier}`, prio: 58, level,
+          title: `${title(k.nm)} Fire ~${dTxt} mi ${dir} of us`,
+          text: `🔥 *${title(k.nm)} Fire* — about ${Math.round(acres).toLocaleString()} acres, ~${dTxt} mi ${dir} of Tesoro Highlands (straight-line — farther by road).\nNot close, and no evacuation activity for our area — sharing for awareness only.\nLive map & status: ${SITE}/fire` });
   }
   return out;
 }

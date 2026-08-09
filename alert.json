@@ -1,13 +1,12 @@
 {
   "active": true,
-  "sig": "fire:HOLSER:t2|order-near:US-CA-XLA-SCL-ETERNAL|order-near:US-CA-XLA-SCL-WILDWOOD",
-  "level": "danger",
-  "title": "Holser Fire ~11 mi west-southwest of us",
-  "text": "🔥 Holser Fire — about 167 acres, ~11 mi west-southwest of Tesoro Highlands.\nNot an evacuation notice — stay aware, keep phones charged, check your go-bag.\nLive map & evacuation status: https://tesorohighlands.com/fire",
-  "waText": "🔥 *Holser Fire* — about 167 acres, ~11 mi west-southwest of Tesoro Highlands.\nNot an evacuation notice — stay aware, keep phones charged, check your go-bag.\nLive map & evacuation status: https://tesorohighlands.com/fire",
+  "sig": "order-near:US-CA-XLA-SCL-ETERNAL|order-near:US-CA-XLA-SCL-WILDWOOD",
+  "level": "caution",
+  "title": "Evacuation order ~9 mi south of us",
+  "text": "⚠️ Evacuation ORDER ~9 mi south of us — not our zone, but close. Worth knowing tonight.\nLive map: https://tesorohighlands.com/fire",
+  "waText": "⚠️ *Evacuation ORDER ~9 mi south of us* — not our zone, but close. Worth knowing tonight.\nLive map: https://tesorohighlands.com/fire",
   "others": [
-    "Evacuation order ~9 mi south of us",
     "Evacuation order ~8 mi south of us"
   ],
-  "updatedAt": "2026-08-09T01:51:08.295Z"
+  "updatedAt": "2026-08-09T02:01:39.822Z"
 }

@@ -83,7 +83,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v5";  // v5: fire dedupe parity — keep in step with the nav.js?v=N bump
+  var CACHE_KEY = "tesoro.status.v6";  // v6: calibrated fire tone — keep in step with the nav.js?v=N bump
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -197,7 +197,10 @@
         }).sort(function (a, b) { return a.d - b.d; });
         if (fires[0] && fires[0].d <= 15) {
           var nm = String(fires[0].name || "").toLowerCase().replace(/\b[a-z]/g, function (m) { return m.toUpperCase(); });
-          say(70, 1, nm + " Fire ~" + fires[0].d.toFixed(0) + " mi away — stay aware.");
+          // Tone matches distance: close = stay aware; farther = calm awareness.
+          // (Distances are straight-line, which reads shorter than driving miles.)
+          if (fires[0].d <= 8) say(70, 1, nm + " Fire ~" + fires[0].d.toFixed(0) + " mi away — stay aware.");
+          else say(70, 1, nm + " Fire burning ~" + fires[0].d.toFixed(0) + " mi out — no action needed for us, keeping watch.");
         }
       }).catch(function () {}),
       fetch("https://services.arcgis.com/BLN4oKB0N1YSgvY8/arcgis/rest/services/CA_EVACUATIONS_CalOESHosted_view/FeatureServer/0/query?where=1%3D1&geometry=" + (L.lon - 0.35) + "," + (L.lat - 0.35) + "," + (L.lon + 0.35) + "," + (L.lat + 0.35) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=STATUS,NOTES&returnGeometry=true&outSR=4326&f=json").then(function (r) { return r.json(); }).then(function (ev) {

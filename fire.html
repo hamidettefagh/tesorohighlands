@@ -351,7 +351,7 @@
   <div class="sechead" id="fires" style="margin-top:16px"><h2>Nearby fire activity</h2><div class="line"></div></div>
   <div class="card" id="fireCard" style="margin-top:8px">
     <details class="how"><summary>How this list works</summary>
-      <div class="q">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Acreage and containment come from <b>CAL FIRE</b> where they have the incident (small local fires often never get sized — the 🛰️ chip shows whether a <b>NASA satellite</b> actually detected heat there in the last 24 hours). Fire names link to the official CAL FIRE page when there is one.</div>
+      <div class="q">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Acreage and containment come from <b>CAL FIRE</b> where they have the incident (small local fires often never get sized — the 🛰️ chip shows whether a <b>NASA satellite</b> actually detected heat there in the last 24 hours). <b>Distances are straight-line</b> ("as the crow flies") — the way smoke and embers travel — so they read shorter than driving miles. Fire names link to the official CAL FIRE page when there is one.</div>
     </details>
     <div id="fireList"></div>
   </div>
@@ -1419,7 +1419,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=5" defer></script>
+<script src="/nav.js?v=6" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>
