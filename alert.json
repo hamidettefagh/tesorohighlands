@@ -1,12 +1,5 @@
 {
-  "active": true,
-  "sig": "order-near:US-CA-XLA-SCL-ETERNAL|order-near:US-CA-XLA-SCL-WILDWOOD",
-  "level": "caution",
-  "title": "Evacuation order ~9 mi south of us",
-  "text": "⚠️ Evacuation ORDER ~9 mi south of us — not our zone, but close. Worth knowing tonight.\nLive map: https://tesorohighlands.com/fire",
-  "waText": "⚠️ *Evacuation ORDER ~9 mi south of us* — not our zone, but close. Worth knowing tonight.\nLive map: https://tesorohighlands.com/fire",
-  "others": [
-    "Evacuation order ~8 mi south of us"
-  ],
-  "updatedAt": "2026-08-09T02:01:39.822Z"
+  "active": false,
+  "sig": "",
+  "updatedAt": "2026-08-09T04:42:08.813Z"
 }
