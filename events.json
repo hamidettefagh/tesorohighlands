@@ -1,43 +1,7 @@
 {
-  "generatedAt": "2026-08-10T09:47:36.816Z",
+  "generatedAt": "2026-08-11T09:13:15.697Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-08-10T00:00",
-      "dates": [
-        "2026-08-10T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "Open Mic Night",
-      "url": "https://calendar.santaclarita.gov/event/open-mic-night-1459",
-      "start": "2026-08-10T19:00",
-      "dates": [
-        "2026-08-10T19:00"
-      ],
-      "repeats": 0,
-      "venue": "LOCK HOUSE ESCAPE ROOM",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-06T10:48:32.578Z"
-    },
     {
       "title": "Trivia Nights",
       "url": "https://calendar.santaclarita.gov/event/trivia-nights",
@@ -770,6 +734,42 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-08-10T09:47:36.816Z"
+    },
+    {
+      "title": "Objectively Speaking: A Fine Art Exhibition",
+      "url": "https://calendar.santaclarita.gov/event/objectively-speaking-a-fine-art-exhibition",
+      "start": "2026-08-16T11:00",
+      "dates": [
+        "2026-08-16T11:00"
+      ],
+      "repeats": 0,
+      "venue": "SCAA Gallery",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Community Art Day",
+      "url": "https://calendar.santaclarita.gov/event/community-art-day",
+      "start": "2026-08-16T12:00",
+      "dates": [
+        "2026-08-16T12:00"
+      ],
+      "repeats": 0,
+      "venue": "Lock House Escape Room",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-11T09:13:15.696Z"
     },
     {
       "title": "Silent Book Club",
