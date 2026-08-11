@@ -1,21 +1,7 @@
 {
-  "generatedAt": "2026-08-11T02:26:59.134Z",
+  "generatedAt": "2026-08-11T05:28:22.913Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786413660,
-      "endEpoch": 1786453140,
-      "moreWindows": 22
-    },
     {
       "route": "I-5",
       "dir": "North",
@@ -60,31 +46,17 @@
     },
     {
       "route": "I-5",
-      "dir": "South",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786413660,
-      "endEpoch": 1786453140,
-      "moreWindows": 35
-    },
-    {
-      "route": "I-5",
       "dir": "North",
       "at": "Golden State Freeway, Route 5",
-      "place": "Newhall",
+      "place": "Valencia",
       "facility": "Off Ramp",
       "type": "Full",
-      "work": "Road Survey",
+      "work": "Road Maintenance",
       "lanes": "All",
       "total": "1",
       "startEpoch": 1786413660,
       "endEpoch": 1786453140,
-      "moreWindows": 83
+      "moreWindows": 77
     },
     {
       "route": "I-5",
@@ -118,29 +90,29 @@
       "route": "I-5",
       "dir": "South",
       "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
+      "place": "Stevenson Ranch",
       "facility": "Off Ramp",
       "type": "Full",
-      "work": "Roadway Excavation",
+      "work": "Shoulder Reconstruction",
       "lanes": "All",
       "total": "1",
       "startEpoch": 1786413660,
       "endEpoch": 1786453140,
-      "moreWindows": 73
+      "moreWindows": 70
     },
     {
       "route": "I-5",
       "dir": "North",
-      "at": "Weldon Canyon",
-      "place": "Granada Hills",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
       "facility": "Mainline",
       "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4, 5",
-      "total": "5",
+      "work": "Sawcutting Operation",
+      "lanes": "4",
+      "total": "4",
       "startEpoch": 1786417260,
       "endEpoch": 1786453140,
-      "moreWindows": 12
+      "moreWindows": 20
     },
     {
       "route": "I-5",
@@ -154,7 +126,7 @@
       "total": "4",
       "startEpoch": 1786417260,
       "endEpoch": 1786453140,
-      "moreWindows": 22
+      "moreWindows": 20
     },
     {
       "route": "I-5",
@@ -169,6 +141,34 @@
       "startEpoch": 1786417260,
       "endEpoch": 1786453140,
       "moreWindows": 5
+    },
+    {
+      "route": "SR-14",
+      "dir": "North",
+      "at": "Newhall Ave",
+      "place": "Newhall",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Landscape Work",
+      "lanes": "All",
+      "total": "2",
+      "startEpoch": 1786417260,
+      "endEpoch": 1786449540,
+      "moreWindows": 4
+    },
+    {
+      "route": "SR-14",
+      "dir": "North",
+      "at": "Newhall",
+      "place": "Newhall",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Landscape Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1786417260,
+      "endEpoch": 1786449540,
+      "moreWindows": 4
     }
   ]
 }
