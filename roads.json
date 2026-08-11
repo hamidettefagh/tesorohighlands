@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T21:01:35.304Z",
+  "generatedAt": "2026-08-11T02:26:59.134Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -12,23 +12,9 @@
       "work": "Sawcutting Operation",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786366860,
-      "endEpoch": 1786399140,
-      "moreWindows": 23
-    },
-    {
-      "route": "SR-14",
-      "dir": "South",
-      "at": "Placerita Canyon Rd",
-      "place": "Newhall",
-      "facility": "Conventional Hwy",
-      "type": "Lane",
-      "work": "Electrical Work",
-      "lanes": "2",
-      "total": "2",
-      "startEpoch": 1786377660,
-      "endEpoch": 1786399260,
-      "moreWindows": 1
+      "startEpoch": 1786413660,
+      "endEpoch": 1786453140,
+      "moreWindows": 22
     },
     {
       "route": "I-5",
@@ -57,20 +43,6 @@
       "startEpoch": 1786413660,
       "endEpoch": 1786453140,
       "moreWindows": 23
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Lyons Ave",
-      "place": "Stevenson Ranch",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786413660,
-      "endEpoch": 1786453140,
-      "moreWindows": 43
     },
     {
       "route": "I-5",
@@ -89,20 +61,6 @@
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Parker Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "3, 4",
-      "total": "4",
-      "startEpoch": 1786413660,
-      "endEpoch": 1786453140,
-      "moreWindows": 15
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
       "at": "Hasley Canyon Rd",
       "place": "Castaic",
       "facility": "On Ramp",
@@ -112,21 +70,7 @@
       "total": "1",
       "startEpoch": 1786413660,
       "endEpoch": 1786453140,
-      "moreWindows": 36
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Shoulder Reconstruction",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786413660,
-      "endEpoch": 1786453140,
-      "moreWindows": 22
+      "moreWindows": 35
     },
     {
       "route": "I-5",
@@ -140,7 +84,7 @@
       "total": "1",
       "startEpoch": 1786413660,
       "endEpoch": 1786453140,
-      "moreWindows": 84
+      "moreWindows": 83
     },
     {
       "route": "I-5",
@@ -154,7 +98,7 @@
       "total": "1",
       "startEpoch": 1786413660,
       "endEpoch": 1786453140,
-      "moreWindows": 21
+      "moreWindows": 20
     },
     {
       "route": "I-5",
@@ -169,6 +113,62 @@
       "startEpoch": 1786413660,
       "endEpoch": 1786453140,
       "moreWindows": 4
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Valencia",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1786413660,
+      "endEpoch": 1786453140,
+      "moreWindows": 73
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Weldon Canyon",
+      "place": "Granada Hills",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4, 5",
+      "total": "5",
+      "startEpoch": 1786417260,
+      "endEpoch": 1786453140,
+      "moreWindows": 12
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Lyons Ave",
+      "place": "Newhall",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1786417260,
+      "endEpoch": 1786453140,
+      "moreWindows": 22
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Valencia Blvd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1786417260,
+      "endEpoch": 1786453140,
+      "moreWindows": 5
     }
   ]
 }
