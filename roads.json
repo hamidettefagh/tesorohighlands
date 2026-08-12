@@ -1,21 +1,7 @@
 {
-  "generatedAt": "2026-08-12T17:11:38.147Z",
+  "generatedAt": "2026-08-12T21:02:57.098Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786539660,
-      "endEpoch": 1786571940,
-      "moreWindows": 15
-    },
     {
       "route": "I-5",
       "dir": "North",
@@ -28,7 +14,21 @@
       "total": "4",
       "startEpoch": 1786539660,
       "endEpoch": 1786571940,
-      "moreWindows": 20
+      "moreWindows": 24
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Sawcutting Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1786586460,
+      "endEpoch": 1786625940,
+      "moreWindows": 14
     },
     {
       "route": "I-5",
@@ -126,7 +126,7 @@
       "total": "1",
       "startEpoch": 1786586460,
       "endEpoch": 1786625940,
-      "moreWindows": 58
+      "moreWindows": 60
     },
     {
       "route": "I-5",
@@ -168,7 +168,7 @@
       "total": "2",
       "startEpoch": 1786586460,
       "endEpoch": 1786625940,
-      "moreWindows": 50
+      "moreWindows": 51
     }
   ]
 }
