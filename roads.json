@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T13:45:41.424Z",
+  "generatedAt": "2026-08-12T17:11:38.147Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -32,20 +32,6 @@
     },
     {
       "route": "I-5",
-      "dir": "South",
-      "at": "Parker Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1786539660,
-      "endEpoch": 1786571940,
-      "moreWindows": 10
-    },
-    {
-      "route": "I-5",
       "dir": "North",
       "at": "Magic Mountain Parkway, Route 126",
       "place": "Valencia",
@@ -54,9 +40,9 @@
       "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786550460,
-      "endEpoch": 1786571940,
-      "moreWindows": 16
+      "startEpoch": 1786586460,
+      "endEpoch": 1786625940,
+      "moreWindows": 15
     },
     {
       "route": "I-5",
@@ -68,9 +54,9 @@
       "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786550460,
-      "endEpoch": 1786571940,
-      "moreWindows": 20
+      "startEpoch": 1786586460,
+      "endEpoch": 1786625940,
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -82,9 +68,23 @@
       "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786550460,
-      "endEpoch": 1786571940,
-      "moreWindows": 31
+      "startEpoch": 1786586460,
+      "endEpoch": 1786625940,
+      "moreWindows": 29
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Parker Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "3, 4",
+      "total": "4",
+      "startEpoch": 1786586460,
+      "endEpoch": 1786625940,
+      "moreWindows": 9
     },
     {
       "route": "I-5",
@@ -96,9 +96,9 @@
       "work": "Roadway Excavation",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786550460,
-      "endEpoch": 1786571940,
-      "moreWindows": 28
+      "startEpoch": 1786586460,
+      "endEpoch": 1786625940,
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -110,9 +110,9 @@
       "work": "Shoulder Reconstruction",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786550460,
-      "endEpoch": 1786571940,
-      "moreWindows": 15
+      "startEpoch": 1786586460,
+      "endEpoch": 1786625940,
+      "moreWindows": 14
     },
     {
       "route": "I-5",
@@ -124,9 +124,9 @@
       "work": "Road Survey",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786550460,
-      "endEpoch": 1786571940,
-      "moreWindows": 63
+      "startEpoch": 1786586460,
+      "endEpoch": 1786625940,
+      "moreWindows": 58
     },
     {
       "route": "I-5",
@@ -138,9 +138,23 @@
       "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786550460,
-      "endEpoch": 1786571940,
-      "moreWindows": 15
+      "startEpoch": 1786586460,
+      "endEpoch": 1786625940,
+      "moreWindows": 13
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Truck Weigh Station",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1786586460,
+      "endEpoch": 1786625940,
+      "moreWindows": 3
     },
     {
       "route": "I-5",
@@ -152,23 +166,9 @@
       "work": "Roadway Excavation",
       "lanes": "All",
       "total": "2",
-      "startEpoch": 1786550460,
-      "endEpoch": 1786571940,
-      "moreWindows": 55
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786550460,
-      "endEpoch": 1786571940,
-      "moreWindows": 7
+      "startEpoch": 1786586460,
+      "endEpoch": 1786625940,
+      "moreWindows": 50
     }
   ]
 }
