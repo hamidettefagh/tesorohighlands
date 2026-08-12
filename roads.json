@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T05:45:35.594Z",
+  "generatedAt": "2026-08-12T09:31:47.876Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -15,20 +15,6 @@
       "startEpoch": 1786500060,
       "endEpoch": 1786539540,
       "moreWindows": 16
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Magic Mountain Parkway, Route 126",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786500060,
-      "endEpoch": 1786539540,
-      "moreWindows": 23
     },
     {
       "route": "I-5",
@@ -89,20 +75,6 @@
     {
       "route": "I-5",
       "dir": "North",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786500060,
-      "endEpoch": 1786539540,
-      "moreWindows": 16
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
       "at": "Hasley Canyon Rd",
       "place": "Castaic",
       "facility": "Mainline",
@@ -112,7 +84,7 @@
       "total": "4",
       "startEpoch": 1786500060,
       "endEpoch": 1786539540,
-      "moreWindows": 33
+      "moreWindows": 31
     },
     {
       "route": "SR-14",
@@ -159,16 +131,44 @@
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Valencia Blvd",
+      "at": "Magic Mountain Parkway, Route 126",
       "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4",
+      "total": "4",
       "startEpoch": 1786503660,
       "endEpoch": 1786539540,
-      "moreWindows": 4
+      "moreWindows": 21
+    },
+    {
+      "route": "SR-14",
+      "dir": "North",
+      "at": "Newhall Ave",
+      "place": "Newhall",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Landscape Work",
+      "lanes": "All",
+      "total": "2",
+      "startEpoch": 1786503660,
+      "endEpoch": 1786535940,
+      "moreWindows": 3
+    },
+    {
+      "route": "SR-14",
+      "dir": "North",
+      "at": "Newhall",
+      "place": "Newhall",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Landscape Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1786503660,
+      "endEpoch": 1786535940,
+      "moreWindows": 3
     }
   ]
 }
