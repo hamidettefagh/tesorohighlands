@@ -1,332 +1,204 @@
 {
-  "generatedAt": "2026-08-12T14:34:17.780Z",
+  "generatedAt": "2026-08-13T14:35:18.578Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/canyon-country/",
-      "start": "2026-08-12T16:00",
-      "venue": "Canyon Country Community Center (18410 Sierra Highway)",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-16T08:30",
-      "venue": "Valencia FivePoint Community (27426 Navigation Ave)",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
       "title": "Old Town Newhall Farmers Market",
       "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-08-16T08:30",
-      "venue": "Old Town Newhall Library parking lot (22520 Lyons Ave)",
+      "start": "2026-08-13T08:30",
+      "venue": "Old Town Newhall Library parking lot",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/canyon-country/",
-      "start": "2026-08-19T16:00",
-      "venue": "Canyon Country Community Center (18410 Sierra Highway)",
-      "city": "Canyon Country",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-08-20T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Out on the Mountain - Pride Event at Six Flags Magic Mountain",
+      "title": "SENSES Block Party: Time Machine",
+      "url": "https://santaclarita.gov/blog/2026/03/14/senses-block-party/",
+      "start": "2026-08-20T19:00",
+      "venue": "Main Street between Market and Sixth Street",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Out on The Mountain - LGBTQ Pride Event",
       "url": "https://www.sixflags.com/magicmountain/events",
       "start": "2026-08-21",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": null,
+      "price": "Park admission required",
       "audience": [
-        "adults",
-        "teens"
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "Six Flags Magic Mountain"
-    },
-    {
-      "title": "You Got Older at The MAIN",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-08-21",
-      "venue": "The MAIN Theatre",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults",
-        "teens"
-      ],
-      "source": "Web (AI)",
-      "via": "The MAIN"
     },
     {
       "title": "Concerts in the Park: Elton John Tribute",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-22T19:00",
-      "venue": "Central Park Fields 7 and 8",
+      "venue": "Central Park",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-23T08:30",
-      "venue": "Valencia FivePoint Community (27426 Navigation Ave)",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-08-23T08:30",
-      "venue": "Old Town Newhall Library parking lot (22520 Lyons Ave)",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/canyon-country/",
-      "start": "2026-08-26T16:00",
-      "venue": "Canyon Country Community Center (18410 Sierra Highway)",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Concerts in the Park: Police Tribute",
-      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
-      "start": "2026-08-29T19:00",
-      "venue": "Central Park Fields 7 and 8",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-08-30T08:30",
-      "venue": "Valencia FivePoint Community (27426 Navigation Ave)",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-08-30T08:30",
-      "venue": "Old Town Newhall Library parking lot (22520 Lyons Ave)",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/canyon-country/",
-      "start": "2026-09-02T16:00",
-      "venue": "Canyon Country Community Center (18410 Sierra Highway)",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "10 by 10 Variety Show at The MAIN",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-09-03",
-      "venue": "The MAIN Theatre",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
       "audience": [
         "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "The MAIN"
+      "via": "City of Santa Clarita"
     },
     {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-09-06T08:30",
-      "venue": "Valencia FivePoint Community (27426 Navigation Ave)",
-      "city": "Valencia",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-08-27T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/canyon-country/",
-      "start": "2026-09-09T16:00",
-      "venue": "Canyon Country Community Center (18410 Sierra Highway)",
-      "city": "Canyon Country",
+      "title": "Concerts in the Park: Police Tribute",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-29T19:00",
+      "venue": "Central Park",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "City of Santa Clarita"
     },
     {
-      "title": "Change the Station at The MAIN",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-03T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "10 by 10 Variety Show",
       "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-09-11",
+      "start": "2026-09-03T20:00",
       "venue": "The MAIN Theatre",
       "city": "Newhall",
-      "free": false,
-      "price": null,
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN Newhall"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-10T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-17T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "SENSES Block Party: Oktoberfest",
+      "url": "https://santaclarita.gov/blog/2026/03/14/senses-block-party/",
+      "start": "2026-09-17T19:00",
+      "venue": "Main Street between Market and Sixth Street",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
       "audience": [
         "adults",
         "teens"
       ],
       "source": "Web (AI)",
-      "via": "The MAIN"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-12T08:30",
-      "venue": "Old Town Newhall Library parking lot (22520 Lyons Ave)",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-09-13T08:30",
-      "venue": "Valencia FivePoint Community (27426 Navigation Ave)",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/canyon-country/",
-      "start": "2026-09-16T16:00",
-      "venue": "Canyon Country Community Center (18410 Sierra Highway)",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "City of Santa Clarita"
     },
     {
       "title": "Fright Fest presented by SNICKERS",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "url": "https://www.sixflags.com/magicmountain/events",
       "start": "2026-09-18",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": null,
+      "price": "Park admission + separate maze pass",
       "audience": [
         "kids",
         "teens",
@@ -338,47 +210,18 @@
     {
       "title": "Old Town Newhall Farmers Market",
       "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-19T08:30",
-      "venue": "Old Town Newhall Library parking lot (22520 Lyons Ave)",
+      "start": "2026-09-24T08:30",
+      "venue": "Old Town Newhall Library parking lot",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-09-20T08:30",
-      "venue": "Valencia FivePoint Community (27426 Navigation Ave)",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/canyon-country/",
-      "start": "2026-09-23T16:00",
-      "venue": "Canyon Country Community Center (18410 Sierra Highway)",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Old Town Newhall"
     }
   ]
 }
