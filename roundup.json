@@ -1,63 +1,72 @@
 {
-  "generatedAt": "2026-08-07T16:13:36.895Z",
-  "weekendOf": "2026-08-07",
+  "generatedAt": "2026-08-14T16:11:09.081Z",
+  "weekendOf": "2026-08-14",
   "model": "claude-haiku-4-5",
-  "intro": "Great weekend ahead—live music, family shows, farmers markets, and more in Santa Clarita.",
+  "intro": "Fun stuff happening this weekend in Tesoro Highlands and nearby.",
   "picks": [
     {
-      "emoji": "🥕",
+      "emoji": "🌽",
       "day": "Sat",
       "time": "8:30 AM",
-      "title": "Newhall Farmers Market",
+      "title": "Newhall Certified Farmers Market",
       "price": "free",
-      "note": "Fresh local produce, kids love exploring the market stalls.",
-      "url": "https://santaclarita.gov/arts-and-culture/events/"
+      "note": "Fresh local produce and community vibes Saturday morning.",
+      "url": "https://www.scvfarmersmarkets.com/"
+    },
+    {
+      "emoji": "🎨",
+      "day": "Sat",
+      "time": "10 AM",
+      "title": "Children's America250 Activity",
+      "price": "free",
+      "note": "Free activity for the kids at the library.",
+      "url": "https://santaclarita.librarycalendar.com/event/childrens-america250-activity-37737"
+    },
+    {
+      "emoji": "🦙",
+      "day": "Sun",
+      "time": "",
+      "title": "Visit The Gentle Barn",
+      "price": "from $15",
+      "note": "Farm animals and outdoor fun for families.",
+      "url": "https://calendar.santaclarita.gov/event/visit_the_gentle_barn_5048"
     },
     {
       "emoji": "🎵",
+      "day": "Fri",
+      "time": "6 PM",
+      "title": "Live Music at Lucky Luke Brewing",
+      "price": "",
+      "note": "Local brewery, live music on Friday night.",
+      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing"
+    },
+    {
+      "emoji": "🎸",
       "day": "Sat",
       "time": "7 PM",
-      "title": "Concerts in the Park - Blue Breeze Band",
-      "price": "free",
-      "note": "Free outdoor concert with family-friendly soul and R&B vibes.",
-      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/"
-    },
-    {
-      "emoji": "⚡",
-      "day": "Sat",
-      "time": "2 PM",
-      "title": "The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild",
+      "title": "Concerts in the Park, presented by Logix Federal Credit Union: Paramore and Panic! at the Disco Tribute",
       "price": "",
-      "note": "Percy Jackson comes to life—perfect for kids and families.",
-      "url": "https://calendar.santaclarita.gov/event/the-lightning-thief-the-percy-jackson-musical-at-canyon-theatre-guild"
+      "note": "Tribute bands at Central Park Saturday evening.",
+      "url": "https://calendar.santaclarita.gov/event/concerts-in-the-park-presented-by-logix-federal-credit-union-7497"
     },
     {
-      "emoji": "🏍️",
-      "day": "Sat",
-      "time": "9 AM",
-      "title": "Motorcycles and Coffee",
+      "emoji": "🎭",
+      "day": "Sun",
+      "time": "12 PM",
+      "title": "Community Art Day",
       "price": "free",
-      "note": "Coffee and motorcycles—casual fun for adults and gear enthusiasts.",
-      "url": "https://calendar.santaclarita.gov/event/motorcycles-and-coffee"
+      "note": "Free community art day for all ages.",
+      "url": "https://calendar.santaclarita.gov/event/community-art-day"
     },
     {
-      "emoji": "😂",
-      "day": "Sat",
-      "time": "8 PM",
-      "title": "Punchlines At The MAIN",
-      "price": "$19.07–$24.34",
-      "note": "Standup comedy at The MAIN for a solid Saturday night.",
-      "url": "https://www.eventbrite.com/e/punchlines-at-the-main-tickets-1983127905951"
-    },
-    {
-      "emoji": "❄️",
-      "day": "Sat",
-      "time": "7 PM",
-      "title": "Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center",
-      "price": "",
-      "note": "Broadway magic: Frozen is a must-see for the whole family.",
-      "url": "https://calendar.santaclarita.gov/event/disneys-frozen-the-broadway-musical-at-the-santa-clarita-performing-arts-center"
+      "emoji": "📚",
+      "day": "Sun",
+      "time": "2:30 PM",
+      "title": "Silent Book Club",
+      "price": "free",
+      "note": "Quiet reading for adults looking to unwind.",
+      "url": "https://santaclarita.librarycalendar.com/event/hold-adult-silent-book-club-23814"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nGreat weekend ahead—live music, family shows, farmers markets, and more in Santa Clarita.\n\n🥕 *Sat 8:30 AM* — Newhall Farmers Market (free)\n   Fresh local produce, kids love exploring the market stalls.\n🎵 *Sat 7 PM* — Concerts in the Park - Blue Breeze Band (free)\n   Free outdoor concert with family-friendly soul and R&B vibes.\n⚡ *Sat 2 PM* — The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild\n   Percy Jackson comes to life—perfect for kids and families.\n🏍️ *Sat 9 AM* — Motorcycles and Coffee (free)\n   Coffee and motorcycles—casual fun for adults and gear enthusiasts.\n😂 *Sat 8 PM* — Punchlines At The MAIN ($19.07–$24.34)\n   Standup comedy at The MAIN for a solid Saturday night.\n❄️ *Sat 7 PM* — Disney's Frozen - The Broadway Musical at the Santa Clarita Performing Arts Center\n   Broadway magic: Frozen is a must-see for the whole family.\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nFun stuff happening this weekend in Tesoro Highlands and nearby.\n\n🌽 *Sat 8:30 AM* — Newhall Certified Farmers Market (free)\n   Fresh local produce and community vibes Saturday morning.\n🎨 *Sat 10 AM* — Children's America250 Activity (free)\n   Free activity for the kids at the library.\n🦙 *Sun* — Visit The Gentle Barn (from $15)\n   Farm animals and outdoor fun for families.\n🎵 *Fri 6 PM* — Live Music at Lucky Luke Brewing\n   Local brewery, live music on Friday night.\n🎸 *Sat 7 PM* — Concerts in the Park, presented by Logix Federal Credit Union: Paramore and Panic! at the Disco Tribute\n   Tribute bands at Central Park Saturday evening.\n🎭 *Sun 12 PM* — Community Art Day (free)\n   Free community art day for all ages.\n📚 *Sun 2:30 PM* — Silent Book Club (free)\n   Quiet reading for adults looking to unwind.\n\nFull list → https://tesorohighlands.com/events"
 }
