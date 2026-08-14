@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T09:19:49.014Z",
+  "generatedAt": "2026-08-14T20:44:41.777Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -169,6 +169,24 @@
       ],
       "repeats": 14,
       "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Summerween at Bivium Wine Tasting Room",
+      "url": "https://calendar.santaclarita.gov/event/summerween-at-bivium-wine-tasting-room",
+      "start": "2026-08-14T16:00",
+      "dates": [
+        "2026-08-14T16:00"
+      ],
+      "repeats": 0,
+      "venue": "Bivium Wine Tasting Room",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-14T20:44:41.776Z"
     },
     {
       "title": "Objectively Speaking: A Fine Art Exhibition",
@@ -444,6 +462,24 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-08-10T09:47:36.816Z"
+    },
+    {
+      "title": "Kindred Saturdays at Kindred Spirits Wine Bar",
+      "url": "https://calendar.santaclarita.gov/event/kindred-saturdays-at-kindred-spirits-wine-bar",
+      "start": "2026-08-15T19:00",
+      "dates": [
+        "2026-08-15T19:00"
+      ],
+      "repeats": 0,
+      "venue": "Kindred Spirits Wine Bar",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-14T20:44:41.776Z"
     },
     {
       "title": "The Dresser presented by The Tavern Brawlers",
@@ -733,24 +769,6 @@
       "added": "2026-08-14T09:19:49.013Z"
     },
     {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-08-19T00:00",
-      "dates": [
-        "2026-08-19T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
       "title": "Bella Vida Book Club",
       "url": "https://santaclarita.librarycalendar.com/event/bella-vida-book-club-27161",
       "start": "2026-08-19T10:30",
@@ -804,24 +822,6 @@
         "2026-08-19T15:30"
       ],
       "added": "2026-07-30T10:33:42.966Z"
-    },
-    {
-      "title": "Business After Hours Mixer at Olive Branch Theatricals",
-      "url": "https://calendar.santaclarita.gov/event/business-after-hours-mixer-at-olive-branch-theatricals",
-      "start": "2026-08-19T17:30",
-      "dates": [
-        "2026-08-19T17:30"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "Members: $15.00 & Non-Members: $30.00",
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-14T09:19:49.013Z"
     },
     {
       "title": "Books and Brews",

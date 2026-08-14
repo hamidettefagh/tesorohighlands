@@ -1,21 +1,7 @@
 {
-  "generatedAt": "2026-08-14T17:10:37.344Z",
+  "generatedAt": "2026-08-14T20:44:47.008Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786712460,
-      "endEpoch": 1786744740,
-      "moreWindows": 16
-    },
     {
       "route": "I-5",
       "dir": "North",
@@ -28,21 +14,21 @@
       "total": "4",
       "startEpoch": 1786712460,
       "endEpoch": 1786744740,
-      "moreWindows": 30
+      "moreWindows": 29
     },
     {
       "route": "I-5",
-      "dir": "South",
-      "at": "Parker Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1786712460,
-      "endEpoch": 1786744740,
-      "moreWindows": 17
+      "dir": "North",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Sawcutting Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1786759260,
+      "endEpoch": 1786798740,
+      "moreWindows": 15
     },
     {
       "route": "I-5",
@@ -54,9 +40,9 @@
       "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786723260,
-      "endEpoch": 1786744740,
-      "moreWindows": 25
+      "startEpoch": 1786759260,
+      "endEpoch": 1786805940,
+      "moreWindows": 24
     },
     {
       "route": "I-5",
@@ -68,9 +54,9 @@
       "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786723260,
-      "endEpoch": 1786744740,
-      "moreWindows": 22
+      "startEpoch": 1786759260,
+      "endEpoch": 1786798740,
+      "moreWindows": 21
     },
     {
       "route": "I-5",
@@ -82,9 +68,23 @@
       "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786723260,
-      "endEpoch": 1786744740,
-      "moreWindows": 44
+      "startEpoch": 1786759260,
+      "endEpoch": 1786798740,
+      "moreWindows": 42
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Parker Rd",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1786759260,
+      "endEpoch": 1786798740,
+      "moreWindows": 16
     },
     {
       "route": "I-5",
@@ -96,9 +96,9 @@
       "work": "Roadway Excavation",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786723260,
-      "endEpoch": 1786744740,
-      "moreWindows": 33
+      "startEpoch": 1786759260,
+      "endEpoch": 1786798740,
+      "moreWindows": 31
     },
     {
       "route": "I-5",
@@ -110,9 +110,9 @@
       "work": "Shoulder Reconstruction",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786723260,
-      "endEpoch": 1786744740,
-      "moreWindows": 24
+      "startEpoch": 1786759260,
+      "endEpoch": 1786798740,
+      "moreWindows": 23
     },
     {
       "route": "I-5",
@@ -124,9 +124,9 @@
       "work": "Road Survey",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786723260,
-      "endEpoch": 1786744740,
-      "moreWindows": 82
+      "startEpoch": 1786759260,
+      "endEpoch": 1786798740,
+      "moreWindows": 76
     },
     {
       "route": "I-5",
@@ -138,9 +138,23 @@
       "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786723260,
-      "endEpoch": 1786744740,
-      "moreWindows": 20
+      "startEpoch": 1786759260,
+      "endEpoch": 1786798740,
+      "moreWindows": 18
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Truck Weigh Station",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1786759260,
+      "endEpoch": 1786798740,
+      "moreWindows": 5
     },
     {
       "route": "I-5",
@@ -152,23 +166,9 @@
       "work": "Roadway Excavation",
       "lanes": "All",
       "total": "2",
-      "startEpoch": 1786723260,
-      "endEpoch": 1786744740,
-      "moreWindows": 94
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786723260,
-      "endEpoch": 1786744740,
-      "moreWindows": 12
+      "startEpoch": 1786759260,
+      "endEpoch": 1786798740,
+      "moreWindows": 89
     }
   ]
 }
