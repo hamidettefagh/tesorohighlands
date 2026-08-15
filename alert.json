@@ -1,5 +1,10 @@
 {
-  "active": false,
-  "sig": "",
-  "updatedAt": "2026-08-09T04:42:08.813Z"
+  "active": true,
+  "sig": "outage:SCE 136432108",
+  "level": "caution",
+  "title": "Large SCE outage ~7 mi south of us",
+  "text": "⚡ Large power outage — ~2,001 customers, ~7 mi south of Tesoro Highlands (Analyzing Problem).\nOutage map: sce.com/outages\nLive info: https://tesorohighlands.com/fire",
+  "waText": "⚡ *Large power outage* — ~2,001 customers, ~7 mi south of Tesoro Highlands (Analyzing Problem).\nOutage map: sce.com/outages\nLive info: https://tesorohighlands.com/fire",
+  "others": [],
+  "updatedAt": "2026-08-15T21:41:42.125Z"
 }
