@@ -1,13 +1,27 @@
 {
-  "generatedAt": "2026-08-14T14:28:46.682Z",
+  "generatedAt": "2026-08-15T13:46:59.424Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Newhall Certified Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-08-15T08:30",
-      "venue": "Old Town Newhall Library",
+      "title": "The Dresser",
+      "url": "https://atthemain.org/productions/",
+      "start": "2026-08-16",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-08-16",
+      "venue": "Old Town Newhall",
       "city": "Newhall",
       "free": true,
       "price": "Free",
@@ -15,40 +29,26 @@
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-08-16T08:30",
-      "venue": "Valencia FivePoint Community",
-      "city": "Valencia",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-17T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-08-18T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "VCCFM"
     },
     {
       "title": "SENSES Block Party: Time Machine",
       "url": "https://oldtownnewhall.com/senses-block-party/",
-      "start": "2026-08-20",
+      "start": "2026-08-20T19:00",
       "venue": "Main Street",
       "city": "Newhall",
       "free": true,
@@ -60,24 +60,24 @@
       "via": "Old Town Newhall"
     },
     {
-      "title": "Out on the Mountain - LGBTQ Pride at Six Flags Magic Mountain",
-      "url": "https://en.wikipedia.org/wiki/Out_on_the_Mountain",
+      "title": "You Got Older",
+      "url": "https://atthemain.org/productions/",
       "start": "2026-08-21",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
       "free": false,
       "price": null,
       "audience": [
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Wikipedia"
+      "via": "The MAIN"
     },
     {
       "title": "Concerts in the Park - Elton John Tribute",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-22T19:00",
-      "venue": "Central Park Fields 7 and 8",
+      "venue": "Central Park (Fields 7 & 8)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -88,32 +88,200 @@
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Concerts in the Park - Police Tribute",
-      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
-      "start": "2026-08-29T19:00",
-      "venue": "Central Park Fields 7 and 8",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "10 by 10 Variety Show at The MAIN Theatre",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-09-03",
+      "title": "You Got Older",
+      "url": "https://atthemain.org/productions/",
+      "start": "2026-08-23",
       "venue": "The MAIN Theatre",
       "city": "Newhall",
       "free": false,
       "price": null,
       "audience": [
-        "everyone"
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "The MAIN"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-08-23",
+      "venue": "Old Town Newhall",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-24T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM"
+    },
+    {
+      "title": "You Got Older",
+      "url": "https://atthemain.org/productions/",
+      "start": "2026-08-27",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Concerts in the Park - Police Tribute",
+      "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
+      "start": "2026-08-29T19:00",
+      "venue": "Central Park (Fields 7 & 8)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "You Got Older",
+      "url": "https://atthemain.org/productions/",
+      "start": "2026-08-30",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-08-30",
+      "venue": "Old Town Newhall",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-08-31T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-06",
+      "venue": "Old Town Newhall",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-09-07T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM"
+    },
+    {
+      "title": "Change the Station",
+      "url": "https://atthemain.org/productions/",
+      "start": "2026-09-11",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Change the Station",
+      "url": "https://atthemain.org/productions/",
+      "start": "2026-09-13",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-13",
+      "venue": "Old Town Newhall",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-09-14T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM"
     },
     {
       "title": "SENSES Block Party: Oktoberfest",
@@ -130,15 +298,28 @@
       "via": "Old Town Newhall"
     },
     {
-      "title": "Fright Fest presented by SNICKERS at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events",
+      "title": "Change the Station",
+      "url": "https://atthemain.org/productions/",
+      "start": "2026-09-18",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN"
+    },
+    {
+      "title": "Fright Fest presented by SNICKERS",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
       "start": "2026-09-18",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
       "price": null,
       "audience": [
-        "kids",
         "teens",
         "adults"
       ],
@@ -146,20 +327,32 @@
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Tricks and Treats at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-09-25",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
+      "title": "Change the Station",
+      "url": "https://atthemain.org/productions/",
+      "start": "2026-09-20",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
       "free": false,
       "price": null,
       "audience": [
-        "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "The MAIN"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-20",
+      "venue": "Old Town Newhall",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
     }
   ]
 }
