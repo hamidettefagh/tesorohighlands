@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T04:49:39.744Z",
+  "generatedAt": "2026-08-16T08:46:38.526Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -28,7 +28,7 @@
       "total": "1",
       "startEpoch": 1786838460,
       "endEpoch": 1786888740,
-      "moreWindows": 31
+      "moreWindows": 32
     },
     {
       "route": "I-5",
@@ -56,35 +56,21 @@
       "total": "4",
       "startEpoch": 1786845660,
       "endEpoch": 1786888740,
-      "moreWindows": 19
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Castaic",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Utility Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786849260,
-      "endEpoch": 1786892340,
-      "moreWindows": 69
+      "moreWindows": 18
     },
     {
       "route": "I-5",
       "dir": "South",
       "at": "Golden State Freeway, Route 5",
-      "place": "Stevenson Ranch",
-      "facility": "Off Ramp",
+      "place": "Valencia",
+      "facility": "Connector",
       "type": "Full",
-      "work": "Shoulder Reconstruction",
+      "work": "Utility Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1786849260,
-      "endEpoch": 1786892340,
-      "moreWindows": 92
+      "startEpoch": 1786852860,
+      "endEpoch": 1786881540,
+      "moreWindows": 91
     },
     {
       "route": "I-5",
@@ -169,6 +155,20 @@
       "startEpoch": 1786928460,
       "endEpoch": 1786971540,
       "moreWindows": 4
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Castaic",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Paving Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1786935660,
+      "endEpoch": 1786989540,
+      "moreWindows": 69
     }
   ]
 }
