@@ -49,8 +49,9 @@
 
   .evitem{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-2);align-items:flex-start;}
   .evitem:last-child{border-bottom:0;}
-  .evitem .when{flex:none;width:74px;font-size:11.5px;color:var(--muted);font-weight:560;}
-  .evitem .when b{display:block;color:var(--ink);font-size:13.5px;font-weight:680;}
+  .evitem .when{flex:none;width:62px;font-size:11px;color:var(--muted);font-weight:560;line-height:1.35;}
+  .evitem .when b{display:block;color:var(--ink);font-size:13px;font-weight:680;}
+  .evitem .when small{display:block;font-size:10.5px;opacity:.85;}
   .evitem .what{flex:1;min-width:0;}
   .evitem .what a{color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:580;line-height:1.4;}
   .evitem .what a:hover{text-decoration:underline;}
@@ -140,8 +141,8 @@
 
     <section class="evsec" id="community">
       <div class="sechead"><h2>In the community</h2><div class="line"></div></div>
-      <div class="evcard"><div id="commList"><div class="empty">Loading…</div></div></div>
-      <div class="evmeta">Neighbor-run list. Got something coming up — a social, a game night, pickleball? Share it in the community group chat and it gets added here.</div>
+      <div class="evcard" id="commCard"><div id="commList"><div class="empty">Loading…</div></div></div>
+      <div class="evmeta" id="commMeta">Neighbor-run list. Got something coming up — a social, a game night, pickleball? Share it in the community group chat and it gets added here.</div>
     </section>
 
     <section class="evsec" id="clubs">
@@ -265,7 +266,7 @@
     <footer class="thfoot"><p><b>A neighbor project — not the official HOA.</b> Event listings belong to their organizers and can change — always confirm on the linked page before heading out. &nbsp;<a href="/">← Back to the hub</a></p></footer>
   </div>
 
-  <script src="/nav.js?v=6" defer></script>
+  <script src="/nav.js?v=7" defer></script>
   <script>
   (function () {
     "use strict";
@@ -294,9 +295,19 @@
       }
       return { d: d, time: time, isToday: d.toDateString() === new Date().toDateString() };
     }
-    function whenHtml(s) {
+    // The day header directly above already gives the date, so the row only
+    // needs the time. `times` (optional) holds every showing of a repeat event
+    // on that day, rendered as a span: "11 AM → 3 PM · 5 times".
+    function whenHtml(s, times) {
       var w = parseStart(s);
-      return '<div class="when">' + esc(w.d.toLocaleDateString([], { weekday: "short" })) + "<b>" + esc(w.d.toLocaleDateString([], { month: "short", day: "numeric" })) + "</b>" + (w.time ? esc(w.time) : "") + "</div>";
+      if (times && times.length > 1) {
+        var sorted = times.slice().sort();
+        var first = parseStart(sorted[0]).time, last = parseStart(sorted[sorted.length - 1]).time;
+        if (first && last && first !== last) {
+          return '<div class="when"><b>' + esc(first) + "</b>to " + esc(last) + "<small>" + times.length + " times</small></div>";
+        }
+      }
+      return '<div class="when"><b>' + esc(w.time || "All day") + "</b></div>";
     }
     function startMs(s) {
       var dp = (s || "").split("T");
@@ -312,7 +323,15 @@
       var today = new Date(); today.setHours(0, 0, 0, 0);
       var up = (Array.isArray(list) ? list : []).filter(function (e) { return e && e.date && parseStart(e.date).d.getTime() >= today.getTime(); });
       up.sort(function (a, b) { return parseStart(a.date).d - parseStart(b.date).d; });
-      if (!up.length) { el.innerHTML = '<div class="empty">Nothing scheduled right now — got a block party, playdate, or game night coming up? Share it in the group chat and it shows up here.</div>'; return; }
+      // Usually empty. Rather than an empty card plus an explainer owning the top
+      // of the page, collapse the whole section to one quiet line until it has
+      // something in it.
+      if (!up.length) {
+        document.getElementById("commCard").hidden = true;
+        document.getElementById("commMeta").innerHTML =
+          "Nothing on the neighborhood calendar right now. Got a block party, playdate or game night coming up? Share it in the community group chat and it shows up here.";
+        return;
+      }
       el.innerHTML = up.map(function (e) {
         var w = parseStart(e.date);
         return '<div class="evitem">' + whenHtml(e.date) +
@@ -397,21 +416,37 @@
         var near = list.filter(function (e) { return startMs(e._start) <= limit; });
         if (near.length && near.length < list.length) { hiddenCount = list.length - near.length; list = near; }
       }
-      var lastDay = null;
-      el.innerHTML = list.map(function (e) {
+      // Collapse repeat showings: the Hart Mansion tour runs hourly and used to
+      // fill five rows of one day with the same title. Same title + same venue +
+      // same day = one row showing the span of times.
+      var groups = [], byKey = {};
+      list.forEach(function (e) {
         var day = (e._start || "").split("T")[0];
+        var k = cleanTitle(e.title).toLowerCase().replace(/\W+/g, " ").trim() + "|" + String(e.venue || "").toLowerCase() + "|" + day;
+        if (byKey[k]) { byKey[k].times.push(e._start); return; }
+        byKey[k] = { e: e, day: day, times: [e._start] };
+        groups.push(byKey[k]);
+      });
+
+      var lastDay = null;
+      el.innerHTML = groups.map(function (g) {
         var head = "";
-        if (day !== lastDay) { lastDay = day; head = '<div class="dayhead">' + dayLabel(day) + "</div>"; }
-        return head + itemHtml(e);
+        if (g.day !== lastDay) { lastDay = g.day; head = '<div class="dayhead">' + dayLabel(g.day) + "</div>"; }
+        return head + itemHtml(g.e, g.times);
       }).join("") + (hiddenCount ? '<div class="morewrap"><button type="button" class="showall" id="showAllBtn">Show all ' + total + " events →</button></div>" : "");
     }
-    function itemHtml(e) {
+    // Some feeds bake the showtime into the title ("Hart Mansion Tour 12:00p.m."),
+    // which both defeats grouping and duplicates the time column next to it.
+    function cleanTitle(t) {
+      return String(t || "").replace(/[\s,–—-]*\d{1,2}(:\d{2})?\s*[ap]\.?\s*m\.?\s*$/i, "").trim() || String(t || "");
+    }
+    function itemHtml(e, times) {
       var w = parseStart(e._start);
       var auds = (e.audience || []).filter(function (a) { return a !== "everyone"; });
       // Only ever link to real web URLs — a poisoned feed must not mint javascript: links.
       var u = /^https?:\/\//i.test(e.url || "") ? e.url : null;
-      return '<div class="evitem">' + whenHtml(e._start) +
-        '<div class="what">' + (u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(e.title) + "</a>" : '<a>' + esc(e.title) + "</a>") +
+      return '<div class="evitem">' + whenHtml(e._start, times) +
+        '<div class="what">' + (u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(cleanTitle(e.title)) + "</a>" : '<a>' + esc(cleanTitle(e.title)) + "</a>") +
         (w.isToday ? '<span class="chip today">Today</span>' : "") +
         (isNew(e) ? '<span class="chip new">✨ New</span>' : "") +
         '<div class="sub">' + esc([e.venue, e.city].filter(Boolean).join(" · ")) + "</div>" +

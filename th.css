@@ -79,8 +79,11 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .hub-hero .halerts{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 11px;}
 .hub-hero .halert{font-size:11.5px;font-weight:640;padding:2px 9px;border-radius:999px;
   border:1px solid currentColor;color:inherit;opacity:.75;white-space:nowrap;}
+/* Two stat tiles. They stay side by side even on phones — stacked, they were two
+   nearly-empty full-width cards where one compact row says the same thing. */
 .today{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px;}
-@media(max-width:560px){.today{grid-template-columns:1fr;}}
+.today .tcell{padding:10px 12px;}
+@media(max-width:400px){.today .tcell{padding:9px 10px;} .today{gap:8px;}}
 .asof{font-size:10.5px;color:var(--muted);margin:7px 2px 0;}
 .livedot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok-fg);margin-right:5px;vertical-align:1px;animation:thpulse 2.4s ease-in-out infinite;}
 @keyframes thpulse{0%,100%{opacity:1}50%{opacity:.3}}
@@ -91,10 +94,11 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .week .wkhead{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:4px;}
 .week .wkhead h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:680;}
 .week .wkhead a{font-size:12px;font-weight:640;color:var(--accent);text-decoration:none;white-space:nowrap;}
-.wkrow{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-top:1px solid var(--line-2);text-decoration:none;}
-.wkrow:first-of-type{border-top:0;}
-.wkrow .wkday{flex:none;width:58px;font-size:11.5px;font-weight:700;color:var(--ink);}
-.wkrow .wkday small{display:block;font-weight:560;color:var(--muted);font-size:10.5px;}
+.wkrow{display:flex;align-items:baseline;gap:10px;padding:5px 0 5px 2px;text-decoration:none;}
+.wkday-head{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+  padding:10px 0 3px;border-top:1px solid var(--line-2);margin-top:4px;}
+.wkday-head:first-child{border-top:0;margin-top:0;padding-top:4px;}
+.wkrow .wkt b{color:var(--ink);font-weight:680;}
 .wkrow .wkt{flex:1;min-width:0;font-size:13px;color:var(--ink-2);line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .wkrow:hover .wkt{color:var(--ink);}
 .week .wknew{font-size:11px;color:var(--ok-fg);font-weight:640;margin-top:6px;}
@@ -161,6 +165,10 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 @media print{.thfoot::before{display:none;}}
 .thfoot a{color:var(--muted);}
 .thfoot b{color:var(--ink-2);}
+/* corrections invite, injected by nav.js on every page */
+.fixit{margin-top:10px;padding-top:10px;border-top:1px solid var(--line-2);}
+.fixit a{color:var(--accent);font-weight:640;text-decoration:none;}
+.fixit a:hover{text-decoration:underline;}
 
 /* keyboard focus — a clear, consistent high-contrast ring in both themes */
 a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:focus-visible{

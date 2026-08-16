@@ -71,6 +71,29 @@
     paint();
   })();
 
+  /* ---- "spot something wrong?" — one visible corrections path on every page ----
+     An honesty-first site needs somewhere to send a correction. Injected here so
+     all pages get the same one and it can't drift. Deliberately two routes: the
+     group chat for neighbors (zero friction, no account), and a GitHub issue for
+     anyone else, prefilled with the page they were on. */
+  (function () {
+    var foot = document.querySelector(".thfoot") || document.getElementById("foot");
+    if (!foot) return;
+    var page = location.pathname.replace(/\.html$/, "") || "/";
+    var url = "https://github.com/hamidettefagh/tesorohighlands/issues/new?title=" +
+      encodeURIComponent("Correction: " + page) +
+      "&body=" + encodeURIComponent("Page: " + page + "\n\nWhat's wrong or out of date:\n\n\nWhere the right info comes from (link, phone number, source):\n");
+    var p = document.createElement("p");
+    p.className = "fixit";
+    p.innerHTML = '<b>Spot something wrong?</b> Out-of-date phone number, wrong hours, a broken link — ' +
+      'tell a neighbor in the community group chat, or ' +
+      '<a href="' + url + '" target="_blank" rel="noopener">report it here</a>. ' +
+      'Corrections are the most useful thing you can send.';
+    // The fire page's footer is itself a <p>, and a <p> can't nest — insert after.
+    if (foot.tagName === "P") foot.parentNode.insertBefore(p, foot.nextSibling);
+    else foot.appendChild(p);
+  })();
+
   /* ---- live status ---- */
   function haversine(la1, lo1, la2, lo2) {
     var R = 3958.8, t = function (x) { return x * Math.PI / 180; };
@@ -83,7 +106,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v6";  // v6: calibrated fire tone — keep in step with the nav.js?v=N bump
+  var CACHE_KEY = "tesoro.status.v7";  // v7: corrections footer — keep in step with the nav.js?v=N bump
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your

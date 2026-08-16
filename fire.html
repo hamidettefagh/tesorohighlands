@@ -54,9 +54,28 @@
   a { color: inherit; }
 
   /* disclaimer strip */
+  /* The "not official" line used to be a full-width black bar above everything —
+     the first thing every visitor saw, every visit, on the page they open when
+     they're worried. It now sits quietly under the header; the full disclaimer
+     is still in the footer. */
   .strip {
-    background: var(--accent); color: var(--on-accent); font-size: 12.5px;
-    padding: 8px 16px; text-align: center; line-height: 1.35;
+    font-size: 11.5px; color: var(--muted); line-height: 1.4;
+    margin: 2px 2px 0; padding: 0;
+  }
+  .strip b { color: var(--ink-2); font-weight: 640; }
+
+  /* One-line "everything's quiet" summary that replaces a stack of empty cards */
+  .allquiet {
+    display: flex; gap: 9px; align-items: flex-start;
+    background: var(--ok-bg); border: 1px solid var(--ok-line); color: var(--ok-fg);
+    border-radius: var(--radius); padding: 11px 14px; font-size: 12.5px; line-height: 1.5;
+  }
+  .allquiet b { font-weight: 680; }
+  .allquiet .qlist { flex: 1; min-width: 0; }
+  .allquiet .qmore {
+    background: none; border: 0; padding: 4px 0 0; margin: 0; cursor: pointer;
+    font-family: var(--font); font-size: 11.5px; font-weight: 640; color: inherit;
+    opacity: .8; text-decoration: underline;
   }
   .strip b { font-weight: 700; }
 
@@ -300,9 +319,6 @@
 </head>
 <body>
 
-<div class="strip">
-  <b>Community tool — not an official warning system.</b> In an emergency call 911 and follow CAL FIRE, LA County Fire, and Sheriff evacuation orders.
-</div>
 
 <div class="wrap">
 
@@ -318,6 +334,8 @@
       <button class="iconbtn" id="refreshBtn" title="Refresh" aria-label="Refresh live data">↻</button>
     </div>
   </header>
+
+  <div class="strip"><b>A neighbor project, not an official warning system.</b> In an emergency call 911 and follow CAL FIRE, LA County Fire, and Sheriff orders.</div>
 
   <div class="hero neutral" id="hero" aria-live="polite">
     <div class="eyebrow" id="heroEy">Checking</div>
@@ -426,6 +444,17 @@
         <li><b>If it gets thick and hot,</b> leave for cleaner air instead of toughing it out.</li>
       </ul>
     </details>
+
+    <!-- QUIET-DAY SUMMARY — on a normal day, alerts + power + quakes are three
+         cards that each say "nothing here." This collapses them into one line,
+         and any of them re-expands the moment it has something to report. -->
+    <div class="allquiet" id="allQuiet" hidden>
+      <span>✅</span>
+      <div class="qlist">
+        <b>Nothing else to report.</b> <span id="quietDetail"></span>
+        <br><button type="button" class="qmore" id="quietMore">Show the details anyway</button>
+      </div>
+    </div>
 
     <!-- ALERTS -->
     <div class="card" id="alerts">
@@ -851,12 +880,16 @@ function satAge(f, viirs){
   }
   return best;
 }
+// Satellite heat is the tiebreaker on a fire nobody has sized yet. Note the
+// pairing rule at the render site: if we're saying "likely small", we don't
+// also warn about its smoke — showing both reads as contradictory and worries
+// people about a fire that is probably already out.
 function satChip(f){
   if(f.sat != null){
     const when = f.sat < 1 ? "within the hour" : "~" + Math.round(f.sat) + "h ago";
     return `<div class="smokeline toward">🛰️ satellite saw heat ${when}</div>`;
   }
-  if(f.acres == null) return `<div class="smokeline calm">🛰️ no satellite heat in 24h — likely small</div>`;
+  if(f.acres == null) return `<div class="smokeline calm">🛰️ no satellite heat in 24h — likely small or already out</div>`;
   return "";
 }
 // Fill in the gaps from CAL FIRE. A name match must also land within 15 miles,
@@ -970,8 +1003,15 @@ async function fetchOutages(lat, lon){
     return { util:String(a.UtilityCompany||"Utility"), start:a.StartDate, eta:a.EstimatedRestoreDate,
       cause:String(a.Cause||"").trim(), cust:a.ImpactedCustomers, status:String(a.OutageStatus||""),
       type:String(a.OutageType||""), dist:haversine(lat,lon,g.y,g.x), dir:compass(bearingDeg(lat,lon,g.y,g.x)) };
-  }).filter(o => /active/i.test(o.status) && o.dist <= 12)
-    .sort((a,b)=>a.dist-b.dist).slice(0,3);
+  }).filter(o => {
+    if(!/active/i.test(o.status) || o.dist > 12) return false;
+    // Scheduled maintenance miles away isn't what this card is for — people
+    // check it to answer "is my power out / is a shutoff happening." Keep PSPS
+    // always (those matter and are technically "planned"), drop routine work.
+    const psps = /psps|public safety/i.test(o.type + " " + o.cause);
+    const planned = /planned/i.test(o.type) && !/not/i.test(o.type);
+    return psps || !planned;
+  }).sort((a,b)=>a.dist-b.dist).slice(0,3);
 }
 
 // Live evacuation status near home from the Cal OES statewide aggregation (mirrors Genasys zones).
@@ -1103,6 +1143,7 @@ function sparkline(v){
 }
 
 /* ---------- render ---------- */
+let quietForced = false;   // set when the visitor taps "show the details anyway"
 function render(){
   const v = view();
 
@@ -1232,7 +1273,7 @@ function render(){
           <div class="fs">${meta}</div>
           ${ops ? `<div class="fs">${ops}</div>` : ""}
           ${bar}
-          ${satChip(f)}${smokeChip(f, v.wdir, v.wind)}
+          ${satChip(f)}${f.sat == null && f.acres == null ? "" : smokeChip(f, v.wdir, v.wind)}
         </div>
         <div class="fdist"><div class="d">${f.dist.toFixed(f.dist<10?1:0)} mi</div><div class="dir">${esc(dirWord(f.dir))} of us</div></div>
       </div>`;
@@ -1270,6 +1311,23 @@ function render(){
   } else {
     $("#quakeCard").hidden = true;
   }
+
+  // Quiet-day collapse: when alerts, power and quakes all have nothing to say,
+  // fold three "nothing here" cards into one line. Anything unknown (a feed that
+  // failed) counts as NOT quiet — we never hide uncertainty behind a green line.
+  (function(){
+    const q = $("#allQuiet"); if(!q) return;
+    const alertsQuiet = ok.alerts && v.alerts.length === 0;
+    const powerQuiet  = ok.outages && (!live.outages || !live.outages.length);
+    const quakesQuiet = !(ok.quakes && (live.quakes||[]).length);
+    const allQuiet = alertsQuiet && powerQuiet && quakesQuiet && !quietForced;
+    q.hidden = !allQuiet;
+    $("#alerts").hidden = allQuiet;
+    $("#powerCard").hidden = allQuiet;
+    if(allQuiet){
+      $("#quietDetail").textContent = "No weather alerts, no power outages within 12 miles, no recent earthquakes nearby.";
+    }
+  })();
 
   // open the smoke playbook automatically when the air is actually bad
   const smoke = $("#smokeCard");
@@ -1375,6 +1433,7 @@ function renderChecklist(){
 
 /* ---------- events ---------- */
 $("#refreshBtn").addEventListener("click", async ()=>{ $("#refreshBtn").textContent="…"; await fetchAll(); $("#refreshBtn").textContent="↻"; render(); });
+$("#quietMore").addEventListener("click", ()=>{ quietForced = true; render(); });
 
 /* ---------- one-tap WhatsApp alert share (alert.json, written by the watcher) ---------- */
 async function loadShareCard(){
@@ -1419,7 +1478,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=6" defer></script>
+<script src="/nav.js?v=7" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>

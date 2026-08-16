@@ -108,7 +108,7 @@
       <a class="hub-card" href="/living">
         <div class="ico">🏡</div>
         <h3>Living Here</h3>
-        <p>Trash days, utilities, schools, hospitals, and fire-zone insurance help for our area.</p>
+        <p>Trash day, utilities, schools, hospitals, and fire-zone insurance help for our area.</p>
         <span class="tag">Preview</span>
       </a>
       <a class="hub-card" href="/events">
@@ -145,7 +145,7 @@
       <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> In an emergency, call 911 and follow CAL FIRE, LA County Fire, and Sheriff evacuation orders. Live fire, air, and weather data come from public government feeds and can lag or be incomplete — always confirm with official sources. Ideas for the site? Bring them to the community group chat.</p>
     </footer>
   </div>
-  <script src="/nav.js?v=6" defer></script>
+  <script src="/nav.js?v=7" defer></script>
   <script>
   // "Today" digest: air, fire weather, next events — small live glances.
   (function () {
@@ -236,14 +236,28 @@
         .sort(function (a, b) { return a.start < b.start ? -1 : 1; });
       if (!evs.length) return;
 
+      // One event must not eat the whole strip. Some feeds bake the showtime
+      // into the title ("Hart Mansion Tour 12:00p.m."), so strip that, then keep
+      // only the earliest showing of each thing per day.
+      function cleanTitle(t) {
+        return String(t || "").replace(/[\s,–—-]*\d{1,2}(:\d{2})?\s*[ap]\.?\s*m\.?\s*$/i, "").trim() || String(t || "");
+      }
+      var seenEv = {};
+      evs = evs.filter(function (e) {
+        e.title = cleanTitle(e.title);
+        var k = e.title.toLowerCase().replace(/\W+/g, " ").trim() + "|" + e.start.split("T")[0];
+        if (seenEv[k]) return false;
+        seenEv[k] = 1; return true;
+      });
+
       // "Coming up" strip: the next five, with a plain day + time.
       var today = new Date(); today.setHours(0, 0, 0, 0);
       function dayHtml(s) {
         var p = s.split("T")[0].split("-");
         var d = new Date(+p[0], +p[1] - 1, +p[2]);
         var diff = Math.round((d - today) / 86400000);
-        var big = diff === 0 ? "Today" : diff === 1 ? "Tomorrow" : d.toLocaleDateString([], { weekday: "short" });
-        return '<span class="wkday">' + big + "<small>" + d.toLocaleDateString([], { month: "short", day: "numeric" }) + "</small></span>";
+        var big = diff === 0 ? "Today" : diff === 1 ? "Tomorrow" : d.toLocaleDateString([], { weekday: "long" });
+        return big + " · " + d.toLocaleDateString([], { month: "short", day: "numeric" });
       }
       function timeStr(s) {
         var t = s.split("T")[1];
@@ -251,9 +265,15 @@
         var hm = t.split(":").map(Number);
         return ((hm[0] % 12) || 12) + (hm[1] ? ":" + String(hm[1]).padStart(2, "0") : "") + " " + (hm[0] >= 12 ? "PM" : "AM");
       }
+      // Group by day so "Tomorrow · Aug 16" appears once instead of on all four
+      // rows underneath it.
+      var lastDay = null;
       $("#wkList").innerHTML = evs.slice(0, 5).map(function (e) {
+        var day = e.start.split("T")[0];
+        var head = "";
+        if (day !== lastDay) { lastDay = day; head = '<div class="wkday-head">' + dayHtml(e.start) + "</div>"; }
         var t = timeStr(e.start);
-        return '<a class="wkrow" href="/events">' + dayHtml(e.start) + '<span class="wkt">' + (t ? t + " · " : "") + esc(e.title) + "</span></a>";
+        return head + '<a class="wkrow" href="/events"><span class="wkt">' + (t ? "<b>" + t + "</b> · " : "") + esc(e.title) + "</span></a>";
       }).join("");
       $("#wkCard").hidden = false;
 
