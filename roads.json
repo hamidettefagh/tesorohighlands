@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T13:04:51.856Z",
+  "generatedAt": "2026-08-17T16:45:00.930Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "4",
       "startEpoch": 1786932060,
       "endEpoch": 1786989540,
-      "moreWindows": 28
+      "moreWindows": 27
     },
     {
       "route": "I-5",
@@ -29,20 +29,6 @@
       "startEpoch": 1786935660,
       "endEpoch": 1786989540,
       "moreWindows": 69
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Connector",
-      "type": "Full",
-      "work": "Paving Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1786939260,
-      "endEpoch": 1786975140,
-      "moreWindows": 90
     },
     {
       "route": "I-5",
@@ -155,6 +141,20 @@
       "startEpoch": 1786982460,
       "endEpoch": 1787003940,
       "moreWindows": 11
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Valencia",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "2",
+      "startEpoch": 1786982460,
+      "endEpoch": 1787003940,
+      "moreWindows": 89
     },
     {
       "route": "I-5",
