@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T09:00:07.655Z",
+  "generatedAt": "2026-08-18T01:49:55.665Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -19,6 +19,24 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Wolfcreek Brewery Trivia Night",
+      "url": "https://calendar.santaclarita.gov/event/wolfcreek-brewery-trivia-night",
+      "start": "2026-08-17T00:00",
+      "dates": [
+        "2026-08-17T00:00"
+      ],
+      "repeats": 0,
+      "venue": null,
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-18T01:49:55.664Z"
     },
     {
       "title": "Trivia Nights",
@@ -794,24 +812,6 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-08-17T09:00:07.654Z"
-    },
-    {
-      "title": "The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild",
-      "url": "https://calendar.santaclarita.gov/event/the-lightning-thief-the-percy-jackson-musical-at-canyon-theatre-guild",
-      "start": "2026-08-22T14:00",
-      "dates": [
-        "2026-08-22T14:00"
-      ],
-      "repeats": 0,
-      "venue": "Canyon Theatre Guild",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-07-26T10:12:58.915Z"
     },
     {
       "title": "Hart Mansion Tour 3:00p.m.",
