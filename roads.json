@@ -1,48 +1,20 @@
 {
-  "generatedAt": "2026-08-18T01:50:00.324Z",
+  "generatedAt": "2026-08-18T04:51:12.024Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
       "route": "I-5",
       "dir": "North",
       "at": "Golden State Freeway, Route 5",
-      "place": "Newhall",
+      "place": "Valencia",
       "facility": "Off Ramp",
       "type": "Full",
-      "work": "Fence Work",
+      "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
       "startEpoch": 1787018460,
       "endEpoch": 1787057940,
-      "moreWindows": 65
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787018460,
-      "endEpoch": 1787057940,
-      "moreWindows": 10
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787018460,
-      "endEpoch": 1787057940,
-      "moreWindows": 15
+      "moreWindows": 59
     },
     {
       "route": "I-5",
@@ -84,7 +56,7 @@
       "total": "4",
       "startEpoch": 1787018460,
       "endEpoch": 1787057940,
-      "moreWindows": 17
+      "moreWindows": 16
     },
     {
       "route": "I-5",
@@ -126,21 +98,7 @@
       "total": "1",
       "startEpoch": 1787018460,
       "endEpoch": 1787057940,
-      "moreWindows": 37
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Shoulder Reconstruction",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787018460,
-      "endEpoch": 1787057940,
-      "moreWindows": 22
+      "moreWindows": 36
     },
     {
       "route": "I-5",
@@ -169,6 +127,48 @@
       "startEpoch": 1787018460,
       "endEpoch": 1787057940,
       "moreWindows": 6
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Valencia",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787018460,
+      "endEpoch": 1787057940,
+      "moreWindows": 77
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Valencia Blvd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787018460,
+      "endEpoch": 1787057940,
+      "moreWindows": 16
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Pavement Rehabilitation",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1787018460,
+      "endEpoch": 1787057940,
+      "moreWindows": 31
     }
   ]
 }
