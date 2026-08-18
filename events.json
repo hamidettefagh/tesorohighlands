@@ -1,43 +1,7 @@
 {
-  "generatedAt": "2026-08-18T01:49:55.665Z",
+  "generatedAt": "2026-08-18T08:53:05.062Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-08-17T00:00",
-      "dates": [
-        "2026-08-17T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "Wolfcreek Brewery Trivia Night",
-      "url": "https://calendar.santaclarita.gov/event/wolfcreek-brewery-trivia-night",
-      "start": "2026-08-17T00:00",
-      "dates": [
-        "2026-08-17T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-18T01:49:55.664Z"
-    },
     {
       "title": "Trivia Nights",
       "url": "https://calendar.santaclarita.gov/event/trivia-nights",
@@ -814,6 +778,42 @@
       "added": "2026-08-17T09:00:07.654Z"
     },
     {
+      "title": "The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild",
+      "url": "https://calendar.santaclarita.gov/event/the-lightning-thief-the-percy-jackson-musical-at-canyon-theatre-guild",
+      "start": "2026-08-22T14:00",
+      "dates": [
+        "2026-08-22T14:00"
+      ],
+      "repeats": 0,
+      "venue": "Canyon Theatre Guild",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-18T08:53:05.061Z"
+    },
+    {
+      "title": "You Got Older presented by Dig Deep Theatre",
+      "url": "https://calendar.santaclarita.gov/event/you-got-older-presented-by-dig-deep-theatre",
+      "start": "2026-08-22T14:00",
+      "dates": [
+        "2026-08-22T14:00"
+      ],
+      "repeats": 0,
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Seniors $22.23, GA $25.40",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
       "title": "Hart Mansion Tour 3:00p.m.",
       "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-300pm-35117",
       "start": "2026-08-22T15:00",
@@ -1067,6 +1067,23 @@
         "2026-09-06T14:30"
       ],
       "added": "2026-08-17T09:00:07.654Z"
+    },
+    {
+      "title": "Labor Day",
+      "url": "https://santaclarita.librarycalendar.com/event/labor-day-28067",
+      "start": "2026-09-07",
+      "venue": "Some Branches",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-07"
+      ],
+      "added": "2026-08-18T08:53:05.061Z"
     },
     {
       "title": "Change the Station Presented by The Big Sandwich Theatre Company",
