@@ -1,21 +1,7 @@
 {
-  "generatedAt": "2026-08-19T13:07:57.952Z",
+  "generatedAt": "2026-08-19T16:46:15.597Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Reconstruction",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1787144460,
-      "endEpoch": 1787176740,
-      "moreWindows": 17
-    },
     {
       "route": "I-5",
       "dir": "South",
@@ -85,6 +71,20 @@
       "startEpoch": 1787155260,
       "endEpoch": 1787176740,
       "moreWindows": 15
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Paving Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787155260,
+      "endEpoch": 1787176740,
+      "moreWindows": 16
     },
     {
       "route": "I-5",

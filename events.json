@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T08:54:00.886Z",
+  "generatedAt": "2026-08-19T16:46:05.073Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -852,6 +852,23 @@
       "added": "2026-08-19T08:54:00.885Z"
     },
     {
+      "title": "Dozen Read Proses",
+      "url": "https://santaclarita.librarycalendar.com/event/dozen-read-proses-26063",
+      "start": "2026-08-27T18:00",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-08-27T18:00"
+      ],
+      "added": "2026-08-19T16:46:05.072Z"
+    },
+    {
       "title": "SCV Music Festival",
       "url": "https://www.eventbrite.com/e/scv-music-festival-tickets-1992603068417",
       "start": "2026-08-28T18:00",
@@ -1085,23 +1102,6 @@
         "2026-09-07"
       ],
       "added": "2026-08-18T08:53:05.061Z"
-    },
-    {
-      "title": "Closure for Staff Development",
-      "url": "https://santaclarita.librarycalendar.com/event/closure-staff-development-38606",
-      "start": "2026-09-08",
-      "venue": "Some Branches",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-08"
-      ],
-      "added": "2026-08-19T08:54:00.885Z"
     },
     {
       "title": "Change the Station Presented by The Big Sandwich Theatre Company",
