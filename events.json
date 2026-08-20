@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T08:56:11.635Z",
+  "generatedAt": "2026-08-20T16:49:53.792Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -898,6 +898,24 @@
         "2026-09-02T15:30"
       ],
       "added": "2026-08-13T09:33:01.712Z"
+    },
+    {
+      "title": "Canyon Country TAB",
+      "url": "https://santaclarita.librarycalendar.com/event/canyon-country-tab-29096",
+      "start": "2026-09-02T16:30",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-02T16:30"
+      ],
+      "added": "2026-08-20T16:49:53.791Z"
     },
     {
       "title": "Thrilled to Read Book Club",
