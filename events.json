@@ -1,351 +1,7 @@
 {
-  "generatedAt": "2026-08-19T16:46:05.073Z",
+  "generatedAt": "2026-08-20T08:56:11.635Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-08-19T00:00",
-      "dates": [
-        "2026-08-19T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "Bella Vida Book Club",
-      "url": "https://santaclarita.librarycalendar.com/event/bella-vida-book-club-27161",
-      "start": "2026-08-19T10:30",
-      "venue": "Off Site",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-08-19T10:30"
-      ],
-      "added": "2026-07-30T10:33:42.966Z"
-    },
-    {
-      "title": "Hart Mansion Group Tour 11:00a.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1100am-35040",
-      "start": "2026-08-19T11:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-08-19T11:00",
-        "2026-08-20T11:00",
-        "2026-08-21T11:00",
-        "2026-08-22T11:00",
-        "2026-08-23T11:00",
-        "2026-08-26T11:00",
-        "2026-08-27T11:00",
-        "2026-08-28T11:00",
-        "2026-08-29T11:00",
-        "2026-08-30T11:00",
-        "2026-09-02T11:00",
-        "2026-09-03T11:00",
-        "2026-09-04T11:00",
-        "2026-09-05T11:00",
-        "2026-09-06T11:00"
-      ],
-      "repeats": 14,
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "English Conversation Club",
-      "url": "https://santaclarita.librarycalendar.com/event/placeheld-english-conversation-club-31941",
-      "start": "2026-08-19T11:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-08-19T11:00",
-        "2026-08-26T11:00",
-        "2026-09-02T11:00"
-      ],
-      "repeats": 2,
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "Hart Mansion Tour 12:00p.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1200pm-35060",
-      "start": "2026-08-19T12:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-08-19T12:00",
-        "2026-08-20T12:00",
-        "2026-08-21T12:00",
-        "2026-08-22T12:00",
-        "2026-08-23T12:00",
-        "2026-08-26T12:00",
-        "2026-08-27T12:00",
-        "2026-08-28T12:00",
-        "2026-08-29T12:00",
-        "2026-08-30T12:00",
-        "2026-09-02T12:00",
-        "2026-09-03T12:00",
-        "2026-09-04T12:00",
-        "2026-09-05T12:00",
-        "2026-09-06T12:00"
-      ],
-      "repeats": 14,
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "Hart Mansion Tour 1:00p.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-100pm-35080",
-      "start": "2026-08-19T13:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-08-19T13:00",
-        "2026-08-20T13:00",
-        "2026-08-21T13:00",
-        "2026-08-22T13:00",
-        "2026-08-23T13:00",
-        "2026-08-26T13:00",
-        "2026-08-27T13:00",
-        "2026-08-28T13:00",
-        "2026-08-29T13:00",
-        "2026-08-30T13:00",
-        "2026-09-02T13:00",
-        "2026-09-03T13:00",
-        "2026-09-04T13:00",
-        "2026-09-05T13:00",
-        "2026-09-06T13:00"
-      ],
-      "repeats": 14,
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "Hart Mansion Tour 2:00p.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-200pm-35100",
-      "start": "2026-08-19T14:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-08-19T14:00",
-        "2026-08-20T14:00",
-        "2026-08-21T14:00",
-        "2026-08-22T14:00",
-        "2026-08-23T14:00",
-        "2026-08-26T14:00",
-        "2026-08-27T14:00",
-        "2026-08-28T14:00",
-        "2026-08-29T14:00",
-        "2026-08-30T14:00",
-        "2026-09-02T14:00",
-        "2026-09-03T14:00",
-        "2026-09-04T14:00",
-        "2026-09-05T14:00",
-        "2026-09-06T14:00"
-      ],
-      "repeats": 14,
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "Pokémon Trainer League",
-      "url": "https://santaclarita.librarycalendar.com/event/pokemon-trainer-league-27224",
-      "start": "2026-08-19T15:30",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-08-19T15:30"
-      ],
-      "added": "2026-07-30T10:33:42.966Z"
-    },
-    {
-      "title": "Business After Hours Mixer at Olive Branch Theatricals",
-      "url": "https://calendar.santaclarita.gov/event/business-after-hours-mixer-at-olive-branch-theatricals",
-      "start": "2026-08-19T17:30",
-      "dates": [
-        "2026-08-19T17:30"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "Members: $15.00 & Non-Members: $30.00",
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-15T08:44:41.358Z"
-    },
-    {
-      "title": "Drop In TTRPG Table",
-      "url": "https://calendar.santaclarita.gov/event/drop-in-ttrpg-table",
-      "start": "2026-08-19T18:00",
-      "dates": [
-        "2026-08-19T18:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-15T08:44:41.358Z"
-    },
-    {
-      "title": "Karaoke Wednesdays at Oggi's",
-      "url": "https://calendar.santaclarita.gov/event/karaoke-wednesdays-at-oggis",
-      "start": "2026-08-19T18:00",
-      "dates": [
-        "2026-08-19T18:00"
-      ],
-      "repeats": 0,
-      "venue": "Oggi's | Sports, Brewhouse & Pizza",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-15T08:44:41.358Z"
-    },
-    {
-      "title": "Essential Earthquake Information Presentation",
-      "url": "https://calendar.santaclarita.gov/event/essential-earthquake-information-presentation",
-      "start": "2026-08-19T18:30",
-      "dates": [
-        "2026-08-19T18:30"
-      ],
-      "repeats": 0,
-      "venue": "Vincenzo's Pizza",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-15T08:44:41.358Z"
-    },
-    {
-      "title": "Divorce-Care",
-      "url": "https://calendar.santaclarita.gov/event/divorce-care-4326",
-      "start": "2026-08-19T18:59",
-      "dates": [
-        "2026-08-19T18:59"
-      ],
-      "repeats": 0,
-      "venue": "Real Life Church",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$20 for workbook",
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-16T08:46:37.186Z"
-    },
-    {
-      "title": "Books and Brews",
-      "url": "https://santaclarita.librarycalendar.com/event/books-and-brews-24410",
-      "start": "2026-08-19T19:00",
-      "venue": "Off Site",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-08-19T19:00"
-      ],
-      "added": "2026-07-30T10:33:42.966Z"
-    },
-    {
-      "title": "Salsa on One presents Latin Wednesdays",
-      "url": "https://calendar.santaclarita.gov/event/salsa-on-one-presents-latin-wednesdays",
-      "start": "2026-08-19T19:00",
-      "dates": [
-        "2026-08-19T19:00"
-      ],
-      "repeats": 0,
-      "venue": "El Patron Mexican Bar and Grill!",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-16T08:46:37.186Z"
-    },
-    {
-      "title": "Latin Wednesdays Fundraiser to Benefit Casa Hogar",
-      "url": "https://calendar.santaclarita.gov/event/latin-wednesdays-fundraiser-to-benefit-casa-hogar",
-      "start": "2026-08-19T20:00",
-      "dates": [
-        "2026-08-19T20:00"
-      ],
-      "repeats": 0,
-      "venue": "El Patrons Mexican Bar & Grill",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$20 class and social. $10 social only",
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-16T08:46:37.186Z"
-    },
     {
       "title": "Hart Mansion Group Tour 10:00a.m.",
       "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-group-tour-1000am-35026",
@@ -370,6 +26,134 @@
         "2026-09-05T10:00"
       ],
       "repeats": 8,
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Hart Mansion Group Tour 11:00a.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1100am-35041",
+      "start": "2026-08-20T11:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-08-20T11:00",
+        "2026-08-21T11:00",
+        "2026-08-22T11:00",
+        "2026-08-23T11:00",
+        "2026-08-26T11:00",
+        "2026-08-27T11:00",
+        "2026-08-28T11:00",
+        "2026-08-29T11:00",
+        "2026-08-30T11:00",
+        "2026-09-02T11:00",
+        "2026-09-03T11:00",
+        "2026-09-04T11:00",
+        "2026-09-05T11:00",
+        "2026-09-06T11:00",
+        "2026-09-09T11:00"
+      ],
+      "repeats": 14,
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Hart Mansion Tour 12:00p.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1200pm-35061",
+      "start": "2026-08-20T12:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-08-20T12:00",
+        "2026-08-21T12:00",
+        "2026-08-22T12:00",
+        "2026-08-23T12:00",
+        "2026-08-26T12:00",
+        "2026-08-27T12:00",
+        "2026-08-28T12:00",
+        "2026-08-29T12:00",
+        "2026-08-30T12:00",
+        "2026-09-02T12:00",
+        "2026-09-03T12:00",
+        "2026-09-04T12:00",
+        "2026-09-05T12:00",
+        "2026-09-06T12:00",
+        "2026-09-09T12:00"
+      ],
+      "repeats": 14,
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Hart Mansion Tour 1:00p.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-100pm-35081",
+      "start": "2026-08-20T13:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-08-20T13:00",
+        "2026-08-21T13:00",
+        "2026-08-22T13:00",
+        "2026-08-23T13:00",
+        "2026-08-26T13:00",
+        "2026-08-27T13:00",
+        "2026-08-28T13:00",
+        "2026-08-29T13:00",
+        "2026-08-30T13:00",
+        "2026-09-02T13:00",
+        "2026-09-03T13:00",
+        "2026-09-04T13:00",
+        "2026-09-05T13:00",
+        "2026-09-06T13:00",
+        "2026-09-09T13:00"
+      ],
+      "repeats": 14,
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Hart Mansion Tour 2:00p.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-200pm-35101",
+      "start": "2026-08-20T14:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-08-20T14:00",
+        "2026-08-21T14:00",
+        "2026-08-22T14:00",
+        "2026-08-23T14:00",
+        "2026-08-26T14:00",
+        "2026-08-27T14:00",
+        "2026-08-28T14:00",
+        "2026-08-29T14:00",
+        "2026-08-30T14:00",
+        "2026-09-02T14:00",
+        "2026-09-03T14:00",
+        "2026-09-04T14:00",
+        "2026-09-05T14:00",
+        "2026-09-06T14:00",
+        "2026-09-09T14:00"
+      ],
+      "repeats": 14,
       "added": "2026-07-25T09:59:46.269Z"
     },
     {
@@ -852,6 +636,170 @@
       "added": "2026-08-19T08:54:00.885Z"
     },
     {
+      "title": "The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild",
+      "url": "https://calendar.santaclarita.gov/event/the-lightning-thief-the-percy-jackson-musical-at-canyon-theatre-guild",
+      "start": "2026-08-22T19:00",
+      "dates": [
+        "2026-08-22T19:00"
+      ],
+      "repeats": 0,
+      "venue": "Canyon Theatre Guild",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-18T08:53:05.061Z"
+    },
+    {
+      "title": "“YOU GOT OLDER” Stage Production",
+      "url": "https://calendar.santaclarita.gov/event/you-got-older-stage-production",
+      "start": "2026-08-22T20:00",
+      "dates": [
+        "2026-08-22T20:00"
+      ],
+      "repeats": 0,
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "25",
+      "audience": [
+        "kids"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-17T09:00:07.654Z"
+    },
+    {
+      "title": "You Got Older presented by Dig Deep Theatre",
+      "url": "https://calendar.santaclarita.gov/event/you-got-older-presented-by-dig-deep-theatre",
+      "start": "2026-08-22T20:00",
+      "dates": [
+        "2026-08-22T20:00"
+      ],
+      "repeats": 0,
+      "venue": "The MAIN",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Seniors $22.23, GA $25.40",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Visit The Gentle Barn",
+      "url": "https://calendar.santaclarita.gov/event/visit_the_gentle_barn_5048",
+      "start": "2026-08-23T00:00",
+      "dates": [
+        "2026-08-23T00:00"
+      ],
+      "repeats": 0,
+      "venue": "The Gentle Barn",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Adults $25, Kids (2-12y) $15, Under 2y No Cost",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-20T08:56:11.635Z"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
+      "start": "2026-08-23T08:00",
+      "dates": [
+        "2026-08-23T08:00"
+      ],
+      "repeats": 0,
+      "venue": "Santa Clarita Certified Farmers Market",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-20T08:56:11.635Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-08-23T08:30",
+      "dates": [
+        "2026-08-23T08:30"
+      ],
+      "repeats": 0,
+      "venue": "Valencia FivePoint Farmers' Market",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-20T08:56:11.635Z"
+    },
+    {
+      "title": "SCV HOME & SUMMER FUN EXPO - AUG 22 & 23",
+      "url": "https://calendar.santaclarita.gov/event/scv-home-summer-fun-expo-aug-22-23",
+      "start": "2026-08-23T10:00",
+      "dates": [
+        "2026-08-23T10:00"
+      ],
+      "repeats": 0,
+      "venue": "California Institute of the Arts \"CalArts\"",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-20T08:56:11.635Z"
+    },
+    {
+      "title": "Objectively Speaking: A Fine Art Exhibition",
+      "url": "https://calendar.santaclarita.gov/event/objectively-speaking-a-fine-art-exhibition",
+      "start": "2026-08-23T11:00",
+      "dates": [
+        "2026-08-23T11:00"
+      ],
+      "repeats": 0,
+      "venue": "SCAA Gallery",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "English Conversation Club",
+      "url": "https://santaclarita.librarycalendar.com/event/placeheld-english-conversation-club-31942",
+      "start": "2026-08-26T11:00",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-08-26T11:00",
+        "2026-09-02T11:00",
+        "2026-09-09T11:00"
+      ],
+      "repeats": 2,
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
       "title": "Dozen Read Proses",
       "url": "https://santaclarita.librarycalendar.com/event/dozen-read-proses-26063",
       "start": "2026-08-27T18:00",
@@ -1102,6 +1050,23 @@
         "2026-09-07"
       ],
       "added": "2026-08-18T08:53:05.061Z"
+    },
+    {
+      "title": "Closure for Staff Development",
+      "url": "https://santaclarita.librarycalendar.com/event/closure-staff-development-38606",
+      "start": "2026-09-08",
+      "venue": "Some Branches",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-08"
+      ],
+      "added": "2026-08-20T08:56:11.635Z"
     },
     {
       "title": "Change the Station Presented by The Big Sandwich Theatre Company",
