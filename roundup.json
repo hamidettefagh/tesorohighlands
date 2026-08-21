@@ -1,72 +1,63 @@
 {
-  "generatedAt": "2026-08-14T16:11:09.081Z",
-  "weekendOf": "2026-08-14",
+  "generatedAt": "2026-08-21T15:55:13.865Z",
+  "weekendOf": "2026-08-21",
   "model": "claude-haiku-4-5",
-  "intro": "Fun stuff happening this weekend in Tesoro Highlands and nearby.",
+  "intro": "Lots to do this weekend—something for everyone in Tesoro Highlands.",
   "picks": [
     {
-      "emoji": "🌽",
-      "day": "Sat",
-      "time": "8:30 AM",
-      "title": "Newhall Certified Farmers Market",
+      "emoji": "🏛️",
+      "day": "Fri",
+      "time": "10 AM",
+      "title": "Hart Mansion Group Tour 10:00a.m.",
       "price": "free",
-      "note": "Fresh local produce and community vibes Saturday morning.",
-      "url": "https://www.scvfarmersmarkets.com/"
+      "note": "Free local history tour, perfect for families.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-group-tour-1000am-35027"
     },
     {
-      "emoji": "🎨",
+      "emoji": "🏍️",
+      "day": "Sat",
+      "time": "9 AM",
+      "title": "Motorcycles and Coffee",
+      "price": "free",
+      "note": "Free Sunday morning meet-up for all ages and interests.",
+      "url": "https://calendar.santaclarita.gov/event/motorcycles-and-coffee"
+    },
+    {
+      "emoji": "🎪",
       "day": "Sat",
       "time": "10 AM",
-      "title": "Children's America250 Activity",
+      "title": "SCV HOME & SUMMER FUN EXPO",
       "price": "free",
-      "note": "Free activity for the kids at the library.",
-      "url": "https://santaclarita.librarycalendar.com/event/childrens-america250-activity-37737"
-    },
-    {
-      "emoji": "🦙",
-      "day": "Sun",
-      "time": "",
-      "title": "Visit The Gentle Barn",
-      "price": "from $15",
-      "note": "Farm animals and outdoor fun for families.",
-      "url": "https://calendar.santaclarita.gov/event/visit_the_gentle_barn_5048"
-    },
-    {
-      "emoji": "🎵",
-      "day": "Fri",
-      "time": "6 PM",
-      "title": "Live Music at Lucky Luke Brewing",
-      "price": "",
-      "note": "Local brewery, live music on Friday night.",
-      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing"
-    },
-    {
-      "emoji": "🎸",
-      "day": "Sat",
-      "time": "7 PM",
-      "title": "Concerts in the Park, presented by Logix Federal Credit Union: Paramore and Panic! at the Disco Tribute",
-      "price": "",
-      "note": "Tribute bands at Central Park Saturday evening.",
-      "url": "https://calendar.santaclarita.gov/event/concerts-in-the-park-presented-by-logix-federal-credit-union-7497"
+      "note": "Kids love expos—bouncy castles, games, summer fun.",
+      "url": "https://calendar.santaclarita.gov/event/scv-home-summer-fun-expo"
     },
     {
       "emoji": "🎭",
-      "day": "Sun",
-      "time": "12 PM",
-      "title": "Community Art Day",
-      "price": "free",
-      "note": "Free community art day for all ages.",
-      "url": "https://calendar.santaclarita.gov/event/community-art-day"
+      "day": "Sat",
+      "time": "2 PM",
+      "title": "The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild",
+      "price": "",
+      "note": "Percy Jackson on stage, great for tweens and families.",
+      "url": "https://calendar.santaclarita.gov/event/the-lightning-thief-the-percy-jackson-musical-at-canyon-theatre-guild"
     },
     {
-      "emoji": "📚",
+      "emoji": "🎵",
+      "day": "Sat",
+      "time": "7 PM",
+      "title": "Voice United - Gospel Music CONCERT!",
+      "price": "$15.18–$28.52",
+      "note": "Gospel concert, weekend evening entertainment.",
+      "url": "https://www.eventbrite.com/e/voice-united-gospel-music-concert-tickets-1991420049977"
+    },
+    {
+      "emoji": "🥕",
       "day": "Sun",
-      "time": "2:30 PM",
-      "title": "Silent Book Club",
+      "time": "8:30 AM",
+      "title": "Old Town Newhall Farmers Market",
       "price": "free",
-      "note": "Quiet reading for adults looking to unwind.",
-      "url": "https://santaclarita.librarycalendar.com/event/hold-adult-silent-book-club-23814"
+      "note": "Free farmers market in Newhall, local favorite.",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nFun stuff happening this weekend in Tesoro Highlands and nearby.\n\n🌽 *Sat 8:30 AM* — Newhall Certified Farmers Market (free)\n   Fresh local produce and community vibes Saturday morning.\n🎨 *Sat 10 AM* — Children's America250 Activity (free)\n   Free activity for the kids at the library.\n🦙 *Sun* — Visit The Gentle Barn (from $15)\n   Farm animals and outdoor fun for families.\n🎵 *Fri 6 PM* — Live Music at Lucky Luke Brewing\n   Local brewery, live music on Friday night.\n🎸 *Sat 7 PM* — Concerts in the Park, presented by Logix Federal Credit Union: Paramore and Panic! at the Disco Tribute\n   Tribute bands at Central Park Saturday evening.\n🎭 *Sun 12 PM* — Community Art Day (free)\n   Free community art day for all ages.\n📚 *Sun 2:30 PM* — Silent Book Club (free)\n   Quiet reading for adults looking to unwind.\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nLots to do this weekend—something for everyone in Tesoro Highlands.\n\n🏛️ *Fri 10 AM* — Hart Mansion Group Tour 10:00a.m. (free)\n   Free local history tour, perfect for families.\n🏍️ *Sat 9 AM* — Motorcycles and Coffee (free)\n   Free Sunday morning meet-up for all ages and interests.\n🎪 *Sat 10 AM* — SCV HOME & SUMMER FUN EXPO (free)\n   Kids love expos—bouncy castles, games, summer fun.\n🎭 *Sat 2 PM* — The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild\n   Percy Jackson on stage, great for tweens and families.\n🎵 *Sat 7 PM* — Voice United - Gospel Music CONCERT! ($15.18–$28.52)\n   Gospel concert, weekend evening entertainment.\n🥕 *Sun 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Free farmers market in Newhall, local favorite.\n\nFull list → https://tesorohighlands.com/events"
 }
