@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T08:57:27.585Z",
+  "generatedAt": "2026-08-21T16:50:19.676Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -173,6 +173,42 @@
       ],
       "repeats": 14,
       "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Teen Experience (Afterschool)",
+      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
+      "start": "2026-08-21T15:00",
+      "dates": [
+        "2026-08-21T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-21T16:50:19.676Z"
+    },
+    {
+      "title": "Youth Afterschool Program",
+      "url": "https://calendar.santaclarita.gov/event/youth-afterschool-program-328",
+      "start": "2026-08-21T15:00",
+      "dates": [
+        "2026-08-21T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-21T16:50:19.676Z"
     },
     {
       "title": "Objectively Speaking: A Fine Art Exhibition",
@@ -739,42 +775,6 @@
       "price": "Free",
       "audience": [
         "kids"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-21T08:57:27.584Z"
-    },
-    {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-08-24T00:00",
-      "dates": [
-        "2026-08-24T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-21T08:57:27.584Z"
-    },
-    {
-      "title": "Wolfcreek Brewery Trivia Night",
-      "url": "https://calendar.santaclarita.gov/event/wolfcreek-brewery-trivia-night",
-      "start": "2026-08-24T00:00",
-      "dates": [
-        "2026-08-24T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
       ],
       "source": "City of Santa Clarita",
       "added": "2026-08-21T08:57:27.584Z"

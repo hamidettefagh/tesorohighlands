@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T13:10:17.456Z",
+  "generatedAt": "2026-08-21T16:50:29.926Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "4",
       "startEpoch": 1787317260,
       "endEpoch": 1787349540,
-      "moreWindows": 9
+      "moreWindows": 11
     },
     {
       "route": "I-5",
@@ -28,7 +28,7 @@
       "total": "4",
       "startEpoch": 1787317260,
       "endEpoch": 1787349540,
-      "moreWindows": 6
+      "moreWindows": 7
     },
     {
       "route": "I-5",
@@ -42,7 +42,7 @@
       "total": "1",
       "startEpoch": 1787328060,
       "endEpoch": 1787349540,
-      "moreWindows": 21
+      "moreWindows": 22
     },
     {
       "route": "I-5",
@@ -56,7 +56,7 @@
       "total": "1",
       "startEpoch": 1787328060,
       "endEpoch": 1787349540,
-      "moreWindows": 3
+      "moreWindows": 4
     },
     {
       "route": "I-5",
@@ -84,7 +84,7 @@
       "total": "1",
       "startEpoch": 1787328060,
       "endEpoch": 1787349540,
-      "moreWindows": 4
+      "moreWindows": 7
     },
     {
       "route": "I-5",
@@ -98,7 +98,7 @@
       "total": "1",
       "startEpoch": 1787328060,
       "endEpoch": 1787349540,
-      "moreWindows": 7
+      "moreWindows": 8
     },
     {
       "route": "I-5",
@@ -112,7 +112,7 @@
       "total": "1",
       "startEpoch": 1787328060,
       "endEpoch": 1787349540,
-      "moreWindows": 9
+      "moreWindows": 12
     },
     {
       "route": "I-5",
@@ -126,7 +126,7 @@
       "total": "1",
       "startEpoch": 1787328060,
       "endEpoch": 1787349540,
-      "moreWindows": 3
+      "moreWindows": 4
     },
     {
       "route": "I-5",
@@ -140,7 +140,7 @@
       "total": "1",
       "startEpoch": 1787328060,
       "endEpoch": 1787349540,
-      "moreWindows": 11
+      "moreWindows": 13
     },
     {
       "route": "I-5",
@@ -154,7 +154,7 @@
       "total": "1",
       "startEpoch": 1787328060,
       "endEpoch": 1787349540,
-      "moreWindows": 7
+      "moreWindows": 8
     },
     {
       "route": "I-5",
@@ -168,7 +168,7 @@
       "total": "2",
       "startEpoch": 1787328060,
       "endEpoch": 1787349540,
-      "moreWindows": 29
+      "moreWindows": 39
     }
   ]
 }
