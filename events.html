@@ -378,7 +378,13 @@
         }
         return '<span class="badge-price">' + esc(p) + "</span>";
       }
-      return '<span class="badge-price">Tickets ↗</span>';
+      // We often simply don't know the price: the City's Localist feed leaves the
+      // `free` flag false and the price empty for things like farmers markets,
+      // which are free to walk into. Saying "Tickets" there is an assertion we
+      // can't support and actively misleads people. Say nothing instead — the
+      // green "Free" badge then means something, and silence means "check the
+      // listing", which is what the title already links to.
+      return "";
     }
     function inWhen(ms) {
       if (currentWhen === "any") return true;

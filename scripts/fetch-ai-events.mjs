@@ -179,9 +179,50 @@ function clean(raw) {
   return out.sort((a, b) => (a.start < b.start ? -1 : 1)).slice(0, MAX_EVENTS);
 }
 
+// Second-pass verification: actually FETCH each event's page and sanity-check
+// the day we're claiming. The validator above proves a date is parseable and in
+// window — not that it's the RIGHT date. That gap put the Old Town Newhall
+// Farmers Market (a Saturday market) on the site as a Sunday event.
+//
+// Deliberately conservative: we only reject when the page names weekdays AND
+// ours is absent from it. A page that never mentions a weekday tells us nothing,
+// so the event is kept. Network failures keep the event too — absence of
+// evidence isn't evidence.
+const DAY_NAMES = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+
+async function weekdayLooksWrong(e) {
+  let html;
+  try {
+    const r = await fetch(e.url, {
+      headers: { "User-Agent": "tesorohighlands.com community events (neighbor project)" },
+      signal: AbortSignal.timeout(12000),
+    });
+    if (!r.ok) return false;
+    html = (await r.text()).toLowerCase();
+  } catch { return false; }
+
+  const text = html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<[^>]+>/g, " ");
+  const mentioned = DAY_NAMES.filter((d) => text.includes(d));
+  if (!mentioned.length) return false;                 // page says nothing about days
+
+  const [y, m, d] = e.start.split("T")[0].split("-").map(Number);
+  const ours = DAY_NAMES[new Date(y, m - 1, d).getDay()];
+  if (mentioned.includes(ours)) return false;          // our day is named — fine
+
+  console.error(`  dropped "${e.title}" — we had ${ours}, page names ${mentioned.join("/")}`);
+  return true;
+}
+
+async function verifyDays(list) {
+  const checked = await Promise.all(list.map(async (e) => ((await weekdayLooksWrong(e)) ? null : e)));
+  const kept = checked.filter(Boolean);
+  if (kept.length !== list.length) console.error(`Day check: dropped ${list.length - kept.length} of ${list.length}.`);
+  return kept;
+}
+
 let events;
 try {
-  events = clean(await discover());
+  events = await verifyDays(clean(await discover()));
 } catch (err) {
   console.error("AI discovery failed:", String(err).slice(0, 200));
   process.exit(0); // fail soft — keep the last good file
