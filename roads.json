@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T16:39:51.575Z",
+  "generatedAt": "2026-08-22T20:39:07.647Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -15,34 +15,6 @@
       "startEpoch": 1787400060,
       "endEpoch": 1787443140,
       "moreWindows": 6
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Shoulder Reconstruction",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787414460,
-      "endEpoch": 1787435940,
-      "moreWindows": 3
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Valencia Blvd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787414460,
-      "endEpoch": 1787435940,
-      "moreWindows": 3
     },
     {
       "route": "I-5",
@@ -169,6 +141,34 @@
       "startEpoch": 1787450460,
       "endEpoch": 1787500740,
       "moreWindows": 1
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Gavin Canyon",
+      "place": "Newhall",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Sawcutting Operation",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1787450460,
+      "endEpoch": 1787500740,
+      "moreWindows": 1
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "3, 4",
+      "total": "4",
+      "startEpoch": 1787450460,
+      "endEpoch": 1787500740,
+      "moreWindows": 4
     }
   ]
 }
