@@ -1,49 +1,7 @@
 {
-  "generatedAt": "2026-08-22T01:49:45.838Z",
+  "generatedAt": "2026-08-22T04:48:50.662Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Newhall",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Fence Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787364060,
-      "endEpoch": 1787407140,
-      "moreWindows": 20
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Lyons Ave",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787364060,
-      "endEpoch": 1787410740,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787364060,
-      "endEpoch": 1787403540,
-      "moreWindows": 6
-    },
     {
       "route": "I-5",
       "dir": "North",
@@ -70,7 +28,7 @@
       "total": "4",
       "startEpoch": 1787364060,
       "endEpoch": 1787414340,
-      "moreWindows": 6
+      "moreWindows": 4
     },
     {
       "route": "I-5",
@@ -131,34 +89,6 @@
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Shoulder Reconstruction",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787364060,
-      "endEpoch": 1787403540,
-      "moreWindows": 7
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Truck Weigh Station",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787364060,
-      "endEpoch": 1787403540,
-      "moreWindows": 2
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
       "at": "Golden State Freeway, Route 5",
       "place": "Valencia",
       "facility": "Off Ramp",
@@ -168,7 +98,77 @@
       "total": "2",
       "startEpoch": 1787364060,
       "endEpoch": 1787403540,
-      "moreWindows": 32
+      "moreWindows": 28
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Rye Canyon Rd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "2",
+      "startEpoch": 1787364060,
+      "endEpoch": 1787417940,
+      "moreWindows": 2
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Valencia Blvd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787364060,
+      "endEpoch": 1787403540,
+      "moreWindows": 5
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787364060,
+      "endEpoch": 1787403540,
+      "moreWindows": 3
+    },
+    {
+      "route": "SR-14",
+      "dir": "North",
+      "at": "Antelope Valley Freeway, Route 14",
+      "place": "Canyon Country",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Striping Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787364060,
+      "endEpoch": 1787435940,
+      "moreWindows": 3
+    },
+    {
+      "route": "SR-14",
+      "dir": "North",
+      "at": "Shadow Pines Blvd / Soledad Rd",
+      "place": "Canyon Country",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Striping Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787364060,
+      "endEpoch": 1787435940,
+      "moreWindows": 4
     }
   ]
 }
