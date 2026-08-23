@@ -59,6 +59,16 @@ visible until a real emergency:
 
 These exist because each one was a real bug at some point.
 
+**Anything a resident would notice goes in `updates.json`.**
+That file is the "New on this site" list on the home page, and it's hand-maintained —
+nothing writes it for you. If a change adds a feature, improves one, or corrects
+information that was wrong, add a dated line for it in the same commit, newest first.
+Write it for a neighbor, not for a developer: what changed for them and where to find
+it. Corrections count, and saying so out loud is the point — it's how people learn the
+site is worth trusting. Internal refactors, dependency bumps and feed refreshes don't
+belong there. Only the top three show on the home page, so keep each line to one
+sentence and let the older ones fall off.
+
 **A failed feed is "unknown", never "all clear."**
 If a data source doesn't load, the page must say so. It must never render silence as
 good news. Look at how `live.ok` is used in `fire.html` — every feed tracks whether it
