@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-23T04:51:41.609Z",
+  "generatedAt": "2026-08-23T08:48:12.960Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -45,20 +45,6 @@
       "moreWindows": 0
     },
     {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Road Survey",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1787450460,
-      "endEpoch": 1787489940,
-      "moreWindows": 8
-    },
-    {
       "route": "SR-14",
       "dir": "South",
       "at": "Antelope Valley Freeway, Route 14",
@@ -98,7 +84,7 @@
       "total": "1",
       "startEpoch": 1787450460,
       "endEpoch": 1787522340,
-      "moreWindows": 2
+      "moreWindows": 1
     },
     {
       "route": "I-5",
@@ -116,17 +102,17 @@
     },
     {
       "route": "I-5",
-      "dir": "North",
+      "dir": "South",
       "at": "Golden State Freeway, Route 5",
-      "place": "Newhall",
-      "facility": "Off Ramp",
+      "place": "Valencia",
+      "facility": "Connector",
       "type": "Full",
-      "work": "Drainage Work",
+      "work": "Utility Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1787468460,
+      "startEpoch": 1787457660,
       "endEpoch": 1787493540,
-      "moreWindows": 1
+      "moreWindows": 7
     },
     {
       "route": "I-5",
@@ -169,6 +155,20 @@
       "startEpoch": 1787529660,
       "endEpoch": 1787576340,
       "moreWindows": 9
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Templin Highway",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Pavement Rehabilitation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787529660,
+      "endEpoch": 1787576340,
+      "moreWindows": 4
     }
   ]
 }
