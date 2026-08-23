@@ -1,35 +1,7 @@
 {
-  "generatedAt": "2026-08-23T13:01:24.773Z",
+  "generatedAt": "2026-08-23T16:42:22.202Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Pavement Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1787439660,
-      "endEpoch": 1787507940,
-      "moreWindows": 4
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Rye Canyon Rd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1787443260,
-      "endEpoch": 1787504340,
-      "moreWindows": 1
-    },
     {
       "route": "SR-14",
       "dir": "South",
@@ -47,16 +19,16 @@
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Golden State Freeway, Route 5",
+      "at": "Rye Canyon Rd",
       "place": "Valencia",
-      "facility": "Connector",
+      "facility": "On Ramp",
       "type": "Full",
-      "work": "Utility Work",
+      "work": "Drainage Work",
       "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787457660,
-      "endEpoch": 1787493540,
-      "moreWindows": 7
+      "total": "2",
+      "startEpoch": 1787522460,
+      "endEpoch": 1787572740,
+      "moreWindows": 0
     },
     {
       "route": "I-5",
@@ -131,6 +103,20 @@
     {
       "route": "I-5",
       "dir": "South",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Paving Operation",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1787533260,
+      "endEpoch": 1787576340,
+      "moreWindows": 2
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
       "at": "Magic Mountain Parkway, Route 126",
       "place": "Valencia",
       "facility": "Mainline",
@@ -169,6 +155,20 @@
       "startEpoch": 1787540460,
       "endEpoch": 1787576340,
       "moreWindows": 29
+    },
+    {
+      "route": "SR-14",
+      "dir": "North",
+      "at": "Shadow Pines Blvd / Soledad Rd",
+      "place": "Canyon Country",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Pavement Work",
+      "lanes": "2, 3",
+      "total": "3",
+      "startEpoch": 1787558460,
+      "endEpoch": 1787576340,
+      "moreWindows": 0
     }
   ]
 }
