@@ -198,7 +198,7 @@
         </div>
       </div>
       <div class="evcard"><div id="feedList"><div class="empty">Loading local events…</div></div></div>
-      <div class="evmeta" id="feedMeta">Attendable events across the Santa Clarita Valley — the City calendar, Eventbrite, and the Santa Clarita Public Library — updated regularly.</div>
+      <div class="evmeta" id="feedMeta">Attendable events across the Santa Clarita Valley — the City calendar, Eventbrite, the Santa Clarita Public Library, and the COC Performing Arts Center — updated regularly.</div>
     </section>
 
     <section class="evsec" id="family">
@@ -361,7 +361,12 @@
       var d = new Date(p[0], p[1] - 1, p[2]);
       var today = new Date(); today.setHours(0,0,0,0);
       var diff = Math.round((d - today) / 86400000);
-      var pretty = d.toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" });
+      // Most of the feed is inside the next two months, but a venue that
+      // announces a whole season (the COC Performing Arts Center) puts dates in
+      // next year — "Sat, Mar 13" with no year would read as this March.
+      var opts = { weekday: "short", month: "short", day: "numeric" };
+      if (d.getFullYear() !== today.getFullYear()) opts.year = "numeric";
+      var pretty = d.toLocaleDateString([], opts);
       if (diff === 0) return "<b>Today</b> · " + pretty;
       if (diff === 1) return "<b>Tomorrow</b> · " + pretty;
       return pretty;
@@ -571,7 +576,7 @@
       var stale = (feed && feed.generatedAt && Date.now() - new Date(feed.generatedAt).getTime() > 5 * DAY) ||
                   (aiList.length && ai && ai.generatedAt && Date.now() - new Date(ai.generatedAt).getTime() > 5 * DAY);
       document.getElementById("feedMeta").innerHTML =
-        "Across the Santa Clarita Valley — City of Santa Clarita, Eventbrite &amp; the SC Public Library" +
+        "Across the Santa Clarita Valley — City of Santa Clarita, Eventbrite, the SC Public Library &amp; the COC Performing Arts Center" +
         (aiList.length ? ", plus listings found by AI web search" : "") +
         (when.length ? " · updated " + esc(when.join(" · ")) : "") +
         (stale ? ' · <b style="color:var(--cau-fg)">feed may be stale</b>' : "") +

@@ -32,6 +32,9 @@ const LIB_MAX = 25;       // unique library programs kept (after recurring colla
 const LOCALIST_HOST = "calendar.santaclarita.gov"; // official City of Santa Clarita calendar (Localist)
 const LOCALIST_MAX = 30;
 const WINDOW_DAYS = 60;   // how far ahead to look (Eventbrite)
+const PAC_HOST = "pac.canyons.edu";  // Santa Clarita Performing Arts Center at COC
+const PAC_WINDOW_DAYS = 365;         // the PAC announces a whole season at once (~6 shows/yr),
+                                     // so a 60-day window would show almost none of it
 const SCV = /santa clarita|valencia|newhall|saugus|canyon country|castaic|stevenson ranch|agua dulce|val verde/i;
 // Mass-posted corporate training-mill listings — not real community events.
 const SPAM = /six sigma|\bpmp\b|\bcapm\b|\bcissp\b|\bcbap\b|\bitil\b|\bscrum\b|certification|bootcamp|classroom training|(\d+|one|two|half)[- ]day (workshop|training|technique)|training course|certified data analyst|business analyt|project management/i;
@@ -269,14 +272,102 @@ async function fetchLocalist() {
   return { events: events.slice(0, LOCALIST_MAX), ok };
 }
 
+
+/* ---------------- Santa Clarita Performing Arts Center (COC) ----------------
+   The PAC publishes its season on one small server-rendered page with no feed,
+   no API and no ld+json — the kind of venue the structured feeds never reach.
+   Only ~6 shows a year, so this is cheap and stable to parse. */
+const PAC_MON = { jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,sept:8,oct:9,nov:10,dec:11 };
+
+function pacText(s) {
+  return s.replace(/<br\s*\/?>/gi, " — ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&#8217;|&rsquo;/g, "'")
+    .replace(/&#[0-9]+;/g, " ")
+    .replace(/\s+/g, " ").replace(/\s+—\s+$/, "").trim();
+}
+// Their titles are set in all caps for the poster design. Left as-is they shout
+// next to every other event in the feed.
+function pacTitleCase(t) {
+  if (!/[a-z]/.test(t.replace(/\d+s\b/g, ""))) {
+    t = t.toLowerCase().replace(/(^|[\s—:!'"(])([a-z])/g, (m, a, b) => a + b.toUpperCase());
+  }
+  return t.replace(/\s*—\s*/g, ": ").replace(/:\s*:/g, ":").trim();
+}
+
+async function fetchPac() {
+  const events = [];
+  let ok = false;
+  try {
+    const r = await fetch(`https://${PAC_HOST}/shows/`, { headers: { "User-Agent": UA } });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const html = await r.text();
+    ok = true;
+    const today = new Date(laDate(0) + "T00:00:00");
+    const maxT = today.getTime() + PAC_WINDOW_DAYS * 86400000;
+
+    // Each show is a poster <a href="slug.php"> followed by its <h2> title and a
+    // line like "Friday, Sept. 18, 2026 | 8 p.m. | Main Stage".
+    const parts = html.split(/<a\s+href="(?!http)([a-z0-9-]+\.php)"/i);
+    for (let i = 1; i < parts.length; i += 2) {
+      const slug = parts[i], chunk = parts[i + 1] || "";
+      const h2 = chunk.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
+      if (!h2) continue;
+      const title = pacTitleCase(pacText(h2[1]));
+      if (!title) continue;
+      const after = pacText(chunk.slice(h2.index + h2[0].length, h2.index + h2[0].length + 1500));
+      const dm = after.match(/([A-Za-z]{3,9})\.?\s+(\d{1,2}),\s*(\d{4})/);
+      if (!dm) continue;
+      const key = dm[1].toLowerCase();
+      const mo = PAC_MON[key.slice(0, 4)] ?? PAC_MON[key.slice(0, 3)];
+      if (mo == null) continue;
+      // Matinees are written "12 & 4 p.m." — two separate showings sharing one
+      // am/pm. Emit both; the events page collapses same-day showings of the
+      // same title into a single "12 PM to 4 PM · 2 times" row.
+      const day = `${dm[3]}-${String(mo + 1).padStart(2, "0")}-${String(dm[2]).padStart(2, "0")}`;
+      const t = new Date(day + "T00:00:00").getTime();
+      if (isNaN(t) || t < today.getTime() || t > maxT) continue;
+
+      const tm = after.match(/(\d{1,2}(?::\d{2})?(?:\s*&\s*\d{1,2}(?::\d{2})?)*)\s*(a\.?m\.?|p\.?m\.?)/i);
+      const times = [];
+      if (tm) {
+        const pm = /p/i.test(tm[2]);
+        for (const clock of tm[1].split("&")) {
+          const [hh, mm] = clock.trim().split(":");
+          let h = +hh;
+          if (pm && h < 12) h += 12;
+          if (!pm && h === 12) h = 0;
+          if (h >= 0 && h <= 23) times.push("T" + String(h).padStart(2, "0") + ":" + (mm || "00"));
+        }
+      }
+      for (const time of times.length ? times : [""]) {
+        events.push({
+          title,
+          url: `https://${PAC_HOST}/shows/${slug}`,
+          start: day + time,
+          venue: "Santa Clarita Performing Arts Center",
+          city: "Santa Clarita",
+          free: false,
+          price: null,                     // ticket prices live on each show page
+          audience: classify(title + " concert show theater performing arts"),
+          source: "SC Performing Arts Center",
+        });
+      }
+    }
+  } catch (err) {
+    console.error("pac:", String(err).slice(0, 100));
+  }
+  return { events, ok };
+}
+
 /* ---------------- merge, dedupe, write ---------------- */
-const [eb, lib, loc] = await Promise.all([fetchEventbrite(), fetchLibrary(), fetchLocalist()]);
-console.log(`eventbrite: ${eb.events.length} (${eb.pagesOk} pages) | library: ${lib.events.length} (${lib.daysOk}/${LIB_DAYS} days) | city: ${loc.events.length} (${loc.ok ? "ok" : "FAILED"})`);
+const [eb, lib, loc, pac] = await Promise.all([fetchEventbrite(), fetchLibrary(), fetchLocalist(), fetchPac()]);
+console.log(`eventbrite: ${eb.events.length} (${eb.pagesOk} pages) | library: ${lib.events.length} (${lib.daysOk}/${LIB_DAYS} days) | city: ${loc.events.length} (${loc.ok ? "ok" : "FAILED"}) | PAC: ${pac.events.length} (${pac.ok ? "ok" : "FAILED"})`);
 
 let old = null;
 try { old = JSON.parse(readFileSync(OUT, "utf8")); } catch {}
 
-if (eb.pagesOk === 0 && lib.daysOk === 0 && !loc.ok) {
+if (eb.pagesOk === 0 && lib.daysOk === 0 && !loc.ok && !pac.ok) {
   console.error("All sources failed; keeping last good file.");
   process.exit(0);
 }
@@ -294,9 +385,10 @@ function carryForward(source) {
 const ebEvents = eb.pagesOk === 0 ? carryForward("Eventbrite") : eb.events;
 const libEvents = lib.daysOk === 0 ? carryForward("SC Library") : lib.events;
 const locEvents = !loc.ok ? carryForward("City of Santa Clarita") : loc.events;
+const pacEvents = !pac.ok ? carryForward("SC Performing Arts Center") : pac.events;
 
 const seen = new Set();
-const events = [...ebEvents, ...libEvents, ...locEvents]
+const events = [...ebEvents, ...libEvents, ...locEvents, ...pacEvents]
   .filter((e) => {
     const k = e.title.toLowerCase().replace(/\W+/g, " ").trim() + "|" + e.start;
     if (seen.has(k)) return false;
