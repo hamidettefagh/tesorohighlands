@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-23T08:48:12.960Z",
+  "generatedAt": "2026-08-23T13:01:24.773Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -31,74 +31,18 @@
       "moreWindows": 1
     },
     {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Lyons Ave",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Pavement Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1787450460,
-      "endEpoch": 1787500740,
-      "moreWindows": 0
-    },
-    {
-      "route": "SR-14",
-      "dir": "South",
-      "at": "Antelope Valley Freeway, Route 14",
-      "place": "Canyon Country",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Striping Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787450460,
-      "endEpoch": 1787522340,
-      "moreWindows": 1
-    },
-    {
-      "route": "SR-14",
-      "dir": "South",
-      "at": "Shadow Pines Blvd / Soledad Rd",
-      "place": "Canyon Country",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Striping Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787450460,
-      "endEpoch": 1787522340,
-      "moreWindows": 0
-    },
-    {
       "route": "SR-14",
       "dir": "South",
       "at": "Agua Dulce Canyon Rd",
       "place": "Santa Clarita",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Striping Operation",
-      "lanes": "All",
-      "total": "1",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Pavement Work",
+      "lanes": "3",
+      "total": "3",
       "startEpoch": 1787450460,
       "endEpoch": 1787522340,
-      "moreWindows": 1
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Valencia Blvd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Paving Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787454060,
-      "endEpoch": 1787515140,
-      "moreWindows": 1
+      "moreWindows": 0
     },
     {
       "route": "I-5",
@@ -169,6 +113,62 @@
       "startEpoch": 1787529660,
       "endEpoch": 1787576340,
       "moreWindows": 4
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Templin Highway",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Pavement Rehabilitation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787529660,
+      "endEpoch": 1787576340,
+      "moreWindows": 4
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Paving Operation",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1787533260,
+      "endEpoch": 1787576340,
+      "moreWindows": 1
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Lake Hughes Rd",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Pavement Rehabilitation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787533260,
+      "endEpoch": 1787576340,
+      "moreWindows": 4
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Pavement Rehabilitation",
+      "lanes": "1",
+      "total": "4",
+      "startEpoch": 1787540460,
+      "endEpoch": 1787576340,
+      "moreWindows": 29
     }
   ]
 }
