@@ -12,7 +12,7 @@ English about your rights as a California homeowner.
 follow CAL FIRE, LA County Fire, and Sheriff evacuation orders, and call 911 in an
 emergency.
 
-*Last reviewed: 2026-08-09. If you change a workflow cadence, a data source, or a cost
+*Last reviewed: 2026-08-23. If you change a workflow cadence, a data source, or a cost
 figure, please update this file in the same commit.*
 
 ## Want to help?

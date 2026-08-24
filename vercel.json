@@ -21,6 +21,14 @@
     {
       "source": "/(th\\.css|theme\\.js|nav\\.js)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }]
+    },
+    {
+      "source": "/(events|ai-events|roads|roundup|community-events)\\.json",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=60, stale-while-revalidate=300" }]
+    },
+    {
+      "source": "/(alert|updates)\\.json",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=30, stale-while-revalidate=120" }]
     }
   ]
 }

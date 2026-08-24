@@ -320,7 +320,7 @@
 <body>
 
 
-<div class="wrap">
+<main id="main" tabindex="-1" class="wrap">
 
   <header>
     <div class="loc">
@@ -579,13 +579,16 @@
     <a href="tel:911">Emergency <span>Call 911 ↗</span></a>
   </div>
 
+</main>
+
   <footer>
     <div class="legend">
       <span><span class="pill live">Live</span> real data, refreshed automatically</span>
     </div>
     <p id="foot">
-      All live: air quality measured at EPA AirNow monitors (modeled backup &amp; forecasts via Open-Meteo), fire weather via
-      Open-Meteo, weather alerts via NWS (weather.gov), nearby fires via the
+      All live: air quality from a neighbor PurpleAir near Tesoro Highlands when available (US AQI, 10-min), then EPA AirNow
+      monitors, with modeled backup &amp; hourly outlook via Open-Meteo; fire weather from a neighbor Tempest near Tesoro Highlands
+      when available, otherwise Open-Meteo (7-day outlook stays Open-Meteo); weather alerts via NWS (weather.gov), nearby fires via the
       NIFC / IRWIN national wildfire feed with acreage &amp; containment from CAL FIRE and heat detections from NASA (VIIRS)
       satellites, evacuation status via the Cal OES statewide zone feed (verify your zone at
       Genasys Protect), power outages via the Cal OES statewide utility feed, earthquakes via USGS, and planned road closures via Caltrans. Community notes (water tanks, brush, history) come from neighbors, not an official source.
@@ -593,7 +596,6 @@
       call 911 in an emergency.
     </p>
   </footer>
-</div>
 
 <script>
 "use strict";
@@ -784,7 +786,10 @@ function overall(v){
   else if (air.lvl === 2) { lvl = 1; title = "Air is unhealthy for sensitive groups"; text = "Kids, seniors, and anyone with asthma should take it easy outside today."; }
   else if (heat) { lvl = 1; title = heat; text = "Plan around the heat — hydrate, find shade at midday, and check on kids, pets, and older neighbors." + (hi != null ? " Forecast high near " + hi + "°." : ""); }
   else if (windAlert) { lvl = 1; title = windAlert; text = "Breezy day — secure loose patio items and take it slow on the passes."; }
-  else { lvl = 0; title = "Looks safe right now"; text = "Air is healthy and fire weather is calm. Nothing needs your attention."; }
+  else { lvl = 0; title = "Looks safe right now";
+    text = (v.wind != null || v.rh != null || v.temp != null)
+      ? "Air is healthy and fire weather is calm. Nothing needs your attention."
+      : "Air is healthy in the checks that loaded. Fire weather isn't available right now — that's unknown, not all-clear."; }
 
   const klass = lvl === 2 ? "danger" : lvl === 1 ? "caution" : "ok";
   const ey = lvl === 2 ? "Take action" : lvl === 1 ? "Heads up" : "All clear";
@@ -952,9 +957,9 @@ async function fetchFires(lat, lon){
     .slice(0, 6)
     .map(f => { f.sat = satAge(f, viirs); return f; });
 }
-// Nearest EPA AirNow monitor with a fresh reading — real measured air, not a
-// model. The Santa Clarita station sits ~6.5 mi from home; the model routinely
-// overshoots it, so when a monitor is reporting it owns the headline number.
+// Nearest EPA AirNow monitor with a fresh reading. The Santa Clarita station
+// sits ~6.5 mi from home; the model routinely overshoots it, so when a monitor
+// is reporting it beats the model.
 async function fetchAirNow(lat, lon){
   const env = `${(lon-0.35).toFixed(2)},${(lat-0.30).toFixed(2)},${(lon+0.35).toFixed(2)},${(lat+0.30).toFixed(2)}`;
   const u = "https://services.arcgis.com/cJ9YHowT8TU7DUyn/arcgis/rest/services/Air%20Now%20Current%20Monitor%20Data%20Public/FeatureServer/0/query"
@@ -1151,7 +1156,8 @@ function render(){
   $("#locName").textContent = LOC.label;
   $("#locSub").textContent = LOC.sub || (LOC.lat.toFixed(3)+", "+LOC.lon.toFixed(3));
   const ok = live.ok || {};
-  // A fresh monitor reading counts as knowing the air even if the model failed.
+  // Backyard PurpleAir, a fresh EPA monitor, or the Open-Meteo model each count
+  // as knowing the air — any one is enough to judge, not silence-as-all-clear.
   const airKnown = ok.air || !!(live.airnow && live.airnow.aqi != null);
   const coreOk = airKnown && ok.alerts && ok.fires && ok.evac;
   $("#updated").textContent = live.error ? "live data unavailable" : (coreOk ? timeAgo(lastFetch) : "some feeds unavailable");
@@ -1187,7 +1193,7 @@ function render(){
     srcEl.innerHTML = `📡 Measured at the <b>${esc(v.aqiStation.name)}</b> monitor · ${v.aqiStation.dist.toFixed(1)} mi · ${fmtAgo(v.aqiStation.valid)}` +
       (v.modelAqi!=null && Math.abs(v.modelAqi - v.aqiStation.aqi) >= 15 ? ` <span style="color:var(--muted)">(model estimate: ${Math.round(v.modelAqi)})</span>` : "");
   } else if(airKnown){
-    srcEl.innerHTML = `Modeled estimate — no nearby monitor reporting right now.`;
+    srcEl.innerHTML = `Modeled estimate — no nearby EPA monitor is reporting right now.`;
   } else {
     srcEl.textContent = "";
   }
@@ -1212,7 +1218,9 @@ function render(){
   const fw = fireWx(v.temp, v.rh, v.wind, v.gust);
   const santaAna = v.wdir!=null && (v.wdir<=95 || v.wdir>=340) && fw.lvl>=1;
   let fwNote="";
-  if(fw.lvl>=2) fwNote = `<div class="note santa"><b>Extreme fire weather.</b> ${cap(fw.why.join(", "))}. This is how the bad ones start — a spark anywhere upwind can reach you fast.</div>`;
+  if(v.wind==null && v.rh==null && v.temp==null){
+    fwNote = `<div class="note"><b>Live fire weather is unavailable right now</b> — that's unknown, not all-clear.</div>`;
+  } else if(fw.lvl>=2) fwNote = `<div class="note santa"><b>Extreme fire weather.</b> ${cap(fw.why.join(", "))}. This is how the bad ones start — a spark anywhere upwind can reach you fast.</div>`;
   else if(fw.lvl===1) fwNote = `<div class="note santa"><b>Elevated fire weather.</b> ${cap(fw.why.join(", ")||"dry and breezy")}. Stay aware.</div>`;
   else fwNote = `<div class="note"><b>Calm.</b> Humidity and wind are in a normal range — low fire-spread risk right now.</div>`;
   if(santaAna) fwNote += `<div class="note santa" style="margin-top:8px">🌵 Winds from the <b>${compass(v.wdir)}</b> — the offshore Santa Ana direction for the SCV. These downslope winds drive the fastest, most dangerous fires here.</div>`;
@@ -1478,7 +1486,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=7" defer></script>
+<script src="/nav.js?v=9" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>
@@ -1611,9 +1619,10 @@ boot();
       var when = fD(c.startEpoch) + " " + fT(c.startEpoch) + " – " +
         (d(c.endEpoch).toDateString() === d(c.startEpoch).toDateString() ? fT(c.endEpoch) : fD(c.endEpoch) + " " + fT(c.endEpoch));
       var live = (c.startEpoch <= now && now <= c.endEpoch) ? ' <span class="pill live">Now</span>' : "";
-      return '<div class="commfact"><span class="ci">🚧</span><div><b>' + c.route + " " + (c.dir || "") + "</b> at " + c.at +
-        (c.place ? " (" + c.place + ")" : "") + live +
-        '<br><span style="color:var(--muted);font-size:12px">' + when + " · " + what + " · " + (c.work || "roadwork").toLowerCase() +
+      // Caltrans strings are feed data — escape before innerHTML (same rule as fires/alerts).
+      return '<div class="commfact"><span class="ci">🚧</span><div><b>' + esc(c.route) + " " + esc(c.dir || "") + "</b> at " + esc(c.at) +
+        (c.place ? " (" + esc(c.place) + ")" : "") + live +
+        '<br><span style="color:var(--muted);font-size:12px">' + when + " · " + esc(what) + " · " + esc((c.work || "roadwork").toLowerCase()) +
         (c.moreWindows ? " · recurring" : "") + "</span></div></div>";
     }).join("") + (extra ? '<div class="src">…and ' + extra + " more planned closures in the next 10 days.</div>" : "");
     if (j.generatedAt && Date.now() - new Date(j.generatedAt).getTime() > 36 * 3600 * 1000) {

@@ -41,6 +41,15 @@
   var BRAND =
     '<svg aria-hidden="true" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#14161b"/><circle cx="43" cy="21" r="6.5" fill="#e8a33d"/><path d="M3 53 L21 29 L31 41 L41 27 L61 53 Z" fill="#e7e9ee"/></svg>';
 
+  // Skip link first so keyboard users can jump past the sticky nav.
+  if (!document.querySelector("a.skip")) {
+    var skip = document.createElement("a");
+    skip.className = "skip";
+    skip.href = "#main";
+    skip.textContent = "Skip to content";
+    document.body.insertBefore(skip, document.body.firstChild);
+  }
+
   var nav = document.createElement("nav");
   nav.className = "thnav";
   nav.setAttribute("aria-label", "Primary");
@@ -52,7 +61,8 @@
     }).join("") +
     "</div>" +
     '<button class="themebtn" id="thThemeBtn" type="button"></button>';
-  document.body.insertBefore(nav, document.body.firstChild);
+  var anchor = document.querySelector("a.skip");
+  document.body.insertBefore(nav, anchor && anchor.nextSibling ? anchor.nextSibling : document.body.firstChild);
 
   /* ---- theme toggle: auto → dark → light → auto ---- */
   (function () {
@@ -102,11 +112,13 @@
     return 2 * R * Math.asin(Math.sqrt(h));
   }
   function loc() {
-    try { var s = JSON.parse(localStorage.getItem("tesoro.loc")); if (s && s.lat && s.lon) return { lat: s.lat, lon: s.lon }; } catch (e) {}
+    // Fire page hard-codes the community point; an old tesoro.loc override
+    // (from a removed editor) made Home/nav distances disagree with Fire.
+    try { localStorage.removeItem("tesoro.loc"); } catch (e) {}
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v7";  // v7: corrections footer — keep in step with the nav.js?v=N bump
+  var CACHE_KEY = "tesoro.status.v9";  // v9: escape fire names + drop tesoro.loc + skip/a11y — keep in step with nav.js?v=N
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -219,7 +231,8 @@
           return x.acres >= 50 && (x.mod == null || (Date.now() - x.mod) < 48 * 3600 * 1000);
         }).sort(function (a, b) { return a.d - b.d; });
         if (fires[0] && fires[0].d <= 15) {
-          var nm = String(fires[0].name || "").toLowerCase().replace(/\b[a-z]/g, function (m) { return m.toUpperCase(); });
+          // Incident names come from WFIGS — escape before they hit innerHTML.
+          var nm = escT(String(fires[0].name || "").toLowerCase().replace(/\b[a-z]/g, function (m) { return m.toUpperCase(); }));
           // Tone matches distance: close = stay aware; farther = calm awareness.
           // (Distances are straight-line, which reads shorter than driving miles.)
           if (fires[0].d <= 8) say(70, 1, nm + " Fire ~" + fires[0].d.toFixed(0) + " mi away — stay aware.");
@@ -316,7 +329,11 @@
         stripEl = document.createElement("a");
         stripEl.href = "/fire";
         stripEl.setAttribute("aria-live", "polite");
-        nav.parentNode.insertBefore(stripEl, nav.nextSibling);
+        // Keep the emergency strip inside <main> so "Skip to content" does not
+        // jump past the line that may say "EVACUATION ORDER for our zone".
+        var main = document.getElementById("main");
+        if (main) main.insertBefore(stripEl, main.firstChild);
+        else nav.parentNode.insertBefore(stripEl, nav.nextSibling);
       }
       stripEl.className = "thstrip " + st.level;
       stripEl.innerHTML = '<span class="dot"></span><span class="txt">' + st.text + '</span><span class="arrow">Fire &amp; Emergency &rarr;</span>';
