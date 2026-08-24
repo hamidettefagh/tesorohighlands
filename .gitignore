@@ -7,3 +7,8 @@ Thumbs.db
 node_modules/
 .vercel/
 scripts/package-lock.json
+
+# local secrets (Vercel env in prod)
+.env
+.env.*
+!.env.example

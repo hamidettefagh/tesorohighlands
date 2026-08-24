@@ -12,6 +12,9 @@ const types = {
   ".svg": "image/svg+xml",
   ".json": "application/json",
   ".ico": "image/x-icon",
+  ".png": "image/png",
+  ".webp": "image/webp",
+  ".woff2": "font/woff2",
 };
 
 http
