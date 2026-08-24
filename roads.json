@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-23T20:38:45.592Z",
+  "generatedAt": "2026-08-24T01:57:00.938Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "2",
       "startEpoch": 1787522460,
       "endEpoch": 1787572740,
-      "moreWindows": 0
+      "moreWindows": 6
     },
     {
       "route": "I-5",
@@ -28,7 +28,35 @@
       "total": "1",
       "startEpoch": 1787522460,
       "endEpoch": 1787576340,
-      "moreWindows": 4
+      "moreWindows": 5
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Templin Highway",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Pavement Rehabilitation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787529660,
+      "endEpoch": 1787576340,
+      "moreWindows": 5
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Templin Highway",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Pavement Rehabilitation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1787529660,
+      "endEpoch": 1787576340,
+      "moreWindows": 5
     },
     {
       "route": "I-5",
@@ -57,34 +85,6 @@
       "startEpoch": 1787529660,
       "endEpoch": 1787576340,
       "moreWindows": 9
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Templin Highway",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Pavement Rehabilitation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787529660,
-      "endEpoch": 1787576340,
-      "moreWindows": 4
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Templin Highway",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Pavement Rehabilitation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787529660,
-      "endEpoch": 1787576340,
-      "moreWindows": 4
     },
     {
       "route": "I-5",
@@ -98,7 +98,7 @@
       "total": "4",
       "startEpoch": 1787533260,
       "endEpoch": 1787576340,
-      "moreWindows": 2
+      "moreWindows": 31
     },
     {
       "route": "I-5",
@@ -112,7 +112,7 @@
       "total": "4",
       "startEpoch": 1787533260,
       "endEpoch": 1787576340,
-      "moreWindows": 1
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -126,7 +126,7 @@
       "total": "1",
       "startEpoch": 1787533260,
       "endEpoch": 1787576340,
-      "moreWindows": 4
+      "moreWindows": 5
     },
     {
       "route": "I-5",
@@ -154,7 +154,7 @@
       "total": "3",
       "startEpoch": 1787558460,
       "endEpoch": 1787576340,
-      "moreWindows": 0
+      "moreWindows": 18
     },
     {
       "route": "SR-14",
@@ -168,7 +168,7 @@
       "total": "3",
       "startEpoch": 1787558460,
       "endEpoch": 1787576340,
-      "moreWindows": 0
+      "moreWindows": 17
     }
   ]
 }
