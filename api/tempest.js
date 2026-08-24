@@ -13,7 +13,6 @@
 
 const LABEL = "Neighbor Tempest near Tesoro Highlands";
 const MAX_AGE_SEC = 30 * 60;
-const DEFAULT_STATION_ID = "227733";
 
 function softFail(res, reason) {
   res.status(200).json({
@@ -104,31 +103,38 @@ module.exports = async function handler(req, res) {
   }
 
   const token = process.env.TEMPEST_TOKEN;
-  const stationIdRaw = process.env.TEMPEST_STATION_ID || DEFAULT_STATION_ID;
+  // Env-only, no default. tempestwx.com/station/<id> is a public page tied to a
+  // neighbor's yard — not something to commit to a public repo.
+  const stationIdRaw = process.env.TEMPEST_STATION_ID;
   const stationId = Number(stationIdRaw) || stationIdRaw;
 
   if (!token) {
     softFail(res, "TEMPEST_TOKEN not configured");
     return;
   }
+  if (!stationIdRaw) {
+    softFail(res, "TEMPEST_STATION_ID not configured");
+    return;
+  }
 
   try {
     const qs = new URLSearchParams({
-      token: token,
       units_temp: "f",
       units_wind: "mph",
       units_pressure: "mb",
       units_distance: "mi"
     });
-    // Do not log token or the full URL (query embeds the secret).
     const url =
       "https://swd.weatherflow.com/swd/rest/observations/station/" +
       encodeURIComponent(String(stationId)) +
       "?" +
       qs.toString();
 
+    // Bearer header rather than ?token= — query strings get written to upstream
+    // access logs and proxies verbatim. Same auth, one fewer place the secret lands.
     const upstream = await fetch(url, {
       headers: {
+        Authorization: "Bearer " + token,
         Accept: "application/json",
         "User-Agent": "tesorohighlands.com (neighbor community site)"
       }

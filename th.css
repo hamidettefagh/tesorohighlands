@@ -44,6 +44,11 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
   transform:translateY(-120%);transition:transform .15s ease;}
 .skip:focus{transform:translateY(0);outline:2px solid var(--accent);outline-offset:2px;}
 
+/* Status strip lives inside <main> so the skip link cannot jump past an
+   evacuation line — but it must still look like a banner, not a card, so
+   pull it back out to the viewport edges. */
+.thwrap > .thstrip, .wrap > .thstrip{margin-left:-16px;margin-right:-16px;width:auto;border-radius:0;}
+
 /* top nav */
 .thnav{position:sticky;top:0;z-index:60;background:var(--surface);border-bottom:1px solid var(--line);
   display:flex;align-items:center;gap:10px;padding:9px 16px;}
@@ -164,7 +169,10 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .stub .planned li b{color:var(--ink);font-weight:620;}
 
 /* shared footer — divided by the brand ridgeline instead of a plain rule */
-.thfoot{margin-top:36px;color:var(--muted);font-size:11.5px;line-height:1.6;}
+/* The footer sits outside <main> so it lands in its own contentinfo landmark,
+   which means it no longer inherits .thwrap's width and gutters — restate them
+   here or the disclaimer runs edge-to-edge on a phone. */
+.thfoot{max-width:760px;margin:36px auto 48px;padding:0 16px;color:var(--muted);font-size:11.5px;line-height:1.6;}
 .thfoot::before{content:"";display:block;height:20px;margin-bottom:14px;background:var(--line);
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 28' preserveAspectRatio='none'%3E%3Cpath d='M0 28L30 10 55 20 85 4 115 18 140 8 170 22 200 6 240 24V28Z'/%3E%3C/svg%3E") repeat-x bottom/240px 20px;
   mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 28' preserveAspectRatio='none'%3E%3Cpath d='M0 28L30 10 55 20 85 4 115 18 140 8 170 22 200 6 240 24V28Z'/%3E%3C/svg%3E") repeat-x bottom/240px 20px;}

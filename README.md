@@ -67,8 +67,10 @@ theme.js              theme boot, runs before first paint so there's no flash
 nav.js                injected nav, theme toggle, site-wide live status strip
                       (loaded as /nav.js?v=N — bump N when you change it)
 api/calfire.js        proxies incidents.fire.ca.gov (no CORS), CDN-cached ~2 min
-api/purpleair.js      neighbor PurpleAir AQI (needs PURPLEAIR_API_KEY on Vercel)
-api/tempest.js        neighbor Tempest fire weather (needs TEMPEST_TOKEN on Vercel)
+api/purpleair.js      neighbor PurpleAir AQI, US EPA smoke-corrected
+                      (needs PURPLEAIR_API_KEY + PURPLEAIR_SENSOR_INDEX on Vercel)
+api/tempest.js        neighbor Tempest fire weather
+                      (needs TEMPEST_TOKEN + TEMPEST_STATION_ID on Vercel)
 server.js             tiny static server for LOCAL dev only (mimics clean URLs)
 vendor/leaflet/       self-hosted Leaflet 1.9.4 — no CDN dependency in an emergency
 scripts/*.mjs         the data builders (see below)
