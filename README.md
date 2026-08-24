@@ -66,8 +66,9 @@ th.css                the only stylesheet — design tokens (light/dark) + shell
 theme.js              theme boot, runs before first paint so there's no flash
 nav.js                injected nav, theme toggle, site-wide live status strip
                       (loaded as /nav.js?v=N — bump N when you change it)
-api/calfire.js        the one serverless function: proxies incidents.fire.ca.gov
-                      (no CORS upstream), CDN-cached ~2 min
+api/calfire.js        proxies incidents.fire.ca.gov (no CORS), CDN-cached ~2 min
+api/purpleair.js      neighbor PurpleAir AQI (needs PURPLEAIR_API_KEY on Vercel)
+api/tempest.js        neighbor Tempest fire weather (needs TEMPEST_TOKEN on Vercel)
 server.js             tiny static server for LOCAL dev only (mimics clean URLs)
 vendor/leaflet/       self-hosted Leaflet 1.9.4 — no CDN dependency in an emergency
 scripts/*.mjs         the data builders (see below)
@@ -95,8 +96,8 @@ cleanly and commit nothing. Everything else on the site is free and keyless.
 
 | Panel | Source | Status |
 |---|---|---|
-| Air quality (US AQI) | **EPA AirNow monitor** ~6.5 mi away, with Open-Meteo as fallback and for the hourly outlook | **Live**, no key |
-| Fire weather (wind, gusts, humidity, temp) | Open-Meteo Forecast API | **Live**, no key |
+| Air quality (US AQI) | **Neighbor PurpleAir** near Tesoro Highlands (10-min), then EPA AirNow (~6.5 mi), Open-Meteo as fallback + hourly outlook | **Live** (PurpleAir via `/api/purpleair`) |
+| Fire weather (wind, gusts, humidity, temp) | **Neighbor Tempest** near Tesoro Highlands, Open-Meteo as fallback + 7-day outlook | **Live** (Tempest via `/api/tempest`) |
 | Active alerts (Red Flag, heat, wind, smoke) | NWS `api.weather.gov` | **Live**, no key |
 | Nearby fires — list, map points, perimeters | NIFC/WFIGS ArcGIS | **Live**, no key |
 | Fire acreage + containment | CAL FIRE via `api/calfire` proxy | **Live**, no key |

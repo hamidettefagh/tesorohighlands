@@ -118,7 +118,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v9";  // v9: escape fire names + drop tesoro.loc + skip/a11y — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v10";  // v10: neighbor PurpleAir/Tempest feeds + hardening a11y — keep in step with nav.js?v=N
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -145,12 +145,14 @@
     var activeAlerts = [];
     var jobs = [
       Promise.all([
+        // Backyard PurpleAir first (most relevant), then EPA AirNow, then model.
+        fetch("/api/purpleair").then(function (r) { return r.json(); }).catch(function () { return null; }),
         fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + L.lat + "&longitude=" + L.lon + "&current=us_aqi&timezone=America%2FLos_Angeles").then(function (r) { return r.json(); }).catch(function () { return null; }),
-        // Real EPA monitor first — the model routinely overshoots the measured air.
         fetch("https://services.arcgis.com/cJ9YHowT8TU7DUyn/arcgis/rest/services/Air%20Now%20Current%20Monitor%20Data%20Public/FeatureServer/0/query?where=" + encodeURIComponent("OZONEPM_AQI IS NOT NULL") + "&geometry=" + (L.lon - 0.35) + "," + (L.lat - 0.30) + "," + (L.lon + 0.35) + "," + (L.lat + 0.30) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=OZONEPM_AQI,ValidTime&returnGeometry=true&outSR=4326&f=json").then(function (r) { return r.json(); }).catch(function () { return null; })
       ]).then(function (res) {
-        var a = res[0], an = res[1], aqi = null;
-        if (an && an.features) {
+        var pa = res[0], a = res[1], an = res[2], aqi = null;
+        if (pa && pa.ok && pa.primary && pa.primary.aqi != null) aqi = pa.primary.aqi;
+        if (aqi == null && an && an.features) {
           var best = null, bestD = 99;
           for (var i = 0; i < an.features.length; i++) {
             var f = an.features[i], at = f.attributes || {}, g = f.geometry || {};
