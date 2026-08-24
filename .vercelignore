@@ -2,3 +2,5 @@
 server.js
 scripts/
 .github/
+.env
+.env.*
