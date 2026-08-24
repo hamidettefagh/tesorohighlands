@@ -1,43 +1,13 @@
 {
-  "generatedAt": "2026-08-23T13:49:56.379Z",
+  "generatedAt": "2026-08-24T14:07:39.135Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-08-26T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "The Lightning Thief: The Percy Jackson Musical",
-      "url": "https://www.canyontheatre.org/shows",
-      "start": "2026-08-29",
-      "venue": "Canyon Theatre Guild Playhouse",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
       "title": "Old Town Newhall Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
       "start": "2026-08-29T08:30",
-      "venue": "Old Town Newhall Library",
+      "venue": "Old Town Newhall Library parking lot",
       "city": "Newhall",
       "free": true,
       "price": "Free",
@@ -45,10 +15,10 @@
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Concerts in the Park: Police Tribute",
+      "title": "Concerts in the Park - Police Tribute",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-29T19:00",
       "venue": "Central Park",
@@ -56,37 +26,61 @@
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "teens",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita Arts & Events"
+      "via": "City of Santa Clarita"
     },
     {
-      "title": "10 by 10 Variety Show",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-09-03",
-      "venue": "The MAIN Theatre",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-05T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Change the Station",
+      "url": "https://atthemain.org/",
+      "start": "2026-09-11",
+      "venue": "The MAIN",
       "city": "Newhall",
       "free": false,
       "price": null,
       "audience": [
-        "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "The MAIN"
     },
     {
-      "title": "SENSES Block Party",
-      "url": "https://oldtownnewhall.com/senses-block-party/",
-      "start": "2026-09-17T19:00",
-      "venue": "Main Street",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-12T08:30",
+      "venue": "Old Town Newhall Library parking lot",
       "city": "Newhall",
       "free": true,
       "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "SENSES Block Party: Oktoberfest",
+      "url": "https://oldtownnewhall.com/senses-block-party/",
+      "start": "2026-09-17T19:00",
+      "venue": "Main Street, Old Town Newhall",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
       "audience": [
         "adults"
       ],
@@ -106,23 +100,63 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain Official Events"
+      "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "GraceFest Music & Message Festival",
-      "url": "https://www.gracefest.org/",
-      "start": "2026-09-19T15:00",
-      "venue": "Castaic Lake State Recreation Area",
-      "city": "Castaic",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-19T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Every Brilliant Thing",
+      "url": "https://atthemain.org/",
+      "start": "2026-09-25",
+      "venue": "The MAIN",
+      "city": "Newhall",
       "free": false,
       "price": null,
       "audience": [
-        "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "GraceFest Official"
+      "via": "The MAIN"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-26T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-10-03T08:30",
+      "venue": "Old Town Newhall Library parking lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall"
     }
   ]
 }
