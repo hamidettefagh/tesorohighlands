@@ -1,24 +1,10 @@
 {
-  "generatedAt": "2026-08-24T14:07:39.135Z",
+  "generatedAt": "2026-08-25T14:09:47.539Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-08-29T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall"
-    },
-    {
-      "title": "Concerts in the Park - Police Tribute",
+      "title": "Concerts in the Park: Police Tribute",
       "url": "https://santaclarita.gov/arts-and-culture/events/concerts-in-the-park/",
       "start": "2026-08-29T19:00",
       "venue": "Central Park",
@@ -32,18 +18,18 @@
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-05T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita/",
+      "start": "2026-09-06T08:00",
+      "venue": "College of the Canyons, Parking Lot 5",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "VCCFM"
     },
     {
       "title": "Change the Station",
@@ -60,39 +46,40 @@
       "via": "The MAIN"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-12T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita/",
+      "start": "2026-09-13T08:00",
+      "venue": "College of the Canyons, Parking Lot 5",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "VCCFM"
     },
     {
       "title": "SENSES Block Party: Oktoberfest",
-      "url": "https://oldtownnewhall.com/senses-block-party/",
+      "url": "https://santaclarita.gov/blog/2026/03/13/senses-block-party-returns-to-old-town-newhall-with-new-themes/",
       "start": "2026-09-17T19:00",
-      "venue": "Main Street, Old Town Newhall",
+      "venue": "Main Street between Market and Sixth Street",
       "city": "Newhall",
-      "free": false,
-      "price": null,
+      "free": true,
+      "price": "Free",
       "audience": [
-        "adults"
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "City of Santa Clarita"
     },
     {
-      "title": "Fright Fest",
+      "title": "Fright Fest 2026",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-09-18T19:00",
+      "start": "2026-09-18",
       "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
+      "city": "Santa Clarita",
       "free": false,
       "price": null,
       "audience": [
@@ -103,18 +90,34 @@
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-19T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita/",
+      "start": "2026-09-20T08:00",
+      "venue": "College of the Canyons, Parking Lot 5",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "VCCFM"
+    },
+    {
+      "title": "Tricks and Treats",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-09-25",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain"
     },
     {
       "title": "Every Brilliant Thing",
@@ -131,32 +134,62 @@
       "via": "The MAIN"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-26T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita/",
+      "start": "2026-09-27T08:00",
+      "venue": "College of the Canyons, Parking Lot 5",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "VCCFM"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-10-03T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://visitsantaclarita.com/inspiration/seasonal-activities/halloween-haunt-spooktacular/",
+      "start": "2026-09-29T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Visit Santa Clarita"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita/",
+      "start": "2026-10-04T08:00",
+      "venue": "College of the Canyons, Parking Lot 5",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "VCCFM"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://visitsantaclarita.com/inspiration/seasonal-activities/halloween-haunt-spooktacular/",
+      "start": "2026-10-04T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Visit Santa Clarita"
     }
   ]
 }
