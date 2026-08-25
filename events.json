@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T08:59:15.195Z",
+  "generatedAt": "2026-08-25T20:45:01.447Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -109,6 +109,24 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-08-23T03:24:58.764Z"
+    },
+    {
+      "title": "Cumbiamba Dance & Fitness",
+      "url": "https://calendar.santaclarita.gov/event/cumbiamba-dance-fitness",
+      "start": "2026-08-26T08:15",
+      "dates": [
+        "2026-08-26T08:15"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-25T20:45:01.447Z"
     },
     {
       "title": "Beginning Bridge Lessons",
@@ -588,6 +606,24 @@
       "added": "2026-08-19T16:46:05.072Z"
     },
     {
+      "title": "Cumbiamba Dance & Fitness (evenings)",
+      "url": "https://calendar.santaclarita.gov/event/cumbiamba-dance-fitness-evenings",
+      "start": "2026-08-27T18:30",
+      "dates": [
+        "2026-08-27T18:30"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-25T20:45:01.447Z"
+    },
+    {
       "title": "8-week Digital Dependency Class",
       "url": "https://calendar.santaclarita.gov/event/8-week-digital-dependency-class",
       "start": "2026-08-27T19:00",
@@ -624,24 +660,6 @@
       "added": "2026-08-24T09:03:57.440Z"
     },
     {
-      "title": "“YOU GOT OLDER” Stage Production",
-      "url": "https://calendar.santaclarita.gov/event/you-got-older-stage-production",
-      "start": "2026-08-27T20:00",
-      "dates": [
-        "2026-08-27T20:00"
-      ],
-      "repeats": 0,
-      "venue": "The MAIN",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "25",
-      "audience": [
-        "kids"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-17T09:00:07.654Z"
-    },
-    {
       "title": "Borderline Country Line Dancing Night",
       "url": "https://calendar.santaclarita.gov/event/borderline-country-line-dancing-night",
       "start": "2026-08-27T20:00",
@@ -660,24 +678,6 @@
       "added": "2026-08-24T09:03:57.440Z"
     },
     {
-      "title": "You Got Older presented by Dig Deep Theatre",
-      "url": "https://calendar.santaclarita.gov/event/you-got-older-presented-by-dig-deep-theatre",
-      "start": "2026-08-27T20:00",
-      "dates": [
-        "2026-08-27T20:00"
-      ],
-      "repeats": 0,
-      "venue": "The MAIN",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "Seniors $22.23, GA $25.40",
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
       "title": "City Cinemas, presented by Henry Rodriguez State Farm: Jurassic Park",
       "url": "https://calendar.santaclarita.gov/event/city-cinemas-presented-by-henry-rodriguez-state-farm-564",
       "start": "2026-08-28T00:00",
@@ -694,6 +694,24 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-08-25T08:59:15.195Z"
+    },
+    {
+      "title": "Cumbiamba Dance & Fitness",
+      "url": "https://calendar.santaclarita.gov/event/cumbiamba-dance-fitness",
+      "start": "2026-08-28T08:15",
+      "dates": [
+        "2026-08-28T08:15"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-25T20:45:01.447Z"
     },
     {
       "title": "Play Bridge",
@@ -727,24 +745,6 @@
       "price": null,
       "audience": [
         "teens"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-21T16:50:19.676Z"
-    },
-    {
-      "title": "Youth Afterschool Program",
-      "url": "https://calendar.santaclarita.gov/event/youth-afterschool-program-328",
-      "start": "2026-08-28T15:00",
-      "dates": [
-        "2026-08-28T15:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids"
       ],
       "source": "City of Santa Clarita",
       "added": "2026-08-21T16:50:19.676Z"
