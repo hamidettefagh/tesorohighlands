@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T04:53:12.774Z",
+  "generatedAt": "2026-08-25T08:59:26.305Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,21 +14,7 @@
       "total": "4",
       "startEpoch": 1787623260,
       "endEpoch": 1787662740,
-      "moreWindows": 22
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1787623260,
-      "endEpoch": 1787662740,
-      "moreWindows": 28
+      "moreWindows": 21
     },
     {
       "route": "I-5",
@@ -56,21 +42,21 @@
       "total": "1",
       "startEpoch": 1787623260,
       "endEpoch": 1787662740,
-      "moreWindows": 35
+      "moreWindows": 34
     },
     {
       "route": "I-5",
       "dir": "South",
       "at": "Golden State Freeway, Route 5",
-      "place": "Castaic",
+      "place": "Stevenson Ranch",
       "facility": "Off Ramp",
       "type": "Full",
-      "work": "Utility Work",
+      "work": "Shoulder Reconstruction",
       "lanes": "All",
       "total": "1",
       "startEpoch": 1787623260,
       "endEpoch": 1787662740,
-      "moreWindows": 81
+      "moreWindows": 78
     },
     {
       "route": "I-5",
@@ -169,6 +155,20 @@
       "startEpoch": 1787626860,
       "endEpoch": 1787662740,
       "moreWindows": 16
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1787626860,
+      "endEpoch": 1787662740,
+      "moreWindows": 21
     }
   ]
 }

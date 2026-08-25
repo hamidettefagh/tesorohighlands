@@ -1,79 +1,7 @@
 {
-  "generatedAt": "2026-08-24T09:03:57.441Z",
+  "generatedAt": "2026-08-25T08:59:15.195Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-08-24T00:00",
-      "dates": [
-        "2026-08-24T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-23T03:24:58.764Z"
-    },
-    {
-      "title": "Wolfcreek Brewery Trivia Night",
-      "url": "https://calendar.santaclarita.gov/event/wolfcreek-brewery-trivia-night",
-      "start": "2026-08-24T00:00",
-      "dates": [
-        "2026-08-24T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-23T03:24:58.764Z"
-    },
-    {
-      "title": "Teen Experience (Afterschool)",
-      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
-      "start": "2026-08-24T15:00",
-      "dates": [
-        "2026-08-24T15:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "teens"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-21T16:50:19.676Z"
-    },
-    {
-      "title": "Youth Afterschool Program",
-      "url": "https://calendar.santaclarita.gov/event/youth-afterschool-program-328",
-      "start": "2026-08-24T15:00",
-      "dates": [
-        "2026-08-24T15:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-21T16:50:19.676Z"
-    },
     {
       "title": "Trivia Nights",
       "url": "https://calendar.santaclarita.gov/event/trivia-nights",
@@ -748,6 +676,78 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "City Cinemas, presented by Henry Rodriguez State Farm: Jurassic Park",
+      "url": "https://calendar.santaclarita.gov/event/city-cinemas-presented-by-henry-rodriguez-state-farm-564",
+      "start": "2026-08-28T00:00",
+      "dates": [
+        "2026-08-28T00:00"
+      ],
+      "repeats": 0,
+      "venue": "William S. Hart Park",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-25T08:59:15.195Z"
+    },
+    {
+      "title": "Play Bridge",
+      "url": "https://calendar.santaclarita.gov/event/play-bridge-9425",
+      "start": "2026-08-28T10:00",
+      "dates": [
+        "2026-08-28T10:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-25T08:59:15.195Z"
+    },
+    {
+      "title": "Teen Experience (Afterschool)",
+      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
+      "start": "2026-08-28T15:00",
+      "dates": [
+        "2026-08-28T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-21T16:50:19.676Z"
+    },
+    {
+      "title": "Youth Afterschool Program",
+      "url": "https://calendar.santaclarita.gov/event/youth-afterschool-program-328",
+      "start": "2026-08-28T15:00",
+      "dates": [
+        "2026-08-28T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-21T16:50:19.676Z"
     },
     {
       "title": "SCV Music Festival",
