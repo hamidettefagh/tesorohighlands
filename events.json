@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T09:47:21.642Z",
+  "generatedAt": "2026-08-27T22:15:29.261Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -27,6 +27,24 @@
       ],
       "repeats": 8,
       "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "[Outreach] La Mesa",
+      "url": "https://santaclarita.librarycalendar.com/event/outreach-la-mesa-37285",
+      "start": "2026-08-27T10:15",
+      "venue": "Off Site",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-08-27T10:15"
+      ],
+      "added": "2026-08-27T22:15:29.260Z"
     },
     {
       "title": "Hart Mansion Group Tour 11:00a.m.",
@@ -1063,23 +1081,6 @@
         "2026-09-11T11:00"
       ],
       "added": "2026-08-23T08:48:05.400Z"
-    },
-    {
-      "title": "Sit and Stitch",
-      "url": "https://santaclarita.librarycalendar.com/event/sit-and-stitch-24353",
-      "start": "2026-09-12T10:00",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-12T10:00"
-      ],
-      "added": "2026-08-27T09:47:21.641Z"
     },
     {
       "title": "The Doo Wop Project: Echoes Of The Street",
