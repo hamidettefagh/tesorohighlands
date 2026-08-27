@@ -94,7 +94,7 @@ updates.json          the "new on this site" changelog, hand-maintained
 |---|---|---|---|
 | `refresh-events.yml` | every 4h | Rebuilds `events.json` + `roads.json` | No |
 | `alert-watch.yml` | every 10 min | Checks evac/fire/red-flag/quake/PSPS for our area, writes `alert.json` (the one-tap WhatsApp share card), optional phone ping via ntfy | No |
-| `refresh-purpleair-history.yml` | hourly (:12) | Fetches 24h PurpleAir history → `purpleair-history.json` (sparkline on `/weather`) | No (needs `PURPLEAIR_API_KEY` secret) |
+| `refresh-purpleair-history.yml` | hourly (:12) | Fetches 24h PurpleAir history → `purpleair-history.json` (sparkline on `/weather`) | No (needs `PURPLEAIR_API_KEY` secret). Ship the YAML from `scripts/github/` into `.github/workflows/` after merge — fork OAuth cannot create GitHub Actions files. |
 | `refresh-ai-events.yml` | daily ~6:23am PT | Claude web-search sweep for events the feeds miss → `ai-events.json` | Yes |
 | `weekend-roundup.yml` | Fridays ~8:23am PT | Claude curates 5–7 weekend picks → `roundup.json` | Yes |
 
