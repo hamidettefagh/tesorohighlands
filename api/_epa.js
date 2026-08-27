@@ -9,6 +9,7 @@ const PM25_BREAKPOINTS = [
 ];
 
 function correctAtmPm25(x, rh) {
+  if (rh == null || rh === "" || (typeof rh === "number" && Number.isNaN(rh))) return null;
   const xv = Number(x);
   const RH = Number(rh);
   if (!Number.isFinite(xv) || xv < 0) return null;

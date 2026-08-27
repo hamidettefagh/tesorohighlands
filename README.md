@@ -36,8 +36,9 @@ is this site.
 
 *(Live copy: [tesorohighlands.com/stack.svg](https://tesorohighlands.com/stack.svg))*
 
-Plain HTML/CSS/JS. No framework, no build step, no bundler. **Five** Vercel serverless
-functions under `api/` (see below). Data refreshes come from scheduled GitHub Actions
+Plain HTML/CSS/JS. No framework, no build step, no bundler. **Three** Vercel serverless
+route handlers under `api/` (`calfire`, `purpleair`, `tempest-forecast`), plus shared
+`api/_epa.js` (not a route). Data refreshes come from scheduled GitHub Actions
 that commit JSON back to the repo, which redeploys the site. Everything a visitor's
 browser fetches is either a static file, a proxied government API, or one of those
 functions (some need repo secrets on Vercel).
@@ -71,8 +72,7 @@ theme.js              theme boot, runs before first paint so there's no flash
 nav.js                injected nav, theme toggle, site-wide live status strip
                       (loaded as /nav.js?v=N — bump N when you change it)
 api/calfire.js        proxies incidents.fire.ca.gov (no CORS upstream), CDN ~2 min
-api/purpleair.js      backyard PurpleAir snapshot — C0 10-min + EPA-corrected 60-min
-api/tempest.js        backyard Tempest current conditions (Fire page)
+api/purpleair.js      backyard PurpleAir snapshot — C0 10-min + EPA-corrected 60-min (/weather)
 api/tempest-forecast.js  WeatherFlow Better Forecast hourly + 10-day (/weather)
 api/_epa.js           shared EPA ATM correction math (used by purpleair.js)
 server.js             tiny static server for LOCAL dev only (mimics clean URLs)
@@ -105,8 +105,8 @@ for the live weather APIs. Everything else on the site is free and keyless.
 
 | Panel | Source | Status |
 |---|---|---|
-| Air quality on Fire / Home / nav strip | **Backyard PurpleAir** uncorrected C0 from 10-min PM2.5 (`primary.aqi`); EPA AirNow monitor ~6.5 mi as fallback when the sensor is down | **Live** (sensor needs `PURPLEAIR_API_KEY` on Vercel) |
-| Air quality on `/weather` | **Backyard PurpleAir** EPA-corrected 60-min ATM (`primary.aqiEpa`); 24h sparkline from `purpleair-history.json` | **Live** + **Auto** history |
+| Air quality on Fire / Home / nav strip | EPA **AirNow** monitor within ~15 mi (Open-Meteo `us_aqi` model as fallback) | **Live**, no key |
+| Air quality on `/weather` | **Backyard PurpleAir** EPA-corrected 60-min ATM (`primary.aqiEpa` via `/api/purpleair`); 24h sparkline from `purpleair-history.json` | **Live** (sensor needs `PURPLEAIR_API_KEY` on Vercel) + **Auto** history |
 | Backyard weather now (`/weather`) | Neighbor **Tempest** via WeatherFlow (`/api/tempest-forecast` current block) | **Live** (needs `TEMPEST_TOKEN` + `TEMPEST_STATION_ID`) |
 | Hourly + 10-day forecast (`/weather`) | WeatherFlow **Better Forecast** model for that station — labeled forecast, not measured | **Live** (same Tempest keys) |
 | Fire weather (wind, gusts, humidity, temp) on `/fire` | Open-Meteo Forecast API | **Live**, no key |
@@ -128,10 +128,10 @@ Every live panel degrades honestly: **a failed feed says "unavailable," never "a
 clear."** The status logic is deliberately conservative, and alert thresholds are
 tuned so a distant fire informs without alarming.
 
-**Two AQI numbers are intentional.** Fire, Home “Air today,” and the nav strip (except
-on `/weather`) use uncorrected C0 from 10-minute PM2.5. `/weather` shows EPA-corrected
-60-minute ATM for the headline and sparkline. They will disagree sometimes — see
-`CONTRIBUTING.md`.
+**Two AQI bases are intentional.** `/weather` shows EPA-corrected 60-minute ATM from
+`/api/purpleair` for the headline and sparkline. Fire, Home “Air today,” and the nav
+strip (except on `/weather`) still use their existing AirNow/Open-Meteo path until
+separately wired to PurpleAir. They will disagree sometimes — see `CONTRIBUTING.md`.
 
 ## The local events pipeline
 

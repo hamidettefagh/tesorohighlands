@@ -108,7 +108,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v10";  // v10: Weather nav + suppress air on /weather — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v11";  // v11: weather all-clear without air claim — keep in step with nav.js?v=N
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -291,7 +291,7 @@
 
     var okCount = [okAir, okAlerts, okFires, okEvac].filter(Boolean).length;
     if (lvl === 0) {
-      if (okCount === 4) text = "All clear — air is good and no active alerts.";
+      if (okCount === 4) text = isWeather ? "No active alerts." : "All clear — air is good and no active alerts.";
       else if (okCount === 0) return { level: "neutral", text: "Live status unavailable right now — open the dashboard for details.", alerts: [] };
       else return { level: "neutral", text: "No alerts in the live checks that loaded (" + okCount + "/4) — see the dashboard.", alerts: activeAlerts };
     }

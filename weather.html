@@ -39,7 +39,6 @@
   @media(max-width:560px){.nowgrid{grid-template-columns:1fr;}}
   .nowcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);min-height:120px;}
   .nowcard .ey{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:680;margin:0 0 8px;}
-  .nowcard.unavail{color:var(--muted);font-size:13px;padding-top:28px;}
   .wxhero{display:flex;gap:12px;align-items:flex-start;}
   .wxhero .ico{font-size:36px;line-height:1;flex:none;}
   .wxhero .temp{font-size:40px;font-weight:720;letter-spacing:-0.03em;line-height:1;margin:0;}
@@ -140,7 +139,7 @@
     <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> Tempest and PurpleAir are backyard sensors; forecasts are a commercial model. In an emergency, call 911 and follow official orders. &nbsp;<a href="/">← Back to the hub</a></p>
   </footer>
 </main>
-<script src="/nav.js?v=10" defer></script>
+<script src="/nav.js?v=11" defer></script>
 <script>
 "use strict";
 
@@ -259,7 +258,7 @@ function precipSoon(hourly){
 function renderWx(fc){
   const el=$("#wxNow");
   const cur=fc&&fc.ok&&fc.current&&!fc.currentStale?fc.current:null;
-  if(!cur){
+  if(!cur||cur.tempF==null||!Number.isFinite(cur.tempF)){
     el.innerHTML='<p class="ey">Tempest</p><div class="band-unavail">Weather unavailable</div>';
     return;
   }
@@ -392,11 +391,11 @@ function renderExtra(fc){
   const pa = paR.status==="fulfilled"?paR.value:null;
   const hist = histR.status==="fulfilled"?histR.value:null;
   const fc = fcR.status==="fulfilled"?fcR.value:null;
-  renderWx(fc);
-  renderAqi(pa, hist);
-  renderHourly(fc);
-  renderDaily(fc);
-  renderExtra(fc);
+  try { renderWx(fc); } catch (e) { $("#wxNow").innerHTML='<p class="ey">Tempest</p><div class="band-unavail">Weather unavailable</div>'; }
+  try { renderAqi(pa, hist); } catch (e) { $("#aqiNow").innerHTML='<p class="ey">PurpleAir</p><div class="band-unavail">Air quality unavailable</div>'; }
+  try { renderHourly(fc); } catch (e) { $("#hourlyBand").innerHTML='<div class="band-unavail">Hourly forecast unavailable</div>'; }
+  try { renderDaily(fc); } catch (e) { $("#dailyBand").innerHTML='<div class="band-unavail">10-day forecast unavailable</div>'; }
+  try { renderExtra(fc); } catch (e) { $("#extraBand").innerHTML='<div class="band-unavail">Extra stats unavailable</div>'; }
 })();
 </script>
 </body>

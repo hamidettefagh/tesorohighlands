@@ -14,7 +14,10 @@ export function rowsFromHistoryPayload(raw) {
   for (const row of data) {
     if (!Array.isArray(row)) continue;
     const t = Number(row[ti]);
-    const y = correctAtmPm25(row[pi], row[hi]);
+    const pmRaw = row[pi];
+    const rhRaw = row[hi];
+    if (pmRaw == null || rhRaw == null) continue;
+    const y = correctAtmPm25(pmRaw, rhRaw);
     const aqi = y == null ? null : aqiFromPm25(y);
     if (!Number.isFinite(t) || aqi == null) continue;
     rows.push({ t, aqi });

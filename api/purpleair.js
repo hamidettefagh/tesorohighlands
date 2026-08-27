@@ -117,8 +117,8 @@ module.exports = async function handler(req, res) {
     const humidity = sensor.humidity != null ? Number(sensor.humidity) : null;
 
     const pm60raw = stats["pm2.5_60minute"] != null ? stats["pm2.5_60minute"] : sensor["pm2.5_60minute"];
-    const pm60 = Number(pm60raw);
-    const yEpa = Number.isFinite(pm60) ? correctAtmPm25(pm60, humidity) : null;
+    const pm60 = pm60raw != null ? Number(pm60raw) : null;
+    const yEpa = pm60 != null && Number.isFinite(pm60) ? correctAtmPm25(pm60, humidity) : null;
     const aqiEpa = yEpa == null ? null : aqiFromPm25(yEpa);
     const pm25Epa = yEpa == null ? null : Math.round(yEpa * 10) / 10;
 

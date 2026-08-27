@@ -76,9 +76,10 @@ actually loaded, and the hero refuses to show a green all-clear unless every che
 succeeded. Preserve that.
 
 **Two AQI bases are intentional.**
-Fire, Home “Air today”, the nav strip (except `/weather`), and `scripts/alert-watch.mjs`
-use uncorrected C0 (`primary.aqi`, 10-min). `/weather` uses EPA-corrected 60-min
-(`primary.aqiEpa`). Do not unify them by flipping Fire to corrected.
+`/weather` uses EPA-corrected 60-min (`primary.aqiEpa` from `/api/purpleair`). Fire,
+Home “Air today,” and the nav strip (except `/weather`) still use AirNow/Open-Meteo
+until separately wired to PurpleAir. Do not unify them by flipping Fire to corrected
+without an explicit decision.
 
 **EPA correction unit test:** `node scripts/epa-correct.test.mjs` (no npm test runner).
 
