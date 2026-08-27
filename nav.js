@@ -30,10 +30,12 @@
   if (path.length > 1) path = path.replace(/\/$/, "");
   var isHome = path === "/" || path === "";
   var isFire = path === "/fire";
+  var isWeather = path === "/weather";
 
   var NAV = [
     { href: "/", label: "Home", on: isHome },
     { href: "/fire", label: "Fire & Emergency", on: isFire },
+    { href: "/weather", label: "Weather", on: isWeather },
     { href: "/living", label: "Living Here", on: path === "/living" },
     { href: "/events", label: "Events", on: path === "/events" },
     { href: "/hoa", label: "HOA", on: path === "/hoa" }
@@ -106,7 +108,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v7";  // v7: corrections footer — keep in step with the nav.js?v=N bump
+  var CACHE_KEY = "tesoro.status.v10";  // v10: Weather nav + suppress air on /weather — keep in step with nav.js?v=N
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -150,8 +152,10 @@
         }
         if (aqi == null) aqi = a && a.current ? a.current.us_aqi : null;
         if (aqi == null) return; okAir = true;
-        if (aqi > 150) { say(80, 2, "Air is unhealthy (AQI " + Math.round(aqi) + ") — limit time outside."); }
-        else if (aqi > 100) { say(40, 1, "Air unhealthy for sensitive groups (AQI " + Math.round(aqi) + ")."); }
+        if (!isWeather) {
+          if (aqi > 150) { say(80, 2, "Air is unhealthy (AQI " + Math.round(aqi) + ") — limit time outside."); }
+          else if (aqi > 100) { say(40, 1, "Air unhealthy for sensitive groups (AQI " + Math.round(aqi) + ")."); }
+        }
       }).catch(function () {}),
       fetch("https://api.weather.gov/alerts/active?point=" + L.lat + "," + L.lon, { headers: { Accept: "application/geo+json" } }).then(function (r) { return r.json(); }).then(function (al) {
         if (!al || !al.features) return; okAlerts = true;
