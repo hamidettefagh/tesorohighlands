@@ -260,7 +260,7 @@ function renderWx(fc){
   const el=$("#wxNow");
   const cur=fc&&fc.ok&&fc.current&&!fc.currentStale?fc.current:null;
   if(!cur){
-    el.innerHTML='<p class="ey">Tempest</p><div class="unavail">Weather unavailable</div>';
+    el.innerHTML='<p class="ey">Tempest</p><div class="band-unavail">Weather unavailable</div>';
     return;
   }
   const hl=todayHighLow(fc.daily);
@@ -287,7 +287,7 @@ function renderAqi(pa, hist){
   const p=pa&&pa.ok&&pa.primary?pa.primary:null;
   if(!p){
     el.className="nowcard";
-    el.innerHTML='<p class="ey">PurpleAir</p><div class="unavail">Air quality unavailable</div>';
+    el.innerHTML='<p class="ey">PurpleAir</p><div class="band-unavail">Air quality unavailable</div>';
     return;
   }
   const epa=p.aqiEpa;
@@ -303,7 +303,7 @@ function renderAqi(pa, hist){
         '<div class="aqi-note">Fire and the nav strip still use this 10-minute uncorrected reading.</div>';
     }else{
       el.className="nowcard";
-      el.innerHTML='<p class="ey">PurpleAir</p><div class="unavail">Air quality unavailable</div>';
+      el.innerHTML='<p class="ey">PurpleAir</p><div class="band-unavail">Air quality unavailable</div>';
     }
     return;
   }
