@@ -74,4 +74,22 @@ if (!stale.hourly.length) throw new Error("keep hourly");
 
 const bad = mapForecast({ status: { status_code: 1 }, forecast: { hourly: [], daily: [] } });
 if (bad.ok !== false) throw new Error("status");
+
+const noForecast = mapForecast({
+  status: { status_code: 0 },
+  current_conditions: raw.current_conditions,
+  station: { is_station_online: true }
+});
+if (noForecast.ok !== false) throw new Error("missing forecast ok");
+if (noForecast.current !== null || noForecast.hourly !== null || noForecast.daily !== null) {
+  throw new Error("missing forecast nulls");
+}
+
+const emptyForecast = mapForecast({
+  status: { status_code: 0 },
+  current_conditions: raw.current_conditions,
+  forecast: { hourly: [], daily: [] }
+});
+if (emptyForecast.ok !== true) throw new Error("empty forecast arrays");
+
 console.log("tempest-forecast.test.mjs ok");

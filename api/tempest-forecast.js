@@ -149,13 +149,29 @@ function mapForecast(raw) {
     };
   }
 
+  const forecast =
+    raw.forecast != null && typeof raw.forecast === "object" && !Array.isArray(raw.forecast)
+      ? raw.forecast
+      : null;
+  if (!forecast) {
+    return {
+      ok: false,
+      generatedAt,
+      source: "Tempest",
+      currentStale: false,
+      current: null,
+      hourly: null,
+      daily: null,
+      error: "missing forecast"
+    };
+  }
+
   const station = raw.station && typeof raw.station === "object" ? raw.station : null;
   const isOnline = station == null || station.is_station_online !== false;
 
   const cc = raw.current_conditions;
   const { current, currentStale } = mapCurrent(cc, isOnline);
 
-  const forecast = raw.forecast && typeof raw.forecast === "object" ? raw.forecast : {};
   const hourly = mapHourly(forecast.hourly);
   const daily = mapDaily(forecast.daily);
 
