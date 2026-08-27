@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Backyard Weather &amp; Air — Tesoro Highlands</title>
-<meta name="description" content="Backyard Tempest weather and EPA-corrected PurpleAir air quality near Tesoro Highlands — hourly and 10-day Better Forecast, not an emergency dashboard." />
+<title>Weather &amp; Air here — Tesoro Highlands</title>
+<meta name="description" content="Hyper-local weather and air quality in Tesoro Highlands — neighborhood sensors plus a 10-day forecast." />
 <meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#14161b" media="(prefers-color-scheme: dark)" />
 <link rel="icon" href="/icon.svg" />
@@ -14,16 +14,16 @@
 <link rel="canonical" href="https://tesorohighlands.com/weather" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Tesoro Highlands" />
-<meta property="og:title" content="Backyard Weather &amp; Air — Tesoro Highlands" />
-<meta property="og:description" content="Live Tempest weather and corrected backyard air quality near Tesoro Highlands — everyday outdoor check, not fire emergency." />
+<meta property="og:title" content="Weather &amp; Air here — Tesoro Highlands" />
+<meta property="og:description" content="Hyper-local weather and air quality in Tesoro Highlands — what it feels like outside on our streets." />
 <meta property="og:url" content="https://tesorohighlands.com/weather" />
 <meta property="og:image" content="https://tesorohighlands.com/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Tesoro Highlands — a neighbor project for our community in Valencia, CA" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Backyard Weather &amp; Air — Tesoro Highlands" />
-<meta name="twitter:description" content="Tempest weather and corrected PurpleAir AQI for everyday outdoor decisions near Tesoro Highlands." />
+<meta name="twitter:title" content="Weather &amp; Air here — Tesoro Highlands" />
+<meta name="twitter:description" content="Hyper-local weather and air quality for Tesoro Highlands." />
 <meta name="twitter:image" content="https://tesorohighlands.com/og-image.png" />
 <script src="/theme.js"></script>
 <link rel="stylesheet" href="/th.css" />
@@ -73,16 +73,18 @@
   .hcell .i{font-size:22px;line-height:1;margin-bottom:4px;}
   .hcell .tmp{font-size:14px;font-weight:680;color:var(--ink);}
   .hcell .pop{font-size:10.5px;color:var(--muted);margin-top:3px;}
-  .dlist{display:flex;flex-direction:column;gap:8px;}
-  .drow{display:grid;grid-template-columns:52px 28px 1fr 42px 42px;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;box-shadow:var(--shadow);}
-  @media(max-width:420px){.drow{grid-template-columns:46px 24px 1fr 38px 38px;gap:6px;padding:9px 10px;}}
-  .drow .wd{font-size:13px;font-weight:640;color:var(--ink);}
-  .drow .ico{font-size:20px;text-align:center;}
-  .drow .barwrap{position:relative;height:6px;background:var(--line-2);border-radius:999px;overflow:hidden;}
-  .drow .bar{position:absolute;top:0;bottom:0;border-radius:999px;background:linear-gradient(90deg,#6eb5ff,#e07b1a);}
-  .drow .hi,.drow .lo{font-size:13px;font-weight:640;text-align:right;color:var(--ink);}
-  .drow .lo{color:var(--muted);font-weight:560;}
-  .drow .pop{font-size:10.5px;color:var(--muted);grid-column:3/6;margin-top:-2px;}
+  .dstrip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding:4px 0 2px;}
+  .dcell{text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 6px;box-shadow:var(--shadow);}
+  .dcell .wd{font-size:11px;color:var(--muted);font-weight:600;margin-bottom:6px;}
+  .dcell .i{font-size:22px;line-height:1;margin-bottom:4px;}
+  .dcell .hi{font-size:15px;font-weight:680;color:var(--ink);letter-spacing:-0.02em;}
+  .dcell .lo{font-size:12px;color:var(--muted);margin-top:2px;}
+  .dcell .pop{font-size:10.5px;color:var(--muted);margin-top:4px;min-height:1.25em;}
+  @media(max-width:640px){
+    .dstrip{display:flex;overflow-x:auto;scrollbar-width:none;padding:4px 0 8px;-webkit-overflow-scrolling:touch;}
+    .dstrip::-webkit-scrollbar{display:none;}
+    .dcell{flex:none;width:72px;}
+  }
   .xgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
   @media(max-width:520px){.xgrid{grid-template-columns:1fr;}}
   .xtile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
@@ -93,33 +95,36 @@
   .sources a{color:var(--accent);font-weight:600;text-decoration:none;}
   .sources a:hover{text-decoration:underline;}
   .band-unavail{font-size:13px;color:var(--muted);padding:12px 2px;}
+  .demo-banner{display:none;margin:0 0 16px;padding:9px 12px;border-radius:10px;font-size:13px;font-weight:600;color:var(--ink);background:var(--neu-bg);border:1px dashed var(--muted);}
+  .demo-banner.on{display:block;}
 </style>
 </head>
 <body class="th">
 <a class="thskip" href="#main">Skip to content</a>
 <main id="main" class="thwrap">
   <div class="hub-head">
-    <h1>Backyard weather &amp; air</h1>
-    <p>Live Tempest and PurpleAir readings near Tesoro Highlands — for everyday outdoor decisions, not fire emergency.</p>
+    <h1>Weather &amp; air here</h1>
+    <p>Hyper-local conditions in Tesoro Highlands — what it feels like outside on our streets, not a citywide average.</p>
+    <p class="demo-banner" id="demoBanner">Sample data for layout review — not live sensors.</p>
   </div>
 
   <section id="now">
     <div class="sechead"><h2>Right now</h2><div class="line"></div></div>
     <div class="nowgrid">
-      <div class="nowcard" id="wxNow"><p class="ey">Tempest</p><div class="band-unavail">Loading…</div></div>
-      <div class="nowcard" id="aqiNow"><p class="ey">PurpleAir</p><div class="band-unavail">Loading…</div></div>
+      <div class="nowcard" id="wxNow"><p class="ey">Weather here</p><div class="band-unavail">Loading…</div></div>
+      <div class="nowcard" id="aqiNow"><p class="ey">Air quality</p><div class="band-unavail">Loading…</div></div>
     </div>
   </section>
 
   <section id="hourly">
-    <div class="sechead"><h2>Forecast (not measured)</h2><div class="line"></div></div>
-    <p class="fcsub">Next ~24 hours — WeatherFlow Better Forecast for our Tempest station.</p>
+    <div class="sechead"><h2>Next 24 hours</h2><div class="line"></div></div>
+    <p class="fcsub">A neighborhood forecast — not a reading from the backyard station.</p>
     <div id="hourlyBand"><div class="band-unavail">Loading…</div></div>
   </section>
 
   <section id="daily">
-    <div class="sechead"><h2>Forecast (not measured)</h2><div class="line"></div></div>
-    <p class="fcsub">Next 10 days — model outlook, not a sensor reading.</p>
+    <div class="sechead"><h2>Next 10 days</h2><div class="line"></div></div>
+    <p class="fcsub">Same forecast model, looking further ahead.</p>
     <div id="dailyBand"><div class="band-unavail">Loading…</div></div>
   </section>
 
@@ -129,14 +134,14 @@
   </section>
 
   <div class="sources" id="sources">
-    <b>Sources.</b> Backyard weather is this page (Tempest + corrected PurpleAir).
+    <b>Sources.</b> Right-now weather is a backyard WeatherFlow Tempest in Tesoro Highlands.
+    Air quality is a backyard PurpleAir, shown as EPA-corrected US AQI.
+    The 24-hour and 10-day bands are WeatherFlow&rsquo;s Better Forecast for that same station — a model, not something the sensors measured.
     For fires, evacuation, and official alerts, see <a href="/fire">Fire &amp; Emergency</a>.
-    The hourly and 10-day bands are WeatherFlow&rsquo;s Better Forecast for our station — not the Open-Meteo 7-day on Fire.
-    Readings describe conditions near Tesoro Highlands, not a government monitor network.
   </div>
 
   <footer class="thfoot">
-    <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> Tempest and PurpleAir are backyard sensors; forecasts are a commercial model. In an emergency, call 911 and follow official orders. &nbsp;<a href="/">← Back to the hub</a></p>
+    <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> These are neighborhood sensors and a commercial forecast, not a government monitor network. In an emergency, call 911 and follow official orders. &nbsp;<a href="/">← Back to the hub</a></p>
   </footer>
 </main>
 <script src="/nav.js?v=11" defer></script>
@@ -213,7 +218,7 @@ function sparkSvg(points){
     const y=h-pad-((p.aqi-min)/span)*(h-pad*2);
     return (pad+i*step).toFixed(1)+","+y.toFixed(1);
   }).join(" ");
-  return '<div class="spark"><svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="var(--aqi-mod)" stroke-width="2" points="'+coords+'"/></svg><div class="spark-cap">Hourly averages (same 60-min basis as the headline).</div></div>';
+  return '<div class="spark"><svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="var(--aqi-mod)" stroke-width="2" points="'+coords+'"/></svg><div class="spark-cap">Last 24 hours (hourly averages).</div></div>';
 }
 
 function fmtIn(n){
@@ -259,7 +264,7 @@ function renderWx(fc){
   const el=$("#wxNow");
   const cur=fc&&fc.ok&&fc.current&&!fc.currentStale?fc.current:null;
   if(!cur||cur.tempF==null||!Number.isFinite(cur.tempF)){
-    el.innerHTML='<p class="ey">Tempest</p><div class="band-unavail">Weather unavailable</div>';
+    el.innerHTML='<p class="ey">Weather here</p><div class="band-unavail">Weather unavailable</div>';
     return;
   }
   const hl=todayHighLow(fc.daily);
@@ -271,7 +276,7 @@ function renderWx(fc){
   if(cur.rh!=null) chips.push("Humidity "+Math.round(cur.rh)+"%");
   if(cur.uv!=null) chips.push('<span class="chip uv '+uv.cls+'">UV '+Math.round(cur.uv)+" · "+uv.label+"</span>");
   el.innerHTML=
-    '<p class="ey">Tempest</p>'+
+    '<p class="ey">Weather here</p>'+
     '<div class="wxhero"><span class="ico">'+esc(wxIcon(cur.icon))+'</span><div>'+
     '<div class="temp">'+Math.round(cur.tempF)+'°</div>'+
     (cur.feelsLikeF!=null?'<div class="feel">Feels like '+Math.round(cur.feelsLikeF)+'°</div>':"")+
@@ -286,7 +291,7 @@ function renderAqi(pa, hist){
   const p=pa&&pa.ok&&pa.primary?pa.primary:null;
   if(!p){
     el.className="nowcard";
-    el.innerHTML='<p class="ey">PurpleAir</p><div class="band-unavail">Air quality unavailable</div>';
+    el.innerHTML='<p class="ey">Air quality</p><div class="band-unavail">Air quality unavailable</div>';
     return;
   }
   const epa=p.aqiEpa;
@@ -296,13 +301,13 @@ function renderAqi(pa, hist){
       const info=aqiInfo(c0);
       el.className="nowcard aqi "+info.klass;
       el.innerHTML=
-        '<p class="ey">PurpleAir</p>'+
+        '<p class="ey">Air quality</p>'+
         '<div class="aqi-meta"><b>Corrected AQI unavailable</b></div>'+
         '<div class="aqinum"><span class="n">'+Math.round(c0)+'</span><span class="cat '+info.klass+'">Uncorrected (C0)</span></div>'+
-        '<div class="aqi-note">Fire and the nav strip still use this 10-minute uncorrected reading.</div>';
+        '<div class="aqi-note">Showing the shorter neighborhood reading — the usual corrected number is not available.</div>';
     }else{
       el.className="nowcard";
-      el.innerHTML='<p class="ey">PurpleAir</p><div class="band-unavail">Air quality unavailable</div>';
+      el.innerHTML='<p class="ey">Air quality</p><div class="band-unavail">Air quality unavailable</div>';
     }
     return;
   }
@@ -312,13 +317,12 @@ function renderAqi(pa, hist){
   const floor=epa===0?'<div class="aqi-note">The corrected estimate hit the EPA floor — not a laboratory zero.</div>':"";
   const spark=(hist&&hist.ok&&hist.history&&hist.history.length>=2)?sparkSvg(hist.history):"";
   el.innerHTML=
-    '<p class="ey">PurpleAir</p>'+
+    '<p class="ey">Air quality</p>'+
     '<div class="aqinum"><span class="n">'+Math.round(epa)+'</span><span class="cat '+info.klass+'">'+esc(info.name)+'</span></div>'+
     '<div class="aqi-meta">'+esc(aqiActivity(epa))+
     (p.pm25Epa!=null?' · PM2.5 <b>'+p.pm25Epa+'</b> µg/m³':"")+'</div>'+
     spark+
     (ago?'<div class="aqi-note">'+esc(ago)+'</div>':"")+
-    '<div class="aqi-note">60-minute AQI estimate from EPA-corrected PurpleAir PM2.5. Fire still uses the uncorrected 10-min reading.</div>'+
     floor;
 }
 
@@ -342,24 +346,14 @@ function renderDaily(fc){
     el.innerHTML='<div class="band-unavail">10-day forecast unavailable</div>';
     return;
   }
-  let minLo=999,maxHi=-999;
-  days.forEach(d=>{
-    if(d.tempLowF!=null) minLo=Math.min(minLo,d.tempLowF);
-    if(d.tempHighF!=null) maxHi=Math.max(maxHi,d.tempHighF);
-  });
-  const span=Math.max(maxHi-minLo,1);
-  el.innerHTML='<div class="dlist">'+days.map(d=>{
-    const pop=d.precipProbability!=null?Math.round(d.precipProbability)+"% chance of rain":"";
+  el.innerHTML='<div class="dstrip">'+days.map(d=>{
+    const popN=d.precipProbability;
+    const pop=(popN!=null && popN>0)?Math.round(popN)+"%":"";
     const lo=d.tempLowF, hi=d.tempHighF;
-    let bar="";
-    if(lo!=null&&hi!=null){
-      const left=((lo-minLo)/span*100).toFixed(1);
-      const width=((hi-lo)/span*100).toFixed(1);
-      bar='<div class="barwrap"><div class="bar" style="left:'+left+'%;width:'+width+'%"></div></div>';
-    }else bar='<div class="barwrap"></div>';
-    return '<div class="drow"><div class="wd">'+esc(LA.weekday(d.dayStart))+'</div><div class="ico">'+esc(wxIcon(d.icon))+'</div>'+bar+
-      '<div class="hi">'+(hi!=null?Math.round(hi)+"°":"—")+'</div><div class="lo">'+(lo!=null?Math.round(lo)+"°":"—")+'</div>'+
-      (pop?'<div class="pop">'+esc(pop)+'</div>':"")+'</div>';
+    return '<div class="dcell"><div class="wd">'+esc(LA.weekday(d.dayStart))+'</div><div class="i">'+esc(wxIcon(d.icon))+'</div>'+
+      '<div class="hi">'+(hi!=null?Math.round(hi)+"°":"—")+'</div>'+
+      '<div class="lo">'+(lo!=null?Math.round(lo)+"°":"—")+'</div>'+
+      '<div class="pop">'+esc(pop)+'</div></div>';
   }).join("")+'</div>';
 }
 
@@ -378,7 +372,7 @@ function renderExtra(fc){
   el.innerHTML='<div class="xgrid">'+
     '<div class="xtile"><div class="lab">Pressure</div><div class="val">'+(cur.pressureMb!=null?Math.round(cur.pressureMb)+" mb":"—")+'</div><div class="sub">'+esc(pressureLabel(cur.pressureTrend))+'</div></div>'+
     '<div class="xtile"><div class="lab">Precipitation</div><div class="val">'+esc(fmtIn(cur.precipTodayIn))+'</div><div class="sub">'+esc(precipSub)+'</div></div>'+
-    '<div class="xtile"><div class="lab">Dew point</div><div class="val">'+(cur.dewpointF!=null?Math.round(cur.dewpointF)+"°":"—")+'</div><div class="sub">Measured at the Tempest</div></div>'+
+    '<div class="xtile"><div class="lab">Dew point</div><div class="val">'+(cur.dewpointF!=null?Math.round(cur.dewpointF)+"°":"—")+'</div><div class="sub">From the backyard station</div></div>'+
     '</div>';
 }
 
@@ -391,8 +385,12 @@ function renderExtra(fc){
   const pa = paR.status==="fulfilled"?paR.value:null;
   const hist = histR.status==="fulfilled"?histR.value:null;
   const fc = fcR.status==="fulfilled"?fcR.value:null;
-  try { renderWx(fc); } catch (e) { $("#wxNow").innerHTML='<p class="ey">Tempest</p><div class="band-unavail">Weather unavailable</div>'; }
-  try { renderAqi(pa, hist); } catch (e) { $("#aqiNow").innerHTML='<p class="ey">PurpleAir</p><div class="band-unavail">Air quality unavailable</div>'; }
+  if (pa && pa.demo || hist && hist.demo || fc && fc.demo) {
+    const b = $("#demoBanner");
+    if (b) b.classList.add("on");
+  }
+  try { renderWx(fc); } catch (e) { $("#wxNow").innerHTML='<p class="ey">Weather here</p><div class="band-unavail">Weather unavailable</div>'; }
+  try { renderAqi(pa, hist); } catch (e) { $("#aqiNow").innerHTML='<p class="ey">Air quality</p><div class="band-unavail">Air quality unavailable</div>'; }
   try { renderHourly(fc); } catch (e) { $("#hourlyBand").innerHTML='<div class="band-unavail">Hourly forecast unavailable</div>'; }
   try { renderDaily(fc); } catch (e) { $("#dailyBand").innerHTML='<div class="band-unavail">10-day forecast unavailable</div>'; }
   try { renderExtra(fc); } catch (e) { $("#extraBand").innerHTML='<div class="band-unavail">Extra stats unavailable</div>'; }
