@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Backyard Weather &amp; Air — Tesoro Highlands</title>
+<meta name="description" content="Backyard Tempest weather and EPA-corrected PurpleAir air quality near Tesoro Highlands — hourly and 10-day Better Forecast, not an emergency dashboard." />
+<meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#14161b" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="/icon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="canonical" href="https://tesorohighlands.com/weather" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Tesoro Highlands" />
+<meta property="og:title" content="Backyard Weather &amp; Air — Tesoro Highlands" />
+<meta property="og:description" content="Live Tempest weather and corrected backyard air quality near Tesoro Highlands — everyday outdoor check, not fire emergency." />
+<meta property="og:url" content="https://tesorohighlands.com/weather" />
+<meta property="og:image" content="https://tesorohighlands.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Tesoro Highlands — a neighbor project for our community in Valencia, CA" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Backyard Weather &amp; Air — Tesoro Highlands" />
+<meta name="twitter:description" content="Tempest weather and corrected PurpleAir AQI for everyday outdoor decisions near Tesoro Highlands." />
+<meta name="twitter:image" content="https://tesorohighlands.com/og-image.png" />
+<script src="/theme.js"></script>
+<link rel="stylesheet" href="/th.css" />
+<style>
+  .thskip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;}
+  .thskip:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:8px 12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;z-index:100;color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;}
+  section[id]{scroll-margin-top:64px;}
+  .sechead{display:flex;align-items:center;gap:8px;margin:26px 2px 8px;}
+  .sechead h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:680;}
+  .sechead .line{flex:1;height:1px;background:var(--line);}
+  .fcsub{font-size:12px;color:var(--muted);margin:0 2px 10px;}
+  .nowgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:560px){.nowgrid{grid-template-columns:1fr;}}
+  .nowcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);min-height:120px;}
+  .nowcard .ey{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:680;margin:0 0 8px;}
+  .nowcard.unavail{color:var(--muted);font-size:13px;padding-top:28px;}
+  .wxhero{display:flex;gap:12px;align-items:flex-start;}
+  .wxhero .ico{font-size:36px;line-height:1;flex:none;}
+  .wxhero .temp{font-size:40px;font-weight:720;letter-spacing:-0.03em;line-height:1;margin:0;}
+  .wxhero .feel{font-size:13px;color:var(--ink-2);margin-top:2px;}
+  .wxhero .cond{font-size:13.5px;color:var(--ink);margin-top:4px;font-weight:560;}
+  .wxhero .hilo{font-size:11.5px;color:var(--muted);margin-top:6px;}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+  .chip{font-size:11px;font-weight:600;color:var(--ink-2);background:var(--neu-bg);border:1px solid var(--line-2);border-radius:999px;padding:4px 9px;white-space:nowrap;}
+  .chip.uv{color:#111417;border-color:transparent;}
+  .chip.uv.low{background:var(--uv-low);} .chip.uv.mod{background:var(--uv-mod);}
+  .chip.uv.high{background:var(--uv-high);color:#111417;} .chip.uv.vhigh{background:var(--uv-vhigh);color:#fff;}
+  .chip.uv.ext{background:var(--uv-ext);color:#fff;}
+  .aqinum{display:flex;align-items:baseline;gap:10px;margin:2px 0;}
+  .aqinum .n{font-size:40px;font-weight:720;letter-spacing:-0.03em;line-height:1;}
+  .cat{font-size:13px;font-weight:620;padding:3px 9px;border-radius:999px;color:#fff;}
+  .cat.good,.cat.mod,.cat.usg{color:#111417;}
+  .cat.good{background:var(--aqi-good);} .cat.mod{background:var(--aqi-mod);} .cat.usg{background:var(--aqi-usg);}
+  .cat.un{background:var(--aqi-un);} .cat.vun{background:var(--aqi-vun);} .cat.haz{background:var(--aqi-haz);} .cat.unk{background:var(--muted);}
+  .nowcard.aqi.good{border-color:var(--aqi-good);} .nowcard.aqi.mod{border-color:var(--aqi-mod);}
+  .nowcard.aqi.usg{border-color:var(--aqi-usg);} .nowcard.aqi.un{border-color:var(--aqi-un);}
+  .nowcard.aqi.vun{border-color:var(--aqi-vun);} .nowcard.aqi.haz{border-color:var(--aqi-haz);}
+  .aqi-meta{font-size:12px;color:var(--ink-2);line-height:1.55;margin-top:8px;}
+  .aqi-meta b{color:var(--ink);font-weight:620;}
+  .aqi-note{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
+  .spark{margin-top:10px;}
+  .spark svg{width:100%;height:44px;display:block;}
+  .spark-cap{font-size:11px;color:var(--muted);margin-top:4px;}
+  .hstrip{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 0 8px;-webkit-overflow-scrolling:touch;}
+  .hstrip::-webkit-scrollbar{display:none;}
+  .hcell{flex:none;width:62px;text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 6px;box-shadow:var(--shadow);}
+  .hcell .t{font-size:11px;color:var(--muted);font-weight:600;margin-bottom:6px;}
+  .hcell .i{font-size:22px;line-height:1;margin-bottom:4px;}
+  .hcell .tmp{font-size:14px;font-weight:680;color:var(--ink);}
+  .hcell .pop{font-size:10.5px;color:var(--muted);margin-top:3px;}
+  .dlist{display:flex;flex-direction:column;gap:8px;}
+  .drow{display:grid;grid-template-columns:52px 28px 1fr 42px 42px;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;box-shadow:var(--shadow);}
+  @media(max-width:420px){.drow{grid-template-columns:46px 24px 1fr 38px 38px;gap:6px;padding:9px 10px;}}
+  .drow .wd{font-size:13px;font-weight:640;color:var(--ink);}
+  .drow .ico{font-size:20px;text-align:center;}
+  .drow .barwrap{position:relative;height:6px;background:var(--line-2);border-radius:999px;overflow:hidden;}
+  .drow .bar{position:absolute;top:0;bottom:0;border-radius:999px;background:linear-gradient(90deg,#6eb5ff,#e07b1a);}
+  .drow .hi,.drow .lo{font-size:13px;font-weight:640;text-align:right;color:var(--ink);}
+  .drow .lo{color:var(--muted);font-weight:560;}
+  .drow .pop{font-size:10.5px;color:var(--muted);grid-column:3/6;margin-top:-2px;}
+  .xgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  @media(max-width:520px){.xgrid{grid-template-columns:1fr;}}
+  .xtile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .xtile .lab{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;}
+  .xtile .val{font-size:18px;font-weight:680;color:var(--ink);margin-top:4px;letter-spacing:-0.01em;}
+  .xtile .sub{font-size:11.5px;color:var(--ink-2);margin-top:3px;line-height:1.45;}
+  .sources{font-size:12px;color:var(--muted);line-height:1.6;margin:28px 2px 0;padding-top:14px;border-top:1px solid var(--line);}
+  .sources a{color:var(--accent);font-weight:600;text-decoration:none;}
+  .sources a:hover{text-decoration:underline;}
+  .band-unavail{font-size:13px;color:var(--muted);padding:12px 2px;}
+</style>
+</head>
+<body class="th">
+<a class="thskip" href="#main">Skip to content</a>
+<main id="main" class="thwrap">
+  <div class="hub-head">
+    <h1>Backyard weather &amp; air</h1>
+    <p>Live Tempest and PurpleAir readings near Tesoro Highlands — for everyday outdoor decisions, not fire emergency.</p>
+  </div>
+
+  <section id="now">
+    <div class="sechead"><h2>Right now</h2><div class="line"></div></div>
+    <div class="nowgrid">
+      <div class="nowcard" id="wxNow"><p class="ey">Tempest</p><div class="band-unavail">Loading…</div></div>
+      <div class="nowcard" id="aqiNow"><p class="ey">PurpleAir</p><div class="band-unavail">Loading…</div></div>
+    </div>
+  </section>
+
+  <section id="hourly">
+    <div class="sechead"><h2>Forecast (not measured)</h2><div class="line"></div></div>
+    <p class="fcsub">Next ~24 hours — WeatherFlow Better Forecast for our Tempest station.</p>
+    <div id="hourlyBand"><div class="band-unavail">Loading…</div></div>
+  </section>
+
+  <section id="daily">
+    <div class="sechead"><h2>Forecast (not measured)</h2><div class="line"></div></div>
+    <p class="fcsub">Next 10 days — model outlook, not a sensor reading.</p>
+    <div id="dailyBand"><div class="band-unavail">Loading…</div></div>
+  </section>
+
+  <section id="extra">
+    <div class="sechead"><h2>Extra stats</h2><div class="line"></div></div>
+    <div id="extraBand"><div class="band-unavail">Loading…</div></div>
+  </section>
+
+  <div class="sources" id="sources">
+    <b>Sources.</b> Backyard weather is this page (Tempest + corrected PurpleAir).
+    For fires, evacuation, and official alerts, see <a href="/fire">Fire &amp; Emergency</a>.
+    The hourly and 10-day bands are WeatherFlow&rsquo;s Better Forecast for our station — not the Open-Meteo 7-day on Fire.
+    Readings describe conditions near Tesoro Highlands, not a government monitor network.
+  </div>
+
+  <footer class="thfoot">
+    <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> Tempest and PurpleAir are backyard sensors; forecasts are a commercial model. In an emergency, call 911 and follow official orders. &nbsp;<a href="/">← Back to the hub</a></p>
+  </footer>
+</main>
+<script src="/nav.js?v=10" defer></script>
+<script>
+"use strict";
+
+const $ = s => document.querySelector(s);
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function compass(deg){ const d=["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"]; return d[Math.round(deg/22.5)%16]; }
+function timeAgo(ts){ if(!ts) return ""; const s=Math.round((Date.now()-ts)/1000); if(s<45) return "updated just now"; if(s<90) return "updated 1 min ago"; if(s<3600) return "updated "+Math.round(s/60)+" min ago"; return "updated "+Math.round(s/3600)+"h ago"; }
+function aqiInfo(aqi){
+  if(aqi==null||isNaN(aqi)) return {lvl:-1, name:"Unknown", klass:"unk"};
+  if(aqi<=50)  return {lvl:0, name:"Good", klass:"good"};
+  if(aqi<=100) return {lvl:1, name:"Moderate", klass:"mod"};
+  if(aqi<=150) return {lvl:2, name:"Unhealthy for Sensitive", klass:"usg"};
+  if(aqi<=200) return {lvl:3, name:"Unhealthy", klass:"un"};
+  if(aqi<=300) return {lvl:4, name:"Very Unhealthy", klass:"vun"};
+  return {lvl:5, name:"Hazardous", klass:"haz"};
+}
+function aqiActivity(aqi){
+  const i = aqiInfo(aqi);
+  if(i.lvl===0) return "Great day for outdoor activities.";
+  if(i.lvl===1) return "Unusually sensitive people should consider reducing prolonged outdoor exertion.";
+  if(i.lvl===2) return "Active children and adults, and people with lung disease such as asthma, should reduce prolonged outdoor exertion.";
+  if(i.lvl===3) return "Everyone should reduce prolonged outdoor exertion.";
+  if(i.lvl===4) return "Avoid all outdoor physical activity.";
+  if(i.lvl===5) return "Everyone should remain indoors and keep activity levels low.";
+  return "";
+}
+function uvClass(u){
+  if(u==null||!Number.isFinite(u)) return {cls:"", label:"—"};
+  const n = Math.round(u);
+  if(n<=2) return {cls:"low", label:"Low"};
+  if(n<=5) return {cls:"mod", label:"Moderate"};
+  if(n<=7) return {cls:"high", label:"High"};
+  if(n<=10) return {cls:"vhigh", label:"Very high"};
+  return {cls:"ext", label:"Extreme"};
+}
+const ICON={
+  "clear-day":"☀️","clear-night":"🌙","cloudy":"☁️","foggy":"🌫️",
+  "partly-cloudy-day":"⛅","partly-cloudy-night":"☁️",
+  "possibly-rainy-day":"🌦️","possibly-rainy-night":"🌧️",
+  "possibly-sleet-day":"🌨️","possibly-sleet-night":"🌨️",
+  "possibly-snow-day":"🌨️","possibly-snow-night":"🌨️",
+  "possibly-thunderstorm-day":"⛈️","possibly-thunderstorm-night":"⛈️",
+  "rainy":"🌧️","sleet":"🌨️","snow":"❄️","thunderstorm":"⛈️","windy":"💨"
+};
+function wxIcon(key){ return ICON[String(key||"")] || "☁️"; }
+
+const LA = {
+  hour: t => new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",hour:"numeric",hour12:true}).format(t*1000),
+  weekday: t => new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",weekday:"short"}).format(t*1000),
+  dayKey: t => new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",year:"numeric",month:"2-digit",day:"2-digit"}).format(t*1000)
+};
+
+async function loadJson(url){
+  try{
+    const r = await fetch(url);
+    return await r.json();
+  }catch(e){
+    return null;
+  }
+}
+
+function sparkSvg(points){
+  if(!points||points.length<2) return "";
+  const w=300,h=44,pad=2;
+  const vals=points.map(p=>p.aqi).filter(v=>Number.isFinite(v));
+  if(vals.length<2) return "";
+  const min=Math.min(...vals), max=Math.max(...vals);
+  const span=Math.max(max-min,1);
+  const step=(w-pad*2)/(points.length-1);
+  const coords=points.map((p,i)=>{
+    const y=h-pad-((p.aqi-min)/span)*(h-pad*2);
+    return (pad+i*step).toFixed(1)+","+y.toFixed(1);
+  }).join(" ");
+  return '<div class="spark"><svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="var(--aqi-mod)" stroke-width="2" points="'+coords+'"/></svg><div class="spark-cap">Hourly averages (same 60-min basis as the headline).</div></div>';
+}
+
+function fmtIn(n){
+  if(n==null||!Number.isFinite(n)) return "—";
+  if(n===0) return "0 in";
+  if(n<0.01) return "<0.01 in";
+  return n.toFixed(2)+" in";
+}
+
+function pressureLabel(trend){
+  if(trend==="rising") return "Rising";
+  if(trend==="falling") return "Falling";
+  if(trend==="steady") return "Steady";
+  return "—";
+}
+
+function todayHighLow(daily){
+  if(!daily||!daily.length) return null;
+  const key=LA.dayKey(Math.floor(Date.now()/1000));
+  for(const d of daily){
+    if(LA.dayKey(d.dayStart)===key && d.tempHighF!=null && d.tempLowF!=null){
+      return {hi:d.tempHighF, lo:d.tempLowF};
+    }
+  }
+  return null;
+}
+
+function filterHourly24(hourly){
+  if(!hourly||!hourly.length) return [];
+  const now=Math.floor(Date.now()/1000);
+  const end=now+24*3600;
+  return hourly.filter(h=>h.time>=now-1800&&h.time<=end).slice(0,24);
+}
+
+function precipSoon(hourly){
+  if(!hourly||!hourly.length) return false;
+  const now=Math.floor(Date.now()/1000);
+  const next=hourly.filter(h=>h.time>=now).slice(0,3);
+  return next.some(h=>(h.precipProbability!=null&&h.precipProbability>=50)||(h.precipIn!=null&&h.precipIn>0));
+}
+
+function renderWx(fc){
+  const el=$("#wxNow");
+  const cur=fc&&fc.ok&&fc.current&&!fc.currentStale?fc.current:null;
+  if(!cur){
+    el.innerHTML='<p class="ey">Tempest</p><div class="unavail">Weather unavailable</div>';
+    return;
+  }
+  const hl=todayHighLow(fc.daily);
+  const uv=uvClass(cur.uv);
+  const chips=[];
+  if(cur.windMph!=null) chips.push("Wind "+Math.round(cur.windMph)+" mph");
+  if(cur.gustMph!=null) chips.push("Gusts "+Math.round(cur.gustMph)+" mph");
+  if(cur.wdir!=null) chips.push("Wind from "+compass(cur.wdir));
+  if(cur.rh!=null) chips.push("Humidity "+Math.round(cur.rh)+"%");
+  if(cur.uv!=null) chips.push('<span class="chip uv '+uv.cls+'">UV '+Math.round(cur.uv)+" · "+uv.label+"</span>");
+  el.innerHTML=
+    '<p class="ey">Tempest</p>'+
+    '<div class="wxhero"><span class="ico">'+esc(wxIcon(cur.icon))+'</span><div>'+
+    '<div class="temp">'+Math.round(cur.tempF)+'°</div>'+
+    (cur.feelsLikeF!=null?'<div class="feel">Feels like '+Math.round(cur.feelsLikeF)+'°</div>':"")+
+    (cur.conditions?'<div class="cond">'+esc(cur.conditions)+'</div>':"")+
+    (hl?'<div class="hilo">Today '+hl.lo+'° / '+hl.hi+'°</div>':"")+
+    '</div></div>'+
+    (chips.length?'<div class="chips">'+chips.map(c=>c.startsWith("<")?c:'<span class="chip">'+c+'</span>').join("")+'</div>':"");
+}
+
+function renderAqi(pa, hist){
+  const el=$("#aqiNow");
+  const p=pa&&pa.ok&&pa.primary?pa.primary:null;
+  if(!p){
+    el.className="nowcard";
+    el.innerHTML='<p class="ey">PurpleAir</p><div class="unavail">Air quality unavailable</div>';
+    return;
+  }
+  const epa=p.aqiEpa;
+  const c0=p.aqi;
+  if(epa==null){
+    if(c0!=null){
+      const info=aqiInfo(c0);
+      el.className="nowcard aqi "+info.klass;
+      el.innerHTML=
+        '<p class="ey">PurpleAir</p>'+
+        '<div class="aqi-meta"><b>Corrected AQI unavailable</b></div>'+
+        '<div class="aqinum"><span class="n">'+Math.round(c0)+'</span><span class="cat '+info.klass+'">Uncorrected (C0)</span></div>'+
+        '<div class="aqi-note">Fire and the nav strip still use this 10-minute uncorrected reading.</div>';
+    }else{
+      el.className="nowcard";
+      el.innerHTML='<p class="ey">PurpleAir</p><div class="unavail">Air quality unavailable</div>';
+    }
+    return;
+  }
+  const info=aqiInfo(epa);
+  el.className="nowcard aqi "+info.klass;
+  const ago=p.lastSeen?timeAgo(p.lastSeen*1000):"";
+  const floor=epa===0?'<div class="aqi-note">The corrected estimate hit the EPA floor — not a laboratory zero.</div>':"";
+  const spark=(hist&&hist.ok&&hist.history&&hist.history.length>=2)?sparkSvg(hist.history):"";
+  el.innerHTML=
+    '<p class="ey">PurpleAir</p>'+
+    '<div class="aqinum"><span class="n">'+Math.round(epa)+'</span><span class="cat '+info.klass+'">'+esc(info.name)+'</span></div>'+
+    '<div class="aqi-meta">'+esc(aqiActivity(epa))+
+    (p.pm25Epa!=null?' · PM2.5 <b>'+p.pm25Epa+'</b> µg/m³':"")+'</div>'+
+    spark+
+    (ago?'<div class="aqi-note">'+esc(ago)+'</div>':"")+
+    '<div class="aqi-note">60-minute AQI estimate from EPA-corrected PurpleAir PM2.5. Fire still uses the uncorrected 10-min reading.</div>'+
+    floor;
+}
+
+function renderHourly(fc){
+  const el=$("#hourlyBand");
+  const rows=fc&&fc.ok&&fc.hourly?filterHourly24(fc.hourly):[];
+  if(!rows.length){
+    el.innerHTML='<div class="band-unavail">Hourly forecast unavailable</div>';
+    return;
+  }
+  el.innerHTML='<div class="hstrip">'+rows.map(h=>{
+    const pop=h.precipProbability!=null?Math.round(h.precipProbability)+"%":"—";
+    return '<div class="hcell"><div class="t">'+esc(LA.hour(h.time))+'</div><div class="i">'+esc(wxIcon(h.icon))+'</div><div class="tmp">'+(h.tempF!=null?Math.round(h.tempF)+"°":"—")+'</div><div class="pop">'+pop+'</div></div>';
+  }).join("")+'</div>';
+}
+
+function renderDaily(fc){
+  const el=$("#dailyBand");
+  const days=fc&&fc.ok&&fc.daily?fc.daily.slice(0,10):[];
+  if(!days.length){
+    el.innerHTML='<div class="band-unavail">10-day forecast unavailable</div>';
+    return;
+  }
+  let minLo=999,maxHi=-999;
+  days.forEach(d=>{
+    if(d.tempLowF!=null) minLo=Math.min(minLo,d.tempLowF);
+    if(d.tempHighF!=null) maxHi=Math.max(maxHi,d.tempHighF);
+  });
+  const span=Math.max(maxHi-minLo,1);
+  el.innerHTML='<div class="dlist">'+days.map(d=>{
+    const pop=d.precipProbability!=null?Math.round(d.precipProbability)+"% chance of rain":"";
+    const lo=d.tempLowF, hi=d.tempHighF;
+    let bar="";
+    if(lo!=null&&hi!=null){
+      const left=((lo-minLo)/span*100).toFixed(1);
+      const width=((hi-lo)/span*100).toFixed(1);
+      bar='<div class="barwrap"><div class="bar" style="left:'+left+'%;width:'+width+'%"></div></div>';
+    }else bar='<div class="barwrap"></div>';
+    return '<div class="drow"><div class="wd">'+esc(LA.weekday(d.dayStart))+'</div><div class="ico">'+esc(wxIcon(d.icon))+'</div>'+bar+
+      '<div class="hi">'+(hi!=null?Math.round(hi)+"°":"—")+'</div><div class="lo">'+(lo!=null?Math.round(lo)+"°":"—")+'</div>'+
+      (pop?'<div class="pop">'+esc(pop)+'</div>':"")+'</div>';
+  }).join("")+'</div>';
+}
+
+function renderExtra(fc){
+  const el=$("#extraBand");
+  const cur=fc&&fc.ok&&fc.current&&!fc.currentStale?fc.current:null;
+  if(!cur){
+    el.innerHTML='<div class="band-unavail">Extra stats unavailable</div>';
+    return;
+  }
+  const occurring=(cur.precipMinutesToday!=null&&cur.precipMinutesToday>0);
+  const soon=precipSoon(fc.hourly||[]);
+  let precipSub=fmtIn(cur.precipTodayIn)+" today";
+  if(occurring) precipSub+=" · rain occurring now";
+  else if(soon) precipSub+=" · rain likely within 3 hours";
+  el.innerHTML='<div class="xgrid">'+
+    '<div class="xtile"><div class="lab">Pressure</div><div class="val">'+(cur.pressureMb!=null?Math.round(cur.pressureMb)+" mb":"—")+'</div><div class="sub">'+esc(pressureLabel(cur.pressureTrend))+'</div></div>'+
+    '<div class="xtile"><div class="lab">Precipitation</div><div class="val">'+esc(fmtIn(cur.precipTodayIn))+'</div><div class="sub">'+esc(precipSub)+'</div></div>'+
+    '<div class="xtile"><div class="lab">Dew point</div><div class="val">'+(cur.dewpointF!=null?Math.round(cur.dewpointF)+"°":"—")+'</div><div class="sub">Measured at the Tempest</div></div>'+
+    '</div>';
+}
+
+(async function(){
+  const [paR, histR, fcR] = await Promise.allSettled([
+    loadJson("/api/purpleair"),
+    loadJson("/purpleair-history.json"),
+    loadJson("/api/tempest-forecast")
+  ]);
+  const pa = paR.status==="fulfilled"?paR.value:null;
+  const hist = histR.status==="fulfilled"?histR.value:null;
+  const fc = fcR.status==="fulfilled"?fcR.value:null;
+  renderWx(fc);
+  renderAqi(pa, hist);
+  renderHourly(fc);
+  renderDaily(fc);
+  renderExtra(fc);
+})();
+</script>
+</body>
+</html>
