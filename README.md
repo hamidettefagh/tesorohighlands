@@ -12,7 +12,7 @@ English about your rights as a California homeowner.
 follow CAL FIRE, LA County Fire, and Sheriff evacuation orders, and call 911 in an
 emergency.
 
-*Last reviewed: 2026-08-09. If you change a workflow cadence, a data source, or a cost
+*Last reviewed: 2026-08-26. If you change a workflow cadence, a data source, or a cost
 figure, please update this file in the same commit.*
 
 ## Want to help?
@@ -36,10 +36,11 @@ is this site.
 
 *(Live copy: [tesorohighlands.com/stack.svg](https://tesorohighlands.com/stack.svg))*
 
-Plain HTML/CSS/JS. No framework, no build step, no bundler. One serverless function.
-Data refreshes come from scheduled GitHub Actions that commit JSON back to the repo,
-which redeploys the site. Everything a visitor's browser fetches is either a static
-file or a public government API.
+Plain HTML/CSS/JS. No framework, no build step, no bundler. **Five** Vercel serverless
+functions under `api/` (see below). Data refreshes come from scheduled GitHub Actions
+that commit JSON back to the repo, which redeploys the site. Everything a visitor's
+browser fetches is either a static file, a proxied government API, or one of those
+functions (some need repo secrets on Vercel).
 
 ## Pages
 
@@ -50,6 +51,9 @@ file or a public government API.
              satellite heat), measured air quality, fire weather, NWS alerts, 7-day
              outlook, Leaflet fire/evac map, evacuation status + routes + go-bag
              checklist, road closures, power outages, earthquakes
+/weather     backyard weather — Tempest + PurpleAir now readings, EPA-corrected AQI
+             with 24h sparkline, hourly and 10-day Better Forecast (labeled model,
+             not measured); links back to Fire for emergency context
 /events      community events + auto-built local feed + AI-found extras (merged into
              one list) + the Friday AI weekend roundup with Copy-for-WhatsApp
 /living      utilities, trash, schools, health, fire-zone insurance, amenities,
@@ -61,18 +65,21 @@ file or a public government API.
 ## Project layout
 
 ```
-index.html fire.html events.html living.html hoa.html 404.html
+index.html weather.html fire.html events.html living.html hoa.html 404.html
 th.css                the only stylesheet — design tokens (light/dark) + shell
 theme.js              theme boot, runs before first paint so there's no flash
 nav.js                injected nav, theme toggle, site-wide live status strip
                       (loaded as /nav.js?v=N — bump N when you change it)
-api/calfire.js        the one serverless function: proxies incidents.fire.ca.gov
-                      (no CORS upstream), CDN-cached ~2 min
+api/calfire.js        proxies incidents.fire.ca.gov (no CORS upstream), CDN ~2 min
+api/purpleair.js      backyard PurpleAir snapshot — C0 10-min + EPA-corrected 60-min
+api/tempest.js        backyard Tempest current conditions (Fire page)
+api/tempest-forecast.js  WeatherFlow Better Forecast hourly + 10-day (/weather)
+api/_epa.js           shared EPA ATM correction math (used by purpleair.js)
 server.js             tiny static server for LOCAL dev only (mimics clean URLs)
 vendor/leaflet/       self-hosted Leaflet 1.9.4 — no CDN dependency in an emergency
 scripts/*.mjs         the data builders (see below)
 community-events.json neighbor events, hand-maintained (schema below)
-events.json ai-events.json roads.json alert.json roundup.json
+events.json ai-events.json roads.json alert.json roundup.json purpleair-history.json
                       bot-written — never hand-edit, they get overwritten
 updates.json          the "new on this site" changelog, hand-maintained
 ```
@@ -83,20 +90,26 @@ updates.json          the "new on this site" changelog, hand-maintained
 |---|---|---|---|
 | `refresh-events.yml` | every 4h | Rebuilds `events.json` + `roads.json` | No |
 | `alert-watch.yml` | every 10 min | Checks evac/fire/red-flag/quake/PSPS for our area, writes `alert.json` (the one-tap WhatsApp share card), optional phone ping via ntfy | No |
+| `refresh-purpleair-history.yml` | hourly (:12) | Fetches 24h PurpleAir history → `purpleair-history.json` (sparkline on `/weather`) | No (needs `PURPLEAIR_API_KEY` secret) |
 | `refresh-ai-events.yml` | daily ~6:23am PT | Claude web-search sweep for events the feeds miss → `ai-events.json` | Yes |
 | `weekend-roundup.yml` | Fridays ~8:23am PT | Claude curates 5–7 weekend picks → `roundup.json` | Yes |
 
 **Running cost:** roughly **$5–8/month** total on `claude-haiku-4-5` — the daily events
 sweep (~$0.15–0.20/run with web search capped at 12 uses) plus the Friday roundup
 (a few cents). Both need the `ANTHROPIC_API_KEY` repo secret; without it they exit
-cleanly and commit nothing. Everything else on the site is free and keyless.
+cleanly and commit nothing. The PurpleAir history job needs `PURPLEAIR_API_KEY` on
+GitHub Actions and the same key plus `TEMPEST_TOKEN` / `TEMPEST_STATION_ID` on Vercel
+for the live weather APIs. Everything else on the site is free and keyless.
 
 ## What's live vs. curated
 
 | Panel | Source | Status |
 |---|---|---|
-| Air quality (US AQI) | **EPA AirNow monitor** ~6.5 mi away, with Open-Meteo as fallback and for the hourly outlook | **Live**, no key |
-| Fire weather (wind, gusts, humidity, temp) | Open-Meteo Forecast API | **Live**, no key |
+| Air quality on Fire / Home / nav strip | **Backyard PurpleAir** uncorrected C0 from 10-min PM2.5 (`primary.aqi`); EPA AirNow monitor ~6.5 mi as fallback when the sensor is down | **Live** (sensor needs `PURPLEAIR_API_KEY` on Vercel) |
+| Air quality on `/weather` | **Backyard PurpleAir** EPA-corrected 60-min ATM (`primary.aqiEpa`); 24h sparkline from `purpleair-history.json` | **Live** + **Auto** history |
+| Backyard weather now (`/weather`) | Neighbor **Tempest** via WeatherFlow (`/api/tempest-forecast` current block) | **Live** (needs `TEMPEST_TOKEN` + `TEMPEST_STATION_ID`) |
+| Hourly + 10-day forecast (`/weather`) | WeatherFlow **Better Forecast** model for that station — labeled forecast, not measured | **Live** (same Tempest keys) |
+| Fire weather (wind, gusts, humidity, temp) on `/fire` | Open-Meteo Forecast API | **Live**, no key |
 | Active alerts (Red Flag, heat, wind, smoke) | NWS `api.weather.gov` | **Live**, no key |
 | Nearby fires — list, map points, perimeters | NIFC/WFIGS ArcGIS | **Live**, no key |
 | Fire acreage + containment | CAL FIRE via `api/calfire` proxy | **Live**, no key |
@@ -114,6 +127,11 @@ cleanly and commit nothing. Everything else on the site is free and keyless.
 Every live panel degrades honestly: **a failed feed says "unavailable," never "all
 clear."** The status logic is deliberately conservative, and alert thresholds are
 tuned so a distant fire informs without alarming.
+
+**Two AQI numbers are intentional.** Fire, Home “Air today,” and the nav strip (except
+on `/weather`) use uncorrected C0 from 10-minute PM2.5. `/weather` shows EPA-corrected
+60-minute ATM for the headline and sparkline. They will disagree sometimes — see
+`CONTRIBUTING.md`.
 
 ## The local events pipeline
 
