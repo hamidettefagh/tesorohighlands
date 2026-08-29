@@ -1,45 +1,16 @@
 {
-  "generatedAt": "2026-08-28T23:05:36.721Z",
+  "generatedAt": "2026-08-29T17:13:22.285Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-09-02T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "10 by 10 Variety Show at The MAIN",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-09-03",
-      "venue": "The MAIN Theatre",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "The MAIN"
-    },
-    {
       "title": "Old Town Newhall Farmers Market",
       "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-09-05T08:30",
-      "venue": "Old Town Newhall Library",
+      "start": "2026-08-30T08:30",
+      "venue": "24500 Main Street",
       "city": "Newhall",
-      "free": false,
-      "price": null,
+      "free": true,
+      "price": "Free",
       "audience": [
         "everyone"
       ],
@@ -47,24 +18,10 @@
       "via": "SCV Farmers Markets"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-09-06T08:00",
-      "venue": "College of the Canyons, Parking Lot 5",
-      "city": "Valencia",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Valley Center Certified Farmers Market"
-    },
-    {
-      "title": "SENSES Block Party - Oktoberfest",
+      "title": "SENSES Block Party: Oktoberfest",
       "url": "https://oldtownnewhall.com/senses-block-party/",
       "start": "2026-09-17T19:00",
-      "venue": "Main Street between Market Street and Sixth Street, Old Town Newhall",
+      "venue": "Main Street between Market Street and Sixth Street",
       "city": "Newhall",
       "free": false,
       "price": null,
@@ -72,10 +29,10 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Fright Fest at Six Flags Magic Mountain",
+      "title": "Fright Fest",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
       "start": "2026-09-18",
       "venue": "Six Flags Magic Mountain",
@@ -83,14 +40,14 @@
       "free": false,
       "price": null,
       "audience": [
-        "teens",
-        "adults"
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Tricks and Treats at Six Flags Magic Mountain",
+      "title": "Tricks and Treats",
       "url": "https://www.sixflags.com/magicmountain/events",
       "start": "2026-09-25",
       "venue": "Six Flags Magic Mountain",
@@ -106,19 +63,19 @@
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Interrobang Sketch Comedy at The MAIN",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-10-03",
-      "venue": "The MAIN Theatre",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-01T09:00",
+      "venue": "30116 Bouquet Canyon Road",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
       "audience": [
-        "teens",
+        "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "The MAIN"
+      "via": "Gilchrist Farm"
     }
   ]
 }
