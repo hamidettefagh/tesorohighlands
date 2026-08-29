@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-08-21T15:55:13.865Z",
-  "weekendOf": "2026-08-21",
+  "generatedAt": "2026-08-29T00:02:25.561Z",
+  "weekendOf": "2026-08-28",
   "model": "claude-haiku-4-5",
-  "intro": "Lots to do this weekend—something for everyone in Tesoro Highlands.",
+  "intro": "A solid weekend in Tesoro Highlands—something for everyone.",
   "picks": [
     {
-      "emoji": "🏛️",
+      "emoji": "🎬",
       "day": "Fri",
-      "time": "10 AM",
-      "title": "Hart Mansion Group Tour 10:00a.m.",
-      "price": "free",
-      "note": "Free local history tour, perfect for families.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-group-tour-1000am-35027"
+      "time": "",
+      "title": "City Cinemas, presented by Henry Rodriguez State Farm: Jurassic Park",
+      "price": "",
+      "note": "Outdoor movie night—classic fun for the whole family.",
+      "url": "https://calendar.santaclarita.gov/event/city-cinemas-presented-by-henry-rodriguez-state-farm-564"
     },
     {
       "emoji": "🏍️",
@@ -19,45 +19,45 @@
       "time": "9 AM",
       "title": "Motorcycles and Coffee",
       "price": "free",
-      "note": "Free Sunday morning meet-up for all ages and interests.",
+      "note": "Casual Sunday morning, free, local gathering spot.",
       "url": "https://calendar.santaclarita.gov/event/motorcycles-and-coffee"
-    },
-    {
-      "emoji": "🎪",
-      "day": "Sat",
-      "time": "10 AM",
-      "title": "SCV HOME & SUMMER FUN EXPO",
-      "price": "free",
-      "note": "Kids love expos—bouncy castles, games, summer fun.",
-      "url": "https://calendar.santaclarita.gov/event/scv-home-summer-fun-expo"
-    },
-    {
-      "emoji": "🎭",
-      "day": "Sat",
-      "time": "2 PM",
-      "title": "The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild",
-      "price": "",
-      "note": "Percy Jackson on stage, great for tweens and families.",
-      "url": "https://calendar.santaclarita.gov/event/the-lightning-thief-the-percy-jackson-musical-at-canyon-theatre-guild"
     },
     {
       "emoji": "🎵",
       "day": "Sat",
       "time": "7 PM",
-      "title": "Voice United - Gospel Music CONCERT!",
-      "price": "$15.18–$28.52",
-      "note": "Gospel concert, weekend evening entertainment.",
-      "url": "https://www.eventbrite.com/e/voice-united-gospel-music-concert-tickets-1991420049977"
+      "title": "Concerts in the Park, presented by Logix Federal Credit Union: Police Tribute",
+      "price": "",
+      "note": "Live concert in the park—great for families and adults.",
+      "url": "https://calendar.santaclarita.gov/event/concerts-in-the-park-presented-by-logix-federal-credit-union-9308"
     },
     {
-      "emoji": "🥕",
+      "emoji": "🦘",
       "day": "Sun",
-      "time": "8:30 AM",
-      "title": "Old Town Newhall Farmers Market",
-      "price": "free",
-      "note": "Free farmers market in Newhall, local favorite.",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/"
+      "time": "",
+      "title": "Visit The Gentle Barn",
+      "price": "from $15",
+      "note": "Animal encounters for kids; adults enjoy the setting too.",
+      "url": "https://calendar.santaclarita.gov/event/visit_the_gentle_barn_5048"
+    },
+    {
+      "emoji": "🥬",
+      "day": "Sun",
+      "time": "8 AM",
+      "title": "Santa Clarita Certified Farmers Market",
+      "price": "",
+      "note": "Fresh local produce and weekend vibe—neighborhood staple.",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195"
+    },
+    {
+      "emoji": "🎭",
+      "day": "Fri",
+      "time": "8 PM",
+      "title": "The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild",
+      "price": "",
+      "note": "Evening musical theater—Percy Jackson fans will love it.",
+      "url": "https://calendar.santaclarita.gov/event/the-lightning-thief-the-percy-jackson-musical-at-canyon-theatre-guild"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nLots to do this weekend—something for everyone in Tesoro Highlands.\n\n🏛️ *Fri 10 AM* — Hart Mansion Group Tour 10:00a.m. (free)\n   Free local history tour, perfect for families.\n🏍️ *Sat 9 AM* — Motorcycles and Coffee (free)\n   Free Sunday morning meet-up for all ages and interests.\n🎪 *Sat 10 AM* — SCV HOME & SUMMER FUN EXPO (free)\n   Kids love expos—bouncy castles, games, summer fun.\n🎭 *Sat 2 PM* — The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild\n   Percy Jackson on stage, great for tweens and families.\n🎵 *Sat 7 PM* — Voice United - Gospel Music CONCERT! ($15.18–$28.52)\n   Gospel concert, weekend evening entertainment.\n🥕 *Sun 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Free farmers market in Newhall, local favorite.\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nA solid weekend in Tesoro Highlands—something for everyone.\n\n🎬 *Fri* — City Cinemas, presented by Henry Rodriguez State Farm: Jurassic Park\n   Outdoor movie night—classic fun for the whole family.\n🏍️ *Sat 9 AM* — Motorcycles and Coffee (free)\n   Casual Sunday morning, free, local gathering spot.\n🎵 *Sat 7 PM* — Concerts in the Park, presented by Logix Federal Credit Union: Police Tribute\n   Live concert in the park—great for families and adults.\n🦘 *Sun* — Visit The Gentle Barn (from $15)\n   Animal encounters for kids; adults enjoy the setting too.\n🥬 *Sun 8 AM* — Santa Clarita Certified Farmers Market\n   Fresh local produce and weekend vibe—neighborhood staple.\n🎭 *Fri 8 PM* — The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild\n   Evening musical theater—Percy Jackson fans will love it.\n\nFull list → https://tesorohighlands.com/events"
 }
