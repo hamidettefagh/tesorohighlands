@@ -1,38 +1,24 @@
 {
-  "generatedAt": "2026-08-29T17:13:22.285Z",
+  "generatedAt": "2026-08-30T17:36:43.987Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-08-30T08:30",
-      "venue": "24500 Main Street",
+      "title": "SENSES Block Party: Oktoberfest",
+      "url": "https://oldtownnewhall.com/senses-block-party/",
+      "start": "2026-09-17T19:00",
+      "venue": "Main Street, Old Town Newhall",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "SENSES Block Party: Oktoberfest",
-      "url": "https://oldtownnewhall.com/senses-block-party/",
-      "start": "2026-09-17T19:00",
-      "venue": "Main Street between Market Street and Sixth Street",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
-      "audience": [
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Fright Fest",
+      "title": "Fright Fest - Six Flags Magic Mountain",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
       "start": "2026-09-18",
       "venue": "Six Flags Magic Mountain",
@@ -40,14 +26,28 @@
       "free": false,
       "price": null,
       "audience": [
-        "adults",
-        "teens"
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Tricks and Treats",
+      "title": "Luketoberfest at Lucky Luke Brewing",
+      "url": "https://visitsantaclarita.com/inspiration/seasonal-activities/fall-activities/oktoberfest-events/",
+      "start": "2026-09-19T15:00",
+      "venue": "Lucky Luke Brewing",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Visit Santa Clarita"
+    },
+    {
+      "title": "Tricks and Treats - Six Flags Magic Mountain",
       "url": "https://www.sixflags.com/magicmountain/events",
       "start": "2026-09-25",
       "venue": "Six Flags Magic Mountain",
@@ -63,16 +63,32 @@
       "via": "Six Flags Magic Mountain"
     },
     {
+      "title": "Beautiful: The Carole King Musical - Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/2025-26-season",
+      "start": "2026-09-27",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$24 adults, $20 seniors, $15 students",
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild"
+    },
+    {
       "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
       "url": "https://www.gilchristfarm.com/pumpkin-patch",
-      "start": "2026-10-01T09:00",
-      "venue": "30116 Bouquet Canyon Road",
+      "start": "2026-09-28T09:00",
+      "venue": "Gilchrist Farm",
       "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
+      "free": false,
+      "price": null,
       "audience": [
         "kids",
-        "adults"
+        "teens",
+        "adults",
+        "toddlers"
       ],
       "source": "Web (AI)",
       "via": "Gilchrist Farm"
