@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T13:29:37.317Z",
+  "generatedAt": "2026-09-01T19:23:20.059Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -711,6 +711,24 @@
       "added": "2026-08-31T16:09:29.152Z"
     },
     {
+      "title": "Sticks and Stones: Nature Art Exhibition",
+      "url": "https://calendar.santaclarita.gov/event/sticks-and-stones-nature-art-exhibition",
+      "start": "2026-09-04T00:00",
+      "dates": [
+        "2026-09-04T00:00"
+      ],
+      "repeats": 0,
+      "venue": "SCAA Gallery",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-09-01T19:23:20.058Z"
+    },
+    {
       "title": "Senator Valladares Community Blood Drive",
       "url": "https://calendar.santaclarita.gov/event/senator-valladares-community-blood-drive",
       "start": "2026-09-04T08:00",
@@ -874,24 +892,6 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-09-01T13:29:37.317Z"
-    },
-    {
-      "title": "Cumbiamba Dance & Fitness (evenings)",
-      "url": "https://calendar.santaclarita.gov/event/cumbiamba-dance-fitness-evenings",
-      "start": "2026-09-04T18:30",
-      "dates": [
-        "2026-09-04T18:30"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-31T16:09:29.152Z"
     },
     {
       "title": "Hart Mansion Tour 11:00a.m.",
