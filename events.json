@@ -1,115 +1,7 @@
 {
-  "generatedAt": "2026-09-01T05:07:02.542Z",
+  "generatedAt": "2026-09-01T13:29:37.317Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-08-31T00:00",
-      "dates": [
-        "2026-08-31T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-28T11:22:41.054Z"
-    },
-    {
-      "title": "Wolfcreek Brewery Trivia Night",
-      "url": "https://calendar.santaclarita.gov/event/wolfcreek-brewery-trivia-night",
-      "start": "2026-08-31T00:00",
-      "dates": [
-        "2026-08-31T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-28T11:22:41.054Z"
-    },
-    {
-      "title": "Cumbiamba Dance & Fitness",
-      "url": "https://calendar.santaclarita.gov/event/cumbiamba-dance-fitness",
-      "start": "2026-08-31T08:15",
-      "dates": [
-        "2026-08-31T08:15"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-25T20:45:01.447Z"
-    },
-    {
-      "title": "Teen Experience (Afterschool)",
-      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
-      "start": "2026-08-31T15:00",
-      "dates": [
-        "2026-08-31T15:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "teens"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-21T16:50:19.676Z"
-    },
-    {
-      "title": "Youth Afterschool Program",
-      "url": "https://calendar.santaclarita.gov/event/youth-afterschool-program-328",
-      "start": "2026-08-31T15:00",
-      "dates": [
-        "2026-08-31T15:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-21T16:50:19.676Z"
-    },
-    {
-      "title": "Line Dancing",
-      "url": "https://calendar.santaclarita.gov/event/line-dancing-4264",
-      "start": "2026-08-31T16:00",
-      "dates": [
-        "2026-08-31T16:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-29T07:03:44.963Z"
-    },
     {
       "title": "Trivia Nights",
       "url": "https://calendar.santaclarita.gov/event/trivia-nights",
@@ -855,6 +747,25 @@
       "added": "2026-08-25T20:45:01.447Z"
     },
     {
+      "title": "Play N Learn",
+      "url": "https://calendar.santaclarita.gov/event/play-n-learn-2944",
+      "start": "2026-09-04T09:00",
+      "dates": [
+        "2026-09-04T09:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-30T13:47:43.945Z"
+    },
+    {
       "title": "I Can Game",
       "url": "https://santaclarita.librarycalendar.com/event/i-can-game-28016",
       "start": "2026-09-04T10:00",
@@ -870,6 +781,60 @@
         "2026-09-04T10:00"
       ],
       "added": "2026-08-15T08:44:41.358Z"
+    },
+    {
+      "title": "Play Bridge",
+      "url": "https://calendar.santaclarita.gov/event/play-bridge-9425",
+      "start": "2026-09-04T10:00",
+      "dates": [
+        "2026-09-04T10:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-09-01T13:29:37.317Z"
+    },
+    {
+      "title": "Teen Experience (Afterschool)",
+      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
+      "start": "2026-09-04T15:00",
+      "dates": [
+        "2026-09-04T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-21T16:50:19.676Z"
+    },
+    {
+      "title": "Youth Afterschool Program",
+      "url": "https://calendar.santaclarita.gov/event/youth-afterschool-program-328",
+      "start": "2026-09-04T15:00",
+      "dates": [
+        "2026-09-04T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-21T16:50:19.676Z"
     },
     {
       "title": "Loud @ the Library: Powered by Music Lab 🎸",
@@ -891,6 +856,42 @@
       ],
       "repeats": 2,
       "added": "2026-08-15T08:44:41.358Z"
+    },
+    {
+      "title": "Live Music at Lucky Luke Brewing",
+      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
+      "start": "2026-09-04T18:00",
+      "dates": [
+        "2026-09-04T18:00"
+      ],
+      "repeats": 0,
+      "venue": "Lucky Luke Brewing",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-09-01T13:29:37.317Z"
+    },
+    {
+      "title": "Cumbiamba Dance & Fitness (evenings)",
+      "url": "https://calendar.santaclarita.gov/event/cumbiamba-dance-fitness-evenings",
+      "start": "2026-09-04T18:30",
+      "dates": [
+        "2026-09-04T18:30"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-31T16:09:29.152Z"
     },
     {
       "title": "Hart Mansion Tour 11:00a.m.",
