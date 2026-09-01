@@ -1,21 +1,7 @@
 {
-  "generatedAt": "2026-08-31T21:28:22.959Z",
+  "generatedAt": "2026-09-01T05:07:10.112Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Reconstruction",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1788181260,
-      "endEpoch": 1788213540,
-      "moreWindows": 18
-    },
     {
       "route": "I-5",
       "dir": "North",
@@ -28,21 +14,21 @@
       "total": "1",
       "startEpoch": 1788228060,
       "endEpoch": 1788267540,
-      "moreWindows": 38
+      "moreWindows": 33
     },
     {
       "route": "I-5",
       "dir": "South",
       "at": "Golden State Freeway, Route 5",
-      "place": "Castaic",
+      "place": "Valencia",
       "facility": "Off Ramp",
       "type": "Full",
-      "work": "Utility Work",
+      "work": "Roadway Excavation",
       "lanes": "All",
-      "total": "1",
+      "total": "2",
       "startEpoch": 1788228060,
       "endEpoch": 1788267540,
-      "moreWindows": 60
+      "moreWindows": 54
     },
     {
       "route": "I-5",
@@ -60,6 +46,20 @@
     },
     {
       "route": "I-5",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Reconstruction",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1788228060,
+      "endEpoch": 1788267540,
+      "moreWindows": 17
+    },
+    {
+      "route": "I-5",
       "dir": "South",
       "at": "Parker Rd",
       "place": "Castaic",
@@ -70,21 +70,7 @@
       "total": "4",
       "startEpoch": 1788228060,
       "endEpoch": 1788267540,
-      "moreWindows": 13
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1788228060,
-      "endEpoch": 1788267540,
-      "moreWindows": 18
+      "moreWindows": 12
     },
     {
       "route": "I-5",
@@ -102,20 +88,6 @@
     },
     {
       "route": "I-5",
-      "dir": "South",
-      "at": "Lyons Ave",
-      "place": "Stevenson Ranch",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1788228060,
-      "endEpoch": 1788267540,
-      "moreWindows": 25
-    },
-    {
-      "route": "I-5",
       "dir": "North",
       "at": "McBean Parkway",
       "place": "Valencia",
@@ -126,21 +98,7 @@
       "total": "1",
       "startEpoch": 1788228060,
       "endEpoch": 1788267540,
-      "moreWindows": 13
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Valencia Blvd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1788228060,
-      "endEpoch": 1788267540,
-      "moreWindows": 6
+      "moreWindows": 12
     },
     {
       "route": "I-5",
@@ -169,6 +127,48 @@
       "startEpoch": 1788228060,
       "endEpoch": 1788267540,
       "moreWindows": 3
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Valencia Blvd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1788228060,
+      "endEpoch": 1788267540,
+      "moreWindows": 9
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Lyons Ave",
+      "place": "Newhall",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1788231660,
+      "endEpoch": 1788267540,
+      "moreWindows": 10
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1788231660,
+      "endEpoch": 1788267540,
+      "moreWindows": 16
     }
   ]
 }

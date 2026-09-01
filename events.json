@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T16:09:29.152Z",
+  "generatedAt": "2026-09-01T05:07:02.542Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -252,6 +252,25 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-08-25T20:45:01.447Z"
+    },
+    {
+      "title": "Play N Learn",
+      "url": "https://calendar.santaclarita.gov/event/play-n-learn-2944",
+      "start": "2026-09-02T09:00",
+      "dates": [
+        "2026-09-02T09:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-30T13:47:43.945Z"
     },
     {
       "title": "Beginning Bridge Lessons",
@@ -608,25 +627,6 @@
       "price": null,
       "audience": [
         "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-30T13:47:43.945Z"
-    },
-    {
-      "title": "Play N Learn",
-      "url": "https://calendar.santaclarita.gov/event/play-n-learn-2944",
-      "start": "2026-09-02T21:00",
-      "dates": [
-        "2026-09-02T21:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "adults"
       ],
       "source": "City of Santa Clarita",
       "added": "2026-08-30T13:47:43.945Z"
