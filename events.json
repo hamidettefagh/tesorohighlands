@@ -1,114 +1,7 @@
 {
-  "generatedAt": "2026-09-02T04:32:49.152Z",
+  "generatedAt": "2026-09-02T12:46:03.157Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-09-01T00:00",
-      "dates": [
-        "2026-09-01T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-28T11:22:41.054Z"
-    },
-    {
-      "title": "Spice Travels!",
-      "url": "https://santaclarita.librarycalendar.com/event/placeheld-spice-travels-31702",
-      "start": "2026-09-01T09:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-01T09:00"
-      ],
-      "added": "2026-08-12T09:31:39.842Z"
-    },
-    {
-      "title": "Teen Experience (Afterschool)",
-      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
-      "start": "2026-09-01T15:00",
-      "dates": [
-        "2026-09-01T15:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "teens"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-21T16:50:19.676Z"
-    },
-    {
-      "title": "Youth Afterschool Program",
-      "url": "https://calendar.santaclarita.gov/event/youth-afterschool-program-328",
-      "start": "2026-09-01T15:00",
-      "dates": [
-        "2026-09-01T15:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-21T16:50:19.676Z"
-    },
-    {
-      "title": "Valencia TAB",
-      "url": "https://santaclarita.librarycalendar.com/event/valencia-tab-26813",
-      "start": "2026-09-01T16:30",
-      "venue": "Valencia Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-01T16:30"
-      ],
-      "added": "2026-08-12T09:31:39.842Z"
-    },
-    {
-      "title": "Divorce Care Higher Vision Church",
-      "url": "https://calendar.santaclarita.gov/event/divorce-care-higher-vision-church",
-      "start": "2026-09-01T19:00",
-      "dates": [
-        "2026-09-01T19:00"
-      ],
-      "repeats": 0,
-      "venue": "Higher Vision Church",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-29T07:03:44.963Z"
-    },
     {
       "title": "Trivia Nights",
       "url": "https://calendar.santaclarita.gov/event/trivia-nights",
@@ -873,6 +766,78 @@
       "added": "2026-09-01T13:29:37.317Z"
     },
     {
+      "title": "Cumbiamba Dance & Fitness (evenings)",
+      "url": "https://calendar.santaclarita.gov/event/cumbiamba-dance-fitness-evenings",
+      "start": "2026-09-04T18:30",
+      "dates": [
+        "2026-09-04T18:30"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-31T16:09:29.152Z"
+    },
+    {
+      "title": "Mission: Xcrawl",
+      "url": "https://calendar.santaclarita.gov/event/mission-xcrawl",
+      "start": "2026-09-05T00:00",
+      "dates": [
+        "2026-09-05T00:00"
+      ],
+      "repeats": 0,
+      "venue": "Strategicon Gateway",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-09-02T12:46:03.157Z"
+    },
+    {
+      "title": "Sticks and Stones: Nature Art Exhibition",
+      "url": "https://calendar.santaclarita.gov/event/sticks-and-stones-nature-art-exhibition",
+      "start": "2026-09-05T00:00",
+      "dates": [
+        "2026-09-05T00:00"
+      ],
+      "repeats": 0,
+      "venue": "SCAA Gallery",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-09-01T19:23:20.058Z"
+    },
+    {
+      "title": "Meows & Movement Yoga at Catfe",
+      "url": "https://calendar.santaclarita.gov/event/meows-movement-yoga-at-catfe",
+      "start": "2026-09-05T08:00",
+      "dates": [
+        "2026-09-05T08:00"
+      ],
+      "repeats": 0,
+      "venue": "Catfe",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-09-02T12:46:03.157Z"
+    },
+    {
       "title": "Hart Mansion Tour 11:00a.m.",
       "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1100am-35053",
       "start": "2026-09-05T11:00",
@@ -1067,6 +1032,43 @@
         "2026-09-12T10:00"
       ],
       "added": "2026-08-28T11:22:41.054Z"
+    },
+    {
+      "title": "B.A.B.E. Book Club",
+      "url": "https://santaclarita.librarycalendar.com/event/babe-book-club-24388",
+      "start": "2026-09-12T10:30",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-12T10:30"
+      ],
+      "added": "2026-09-02T12:46:03.157Z"
+    },
+    {
+      "title": "Open House Makerspace",
+      "url": "https://santaclarita.librarycalendar.com/event/placeheld-open-house-makerspace-32502",
+      "start": "2026-09-12T13:00",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-12T13:00",
+        "2026-09-15T10:00"
+      ],
+      "repeats": 1,
+      "added": "2026-09-02T12:46:03.157Z"
     },
     {
       "title": "The Doo Wop Project: Echoes Of The Street",
