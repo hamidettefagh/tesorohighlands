@@ -104,7 +104,7 @@ Indoor / stale / low-confidence rules stay as today (`ok: false`).
 
 ### `/api/tempest-forecast` (new)
 
-- Upstream: `GET https://swd.weatherflow.com/swd/rest/better_forecast` with `station_id` (`TEMPEST_STATION_ID` or `227733`), `token` (`TEMPEST_TOKEN`), units `f` / `mph` / `mb` / `in` / `mi`.
+- Upstream: `GET https://swd.weatherflow.com/swd/rest/better_forecast` with `station_id` (from `TEMPEST_STATION_ID`; never hard-coded), `token` (`TEMPEST_TOKEN`), units `f` / `mph` / `mb` / `in` / `mi`.
 - Strip: `latitude`, `longitude`, `location_name`, station ids, any nested station metadata.
 - Return a trimmed object, for example:
 

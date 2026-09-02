@@ -204,10 +204,13 @@ async function handler(req, res) {
     softFail(res, "TEMPEST_TOKEN not configured");
     return;
   }
+  if (!stationIdRaw) {
+    softFail(res, "TEMPEST_STATION_ID not configured");
+    return;
+  }
 
   try {
     const qs = new URLSearchParams({
-      token: token,
       station_id: String(stationId),
       units_temp: "f",
       units_wind: "mph",
@@ -217,8 +220,11 @@ async function handler(req, res) {
     });
     const url = "https://swd.weatherflow.com/swd/rest/better_forecast?" + qs.toString();
 
+    // Bearer header, not ?token= — same rule as api/tempest.js: query strings get
+    // written to upstream access logs and proxies verbatim.
     const upstream = await fetch(url, {
       headers: {
+        Authorization: "Bearer " + token,
         Accept: "application/json",
         "User-Agent": "tesorohighlands.com (neighbor community site)"
       }

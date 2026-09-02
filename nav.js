@@ -120,7 +120,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v11";  // v11: weather all-clear without air claim — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v12";  // v12: strip colour follows air on /weather + reading age — keep in step with nav.js?v=N
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -166,10 +166,12 @@
         }
         if (aqi == null) aqi = a && a.current ? a.current.us_aqi : null;
         if (aqi == null) return; okAir = true;
-        if (!isWeather) {
-          if (aqi > 150) { say(80, 2, "Air is unhealthy (AQI " + Math.round(aqi) + ") — limit time outside."); }
-          else if (aqi > 100) { say(40, 1, "Air unhealthy for sensitive groups (AQI " + Math.round(aqi) + ")."); }
-        }
+        // /weather shows the AQI card right below, so the strip used to skip air
+        // entirely there — which left it GREEN at AQI 180. The level (colour)
+        // has to follow the air everywhere; only the all-clear wording stays short.
+        var age = (pa && pa.ok && pa.primary && pa.primary.ageSec >= 600) ? " · reading " + Math.round(pa.primary.ageSec / 60) + " min old" : "";
+        if (aqi > 150) { say(80, 2, "Air is unhealthy (AQI " + Math.round(aqi) + ")" + age + " — limit time outside."); }
+        else if (aqi > 100) { say(40, 1, "Air unhealthy for sensitive groups (AQI " + Math.round(aqi) + ")" + age + "."); }
       }).catch(function () {}),
       fetch("https://api.weather.gov/alerts/active?point=" + L.lat + "," + L.lon, { headers: { Accept: "application/geo+json" } }).then(function (r) { return r.json(); }).then(function (al) {
         if (!al || !al.features) return; okAlerts = true;

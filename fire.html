@@ -1259,8 +1259,12 @@ function render(){
   else fwNote = `<div class="note"><b>Calm.</b> Humidity and wind are in a normal range — low fire-spread risk right now.</div>`;
   if(santaAna) fwNote += `<div class="note santa" style="margin-top:8px">🌵 Winds from the <b>${compass(v.wdir)}</b> — the offshore Santa Ana direction for the SCV. These downslope winds drive the fastest, most dangerous fires here.</div>`;
   if(v.wxSource==="tempest"){
-    const age = live.tempest && live.tempest.obsTime ? " · " + fmtAgo(live.tempest.obsTime * 1000) : "";
-    fwNote += `<div class="src" style="margin-top:8px">Wind, humidity, and temperature from a neighbor Tempest near Tesoro Highlands${age}.</div>`;
+    const tx = live.tempest || {};
+    const age = tx.obsTime ? " · " + fmtAgo(tx.obsTime * 1000) : "";
+    // Fields fall back one at a time to Open-Meteo above; do not credit the
+    // station for a number it did not report.
+    const fellBack = [tx.tempF, tx.rh, tx.windMph, tx.gustMph].some(x => x == null);
+    fwNote += `<div class="src" style="margin-top:8px">Wind, humidity, and temperature from a neighbor Tempest near Tesoro Highlands${fellBack ? ", with modeled backup for any reading the station did not send" : ""}${age}.</div>`;
   } else if(v.wxSource==="model"){
     fwNote += `<div class="src" style="margin-top:8px">Modeled forecast grid — neighbor Tempest isn't reporting right now.</div>`;
   }
@@ -1526,7 +1530,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=11" defer></script>
+<script src="/nav.js?v=12" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>

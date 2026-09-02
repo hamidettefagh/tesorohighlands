@@ -151,7 +151,7 @@
     <footer class="thfoot">
       <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> In an emergency, call 911 and follow CAL FIRE, LA County Fire, and Sheriff evacuation orders. Live fire, air, and weather data come from public government feeds and can lag or be incomplete — always confirm with official sources. Ideas for the site? Bring them to the community group chat.</p>
     </footer>
-  <script src="/nav.js?v=11" defer></script>
+  <script src="/nav.js?v=12" defer></script>
   <script>
   // "Today" digest: air, fire weather, next events — small live glances.
   (function () {
@@ -206,6 +206,8 @@
       if (q == null) { $("#tdAir").textContent = "unavailable right now"; asofDone(false); return; }
       var cat = q <= 50 ? "Good" : q <= 100 ? "Moderate" : q <= 150 ? "Unhealthy for sensitive groups" : "Unhealthy";
       var src = (pa && pa.ok && pa.primary && pa.primary.aqi != null) ? "neighbor sensor" : (measured ? "measured" : "modeled");
+      // A reading can be up to 45 min old and still pass the proxy's gate — say so past 10.
+      if (src === "neighbor sensor" && pa.primary.ageSec >= 600) src += " · " + Math.round(pa.primary.ageSec / 60) + " min old";
       $("#tdAir").innerHTML = "<b>AQI " + Math.round(q) + "</b> · " + cat + ' <span style="color:var(--muted);font-size:11px">' + src + "</span>";
       liveBits.air = "<b>AQI " + Math.round(q) + "</b> " + cat.toLowerCase();
       paintFireCard(); asofDone(true);
@@ -235,6 +237,7 @@
       var windTxt = wind != null ? Math.round(wind) + " mph" : "—";
       var rhTxt = rh != null ? Math.round(rh) + "%" : "—";
       var src = (tx && (tx.rh != null || tx.windMph != null || tx.tempF != null)) ? "neighbor station" : "modeled";
+      if (src === "neighbor station" && tx.ageSec >= 600) src += " · " + Math.round(tx.ageSec / 60) + " min old";
       $("#tdFw").innerHTML = "<b>" + windTxt + "</b> wind · " + rhTxt + " humidity · " + lvl + ' <span style="color:var(--muted);font-size:11px">' + src + "</span>";
       liveBits.fw = lvl.toLowerCase() + " fire weather";
       paintFireCard(); asofDone(true);
@@ -335,7 +338,9 @@
       $("#snList").innerHTML = list.slice(0, 3).map(function (u) {
         var p = String(u.date || "").split("-");
         var d = p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString([], { month: "short", day: "numeric" }) : "";
-        return '<a href="' + esc(u.href || "/") + '"><span class="nd">' + esc(d) + "</span>" + esc(u.text || "") + "</a>";
+        // updates.json is ours, but same rule as every feed: only real paths/URLs become links.
+        var h = /^(\/|https?:\/\/)/i.test(u.href || "") ? u.href : "/";
+        return '<a href="' + esc(h) + '"><span class="nd">' + esc(d) + "</span>" + esc(u.text || "") + "</a>";
       }).join("");
       $("#siteNews").hidden = false;
     }).catch(function () {});

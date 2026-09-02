@@ -12,7 +12,7 @@ English about your rights as a California homeowner.
 follow CAL FIRE, LA County Fire, and Sheriff evacuation orders, and call 911 in an
 emergency.
 
-*Last reviewed: 2026-08-26. If you change a workflow cadence, a data source, or a cost
+*Last reviewed: 2026-09-02. If you change a workflow cadence, a data source, or a cost
 figure, please update this file in the same commit.*
 
 ## Want to help?
@@ -94,16 +94,16 @@ updates.json          the "new on this site" changelog, hand-maintained
 |---|---|---|---|
 | `refresh-events.yml` | every 4h | Rebuilds `events.json` + `roads.json` | No |
 | `alert-watch.yml` | every 10 min | Checks evac/fire/red-flag/quake/PSPS for our area, writes `alert.json` (the one-tap WhatsApp share card), optional phone ping via ntfy | No |
-| `refresh-purpleair-history.yml` | hourly (:12) | Fetches 24h PurpleAir history → `purpleair-history.json` (sparkline on `/weather`) | No (needs `PURPLEAIR_API_KEY` secret). Ship the YAML from `scripts/github/` into `.github/workflows/` after merge — fork OAuth cannot create GitHub Actions files. |
+| `refresh-purpleair-history.yml` | hourly (:12) | Fetches 24h PurpleAir history → `purpleair-history.json` (sparkline on `/weather`) | No (needs the `PURPLEAIR_API_KEY` and `PURPLEAIR_SENSOR_INDEX` repo secrets; exits cleanly without them) |
 | `refresh-ai-events.yml` | daily ~6:23am PT | Claude web-search sweep for events the feeds miss → `ai-events.json` | Yes |
 | `weekend-roundup.yml` | Fridays ~8:23am PT | Claude curates 5–7 weekend picks → `roundup.json` | Yes |
 
 **Running cost:** roughly **$5–8/month** total on `claude-haiku-4-5` — the daily events
 sweep (~$0.15–0.20/run with web search capped at 12 uses) plus the Friday roundup
 (a few cents). Both need the `ANTHROPIC_API_KEY` repo secret; without it they exit
-cleanly and commit nothing. The PurpleAir history job needs `PURPLEAIR_API_KEY` on
-GitHub Actions and the same key plus `TEMPEST_TOKEN` / `TEMPEST_STATION_ID` on Vercel
-for the live weather APIs. Everything else on the site is free and keyless.
+cleanly and commit nothing. The PurpleAir history job needs `PURPLEAIR_API_KEY` and
+`PURPLEAIR_SENSOR_INDEX` as GitHub Actions secrets; Vercel needs those two plus
+`TEMPEST_TOKEN` / `TEMPEST_STATION_ID` for the live weather APIs. Everything else on the site is free and keyless.
 
 ## What's live vs. curated
 

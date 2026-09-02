@@ -28,8 +28,6 @@
 <script src="/theme.js"></script>
 <link rel="stylesheet" href="/th.css" />
 <style>
-  .thskip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;}
-  .thskip:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:8px 12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;z-index:100;color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;}
   section[id]{scroll-margin-top:64px;}
   .sechead{display:flex;align-items:center;gap:8px;margin:26px 2px 8px;}
   .sechead h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:680;}
@@ -100,8 +98,7 @@
 </style>
 </head>
 <body class="th">
-<a class="thskip" href="#main">Skip to content</a>
-<main id="main" class="thwrap">
+<main id="main" tabindex="-1" class="thwrap">
   <div class="hub-head">
     <h1>Weather &amp; air here</h1>
     <p>Hyper-local conditions in Tesoro Highlands — what it feels like outside on our streets, not a citywide average.</p>
@@ -145,7 +142,7 @@
   <footer class="thfoot">
     <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> These are neighborhood sensors and a commercial forecast, not a government monitor network. In an emergency, call 911 and follow official orders. &nbsp;<a href="/">← Back to the hub</a></p>
   </footer>
-<script src="/nav.js?v=11" defer></script>
+<script src="/nav.js?v=12" defer></script>
 <script>
 "use strict";
 
@@ -209,6 +206,16 @@ async function loadJson(url){
 
 function sparkSvg(points){
   if(!points||points.length<2) return "";
+  // The history file is committed by an hourly job that keeps the last good
+  // copy on any failure — so it can sit at ok:true for days if the job dies.
+  // Say how old the newest hour is once it is clearly behind, and stop drawing
+  // it as a current graph after two days.
+  const lastT=points[points.length-1]&&points[points.length-1].t?points[points.length-1].t*1000:0;
+  const ageH=lastT?(Date.now()-lastT)/3600000:0;
+  if(ageH>48) return "";
+  const cap=ageH>3
+    ? 'Hourly averages — newest reading is '+Math.round(ageH)+'h old; the hourly refresh may be behind.'
+    : 'Last 24 hours (hourly averages).';
   const w=300,h=44,pad=2;
   const vals=points.map(p=>p.aqi).filter(v=>Number.isFinite(v));
   if(vals.length<2) return "";
@@ -219,7 +226,7 @@ function sparkSvg(points){
     const y=h-pad-((p.aqi-min)/span)*(h-pad*2);
     return (pad+i*step).toFixed(1)+","+y.toFixed(1);
   }).join(" ");
-  return '<div class="spark"><svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="var(--aqi-mod)" stroke-width="2" points="'+coords+'"/></svg><div class="spark-cap">Last 24 hours (hourly averages).</div></div>';
+  return '<div class="spark"><svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="var(--aqi-mod)" stroke-width="2" points="'+coords+'"/></svg><div class="spark-cap">'+esc(cap)+'</div></div>';
 }
 
 function fmtIn(n){
@@ -284,7 +291,8 @@ function renderWx(fc){
     (cur.conditions?'<div class="cond">'+esc(cur.conditions)+'</div>':"")+
     (hl?'<div class="hilo">Today '+hl.lo+'° / '+hl.hi+'°</div>':"")+
     '</div></div>'+
-    (chips.length?'<div class="chips">'+chips.map(c=>c.startsWith("<")?c:'<span class="chip">'+c+'</span>').join("")+'</div>':"");
+    (chips.length?'<div class="chips">'+chips.map(c=>c.startsWith("<")?c:'<span class="chip">'+c+'</span>').join("")+'</div>':"")+
+    (cur.obsTime?'<div class="aqi-note">'+esc(timeAgo(cur.obsTime*1000))+' · from the backyard station</div>':"");
 }
 
 function renderAqi(pa, hist){
@@ -299,13 +307,16 @@ function renderAqi(pa, hist){
   const c0=p.aqi;
   if(epa==null){
     if(c0!=null){
+      // primary.aqi is the same EPA-corrected number, just the 10-minute window
+      // instead of the hourly one — never raw.
       const info=aqiInfo(c0);
+      const ago10=p.lastSeen?timeAgo(p.lastSeen*1000):"";
       el.className="nowcard aqi "+info.klass;
       el.innerHTML=
         '<p class="ey">Air quality</p>'+
-        '<div class="aqi-meta"><b>Corrected AQI unavailable</b></div>'+
-        '<div class="aqinum"><span class="n">'+Math.round(c0)+'</span><span class="cat '+info.klass+'">Uncorrected (C0)</span></div>'+
-        '<div class="aqi-note">Showing the shorter neighborhood reading — the usual corrected number is not available.</div>';
+        '<div class="aqinum"><span class="n">'+Math.round(c0)+'</span><span class="cat '+info.klass+'">'+esc(info.name)+'</span></div>'+
+        '<div class="aqi-meta">'+esc(aqiActivity(c0))+' · 10-minute reading</div>'+
+        '<div class="aqi-note">The hourly average is not available right now, so this is the shorter 10-minute reading from the same sensor.'+(ago10?' '+esc(ago10)+'.':'')+'</div>';
     }else{
       el.className="nowcard";
       el.innerHTML='<p class="ey">Air quality</p><div class="band-unavail">Air quality unavailable</div>';

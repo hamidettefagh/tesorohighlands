@@ -7,7 +7,7 @@ const raw = {
   latitude: 34.47,
   longitude: -118.53,
   location_name: "SECRET HOUSE",
-  station: { station_id: 227733, is_station_online: true, elevation: 400 },
+  station: { station_id: 5550001, is_station_online: true, elevation: 400 },
   current_conditions: {
     time: Math.floor(Date.now() / 1000) - 60,
     air_temperature: 78,
@@ -59,7 +59,7 @@ const out = mapForecast(raw);
 if (out.ok !== true) throw new Error("ok");
 if (out.currentStale !== false) throw new Error("stale");
 if (out.latitude || out.station || (out.current && out.current.precipIn != null)) throw new Error("leaked");
-if (JSON.stringify(out).includes("SECRET") || JSON.stringify(out).includes("227733")) throw new Error("pii");
+if (JSON.stringify(out).includes("SECRET") || JSON.stringify(out).includes("5550001")) throw new Error("pii");
 if (out.current.icon === "wind-rose-nw") throw new Error("wind rose");
 if (out.current.wdir !== 315) throw new Error("wdir");
 if (out.hourly[0].precipProbability !== 5) throw new Error("pop");
