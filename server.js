@@ -3,8 +3,16 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
+const { demoPurpleair, demoHistory, demoForecast } = require("./scripts/weather-demo-payloads.js");
+
 const dir = __dirname;
 const port = process.env.PORT || 3100;
+const liveFeeds = process.env.WEATHER_LIVE === "1";
+
+function sendJson(res, obj) {
+  res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+  res.end(JSON.stringify(obj));
+}
 const types = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript",
@@ -20,6 +28,11 @@ const types = {
 http
   .createServer((req, res) => {
     let p = decodeURIComponent((req.url || "/").split("?")[0]);
+    if (!liveFeeds) {
+      if (p === "/api/purpleair") return sendJson(res, demoPurpleair());
+      if (p === "/api/tempest-forecast") return sendJson(res, demoForecast());
+      if (p === "/purpleair-history.json") return sendJson(res, demoHistory());
+    }
     if (p === "/" || p === "") p = "/index.html";
     let fp = path.join(dir, p);
     if (!fp.startsWith(dir)) {
@@ -36,4 +49,7 @@ http
       res.end(data);
     });
   })
-  .listen(port, () => console.log("Tesoro Highlands running on http://localhost:" + port));
+  .listen(port, () => {
+    console.log("Tesoro Highlands running on http://localhost:" + port);
+    if (!liveFeeds) console.log("Local dummy weather feeds on (WEATHER_LIVE=1 to disable)");
+  });

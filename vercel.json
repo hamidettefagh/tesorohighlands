@@ -23,7 +23,7 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }]
     },
     {
-      "source": "/(events|ai-events|roads|roundup|community-events)\\.json",
+      "source": "/(events|ai-events|roads|roundup|community-events|purpleair-history)\\.json",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=60, stale-while-revalidate=300" }]
     },
     {

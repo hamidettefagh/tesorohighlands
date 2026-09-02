@@ -6,10 +6,12 @@
 //
 // Conversion / averaging notes:
 // - PM2.5 field preference: pm2.5_10minute, fallback pm2.5_cf_1
-// - Conversion: US EPA correction, applied (see epaCorrect below)
-// - AQI: US EPA breakpoints on the corrected PM2.5 value (10-minute average)
+// - primary.aqi:    EPA Oct 2021 five-segment correction on the 10-minute average (Fire / nav)
+// - primary.aqiEpa: the same correction on the 60-minute average (/weather)
+//   One formula, two windows. 10-min reacts faster when smoke arrives; 60-min is
+//   steadier for a graph. Never let the formulas diverge again — see below.
 //
-// The sensor owner's own widget shows raw ("C0"), so this endpoint will read
+// The sensor owner's own widget shows raw ("C0"), so primary.aqi will read
 // LOWER than their display during smoke. That is deliberate. Low-cost optical
 // sensors over-report in wildfire smoke — the exact conditions this site exists
 // for — and raw numbers here would headline "Unhealthy" while the regulatory
@@ -19,49 +21,11 @@
 //
 // Cached at the CDN edge (~once per minute) regardless of how many neighbors open the page.
 
+const { correctAtmPm25, aqiFromPm25 } = require("./_epa.js");
+
 const LABEL = "Neighbor PurpleAir near Tesoro Highlands";
 const MAX_AGE_SEC = 45 * 60;
-
-// US EPA AQI breakpoints for PM2.5 (µg/m³) → AQI.
-// https://www.airnow.gov/sites/default/files/2020-05/aqi-technical-assistance-document-sept2018.pdf
-// EPA PM2.5 breakpoints effective 2024-05-06 (Good ceiling lowered to 9.0 µg/m³).
-const PM25_BREAKPOINTS = [
-  { cLo: 0.0, cHi: 9.0, iLo: 0, iHi: 50 },
-  { cLo: 9.1, cHi: 35.4, iLo: 51, iHi: 100 },
-  { cLo: 35.5, cHi: 55.4, iLo: 101, iHi: 150 },
-  { cLo: 55.5, cHi: 125.4, iLo: 151, iHi: 200 },
-  { cLo: 125.5, cHi: 225.4, iLo: 201, iHi: 300 },
-  { cLo: 225.5, cHi: 325.4, iLo: 301, iHi: 400 },
-  { cLo: 325.5, cHi: 500.4, iLo: 401, iHi: 500 }
-];
 const MIN_CONFIDENCE = 70;
-
-// US EPA nationwide correction for PurpleAir PA-II sensors, developed against
-// FEM monitors specifically to handle wildfire smoke:
-//   PM2.5corrected = 0.524 * PA_cf1 - 0.0862 * RH + 5.75
-// Source: US EPA, "Using PurpleAir Data for Wildfire Smoke" (AirNow Fire & Smoke
-// Map methodology). Needs relative humidity; without it we cannot correct, and
-// we would rather report nothing than report a number we know reads high.
-function epaCorrect(pm25, rh) {
-  if (!Number.isFinite(pm25)) return null;
-  if (!Number.isFinite(rh)) return null;
-  return Math.max(0, 0.524 * pm25 - 0.0862 * rh + 5.75);
-}
-
-function aqiFromPm25(pm25) {
-  const c = Number(pm25);
-  if (!Number.isFinite(c) || c < 0) return null;
-  // Truncate to one decimal per EPA guidance before breakpoint lookup.
-  const truncated = Math.floor(c * 10) / 10;
-  for (const bp of PM25_BREAKPOINTS) {
-    if (truncated >= bp.cLo && truncated <= bp.cHi) {
-      const aqi = ((bp.iHi - bp.iLo) / (bp.cHi - bp.cLo)) * (truncated - bp.cLo) + bp.iLo;
-      return Math.round(aqi);
-    }
-  }
-  if (truncated > 500.4) return 500;
-  return null;
-}
 
 function softFail(res, reason) {
   // 200 + ok:false so the CDN can cache the miss briefly and browsers don't
@@ -107,6 +71,7 @@ module.exports = async function handler(req, res) {
       "humidity",
       "temperature",
       "pm2.5_10minute",
+      "pm2.5_60minute",
       "pm2.5_cf_1",
       "confidence"
     ].join(",");
@@ -147,7 +112,7 @@ module.exports = async function handler(req, res) {
 
     // Prefer 10-minute average (widget average=10). PurpleAir often nests it under
     // sensor.stats when pm2.5_10minute is requested, not at the top level.
-    // Fall back to CF=1 (raw). C0 = no correction (owner widget).
+    // Fall back to CF=1 (raw).
     const stats = sensor.stats && typeof sensor.stats === "object" ? sensor.stats : {};
     let pm25 = stats["pm2.5_10minute"];
     let averageMin = 10;
@@ -166,7 +131,15 @@ module.exports = async function handler(req, res) {
     // Correct before converting to AQI. No humidity means no correction, and an
     // uncorrected number is not one we are willing to headline — soft-fail so
     // the page falls through to the EPA monitor instead.
-    const corrected = epaCorrect(pm25, humidity);
+    //
+    // Same five-segment correction as aqiEpa below. These two numbers appear on
+    // different pages for the same sensor at the same moment, so the ONLY thing
+    // allowed to differ between them is the averaging window. When the formulas
+    // differed too, Fire read AQI 99 "Moderate" while Weather read 137
+    // "Unhealthy for sensitive groups" off one sensor — and at heavy smoke the
+    // gap hit 88 points. A neighbor deciding whether to keep kids inside cannot
+    // be handed two answers.
+    const corrected = correctAtmPm25(pm25, humidity);
     if (corrected == null) {
       softFail(res, "humidity missing — cannot apply EPA correction");
       return;
@@ -174,6 +147,12 @@ module.exports = async function handler(req, res) {
 
     const aqi = aqiFromPm25(corrected);
     if (aqi == null) throw new Error("aqi unavailable");
+
+    const pm60raw = stats["pm2.5_60minute"] != null ? stats["pm2.5_60minute"] : sensor["pm2.5_60minute"];
+    const pm60 = pm60raw != null ? Number(pm60raw) : null;
+    const yEpa = pm60 != null && Number.isFinite(pm60) ? correctAtmPm25(pm60, humidity) : null;
+    const aqiEpa = yEpa == null ? null : aqiFromPm25(yEpa);
+    const pm25Epa = yEpa == null ? null : Math.round(yEpa * 10) / 10;
 
     // Never echo upstream sensor.name / lat / lon / index — those can identify a home.
     res.status(200).json({
@@ -190,7 +169,11 @@ module.exports = async function handler(req, res) {
         lastSeen: lastSeen,
         ageSec: ageSec,
         conversion: "US-EPA",
-        averageMin: averageMin
+        averageMin: averageMin,
+        aqiEpa: aqiEpa,
+        pm25Epa: pm25Epa,
+        epaAverageMin: aqiEpa != null ? 60 : null,
+        epaConversion: aqiEpa != null ? "EPA-2021-ATM-5seg" : null
       },
       peers: null
     });
