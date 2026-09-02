@@ -1,3 +1,12 @@
+# Hourly 24h PurpleAir history for the /weather sparkline.
+#
+# Needs two repo secrets: PURPLEAIR_API_KEY and PURPLEAIR_SENSOR_INDEX.
+# Without them the script exits 0 without writing, so this job is a harmless
+# no-op until both exist.
+#
+# Triggers are schedule/workflow_dispatch only — never pull_request_target —
+# so fork code can never run with these secrets.
+
 name: Refresh PurpleAir history
 
 on:
@@ -21,6 +30,7 @@ jobs:
       - name: Fetch history
         env:
           PURPLEAIR_API_KEY: ${{ secrets.PURPLEAIR_API_KEY }}
+          PURPLEAIR_SENSOR_INDEX: ${{ secrets.PURPLEAIR_SENSOR_INDEX }}
         run: node scripts/fetch-purpleair-history.mjs
       - name: Commit if changed
         run: |
