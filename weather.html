@@ -210,12 +210,17 @@ function sparkSvg(points){
   // copy on any failure — so it can sit at ok:true for days if the job dies.
   // Say how old the newest hour is once it is clearly behind, and stop drawing
   // it as a current graph after two days.
+  // GitHub's free-tier cron routinely skips or drifts an hour, so a "may be
+  // behind" warning would show most mornings and read as broken. State the
+  // hour the graph runs through instead — always true — and only warn once
+  // it is clearly stuck (six hours), hiding it entirely after two days.
   const lastT=points[points.length-1]&&points[points.length-1].t?points[points.length-1].t*1000:0;
   const ageH=lastT?(Date.now()-lastT)/3600000:0;
   if(ageH>48) return "";
-  const cap=ageH>3
-    ? 'Hourly averages — newest reading is '+Math.round(ageH)+'h old; the hourly refresh may be behind.'
-    : 'Last 24 hours (hourly averages).';
+  const through=lastT?new Date(lastT+3600000).toLocaleTimeString([],{hour:"numeric"}):"";
+  const cap=ageH>6
+    ? 'Hourly averages through '+through+' — the hourly refresh is behind.'
+    : 'Last 24 hours, hourly averages'+(through?' through '+through:'')+'.';
   const w=300,h=44,pad=2;
   const vals=points.map(p=>p.aqi).filter(v=>Number.isFinite(v));
   if(vals.length<2) return "";
