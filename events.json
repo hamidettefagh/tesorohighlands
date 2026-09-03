@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T12:46:03.157Z",
+  "generatedAt": "2026-09-03T04:32:35.377Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -1141,6 +1141,20 @@
       "added": "2026-08-23T03:24:58.764Z"
     },
     {
+      "title": "Faculty Guitar Concert: College Of The Canyons Music",
+      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "start": "2026-10-12T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-03T04:32:35.375Z"
+    },
+    {
       "title": "Eternamente: A Dia De Los Muertos Spectacular!",
       "url": "https://pac.canyons.edu/shows/eternamente.php",
       "start": "2026-10-30T20:00",
@@ -1153,6 +1167,146 @@
       ],
       "source": "SC Performing Arts Center",
       "added": "2026-08-23T03:24:58.764Z"
+    },
+    {
+      "title": "Community Jazz Band: College Of The Canyons Music",
+      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "start": "2026-11-30T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-03T04:32:35.375Z"
+    },
+    {
+      "title": "Mariachi/world Percussion Ensembles: College Of The Canyons Music",
+      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "start": "2026-12-02T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-03T04:32:35.375Z"
+    },
+    {
+      "title": "Electronica: College Of The Canyons Music",
+      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "start": "2026-12-03T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-03T04:32:35.375Z"
+    },
+    {
+      "title": "Commercial Music: College Of The Canyons Music",
+      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "start": "2026-12-04T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-03T04:32:35.375Z"
+    },
+    {
+      "title": "Vocal Jazz & Choral Concert: College Of The Canyons Music",
+      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "start": "2026-12-05T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-03T04:32:35.375Z"
+    },
+    {
+      "title": "Symphony Of The Canyons: College Of The Canyons Music",
+      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "start": "2026-12-07T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-03T04:32:35.375Z"
+    },
+    {
+      "title": "Guitar Ensemble: College Of The Canyons Music",
+      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "start": "2026-12-08T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-03T04:32:35.375Z"
+    },
+    {
+      "title": "Jazz Improv: College Of The Canyons Music",
+      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "start": "2026-12-09T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-03T04:32:35.375Z"
+    },
+    {
+      "title": "Studio Jazz Ensemble: College Of The Canyons Music",
+      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "start": "2026-12-10T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-03T04:32:35.375Z"
+    },
+    {
+      "title": "Dance Performance: College Of The Canyons Dance",
+      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "start": "2026-12-11T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-03T04:32:35.375Z"
     },
     {
       "title": "One Christmas Night In Memphis",
