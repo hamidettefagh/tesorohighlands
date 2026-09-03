@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T12:49:09.108Z",
+  "generatedAt": "2026-09-03T22:34:18.678Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -239,23 +239,6 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-08-31T16:09:29.152Z"
-    },
-    {
-      "title": "Club de Mujeres Latinas en Literatura",
-      "url": "https://santaclarita.librarycalendar.com/event/club-de-mujeres-latinas-en-literatura-24370",
-      "start": "2026-09-03T18:30",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-03T18:30"
-      ],
-      "added": "2026-08-14T09:19:49.013Z"
     },
     {
       "title": "Cumbiamba Dance & Fitness (evenings)",
