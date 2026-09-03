@@ -1,41 +1,13 @@
 {
-  "generatedAt": "2026-09-02T17:13:07.939Z",
+  "generatedAt": "2026-09-03T17:05:04.375Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-09-02T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-05T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall"
-    },
-    {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-09-06T08:00",
-      "venue": "College of the Canyons Valencia Campus, Parking Lot 5",
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-09-06T08:30",
+      "venue": "Valencia FivePoint Farmers' Market",
       "city": "Valencia",
       "free": true,
       "price": "Free",
@@ -43,41 +15,13 @@
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "VCCFM"
+      "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-09-09T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-12T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall"
-    },
-    {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-09-13T08:00",
-      "venue": "College of the Canyons Valencia Campus, Parking Lot 5",
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-09-13T08:30",
+      "venue": "Valencia FivePoint Farmers' Market",
       "city": "Valencia",
       "free": true,
       "price": "Free",
@@ -85,30 +29,30 @@
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "VCCFM"
+      "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-09-16T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
+      "title": "SENSES Block Party: Oktoberfest",
+      "url": "https://calendar.santaclarita.gov/event/sneses-block-party",
+      "start": "2026-09-17T19:00",
+      "venue": "Main Street in Old Town Newhall",
+      "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "City of Santa Clarita"
     },
     {
-      "title": "Fright Fest at Six Flags Magic Mountain",
+      "title": "Fright Fest presented by SNICKERS",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-09-18",
+      "start": "2026-09-18T19:00",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": null,
+      "price": "$25",
       "audience": [
         "teens",
         "adults"
@@ -117,200 +61,99 @@
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-19T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-09-26T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "toddlers",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-09-20T08:00",
-      "venue": "College of the Canyons Valencia Campus, Parking Lot 5",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "VCCFM"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-09-23T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-26T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall"
-    },
-    {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-09-27T08:00",
-      "venue": "College of the Canyons Valencia Campus, Parking Lot 5",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "VCCFM"
-    },
-    {
-      "title": "Beautiful: The Carole King Musical at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org",
+      "title": "Beautiful: The Carole King Musical",
+      "url": "https://www.canyontheatre.org/",
       "start": "2026-09-27T20:00",
       "venue": "Canyon Theatre Guild",
       "city": "Newhall",
       "free": false,
       "price": "$24",
       "audience": [
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Canyon Theatre Guild"
     },
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-09-30T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-10-03T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall"
-    },
-    {
-      "title": "DEAF & ASL Event at Pocock Brewing Company",
-      "url": "https://deafcal.org/venue/pocock-brewing-company/",
-      "start": "2026-10-03T17:00",
-      "venue": "Pocock Brewing Company",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-03T09:00",
+      "venue": "Gilchrist Farm",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "toddlers",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Deaf Cal"
+      "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-10-04T08:00",
-      "venue": "College of the Canyons Valencia Campus, Parking Lot 5",
-      "city": "Valencia",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-04T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "toddlers",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "VCCFM"
+      "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-10-07T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-10T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "toddlers",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-10-10T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-11T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "toddlers",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
-    },
-    {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-10-11T08:00",
-      "venue": "College of the Canyons Valencia Campus, Parking Lot 5",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "VCCFM"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-10-14T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
+      "via": "Santa Clarita Community Calendar"
     }
   ]
 }
