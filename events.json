@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T22:34:18.678Z",
+  "generatedAt": "2026-09-04T04:31:49.367Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -437,6 +437,27 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-08-21T16:50:19.676Z"
+    },
+    {
+      "title": "Loud @ the Library: Powered by Music Lab 🎸",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37429",
+      "start": "2026-09-04T16:00",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-04T16:00",
+        "2026-09-11T16:00",
+        "2026-09-18T16:00"
+      ],
+      "repeats": 2,
+      "added": "2026-09-04T04:31:49.367Z"
     },
     {
       "title": "Live Music at Lucky Luke Brewing",
