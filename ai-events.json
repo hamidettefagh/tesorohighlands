@@ -1,58 +1,151 @@
 {
-  "generatedAt": "2026-09-03T17:05:04.375Z",
+  "generatedAt": "2026-09-04T16:53:39.306Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-09-06T08:30",
-      "venue": "Valencia FivePoint Farmers' Market",
-      "city": "Valencia",
+      "title": "Bouquet Canyon Certified Farmers Market & Crafters Show",
+      "url": "https://santaclaritaevents.com/blog/santa-clarita-farmers-markets-guide/",
+      "start": "2026-09-05T08:00",
+      "venue": "27000 Bouquet Canyon Road",
+      "city": "Saugus",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "Santa Clarita Events"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-09-13T08:30",
-      "venue": "Valencia FivePoint Farmers' Market",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "SENSES Block Party: Oktoberfest",
-      "url": "https://calendar.santaclarita.gov/event/sneses-block-party",
-      "start": "2026-09-17T19:00",
-      "venue": "Main Street in Old Town Newhall",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-05T08:30",
+      "venue": "Old Town Newhall Library",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall Association"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita/",
+      "start": "2026-09-06T08:00",
+      "venue": "College of the Canyons parking lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM"
+    },
+    {
+      "title": "Canyon Country Farmers Market",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-09-09T16:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita"
     },
     {
-      "title": "Fright Fest presented by SNICKERS",
+      "title": "Celebrate Mexico",
+      "url": "https://santaclarita.gov/arts-and-culture/events/celebrate-series/",
+      "start": "2026-09-10T18:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Bouquet Canyon Certified Farmers Market & Crafters Show",
+      "url": "https://santaclaritaevents.com/blog/santa-clarita-farmers-markets-guide/",
+      "start": "2026-09-12T08:00",
+      "venue": "27000 Bouquet Canyon Road",
+      "city": "Saugus",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Events"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-12T08:30",
+      "venue": "Old Town Newhall Library",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Old Town Newhall Association"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita/",
+      "start": "2026-09-13T08:00",
+      "venue": "College of the Canyons parking lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM"
+    },
+    {
+      "title": "Canyon Country Farmers Market",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-09-16T16:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "Fright Fest 2026",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
       "start": "2026-09-18T19:00",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "$25",
+      "price": "$25+",
       "audience": [
         "teens",
         "adults"
@@ -61,99 +154,18 @@
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-09-26T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "toddlers",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Beautiful: The Carole King Musical",
-      "url": "https://www.canyontheatre.org/",
-      "start": "2026-09-27T20:00",
-      "venue": "Canyon Theatre Guild",
+      "title": "Punchlines Comedy Show",
+      "url": "https://atthemain.org/events-at-the-main/",
+      "start": "2026-10-03",
+      "venue": "The MAIN",
       "city": "Newhall",
       "free": false,
-      "price": "$24",
+      "price": null,
       "audience": [
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-10-03T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "toddlers",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-10-04T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "toddlers",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-10-10T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "toddlers",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-10-11T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "toddlers",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "The MAIN Theatre"
     }
   ]
 }
