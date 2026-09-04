@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T12:42:57.006Z",
+  "generatedAt": "2026-09-04T18:58:54.776Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -56,7 +56,7 @@
       "total": "4",
       "startEpoch": 1788872460,
       "endEpoch": 1788904740,
-      "moreWindows": 11
+      "moreWindows": 13
     },
     {
       "route": "I-5",
@@ -70,7 +70,7 @@
       "total": "4",
       "startEpoch": 1788872460,
       "endEpoch": 1788904740,
-      "moreWindows": 8
+      "moreWindows": 9
     },
     {
       "route": "I-5",
@@ -84,7 +84,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 11
+      "moreWindows": 12
     },
     {
       "route": "I-5",
@@ -98,7 +98,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 14
+      "moreWindows": 18
     },
     {
       "route": "I-5",
@@ -112,7 +112,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 20
+      "moreWindows": 21
     },
     {
       "route": "I-5",
@@ -126,7 +126,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 11
+      "moreWindows": 12
     },
     {
       "route": "I-5",
@@ -140,7 +140,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 29
+      "moreWindows": 31
     },
     {
       "route": "I-5",
@@ -154,7 +154,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 5
+      "moreWindows": 6
     },
     {
       "route": "I-5",
@@ -168,7 +168,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 11
+      "moreWindows": 13
     }
   ]
 }
