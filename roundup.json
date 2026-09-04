@@ -1,35 +1,26 @@
 {
-  "generatedAt": "2026-08-29T00:02:25.561Z",
-  "weekendOf": "2026-08-28",
+  "generatedAt": "2026-09-04T18:30:17.499Z",
+  "weekendOf": "2026-09-04",
   "model": "claude-haiku-4-5",
-  "intro": "A solid weekend in Tesoro Highlands—something for everyone.",
+  "intro": "Great things to do around Tesoro Highlands this weekend.",
   "picks": [
     {
-      "emoji": "🎬",
+      "emoji": "🎨",
       "day": "Fri",
       "time": "",
-      "title": "City Cinemas, presented by Henry Rodriguez State Farm: Jurassic Park",
-      "price": "",
-      "note": "Outdoor movie night—classic fun for the whole family.",
-      "url": "https://calendar.santaclarita.gov/event/city-cinemas-presented-by-henry-rodriguez-state-farm-564"
-    },
-    {
-      "emoji": "🏍️",
-      "day": "Sat",
-      "time": "9 AM",
-      "title": "Motorcycles and Coffee",
+      "title": "Sticks and Stones: Nature Art Exhibition",
       "price": "free",
-      "note": "Casual Sunday morning, free, local gathering spot.",
-      "url": "https://calendar.santaclarita.gov/event/motorcycles-and-coffee"
+      "note": "Free art show all weekend, great for families",
+      "url": "https://calendar.santaclarita.gov/event/sticks-and-stones-nature-art-exhibition"
     },
     {
-      "emoji": "🎵",
+      "emoji": "🥕",
       "day": "Sat",
-      "time": "7 PM",
-      "title": "Concerts in the Park, presented by Logix Federal Credit Union: Police Tribute",
-      "price": "",
-      "note": "Live concert in the park—great for families and adults.",
-      "url": "https://calendar.santaclarita.gov/event/concerts-in-the-park-presented-by-logix-federal-credit-union-9308"
+      "time": "8:30 AM",
+      "title": "Old Town Newhall Farmers Market",
+      "price": "free",
+      "note": "Fresh local produce and crafts, kids love it",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/"
     },
     {
       "emoji": "🦘",
@@ -37,27 +28,36 @@
       "time": "",
       "title": "Visit The Gentle Barn",
       "price": "from $15",
-      "note": "Animal encounters for kids; adults enjoy the setting too.",
+      "note": "See animals up close, perfect Sunday activity",
       "url": "https://calendar.santaclarita.gov/event/visit_the_gentle_barn_5048"
     },
     {
-      "emoji": "🥬",
-      "day": "Sun",
-      "time": "8 AM",
-      "title": "Santa Clarita Certified Farmers Market",
-      "price": "",
-      "note": "Fresh local produce and weekend vibe—neighborhood staple.",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195"
+      "emoji": "🎸",
+      "day": "Fri",
+      "time": "4 PM",
+      "title": "Loud @ the Library: Powered by Music Lab 🎸",
+      "price": "free",
+      "note": "Free live music at the library Friday evening",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37429"
     },
     {
-      "emoji": "🎭",
-      "day": "Fri",
+      "emoji": "😂",
+      "day": "Sat",
       "time": "8 PM",
-      "title": "The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild",
-      "price": "",
-      "note": "Evening musical theater—Percy Jackson fans will love it.",
-      "url": "https://calendar.santaclarita.gov/event/the-lightning-thief-the-percy-jackson-musical-at-canyon-theatre-guild"
+      "title": "The Society Comedy Troupe",
+      "price": "$22.23",
+      "note": "Local comedy troupe Saturday night, adults only",
+      "url": "https://www.eventbrite.com/e/the-society-comedy-troupe-tickets-1987153045251"
+    },
+    {
+      "emoji": "🎵",
+      "day": "Sun",
+      "time": "1 PM",
+      "title": "Afternoon Acoustic Jam",
+      "price": "free",
+      "note": "Laid-back acoustic jam Sunday afternoon",
+      "url": "https://santaclarita.librarycalendar.com/event/placeholder-afternoon-acoustic-jam-31693"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nA solid weekend in Tesoro Highlands—something for everyone.\n\n🎬 *Fri* — City Cinemas, presented by Henry Rodriguez State Farm: Jurassic Park\n   Outdoor movie night—classic fun for the whole family.\n🏍️ *Sat 9 AM* — Motorcycles and Coffee (free)\n   Casual Sunday morning, free, local gathering spot.\n🎵 *Sat 7 PM* — Concerts in the Park, presented by Logix Federal Credit Union: Police Tribute\n   Live concert in the park—great for families and adults.\n🦘 *Sun* — Visit The Gentle Barn (from $15)\n   Animal encounters for kids; adults enjoy the setting too.\n🥬 *Sun 8 AM* — Santa Clarita Certified Farmers Market\n   Fresh local produce and weekend vibe—neighborhood staple.\n🎭 *Fri 8 PM* — The Lightning Thief: The Percy Jackson Musical at Canyon Theatre Guild\n   Evening musical theater—Percy Jackson fans will love it.\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nGreat things to do around Tesoro Highlands this weekend.\n\n🎨 *Fri* — Sticks and Stones: Nature Art Exhibition (free)\n   Free art show all weekend, great for families\n🥕 *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Fresh local produce and crafts, kids love it\n🦘 *Sun* — Visit The Gentle Barn (from $15)\n   See animals up close, perfect Sunday activity\n🎸 *Fri 4 PM* — Loud @ the Library: Powered by Music Lab 🎸 (free)\n   Free live music at the library Friday evening\n😂 *Sat 8 PM* — The Society Comedy Troupe ($22.23)\n   Local comedy troupe Saturday night, adults only\n🎵 *Sun 1 PM* — Afternoon Acoustic Jam (free)\n   Laid-back acoustic jam Sunday afternoon\n\nFull list → https://tesorohighlands.com/events"
 }
