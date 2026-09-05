@@ -1,26 +1,11 @@
 {
-  "generatedAt": "2026-09-04T16:53:39.306Z",
+  "generatedAt": "2026-09-05T16:08:31.989Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Bouquet Canyon Certified Farmers Market & Crafters Show",
-      "url": "https://santaclaritaevents.com/blog/santa-clarita-farmers-markets-guide/",
-      "start": "2026-09-05T08:00",
-      "venue": "27000 Bouquet Canyon Road",
-      "city": "Saugus",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Events"
-    },
-    {
       "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "url": "https://www.scvfarmersmarkets.com/",
       "start": "2026-09-05T08:30",
       "venue": "Old Town Newhall Library",
       "city": "Newhall",
@@ -31,13 +16,13 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall Association"
+      "via": "SCV Farmers Markets"
     },
     {
       "title": "Santa Clarita Certified Farmers Market",
       "url": "https://www.vccfm.org/santa-clarita/",
       "start": "2026-09-06T08:00",
-      "venue": "College of the Canyons parking lot 5",
+      "venue": "College of the Canyons, Parking Lot 5",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -50,10 +35,10 @@
     },
     {
       "title": "Canyon Country Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "url": "https://www.canyoncountryfarmersmarket.com/",
       "start": "2026-09-09T16:00",
       "venue": "Canyon Country Community Center",
-      "city": "Santa Clarita",
+      "city": "Canyon Country",
       "free": true,
       "price": "Free",
       "audience": [
@@ -61,91 +46,32 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita"
+      "via": "Canyon Country Farmers Market"
     },
     {
-      "title": "Celebrate Mexico",
-      "url": "https://santaclarita.gov/arts-and-culture/events/celebrate-series/",
-      "start": "2026-09-10T18:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Bouquet Canyon Certified Farmers Market & Crafters Show",
-      "url": "https://santaclaritaevents.com/blog/santa-clarita-farmers-markets-guide/",
-      "start": "2026-09-12T08:00",
-      "venue": "27000 Bouquet Canyon Road",
-      "city": "Saugus",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Events"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-12T08:30",
-      "venue": "Old Town Newhall Library",
+      "title": "SENSES Block Party: Oktoberfest",
+      "url": "https://oldtownnewhall.com/senses-block-party/",
+      "start": "2026-09-17T19:00",
+      "venue": "Main Street",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall Association"
+      "via": "Old Town Newhall"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-09-13T08:00",
-      "venue": "College of the Canyons parking lot 5",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "VCCFM"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-09-16T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Fright Fest 2026",
+      "title": "Fright Fest",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-09-18T19:00",
+      "start": "2026-09-18",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "$25+",
+      "price": "Included with admission or park ticket",
       "audience": [
         "teens",
         "adults"
@@ -154,18 +80,20 @@
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Punchlines Comedy Show",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-10-03",
-      "venue": "The MAIN",
-      "city": "Newhall",
+      "title": "Tricks and Treats",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-09-18",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
       "free": false,
-      "price": null,
+      "price": "Included with admission or park ticket",
       "audience": [
+        "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "The MAIN Theatre"
+      "via": "Six Flags Magic Mountain"
     }
   ]
 }
