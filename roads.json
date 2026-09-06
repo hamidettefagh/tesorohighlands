@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-09-05T15:12:52.476Z",
+  "generatedAt": "2026-09-06T22:07:29.107Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
-      "route": "SR-14",
-      "dir": "South",
-      "at": "Shadow Pines Blvd / Soledad Rd",
-      "place": "Canyon Country",
-      "facility": "On Ramp",
+      "route": "I-5",
+      "dir": "North",
+      "at": "Parker Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
       "type": "Full",
-      "work": "Pavement Work",
+      "work": "Spill-Accident Clean up",
       "lanes": "All",
-      "total": "1",
-      "startEpoch": 1788660060,
-      "endEpoch": 1788731940,
-      "moreWindows": 8
+      "total": "4",
+      "startEpoch": 1788701400,
+      "endEpoch": 32503708740,
+      "moreWindows": 0
     },
     {
       "route": "SR-14",
@@ -28,7 +28,7 @@
       "total": "3",
       "startEpoch": 1788850860,
       "endEpoch": 1788872340,
-      "moreWindows": 16
+      "moreWindows": 20
     },
     {
       "route": "SR-14",
@@ -42,7 +42,7 @@
       "total": "3",
       "startEpoch": 1788850860,
       "endEpoch": 1788872340,
-      "moreWindows": 16
+      "moreWindows": 20
     },
     {
       "route": "I-5",
@@ -56,7 +56,7 @@
       "total": "4",
       "startEpoch": 1788872460,
       "endEpoch": 1788904740,
-      "moreWindows": 17
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -70,7 +70,7 @@
       "total": "4",
       "startEpoch": 1788872460,
       "endEpoch": 1788904740,
-      "moreWindows": 13
+      "moreWindows": 15
     },
     {
       "route": "I-5",
@@ -84,7 +84,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 16
+      "moreWindows": 20
     },
     {
       "route": "I-5",
@@ -98,7 +98,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 24
+      "moreWindows": 29
     },
     {
       "route": "I-5",
@@ -112,7 +112,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 27
+      "moreWindows": 33
     },
     {
       "route": "I-5",
@@ -126,7 +126,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 16
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -140,7 +140,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 40
+      "moreWindows": 48
     },
     {
       "route": "I-5",
@@ -154,7 +154,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 8
+      "moreWindows": 9
     },
     {
       "route": "I-5",
@@ -168,7 +168,7 @@
       "total": "1",
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
-      "moreWindows": 17
+      "moreWindows": 19
     }
   ]
 }
