@@ -120,7 +120,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v13";  // v13: status line notices rain — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v14";  // v14: "air is moderate" when it is — keep in step with nav.js?v=N
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -137,6 +137,7 @@
   async function computeStatus() {
     var L = loc(), lvl = 0, text = "";
     var okAir = false, okAlerts = false, okFires = false, okEvac = false;
+    var airAqi = null;
     // The checks race each other, so choose what to SAY by priority rather than by
     // whichever request happened to land last: an evacuation outranks a fire, and
     // a fire outranks the air it is busy smoking up.
@@ -171,7 +172,7 @@
           if (best != null) aqi = best;
         }
         if (aqi == null) aqi = a && a.current ? a.current.us_aqi : null;
-        if (aqi == null) return; okAir = true;
+        if (aqi == null) return; okAir = true; airAqi = aqi;
         // /weather shows the AQI card right below, so the strip used to skip air
         // entirely there — which left it GREEN at AQI 180. The level (colour)
         // has to follow the air everywhere; only the all-clear wording stays short.
@@ -318,7 +319,8 @@
         var wet = rain ? (rain.rainLastHourIn != null && rain.rainLastHourIn >= 0.1 ? "it's raining steadily" : "it's raining") : "";
         text = isWeather
           ? "No active alerts." + (wet ? " " + wet.charAt(0).toUpperCase() + wet.slice(1) + "." : "")
-          : "All clear — " + (wet ? wet + ", " : "") + "air is good and no active alerts.";
+          // "Good" is EPA's word for AQI 0–50; 51–100 is Moderate, and saying "good" there overstates it.
+          : "All clear — " + (wet ? wet + ", " : "") + "air is " + (airAqi != null && airAqi > 50 ? "moderate" : "good") + " and no active alerts.";
       }
       else if (okCount === 0) return { level: "neutral", text: "Live status unavailable right now — open the dashboard for details.", alerts: [] };
       else return { level: "neutral", text: "No alerts in the live checks that loaded (" + okCount + "/4) — see the dashboard.", alerts: activeAlerts };

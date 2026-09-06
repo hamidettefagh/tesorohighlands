@@ -219,3 +219,16 @@ a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:
 .wkrow{padding:11px 0 11px 2px;}
 .goal summary{min-height:40px;}
 .hub-hero .hlink{display:inline-block;padding:6px 0;}
+
+/* ---- Home tiles share the hero's tiers (2026-09-05) ----
+   Air: Good = green, Moderate = plain, Unhealthy-for-sensitive = amber, worse = red —
+   the same thresholds the status line uses, so one colour means one thing everywhere.
+   Fire weather: green only when it is actually raining; Normal stays plain so green
+   keeps meaning "actively good", Elevated = amber, Extreme = red. */
+.tcell.ok{background:var(--ok-bg);border-color:var(--ok-line);}
+.tcell.caution{background:var(--cau-bg);border-color:var(--cau-line);}
+.tcell.danger{background:var(--dan-bg);border-color:var(--dan-line);}
+.tcell.ok .tlab,.tcell.ok .tval b{color:var(--ok-fg);}
+.tcell.caution .tlab,.tcell.caution .tval b{color:var(--cau-fg);}
+.tcell.danger .tlab,.tcell.danger .tval b{color:var(--dan-fg);}
+.tcell.ok:hover{border-color:var(--ok-fg);} .tcell.caution:hover{border-color:var(--cau-fg);} .tcell.danger:hover{border-color:var(--dan-fg);}

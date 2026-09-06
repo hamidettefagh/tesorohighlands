@@ -1,4 +1,5 @@
 [
+  { "date": "2026-09-05", "text": "The Air and Fire weather boxes on the home page are colour-coded the same way as the status line — and that line now says \"moderate\" when the air is, not \"good\"", "href": "/" },
   { "date": "2026-09-05", "text": "The status line, the home page and the Fire page now notice when it's actually raining on our hill", "href": "/" },
   { "date": "2026-09-02", "text": "Easier on a phone — bigger text and buttons on every page, and Events now opens on this week's picks and the live feed", "href": "/events" },
   { "date": "2026-09-02", "text": "If an evacuation order or warning ever covers our zone, the Fire page now puts routes, zone and go-bag at the top", "href": "/fire" },

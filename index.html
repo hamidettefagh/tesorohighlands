@@ -151,7 +151,7 @@
     <footer class="thfoot">
       <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> In an emergency, call 911 and follow CAL FIRE, LA County Fire, and Sheriff evacuation orders. Live fire, air, and weather data come from public government feeds and can lag or be incomplete — always confirm with official sources. Ideas for the site? Bring them to the community group chat.</p>
     </footer>
-  <script src="/nav.js?v=13" defer></script>
+  <script src="/nav.js?v=14" defer></script>
   <script>
   // "Today" digest: air, fire weather, next events — small live glances.
   (function () {
@@ -208,6 +208,8 @@
       var src = (pa && pa.ok && pa.primary && pa.primary.aqi != null) ? "neighbor sensor" : (measured ? "measured" : "modeled");
       // A reading can be up to 45 min old and still pass the proxy's gate — say so past 10.
       if (src === "neighbor sensor" && pa.primary.ageSec >= 600) src += " · " + Math.round(pa.primary.ageSec / 60) + " min old";
+      // Same thresholds as the status line: green only for Good, amber past 100, red past 150.
+      $("#tdAir").parentNode.className = "tcell" + (q <= 50 ? " ok" : q <= 100 ? "" : q <= 150 ? " caution" : " danger");
       $("#tdAir").innerHTML = "<b>AQI " + Math.round(q) + "</b> · " + cat + ' <span style="color:var(--muted);font-size:12.5px">' + src + "</span>";
       liveBits.air = "<b>AQI " + Math.round(q) + "</b> " + cat.toLowerCase();
       paintFireCard(); asofDone(true);
@@ -239,6 +241,8 @@
       var src = (tx && (tx.rh != null || tx.windMph != null || tx.tempF != null)) ? "neighbor station" : "modeled";
       if (src === "neighbor station" && tx.ageSec >= 600) src += " · " + Math.round(tx.ageSec / 60) + " min old";
       var rain = (tx && tx.rainingNow) ? "🌧️ Raining now · " : "";
+      // Green is reserved for rain — Normal is baseline, not good news.
+      $("#tdFw").parentNode.className = "tcell" + (lvl === "Extreme" ? " danger" : lvl === "Elevated" ? " caution" : rain ? " ok" : "");
       $("#tdFw").innerHTML = rain + "<b>" + windTxt + "</b> wind · " + rhTxt + " humidity · " + lvl + ' <span style="color:var(--muted);font-size:12.5px">' + src + "</span>";
       liveBits.fw = (rain ? "raining, " : "") + lvl.toLowerCase() + " fire weather";
       paintFireCard(); asofDone(true);
