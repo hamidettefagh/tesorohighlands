@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T12:08:28.328Z",
+  "generatedAt": "2026-09-06T15:27:37.161Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -15,6 +15,20 @@
       "startEpoch": 1788660060,
       "endEpoch": 1788731940,
       "moreWindows": 10
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Parker Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Full",
+      "work": "Spill-Accident Clean up",
+      "lanes": "All",
+      "total": "4",
+      "startEpoch": 1788701400,
+      "endEpoch": 32503708740,
+      "moreWindows": 0
     },
     {
       "route": "SR-14",
@@ -155,20 +169,6 @@
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
       "moreWindows": 9
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1788883260,
-      "endEpoch": 1788904740,
-      "moreWindows": 19
     }
   ]
 }
