@@ -200,3 +200,22 @@ a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:
   .hub-card,.card,.goal,.svc,.stub .planned,.callout,.note,.preview{box-shadow:none !important;break-inside:avoid;}
   details:not([open]) > *{display:block;}
 }
+
+
+/* ---- Phone readability floor (2026-09-02) ----
+   78% of visitors are on phones and the audience skews older. Readable text
+   sits at 12.5px or above; only uppercase, letter-spaced labels stay smaller,
+   and nothing goes below 11px. Controls are 40px tall. Keep new rules in line. */
+.hub-hero .halert{font-size:12.5px;}
+.asof{font-size:12.5px;}
+.wkday-head{font-size:11px;}
+.week .wknew{font-size:12.5px;}
+.cardlive{font-size:12.5px;}
+.sitenews .nd{font-size:12.5px;}
+.tcell .tlab{font-size:11px;}
+.hub-card .tag{font-size:11px;}
+.goal summary .ghint{font-size:12.5px;}
+.thfoot{font-size:12.5px;}
+.wkrow{padding:11px 0 11px 2px;}
+.goal summary{min-height:40px;}
+.hub-hero .hlink{display:inline-block;padding:6px 0;}

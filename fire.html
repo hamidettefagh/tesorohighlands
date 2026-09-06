@@ -317,6 +317,26 @@
   .how summary::before { content:"▸ "; }
   .how[open] summary::before { content:"▾ "; }
   .how .q { margin:6px 0 0; }
+
+/* ---- Phone readability floor — see th.css ---- */
+.strip{font-size:12.5px;}
+.stat .lab{font-size:12.5px;}
+.owd .dw{font-size:12px;}
+.owd .w small{font-size:10.5px;}
+.owd .g,.owd .rh,.owd .sa{font-size:11px;}
+.alert .tag,.pill{font-size:11px;}
+.fire .fdist .dir{font-size:12.5px;}
+.smokeline{font-size:12.5px;}
+footer{font-size:12.5px;}
+.pbhint,.playbook[open] .pbhint::after{font-size:12.5px;}
+.src{font-size:12.5px;}
+.how summary{font-size:12.5px;}
+.jumpnav a{min-height:38px;display:inline-flex;align-items:center;}
+.playbook summary,.how summary,.chkmore summary{min-height:40px;display:flex;align-items:center;}
+/* Leaflet controls follow the theme; the vendored CSS hard-codes white. */
+.leaflet-bar a,.leaflet-bar a:hover{background:var(--surface);color:var(--ink);border-bottom-color:var(--line);}
+.leaflet-container .leaflet-control-attribution{background:var(--surface);color:var(--muted);}
+.leaflet-container .leaflet-control-attribution a{color:var(--ink-2);}
 </style>
 </head>
 <body>
@@ -556,7 +576,7 @@
 
   <!-- FIRE HISTORY (baked from the NIFC interagency perimeter archive, Jul 2026) -->
   <div class="card" style="margin-top:12px">
-    <h3>Fire history around us <span class="cardtag" style="font-size:11px;color:var(--muted);font-weight:600">archive snapshot · Jul 2026</span></h3>
+    <h3>Fire history around us <span class="cardtag" style="font-size:12px;color:var(--muted);font-weight:600">archive snapshot · Jul 2026</span></h3>
     <div class="q">Every wildfire footprint in the national interagency archive that reached within ~10 miles of Tesoro Highlands.</div>
     <div class="stats">
       <div class="stat"><div class="lab">On record (all time)</div><div class="val">439</div></div>
@@ -1179,6 +1199,32 @@ function sparkline(v){
 
 /* ---------- render ---------- */
 let quietForced = false;   // set when the visitor taps "show the details anyway"
+// EMERGENCY LAYOUT — the page is ordered for a calm day (fires, air, alerts,
+// map, then evacuation). When an order, warning or shelter-in-place actually
+// covers our zone, the evacuation block — status, go-bag, routes, freeways —
+// moves directly under the hero, and moves back when the condition clears.
+// Reads v.evac.lvl only; the tier logic itself stays where it is.
+const evacBlock = (() => {
+  const head = document.getElementById("evac"), stop = document.getElementById("community");
+  if(!head || !stop) return null;
+  const nodes = []; let n = head;
+  while(n && n !== stop){ nodes.push(n); n = n.nextElementSibling; }
+  return { nodes, home: stop };
+})();
+let evacUp = false;
+function placeEvacBlock(urgent){
+  if(!evacBlock || urgent === evacUp) return;
+  if(urgent){
+    const nav = document.querySelector(".jumpnav");
+    const parent = nav ? nav.parentNode : document.getElementById("main");
+    let ref = nav ? nav.nextSibling : parent.firstChild;
+    for(const node of evacBlock.nodes) parent.insertBefore(node, ref);
+  } else {
+    for(const node of evacBlock.nodes) evacBlock.home.parentNode.insertBefore(node, evacBlock.home);
+  }
+  evacUp = urgent;
+}
+
 function render(){
   const v = view();
 
@@ -1242,6 +1288,7 @@ function render(){
   $("#evacTxt").className="vtxt "+evMap.s;
   const evTitle = v.evac.unknown ? "Check your zone" : (evLvl===0?"No — all clear" : evLvl===1?"Get ready now" : "Leave now");
   $("#evacTxt").innerHTML = `<strong>${evTitle}</strong><span>${v.evac.zone}</span>`;
+  placeEvacBlock(!!(v.evac && !v.evac.unknown && v.evac.lvl >= 1));
   $("#evacDetail").innerHTML = v.evac.label;
 
   // fire weather
