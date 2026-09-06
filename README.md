@@ -72,6 +72,7 @@ theme.js              theme boot, runs before first paint so there's no flash
 nav.js                injected nav, theme toggle, site-wide live status strip
                       (loaded as /nav.js?v=N — bump N when you change it)
 api/calfire.js        proxies incidents.fire.ca.gov (no CORS), CDN-cached ~2 min
+api/purpleair-history.js  24h hourly AQI for the /weather graph, edge-cached 1h (fallback: the committed purpleair-history.json)
 api/purpleair.js      neighbor PurpleAir — EPA-corrected 10-min AQI (Fire/nav)
                       plus EPA 2021 ATM 60-min (`aqiEpa`) for /weather
                       (needs PURPLEAIR_API_KEY + PURPLEAIR_SENSOR_INDEX on Vercel)

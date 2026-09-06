@@ -406,7 +406,9 @@ function renderExtra(fc){
 (async function(){
   const [paR, histR, fcR] = await Promise.allSettled([
     loadJson("/api/purpleair"),
-    loadJson("/purpleair-history.json"),
+    // Live 24h history from the edge-cached endpoint; the hourly-committed file
+    // is the fallback for the times that endpoint cannot answer.
+    loadJson("/api/purpleair-history").then(h => (h && h.ok && h.history && h.history.length) ? h : loadJson("/purpleair-history.json")),
     loadJson("/api/tempest-forecast")
   ]);
   const pa = paR.status==="fulfilled"?paR.value:null;
