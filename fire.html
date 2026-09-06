@@ -706,6 +706,7 @@ function view(){
     gust: (tx && tx.gustMph != null) ? tx.gustMph : (w.wind_gusts_10m ?? null),
     wdir: (tx && tx.wdir != null) ? tx.wdir : (w.wind_direction_10m ?? null),
     wxSource: tx ? "tempest" : ((w.temperature_2m != null || w.wind_speed_10m != null) ? "model" : null),
+    raining: !!(tx && tx.rainingNow),
     alerts: relevantAlerts(),
     fires: (live.fires||[]),
     evac: live.evac || { lvl:0, unknown:true, label:"The live evacuation feed is unavailable right now — check "+GENASYS_LINK+" directly and keep Watch Duty alerts on.", zone:"Feed unavailable — check Genasys" }
@@ -814,7 +815,8 @@ function overall(v){
   else if (windAlert) { lvl = 1; title = windAlert; text = "Breezy day — secure loose patio items and take it slow on the passes."; }
   else { lvl = 0; title = "Looks safe right now";
     text = (v.wind != null || v.rh != null || v.temp != null)
-      ? "Air is healthy and fire weather is calm. Nothing needs your attention."
+      ? (v.raining ? "Air is healthy and it's raining — about the calmest fire weather there is. Nothing needs your attention."
+                   : "Air is healthy and fire weather is calm. Nothing needs your attention.")
       : "Air is healthy in the checks that loaded. Fire weather isn't available right now — that's unknown, not all-clear."; }
 
   const klass = lvl === 2 ? "danger" : lvl === 1 ? "caution" : "ok";
@@ -1303,7 +1305,9 @@ function render(){
     fwNote = `<div class="note"><b>Live fire weather is unavailable right now</b> — that's unknown, not all-clear.</div>`;
   } else if(fw.lvl>=2) fwNote = `<div class="note santa"><b>Extreme fire weather.</b> ${cap(fw.why.join(", "))}. This is how the bad ones start — a spark anywhere upwind can reach you fast.</div>`;
   else if(fw.lvl===1) fwNote = `<div class="note santa"><b>Elevated fire weather.</b> ${cap(fw.why.join(", ")||"dry and breezy")}. Stay aware.</div>`;
-  else fwNote = `<div class="note"><b>Calm.</b> Humidity and wind are in a normal range — low fire-spread risk right now.</div>`;
+  else fwNote = v.raining
+    ? `<div class="note"><b>Raining.</b> Wet fuels and high humidity — about as low as fire-spread risk gets.</div>`
+    : `<div class="note"><b>Calm.</b> Humidity and wind are in a normal range — low fire-spread risk right now.</div>`;
   if(santaAna) fwNote += `<div class="note santa" style="margin-top:8px">🌵 Winds from the <b>${compass(v.wdir)}</b> — the offshore Santa Ana direction for the SCV. These downslope winds drive the fastest, most dangerous fires here.</div>`;
   if(v.wxSource==="tempest"){
     const tx = live.tempest || {};
@@ -1577,7 +1581,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=12" defer></script>
+<script src="/nav.js?v=13" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>

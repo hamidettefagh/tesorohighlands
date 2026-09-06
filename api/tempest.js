@@ -122,6 +122,7 @@ module.exports = async function handler(req, res) {
       units_temp: "f",
       units_wind: "mph",
       units_pressure: "mb",
+      units_precip: "in",
       units_distance: "mi"
     });
     const url =
@@ -160,6 +161,15 @@ module.exports = async function handler(req, res) {
     const windRaw = num(obs.wind_avg, obs.wind_average, obs.wind);
     const gustRaw = num(obs.wind_gust, obs.gust);
     const wdir = num(obs.wind_direction, obs.wind_dir, obs.wdir);
+    // Rain: last-minute rate plus last-hour and today accumulations. Classic
+    // observations are SI (mm) unless the response's units object says inches.
+    const precipUnit = String(units.units_precip || units.precip || "").toLowerCase();
+    const toIn = (v) => (v == null ? null : Math.round((precipUnit === "in" ? v : v * 0.03937) * 100) / 100);
+    const rainRate = num(obs.precip);
+    const rainLastHourIn = toIn(num(obs.precip_accum_last_1hr));
+    const rainTodayIn = toIn(num(obs.precip_accum_local_day));
+    const rainMinutesToday = num(obs.precip_minutes_local_day);
+    const rainingNow = (rainRate != null && rainRate > 0) || (rainLastHourIn != null && rainLastHourIn >= 0.01);
 
     const tempF = toTempF(tempRaw, units);
     const windMph = toMph(windRaw, units);
@@ -184,6 +194,10 @@ module.exports = async function handler(req, res) {
         windMph: windMph,
         gustMph: gustMph,
         wdir: wdir,
+        rainingNow: rainingNow,
+        rainLastHourIn: rainLastHourIn,
+        rainTodayIn: rainTodayIn,
+        rainMinutesToday: Number.isFinite(rainMinutesToday) ? Math.floor(rainMinutesToday) : null,
         obsTime: obsTime,
         ageSec: ageSec
       }

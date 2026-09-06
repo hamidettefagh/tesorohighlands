@@ -120,7 +120,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v12";  // v12: strip colour follows air on /weather + reading age — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v13";  // v13: status line notices rain — keep in step with nav.js?v=N
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -145,7 +145,13 @@
     // Every active NWS alert, not just the headline one — a Red Flag or Extreme
     // Heat Warning shouldn't vanish because a fire outranked it for the one line.
     var activeAlerts = [];
+    // Rain is the best fire-weather news there is, and the strip had no way to
+    // know it was happening. Informational only — it never changes the level.
+    var rain = null;
     var jobs = [
+      fetch("/api/tempest").then(function (r) { return r.json(); }).then(function (t) {
+        if (t && t.ok && t.station && t.station.rainingNow) rain = t.station;
+      }).catch(function () {}),
       Promise.all([
         // Backyard PurpleAir first (most relevant), then EPA AirNow, then model.
         fetch("/api/purpleair").then(function (r) { return r.json(); }).catch(function () { return null; }),
@@ -308,7 +314,12 @@
 
     var okCount = [okAir, okAlerts, okFires, okEvac].filter(Boolean).length;
     if (lvl === 0) {
-      if (okCount === 4) text = isWeather ? "No active alerts." : "All clear — air is good and no active alerts.";
+      if (okCount === 4) {
+        var wet = rain ? (rain.rainLastHourIn != null && rain.rainLastHourIn >= 0.1 ? "it's raining steadily" : "it's raining") : "";
+        text = isWeather
+          ? "No active alerts." + (wet ? " " + wet.charAt(0).toUpperCase() + wet.slice(1) + "." : "")
+          : "All clear — " + (wet ? wet + ", " : "") + "air is good and no active alerts.";
+      }
       else if (okCount === 0) return { level: "neutral", text: "Live status unavailable right now — open the dashboard for details.", alerts: [] };
       else return { level: "neutral", text: "No alerts in the live checks that loaded (" + okCount + "/4) — see the dashboard.", alerts: activeAlerts };
     }
