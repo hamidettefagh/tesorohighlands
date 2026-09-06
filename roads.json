@@ -1,21 +1,7 @@
 {
-  "generatedAt": "2026-09-06T18:16:57.514Z",
+  "generatedAt": "2026-09-06T22:07:29.107Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
-    {
-      "route": "SR-14",
-      "dir": "South",
-      "at": "Shadow Pines Blvd / Soledad Rd",
-      "place": "Canyon Country",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Pavement Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1788660060,
-      "endEpoch": 1788731940,
-      "moreWindows": 10
-    },
     {
       "route": "I-5",
       "dir": "North",
@@ -169,6 +155,20 @@
       "startEpoch": 1788883260,
       "endEpoch": 1788904740,
       "moreWindows": 9
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Sawcutting Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1788883260,
+      "endEpoch": 1788904740,
+      "moreWindows": 19
     }
   ]
 }
