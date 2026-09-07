@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T16:21:05.380Z",
+  "generatedAt": "2026-09-07T18:18:10.981Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
@@ -7,105 +7,153 @@
       "title": "SENSES Block Party - Oktoberfest",
       "url": "https://oldtownnewhall.com/senses-block-party/",
       "start": "2026-09-17T19:00",
-      "venue": "Main Street between Market and Sixth Street",
+      "venue": "Main Street, Old Town Newhall",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
+        "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Old Town Newhall"
     },
     {
-      "title": "Tricks and Treats",
+      "title": "Fright Fest at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-09-18",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Varies - park admission required",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain Official Events"
+    },
+    {
+      "title": "Tricks and Treats at Six Flags Magic Mountain",
       "url": "https://www.sixflags.com/magicmountain/events",
       "start": "2026-09-18",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "Included with park admission",
+      "price": "Varies - park admission required",
       "audience": [
         "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "Six Flags Magic Mountain Official Events"
     },
     {
-      "title": "Fright Fest",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-09-18T10:30",
-      "venue": "Six Flags Magic Mountain",
+      "title": "Pococktoberfest",
+      "url": "https://visitsantaclarita.com/inspiration/seasonal-activities/fall-activities/poktoberfest/",
+      "start": "2026-09-19T12:00",
+      "venue": "Pocock Brewing Company",
       "city": "Valencia",
-      "free": false,
-      "price": "Included with park admission",
+      "free": true,
+      "price": "Free",
       "audience": [
-        "teens",
-        "adults"
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
-    },
-    {
-      "title": "Luketoberfest",
-      "url": "https://calendar.santaclarita.gov/event/luketoberfest_4904",
-      "start": "2026-09-19T15:00",
-      "venue": "Lucky Luke Brewing Company",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "Visit Santa Clarita"
     },
     {
       "title": "Pococktoberfest",
       "url": "https://visitsantaclarita.com/inspiration/seasonal-activities/fall-activities/poktoberfest/",
       "start": "2026-09-20T12:00",
       "venue": "Pocock Brewing Company",
-      "city": "Santa Clarita",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "adults"
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
       "via": "Visit Santa Clarita"
     },
     {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://www.gilchristfarm.com/pumpkin-patch",
-      "start": "2026-09-26T09:00",
-      "venue": "Gilchrist Farm",
+      "title": "Luketoberfest at Lucky Luke Brewing",
+      "url": "https://www.luckylukebrewing.com/scv-taproom-events",
+      "start": "2026-09-26T15:00",
+      "venue": "Lucky Luke Brewing Santa Clarita",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "toddlers",
-        "kids",
-        "teens",
-        "adults"
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
-      "via": "Gilchrist Farm"
+      "via": "Visit Santa Clarita"
     },
     {
       "title": "Change the Station (Comedy)",
-      "url": "https://www.hometownstation.com/santa-clarita-news/arts-and-entertainment/change-the-station-finds-new-home-at-canyon-theatre-guild-after-main-theatre-fire-607878",
+      "url": "https://www.canyontheatre.org/",
       "start": "2026-10-02T20:00",
       "venue": "Canyon Theatre Guild",
       "city": "Newhall",
       "free": false,
-      "price": "$20 Adults, $18 Seniors, $15 Students",
+      "price": "$20",
       "audience": [
-        "adults"
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
-      "via": "KHTS News/Canyon Theatre Guild"
+      "via": "KHTS News"
+    },
+    {
+      "title": "Change the Station (Comedy)",
+      "url": "https://www.canyontheatre.org/",
+      "start": "2026-10-03T19:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$20",
+      "audience": [
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "KHTS News"
+    },
+    {
+      "title": "Interrobang Sketch Comedy at The MAIN",
+      "url": "https://atthemain.org/events-at-the-main/",
+      "start": "2026-10-03T19:00",
+      "venue": "The MAIN",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN / Eventbrite"
+    },
+    {
+      "title": "Change the Station (Comedy)",
+      "url": "https://www.canyontheatre.org/",
+      "start": "2026-10-04T19:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$20",
+      "audience": [
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "KHTS News"
     }
   ]
 }
