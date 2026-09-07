@@ -482,7 +482,7 @@ footer{font-size:12.5px;}
     <!-- ALERTS -->
     <div class="card" id="alerts">
       <h3>Active alerts <span class="cardtag pill live">Live · NWS</span></h3>
-      <div class="q">Red Flag Warnings, fire weather, and heat advisories from the National Weather Service</div>
+      <div class="q">Every warning, watch and advisory the National Weather Service has active for our location</div>
       <div id="alertList"><div class="skel">Checking National Weather Service…</div></div>
     </div>
 
@@ -716,13 +716,14 @@ function view(){
 
 function relevantAlerts(){
   if(!live.alerts || !live.alerts.features) return [];
-  // Anything fire-, air-, heat-, or wind-shaped is relevant here. Plain "Heat
-  // Advisory" and "Air Quality Alert" used to slip through this filter.
-  const keep = /red flag|fire|evacuation|heat|wind|smoke|air quality|dust|extreme/i;
-  return live.alerts.features.filter(f => keep.test(f.properties.event||"")).map(f => ({
+  // Every NWS alert for our point. This used to keep only fire/air/heat/wind-
+  // shaped ones, which left this hero green under a Flood Advisory for the
+  // valley while the home page showed it — two answers on two pages.
+  return live.alerts.features.map(f => ({
     event: f.properties.event,
     sev: (f.properties.severity||"unknown").toLowerCase(),
-    headline: f.properties.headline || f.properties.description || ""
+    headline: f.properties.headline || f.properties.description || "",
+    ends: f.properties.ends || f.properties.expires || null
   }));
 }
 
@@ -793,11 +794,21 @@ function todayHigh(){
 }
 // The banner names its actual cause and matches the response to it — a heat
 // watch gets heat advice, never evacuation language.
+function untilText(iso){
+  if(!iso) return ""; const d = new Date(iso); if(isNaN(d)) return "";
+  const o = { hour:"numeric" }; if(d.getMinutes()) o.minute = "2-digit";
+  if(d.toDateString() !== new Date().toDateString()) o.weekday = "short";
+  return " until " + d.toLocaleString([], o);
+}
 function overall(v){
   const air = aqiInfo(v.aqi);
   const fw = fireWx(v.temp, v.rh, v.wind, v.gust);
   const frisk = fireRisk(v.fires);
   const evts = v.alerts.map(a => a.event || "");
+  const endsOf = name => untilText((v.alerts.find(a => a.event === name) || {}).ends);
+  // Anything NWS has active that isn't fire/heat/wind-shaped — floods, storms,
+  // winter weather. It still means "not all clear".
+  const other = evts.find(e => e && !/red flag|fire weather|heat|wind/i.test(e));
   const redFlag = evts.find(e => /red flag|fire weather/i.test(e));
   const heat = evts.find(e => /heat/i.test(e));
   const windAlert = evts.find(e => /wind/i.test(e));
@@ -809,10 +820,13 @@ function overall(v){
   else if (frisk >= 2) { lvl = 2; title = "A sizable fire is burning close by"; text = "Check the map below, keep phones charged, and know where the go-bag is."; }
   else if (v.evac.lvl === 1) { lvl = 1; title = "Evacuation warning for our zone"; text = "Be packed and ready to leave, and watch official channels closely."; }
   else if (frisk === 1) { lvl = 1; title = "Fire activity in the area"; text = "Nothing at our doorstep, but there's an active fire worth watching — details below."; }
-  else if (redFlag || fw.lvl >= 2) { lvl = 1; title = redFlag || "High fire-risk weather"; text = "Dry, windy conditions where a spark spreads fast — skip open flames and yard equipment today."; }
+  else if (redFlag || fw.lvl >= 2) { lvl = 1; title = redFlag ? redFlag + endsOf(redFlag) : "High fire-risk weather"; text = "Dry, windy conditions where a spark spreads fast — skip open flames and yard equipment today."; }
   else if (air.lvl === 2) { lvl = 1; title = "Air is unhealthy for sensitive groups"; text = "Kids, seniors, and anyone with asthma should take it easy outside today."; }
-  else if (heat) { lvl = 1; title = heat; text = "Plan around the heat — hydrate, find shade at midday, and check on kids, pets, and older neighbors." + (hi != null ? " Forecast high near " + hi + "°." : ""); }
-  else if (windAlert) { lvl = 1; title = windAlert; text = "Breezy day — secure loose patio items and take it slow on the passes."; }
+  else if (heat) { lvl = 1; title = heat + endsOf(heat); text = "Plan around the heat — hydrate, find shade at midday, and check on kids, pets, and older neighbors." + (hi != null ? " Forecast high near " + hi + "°." : ""); }
+  else if (windAlert) { lvl = 1; title = windAlert + endsOf(windAlert); text = "Breezy day — secure loose patio items and take it slow on the passes."; }
+  else if (other) { lvl = 1; title = other + endsOf(other);
+    text = "In effect for our area per the National Weather Service — details in the alerts card below." +
+      (/flood/i.test(other) ? " Burn scars shed water fast, so give the canyon roads extra room." : ""); }
   else { lvl = 0; title = "Looks safe right now";
     text = (v.wind != null || v.rh != null || v.temp != null)
       ? (v.raining ? "Air is healthy and it's raining — about the calmest fire weather there is. Nothing needs your attention."
@@ -1337,7 +1351,7 @@ function render(){
   if(!ok.alerts){
     al.innerHTML = `<div class="note"><b>Couldn't reach the National Weather Service</b> just now — that's unknown, not all-clear. <a href="https://www.weather.gov/lox/" target="_blank" rel="noopener">Check weather.gov ↗</a></div>`;
   } else if(v.alerts.length===0){
-    al.innerHTML = `<div class="note"><b>No active fire, wind, or heat alerts</b> for your location right now.</div>`;
+    al.innerHTML = `<div class="note"><b>No active National Weather Service alerts</b> for your location right now.</div>`;
   } else {
     al.innerHTML = v.alerts.map(a=>`
       <div class="alert sev-${esc(a.sev)}">
@@ -1581,7 +1595,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=14" defer></script>
+<script src="/nav.js?v=15" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>

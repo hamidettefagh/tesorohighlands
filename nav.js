@@ -120,7 +120,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v14";  // v14: "air is moderate" when it is — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v15";  // v15: alerts say until when — keep in step with nav.js?v=N
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -182,17 +182,29 @@
       }).catch(function () {}),
       fetch("https://api.weather.gov/alerts/active?point=" + L.lat + "," + L.lon, { headers: { Accept: "application/geo+json" } }).then(function (r) { return r.json(); }).then(function (al) {
         if (!al || !al.features) return; okAlerts = true;
-        var evs = al.features.map(function (f) { return f.properties && f.properties.event; }).filter(Boolean).map(escT);
+        var feats = al.features.map(function (f) { var p = f.properties || {}; return { ev: p.event ? escT(p.event) : "", until: p.ends || p.expires || null }; })
+          .filter(function (x) { return x.ev; });
+        var evs = feats.map(function (x) { return x.ev; });
         activeAlerts = evs.filter(function (e, i) { return evs.indexOf(e) === i; });
+        // "until 7 PM" is the next thing a neighbor wants to know. NWS `ends` is
+        // when the event ends; `expires` is only when the bulletin lapses.
+        var until = function (name) {
+          var f = null; for (var i = 0; i < feats.length; i++) { if (feats[i].ev === name) { f = feats[i]; break; } }
+          if (!f || !f.until) return "";
+          var d = new Date(f.until); if (isNaN(d)) return "";
+          var o = { hour: "numeric" }; if (d.getMinutes()) o.minute = "2-digit";
+          if (d.toDateString() !== new Date().toDateString()) o.weekday = "short";
+          return " until " + d.toLocaleString([], o);
+        };
         var red = evs.find(function (e) { return /red flag|fire weather/i.test(e); });
         var heat = evs.find(function (e) { return /heat/i.test(e); });
         var warn = evs.find(function (e) { return /warning/i.test(e) && !/heat/i.test(e); });
-        if (red) { say(60, 1, red + " in effect — elevated fire danger."); }
-        else if (heat) { say(30, 1, heat + " — hydrate and plan around the heat."); }
-        else if (warn) { say(20, 1, warn + " in effect."); }
+        if (red) { say(60, 1, red + until(red) + " — elevated fire danger."); }
+        else if (heat) { say(30, 1, heat + until(heat) + " — hydrate and plan around the heat."); }
+        else if (warn) { say(20, 1, warn + " in effect" + until(warn) + "."); }
         // Anything else active (Air Quality Alert, Dense Smoke Advisory, …) still
         // counts — otherwise the strip claims "no active alerts" while one is up.
-        else if (evs.length) { say(15, 1, evs[0] + " in effect."); }
+        else if (evs.length) { say(15, 1, evs[0] + " in effect" + until(evs[0]) + "."); }
       }).catch(function () {}),
       Promise.all([
         fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=" + encodeURIComponent("IncidentTypeCategory='WF' AND FireOutDateTime IS NULL AND (PercentContained < 100 OR PercentContained IS NULL)") + "&outFields=IncidentName,IncidentSize,ModifiedOnDateTime_dt&geometry=" + (L.lon - 1.3) + "," + (L.lat - 1) + "," + (L.lon + 1.3) + "," + (L.lat + 1) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326&f=geojson").then(function (r) { return r.json(); }),

@@ -1,4 +1,5 @@
 [
+  { "date": "2026-09-06", "text": "Weather alerts now say when they end (\"Flood Advisory until 7 PM\"), and the Fire page shows every NWS alert for our location instead of only fire and heat", "href": "/fire" },
   { "date": "2026-09-05", "text": "The Air and Fire weather boxes on the home page are colour-coded the same way as the status line — and that line now says \"moderate\" when the air is, not \"good\"", "href": "/" },
   { "date": "2026-09-05", "text": "The status line, the home page and the Fire page now notice when it's actually raining on our hill", "href": "/" },
   { "date": "2026-09-02", "text": "Easier on a phone — bigger text and buttons on every page, and Events now opens on this week's picks and the live feed", "href": "/events" },
