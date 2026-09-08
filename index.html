@@ -115,6 +115,7 @@
         <div class="ico">🏡</div>
         <h3>Living Here</h3>
         <p>Trash day, utilities, schools, hospitals, and fire-zone insurance help for our area.</p>
+        <span class="cardlive" id="clLiving" hidden></span>
         <span class="tag">Preview</span>
       </a>
       <a class="hub-card" href="/events">
@@ -151,6 +152,18 @@
     <footer class="thfoot">
       <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> In an emergency, call 911 and follow CAL FIRE, LA County Fire, and Sheriff evacuation orders. Live fire, air, and weather data come from public government feeds and can lag or be incomplete — always confirm with official sources. Ideas for the site? Bring them to the community group chat.</p>
     </footer>
+  <script src="/trash.js?v=1"></script>
+  <script>
+  // Living card: only speaks up when trash runs a day late (Burrtec holiday weeks).
+  (function () {
+    var T = window.tesoroTrash, el = document.getElementById("clLiving");
+    if (!T || !el) return;
+    var p = T.next();
+    if (!p.delayed) return;
+    el.innerHTML = "🗑️ Trash is a day late for " + p.holiday + " — pickup <b>" + T.fmt(p.date) + "</b>";
+    el.hidden = false;
+  })();
+  </script>
   <script src="/nav.js?v=15" defer></script>
   <script>
   // "Today" digest: air, fire weather, next events — small live glances.

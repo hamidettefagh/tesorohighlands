@@ -74,6 +74,21 @@
     padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:var(--surface);}
   .links a:hover{border-color:var(--muted);}
   .links a span{color:var(--muted);font-size:12px;flex:none;}
+  /* Trash: next pickup line + upcoming-holidays table (data from /trash.js) */
+  .nextpick{display:block;margin-top:5px;}
+  .nextpick.late,.nextpick.late b{color:var(--cau-fg);}
+  .holwrap{margin-top:12px;border-top:1px solid var(--line-2);padding-top:12px;}
+  .holhead{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;margin-bottom:4px;}
+  .holscroll{overflow-x:auto;}
+  .hol{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.45;}
+  .hol th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;padding:6px 10px 6px 0;border-bottom:1px solid var(--line-2);white-space:nowrap;}
+  .hol td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line-2);color:var(--ink-2);vertical-align:top;}
+  .hol tr:last-child td{border-bottom:0;}
+  .hol td:first-child{color:var(--ink);font-weight:620;}
+  .hol td.late{color:var(--cau-fg);font-weight:640;}
+  .hol tr.now td{background:var(--cau-bg);}
+  .hol tr.now td:first-child{border-radius:8px 0 0 8px;padding-left:8px;}
+  .hol tr.now td:last-child{border-radius:0 8px 8px 0;}
 
 /* ---- Phone readability floor — see th.css ---- */
 .svc .nm .protag{font-size:11px;}
@@ -156,7 +171,8 @@
       <div class="sechead"><h2>Trash, recycling &amp; big stuff</h2><div class="line"></div></div>
       <div class="card pad">
         <ul class="clist">
-          <li><b>Trash day is Tuesday.</b> All three carts (trash, recycling, and organics) go out together. Out by 6 a.m., back in that evening. Holidays can push collection a day later — <a href="https://www.burrtec.com/scv/" target="_blank" rel="noopener">check Burrtec ↗</a> around major holidays.</li>
+          <li><b>Trash day is Tuesday.</b> All three carts (trash, recycling, and organics) go out together. Out by 6 a.m., back in that evening. <span class="nextpick" id="trashNext"></span></li>
+          <li><b>Holiday weeks run a day late.</b> Burrtec takes six holidays off. When one lands on a Monday or Tuesday, our pickup moves to Wednesday that week; a holiday on a weekend, or Thanksgiving (always a Thursday), doesn't change our day. Dates are at the bottom of this card.</li>
           <li><b>Three carts</b> — trash, recycling, and organics (yard + food waste). Organics means food scraps too, not just yard trimmings.</li>
           <li><b>Free bulky-item pickup</b> — up to 4 times a year, 3 large items each (furniture, appliances, branches). Schedule at least 48 hours ahead with <a href="https://www.burrtec.com/residential-services/#bulky-item-pickup" target="_blank" rel="noopener">Burrtec ↗</a> or call <a href="tel:+16612222249">(661) 222-2249</a>.</li>
           <li><b>Electronics (e-waste)</b> — never in the carts. Burrtec service customers can drop them at the Burrtec yard, 26000 Springbrook Ave, Mon–Fri 8 a.m.–5 p.m. and the 3rd Saturday 8 a.m.–noon. That yard takes bulky items and e-waste only, not the rest of the list below.</li>
@@ -165,6 +181,14 @@
           <li><b>Propane tanks, chemicals, motor oil &amp; the rest</b> — County S.A.F.E. Centers take these free year-round, Sat &amp; Sun 9 a.m.–3 p.m.: 11025 Randall St, Sun Valley, and 10241 N. Balboa Blvd, Northridge. The City also runs free drive-thru collection events a couple of times a year. <a href="https://cleanla.lacounty.gov/" target="_blank" rel="noopener">CleanLA ↗</a> or 1-888-CLEAN-LA.</li>
           <li><b>Illegal dumping</b> in the common areas — report to the City Stormwater Hotline, <a href="tel:+16612227222">(661) 222-7222</a>.</li>
         </ul>
+        <div class="holwrap">
+          <div class="holhead">Upcoming holidays &amp; our pickup day</div>
+          <div class="holscroll"><table class="hol" aria-label="Upcoming holidays and our trash pickup day">
+            <thead><tr><th>Holiday</th><th>Falls on</th><th>Our pickup</th></tr></thead>
+            <tbody id="holRows"><tr><td colspan="3">Loading…</td></tr></tbody>
+          </table></div>
+          <div class="note">Per <a href="https://www.burrtec.com/residential-services/#holiday-schedule" target="_blank" rel="noopener">Burrtec's holiday schedule ↗</a>. Burrtec asks residents to check their service area for exceptions, so if a week looks odd, call <a href="tel:+16612222249">(661) 222-2249</a>.</div>
+        </div>
       </div>
     </section>
 
@@ -214,6 +238,30 @@
 
   </main>
     <footer class="thfoot"><p><b>A neighbor project — not the official HOA, and not professional advice.</b> Info here is gathered from official public sources and can change — always confirm with the provider or agency before you rely on it. Found an error? Share it in the community group chat. &nbsp;<a href="/">← Back to the hub</a></p></footer>
+  <script src="/trash.js?v=1"></script>
+  <script>
+  // Trash section: next pickup + the coming six holidays, from trash.js.
+  (function () {
+    var T = window.tesoroTrash; if (!T) return;
+    var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+    var p = T.next(), el = document.getElementById("trashNext");
+    if (el) {
+      var isToday = p.date.getTime() === T.today().getTime();
+      el.className = "nextpick" + (p.delayed ? " late" : "");
+      el.innerHTML = "Next pickup: <b>" + esc(T.fmt(p.date)) + "</b>" + (isToday ? " (today)" : "") +
+        (p.delayed ? " — a day late for " + esc(p.holiday) + "." : ".");
+    }
+    var rows = document.getElementById("holRows");
+    if (rows) {
+      var y = T.today().getFullYear();
+      rows.innerHTML = T.upcoming().map(function (h) {
+        var o = { weekday: "short", month: "short", day: "numeric" }; if (h.date.getFullYear() !== y) o.year = "numeric";
+        var pick = h.pickup ? '<td class="late">' + esc(T.fmt(h.pickup, o)) + (h.thisWeek ? " · this week" : "") + "</td>" : "<td>Tuesday as usual</td>";
+        return "<tr" + (h.thisWeek ? ' class="now"' : "") + "><td>" + esc(h.name) + "</td><td>" + esc(T.fmt(h.date, o)) + "</td>" + pick + "</tr>";
+      }).join("");
+    }
+  })();
+  </script>
   <script src="/nav.js?v=15" defer></script>
 </body>
 </html>

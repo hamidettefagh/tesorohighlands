@@ -71,6 +71,8 @@ th.css                the only stylesheet — design tokens (light/dark) + shell
 theme.js              theme boot, runs before first paint so there's no flash
 nav.js                injected nav, theme toggle, site-wide live status strip
                       (loaded as /nav.js?v=N — bump N when you change it)
+trash.js              our Tuesday pickup + Burrtec's holiday rule; feeds the
+                      /living trash section and the Living card on / (/trash.js?v=N)
 api/calfire.js        proxies incidents.fire.ca.gov (no CORS), CDN-cached ~2 min
 api/purpleair-history.js  24h hourly AQI for the /weather graph, edge-cached 1h (fallback: the committed purpleair-history.json)
 api/purpleair.js      neighbor PurpleAir — EPA-corrected 10-min AQI (Fire/nav)
