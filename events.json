@@ -1,96 +1,7 @@
 {
-  "generatedAt": "2026-09-07T14:14:41.874Z",
+  "generatedAt": "2026-09-08T12:52:04.322Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Labor Day",
-      "url": "https://santaclarita.librarycalendar.com/event/labor-day-28067",
-      "start": "2026-09-07",
-      "venue": "Some Branches",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-07"
-      ],
-      "added": "2026-08-18T08:53:05.061Z"
-    },
-    {
-      "title": "Sticks and Stones: Nature Art Exhibition",
-      "url": "https://calendar.santaclarita.gov/event/sticks-and-stones-nature-art-exhibition",
-      "start": "2026-09-07T00:00",
-      "dates": [
-        "2026-09-07T00:00"
-      ],
-      "repeats": 0,
-      "venue": "SCAA Gallery",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-09-01T19:23:20.058Z"
-    },
-    {
-      "title": "Trivia Nights",
-      "url": "https://calendar.santaclarita.gov/event/trivia-nights",
-      "start": "2026-09-07T00:00",
-      "dates": [
-        "2026-09-07T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-09-04T12:42:50.367Z"
-    },
-    {
-      "title": "Wolfcreek Brewery Trivia Night",
-      "url": "https://calendar.santaclarita.gov/event/wolfcreek-brewery-trivia-night",
-      "start": "2026-09-07T00:00",
-      "dates": [
-        "2026-09-07T00:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-09-05T11:49:49.516Z"
-    },
-    {
-      "title": "Line Dancing",
-      "url": "https://calendar.santaclarita.gov/event/line-dancing-4264",
-      "start": "2026-09-07T16:00",
-      "dates": [
-        "2026-09-07T16:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-09-05T11:49:49.516Z"
-    },
     {
       "title": "Closure for Staff Development",
       "url": "https://santaclarita.librarycalendar.com/event/closure-staff-development-38606",
@@ -763,6 +674,43 @@
       "added": "2026-09-01T19:23:20.058Z"
     },
     {
+      "title": "Cumbiamba Dance & Fitness",
+      "url": "https://calendar.santaclarita.gov/event/cumbiamba-dance-fitness",
+      "start": "2026-09-11T08:15",
+      "dates": [
+        "2026-09-11T08:15"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-25T20:45:01.447Z"
+    },
+    {
+      "title": "Play N Learn",
+      "url": "https://calendar.santaclarita.gov/event/play-n-learn-2944",
+      "start": "2026-09-11T09:00",
+      "dates": [
+        "2026-09-11T09:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-09-06T12:08:24.929Z"
+    },
+    {
       "title": "Library Express - Skyline Ranch Park",
       "url": "https://santaclarita.librarycalendar.com/event/library-express-skyline-ranch-park-39256",
       "start": "2026-09-11T09:30",
@@ -780,6 +728,24 @@
       "added": "2026-09-02T04:32:49.151Z"
     },
     {
+      "title": "Play Bridge",
+      "url": "https://calendar.santaclarita.gov/event/play-bridge-9425",
+      "start": "2026-09-11T10:00",
+      "dates": [
+        "2026-09-11T10:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-09-08T12:52:04.321Z"
+    },
+    {
       "title": "Canyon Country Community Center - I Can Craft",
       "url": "https://santaclarita.librarycalendar.com/event/canyon-country-community-center-i-can-craft-28542",
       "start": "2026-09-11T11:00",
@@ -795,6 +761,24 @@
         "2026-09-11T11:00"
       ],
       "added": "2026-08-23T08:48:05.400Z"
+    },
+    {
+      "title": "Teen Experience (Afterschool)",
+      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
+      "start": "2026-09-11T15:00",
+      "dates": [
+        "2026-09-11T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-08-21T16:50:19.676Z"
     },
     {
       "title": "Loud @ the Library: Powered by Music Lab 🎸",
@@ -968,9 +952,10 @@
       "source": "SC Library",
       "dates": [
         "2026-09-14T13:00",
-        "2026-09-21T13:00"
+        "2026-09-21T13:00",
+        "2026-09-28T13:00"
       ],
-      "repeats": 1,
+      "repeats": 2,
       "added": "2026-09-03T12:49:09.108Z"
     },
     {
