@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T12:52:04.322Z",
+  "generatedAt": "2026-09-08T19:25:23.648Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -36,6 +36,24 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-09-01T19:23:20.058Z"
+    },
+    {
+      "title": "Nick the Greek Celebrates Santa Clarita Location Grand Opening",
+      "url": "https://calendar.santaclarita.gov/event/nick-the-greek-celebrates-santa-clarita-location-grand-opening",
+      "start": "2026-09-08T11:00",
+      "dates": [
+        "2026-09-08T11:00"
+      ],
+      "repeats": 0,
+      "venue": "Nick the Greek",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-09-08T19:25:23.647Z"
     },
     {
       "title": "Teen Experience (Afterschool)",
@@ -90,6 +108,24 @@
       ],
       "source": "City of Santa Clarita",
       "added": "2026-09-05T11:49:49.516Z"
+    },
+    {
+      "title": "Open Mic Night @ Route 66",
+      "url": "https://calendar.santaclarita.gov/event/open-mic-night-route-66",
+      "start": "2026-09-08T18:00",
+      "dates": [
+        "2026-09-08T18:00"
+      ],
+      "repeats": 0,
+      "venue": "Route 66 Classic Grill",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-09-08T19:25:23.647Z"
     },
     {
       "title": "Divorce Care Higher Vision Church",
@@ -728,24 +764,6 @@
       "added": "2026-09-02T04:32:49.151Z"
     },
     {
-      "title": "Play Bridge",
-      "url": "https://calendar.santaclarita.gov/event/play-bridge-9425",
-      "start": "2026-09-11T10:00",
-      "dates": [
-        "2026-09-11T10:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-09-08T12:52:04.321Z"
-    },
-    {
       "title": "Canyon Country Community Center - I Can Craft",
       "url": "https://santaclarita.librarycalendar.com/event/canyon-country-community-center-i-can-craft-28542",
       "start": "2026-09-11T11:00",
@@ -761,24 +779,6 @@
         "2026-09-11T11:00"
       ],
       "added": "2026-08-23T08:48:05.400Z"
-    },
-    {
-      "title": "Teen Experience (Afterschool)",
-      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
-      "start": "2026-09-11T15:00",
-      "dates": [
-        "2026-09-11T15:00"
-      ],
-      "repeats": 0,
-      "venue": "Newhall Community Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "teens"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-08-21T16:50:19.676Z"
     },
     {
       "title": "Loud @ the Library: Powered by Music Lab 🎸",
