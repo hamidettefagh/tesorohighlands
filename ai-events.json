@@ -1,41 +1,152 @@
 {
-  "generatedAt": "2026-09-09T17:11:59.473Z",
+  "generatedAt": "2026-09-10T17:03:16.299Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
       "title": "Canyon Country Farmers Market",
-      "url": "https://www.canyoncountryfarmersmarket.com/",
-      "start": "2026-09-09T16:00",
-      "venue": "Canyon Country Community Center, 18410 Sierra Highway",
-      "city": "Santa Clarita",
+      "url": "https://www.canyoncountryfarmersmarket.com",
+      "start": "2026-09-16T16:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Canyon Country",
       "free": true,
       "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Canyon Country Farmers Market"
+      "via": "City of Santa Clarita"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-09-12T08:00",
-      "venue": "College of the Canyons, Parking Lot 5, Valencia Boulevard & Rockwell Canyon Road",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
+      "title": "SENSES Block Party: Oktoberfest",
+      "url": "https://oldtownnewhall.com/senses-block-party/",
+      "start": "2026-09-17T19:00",
+      "venue": "Main Street",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
       "audience": [
-        "everyone"
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Ventura County Certified Farmers Market Association"
+      "via": "Old Town Newhall"
+    },
+    {
+      "title": "Fright Fest",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-09-18T10:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Included with park admission",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain"
+    },
+    {
+      "title": "Tricks and Treats",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-09-18T10:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Included with park admission",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-09-26T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Free admission; attractions available for purchase",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-09-27T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Free admission; attractions available for purchase",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-03T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Free admission; attractions available for purchase",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-04T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Free admission; attractions available for purchase",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-10T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Free admission; attractions available for purchase",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm"
     },
     {
       "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-12T08:30",
-      "venue": "Old Town Newhall Library parking lot, 24500 Main Street",
+      "url": "https://www.newhallfarmersmarket.com",
+      "start": "2026-10-11T08:30",
+      "venue": "Old Town Newhall Library parking lot",
       "city": "Newhall",
       "free": true,
       "price": "Free",
@@ -46,33 +157,52 @@
       "via": "Old Town Newhall Farmers Market"
     },
     {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-09-13T08:30",
-      "venue": "The Porch, Magic Mountain Parkway and Navigation Avenue",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Six Flags Magic Mountain Fright Fest",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-09-18",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-11T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
       "free": false,
-      "price": "Park admission included; Haunted Attractions Pass additional cost",
+      "price": "Free admission; attractions available for purchase",
       "audience": [
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "Gilchrist Farm"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-17T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Free admission; attractions available for purchase",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-18T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Free admission; attractions available for purchase",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm"
     }
   ]
 }
