@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T12:49:19.796Z",
+  "generatedAt": "2026-09-11T22:35:00.474Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -918,6 +918,20 @@
       "added": "2026-08-23T03:24:58.764Z"
     },
     {
+      "title": "Pace Live Presents: A Taste Of Ireland",
+      "url": "https://pac.canyons.edu/shows/taste-of-ireland.php",
+      "start": "2027-01-17T15:30",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-11T22:35:00.473Z"
+    },
+    {
       "title": "90s Mixtape Live!: The Ultimate '90s Party",
       "url": "https://pac.canyons.edu/shows/90s-mixtape.php",
       "start": "2027-02-20T20:00",
@@ -930,6 +944,20 @@
       ],
       "source": "SC Performing Arts Center",
       "added": "2026-08-23T03:24:58.764Z"
+    },
+    {
+      "title": "World Ballet Company Presents: The Sleeping Beauty With Live Orchestra",
+      "url": "https://pac.canyons.edu/shows/sleeping-beauty.php",
+      "start": "2027-02-25T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-11T22:35:00.473Z"
     },
     {
       "title": "The Sixties Show",
