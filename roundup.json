@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-04T18:30:17.499Z",
-  "weekendOf": "2026-09-04",
+  "generatedAt": "2026-09-11T18:40:29.041Z",
+  "weekendOf": "2026-09-11",
   "model": "claude-haiku-4-5",
-  "intro": "Great things to do around Tesoro Highlands this weekend.",
+  "intro": "Here's what to do this weekend in Tesoro Highlands.",
   "picks": [
     {
       "emoji": "🎨",
@@ -10,26 +10,17 @@
       "time": "",
       "title": "Sticks and Stones: Nature Art Exhibition",
       "price": "free",
-      "note": "Free art show all weekend, great for families",
+      "note": "Free art exhibition, great for families and a lazy afternoon",
       "url": "https://calendar.santaclarita.gov/event/sticks-and-stones-nature-art-exhibition"
     },
     {
-      "emoji": "🥕",
-      "day": "Sat",
-      "time": "8:30 AM",
-      "title": "Old Town Newhall Farmers Market",
+      "emoji": "🏛️",
+      "day": "Fri",
+      "time": "10 AM",
+      "title": "Hart Mansion Group Tour 10:00a.m.",
       "price": "free",
-      "note": "Fresh local produce and crafts, kids love it",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/"
-    },
-    {
-      "emoji": "🦘",
-      "day": "Sun",
-      "time": "",
-      "title": "Visit The Gentle Barn",
-      "price": "from $15",
-      "note": "See animals up close, perfect Sunday activity",
-      "url": "https://calendar.santaclarita.gov/event/visit_the_gentle_barn_5048"
+      "note": "Local history tour kids love; pick any time slot that works",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-hart-mansion-group-tour-1000am-36518"
     },
     {
       "emoji": "🎸",
@@ -37,27 +28,36 @@
       "time": "4 PM",
       "title": "Loud @ the Library: Powered by Music Lab 🎸",
       "price": "free",
-      "note": "Free live music at the library Friday evening",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37429"
+      "note": "Live music at the library for kids and teens, totally free",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37430"
     },
     {
-      "emoji": "😂",
+      "emoji": "🍺",
+      "day": "Fri",
+      "time": "6 PM",
+      "title": "Live Music at Lucky Luke Brewing",
+      "price": "",
+      "note": "Adult night out with local brews and live music nearby",
+      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing"
+    },
+    {
+      "emoji": "🛠️",
       "day": "Sat",
-      "time": "8 PM",
-      "title": "The Society Comedy Troupe",
-      "price": "$22.23",
-      "note": "Local comedy troupe Saturday night, adults only",
-      "url": "https://www.eventbrite.com/e/the-society-comedy-troupe-tickets-1987153045251"
+      "time": "1 PM",
+      "title": "Open House Makerspace",
+      "price": "free",
+      "note": "Open makerspace at the library, creative fun for teens and adults",
+      "url": "https://santaclarita.librarycalendar.com/event/placeheld-open-house-makerspace-32502"
     },
     {
-      "emoji": "🎵",
-      "day": "Sun",
-      "time": "1 PM",
-      "title": "Afternoon Acoustic Jam",
-      "price": "free",
-      "note": "Laid-back acoustic jam Sunday afternoon",
-      "url": "https://santaclarita.librarycalendar.com/event/placeholder-afternoon-acoustic-jam-31693"
+      "emoji": "🌲",
+      "day": "Sat",
+      "time": "",
+      "title": "Fireside Nights",
+      "price": "",
+      "note": "Evening event at Vasquez Rocks for the whole family",
+      "url": "https://calendar.santaclarita.gov/event/fireside-nights"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nGreat things to do around Tesoro Highlands this weekend.\n\n🎨 *Fri* — Sticks and Stones: Nature Art Exhibition (free)\n   Free art show all weekend, great for families\n🥕 *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Fresh local produce and crafts, kids love it\n🦘 *Sun* — Visit The Gentle Barn (from $15)\n   See animals up close, perfect Sunday activity\n🎸 *Fri 4 PM* — Loud @ the Library: Powered by Music Lab 🎸 (free)\n   Free live music at the library Friday evening\n😂 *Sat 8 PM* — The Society Comedy Troupe ($22.23)\n   Local comedy troupe Saturday night, adults only\n🎵 *Sun 1 PM* — Afternoon Acoustic Jam (free)\n   Laid-back acoustic jam Sunday afternoon\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nHere's what to do this weekend in Tesoro Highlands.\n\n🎨 *Fri* — Sticks and Stones: Nature Art Exhibition (free)\n   Free art exhibition, great for families and a lazy afternoon\n🏛️ *Fri 10 AM* — Hart Mansion Group Tour 10:00a.m. (free)\n   Local history tour kids love; pick any time slot that works\n🎸 *Fri 4 PM* — Loud @ the Library: Powered by Music Lab 🎸 (free)\n   Live music at the library for kids and teens, totally free\n🍺 *Fri 6 PM* — Live Music at Lucky Luke Brewing\n   Adult night out with local brews and live music nearby\n🛠️ *Sat 1 PM* — Open House Makerspace (free)\n   Open makerspace at the library, creative fun for teens and adults\n🌲 *Sat* — Fireside Nights\n   Evening event at Vasquez Rocks for the whole family\n\nFull list → https://tesorohighlands.com/events"
 }
