@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T12:49:20.789Z",
+  "generatedAt": "2026-09-11T19:09:19.777Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -19,100 +19,58 @@
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Lyons Ave",
-      "place": "Stevenson Ranch",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789092060,
-      "endEpoch": 1789131540,
-      "moreWindows": 13
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
       "at": "Golden State Freeway, Route 5",
       "place": "Valencia",
       "facility": "Off Ramp",
       "type": "Full",
-      "work": "Shoulder Reconstruction",
+      "work": "Roadway Excavation",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1789092060,
-      "endEpoch": 1789131540,
-      "moreWindows": 34
+      "startEpoch": 1789142460,
+      "endEpoch": 1789163940,
+      "moreWindows": 106
     },
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Valencia Blvd",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789178460,
+      "endEpoch": 1789217940,
+      "moreWindows": 29
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Magic Mountain Parkway, Route 126",
       "place": "Valencia",
       "facility": "On Ramp",
       "type": "Full",
-      "work": "Electrical Work",
+      "work": "Shoulder Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1789092060,
-      "endEpoch": 1789131540,
-      "moreWindows": 6
+      "startEpoch": 1789178460,
+      "endEpoch": 1789221540,
+      "moreWindows": 24
     },
     {
       "route": "I-5",
       "dir": "North",
-      "at": "Lyons Ave",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Median Barrier Work",
-      "lanes": "1",
-      "total": "4",
-      "startEpoch": 1789095660,
-      "endEpoch": 1789131540,
-      "moreWindows": 7
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Magic Mountain Parkway, Route 126",
-      "place": "Valencia",
-      "facility": "Mainline",
-      "type": "Lane",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
       "work": "Shoulder Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1789095660,
-      "endEpoch": 1789131540,
-      "moreWindows": 6
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Paving Operation",
-      "lanes": "3, 4",
-      "total": "4",
-      "startEpoch": 1789099260,
-      "endEpoch": 1789131540,
-      "moreWindows": 13
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Roadway Excavation",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1789131660,
-      "endEpoch": 1789163940,
-      "moreWindows": 7
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789178460,
+      "endEpoch": 1789217940,
+      "moreWindows": 23
     },
     {
       "route": "I-5",
@@ -124,23 +82,37 @@
       "work": "Shoulder Work",
       "lanes": "4",
       "total": "4",
-      "startEpoch": 1789131660,
-      "endEpoch": 1789163940,
-      "moreWindows": 6
+      "startEpoch": 1789178460,
+      "endEpoch": 1789232340,
+      "moreWindows": 18
     },
     {
       "route": "I-5",
-      "dir": "North",
+      "dir": "South",
       "at": "Magic Mountain Parkway, Route 126",
       "place": "Valencia",
       "facility": "On Ramp",
       "type": "Full",
-      "work": "Shoulder Work",
+      "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1789142460,
-      "endEpoch": 1789163940,
-      "moreWindows": 8
+      "startEpoch": 1789178460,
+      "endEpoch": 1789228740,
+      "moreWindows": 17
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Lyons Ave",
+      "place": "Stevenson Ranch",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Electrical Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789178460,
+      "endEpoch": 1789221540,
+      "moreWindows": 40
     },
     {
       "route": "I-5",
@@ -152,9 +124,9 @@
       "work": "Shoulder Reconstruction",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1789142460,
-      "endEpoch": 1789163940,
-      "moreWindows": 7
+      "startEpoch": 1789178460,
+      "endEpoch": 1789217940,
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -166,9 +138,37 @@
       "work": "Road Survey",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1789142460,
-      "endEpoch": 1789163940,
-      "moreWindows": 18
+      "startEpoch": 1789178460,
+      "endEpoch": 1789217940,
+      "moreWindows": 59
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Sawcutting Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789178460,
+      "endEpoch": 1789221540,
+      "moreWindows": 8
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Sawcutting Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789178460,
+      "endEpoch": 1789217940,
+      "moreWindows": 23
     }
   ]
 }
