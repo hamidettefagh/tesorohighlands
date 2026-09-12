@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T22:35:01.957Z",
+  "generatedAt": "2026-09-12T04:33:34.216Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -28,7 +28,7 @@
       "total": "1",
       "startEpoch": 1789178460,
       "endEpoch": 1789217940,
-      "moreWindows": 29
+      "moreWindows": 32
     },
     {
       "route": "I-5",
@@ -42,7 +42,7 @@
       "total": "1",
       "startEpoch": 1789178460,
       "endEpoch": 1789221540,
-      "moreWindows": 24
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -56,21 +56,7 @@
       "total": "1",
       "startEpoch": 1789178460,
       "endEpoch": 1789217940,
-      "moreWindows": 23
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Parker Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1789178460,
-      "endEpoch": 1789232340,
-      "moreWindows": 18
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -84,7 +70,7 @@
       "total": "1",
       "startEpoch": 1789178460,
       "endEpoch": 1789228740,
-      "moreWindows": 17
+      "moreWindows": 18
     },
     {
       "route": "I-5",
@@ -98,7 +84,7 @@
       "total": "1",
       "startEpoch": 1789178460,
       "endEpoch": 1789221540,
-      "moreWindows": 40
+      "moreWindows": 43
     },
     {
       "route": "I-5",
@@ -112,35 +98,21 @@
       "total": "1",
       "startEpoch": 1789178460,
       "endEpoch": 1789217940,
-      "moreWindows": 19
+      "moreWindows": 20
     },
     {
       "route": "I-5",
       "dir": "North",
       "at": "Golden State Freeway, Route 5",
-      "place": "Newhall",
+      "place": "Valencia",
       "facility": "Off Ramp",
       "type": "Full",
-      "work": "Road Survey",
+      "work": "Sign Installation",
       "lanes": "All",
       "total": "1",
       "startEpoch": 1789178460,
-      "endEpoch": 1789217940,
-      "moreWindows": 59
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789178460,
-      "endEpoch": 1789221540,
-      "moreWindows": 8
+      "endEpoch": 1789257540,
+      "moreWindows": 62
     },
     {
       "route": "I-5",
@@ -154,7 +126,7 @@
       "total": "1",
       "startEpoch": 1789178460,
       "endEpoch": 1789217940,
-      "moreWindows": 23
+      "moreWindows": 25
     },
     {
       "route": "I-5",
@@ -168,7 +140,35 @@
       "total": "1",
       "startEpoch": 1789178460,
       "endEpoch": 1789217940,
-      "moreWindows": 11
+      "moreWindows": 12
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Truck Weigh Station",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Shoulder Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789178460,
+      "endEpoch": 1789257540,
+      "moreWindows": 6
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Castaic",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Utility Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789178460,
+      "endEpoch": 1789217940,
+      "moreWindows": 115
     }
   ]
 }
