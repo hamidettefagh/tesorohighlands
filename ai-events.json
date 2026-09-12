@@ -1,30 +1,58 @@
 {
-  "generatedAt": "2026-09-11T17:03:42.236Z",
+  "generatedAt": "2026-09-12T16:23:31.718Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "SENSES Block Party - Oktoberfest",
-      "url": "https://oldtownnewhall.com/senses-block-party/",
-      "start": "2026-09-17T19:00",
-      "venue": "Main Street between Market Street and Sixth Street",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita/",
+      "start": "2026-09-12T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
+      "start": "2026-09-12T08:30",
+      "venue": "Old Town Newhall Library parking lot",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "Old Town Newhall"
     },
     {
-      "title": "Six Flags Magic Mountain Fright Fest",
+      "title": "Canyon Country Farmers Market",
+      "url": "https://www.canyoncountryfarmersmarket.com/",
+      "start": "2026-09-16T16:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Canyon Country",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Country Farmers Market"
+    },
+    {
+      "title": "Fright Fest 2026",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
       "start": "2026-09-18",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": null,
+      "price": "Varies",
       "audience": [
         "teens",
         "adults"
@@ -33,74 +61,35 @@
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Pococktoberfest",
-      "url": "https://visitsantaclarita.com/inspiration/seasonal-activities/fall-activities/poktoberfest/",
-      "start": "2026-09-19",
-      "venue": "Pocock Brewing Company",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Visit Santa Clarita"
-    },
-    {
-      "title": "31st Annual River Rally Cleanup & Environmental Expo",
-      "url": "https://calendar.santaclarita.gov/event/31st-river-rally-cleanup-environmental-expo",
-      "start": "2026-09-19T08:00",
-      "venue": "Newhall Community Center",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Pococktoberfest (Day 2)",
-      "url": "https://visitsantaclarita.com/inspiration/seasonal-activities/fall-activities/poktoberfest/",
-      "start": "2026-09-20",
-      "venue": "Pocock Brewing Company",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Visit Santa Clarita"
-    },
-    {
-      "title": "Luketoberfest",
-      "url": "https://calendar.santaclarita.gov/event/luketoberfest_4904",
-      "start": "2026-09-26",
-      "venue": "Lucky Luke Brewing",
-      "city": "Santa Clarita",
+      "title": "Tricks and Treats 2026",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-09-18",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
       "free": false,
-      "price": null,
+      "price": "Varies",
       "audience": [
+        "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-09-26T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
+      "title": "Change the Station",
+      "url": "https://www.hometownstation.com/santa-clarita-news/arts-and-entertainment/change-the-station-finds-new-home-at-canyon-theatre-guild-after-main-theatre-fire-607878",
+      "start": "2026-10-02T20:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$20 Adults, $18 Seniors, $15 Students",
       "audience": [
-        "everyone"
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "KHTS News/Canyon Theatre Guild"
     }
   ]
 }
