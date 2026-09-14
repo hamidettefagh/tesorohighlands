@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T04:55:11.176Z",
+  "generatedAt": "2026-09-14T15:02:01.488Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -18,104 +18,6 @@
     },
     {
       "route": "I-5",
-      "dir": "South",
-      "at": "Lake Hughes Rd",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Pavement Rehabilitation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789336860,
-      "endEpoch": 1789390740,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Castaic",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Pavement Rehabilitation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789344060,
-      "endEpoch": 1789390740,
-      "moreWindows": 11
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Castaic",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Pavement Rehabilitation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789344060,
-      "endEpoch": 1789390740,
-      "moreWindows": 11
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Templin Highway",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Pavement Rehabilitation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789344060,
-      "endEpoch": 1789390740,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Templin Highway",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Pavement Rehabilitation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789344060,
-      "endEpoch": 1789390740,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Lake Hughes Rd",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Pavement Rehabilitation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789347660,
-      "endEpoch": 1789390740,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Pavement Rehabilitation",
-      "lanes": "1",
-      "total": "4",
-      "startEpoch": 1789354860,
-      "endEpoch": 1789390740,
-      "moreWindows": 33
-    },
-    {
-      "route": "I-5",
       "dir": "North",
       "at": "Hasley Canyon Rd",
       "place": "Castaic",
@@ -126,7 +28,7 @@
       "total": "4",
       "startEpoch": 1789390860,
       "endEpoch": 1789423140,
-      "moreWindows": 25
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -140,7 +42,7 @@
       "total": "4",
       "startEpoch": 1789390860,
       "endEpoch": 1789423140,
-      "moreWindows": 18
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -154,7 +56,7 @@
       "total": "1",
       "startEpoch": 1789401660,
       "endEpoch": 1789423140,
-      "moreWindows": 25
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -169,6 +71,104 @@
       "startEpoch": 1789401660,
       "endEpoch": 1789423140,
       "moreWindows": 23
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Lyons Ave",
+      "place": "Stevenson Ranch",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789401660,
+      "endEpoch": 1789423140,
+      "moreWindows": 39
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Shoulder Reconstruction",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789401660,
+      "endEpoch": 1789423140,
+      "moreWindows": 17
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Newhall",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Electrical Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789401660,
+      "endEpoch": 1789423140,
+      "moreWindows": 61
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Sawcutting Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789401660,
+      "endEpoch": 1789423140,
+      "moreWindows": 23
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Valencia Blvd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789401660,
+      "endEpoch": 1789423140,
+      "moreWindows": 11
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Sawcutting Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789401660,
+      "endEpoch": 1789423140,
+      "moreWindows": 5
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Castaic",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Utility Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789401660,
+      "endEpoch": 1789423140,
+      "moreWindows": 106
     }
   ]
 }
