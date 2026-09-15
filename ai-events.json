@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-09-14T18:43:28.643Z",
+  "generatedAt": "2026-09-15T17:42:01.772Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
       "title": "SENSES Block Party: Oktoberfest",
-      "url": "https://oldtownnewhall.com/senses-block-party/",
+      "url": "https://calendar.santaclarita.gov/event/sneses-block-party",
       "start": "2026-09-17T19:00",
-      "venue": "Main Street between Market Street and Sixth Street, Old Town Newhall",
+      "venue": "Main Street (between Market Street and Sixth Street)",
       "city": "Newhall",
       "free": true,
       "price": "Free",
@@ -15,33 +15,17 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita"
+      "via": "City of Santa Clarita Community Calendar"
     },
     {
-      "title": "Fright Fest at Six Flags Magic Mountain",
+      "title": "Fright Fest 2026",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-09-18T10:30",
+      "start": "2026-09-18T19:00",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "Included with admission or separate Haunted Attractions Pass",
+      "price": null,
       "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
-    },
-    {
-      "title": "Tricks and Treats at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-09-18T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "Included with admission",
-      "audience": [
-        "kids",
         "teens",
         "adults"
       ],
@@ -52,7 +36,7 @@
       "title": "Old Town Newhall Farmers Market",
       "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
       "start": "2026-09-19T08:30",
-      "venue": "Old Town Newhall Library Parking Lot, 24500 Main Street",
+      "venue": "Old Town Newhall Library parking lot",
       "city": "Newhall",
       "free": true,
       "price": "Free",
@@ -63,74 +47,34 @@
       "via": "Old Town Newhall"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-26T08:30",
-      "venue": "Old Town Newhall Library Parking Lot, 24500 Main Street",
-      "city": "Newhall",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita/",
+      "start": "2026-09-20T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "VCCFM"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-10-03T08:30",
-      "venue": "Old Town Newhall Library Parking Lot, 24500 Main Street",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
+      "title": "Oktoberfest and Tricks and Treats",
+      "url": "https://sixflags.fandom.com/wiki/2026",
+      "start": "2026-09-25",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-10-10T08:30",
-      "venue": "Old Town Newhall Library Parking Lot, 24500 Main Street",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-10-17T08:30",
-      "venue": "Old Town Newhall Library Parking Lot, 24500 Main Street",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-10-24T08:30",
-      "venue": "Old Town Newhall Library Parking Lot, 24500 Main Street",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "Six Flags Wiki"
     }
   ]
 }
