@@ -1,79 +1,178 @@
 {
-  "generatedAt": "2026-09-16T17:39:43.750Z",
+  "generatedAt": "2026-09-17T17:40:46.419Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "SENSES Block Party: Oktoberfest",
-      "url": "https://oldtownnewhall.com/senses-block-party/",
+      "title": "SENSES Block Party: Fire Recovery Support Show Up for Old Town Newhall",
+      "url": "https://santaclarita.gov/blog/2026/09/10/show-up-for-old-town-newhall/",
       "start": "2026-09-17T19:00",
-      "venue": "Main Street, Old Town Newhall (Market Street to Sixth Street)",
+      "venue": "Main Street",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "adults"
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    },
+    {
+      "title": "SENSES Block Party: Oktoberfest",
+      "url": "https://oldtownnewhall.com/senses-block-party/",
+      "start": "2026-09-17T19:00",
+      "venue": "Main Street",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "Old Town Newhall"
     },
     {
-      "title": "Fright Fest at Six Flags Magic Mountain",
+      "title": "Fright Fest",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-09-18T10:30",
+      "start": "2026-09-18",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "Varies (park admission required)",
+      "price": null,
       "audience": [
-        "adults",
-        "teens"
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/",
-      "start": "2026-09-19T08:30",
-      "venue": "Old Town Newhall Library parking lot",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Old Town Newhall Farmers Market"
-    },
-    {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-09-20T08:00",
-      "venue": "College of the Canyons, Parking Lot 5 (Valencia Blvd & Rockwell Canyon Rd)",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "VCCFM - Santa Clarita Certified Farmers Market"
-    },
-    {
-      "title": "Beautiful: The Carole King Musical at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/2025-26-season",
-      "start": "2026-09-27T20:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
+      "title": "Tricks and Treats",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-09-18",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
       "free": false,
-      "price": "$24 (adults), $20 (seniors), $15 (students)",
+      "price": null,
       "audience": [
-        "adults",
-        "teens"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
+      "via": "Six Flags Magic Mountain"
+    },
+    {
+      "title": "Pocock Brewing Oktoberfest",
+      "url": "https://visitsantaclarita.com/blog/oktoberfest-events-in-santa-clarita/",
+      "start": "2026-09-19",
+      "venue": "Pocock Brewing Company",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Visit Santa Clarita"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-09-20T08:30",
+      "venue": "Valencia FivePoint Farmers Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar"
+    },
+    {
+      "title": "Lucky Luke Brewing Oktoberfest",
+      "url": "https://visitsantaclarita.com/blog/oktoberfest-events-in-santa-clarita/",
+      "start": "2026-09-26",
+      "venue": "Lucky Luke Brewing",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Visit Santa Clarita"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-09-27T08:30",
+      "venue": "Valencia FivePoint Farmers Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-10-04T08:30",
+      "venue": "Valencia FivePoint Farmers Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-10-11T08:30",
+      "venue": "Valencia FivePoint Farmers Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-10-18T08:30",
+      "venue": "Valencia FivePoint Farmers Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-10-25T08:30",
+      "venue": "Valencia FivePoint Farmers Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar"
     }
   ]
 }
