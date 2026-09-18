@@ -74,6 +74,7 @@ nav.js                injected nav, theme toggle, site-wide live status strip
 trash.js              our Tuesday pickup + Burrtec's holiday rule; feeds the
                       /living trash section and the Living card on / (/trash.js?v=N)
 api/calfire.js        proxies incidents.fire.ca.gov (no CORS), CDN-cached ~2 min
+api/og-events.js      the Events page's share card for today's date (see "Share cards")
 api/purpleair-history.js  24h hourly AQI for the /weather graph, edge-cached 1h (fallback: the committed purpleair-history.json)
 api/purpleair.js      neighbor PurpleAir — EPA-corrected 10-min AQI (Fire/nav)
                       plus EPA 2021 ATM 60-min (`aqiEpa`) for /weather
@@ -191,6 +192,21 @@ the event atop the home page's "Coming up" card until its date passes), `emoji`,
 `details` (`[["Label", "Text"], …]`) and `host`. `date` may carry a start time
 (`2026-10-31T18:00`). A flyer is text-as-image, so everything on it must also be in
 the text fields. Only publish a phone number or payment handle with the organizer's OK.
+
+### Share cards (link previews)
+
+Facebook, WhatsApp and iMessage show a page's `og:image` when someone shares a link.
+`og-image.png` is the site-wide card. The Events page has its own, served by
+`api/og-events.js`: while featured events are coming up it shows their flyers, moving to
+the next phase the day after each one happens, then falls back to the evergreen
+`og-events.jpg` — so a preview never advertises an event that is already over.
+(`/api/og-events?date=YYYY-MM-DD` previews what a given day will serve.)
+
+The images are rendered from HTML/CSS by `scripts/make-og.mjs` — headless Chrome, no
+dependencies. **Adding a featured event:** put the flyer in `/img/`, add the entry, run
+`node scripts/make-og.mjs`, and commit the `og-events*.jpg` files and `og-events.json`
+along with it. Facebook caches previews per URL; refresh one with "Scrape Again" at
+developers.facebook.com/tools/debug.
 
 ## Theming
 

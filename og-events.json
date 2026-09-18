@@ -1,0 +1,21 @@
+{
+  "note": "Written by scripts/make-og.mjs — read by api/og-events.js. Do not edit by hand.",
+  "variants": [
+    {
+      "until": "2026-10-03",
+      "file": "og-events-1.jpg",
+      "events": [
+        "Burgers & Brews — Dads",
+        "2nd Annual Community Halloween Party"
+      ]
+    },
+    {
+      "until": "2026-10-31",
+      "file": "og-events-2.jpg",
+      "events": [
+        "2nd Annual Community Halloween Party"
+      ]
+    }
+  ],
+  "fallback": "og-events.jpg"
+}
