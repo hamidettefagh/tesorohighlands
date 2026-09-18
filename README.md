@@ -183,6 +183,15 @@ event that doesn't exist.
 
 Past-dated entries drop off automatically; keeping history in the file is fine.
 
+Optional, for a featured neighborhood event (the Halloween party entry is the worked
+example): `featured` (true lifts the Community section to the top of /events and pins
+the event atop the home page's "Coming up" card until its date passes), `emoji`,
+`flyer` (a same-site image under `/img/`, plus `flyerW` / `flyerH` / `flyerAlt`),
+`price`, `priceNote`, `rsvpBy` (YYYY-MM-DD), `zelle`, `rsvp`, `detailsLabel`,
+`details` (`[["Label", "Text"], …]`) and `host`. `date` may carry a start time
+(`2026-10-31T18:00`). A flyer is text-as-image, so everything on it must also be in
+the text fields. Only publish a phone number or payment handle with the organizer's OK.
+
 ## Theming
 
 Light/dark follows the system by default; the nav toggle (◐/☀/☾) forces one, persisted

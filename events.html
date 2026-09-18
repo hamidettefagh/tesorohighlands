@@ -124,6 +124,30 @@
   .jumpnav a:hover{border-color:var(--muted);color:var(--ink);}
   section[id]{scroll-margin-top:64px;}
 
+/* ---- Featured neighborhood event: flyer + price + RSVP under the normal row ----
+   Neutral box with an accent edge on purpose — green/amber/red stay reserved
+   for safety status everywhere on this site. */
+.evitem.hasfeat{flex-wrap:wrap;}
+.cfeat{flex:0 0 100%;display:grid;grid-template-columns:132px 1fr;gap:12px 14px;margin-top:2px;font-weight:400;}
+.cflyer{display:block;text-decoration:none;text-align:center;}
+.cflyer img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line);}
+.cflyer span{display:block;font-size:11.5px;color:var(--muted);margin-top:4px;}
+.cmain{min-width:0;}
+.cfeat p{margin:0 0 8px;font-size:13px;color:var(--ink-2);line-height:1.55;}
+.cprice b{color:var(--ink);font-weight:660;}
+.cprice small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px;}
+.crsvp{grid-column:1 / -1;background:var(--neu-bg);border:1px solid var(--neu-line);border-left:3px solid var(--accent);border-radius:10px;padding:11px 13px;font-size:13px;color:var(--ink-2);line-height:1.55;}
+.crsvp > b{display:block;color:var(--ink);font-size:14px;font-weight:680;margin-bottom:4px;}
+.crsvp p{margin:6px 0 0;}
+.zrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;}
+.znum{font-size:16px;font-weight:700;color:var(--ink);letter-spacing:.01em;white-space:nowrap;}
+.zcopy{min-height:40px;padding:7px 12px;}
+.cmore{grid-column:1 / -1;border-top:1px solid var(--line-2);}
+.cmore summary{cursor:pointer;font-size:13px;font-weight:640;color:var(--ink);padding:11px 0;line-height:1.4;}
+.cmore p:last-child{margin-bottom:4px;}
+.cfeat p.chost{grid-column:1 / -1;font-size:12.5px;color:var(--muted);margin:0;}
+@media (min-width:600px){.cfeat{grid-template-columns:180px 1fr;}}
+
 /* ---- Phone readability floor — see th.css ---- */
 .evsec .sechead .pill,.roundup .rhead .pill{font-size:11px;}
 .evmeta{font-size:12.5px;}
@@ -346,16 +370,80 @@
           "Nothing on the neighborhood calendar right now. Got a block party, playdate or game night coming up? Share it in the community group chat and it shows up here.";
         return;
       }
+      // Community rows have no day header above them, so the when-column has to
+      // carry the date itself (the feed's whenHtml only ever shows a time).
+      function commWhen(s) {
+        var w = parseStart(s);
+        return '<div class="when"><b>' + esc(w.d.toLocaleDateString([], { month: "short", day: "numeric" })) + "</b>" +
+          esc(w.d.toLocaleDateString([], { weekday: "short" })) + (w.time ? "<small>" + esc(w.time) + "</small>" : "") + "</div>";
+      }
+      // Optional extras for a featured neighborhood event — flyer, price, RSVP,
+      // details. The file is ours, but same rule as every feed: escape it all,
+      // and only a same-site image path or a phone-shaped string gets through.
+      function featHtml(e) {
+        var flyer = /^\/[\w\-.\/]+\.(webp|png|jpe?g)$/i.test(e.flyer || "") ? e.flyer : "";
+        var zelle = /^[\d\-() +.]{7,20}$/.test(e.zelle || "") ? e.zelle : "";
+        var details = Array.isArray(e.details) ? e.details.filter(function (d) { return Array.isArray(d) && d.length === 2; }) : [];
+        if (!flyer && !e.price && !e.rsvp && !zelle && !e.rsvpBy && !details.length) return "";
+        var h = '<div class="cfeat">';
+        if (flyer) {
+          h += '<a class="cflyer" href="' + esc(flyer) + '" target="_blank" rel="noopener"><img src="' + esc(flyer) + '" alt="' + esc(e.flyerAlt || ("Flyer for " + e.title)) + '" loading="lazy"' +
+            (+e.flyerW > 0 && +e.flyerH > 0 ? ' width="' + (+e.flyerW) + '" height="' + (+e.flyerH) + '"' : "") + " /><span>Tap the flyer to enlarge</span></a>";
+        }
+        h += '<div class="cmain">' + (e.note ? "<p>" + esc(e.note) + "</p>" : "") +
+          (e.price ? '<p class="cprice">🎟️ <b>' + esc(e.price) + "</b>" + (e.priceNote ? "<small>" + esc(e.priceNote) + "</small>" : "") + "</p>" : "") + "</div>";
+        if (e.rsvp || zelle || e.rsvpBy) {
+          var by = "";
+          if (e.rsvpBy) {
+            var rb = parseStart(e.rsvpBy).d;
+            var rbTxt = rb.toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" });
+            by = rb.getTime() >= today.getTime() ? "RSVP by " + rbTxt : "The RSVP deadline was " + rbTxt;
+          }
+          h += '<div class="crsvp">' + (by ? "<b>" + esc(by) + "</b>" : "") +
+            (zelle ? '<div class="zrow">Pay by Zelle to <span class="znum">' + esc(zelle) + '</span><button class="copybtn zcopy" type="button" data-num="' + esc(zelle) + '">Copy number</button></div>' : "") +
+            (e.rsvp ? "<p>" + esc(e.rsvp) + "</p>" : "") + "</div>";
+        }
+        if (details.length) {
+          h += '<details class="cmore"><summary>' + esc(e.detailsLabel || "More details") + "</summary>" +
+            details.map(function (d) { return "<p><b>" + esc(d[0]) + "</b> — " + esc(d[1]) + "</p>"; }).join("") + "</details>";
+        }
+        if (e.host) h += '<p class="chost">' + esc(e.host) + "</p>";
+        return h + "</div>";
+      }
       el.innerHTML = up.map(function (e) {
-        var w = parseStart(e.date);
-        return '<div class="evitem">' + whenHtml(e.date) +
-          '<div class="what">' + (/^https?:\/\//i.test(e.url || "") ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.title) + "</a>" : esc(e.title)) +
+        var w = parseStart(e.date), feat = featHtml(e);
+        var title = (e.emoji ? esc(String(e.emoji).slice(0, 4)) + " " : "") + esc(e.title);
+        return '<div class="evitem' + (feat ? " hasfeat" : "") + '">' + commWhen(e.date) +
+          '<div class="what">' + (/^https?:\/\//i.test(e.url || "") ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + title + "</a>" : title) +
           (w.isToday ? '<span class="chip today">Today</span>' : "") +
-          '<div class="sub">' + esc([e.time, e.place, e.note].filter(Boolean).join(" · ")) + "</div></div></div>";
+          // A featured row says its note in the body below, not squeezed into the sub line.
+          '<div class="sub">' + esc([e.time, e.place, feat ? "" : e.note].filter(Boolean).join(" · ")) + "</div></div>" + feat + "</div>";
       }).join("");
+
+      // A featured neighborhood event outranks the valley feed: lift this whole
+      // section (and its jump chip) to the top of the page while it's upcoming.
+      if (up.some(function (e) { return e.featured === true; })) {
+        var sec = document.getElementById("community"), around = document.getElementById("around");
+        if (sec && around) around.parentNode.insertBefore(sec, around);
+        var nav = document.querySelector(".jumpnav"), chipEl = nav && nav.querySelector('a[href="#community"]');
+        if (chipEl) nav.insertBefore(chipEl, nav.firstChild);
+        // Arrived via /events#community (the home page pin)? The browser scrolled
+        // before the move, so put the section back under the reader.
+        if (location.hash === "#community" && sec) sec.scrollIntoView();
+      }
     }).catch(function () {
       // A failed load is unknown, not "nothing scheduled".
       document.getElementById("commList").innerHTML = '<div class="empty">Couldn&#39;t load the community list right now — try a refresh.</div>';
+    });
+
+    // "Copy number" on a featured event's Zelle line — paste it into the bank app.
+    document.addEventListener("click", function (ev) {
+      var b = ev.target && ev.target.closest ? ev.target.closest(".zcopy") : null;
+      if (!b) return;
+      var say = function (t) { b.textContent = t; setTimeout(function () { b.textContent = "Copy number"; }, 2500); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(b.getAttribute("data-num") || "").then(function () { say("Copied ✓"); }, function () { say("Press and hold the number to copy"); });
+      } else say("Press and hold the number to copy");
     });
 
     // ---- Auto-updated attendable events, filterable by audience + date ----

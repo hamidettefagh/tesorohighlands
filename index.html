@@ -283,7 +283,23 @@
         })
         .filter(Boolean)
         .sort(function (a, b) { return a.start < b.start ? -1 : 1; });
-      if (!evs.length) return;
+      // Featured neighborhood events (community-events.json, "featured": true) are
+      // pinned above the strip: they matter weeks ahead — RSVP deadlines — long
+      // before they would reach the next-five list on date alone.
+      var day0 = new Date(); day0.setHours(0, 0, 0, 0);
+      function ymd(s) { var p = String(s || "").split("T")[0].split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
+      var pinned = {};
+      var pinHtml = (Array.isArray(comm) ? comm : []).filter(function (e) {
+        return e && e.featured === true && e.title && e.date && ymd(e.date) >= day0;
+      }).map(function (p) {
+        pinned[p.title] = 1;
+        var bits = [p.place];
+        if (p.rsvpBy && ymd(p.rsvpBy) >= day0) bits.push("RSVP by " + ymd(p.rsvpBy).toLocaleDateString([], { month: "short", day: "numeric" }));
+        return '<a class="wkrow wkpin" href="/events#community"><span class="wkt">' + esc(String(p.emoji || "📌").slice(0, 4)) + " <b>" +
+          esc(ymd(p.date).toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" })) + "</b> · " + esc(p.title) +
+          "<small>" + esc(bits.filter(Boolean).join(" · ")) + " →</small></span></a>";
+      }).join("");
+      if (!evs.length && !pinHtml) return;
 
       // One event must not eat the whole strip. Some feeds bake the showtime
       // into the title ("Hart Mansion Tour 12:00p.m."), so strip that, then keep
@@ -317,7 +333,7 @@
       // Group by day so "Tomorrow · Aug 16" appears once instead of on all four
       // rows underneath it.
       var lastDay = null;
-      $("#wkList").innerHTML = evs.slice(0, 5).map(function (e) {
+      $("#wkList").innerHTML = pinHtml + evs.filter(function (e) { return !pinned[e.title]; }).slice(0, 5).map(function (e) {
         var day = e.start.split("T")[0];
         var head = "";
         if (day !== lastDay) { lastDay = day; head = '<div class="wkday-head">' + dayHtml(e.start) + "</div>"; }

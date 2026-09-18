@@ -232,3 +232,10 @@ a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:
 .tcell.caution .tlab,.tcell.caution .tval b{color:var(--cau-fg);}
 .tcell.danger .tlab,.tcell.danger .tval b{color:var(--dan-fg);}
 .tcell.ok:hover{border-color:var(--ok-fg);} .tcell.caution:hover{border-color:var(--cau-fg);} .tcell.danger:hover{border-color:var(--dan-fg);}
+
+/* ---- Pinned neighborhood event atop "Coming up" (2026-09-18) ----
+   Featured community-events.json entries. Neutral with an accent edge on
+   purpose: green/amber/red stay reserved for safety status. */
+.wkrow.wkpin{background:var(--neu-bg);border:1px solid var(--neu-line);border-left:3px solid var(--accent);border-radius:10px;padding:10px 12px;margin:4px 0;}
+.wkrow.wkpin .wkt{white-space:normal;color:var(--ink);}
+.wkrow.wkpin .wkt small{display:block;font-size:12.5px;color:var(--ink-2);margin-top:2px;}

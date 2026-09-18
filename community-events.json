@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "title": "2nd Annual Community Halloween Party",
+    "emoji": "🎃",
+    "featured": true,
+    "date": "2026-10-31T18:00",
+    "time": "6:00 – 10:00 PM",
+    "place": "Gardens Park",
+    "note": "Neighbors, families and good times at the new Gardens Park: a jumper for the kids, ice cream, hamburgers & hot dogs, beer & wine for the adults, and a DJ for music and dancing. All are welcome.",
+    "url": "",
+    "flyer": "/img/halloween-2026.webp",
+    "flyerW": 1024,
+    "flyerH": 1536,
+    "flyerAlt": "Flyer for the 2nd Annual Community Halloween Party: Saturday, October 31, 6 to 10 PM at Gardens Park. Everything on it is written out in the text beside it.",
+    "price": "Adults $25 · Children $15 · Under 2 free",
+    "priceNote": "Your contribution covers the food, drinks, entertainment and activities for the evening.",
+    "rsvpBy": "2026-10-15",
+    "zelle": "661-313-0007",
+    "rsvp": "Put your family / last name in the Zelle memo — that's how the guest list is built and how the committee tracks who has paid. Once payment is received, your family is added to the party guest list.",
+    "detailsLabel": "🏆 Costume contest · 🔥 grill volunteers · 🚗 Trunk-or-Treat",
+    "details": [
+      ["🏆 Costume contest", "Come dressed to impress! Prizes for Best Family/Group Costume, Scariest Costume, Most Creative Costume, and Best Kids' Costume."],
+      ["🔥 Volunteers needed", "The committee would love a few volunteers to help BBQ for the community. Willing to take a shift at the grill? Let them know in the community group chat."],
+      ["🚗 Trunk-or-Treat", "In the works for the little ones. Want to participate, help organize, or have another fun Halloween idea? Drop it in the group chat."]
+    ],
+    "host": "Run by the Tesoro Highlands event committee. This site only shares the details — payments and the guest list go through the committee."
+  }
+]
