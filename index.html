@@ -291,9 +291,9 @@
       var pinned = {};
       var pinHtml = (Array.isArray(comm) ? comm : []).filter(function (e) {
         return e && e.featured === true && e.title && e.date && ymd(e.date) >= day0;
-      }).map(function (p) {
+      }).sort(function (a, b) { return ymd(a.date) - ymd(b.date); }).map(function (p) {
         pinned[p.title] = 1;
-        var bits = [p.place];
+        var bits = [timeStr(p.date), p.place];
         if (p.rsvpBy && ymd(p.rsvpBy) >= day0) bits.push("RSVP by " + ymd(p.rsvpBy).toLocaleDateString([], { month: "short", day: "numeric" }));
         return '<a class="wkrow wkpin" href="/events#community"><span class="wkt">' + esc(String(p.emoji || "📌").slice(0, 4)) + " <b>" +
           esc(ymd(p.date).toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" })) + "</b> · " + esc(p.title) +

@@ -1,5 +1,20 @@
 [
   {
+    "title": "Burgers & Brews — Dads",
+    "emoji": "🍔",
+    "featured": true,
+    "date": "2026-10-03T16:00",
+    "time": "4:00 PM",
+    "place": "Gardens Park",
+    "note": "Dads: bring your kids and give moms the night off. The host is bringing the basics for Costco burgers and as much beer as fits in a single cooler, and cooking until they're all gone. Feel free to bring sides or drinks to share.",
+    "url": "",
+    "flyer": "/img/burgers-brews-2026.webp",
+    "flyerW": 1200,
+    "flyerH": 1600,
+    "flyerAlt": "Flyer for Burgers & Brews: October 3rd, 4:00 p.m. at Gardens Park. Bring your kids, give moms the night off. Costco burgers, cooking till they're gone. Feel free to bring sides or drinks to share. All families welcome, free to join.",
+    "price": "Free to join — all families welcome"
+  },
+  {
     "title": "2nd Annual Community Halloween Party",
     "emoji": "🎃",
     "featured": true,
