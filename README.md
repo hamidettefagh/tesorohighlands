@@ -196,7 +196,9 @@ the text fields. Only publish a phone number or payment handle with the organize
 ### Share cards (link previews)
 
 Facebook, WhatsApp and iMessage show a page's `og:image` when someone shares a link.
-`og-image.png` is the site-wide card. The Events page has its own, served by
+`og-image.jpg` is the site-wide card (`node scripts/make-og.mjs --home` re-renders it;
+`og-image.png` is the pre-September-2026 card, kept because posts shared back then still
+point at it). The Events page has its own, served by
 `api/og-events.js`: while featured events are coming up it shows their flyers, moving to
 the next phase the day after each one happens, then falls back to the evergreen
 `og-events.jpg` — so a preview never advertises an event that is already over.

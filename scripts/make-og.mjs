@@ -4,7 +4,7 @@
 // protocol over Node 22's built-in WebSocket.
 //
 //   node scripts/make-og.mjs                  events cards + og-events.json manifest
-//   node scripts/make-og.mjs --home out.jpg   the site-wide card, to a path you choose
+//   node scripts/make-og.mjs --home [out.jpg] the site-wide card (default: og-image.jpg)
 //
 // Run it whenever a featured event (community-events.json: "featured": true plus a
 // "flyer") is added, changed or removed. It writes one card per "phase" — all the
@@ -227,7 +227,7 @@ const args = process.argv.slice(2);
 const chrome = await launch();
 try {
   if (args[0] === "--home") {
-    await render(chrome, cardHome(), path.resolve(args[1] || "og-home.jpg"));
+    await render(chrome, cardHome(), args[1] ? path.resolve(args[1]) : path.join(ROOT, "og-image.jpg"));
   } else {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const list = JSON.parse(fs.readFileSync(path.join(ROOT, "community-events.json"), "utf8"));
