@@ -165,7 +165,7 @@
     el.hidden = false;
   })();
   </script>
-  <script src="/nav.js?v=15" defer></script>
+  <script src="/nav.js?v=16" defer></script>
   <script>
   // "Today" digest: air, fire weather, next events — small live glances.
   (function () {
@@ -193,18 +193,22 @@
       el.hidden = false;
     }
 
+    // A hung feed must fail like a dead one, or a tile sits at "—" forever.
+    function withTimeout(p, ms) {
+      return Promise.race([p, new Promise(function (_, rej) { setTimeout(function () { rej(new Error("timeout")); }, ms); })]);
+    }
     var hav = function (la1, lo1, la2, lo2) {
       var R = 3958.8, t = function (x) { return x * Math.PI / 180; };
       var h = Math.sin(t(la2 - la1) / 2) * Math.sin(t(la2 - la1) / 2) + Math.cos(t(la1)) * Math.cos(t(la2)) * Math.sin(t(lo2 - lo1) / 2) * Math.sin(t(lo2 - lo1) / 2);
       return 2 * R * Math.asin(Math.sqrt(h));
     };
-    Promise.all([
+    withTimeout(Promise.all([
       // Backyard PurpleAir first — most relevant for our street.
       fetch("/api/purpleair").then(function (r) { return r.json(); }).catch(function () { return null; }),
       fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + L.lat + "&longitude=" + L.lon + "&current=us_aqi&timezone=America%2FLos_Angeles").then(function (r) { return r.json(); }).catch(function () { return null; }),
       // EPA AirNow (Santa Clarita ~6.5 mi) when PurpleAir is down; model last.
       fetch("https://services.arcgis.com/cJ9YHowT8TU7DUyn/arcgis/rest/services/Air%20Now%20Current%20Monitor%20Data%20Public/FeatureServer/0/query?where=" + encodeURIComponent("OZONEPM_AQI IS NOT NULL") + "&geometry=" + (L.lon - 0.35) + "," + (L.lat - 0.30) + "," + (L.lon + 0.35) + "," + (L.lat + 0.30) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=OZONEPM_AQI,ValidTime&returnGeometry=true&outSR=4326&f=json").then(function (r) { return r.json(); }).catch(function () { return null; })
-    ]).then(function (res) {
+    ]), 12000).then(function (res) {
       var pa = res[0], a = res[1], an = res[2], q = null, measured = false;
       if (pa && pa.ok && pa.primary && pa.primary.aqi != null) { q = pa.primary.aqi; measured = true; }
       if (q == null && an && an.features) {
@@ -229,10 +233,10 @@
       paintFireCard(); asofDone(true);
     }).catch(function () { $("#tdAir").textContent = "unavailable right now"; asofDone(false); });
 
-    Promise.all([
+    withTimeout(Promise.all([
       fetch("/api/tempest").then(function (r) { return r.json(); }).catch(function () { return null; }),
       fetch("https://api.open-meteo.com/v1/forecast?latitude=" + L.lat + "&longitude=" + L.lon + "&current=relative_humidity_2m,wind_speed_10m,wind_gusts_10m&wind_speed_unit=mph&timezone=America%2FLos_Angeles").then(function (r) { return r.json(); }).catch(function () { return null; })
-    ]).then(function (res) {
+    ]), 12000).then(function (res) {
       var tx = res[0] && res[0].ok && res[0].station ? res[0].station : null;
       var c = res[1] && res[1].current ? res[1].current : null;
       // Per-field fallback — a Tempest with null humidity must not coerce
@@ -262,10 +266,10 @@
       paintFireCard(); asofDone(true);
     }).catch(function () { $("#tdFw").textContent = "unavailable right now"; asofDone(false); });
 
-    Promise.all([
+    withTimeout(Promise.all([
       fetch("/events.json").then(function (r) { return r.json(); }).catch(function () { return null; }),
       fetch("/community-events.json").then(function (r) { return r.json(); }).catch(function () { return []; })
-    ]).then(function (res) {
+    ]), 12000).then(function (res) {
       var feed = res[0], comm = res[1];
       function upMs(s) {
         if (!s) return null;

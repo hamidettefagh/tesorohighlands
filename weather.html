@@ -153,7 +153,7 @@
   <footer class="thfoot">
     <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> These are neighborhood sensors and a commercial forecast, not a government monitor network. In an emergency, call 911 and follow official orders. &nbsp;<a href="/">← Back to the hub</a></p>
   </footer>
-<script src="/nav.js?v=15" defer></script>
+<script src="/nav.js?v=16" defer></script>
 <script>
 "use strict";
 
@@ -208,7 +208,8 @@ const LA = {
 
 async function loadJson(url){
   try{
-    const r = await fetch(url);
+    // 12 s, then null ("unavailable") — a hung feed must not hang the page.
+    const r = await Promise.race([fetch(url), new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 12000))]);
     return await r.json();
   }catch(e){
     return null;

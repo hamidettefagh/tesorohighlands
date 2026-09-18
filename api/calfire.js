@@ -9,6 +9,11 @@
 //
 // Cached at the CDN edge, so this function actually runs about once every two
 // minutes no matter how many neighbors have the page open.
+//
+// 2026-09-18: CAL FIRE's API stopped answering — not an error, a hang. With no
+// timeout here this function hung with it, and every page waiting on it sat at
+// "status unknown". Now a hang fails like an error, within 7 s, and the miss is
+// cached for a minute so neighbors don't each pay that wait.
 
 const SRC = "https://incidents.fire.ca.gov/umbraco/api/IncidentApi/List?inactive=false";
 
@@ -18,7 +23,8 @@ module.exports = async function handler(req, res) {
 
   try {
     const upstream = await fetch(SRC, {
-      headers: { "User-Agent": "tesorohighlands.com (neighbor community site)", Accept: "application/json" }
+      headers: { "User-Agent": "tesorohighlands.com (neighbor community site)", Accept: "application/json" },
+      signal: AbortSignal.timeout(7000)
     });
     if (!upstream.ok) throw new Error("upstream " + upstream.status);
 
@@ -39,9 +45,12 @@ module.exports = async function handler(req, res) {
         url: i.Url
       }));
 
-    res.status(200).json({ generatedAt: new Date().toISOString(), source: "CAL FIRE", fires: fires });
+    res.status(200).json({ ok: true, generatedAt: new Date().toISOString(), source: "CAL FIRE", fires: fires });
   } catch (e) {
     // Non-fatal by design: the page keeps whatever the federal feed gave it.
-    res.status(502).json({ error: "CAL FIRE feed unavailable", fires: [] });
+    // 200 + a short cache (not a 502, which the CDN won't cache) so an outage costs
+    // one slow request a minute per region instead of one per page view.
+    res.setHeader("Cache-Control", "public, s-maxage=60, stale-while-revalidate=120");
+    res.status(200).json({ ok: false, error: "CAL FIRE feed unavailable", fires: [] });
   }
 };

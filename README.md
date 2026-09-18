@@ -133,7 +133,10 @@ cleanly and commit nothing. The PurpleAir history job needs `PURPLEAIR_API_KEY` 
 | Community events | `community-events.json` | Curated |
 
 Every live panel degrades honestly: **a failed feed says "unavailable," never "all
-clear."** The status logic is deliberately conservative, and alert thresholds are
+clear."** A feed that *hangs* is treated the same way: every browser fetch is raced
+against a timer (12 s for a check, 5–6 s for optional enrichment) and every proxy in
+`api/` aborts its upstream call, so one stalled source can't keep the rest off the
+screen. The status logic is deliberately conservative, and alert thresholds are
 tuned so a distant fire informs without alarming.
 
 **Two AQI bases are intentional.** `/weather` headlines EPA Oct 2021 ATM on the

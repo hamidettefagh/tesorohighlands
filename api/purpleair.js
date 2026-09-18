@@ -78,6 +78,8 @@ module.exports = async function handler(req, res) {
     const url = "https://api.purpleair.com/v1/sensors/" + encodeURIComponent(String(index)) + "?fields=" + encodeURIComponent(fields);
 
     const upstream = await fetch(url, {
+      // A hung upstream must fail like a dead one (see api/calfire.js).
+      signal: AbortSignal.timeout(8000),
       headers: {
         "X-API-Key": apiKey,
         Accept: "application/json",

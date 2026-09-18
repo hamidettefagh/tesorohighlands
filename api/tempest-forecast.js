@@ -223,6 +223,8 @@ async function handler(req, res) {
     // Bearer header, not ?token= — same rule as api/tempest.js: query strings get
     // written to upstream access logs and proxies verbatim.
     const upstream = await fetch(url, {
+      // A hung upstream must fail like a dead one (see api/calfire.js).
+      signal: AbortSignal.timeout(8000),
       headers: {
         Authorization: "Bearer " + token,
         Accept: "application/json",

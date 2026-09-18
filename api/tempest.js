@@ -134,6 +134,8 @@ module.exports = async function handler(req, res) {
     // Bearer header rather than ?token= — query strings get written to upstream
     // access logs and proxies verbatim. Same auth, one fewer place the secret lands.
     const upstream = await fetch(url, {
+      // A hung upstream must fail like a dead one (see api/calfire.js).
+      signal: AbortSignal.timeout(8000),
       headers: {
         Authorization: "Bearer " + token,
         Accept: "application/json",

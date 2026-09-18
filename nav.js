@@ -120,7 +120,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v15";  // v15: alerts say until when — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v16";  // v16: a hung feed times out instead of freezing the strip — keep in step with nav.js?v=N
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -149,6 +149,11 @@
     // Rain is the best fire-weather news there is, and the strip had no way to
     // know it was happening. Informational only — it never changes the level.
     var rain = null;
+    // A feed that hangs must fail like one that errors — otherwise a single stalled
+    // upstream freezes this whole strip (CAL FIRE's API did exactly that, 2026-09-18).
+    function withTimeout(p, ms) {
+      return Promise.race([p, new Promise(function (_, rej) { setTimeout(function () { rej(new Error("timeout")); }, ms); })]);
+    }
     var jobs = [
       fetch("/api/tempest").then(function (r) { return r.json(); }).then(function (t) {
         if (t && t.ok && t.station && t.station.rainingNow) rain = t.station;
@@ -211,7 +216,7 @@
         // This strip only speaks up at 50+ acres, and the federal feed leaves local
         // fires unsized — so without CAL FIRE the hero silently missed a 58-acre
         // fire five miles away. See /api/calfire.
-        fetch("/api/calfire").then(function (r) { return r.json(); }).catch(function () { return null; })
+        withTimeout(fetch("/api/calfire").then(function (r) { return r.json(); }), 5000).catch(function () { return null; })
       ]).then(function (res) {
         var f = res[0], cal = (res[1] && res[1].fires) || [];
         if (!f || !f.features) return; okFires = true;
@@ -323,7 +328,8 @@
         else if (nearWarn) { say(50, 1, "Evacuation warning ~" + Math.round(nearWarn.dist) + " mi " + nearWarn.dir + " of us" + (nearWarn.notes ? " (" + nearWarn.notes + ")" : "") + " — not our zone."); }
       }).catch(function () {})
     ];
-    await Promise.allSettled(jobs);
+    // 12 s per check, then it counts as not-loaded ("some feeds unavailable").
+    await Promise.allSettled(jobs.map(function (j) { return withTimeout(j, 12000); }));
 
     var okCount = [okAir, okAlerts, okFires, okEvac].filter(Boolean).length;
     if (lvl === 0) {

@@ -893,13 +893,21 @@ function acresText(a){
   const n = Math.round(a);
   return `${n.toLocaleString()} acre${n===1?"":"s"}`;
 }
+// A feed that HANGS must fail like a feed that errors. Without this, one stalled
+// upstream holds every other check hostage: on 2026-09-18 CAL FIRE's API stopped
+// answering and this whole page sat at "status unknown" with air, alerts and
+// evacuation data already loaded. Promise.race rather than AbortSignal.timeout on
+// purpose — the latter is missing on the older iPhones many neighbors carry.
+function withTimeout(p, ms){
+  return Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("feed timed out")), ms))]);
+}
 // CAL FIRE carries real acreage + containment for California incidents that the
 // federal feed leaves null — it opens a stub for fast local county fires and
 // often never fills it in. Their API sends no CORS header, so /api/calfire
 // proxies it. Failure is non-fatal: we keep whatever WFIGS gave us.
 async function fetchCalFire(){
   try{
-    const j = await fetch("/api/calfire").then(r=>r.json());
+    const j = await withTimeout(fetch("/api/calfire").then(r=>r.json()), 5000);   // enrichment only — never worth a long wait
     return Array.isArray(j.fires) ? j.fires : [];
   }catch(e){ return []; }
 }
@@ -915,7 +923,7 @@ async function fetchViirs(lat, lon){
       + "&geometry=" + encodeURIComponent(env)
       + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects"
       + "&outFields=latitude,longitude,hours_old&returnGeometry=false&resultRecordCount=2000&f=json";
-    const j = await fetch(u).then(r=>r.json());
+    const j = await withTimeout(fetch(u).then(r=>r.json()), 6000);
     return (j.features||[]).map(f=>f.attributes).filter(a=>a && a.latitude!=null);
   }catch(e){ return []; }
 }
@@ -1156,7 +1164,9 @@ async function fetchAll(){
     fetchOutages(lat, lon),
     fetchPurpleAir(),
     fetchTempest()
-  ]);
+  // Each check gets 12 s, then counts as FAILED ("unknown") — never as all-clear,
+  // and never as a reason to keep the other nine off the screen.
+  ].map(p => withTimeout(p, 12000)));
   live.air = air.status==="fulfilled" ? air.value : null;
   live.weather = wx.status==="fulfilled" ? wx.value : null;
   live.alerts = al.status==="fulfilled" ? al.value : null;
@@ -1596,7 +1606,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=15" defer></script>
+<script src="/nav.js?v=16" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>
