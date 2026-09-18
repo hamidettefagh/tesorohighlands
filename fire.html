@@ -829,10 +829,12 @@ function overall(v){
     text = "In effect for our area per the National Weather Service — details in the alerts card below." +
       (/flood/i.test(other) ? " Burn scars shed water fast, so give the canyon roads extra room." : ""); }
   else { lvl = 0; title = "Looks safe right now";
+    // "Healthy" is for AQI 0–50. 51–100 is EPA's Moderate — same wording rule as the status line in nav.js.
+    const airIs = air.lvl === 1 ? "Air is moderate" : "Air is healthy";
     text = (v.wind != null || v.rh != null || v.temp != null)
-      ? (v.raining ? "Air is healthy and it's raining — about the calmest fire weather there is. Nothing needs your attention."
-                   : "Air is healthy and fire weather is calm. Nothing needs your attention.")
-      : "Air is healthy in the checks that loaded. Fire weather isn't available right now — that's unknown, not all-clear."; }
+      ? (v.raining ? airIs + " and it's raining — about the calmest fire weather there is. Nothing needs your attention."
+                   : airIs + " and fire weather is calm. Nothing needs your attention.")
+      : airIs + " in the checks that loaded. Fire weather isn't available right now — that's unknown, not all-clear."; }
 
   const klass = lvl === 2 ? "danger" : lvl === 1 ? "caution" : "ok";
   const ey = lvl === 2 ? "Take action" : lvl === 1 ? "Heads up" : "All clear";
