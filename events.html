@@ -441,9 +441,20 @@
       var b = ev.target && ev.target.closest ? ev.target.closest(".zcopy") : null;
       if (!b) return;
       var say = function (t) { b.textContent = t; setTimeout(function () { b.textContent = "Copy number"; }, 2500); };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(b.getAttribute("data-num") || "").then(function () { say("Copied ✓"); }, function () { say("Press and hold the number to copy"); });
-      } else say("Press and hold the number to copy");
+      var num = b.getAttribute("data-num") || "";
+      // Some in-app webviews refuse the async clipboard API — and a lot of our
+      // traffic arrives inside Facebook's — so try the legacy path before giving up.
+      var legacy = function () {
+        try {
+          var ta = document.createElement("textarea");
+          ta.value = num; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;";
+          document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, num.length);
+          var ok = document.execCommand("copy"); document.body.removeChild(ta);
+          say(ok ? "Copied ✓" : "Press and hold the number to copy");
+        } catch (e) { say("Press and hold the number to copy"); }
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(num).then(function () { say("Copied ✓"); }, legacy);
+      else legacy();
     });
 
     // ---- Auto-updated attendable events, filterable by audience + date ----
