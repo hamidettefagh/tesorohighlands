@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T04:36:43.323Z",
+  "generatedAt": "2026-09-19T12:29:39.783Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1789455660,
       "endEpoch": 1792047540,
-      "moreWindows": 26
+      "moreWindows": 27
     },
     {
       "route": "I-5",
@@ -28,7 +28,7 @@
       "total": "4",
       "startEpoch": 1789783260,
       "endEpoch": 1789840740,
-      "moreWindows": 28
+      "moreWindows": 30
     },
     {
       "route": "I-5",
@@ -42,7 +42,7 @@
       "total": "4",
       "startEpoch": 1789783260,
       "endEpoch": 1789826340,
-      "moreWindows": 20
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -56,21 +56,7 @@
       "total": "1",
       "startEpoch": 1789783260,
       "endEpoch": 1789833540,
-      "moreWindows": 18
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Lyons Ave",
-      "place": "Stevenson Ranch",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789783260,
-      "endEpoch": 1789822740,
-      "moreWindows": 47
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -84,49 +70,7 @@
       "total": "1",
       "startEpoch": 1789783260,
       "endEpoch": 1789822740,
-      "moreWindows": 117
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789783260,
-      "endEpoch": 1789822740,
-      "moreWindows": 12
-    },
-    {
-      "route": "SR-14",
-      "dir": "North",
-      "at": "Antelope Valley Freeway, Route 14",
-      "place": "Canyon Country",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789783260,
-      "endEpoch": 1789822740,
-      "moreWindows": 8
-    },
-    {
-      "route": "SR-14",
-      "dir": "North",
-      "at": "Sand Canyon Rd",
-      "place": "Canyon Country",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789783260,
-      "endEpoch": 1789822740,
-      "moreWindows": 4
+      "moreWindows": 111
     },
     {
       "route": "I-5",
@@ -143,32 +87,88 @@
       "moreWindows": 24
     },
     {
+      "route": "SR-14",
+      "dir": "South",
+      "at": "Antelope Valley Freeway, Route 14",
+      "place": "Canyon Country",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Electrical Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789790460,
+      "endEpoch": 1789822740,
+      "moreWindows": 0
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Sawcutting Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789822860,
+      "endEpoch": 1789862340,
+      "moreWindows": 24
+    },
+    {
       "route": "I-5",
       "dir": "South",
-      "at": "Valencia Blvd",
+      "at": "Rye Canyon Rd",
       "place": "Valencia",
       "facility": "On Ramp",
       "type": "Full",
       "work": "Drainage Work",
       "lanes": "All",
-      "total": "1",
-      "startEpoch": 1789786860,
-      "endEpoch": 1789833540,
-      "moreWindows": 19
+      "total": "2",
+      "startEpoch": 1789862460,
+      "endEpoch": 1789923540,
+      "moreWindows": 5
     },
     {
-      "route": "SR-14",
+      "route": "I-5",
       "dir": "South",
-      "at": "Sand Canyon Rd",
-      "place": "Canyon Country",
+      "at": "Lyons Ave",
+      "place": "Stevenson Ranch",
       "facility": "On Ramp",
       "type": "Full",
       "work": "Electrical Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1789786860,
-      "endEpoch": 1789819140,
-      "moreWindows": 2
+      "startEpoch": 1789866060,
+      "endEpoch": 1789923540,
+      "moreWindows": 43
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Castaic",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Electrical Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1789866060,
+      "endEpoch": 1789912740,
+      "moreWindows": 58
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Weldon Canyon",
+      "place": "Granada Hills",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Median Barrier Work",
+      "lanes": "1, 2",
+      "total": "5",
+      "startEpoch": 1789869660,
+      "endEpoch": 1789919940,
+      "moreWindows": 12
     }
   ]
 }
