@@ -1,51 +1,22 @@
 {
-  "generatedAt": "2026-09-18T17:07:25.211Z",
+  "generatedAt": "2026-09-19T16:33:38.104Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Fright Fest at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-09-18T18:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-09-26T09:00",
+      "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
+      "city": "Santa Clarita",
       "free": false,
       "price": null,
       "audience": [
-        "teens",
+        "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
-    },
-    {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
-      "start": "2026-09-20T08:30",
-      "venue": "Valencia FivePoint Community",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCV Farmers Markets"
-    },
-    {
-      "title": "Beautiful: The Carole King Musical at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/beautifulthecarolekingmusical",
-      "start": "2026-09-27T20:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$24",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
+      "via": "Santa Clarita Community Calendar"
     }
   ]
 }
