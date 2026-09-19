@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T12:57:37.278Z",
+  "generatedAt": "2026-09-19T04:36:37.732Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -797,6 +797,20 @@
       ],
       "source": "SC Performing Arts Center",
       "added": "2026-08-23T03:24:58.764Z"
+    },
+    {
+      "title": "Frankie Avalon",
+      "url": "https://pac.canyons.edu/shows/frankie-avalon.php",
+      "start": "2027-04-10T19:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-09-19T04:36:37.732Z"
     },
     {
       "title": "Stunt Dog Experience",
