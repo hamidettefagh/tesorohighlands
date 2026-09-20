@@ -1,22 +1,65 @@
 {
-  "generatedAt": "2026-09-19T16:33:38.104Z",
+  "generatedAt": "2026-09-20T16:53:05.070Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://www.gilchristfarm.com/pumpkin-patch",
-      "start": "2026-09-26T09:00",
-      "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
-      "city": "Santa Clarita",
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
+      "start": "2026-09-20T08:30",
+      "venue": "Valencia FivePoint (The Porch)",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "SCV Farmers Markets"
+    },
+    {
+      "title": "Tricks and Treats (Daytime Halloween Event)",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-09-25",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
       "free": false,
       "price": null,
+      "audience": [
+        "kids",
+        "toddlers"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain"
+    },
+    {
+      "title": "Santa Clarita Valley Sheriff's Halloween Carnival & Haunted Jailhouse",
+      "url": "https://www.hometownstation.com/santa-clarita-news/community-news/santa-clarita-valley-sheriffs-station-announces-2026-halloween-carnival-haunted-jail-house-607026",
+      "start": "2026-10-18T10:00",
+      "venue": "Santa Clarita Valley Sheriff's Station",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$5 suggested donation",
       "audience": [
         "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "Santa Clarita Sheriff's Station"
+    },
+    {
+      "title": "Candlelight: Halloween Classics",
+      "url": "https://feverup.com/m/643423",
+      "start": "2026-10-25T20:15",
+      "venue": "Hyatt Regency Valencia",
+      "city": "Valencia",
+      "free": false,
+      "price": "$38.88",
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Fever/Candlelight"
     }
   ]
 }
