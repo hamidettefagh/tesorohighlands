@@ -1,65 +1,71 @@
 {
-  "generatedAt": "2026-09-21T18:47:30.285Z",
+  "generatedAt": "2026-09-22T17:40:12.957Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Tricks and Treats at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/tricks-and-treats",
-      "start": "2026-09-25",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-09-26T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
       "free": false,
-      "price": null,
+      "price": "Free admission; attractions available for purchase",
       "audience": [
-        "everyone"
+        "kids",
+        "toddlers",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Santa Clarita Certified Farmers' Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-09-27T08:00",
-      "venue": "College of the Canyons Parking Lot 5",
-      "city": "Santa Clarita",
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://www.scvfarmersmarkets.com/locations/valencia/",
+      "start": "2026-09-27T08:30",
+      "venue": "Valencia FivePoint Community",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "VCCFM"
+      "via": "SCV Farmers Markets"
     },
     {
-      "title": "Beautiful: The Carole King Musical",
-      "url": "https://www.canyontheatre.org/beautifulthecarolekingmusical",
-      "start": "2026-09-27T20:00",
-      "venue": "Canyon Theatre Guild",
+      "title": "Interrobang Sketch Comedy at The MAIN",
+      "url": "https://atthemain.org/events-at-the-main/",
+      "start": "2026-10-03",
+      "venue": "The MAIN Theatre",
       "city": "Newhall",
       "free": false,
-      "price": "$24",
+      "price": null,
       "audience": [
-        "adults",
-        "teens"
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Canyon Theatre Guild / canyontheatre.org"
+      "via": "The MAIN"
     },
     {
       "title": "10 by 10 Variety Show at The MAIN",
       "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-10-01T20:00",
+      "start": "2026-11-05",
       "venue": "The MAIN Theatre",
       "city": "Newhall",
-      "free": true,
-      "price": "Free",
+      "free": false,
+      "price": null,
       "audience": [
-        "adults",
-        "teens"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "The MAIN / atthemain.org"
+      "via": "The MAIN"
     }
   ]
 }
