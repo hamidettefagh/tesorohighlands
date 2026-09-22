@@ -285,7 +285,11 @@
   /* neutral hero — the honest "we don't know" state */
   .hero.neutral { background:var(--neu-bg); border-color:var(--neu-line); }
   .hero.neutral .eyebrow, .hero.neutral h2 { color:var(--neu-fg); }
-  .hero .hact { display:inline-block; margin-top:10px; font-size:13px; font-weight:640; color:inherit; text-decoration:none; opacity:.9; }
+  .hero .hact { display:inline-flex; align-items:center; min-height:44px; margin-top:4px; font-size:13px; font-weight:640; color:inherit; text-decoration:none; opacity:.9; }
+
+  /* OpenStreetMap ships no dark basemap, so invert the tile pane only — the
+     fire/evac overlays and markers live in a different pane and keep their colours. */
+  .darkmap .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.92) contrast(.88); }
 
   /* jump nav (same pattern as the other pages) */
   .jumpnav { display:flex; gap:7px; overflow-x:auto; scrollbar-width:none; margin:12px 0 2px; -webkit-overflow-scrolling:touch; }
@@ -364,7 +368,7 @@ footer{font-size:12.5px;}
     <div class="eyebrow" id="heroEy">Checking</div>
     <h2 id="heroTitle">Checking conditions…</h2>
     <p id="heroText">Pulling live air quality, fire weather, and alerts for your location.</p>
-    <a class="hact" id="heroAct" href="#evac" hidden>Evacuation status, go-bag &amp; routes ↓</a>
+    <a class="hact" id="heroAct" href="#evac">Evacuation status, go-bag &amp; routes ↓</a>
   </div>
 
   <div class="sharecard" id="shareCard" hidden>
@@ -394,7 +398,7 @@ footer{font-size:12.5px;}
     <details class="how"><summary>How this list works</summary>
       <div class="q">Only fires still marked <b>active</b> in the national feed (NIFC / IRWIN) — anything declared out, fully contained, or gone quiet for days is dropped. Acreage and containment come from <b>CAL FIRE</b> where they have the incident (small local fires often never get sized — the 🛰️ chip shows whether a <b>NASA satellite</b> actually detected heat there in the last 24 hours). <b>Distances are straight-line</b> ("as the crow flies") — the way smoke and embers travel — so they read shorter than driving miles. Fire names link to the official CAL FIRE page when there is one.</div>
     </details>
-    <div id="fireList"></div>
+    <div id="fireList"><div class="skel">Checking the national wildfire feed…</div></div>
   </div>
 
   <!-- The scariest moment: you smell smoke and this list is empty. Feeds lag a
@@ -815,20 +819,43 @@ function overall(v){
   const windAlert = evts.find(e => /wind/i.test(e));
   const hi = todayHigh();
 
-  let lvl, title, text;
-  if (v.evac.lvl >= 2) { lvl = 2; title = "Evacuation order — leave now"; text = "An evacuation order covers this area. Go now via your planned route and follow official direction."; }
-  else if (air.lvl >= 3) { lvl = 2; title = "Unhealthy air right now"; text = "Keep everyone inside with windows closed and the AC on recirculate. The smoke playbook below has the rest."; }
-  else if (frisk >= 2) { lvl = 2; title = "A sizable fire is burning close by"; text = "Check the map below, keep phones charged, and know where the go-bag is."; }
-  else if (v.evac.lvl === 1) { lvl = 1; title = "Evacuation warning for our zone"; text = "Be packed and ready to leave, and watch official channels closely."; }
-  else if (frisk === 1) { lvl = 1; title = "Fire activity in the area"; text = "Nothing at our doorstep, but there's an active fire worth watching — details below."; }
-  else if (redFlag || fw.lvl >= 2) { lvl = 1; title = redFlag ? redFlag + endsOf(redFlag) : "High fire-risk weather"; text = "Dry, windy conditions where a spark spreads fast — skip open flames and yard equipment today."; }
-  else if (air.lvl === 2) { lvl = 1; title = "Air is unhealthy for sensitive groups"; text = "Kids, seniors, and anyone with asthma should take it easy outside today."; }
-  else if (heat) { lvl = 1; title = heat + endsOf(heat); text = "Plan around the heat — hydrate, find shade at midday, and check on kids, pets, and older neighbors." + (hi != null ? " Forecast high near " + hi + "°." : ""); }
-  else if (windAlert) { lvl = 1; title = windAlert + endsOf(windAlert); text = "Breezy day — secure loose patio items and take it slow on the passes."; }
-  else if (other) { lvl = 1; title = other + endsOf(other);
-    text = "In effect for our area per the National Weather Service — details in the alerts card below." +
-      (/flood/i.test(other) ? " Burn scars shed water fast, so give the canyon roads extra room." : ""); }
-  else { lvl = 0; title = "Looks safe right now";
+  // Two separate questions, the way nav.js's say() already answers them: WHICH
+  // message leads (priority), and HOW BAD the page looks (the worst thing found).
+  // The old if/else chain conflated them, so an evacuation WARNING for our zone
+  // lost the headline to unhealthy air or a nearby fire — while nav.js and
+  // scripts/alert-watch.mjs both lead with the warning. Ladder kept in lockstep
+  // with nav.js: order 100 > shelter 95 > warning 90 > air 80 > fires 75/70.
+  let lvl = 0, prio = -1, title = "", text = "";
+  const say = (p, level, t, x) => { lvl = Math.max(lvl, level); if (p > prio) { prio = p; title = t; text = x; } };
+
+  // Shelter-in-place is level 2 like an order, but telling people to leave during
+  // a hazmat or police shelter order is the dangerous instruction.
+  if (v.evac.shelter) say(95, 2, "Shelter in place — stay inside",
+    "Officials have a shelter-in-place order covering our zone. Stay indoors with doors and windows closed and follow official direction — this is not an all-clear.");
+  else if (v.evac.lvl >= 2) say(100, 2, "Evacuation order — leave now",
+    "An evacuation order covers this area. Go now via your planned route and follow official direction.");
+  if (v.evac.lvl === 1) say(90, 1, "Evacuation warning for our zone",
+    "Be packed and ready to leave, and watch official channels closely. Those needing extra time — older neighbors, anyone with mobility needs, large animals — should leave now.");
+  if (air.lvl >= 3) say(80, 2, "Unhealthy air right now",
+    "Keep everyone inside with windows closed and the AC on recirculate. The smoke playbook below has the rest.");
+  if (frisk >= 2) say(75, 2, "A sizable fire is burning close by",
+    "Check the map below, keep phones charged, and know where the go-bag is.");
+  if (frisk === 1) say(70, 1, "Fire activity in the area",
+    "Nothing at our doorstep, but there's an active fire worth watching — details below.");
+  if (redFlag || fw.lvl >= 2) say(60, 1, redFlag ? redFlag + endsOf(redFlag) : "High fire-risk weather",
+    "Dry, windy conditions where a spark spreads fast — skip open flames and yard equipment today.");
+  if (air.lvl === 2) say(55, 1, "Air is unhealthy for sensitive groups",
+    "Kids, seniors, and anyone with asthma should take it easy outside today.");
+  if (heat) say(30, 1, heat + endsOf(heat),
+    "Plan around the heat — hydrate, find shade at midday, and check on kids, pets, and older neighbors." + (hi != null ? " Forecast high near " + hi + "°." : ""));
+  if (windAlert) say(20, 1, windAlert + endsOf(windAlert), "Breezy day — secure loose patio items and take it slow on the passes.");
+  if (other) say(15, 1, other + endsOf(other),
+    "In effect for our area per the National Weather Service — details in the alerts card below." +
+      (/flood/i.test(other) ? " Burn scars shed water fast, so give the canyon roads extra room." : ""));
+  // The headline can't carry everything. When the lead is an evacuation, the one
+  // fact worth adding is air you have to breathe while you pack.
+  if (prio >= 90 && air.lvl >= 3) text += " Air is also unhealthy right now (AQI " + Math.round(v.aqi) + ") — keep windows shut.";
+  if (prio < 0) { lvl = 0; title = "Looks safe right now";
     // "Healthy" is for AQI 0–50. 51–100 is EPA's Moderate — same wording rule as the status line in nav.js.
     const airIs = air.lvl === 1 ? "Air is moderate" : "Air is healthy";
     text = (v.wind != null || v.rh != null || v.temp != null)
@@ -1140,7 +1167,7 @@ async function fetchEvac(lat, lon){
   const nearWarn  = zones.find(z => !z.order && !z.shelter && z.dist <= 10);
   const why = z => (z.notes ? " — " + z.notes : "") + (z.county ? ", " + z.county + " County" : "");
   if (covOrder) return { lvl:2, label:"Evacuation ORDER for our zone" + why(covOrder) + ". Leave now via your planned route.", zone:"Live · Cal OES statewide feed" };
-  if (covShelter) return { lvl:2, label:"SHELTER IN PLACE for our zone" + why(covShelter) + ". Stay inside with doors and windows closed and follow official direction — this is not an all-clear.", zone:"Live · Cal OES statewide feed" };
+  if (covShelter) return { lvl:2, shelter:true, label:"SHELTER IN PLACE for our zone" + why(covShelter) + ". Stay inside with doors and windows closed and follow official direction — this is not an all-clear.", zone:"Live · Cal OES statewide feed" };
   if (covWarn)  return { lvl:1, label:"Evacuation WARNING includes our zone" + why(covWarn) + ". Be packed and ready to leave. Those needing extra time to evacuate — older neighbors, anyone with mobility needs, large animals — should leave now.", zone:"Live · Cal OES statewide feed" };
   if (nearOrder) return { lvl:0, label:"Our zone has no order or warning. Nearby: an evacuation ORDER is active ~" + Math.round(nearOrder.dist) + " mi to our " + nearOrder.dir + why(nearOrder) + ". Watch it on the map above and " + GENASYS_LINK + ".", zone:"Live · Cal OES statewide feed" };
   if (nearShelter) return { lvl:0, label:"Our zone has no order or warning. Nearby: a shelter-in-place is active ~" + Math.round(nearShelter.dist) + " mi to our " + nearShelter.dir + why(nearShelter) + ". Watch it on the map above.", zone:"Live · Cal OES statewide feed" };
@@ -1279,9 +1306,11 @@ function render(){
   $("#heroEy").textContent = ov.ey;
   $("#heroTitle").textContent = ov.title;
   $("#heroText").textContent = ov.text;
-  // In a danger state, give the hero something tappable: the evacuation section.
+  // Always give the hero something tappable: on a phone this is the only
+  // above-the-fold route to the evacuation section. Under a shelter-in-place,
+  // "routes out" is the wrong promise, so the label follows the situation.
   const hact = $("#heroAct");
-  if(hact) hact.hidden = ov.lvl < 2;
+  if(hact) hact.textContent = v.evac.shelter ? "What to do & official links ↓" : "Evacuation status, go-bag & routes ↓";
 
   // who should take it easy — but only when there's real air data to judge from
   const adv = airKnown ? airAdvice(v)
@@ -1312,10 +1341,15 @@ function render(){
 
   // evac
   const evLvl = v.evac.lvl;
-  const evMap = v.evac.unknown ? {s:"neutral",icon:"🧭"} : [ {s:"ok",icon:"🏡"}, {s:"caution",icon:"🎒"}, {s:"danger",icon:"🚗"} ][evLvl];
+  // A shelter-in-place is level 2, but the icon and verb must say stay, not go.
+  const evMap = v.evac.unknown ? {s:"neutral",icon:"🧭"}
+    : v.evac.shelter ? {s:"danger",icon:"🏠"}
+    : [ {s:"ok",icon:"🏡"}, {s:"caution",icon:"🎒"}, {s:"danger",icon:"🚗"} ][evLvl];
   $("#evacBadge").className="badge "+evMap.s; $("#evacBadge").textContent=evMap.icon;
   $("#evacTxt").className="vtxt "+evMap.s;
-  const evTitle = v.evac.unknown ? "Check your zone" : (evLvl===0?"No — all clear" : evLvl===1?"Get ready now" : "Leave now");
+  const evTitle = v.evac.unknown ? "Check your zone"
+    : v.evac.shelter ? "Stay inside"
+    : (evLvl===0 ? "No — no orders or warnings for our zone" : evLvl===1 ? "Get ready now" : "Leave now");
   $("#evacTxt").innerHTML = `<strong>${evTitle}</strong><span>${v.evac.zone}</span>`;
   placeEvacBlock(!!(v.evac && !v.evac.unknown && v.evac.lvl >= 1));
   $("#evacDetail").innerHTML = v.evac.label;
@@ -1593,7 +1627,10 @@ setInterval(loadShareCard, 5*60*1000);
 /* ---------- boot ---------- */
 async function boot(){
   renderChecklist();
-  render();               // paint shell with loading state
+  // No render() before the first fetch: live.ok is undefined then, so render()
+  // painted the honest-failure copy ("one or more feeds is unreachable", "couldn't
+  // reach the National Weather Service") as the very first thing every visitor saw,
+  // for as long as the feeds took. The static skeletons below say "checking" instead.
   await fetchAll();
   render();
   setInterval(async ()=>{ await fetchAll(); render(); }, 10*60*1000);
@@ -1640,21 +1677,29 @@ boot();
     mapFail("The live map couldn't start on this device (" + ((err && err.message) || "unknown error") + ").");
     return;
   }
-  function tileUrl(){ var eff = window.__theme ? window.__theme.effective() : "light"; return "https://{s}.basemaps.cartocdn.com/" + (eff==="dark"?"dark_all":"light_all") + "/{z}/{x}/{y}{r}.png"; }
-  tiles = L.tileLayer(tileUrl(), { subdomains:"abcd", maxZoom:18, attribution:"© OpenStreetMap, © CARTO" }).addTo(map);
-  // If the Carto tile CDN never delivers a single tile (some mobile networks,
-  // DNS filters, content blockers), switch to openstreetmap.org tiles once.
-  var tileWins = 0, tileFails = 0, fellBack = false;
+  // Basemap: OpenStreetMap's own tiles. Carto's free basemaps now stamp every
+  // tile with "API KEY REQUIRED", and because those tiles still return HTTP 200
+  // the old tileerror fallback never fired — the evacuation map shipped with that
+  // watermark printed across Santa Clarita. OSM needs no key. It has no dark
+  // build, so dark mode inverts the tile layer only (markers sit in another pane).
+  function paintTheme(){
+    var eff = window.__theme ? window.__theme.effective() : "light";
+    var el = map.getContainer(); if (el) el.classList.toggle("darkmap", eff === "dark");
+  }
+  tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom:19, attribution:"© OpenStreetMap" }).addTo(map);
+  paintTheme();
+  var tileWins = 0, tileFails = 0, toldTileFail = false;
   tiles.on("tileload", function(){ tileWins++; });
   tiles.on("tileerror", function(){
-    tileFails++;
-    if (!fellBack && tileWins === 0 && tileFails >= 3) {
-      fellBack = true;
-      tiles.setUrl("https://tile.openstreetmap.org/{z}/{x}/{y}.png");
+    // No silent blank map: the markers stay accurate, so say the streets are missing.
+    if (!toldTileFail && tileWins === 0 && ++tileFails >= 4) {
+      toldTileFail = true;
+      var lg = document.getElementById("mapLegend");
+      if (lg) lg.insertAdjacentHTML("beforeend", "<br><b>The street basemap didn't load</b> on this connection — the fire and evacuation shapes are still live and correctly placed.");
     }
   });
   window.addEventListener("themechange", function(){
-    if (!fellBack) tiles.setUrl(tileUrl()); // OSM fallback has no dark variant
+    paintTheme();
     if (typeof render === "function") { try { render(); } catch(e){} } // refresh sparkline/theme-derived colors
   });
   map.on("click", function(){ map.scrollWheelZoom.enable(); });

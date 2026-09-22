@@ -3,6 +3,14 @@
    (unless they forced light) OR when they forced dark via the nav toggle
    (html[data-theme] set by /theme.js, persisted in localStorage). */
 *,*::before,*::after{box-sizing:border-box;}
+/* The browser's own [hidden] rule is display:none at the weakest possible
+   specificity, so ANY component rule with its own display wins and the element
+   stays on screen with hidden="true" set. That silently broke the Fire page's
+   quiet-day summary: on a day with a real alert, power outage or earthquake, the
+   green "Nothing else to report" box kept rendering (with an empty sentence)
+   directly above the cards that had something to report. Never let presentation
+   outvote a script that said hide. */
+[hidden]{display:none !important;}
 :root{
   --bg:#f4f5f7; --surface:#fff; --ink:#14161b; --ink-2:#3b414c; --muted:#5b6470;
   --line:#e6e8ec; --line-2:#eef0f3; --accent:#1f2937; --on-accent:#fff;

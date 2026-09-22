@@ -374,9 +374,14 @@
     // "New on this site" — a tiny changelog kept in updates.json.
     fetch("/updates.json").then(function (r) { return r.json(); }).then(function (list) {
       if (!Array.isArray(list) || !list.length) return;
-      $("#snList").innerHTML = list.slice(0, 3).map(function (u) {
-        var p = String(u.date || "").split("-");
-        var d = p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString([], { month: "short", day: "numeric" }) : "";
+      // Everything from the last three weeks, 3 minimum and 6 maximum — a fixed
+      // three could all land on one busy day and hide the rest of the fortnight.
+      var dOf = function (s) { var p = String(s || "").split("-"); return p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2]) : null; };
+      var cut = Date.now() - 21 * 86400000;
+      var fresh = list.filter(function (u) { var d = dOf(u.date); return d && d.getTime() >= cut; });
+      $("#snList").innerHTML = (fresh.length < 3 ? list.slice(0, 3) : fresh.slice(0, 6)).map(function (u) {
+        var dd = dOf(u.date);
+        var d = dd ? dd.toLocaleDateString([], { month: "short", day: "numeric" }) : "";
         // updates.json is ours, but same rule as every feed: only real paths/URLs become links.
         var h = /^(\/|https?:\/\/)/i.test(u.href || "") ? u.href : "/";
         return '<a href="' + esc(h) + '"><span class="nd">' + esc(d) + "</span>" + esc(u.text || "") + "</a>";

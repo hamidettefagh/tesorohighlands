@@ -89,6 +89,11 @@ together — that is the point. Don't reintroduce a second formula.
 
 **EPA correction unit test:** `node scripts/epa-correct.test.mjs` (no npm test runner).
 
+**Fire status ladder test:** `node scripts/fire-status.test.mjs`. It reads `overall()` straight
+out of `fire.html`, so it fails if the headline ladder drifts — including the two rules that are
+easy to break: a shelter-in-place must never read "leave now", and an evacuation warning for our
+zone must keep the headline even when the air or a nearby fire is worse.
+
 **Evacuation and fire logic exists in three places and must stay in lockstep.**
 `nav.js` (the site-wide status strip), `fire.html` (the dashboard), and
 `scripts/alert-watch.mjs` (the alert bot) each compute this independently. If you
