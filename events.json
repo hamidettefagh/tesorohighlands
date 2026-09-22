@@ -1,86 +1,7 @@
 {
-  "generatedAt": "2026-09-21T15:05:58.203Z",
+  "generatedAt": "2026-09-22T13:24:17.488Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Little Explorers",
-      "url": "https://santaclarita.librarycalendar.com/event/little-explorers-31507",
-      "start": "2026-09-21T13:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-21T13:00",
-        "2026-09-28T13:00",
-        "2026-10-05T13:00"
-      ],
-      "repeats": 2,
-      "added": "2026-09-17T13:26:55.386Z"
-    },
-    {
-      "title": "Learn and Launch Robotics",
-      "url": "https://santaclarita.librarycalendar.com/event/learn-and-launch-robotics-36144",
-      "start": "2026-09-21T16:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-21T16:00",
-        "2026-09-28T16:00",
-        "2026-10-05T16:00"
-      ],
-      "repeats": 2,
-      "added": "2026-09-17T13:26:55.386Z"
-    },
-    {
-      "title": "Pokémon Trainer League",
-      "url": "https://santaclarita.librarycalendar.com/event/pokemon-trainer-league-31800",
-      "start": "2026-09-21T17:00",
-      "venue": "Valencia Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-21T17:00"
-      ],
-      "added": "2026-09-17T13:26:55.386Z"
-    },
-    {
-      "title": "Mindful Art Mondays",
-      "url": "https://santaclarita.librarycalendar.com/event/placeheld-mindful-art-monday-31714",
-      "start": "2026-09-21T18:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-21T18:00",
-        "2026-10-05T18:00"
-      ],
-      "repeats": 1,
-      "added": "2026-09-18T12:57:37.277Z"
-    },
     {
       "title": "Baby and Toddler Storytime",
       "url": "https://santaclarita.librarycalendar.com/event/baby-and-toddler-storytime-31472",
@@ -482,6 +403,118 @@
       ],
       "repeats": 7,
       "added": "2026-09-21T15:05:58.203Z"
+    },
+    {
+      "title": "Cuenta Cuentos",
+      "url": "https://santaclarita.librarycalendar.com/event/cuenta-cuentos-32397",
+      "start": "2026-09-24T10:00",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-24T10:00",
+        "2026-10-01T10:00",
+        "2026-10-08T10:00"
+      ],
+      "repeats": 2,
+      "added": "2026-09-22T13:24:17.487Z"
+    },
+    {
+      "title": "Crafternoon: Kindness Rocks!",
+      "url": "https://santaclarita.librarycalendar.com/event/crafternoon-kidness-rocks-31525",
+      "start": "2026-09-24T15:30",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-24T15:30"
+      ],
+      "added": "2026-09-22T13:24:17.487Z"
+    },
+    {
+      "title": "Drum it Out: Teen Rhythm Sessions with Samuel Mazur",
+      "url": "https://santaclarita.librarycalendar.com/event/drums-samuel-mazur-32649",
+      "start": "2026-09-24T15:30",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-24T15:30",
+        "2026-10-01T15:30",
+        "2026-10-08T15:30"
+      ],
+      "repeats": 2,
+      "added": "2026-09-22T13:24:17.487Z"
+    },
+    {
+      "title": "Teen Library Eats: Build a Breakfast - Overnight Oats!",
+      "url": "https://santaclarita.librarycalendar.com/event/teen-library-eats-build-breakfast-overnight-oats-31582",
+      "start": "2026-09-24T15:30",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-24T15:30"
+      ],
+      "added": "2026-09-22T13:24:17.487Z"
+    },
+    {
+      "title": "Read to a Dog",
+      "url": "https://santaclarita.librarycalendar.com/event/read-dog-32429",
+      "start": "2026-09-24T16:00",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-24T16:00"
+      ],
+      "added": "2026-09-22T13:24:17.487Z"
+    },
+    {
+      "title": "Dozen Read Proses",
+      "url": "https://santaclarita.librarycalendar.com/event/dozen-read-proses-26064",
+      "start": "2026-09-24T18:00",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-09-24T18:00"
+      ],
+      "added": "2026-09-22T13:24:17.487Z"
     },
     {
       "title": "2026 Economic Outlook Forecast",
