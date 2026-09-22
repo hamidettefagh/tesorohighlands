@@ -73,6 +73,8 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .thnav .links a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;
   border:0;background:none;box-shadow:none;color:var(--ink-2);text-decoration:none;font-size:13px;
   font-weight:540;padding:6px 10px;border-radius:8px;white-space:nowrap;}
+/* The label span needs the same protection: those two pages also style `.links a span`. */
+.thnav .links a > span{font-size:inherit;color:inherit;font-weight:inherit;flex:initial;}
 .thnav .links a:hover{background:var(--neu-bg);}
 .thnav .links a[aria-current="page"]{color:var(--ink);background:var(--neu-bg);font-weight:640;}
 .thnav .themebtn{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
@@ -218,6 +220,11 @@ a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:
   details:not([open]) > *{display:block;}
 }
 
+
+/* A link with no colour rule falls back to the browser's #0000EE, which measures
+   1.86:1 on our dark surface (Living Here's "Burrtec's holiday schedule" link).
+   Anything inside a note or a list item gets the accent unless it says otherwise. */
+.note a,.clist li > a,.q a{color:var(--accent);}
 
 /* ---- Phone nav: all six destinations, no sideways scroll (2026-09-21) ----
    Under 560px the brand and theme button take the first row and the six links get
