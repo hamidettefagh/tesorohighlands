@@ -32,11 +32,14 @@
   var isFire = path === "/fire";
   var isWeather = path === "/weather";
 
+  // `short` is what a phone shows; the rest of the label sits in a .lg span that
+  // th.css hides under 560px. Six full labels need ~450px of a 390px screen, so
+  // four destinations used to be parked off-screen behind a silent sideways scroll.
   var NAV = [
     { href: "/", label: "Home", on: isHome },
-    { href: "/fire", label: "Fire & Emergency", on: isFire },
+    { href: "/fire", label: "Fire", rest: " & Emergency", on: isFire },
     { href: "/weather", label: "Weather", on: isWeather },
-    { href: "/living", label: "Living Here", on: path === "/living" },
+    { href: "/living", label: "Living", rest: " Here", on: path === "/living" },
     { href: "/events", label: "Events", on: path === "/events" },
     { href: "/hoa", label: "HOA", on: path === "/hoa" }
   ];
@@ -59,12 +62,24 @@
     '<a class="brand" href="/">' + BRAND + "<span>Tesoro Highlands</span></a>" +
     '<div class="links">' +
     NAV.map(function (n) {
-      return '<a href="' + n.href + '"' + (n.on ? ' aria-current="page"' : "") + ">" + n.label + "</a>";
+      // aria-label carries the full name even when the phone shows the short one.
+      var full = n.label + (n.rest || "");
+      return '<a href="' + n.href + '"' + (n.on ? ' aria-current="page"' : "") +
+        (n.rest ? ' aria-label="' + full + '"' : "") + "><span>" + n.label +
+        (n.rest ? '<span class="lg">' + n.rest + "</span>" : "") + "</span></a>";
     }).join("") +
     "</div>" +
     '<button class="themebtn" id="thThemeBtn" type="button"></button>';
   var anchor = document.querySelector("a.skip");
   document.body.insertBefore(nav, anchor && anchor.nextSibling ? anchor.nextSibling : document.body.firstChild);
+
+  // If the row still scrolls (320px screens, or text enlarged past the labels),
+  // make sure the page you are ON is the part you can see.
+  (function () {
+    var cur = nav.querySelector('.links a[aria-current="page"]');
+    if (!cur || !cur.scrollIntoView) return;
+    try { cur.scrollIntoView({ inline: "center", block: "nearest" }); } catch (e) {}
+  })();
 
   /* ---- theme toggle: auto → dark → light → auto ---- */
   (function () {
@@ -120,7 +135,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v16";  // v16: a hung feed times out instead of freezing the strip — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v17";  // v17: phone nav shows all six sections — keep in step with nav.js?v=N
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your

@@ -50,7 +50,7 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .thwrap{max-width:760px;margin:0 auto;padding:0 16px 48px;}
 
 /* Skip link — first focusable control, visually hidden until Tab */
-.skip{position:absolute;left:12px;top:8px;z-index:100;padding:8px 12px;border-radius:8px;
+.skip{position:absolute;left:12px;top:8px;z-index:100;min-height:40px;display:inline-flex;align-items:center;padding:8px 12px;border-radius:8px;
   background:var(--accent);color:var(--on-accent);font-size:13px;font-weight:640;text-decoration:none;
   transform:translateY(-120%);transition:transform .15s ease;}
 .skip:focus{transform:translateY(0);outline:2px solid var(--accent);outline-offset:2px;}
@@ -63,28 +63,37 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 /* top nav */
 .thnav{position:sticky;top:0;z-index:60;background:var(--surface);border-bottom:1px solid var(--line);
   display:flex;align-items:center;gap:10px;padding:9px 16px;}
-.thnav .brand{display:flex;align-items:center;gap:8px;font-weight:680;font-size:15px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none;flex:none;}
+.thnav .brand{display:flex;align-items:center;min-height:40px;gap:8px;font-weight:680;font-size:15px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none;flex:none;}
 .thnav .brand svg{width:22px;height:22px;flex:none;border-radius:6px;}
 .thnav .links{display:flex;gap:1px;margin-left:auto;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
 .thnav .links::-webkit-scrollbar{display:none;}
-.thnav .links a{color:var(--ink-2);text-decoration:none;font-size:13px;font-weight:540;padding:6px 10px;border-radius:8px;white-space:nowrap;}
+/* Every visual property is declared here on purpose: living.html and hoa.html each
+   define their own `.links a` for a two-column link grid, and the injected nav
+   picked up its border, background and display on those two pages. */
+.thnav .links a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;
+  border:0;background:none;box-shadow:none;color:var(--ink-2);text-decoration:none;font-size:13px;
+  font-weight:540;padding:6px 10px;border-radius:8px;white-space:nowrap;}
 .thnav .links a:hover{background:var(--neu-bg);}
 .thnav .links a[aria-current="page"]{color:var(--ink);background:var(--neu-bg);font-weight:640;}
 .thnav .themebtn{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
-  border-radius:8px;width:32px;height:32px;display:grid;place-items:center;font-size:14px;cursor:pointer;font-family:var(--font);padding:0;line-height:1;}
+  border-radius:8px;width:40px;height:40px;margin-left:8px;display:grid;place-items:center;font-size:15px;cursor:pointer;font-family:var(--font);padding:0;line-height:1;}
 .thnav .themebtn:hover{border-color:var(--muted);}
 
 /* live "right now" strip */
-.thstrip{display:flex;align-items:center;gap:9px;padding:9px 16px;font-size:13px;font-weight:540;text-decoration:none;border-bottom:1px solid;}
+.thstrip{display:flex;align-items:center;min-height:44px;gap:9px;padding:9px 16px;font-size:13px;font-weight:540;text-decoration:none;border-bottom:1px solid;}
 .thstrip .dot{width:9px;height:9px;border-radius:50%;flex:none;}
 .thstrip.ok{background:var(--ok-bg);color:var(--ok-fg);border-color:var(--ok-line);} .thstrip.ok .dot{background:var(--ok-fg);}
 .thstrip.caution{background:var(--cau-bg);color:var(--cau-fg);border-color:var(--cau-line);} .thstrip.caution .dot{background:var(--cau-fg);}
 .thstrip.danger{background:var(--dan-bg);color:var(--dan-fg);border-color:var(--dan-line);} .thstrip.danger .dot{background:var(--dan-fg);}
 .thstrip.neutral{background:var(--neu-bg);color:var(--neu-fg);border-color:var(--neu-line);} .thstrip.neutral .dot{background:var(--muted);}
-.thstrip .txt{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.thstrip .arrow{opacity:.65;font-size:12px;font-weight:600;flex:none;}
-/* on phones an evacuation message must never be cut off mid-sentence */
-@media(max-width:560px){.thstrip .txt{white-space:normal;line-height:1.4;}}
+/* An evacuation message must never be cut off mid-sentence — at ANY width. This
+   used to wrap only under 560px, so on an iPad, a landscape phone or a desktop the
+   line "Evacuation WARNING includes our zone — be packed and ready; those needing
+   extra time…" ended in an ellipsis exactly where the instruction began. */
+.thstrip .txt{flex:1;min-width:0;line-height:1.4;}
+/* No opacity on safety text: at .65 this arrow measured 2.6-3.3:1 in light and
+   failed AA in all four tiers in dark. Weight and size carry the hierarchy. */
+.thstrip .arrow{font-size:12.5px;font-weight:600;flex:none;}
 
 /* hub landing */
 .hub-head{padding:26px 0 4px;}
@@ -93,14 +102,14 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .hub-hero{margin:16px 0 6px;border-radius:var(--radius);border:1px solid;padding:18px 20px;box-shadow:var(--shadow);}
 .hub-hero.ok{background:var(--ok-bg);border-color:var(--ok-line);} .hub-hero.caution{background:var(--cau-bg);border-color:var(--cau-line);}
 .hub-hero.danger{background:var(--dan-bg);border-color:var(--dan-line);} .hub-hero.neutral{background:var(--neu-bg);border-color:var(--neu-line);}
-.hub-hero .eyebrow{font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:680;opacity:.85;}
+.hub-hero .eyebrow{font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:680;}
 .hub-hero.ok .eyebrow,.hub-hero.ok .htext{color:var(--ok-fg);} .hub-hero.caution .eyebrow,.hub-hero.caution .htext{color:var(--cau-fg);} .hub-hero.danger .eyebrow,.hub-hero.danger .htext{color:var(--dan-fg);}
 .hub-hero .htext{font-size:17px;font-weight:620;letter-spacing:-0.01em;margin:4px 0 10px;line-height:1.35;}
-.hub-hero .hlink{font-size:13px;font-weight:640;text-decoration:none;color:inherit;opacity:.9;}
+.hub-hero .hlink{font-size:13px;font-weight:640;text-decoration:none;color:inherit;}
 /* every active NWS alert, so heat/red-flag stay visible behind a bigger headline */
 .hub-hero .halerts{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 11px;}
 .hub-hero .halert{font-size:11.5px;font-weight:640;padding:2px 9px;border-radius:999px;
-  border:1px solid currentColor;color:inherit;opacity:.75;white-space:nowrap;}
+  border:1px solid currentColor;color:inherit;white-space:nowrap;}
 /* Two stat tiles. They stay side by side even on phones — stacked, they were two
    nearly-empty full-width cards where one compact row says the same thing. */
 .today{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px;}
@@ -209,6 +218,29 @@ a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:
   details:not([open]) > *{display:block;}
 }
 
+
+/* ---- Phone nav: all six destinations, no sideways scroll (2026-09-21) ----
+   Under 560px the brand and theme button take the first row and the six links get
+   their own, each an equal share. The long half of two labels (.lg) is hidden, so
+   "Fire & Emergency" reads "Fire" and "Living Here" reads "Living" — the full name
+   stays in aria-label. The nav sticks at -48px, exactly the height of the first
+   row, so scrolling parks the links row at the top and the brand row scrolls away:
+   the same sticky chrome as before, now with six destinations in it. */
+@media(max-width:560px){
+  .thnav{flex-wrap:wrap;padding:0 12px;gap:0;top:-48px;}
+  .thnav .brand{height:48px;min-height:0;font-size:14.5px;}
+  .thnav .themebtn{margin-left:auto;align-self:center;}
+  .thnav .links{order:3;flex:1 0 100%;margin-left:0;height:44px;gap:2px;
+    justify-content:space-between;border-top:1px solid var(--line-2);}
+  .thnav .links a{flex:1 1 auto;min-height:44px;padding:0 4px;border-radius:0;}
+  .thnav .links .lg{display:none;}
+}
+
+/* ---- Tap targets: the 40px floor this file promises, actually applied ----
+   Measured 2026-09-20: 11-21 controls per page came in under it, five under
+   WCAG's 24px minimum. */
+.hub-hero .hlink{display:inline-flex;align-items:center;min-height:40px;}
+.week .wkhead a{display:inline-flex;align-items:center;min-height:40px;padding-left:12px;}
 
 /* ---- Phone readability floor (2026-09-02) ----
    78% of visitors are on phones and the audience skews older. Readable text

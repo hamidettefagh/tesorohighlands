@@ -1,4 +1,5 @@
 [
+  { "date": "2026-09-21", "text": "All six sections now fit the top of a phone screen \u2014 Weather, Living Here, Events and HOA used to be hidden behind a sideways swipe \u2014 plus bigger buttons and clearer text throughout", "href": "/" },
   { "date": "2026-09-21", "text": "Fire page fixes: a shelter-in-place order now says stay inside (never “leave now”), an evacuation warning for our zone always leads, and the quiet-day summary can no longer sit on top of a real alert", "href": "/fire" },
   { "date": "2026-09-18", "text": "Two neighborhood events are up — Burgers & Brews for the dads (Sat, Oct 3) and the 2nd Annual Halloween Party (Sat, Oct 31), with flyers, prices and how to RSVP", "href": "/events#community" },
   { "date": "2026-09-18", "text": "When an outside data source stops answering, the site now shows everything else instead of sitting at “unknown”", "href": "/fire" },

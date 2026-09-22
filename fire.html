@@ -75,8 +75,8 @@
   .allquiet .qlist { flex: 1; min-width: 0; }
   .allquiet .qmore {
     background: none; border: 0; padding: 4px 0 0; margin: 0; cursor: pointer;
-    font-family: var(--font); font-size: 11.5px; font-weight: 640; color: inherit;
-    opacity: .8; text-decoration: underline;
+    font-family: var(--font); font-size: 12.5px; font-weight: 640; color: inherit;
+    text-decoration: underline; min-height: 40px;
   }
   .strip b { font-weight: 700; }
 
@@ -92,7 +92,7 @@
   .hbtns { display:flex; gap:6px; }
   .iconbtn {
     border:1px solid var(--line); background: var(--surface); color: var(--ink-2);
-    border-radius: 10px; height: 34px; padding: 0 11px; font-size: 12.5px; cursor: pointer;
+    border-radius: 10px; min-height: 40px; min-width: 40px; padding: 0 11px; font-size: 12.5px; cursor: pointer;
     display:inline-flex; align-items:center; gap:6px; font-family: var(--font);
   }
   .iconbtn:hover { border-color: var(--muted); }
@@ -103,7 +103,7 @@
   .hero.ok { background:var(--ok-bg); border-color:var(--ok-line); }
   .hero.caution { background:var(--cau-bg); border-color:var(--cau-line); }
   .hero.danger { background:var(--dan-bg); border-color:var(--dan-line); }
-  .hero .eyebrow { font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; font-weight:680; opacity:.8; }
+  .hero .eyebrow { font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; font-weight:680; }
   .hero.ok .eyebrow, .hero.ok h2 { color:var(--ok-fg); }
   .hero.caution .eyebrow, .hero.caution h2 { color:var(--cau-fg); }
   .hero.danger .eyebrow, .hero.danger h2 { color:var(--dan-fg); }
@@ -306,7 +306,7 @@
   .sharecard.danger h3 { color:var(--dan-fg); }
   .sharecard .q { margin:0 0 10px; }
   .sharebtns { display:flex; gap:8px; flex-wrap:wrap; }
-  .wabtn { display:inline-block; text-decoration:none; background:#128a43; color:#fff; font-weight:700; font-size:13px;
+  .wabtn { display:inline-flex; align-items:center; min-height:40px; text-decoration:none; background:#0f7a3b; color:#fff; font-weight:700; font-size:13px;
     padding:9px 16px; border-radius:10px; }
   .wabtn:hover { filter:brightness(1.06); }
   .copybtn { border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:10px;
@@ -336,10 +336,11 @@ footer{font-size:12.5px;}
 .pbhint,.playbook[open] .pbhint::after{font-size:12.5px;}
 .src{font-size:12.5px;}
 .how summary{font-size:12.5px;}
-.jumpnav a{min-height:38px;display:inline-flex;align-items:center;}
+.jumpnav a{min-height:40px;display:inline-flex;align-items:center;}
 .playbook summary,.how summary,.chkmore summary{min-height:40px;display:flex;align-items:center;}
 /* Leaflet controls follow the theme; the vendored CSS hard-codes white. */
 .leaflet-bar a,.leaflet-bar a:hover{background:var(--surface);color:var(--ink);border-bottom-color:var(--line);}
+.leaflet-touch .leaflet-bar a,.leaflet-bar a{width:40px;height:40px;line-height:40px;}
 .leaflet-container .leaflet-control-attribution{background:var(--surface);color:var(--muted);}
 .leaflet-container .leaflet-control-attribution a{color:var(--ink-2);}
 </style>
@@ -1645,7 +1646,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=16" defer></script>
+<script src="/nav.js?v=17" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>
