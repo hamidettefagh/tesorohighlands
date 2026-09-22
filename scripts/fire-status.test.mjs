@@ -63,6 +63,17 @@ check("warning + unhealthy air keeps the warning, goes red", V({ evac: { lvl: 1 
 check("warning + sizable nearby fire keeps the warning", V({ evac: { lvl: 1 }, fires: [fire(4, 800)] }), { lvl: 2, klass: "danger", title: /Evacuation warning/ });
 check("order still outranks everything", V({ evac: { lvl: 2 }, aqi: 200, fires: [fire(3, 5000)] }), { lvl: 2, title: /Evacuation order/ });
 
+// --- A nearby evacuation is not our zone (lvl 0) but it is NOT "all clear" either.
+// This shipped green -- "Looks safe right now" -- while nav.js said amber for the
+// same feed data, because overall() only ever read .lvl and .shelter.
+check("evacuation order a few miles away", V({ evac: { lvl: 0, near: { kind: "order", dist: 6.3, dir: "NE" } } }), { lvl: 1, klass: "caution", title: /Evacuation order ~6 mi to our NE/ });
+check("shelter-in-place nearby", V({ evac: { lvl: 0, near: { kind: "shelter", dist: 4, dir: "S" } } }), { lvl: 1, title: /Shelter-in-place ~4 mi/ });
+check("evacuation warning nearby", V({ evac: { lvl: 0, near: { kind: "warning", dist: 9, dir: "W" } } }), { lvl: 1, title: /Evacuation warning ~9 mi/ });
+check("our own warning still outranks a nearby order", V({ evac: { lvl: 1, near: { kind: "order", dist: 6, dir: "NE" } } }), { title: /Evacuation warning for our zone/ });
+const nearOrder = overall(V({ evac: { lvl: 0, near: { kind: "order", dist: 6, dir: "NE" } } }));
+if (/all clear/i.test(nearOrder.ey) || /looks safe/i.test(nearOrder.title)) { failed++; console.log("FAIL a nearby evacuation must never read as all clear: " + nearOrder.ey + " / " + nearOrder.title); }
+else console.log("ok   a nearby evacuation never reads as all clear");
+
 // --- Regression: the ordinary days must be unchanged.
 check("quiet day", V({}), { lvl: 0, klass: "ok", ey: "All clear", title: /Looks safe/ });
 check("moderate air is still a quiet day", V({ aqi: 80 }), { lvl: 0, title: /Looks safe/ });
@@ -76,6 +87,25 @@ check("nearby fire outranks a red flag", V({ fires: [fire(10, 200)], alerts: [{ 
 check("red flag outranks heat", V({ alerts: [{ event: "Heat Advisory" }, { event: "Red Flag Warning" }] }), { title: /Red Flag/ });
 check("non-fire NWS alert still counts", V({ alerts: [{ event: "Flood Advisory" }] }), { lvl: 1, title: /Flood Advisory/ });
 check("rain on a quiet day", V({ raining: true }), { lvl: 0, title: /Looks safe/ });
+
+// --- Two source-level guards for rules that live outside overall().
+// (1) The quiet-day gate must lead with its ok flag. Written as !(ok && len) it
+// reads a FAILED feed as "nothing to report" and prints that inside the green box.
+const quietGate = /const quakesQuiet\s*=\s*([^;]+);/.exec(src);
+if (!quietGate) { failed++; console.log("FAIL could not find the quakesQuiet gate in fire.html"); }
+else if (!/^ok\.quakes\s*&&/.test(quietGate[1].trim())) {
+  failed++; console.log("FAIL quakesQuiet must start with ok.quakes so an unknown never reads as quiet: " + quietGate[1].trim());
+} else console.log("ok   a failed quake feed cannot collapse into the green quiet box");
+
+// (2) The lockstep rule: an our-zone evacuation WARNING is caution in all three
+// copies. alert-watch.mjs rated it danger, so the red share card sat under an amber
+// hero and the phone ping went out at urgent.
+const watch = fs.readFileSync(path.join(ROOT, "scripts/alert-watch.mjs"), "utf8");
+const warnOur = /warn-our:\$\{zid\}`,\s*prio:\s*(\d+),\s*level:\s*"(\w+)"/.exec(watch);
+if (!warnOur) { failed++; console.log("FAIL could not find warn-our in scripts/alert-watch.mjs"); }
+else if (warnOur[1] !== "90" || warnOur[2] !== "caution") {
+  failed++; console.log("FAIL warn-our must be prio 90 / caution to match fire.html and nav.js, got " + warnOur[1] + " / " + warnOur[2]);
+} else console.log("ok   our-zone warning is prio 90 / caution in alert-watch.mjs too");
 
 console.log(failed ? "\n" + failed + " FAILED" : "\nall fire-status scenarios pass");
 process.exit(failed ? 1 : 0);

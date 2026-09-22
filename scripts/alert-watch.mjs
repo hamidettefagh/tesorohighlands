@@ -93,7 +93,7 @@ async function checkEvac() {
     else if (covers && isShelter) out.push({ id: `shelter-our:${zid}`, prio: 95, level: "danger",
       title: "SHELTER IN PLACE — our zone",
       text: `🚨 *SHELTER IN PLACE — Tesoro Highlands*${why}\nStay inside with doors and windows closed and follow official direction.\nLive status: ${SITE}/fire` });
-    else if (covers && isWarn) out.push({ id: `warn-our:${zid}`, prio: 90, level: "danger",
+    else if (covers && isWarn) out.push({ id: `warn-our:${zid}`, prio: 90, level: "caution",
       title: "Evacuation WARNING — our zone",
       text: `⚠️ *Evacuation WARNING includes our zone*${why}\nBe packed and ready to leave. Those needing extra time — older neighbors, mobility needs, large animals — should leave NOW.\nZone lookup: protect.genasys.com\nLive status: ${SITE}/fire` });
     else if (isOrder && dist <= 10) out.push({ id: `order-near:${zid}`, prio: 60, level: "caution",

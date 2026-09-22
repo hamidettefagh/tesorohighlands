@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://air-quality-api.open-meteo.com" crossorigin />
 <link rel="preconnect" href="https://api.open-meteo.com" crossorigin />
 <link rel="preconnect" href="https://api.weather.gov" crossorigin />
-<link rel="preconnect" href="https://basemaps.cartocdn.com" crossorigin />
+<link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin />
 <link rel="dns-prefetch" href="https://services3.arcgis.com" />
 <link rel="dns-prefetch" href="https://services.arcgis.com" />
 <title>Fire &amp; Emergency — Tesoro Highlands</title>
@@ -190,7 +190,7 @@
   .fire .fmeta .fn { font-weight:620; font-size:14px; }
   .fire .fmeta .fn a { color:inherit; text-decoration:none; border-bottom:1px dotted var(--muted); }
   .fire .fmeta .fn a:hover { border-bottom-style:solid; }
-  .fire .fmeta .fs { font-size:12px; color:var(--muted); margin-top:1px; }
+  .fire .fmeta .fs { font-size:12.5px; color:var(--muted); margin-top:1px; }
   .fire .fdist { text-align:right; flex:none; }
   .fire .fdist .d { font-size:16px; font-weight:660; }
   .fire .fdist .dir { font-size:11px; color:var(--muted); }
@@ -285,7 +285,7 @@
   /* neutral hero — the honest "we don't know" state */
   .hero.neutral { background:var(--neu-bg); border-color:var(--neu-line); }
   .hero.neutral .eyebrow, .hero.neutral h2 { color:var(--neu-fg); }
-  .hero .hact { display:inline-flex; align-items:center; min-height:44px; margin-top:4px; font-size:13px; font-weight:640; color:inherit; text-decoration:none; opacity:.9; }
+  .hero .hact { display:inline-flex; align-items:center; min-height:44px; margin-top:4px; font-size:13px; font-weight:640; color:inherit; text-decoration:none; }
 
   /* OpenStreetMap ships no dark basemap, so invert the tile pane only — the
      fire/evac overlays and markers live in a different pane and keep their colours. */
@@ -309,7 +309,7 @@
   .wabtn { display:inline-flex; align-items:center; min-height:40px; text-decoration:none; background:#0f7a3b; color:#fff; font-weight:700; font-size:13px;
     padding:9px 16px; border-radius:10px; }
   .wabtn:hover { filter:brightness(1.06); }
-  .copybtn { border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:10px;
+  .copybtn { border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:10px; min-height:40px;
     padding:9px 14px; font-size:13px; font-weight:600; cursor:pointer; font-family:var(--font); }
   .copybtn:hover { border-color:var(--muted); }
   .sharetext { margin:10px 0 0; padding:10px 12px; background:var(--surface); border:1px solid var(--line-2); border-radius:10px;
@@ -337,6 +337,9 @@ footer{font-size:12.5px;}
 .src{font-size:12.5px;}
 .how summary{font-size:12.5px;}
 .jumpnav a{min-height:40px;display:inline-flex;align-items:center;}
+/* Both only render when there is something to report, so neither capture measured them. */
+#quakeList .fs a{display:inline-flex;align-items:center;min-height:40px;}
+.card .detail:empty{display:none;}
 .playbook summary,.how summary,.chkmore summary{min-height:40px;display:flex;align-items:center;}
 /* Leaflet controls follow the theme; the vendored CSS hard-codes white. */
 .leaflet-bar a,.leaflet-bar a:hover{background:var(--surface);color:var(--ink);border-bottom-color:var(--line);}
@@ -520,6 +523,8 @@ footer{font-size:12.5px;}
   <div class="card" style="margin-top:8px;padding:0;overflow:hidden">
     <div id="fireMap" role="region" aria-label="Live fire and evacuation map" style="height:360px;width:100%;background:var(--neu-bg)"></div>
     <div id="mapLegend" class="q" style="padding:11px 14px;margin:0;border-top:1px solid var(--line-2)">Loading live fire &amp; evacuation data…</div>
+    <!-- Its own node: finish() rewrites #mapLegend wholesale. -->
+    <div id="mapNote" class="q" style="padding:0 14px 11px;margin:0" hidden></div>
   </div>
 
   <!-- FIRE CAMERAS -->
@@ -596,7 +601,7 @@ footer{font-size:12.5px;}
   </div>
 
   <!-- SOURCES -->
-  <div class="sechead"><h2>Official sources</h2><div class="line"></div></div>
+  <div class="sechead" id="sources"><h2>Official sources</h2><div class="line"></div></div>
   <div class="links" style="margin-top:8px">
     <a href="https://protect.genasys.com/search?query=Valencia%2C%20CA" target="_blank" rel="noopener">Your evacuation zone <span>Genasys ↗</span></a>
     <a href="https://www.fire.ca.gov/incidents" target="_blank" rel="noopener">CAL FIRE incidents <span>fire.ca.gov ↗</span></a>
@@ -837,6 +842,16 @@ function overall(v){
     "An evacuation order covers this area. Go now via your planned route and follow official direction.");
   if (v.evac.lvl === 1) say(90, 1, "Evacuation warning for our zone",
     "Be packed and ready to leave, and watch official channels closely. Those needing extra time — older neighbors, anyone with mobility needs, large animals — should leave now.");
+  // Not our zone, but "All clear" is the wrong thing to print when an evacuation
+  // order is a few miles away. Same tier as nav.js's near-zone line (50, level 1).
+  if (v.evac.near) {
+    const n = v.evac.near, mi = Math.round(n.dist);
+    say(50, 1,
+      n.kind === "order" ? "Evacuation order ~" + mi + " mi to our " + n.dir
+        : n.kind === "shelter" ? "Shelter-in-place ~" + mi + " mi to our " + n.dir
+        : "Evacuation warning ~" + mi + " mi to our " + n.dir,
+      "Not our zone — no order or warning here. Worth watching: check the map below and keep official alerts on.");
+  }
   if (air.lvl >= 3) say(80, 2, "Unhealthy air right now",
     "Keep everyone inside with windows closed and the AC on recirculate. The smoke playbook below has the rest.");
   if (frisk >= 2) say(75, 2, "A sizable fire is burning close by",
@@ -1170,9 +1185,11 @@ async function fetchEvac(lat, lon){
   if (covOrder) return { lvl:2, label:"Evacuation ORDER for our zone" + why(covOrder) + ". Leave now via your planned route.", zone:"Live · Cal OES statewide feed" };
   if (covShelter) return { lvl:2, shelter:true, label:"SHELTER IN PLACE for our zone" + why(covShelter) + ". Stay inside with doors and windows closed and follow official direction — this is not an all-clear.", zone:"Live · Cal OES statewide feed" };
   if (covWarn)  return { lvl:1, label:"Evacuation WARNING includes our zone" + why(covWarn) + ". Be packed and ready to leave. Those needing extra time to evacuate — older neighbors, anyone with mobility needs, large animals — should leave now.", zone:"Live · Cal OES statewide feed" };
-  if (nearOrder) return { lvl:0, label:"Our zone has no order or warning. Nearby: an evacuation ORDER is active ~" + Math.round(nearOrder.dist) + " mi to our " + nearOrder.dir + why(nearOrder) + ". Watch it on the map above and " + GENASYS_LINK + ".", zone:"Live · Cal OES statewide feed" };
-  if (nearShelter) return { lvl:0, label:"Our zone has no order or warning. Nearby: a shelter-in-place is active ~" + Math.round(nearShelter.dist) + " mi to our " + nearShelter.dir + why(nearShelter) + ". Watch it on the map above.", zone:"Live · Cal OES statewide feed" };
-  if (nearWarn)  return { lvl:0, label:"Our zone has no order or warning. Nearby: an evacuation warning ~" + Math.round(nearWarn.dist) + " mi to our " + nearWarn.dir + why(nearWarn) + ". Watch it on the map above.", zone:"Live · Cal OES statewide feed" };
+  // lvl stays 0 — it is genuinely not our zone — but `near` lets the hero say so
+  // instead of falling through to "Looks safe right now". Tier matches nav.js (50/1).
+  if (nearOrder) return { lvl:0, near:{ kind:"order", dist:nearOrder.dist, dir:nearOrder.dir }, label:"Our zone has no order or warning. Nearby: an evacuation ORDER is active ~" + Math.round(nearOrder.dist) + " mi to our " + nearOrder.dir + why(nearOrder) + ". Watch it on the map above and " + GENASYS_LINK + ".", zone:"Live · Cal OES statewide feed" };
+  if (nearShelter) return { lvl:0, near:{ kind:"shelter", dist:nearShelter.dist, dir:nearShelter.dir }, label:"Our zone has no order or warning. Nearby: a shelter-in-place is active ~" + Math.round(nearShelter.dist) + " mi to our " + nearShelter.dir + why(nearShelter) + ". Watch it on the map above.", zone:"Live · Cal OES statewide feed" };
+  if (nearWarn)  return { lvl:0, near:{ kind:"warning", dist:nearWarn.dist, dir:nearWarn.dir }, label:"Our zone has no order or warning. Nearby: an evacuation warning ~" + Math.round(nearWarn.dist) + " mi to our " + nearWarn.dir + why(nearWarn) + ". Watch it on the map above.", zone:"Live · Cal OES statewide feed" };
   return { lvl:0, label:"No active evacuation orders or warnings for this area right now, per the Cal OES statewide feed. Look up your zone name on "+GENASYS_LINK+" so you recognize it in an emergency.", zone:"Live · Cal OES statewide feed" };
 }
 async function fetchAll(){
@@ -1311,7 +1328,11 @@ function render(){
   // above-the-fold route to the evacuation section. Under a shelter-in-place,
   // "routes out" is the wrong promise, so the label follows the situation.
   const hact = $("#heroAct");
-  if(hact) hact.textContent = v.evac.shelter ? "What to do & official links ↓" : "Evacuation status, go-bag & routes ↓";
+  if(hact){
+    hact.textContent = v.evac.shelter ? "What to do & official links ↓" : "Evacuation status, go-bag & routes ↓";
+    // Never send someone reading a stay-inside order to the "leave early" routes.
+    hact.setAttribute("href", v.evac.shelter ? "#sources" : "#evac");
+  }
 
   // who should take it easy — but only when there's real air data to judge from
   const adv = airKnown ? airAdvice(v)
@@ -1352,7 +1373,7 @@ function render(){
     : v.evac.shelter ? "Stay inside"
     : (evLvl===0 ? "No — no orders or warnings for our zone" : evLvl===1 ? "Get ready now" : "Leave now");
   $("#evacTxt").innerHTML = `<strong>${evTitle}</strong><span>${v.evac.zone}</span>`;
-  placeEvacBlock(!!(v.evac && !v.evac.unknown && v.evac.lvl >= 1));
+  placeEvacBlock(!!(v.evac && !v.evac.unknown && v.evac.lvl >= 1 && !v.evac.shelter));
   $("#evacDetail").innerHTML = v.evac.label;
 
   // fire weather
@@ -1484,7 +1505,7 @@ function render(){
     const q = $("#allQuiet"); if(!q) return;
     const alertsQuiet = ok.alerts && v.alerts.length === 0;
     const powerQuiet  = ok.outages && (!live.outages || !live.outages.length);
-    const quakesQuiet = !(ok.quakes && (live.quakes||[]).length);
+    const quakesQuiet = ok.quakes && !(live.quakes||[]).length;
     const allQuiet = alertsQuiet && powerQuiet && quakesQuiet && !quietForced;
     q.hidden = !allQuiet;
     $("#alerts").hidden = allQuiet;
@@ -1632,8 +1653,13 @@ async function boot(){
   // painted the honest-failure copy ("one or more feeds is unreachable", "couldn't
   // reach the National Weather Service") as the very first thing every visitor saw,
   // for as long as the feeds took. The static skeletons below say "checking" instead.
-  await fetchAll();
-  render();
+  // But that first render() was also the fail-safe, so keep one on a watchdog: four
+  // seconds of nothing means say "unknown, not all-clear" rather than "Checking…"
+  // forever, and never let a throw strand the page on the loading state.
+  const watchdog = setTimeout(function(){ try { render(); } catch(e){} }, 4000);
+  try { await fetchAll(); } catch(e){}
+  clearTimeout(watchdog);
+  try { render(); } catch(e){}
   setInterval(async ()=>{ await fetchAll(); render(); }, 10*60*1000);
   // Phones pause timers in background tabs — refetch when the tab comes back if
   // the data is older than 5 minutes, so a reopened page isn't quietly stale.
@@ -1687,16 +1713,18 @@ boot();
     var eff = window.__theme ? window.__theme.effective() : "light";
     var el = map.getContainer(); if (el) el.classList.toggle("darkmap", eff === "dark");
   }
-  tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom:19, attribution:"© OpenStreetMap" }).addTo(map);
+  tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom:19, attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
   paintTheme();
-  var tileWins = 0, tileFails = 0, toldTileFail = false;
-  tiles.on("tileload", function(){ tileWins++; });
+  var tileWins = 0, tileFails = 0;
+  tiles.on("tileload", function(){
+    tileWins++;
+    var n = document.getElementById("mapNote"); if (n) n.hidden = true;   // streets arrived after all
+  });
   tiles.on("tileerror", function(){
     // No silent blank map: the markers stay accurate, so say the streets are missing.
-    if (!toldTileFail && tileWins === 0 && ++tileFails >= 4) {
-      toldTileFail = true;
-      var lg = document.getElementById("mapLegend");
-      if (lg) lg.insertAdjacentHTML("beforeend", "<br><b>The street basemap didn't load</b> on this connection — the fire and evacuation shapes are still live and correctly placed.");
+    if (tileWins === 0 && ++tileFails >= 4) {
+      var n = document.getElementById("mapNote");
+      if (n) { n.innerHTML = "<b>The street basemap didn't load</b> on this connection — the fire and evacuation shapes are still live and correctly placed."; n.hidden = false; }
     }
   });
   window.addEventListener("themechange", function(){

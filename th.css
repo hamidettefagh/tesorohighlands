@@ -65,7 +65,7 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
   display:flex;align-items:center;gap:10px;padding:9px 16px;}
 .thnav .brand{display:flex;align-items:center;min-height:40px;gap:8px;font-weight:680;font-size:15px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none;flex:none;}
 .thnav .brand svg{width:22px;height:22px;flex:none;border-radius:6px;}
-.thnav .links{display:flex;gap:1px;margin-left:auto;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
+.thnav .links{display:flex;gap:1px;margin:0 0 0 auto;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
 .thnav .links::-webkit-scrollbar{display:none;}
 /* Every visual property is declared here on purpose: living.html and hoa.html each
    define their own `.links a` for a two-column link grid, and the injected nav
@@ -74,7 +74,9 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
   border:0;background:none;box-shadow:none;color:var(--ink-2);text-decoration:none;font-size:13px;
   font-weight:540;padding:6px 10px;border-radius:8px;white-space:nowrap;}
 /* The label span needs the same protection: those two pages also style `.links a span`. */
-.thnav .links a > span{font-size:inherit;color:inherit;font-weight:inherit;flex:initial;}
+/* Descendant, not child: the label is <a><span>Fire<span class="lg"> & Emergency</span></span></a>,
+   and living/hoa/fire all style `.links a span`, which still reached the inner one. */
+.thnav .links a span{font-size:inherit;color:inherit;font-weight:inherit;flex:initial;}
 .thnav .links a:hover{background:var(--neu-bg);}
 .thnav .links a[aria-current="page"]{color:var(--ink);background:var(--neu-bg);font-weight:640;}
 .thnav .themebtn{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
@@ -233,13 +235,17 @@ a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:
    stays in aria-label. The nav sticks at -48px, exactly the height of the first
    row, so scrolling parks the links row at the top and the brand row scrolls away:
    the same sticky chrome as before, now with six destinations in it. */
-@media(max-width:560px){
+@media(max-width:720px){
   .thnav{flex-wrap:wrap;padding:0 12px;gap:0;top:-48px;}
   .thnav .brand{height:48px;min-height:0;font-size:14.5px;}
   .thnav .themebtn{margin-left:auto;align-self:center;}
   .thnav .links{order:3;flex:1 0 100%;margin-left:0;height:44px;gap:2px;
     justify-content:space-between;border-top:1px solid var(--line-2);}
-  .thnav .links a{flex:1 1 auto;min-height:44px;padding:0 4px;border-radius:0;}
+  /* flex:1 1 auto shares slack by content width, so the shortest tab ("Fire") came
+     out ~34px at 320px — min-width keeps every tab on the 40px floor. */
+  .thnav .links a{flex:1 1 auto;min-width:40px;min-height:44px;padding:0 4px;border-radius:0;}
+  /* The row is a scroll container pinned to 44px, so an outside ring gets clipped. */
+  .thnav .links a:focus-visible{outline-offset:-3px;}
   .thnav .links .lg{display:none;}
 }
 

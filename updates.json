@@ -1,11 +1,12 @@
 [
+  { "date": "2026-09-22", "text": "Two Fire page corrections: a nearby evacuation order no longer reads as \u201call clear\u201d for our hill, and a failed earthquake check no longer counts as \u201cnothing to report\u201d", "href": "/fire" },
   { "date": "2026-09-21", "text": "All six sections now fit the top of a phone screen \u2014 Weather, Living Here, Events and HOA used to be hidden behind a sideways swipe \u2014 plus bigger buttons and clearer text throughout", "href": "/" },
   { "date": "2026-09-21", "text": "Fire page fixes: a shelter-in-place order now says stay inside (never “leave now”), an evacuation warning for our zone always leads, and the quiet-day summary can no longer sit on top of a real alert", "href": "/fire" },
   { "date": "2026-09-18", "text": "Two neighborhood events are up — Burgers & Brews for the dads (Sat, Oct 3) and the 2nd Annual Halloween Party (Sat, Oct 31), with flyers, prices and how to RSVP", "href": "/events#community" },
   { "date": "2026-09-18", "text": "When an outside data source stops answering, the site now shows everything else instead of sitting at “unknown”", "href": "/fire" },
   { "date": "2026-09-07", "text": "Living Here shows the next trash pickup and Burrtec’s holiday schedule, and the home page flags weeks when pickup runs a day late", "href": "/living#trash" },
   { "date": "2026-09-06", "text": "Weather alerts now say when they end (“Flood Advisory until 7 PM”), and the Fire page shows every NWS alert for our location", "href": "/fire" },
-  { "date": "2026-09-05", "text": "The site notices when it’s actually raining on our hill, and the home page boxes are colour-coded like the status line", "href": "/" },
+  { "date": "2026-09-05", "text": "The site notices when it’s actually raining on our hill, the home page boxes are colour-coded like the status line, and that line now says \u201cmoderate\u201d when the air is, not \u201cgood\u201d", "href": "/" },
   { "date": "2026-09-02", "text": "Easier on a phone — bigger text and buttons everywhere, Events opens on this week’s picks, and the Fire page puts evacuation info first when it matters", "href": "/events" },
   { "date": "2026-09-01", "text": "New Weather page, and air quality and fire weather now come from neighbor sensors right here on our hill — not a reading from six miles away", "href": "/weather" },
   { "date": "2026-08-23", "text": "Easier to use with a keyboard or screen reader, and the emergency status line sits where “skip to content” can’t jump past it", "href": "/" },

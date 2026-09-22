@@ -63,6 +63,11 @@ These exist because each one was a real bug at some point.
 That file is the "New on this site" list on the home page, and it's hand-maintained —
 nothing writes it for you. If a change adds a feature, improves one, or corrects
 information that was wrong, add a dated line for it in the same commit, newest first.
+The home page shows everything from the last 21 days, at least 3 lines and at most 6,
+so roughly the last six entries are what residents actually see. Keep the file
+newest-first (the under-3 fallback takes the first three by position, not by date) and
+give every entry a real `YYYY-MM-DD` — a malformed date drops it from the home page
+silently. One sentence per line.
 Write it for a neighbor, not for a developer: what changed for them and where to find
 it. Corrections count, and saying so out loud is the point — it's how people learn the
 site is worth trusting. Internal refactors, dependency bumps and feed refreshes don't
