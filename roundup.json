@@ -1,54 +1,54 @@
 {
-  "generatedAt": "2026-09-18T18:34:03.351Z",
-  "weekendOf": "2026-09-18",
+  "generatedAt": "2026-09-25T19:21:39.284Z",
+  "weekendOf": "2026-09-25",
   "model": "claude-haiku-4-5",
-  "intro": "Here's what we're doing this weekend in Tesoro Highlands.",
+  "intro": "Here are some great ways to spend your weekend in Tesoro Highlands.",
   "picks": [
+    {
+      "emoji": "🎃",
+      "day": "Sat",
+      "time": "9 AM",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "price": "free",
+      "note": "Pumpkins, farm fun, free entry for all ages.",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch"
+    },
     {
       "emoji": "🎸",
       "day": "Fri",
       "time": "4 PM",
       "title": "Loud @ the Library: Powered by Music Lab 🎸",
       "price": "free",
-      "note": "Live music for kids and teens at the library",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37431"
+      "note": "Live music for kids and teens at the library.",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37432"
     },
     {
-      "emoji": "📚",
-      "day": "Sat",
-      "time": "11 AM",
-      "title": "Family Storytime",
-      "price": "free",
-      "note": "Classic family storytime to start Sunday morning",
-      "url": "https://santaclarita.librarycalendar.com/event/family-storytime-37822"
+      "emoji": "🎢",
+      "day": "Fri",
+      "time": "6:30 PM",
+      "title": "Fright Fest at Six Flags Magic Mountain",
+      "price": "",
+      "note": "Evening thrills for the whole family at Magic Mountain.",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest"
     },
     {
-      "emoji": "🥕",
+      "emoji": "🌽",
       "day": "Sun",
       "time": "8:30 AM",
       "title": "Valencia FivePoint Farmers Market",
       "price": "free",
-      "note": "Fresh local produce and community vibes",
+      "note": "Local farmers market to start Sunday morning.",
       "url": "https://www.scvfarmersmarkets.com/locations/valencia/"
     },
     {
-      "emoji": "🏛️",
+      "emoji": "☕",
       "day": "Fri",
       "time": "11 AM",
-      "title": "Hart Mansion Group Tour 11:00a.m.",
+      "title": "The Breakfast Club - Molletes",
       "price": "free",
-      "note": "Free tour of a local historic gem",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-group-tour-1100am-36601"
-    },
-    {
-      "emoji": "🎭",
-      "day": "Fri",
-      "time": "8 PM",
-      "title": "The Doo Wop Project: Echoes Of The Street",
-      "price": "",
-      "note": "Grown-up evening out with classic doo-wop vibes",
-      "url": "https://pac.canyons.edu/shows/doo-wop.php"
+      "note": "Adults gather for food and conversation.",
+      "url": "https://santaclarita.librarycalendar.com/event/breakfast-club-breakfast-burritos-31597"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nHere's what we're doing this weekend in Tesoro Highlands.\n\n🎸 *Fri 4 PM* — Loud @ the Library: Powered by Music Lab 🎸 (free)\n   Live music for kids and teens at the library\n📚 *Sat 11 AM* — Family Storytime (free)\n   Classic family storytime to start Sunday morning\n🥕 *Sun 8:30 AM* — Valencia FivePoint Farmers Market (free)\n   Fresh local produce and community vibes\n🏛️ *Fri 11 AM* — Hart Mansion Group Tour 11:00a.m. (free)\n   Free tour of a local historic gem\n🎭 *Fri 8 PM* — The Doo Wop Project: Echoes Of The Street\n   Grown-up evening out with classic doo-wop vibes\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nHere are some great ways to spend your weekend in Tesoro Highlands.\n\n🎃 *Sat 9 AM* — Gilchrist Farm Harvest Festival & Pumpkin Patch (free)\n   Pumpkins, farm fun, free entry for all ages.\n🎸 *Fri 4 PM* — Loud @ the Library: Powered by Music Lab 🎸 (free)\n   Live music for kids and teens at the library.\n🎢 *Fri 6:30 PM* — Fright Fest at Six Flags Magic Mountain\n   Evening thrills for the whole family at Magic Mountain.\n🌽 *Sun 8:30 AM* — Valencia FivePoint Farmers Market (free)\n   Local farmers market to start Sunday morning.\n☕ *Fri 11 AM* — The Breakfast Club - Molletes (free)\n   Adults gather for food and conversation.\n\nFull list → https://tesorohighlands.com/events"
 }
