@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T23:17:57.169Z",
+  "generatedAt": "2026-09-26T04:57:16.262Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1789455660,
       "endEpoch": 1792047540,
-      "moreWindows": 32
+      "moreWindows": 36
     },
     {
       "route": "I-5",
@@ -28,7 +28,7 @@
       "total": "1",
       "startEpoch": 1790060460,
       "endEpoch": 1792652340,
-      "moreWindows": 9
+      "moreWindows": 10
     },
     {
       "route": "I-5",
@@ -42,7 +42,7 @@
       "total": "1",
       "startEpoch": 1790388060,
       "endEpoch": 1790427540,
-      "moreWindows": 31
+      "moreWindows": 34
     },
     {
       "route": "I-5",
@@ -56,7 +56,7 @@
       "total": "4",
       "startEpoch": 1790388060,
       "endEpoch": 1790441940,
-      "moreWindows": 25
+      "moreWindows": 28
     },
     {
       "route": "I-5",
@@ -70,7 +70,7 @@
       "total": "4",
       "startEpoch": 1790388060,
       "endEpoch": 1790445540,
-      "moreWindows": 18
+      "moreWindows": 20
     },
     {
       "route": "I-5",
@@ -84,7 +84,7 @@
       "total": "1",
       "startEpoch": 1790388060,
       "endEpoch": 1790438340,
-      "moreWindows": 24
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -98,63 +98,7 @@
       "total": "1",
       "startEpoch": 1790388060,
       "endEpoch": 1790427540,
-      "moreWindows": 36
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Road Maintenance",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1790388060,
-      "endEpoch": 1790427540,
-      "moreWindows": 57
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "McBean Parkway",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1790388060,
-      "endEpoch": 1790427540,
-      "moreWindows": 23
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Valencia Blvd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1790388060,
-      "endEpoch": 1790427540,
-      "moreWindows": 11
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Truck Weigh Station",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Shoulder Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1790388060,
-      "endEpoch": 1790427540,
-      "moreWindows": 6
+      "moreWindows": 35
     },
     {
       "route": "I-5",
@@ -168,7 +112,63 @@
       "total": "1",
       "startEpoch": 1790388060,
       "endEpoch": 1790467140,
-      "moreWindows": 100
+      "moreWindows": 107
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Rye Canyon Rd",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "2",
+      "startEpoch": 1790388060,
+      "endEpoch": 1790441940,
+      "moreWindows": 6
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "McBean Parkway",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1790388060,
+      "endEpoch": 1790427540,
+      "moreWindows": 17
+    },
+    {
+      "route": "SR-14",
+      "dir": "North",
+      "at": "Shadow Pines Blvd / Soledad Rd",
+      "place": "Canyon Country",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Electrical Work",
+      "lanes": "1",
+      "total": "4",
+      "startEpoch": 1790388060,
+      "endEpoch": 1790398740,
+      "moreWindows": 27
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Sawcutting Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1790391660,
+      "endEpoch": 1790467140,
+      "moreWindows": 12
     }
   ]
 }
