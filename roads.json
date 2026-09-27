@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T22:49:36.879Z",
+  "generatedAt": "2026-09-27T05:17:50.287Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1789455660,
       "endEpoch": 1792047540,
-      "moreWindows": 34
+      "moreWindows": 38
     },
     {
       "route": "I-5",
@@ -28,21 +28,7 @@
       "total": "1",
       "startEpoch": 1790060460,
       "endEpoch": 1792652340,
-      "moreWindows": 7
-    },
-    {
-      "route": "SR-14",
-      "dir": "North",
-      "at": "Shadow Pines Blvd / Soledad Rd",
-      "place": "Canyon Country",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Electrical Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1790431260,
-      "endEpoch": 1790463540,
-      "moreWindows": 27
+      "moreWindows": 6
     },
     {
       "route": "I-5",
@@ -56,21 +42,7 @@
       "total": "4",
       "startEpoch": 1790463660,
       "endEpoch": 1790531940,
-      "moreWindows": 34
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Parker Rd",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1790463660,
-      "endEpoch": 1790539140,
-      "moreWindows": 19
+      "moreWindows": 35
     },
     {
       "route": "I-5",
@@ -84,49 +56,21 @@
       "total": "2",
       "startEpoch": 1790467260,
       "endEpoch": 1790528340,
-      "moreWindows": 5
+      "moreWindows": 6
     },
     {
       "route": "I-5",
-      "dir": "North",
-      "at": "Golden State Freeway, Route 5",
+      "dir": "South",
+      "at": "Parker Rd",
       "place": "Castaic",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Electrical Work",
-      "lanes": "All",
-      "total": "1",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Pavement Work",
+      "lanes": "3, 4",
+      "total": "4",
       "startEpoch": 1790470860,
-      "endEpoch": 1790517540,
-      "moreWindows": 57
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Gavin Canyon",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Roadway Excavation",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1790474460,
       "endEpoch": 1790524740,
-      "moreWindows": 11
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Lyons Ave",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "5",
-      "total": "4",
-      "startEpoch": 1790474460,
-      "endEpoch": 1790524740,
-      "moreWindows": 23
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -140,7 +84,7 @@
       "total": "4",
       "startEpoch": 1790474460,
       "endEpoch": 1790531940,
-      "moreWindows": 25
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -154,21 +98,77 @@
       "total": "4",
       "startEpoch": 1790474460,
       "endEpoch": 1790524740,
-      "moreWindows": 26
+      "moreWindows": 28
     },
     {
       "route": "I-5",
       "dir": "South",
-      "at": "Lyons Ave",
-      "place": "Stevenson Ranch",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Castaic",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Utility Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1790478060,
+      "endEpoch": 1790553540,
+      "moreWindows": 105
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Castaic",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Roadway Excavation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1790481660,
+      "endEpoch": 1790528340,
+      "moreWindows": 59
+    },
+    {
+      "route": "SR-14",
+      "dir": "South",
+      "at": "Antelope Valley Freeway, Route 14",
+      "place": "Sylmar",
+      "facility": "Connector",
+      "type": "Full",
+      "work": "Striping Operation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1790481660,
+      "endEpoch": 1790517540,
+      "moreWindows": 6
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Antelope Valley Freeway, Route 14",
+      "place": "Newhall",
       "facility": "Mainline",
       "type": "Lane",
       "work": "Sawcutting Operation",
-      "lanes": "4, 5",
+      "lanes": "3",
+      "total": "3",
+      "startEpoch": 1790488860,
+      "endEpoch": 1790517540,
+      "moreWindows": 7
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Weldon Canyon",
+      "place": "Granada Hills",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "3, 4, 5",
       "total": "5",
-      "startEpoch": 1790474460,
-      "endEpoch": 1790524740,
-      "moreWindows": 36
+      "startEpoch": 1790488860,
+      "endEpoch": 1790517540,
+      "moreWindows": 0
     }
   ]
 }
