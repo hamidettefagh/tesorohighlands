@@ -1,35 +1,6 @@
 {
-  "generatedAt": "2026-09-28T20:09:43.802Z",
+  "generatedAt": "2026-09-29T18:42:07.519Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
-  "events": [
-    {
-      "title": "10 by 10 Variety Show at The MAIN",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-11-05",
-      "venue": "The MAIN Theatre",
-      "city": "Newhall",
-      "free": false,
-      "price": "TBD",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "The MAIN"
-    },
-    {
-      "title": "Veterans Day Ceremony",
-      "url": "https://calendar.santaclarita.gov/event/veterans-day-ceremony-333",
-      "start": "2026-11-11T11:00",
-      "venue": "Veterans Historical Plaza",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    }
-  ]
+  "events": []
 }
