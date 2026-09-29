@@ -1,47 +1,7 @@
 {
-  "generatedAt": "2026-09-28T16:44:49.907Z",
+  "generatedAt": "2026-09-29T10:40:38.943Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Little Explorers",
-      "url": "https://santaclarita.librarycalendar.com/event/little-explorers-31508",
-      "start": "2026-09-28T13:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-28T13:00",
-        "2026-10-05T13:00"
-      ],
-      "repeats": 1,
-      "added": "2026-09-24T13:32:44.372Z"
-    },
-    {
-      "title": "Learn and Launch Robotics",
-      "url": "https://santaclarita.librarycalendar.com/event/learn-and-launch-robotics-36145",
-      "start": "2026-09-28T16:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-09-28T16:00",
-        "2026-10-05T16:00"
-      ],
-      "repeats": 1,
-      "added": "2026-09-25T13:46:24.913Z"
-    },
     {
       "title": "Baby and Toddler Storytime",
       "url": "https://santaclarita.librarycalendar.com/event/baby-and-toddler-storytime-31473",
@@ -469,6 +429,87 @@
         "2026-10-01T09:00"
       ],
       "added": "2026-09-28T16:44:49.907Z"
+    },
+    {
+      "title": "A Community Ofrenda!",
+      "url": "https://santaclarita.librarycalendar.com/event/passive-gather-remember-celebrate-community-ofrenda-31870",
+      "start": "2026-10-01T09:00",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-01T09:00"
+      ],
+      "added": "2026-09-29T10:40:38.943Z"
+    },
+    {
+      "title": "Hart Mansion Group Tour 10:00a.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-hart-mansion-group-tour-1000am-36526",
+      "start": "2026-10-01T10:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-01T10:00",
+        "2026-10-02T10:00",
+        "2026-10-08T10:00",
+        "2026-10-09T10:00",
+        "2026-10-10T10:00",
+        "2026-10-15T10:00",
+        "2026-10-16T10:00",
+        "2026-10-17T10:00"
+      ],
+      "repeats": 7,
+      "added": "2026-09-29T10:40:38.943Z"
+    },
+    {
+      "title": "Cuenta Cuentos",
+      "url": "https://santaclarita.librarycalendar.com/event/cuenta-cuentos-32398",
+      "start": "2026-10-01T10:00",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-01T10:00",
+        "2026-10-08T10:00",
+        "2026-10-15T10:00"
+      ],
+      "repeats": 2,
+      "added": "2026-09-29T10:40:38.943Z"
+    },
+    {
+      "title": "Artist Spotlight - Monet's Haystacks",
+      "url": "https://santaclarita.librarycalendar.com/event/artist-spotlight-monets-haystacks-31584",
+      "start": "2026-10-01T15:30",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-01T15:30"
+      ],
+      "added": "2026-09-29T10:40:38.943Z"
     },
     {
       "title": "ENCHANTED: Gallery of Spirits",
