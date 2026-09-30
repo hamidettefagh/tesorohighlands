@@ -1,6 +1,131 @@
 {
-  "generatedAt": "2026-09-29T18:42:07.519Z",
+  "generatedAt": "2026-09-30T18:29:13.659Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
-  "events": []
+  "events": [
+    {
+      "title": "Six Flags Magic Mountain Fright Fest",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-10-02T18:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain"
+    },
+    {
+      "title": "Change the Station Comedy",
+      "url": "https://www.hometownstation.com/santa-clarita-news/events/things-to-do-in-santa-clarita/things-to-do-in-santa-clarita-santa-clarita-events-september-30th-2026-611751",
+      "start": "2026-10-02T19:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Hometown Station / Santa Clarita Community Calendar"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-03T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults",
+        "toddlers"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://calendar.santaclarita.gov/calendar/5",
+      "start": "2026-10-04T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults",
+        "toddlers"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/calendar/5",
+      "start": "2026-10-04T08:30",
+      "venue": "27426 Navigation Ave",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults",
+        "toddlers"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar"
+    },
+    {
+      "title": "Old Town Newhall Fine Art Festival",
+      "url": "https://calendar.santaclarita.gov/event/old-town-newhall-fine-art-festival",
+      "start": "2026-10-11T10:00",
+      "venue": "Main Street and Market Street, Old Town Newhall",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar"
+    },
+    {
+      "title": "War of the Worlds presented by MeMain Productions",
+      "url": "https://www.eventbrite.com/e/war-of-the-worlds-presented-by-memain-productions-tickets-1985147633009",
+      "start": "2026-10-30T20:00",
+      "venue": "The MAIN",
+      "city": "Newhall",
+      "free": false,
+      "price": "$22.23",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Eventbrite / The MAIN"
+    },
+    {
+      "title": "Veterans Day Ceremony",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-11-11T11:00",
+      "venue": "Veterans Historical Plaza",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
+    }
+  ]
 }
