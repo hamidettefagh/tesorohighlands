@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T14:54:53.400Z",
+  "generatedAt": "2026-09-30T20:48:32.509Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1789455660,
       "endEpoch": 1792047540,
-      "moreWindows": 22
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -32,20 +32,6 @@
     },
     {
       "route": "I-5",
-      "dir": "North",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Reconstruction",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1790773260,
-      "endEpoch": 1790805540,
-      "moreWindows": 15
-    },
-    {
-      "route": "I-5",
       "dir": "South",
       "at": "Parker Rd",
       "place": "Castaic",
@@ -56,21 +42,21 @@
       "total": "4",
       "startEpoch": 1790773260,
       "endEpoch": 1790805540,
-      "moreWindows": 12
+      "moreWindows": 17
     },
     {
       "route": "I-5",
-      "dir": "North",
-      "at": "Valencia Blvd",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
       "place": "Valencia",
-      "facility": "On Ramp",
+      "facility": "Off Ramp",
       "type": "Full",
-      "work": "Drainage Work",
+      "work": "Core Drilling",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1790773260,
+      "startEpoch": 1790784060,
       "endEpoch": 1790805540,
-      "moreWindows": 7
+      "moreWindows": 61
     },
     {
       "route": "I-5",
@@ -82,9 +68,37 @@
       "work": "Shoulder Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1790784060,
-      "endEpoch": 1790805540,
-      "moreWindows": 22
+      "startEpoch": 1790820060,
+      "endEpoch": 1790859540,
+      "moreWindows": 30
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Reconstruction",
+      "lanes": "3, 4",
+      "total": "4",
+      "startEpoch": 1790820060,
+      "endEpoch": 1790859540,
+      "moreWindows": 21
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1790820060,
+      "endEpoch": 1790859540,
+      "moreWindows": 21
     },
     {
       "route": "I-5",
@@ -96,9 +110,9 @@
       "work": "Drainage Work",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1790784060,
-      "endEpoch": 1790805540,
-      "moreWindows": 27
+      "startEpoch": 1790820060,
+      "endEpoch": 1790859540,
+      "moreWindows": 30
     },
     {
       "route": "I-5",
@@ -110,9 +124,9 @@
       "work": "Shoulder Reconstruction",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1790784060,
-      "endEpoch": 1790805540,
-      "moreWindows": 15
+      "startEpoch": 1790820060,
+      "endEpoch": 1790859540,
+      "moreWindows": 18
     },
     {
       "route": "I-5",
@@ -124,9 +138,9 @@
       "work": "Road Survey",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1790784060,
-      "endEpoch": 1790805540,
-      "moreWindows": 40
+      "startEpoch": 1790820060,
+      "endEpoch": 1790859540,
+      "moreWindows": 54
     },
     {
       "route": "I-5",
@@ -138,9 +152,9 @@
       "work": "Sawcutting Operation",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1790784060,
-      "endEpoch": 1790805540,
-      "moreWindows": 7
+      "startEpoch": 1790820060,
+      "endEpoch": 1790859540,
+      "moreWindows": 11
     },
     {
       "route": "I-5",
@@ -152,23 +166,9 @@
       "work": "Sawcutting Operation",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1790784060,
-      "endEpoch": 1790805540,
-      "moreWindows": 15
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Castaic",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Utility Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1790784060,
-      "endEpoch": 1790805540,
-      "moreWindows": 67
+      "startEpoch": 1790820060,
+      "endEpoch": 1790859540,
+      "moreWindows": 23
     }
   ]
 }
