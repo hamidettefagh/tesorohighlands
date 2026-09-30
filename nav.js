@@ -135,7 +135,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v17";  // v17: phone nav shows all six sections — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v18";  // v18: flash floods get their own tier — keep in step with nav.js?v=N
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -202,29 +202,54 @@
       }).catch(function () {}),
       fetch("https://api.weather.gov/alerts/active?point=" + L.lat + "," + L.lon, { headers: { Accept: "application/geo+json" } }).then(function (r) { return r.json(); }).then(function (al) {
         if (!al || !al.features) return; okAlerts = true;
-        var feats = al.features.map(function (f) { var p = f.properties || {}; return { ev: p.event ? escT(p.event) : "", until: p.ends || p.expires || null }; })
-          .filter(function (x) { return x.ev; });
+        var feats = al.features.map(function (f) {
+          var p = f.properties || {}, par = p.parameters || {};
+          return { ev: p.event ? escT(p.event) : "", until: p.ends || p.expires || null,
+            // Flash floods — see the flood block below and overall() in fire.html.
+            threat: String((par.flashFloodDamageThreat || [])[0] || "").toUpperCase(),
+            past: String(p.urgency || "").toLowerCase() === "past" };
+        }).filter(function (x) { return x.ev; });
         var evs = feats.map(function (x) { return x.ev; });
         activeAlerts = evs.filter(function (e, i) { return evs.indexOf(e) === i; });
         // "until 7 PM" is the next thing a neighbor wants to know. NWS `ends` is
         // when the event ends; `expires` is only when the bulletin lapses.
-        var until = function (name) {
-          var f = null; for (var i = 0; i < feats.length; i++) { if (feats[i].ev === name) { f = feats[i]; break; } }
-          if (!f || !f.until) return "";
-          var d = new Date(f.until); if (isNaN(d)) return "";
+        var fmtUntil = function (iso) {
+          if (!iso) return "";
+          var d = new Date(iso); if (isNaN(d)) return "";
           var o = { hour: "numeric" }; if (d.getMinutes()) o.minute = "2-digit";
           if (d.toDateString() !== new Date().toDateString()) o.weekday = "short";
           return " until " + d.toLocaleString([], o);
         };
-        var red = evs.find(function (e) { return /red flag|fire weather/i.test(e); });
-        var heat = evs.find(function (e) { return /heat/i.test(e); });
-        var warn = evs.find(function (e) { return /warning/i.test(e) && !/heat/i.test(e); });
+        var until = function (name) {
+          var f = null; for (var i = 0; i < feats.length; i++) { if (feats[i].ev === name) { f = feats[i]; break; } }
+          return f ? fmtUntil(f.until) : "";
+        };
+        // Flash floods get their own line and tier (2026-09-30, ahead of a very strong
+        // El Niño). NWS keeps the event name "Flash Flood Warning" and flags the
+        // dangerous ones in a damage-threat tag: CONSIDERABLE, or CATASTROPHIC for a
+        // Flash Flood Emergency. Both set off Wireless Emergency Alerts, so both go
+        // red; a plain warning is amber. Keep in step with overall() in fire.html.
+        var ffwRank = function (t) { return t === "CATASTROPHIC" ? 2 : t === "CONSIDERABLE" ? 1 : 0; };
+        var ffw = null;
+        for (var k = 0; k < feats.length; k++) {
+          if (!/flash flood warning/i.test(feats[k].ev) || feats[k].past) continue;
+          if (!ffw || ffwRank(feats[k].threat) > ffwRank(ffw.threat)) ffw = feats[k];
+        }
+        if (ffw) {
+          if (ffw.threat === "CATASTROPHIC") { say(85, 2, "Flash Flood Emergency" + fmtUntil(ffw.until) + " — life-threatening flooding. Stay off the roads, and move to higher ground if water is rising near you."); }
+          else if (ffw.threat === "CONSIDERABLE") { say(82, 2, "Flash Flood Warning" + fmtUntil(ffw.until) + " — dangerous flooding. Stay off the roads and out of moving water."); }
+          else { say(65, 1, "Flash Flood Warning" + fmtUntil(ffw.until) + " — never drive or walk into moving water, and stay off canyon roads."); }
+        }
+        var rest = evs.filter(function (e) { return !/flash flood warning/i.test(e); });
+        var red = rest.find(function (e) { return /red flag|fire weather/i.test(e); });
+        var heat = rest.find(function (e) { return /heat/i.test(e); });
+        var warn = rest.find(function (e) { return /warning/i.test(e) && !/heat/i.test(e); });
         if (red) { say(60, 1, red + until(red) + " — elevated fire danger."); }
         else if (heat) { say(30, 1, heat + until(heat) + " — hydrate and plan around the heat."); }
         else if (warn) { say(20, 1, warn + " in effect" + until(warn) + "."); }
         // Anything else active (Air Quality Alert, Dense Smoke Advisory, …) still
         // counts — otherwise the strip claims "no active alerts" while one is up.
-        else if (evs.length) { say(15, 1, evs[0] + " in effect" + until(evs[0]) + "."); }
+        else if (rest.length) { say(15, 1, rest[0] + " in effect" + until(rest[0]) + "."); }
       }).catch(function () {}),
       Promise.all([
         fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=" + encodeURIComponent("IncidentTypeCategory='WF' AND FireOutDateTime IS NULL AND (PercentContained < 100 OR PercentContained IS NULL)") + "&outFields=IncidentName,IncidentSize,ModifiedOnDateTime_dt&geometry=" + (L.lon - 1.3) + "," + (L.lat - 1) + "," + (L.lon + 1.3) + "," + (L.lat + 1) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326&f=geojson").then(function (r) { return r.json(); }),

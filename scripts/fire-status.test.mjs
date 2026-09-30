@@ -74,6 +74,19 @@ const nearOrder = overall(V({ evac: { lvl: 0, near: { kind: "order", dist: 6, di
 if (/all clear/i.test(nearOrder.ey) || /looks safe/i.test(nearOrder.title)) { failed++; console.log("FAIL a nearby evacuation must never read as all clear: " + nearOrder.ey + " / " + nearOrder.title); }
 else console.log("ok   a nearby evacuation never reads as all clear");
 
+// --- Flash floods (2026-09-30). NWS keeps the event name "Flash Flood Warning" and
+// flags severity in a damage-threat tag; both tags set off phone alerts, so both go red.
+const FFW = (threat, extra) => ({ event: "Flash Flood Warning", threat: threat || "", ...(extra || {}) });
+check("flash flood warning: amber, says what to do", V({ alerts: [FFW("")] }), { lvl: 1, klass: "caution", title: /^Flash Flood Warning/, text: /moving water/ });
+check("considerable-threat flash flood warning: red", V({ alerts: [FFW("CONSIDERABLE")] }), { lvl: 2, klass: "danger", title: /^Flash Flood Warning/ });
+check("flash flood emergency: red, and named as one", V({ alerts: [FFW("CATASTROPHIC")] }), { lvl: 2, klass: "danger", ey: "Take action", title: /^Flash Flood Emergency/ });
+check("the most severe of several flash flood warnings leads", V({ alerts: [FFW(""), FFW("CATASTROPHIC")] }), { title: /^Flash Flood Emergency/ });
+check("a cancelled flash flood warning does not escalate", V({ alerts: [FFW("CATASTROPHIC", { urgency: "past" })] }), { lvl: 0, title: /Looks safe/ });
+check("our own evacuation warning still leads a flash flood emergency", V({ evac: { lvl: 1 }, alerts: [FFW("CATASTROPHIC")] }), { lvl: 2, title: /Evacuation warning for our zone/ });
+check("a flash flood warning outranks a red flag", V({ alerts: [{ event: "Red Flag Warning" }, FFW("")] }), { title: /^Flash Flood Warning/ });
+check("flood advisory stays on the general path", V({ alerts: [{ event: "Flood Advisory" }] }), { lvl: 1, title: /^Flood Advisory/ });
+check("flood watch stays on the general path", V({ alerts: [{ event: "Flood Watch" }] }), { lvl: 1, title: /^Flood Watch/ });
+
 // --- Regression: the ordinary days must be unchanged.
 check("quiet day", V({}), { lvl: 0, klass: "ok", ey: "All clear", title: /Looks safe/ });
 check("moderate air is still a quiet day", V({ aqi: 80 }), { lvl: 0, title: /Looks safe/ });
@@ -106,6 +119,33 @@ if (!warnOur) { failed++; console.log("FAIL could not find warn-our in scripts/a
 else if (warnOur[1] !== "90" || warnOur[2] !== "caution") {
   failed++; console.log("FAIL warn-our must be prio 90 / caution to match fire.html and nav.js, got " + warnOur[1] + " / " + warnOur[2]);
 } else console.log("ok   our-zone warning is prio 90 / caution in alert-watch.mjs too");
+
+// (3) The flash-flood ladder lives in two places, nav.js and overall() in fire.html,
+// and must agree: emergency 85/level 2, considerable 82/level 2, warning 65/level 1.
+const navSrc = fs.readFileSync(path.join(ROOT, "nav.js"), "utf8");
+const ladder = [
+  [/say\(85, 2, "Flash Flood Emergency"/, /say\(85, 2, "Flash Flood Emergency"/, "emergency 85/2"],
+  [/say\(82, 2, "Flash Flood Warning"/, /say\(82, 2, "Flash Flood Warning"/, "considerable 82/2"],
+  [/say\(65, 1, "Flash Flood Warning"/, /say\(65, 1, "Flash Flood Warning"/, "warning 65/1"],
+];
+const drift = ladder.filter(([inNav, inFire]) => !inNav.test(navSrc) || !inFire.test(src)).map(l => l[2]);
+if (drift.length) { failed++; console.log("FAIL flash-flood ladder differs between nav.js and fire.html: " + drift.join(", ")); }
+else console.log("ok   flash-flood ladder matches in nav.js and fire.html");
+
+// (4) Phone numbers. Every number on the Fire page's "Who to call" list and in the
+// Weather storm card must also be on Living Here, the page neighbors use as the
+// directory -- so a changed number can't be fixed in one place and left stale in another.
+const living = fs.readFileSync(path.join(ROOT, "living.html"), "utf8");
+const weatherSrc = fs.readFileSync(path.join(ROOT, "weather.html"), "utf8");
+const between = (s, from, to) => { const i = s.indexOf(from); if (i < 0) return ""; const j = s.indexOf(to, i); return j < 0 ? s.slice(i) : s.slice(i, j); };
+const listed = [
+  ...between(src, 'id="call"', 'id="sources"').matchAll(/href="tel:([+\d]+)"/g),
+  ...between(weatherSrc, 'id="storms"', "</section>").matchAll(/href="tel:([+\d]+)"/g),
+].map(m => m[1]).filter(n => n !== "911");
+const notOnLiving = [...new Set(listed)].filter(n => !living.includes('href="tel:' + n + '"'));
+if (!listed.length) { failed++; console.log("FAIL found no phone numbers in the Who to call list or the storm card"); }
+else if (notOnLiving.length) { failed++; console.log("FAIL these numbers are not on Living Here -- update both places: " + notOnLiving.join(", ")); }
+else console.log("ok   all " + new Set(listed).size + " call-list numbers are also on Living Here");
 
 console.log(failed ? "\n" + failed + " FAILED" : "\nall fire-status scenarios pass");
 process.exit(failed ? 1 : 0);

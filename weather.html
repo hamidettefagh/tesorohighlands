@@ -97,6 +97,24 @@
   .demo-banner{display:none;margin:0 0 16px;padding:9px 12px;border-radius:10px;font-size:13px;font-weight:600;color:var(--ink);background:var(--neu-bg);border:1px dashed var(--muted);}
   .demo-banner.on{display:block;}
 
+/* ---- Storm season card (2026-09-30) ----
+   Neutral surfaces on purpose: green, amber and red stay reserved for live status. */
+.storm{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);}
+.storm h3{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;margin:18px 0 4px;}
+.storm .slede{margin:0;padding:12px 14px;background:var(--neu-bg);border:1px solid var(--neu-line);border-left:3px solid var(--accent);border-radius:10px;font-size:14px;line-height:1.55;color:var(--ink-2);}
+.storm .slede b{color:var(--ink);}
+.storm ul{list-style:none;margin:0;padding:0;}
+.storm li{font-size:14px;line-height:1.55;color:var(--ink-2);padding:9px 0;border-top:1px solid var(--line-2);}
+.storm li:first-child{border-top:0;}
+.storm li b{color:var(--ink);}
+.storm a{color:var(--accent);font-weight:600;}
+.scalls{display:grid;gap:8px;margin-top:6px;}
+@media(min-width:600px){.scalls{grid-template-columns:repeat(3,1fr);}}
+.scalls a{display:flex;flex-direction:column;justify-content:center;min-height:52px;padding:9px 13px;border:1px solid var(--line);border-radius:11px;text-decoration:none;color:var(--ink);font-size:13px;font-weight:600;}
+.scalls a:hover{border-color:var(--muted);}
+.scalls a span{font-size:15px;font-weight:700;color:var(--ink);margin-top:2px;}
+.storm .snote{font-size:12.5px;color:var(--muted);margin:12px 0 0;line-height:1.55;}
+
 /* ---- Phone readability floor — see th.css ---- */
 .wxhero .hilo{font-size:12.5px;}
 .chip{font-size:12.5px;}
@@ -136,6 +154,36 @@
     <div id="dailyBand"><div class="band-unavail">Loading…</div></div>
   </section>
 
+  <section id="storms" hidden>
+    <div class="sechead"><h2>Storm season</h2><div class="line"></div></div>
+    <div class="storm">
+      <p class="slede" data-until="2027-04-30"><b>A very strong El Niño is likely this winter.</b> NOAA puts the odds above 90%, and California declared a state of emergency on Sept 21 to get ready. Strong El Niños often bring a wet winter here, but not always: 2015–16 was one of the strongest on record and turned out dry. Getting ready is cheap either way. <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA&#39;s monthly update ↗</a></p>
+
+      <h3>Before the rain</h3>
+      <ul>
+        <li><b>Flood insurance usually takes 30 days to start,</b> and most homeowners policies don&#39;t cover flooding. <a href="https://msc.fema.gov/portal/search" target="_blank" rel="noopener">Look up your address on FEMA&#39;s flood map ↗</a> · <a href="https://www.floodsmart.gov/" target="_blank" rel="noopener">FloodSmart ↗</a></li>
+        <li><b>Clear gutters, downspouts and yard drains,</b> and check the roof before the first storm.</li>
+        <li><b>Free sandbags</b> at Santa Clarita Valley fire stations; call ahead. <a href="https://readyforrain.santaclarita.gov/free-sandbags/" target="_blank" rel="noopener">Map ↗</a></li>
+        <li><b>City alerts:</b> text <b>SCEMERGENCY</b> to <a href="sms:888777?&amp;body=SCEMERGENCY">888777</a>.</li>
+        <li><b>Ready for an outage:</b> water and food, flashlights, batteries and a power bank. A generator runs outdoors only, at least 20 feet from windows, doors and the garage. <a href="https://www.ready.gov/power-outages" target="_blank" rel="noopener">Ready.gov ↗</a></li>
+      </ul>
+
+      <h3>During a storm</h3>
+      <ul>
+        <li><b>Never drive or walk into moving water.</b> Six inches can knock you over, and a foot can carry away most cars. Turn around. <a href="https://www.weather.gov/safety/flood-turn-around-dont-drown" target="_blank" rel="noopener">Weather Service ↗</a></li>
+        <li><b>Stay off canyon roads and away from flood channels.</b> Heavy rain on burn areas can send mud and debris downhill fast. <a href="https://dpw.lacounty.gov/wrd/forecast/index.cfm" target="_blank" rel="noopener">LA County debris-flow forecast ↗</a></li>
+      </ul>
+
+      <h3>Who to call</h3>
+      <div class="scalls">
+        <a href="tel:+16612227222">Flooding or a blocked storm drain <span>(661) 222-7222</span></a>
+        <a href="tel:+16612902200">Tree down on a street <span>(661) 290-2200</span></a>
+        <a href="tel:+18006111911">Power out <span>1-800-611-1911</span></a>
+      </div>
+      <p class="snote">The first two are City lines, answered 24/7. Flood alerts from the Weather Service show in the status bar at the top of every page. City storm hub: <a href="https://readyforrain.santaclarita.gov/" target="_blank" rel="noopener">ReadyforRain.SantaClarita.gov ↗</a></p>
+    </div>
+  </section>
+
   <section id="extra">
     <div class="sechead"><h2>Extra stats</h2><div class="line"></div></div>
     <div id="extraBand"><div class="band-unavail">Loading…</div></div>
@@ -153,11 +201,27 @@
   <footer class="thfoot">
     <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> These are neighborhood sensors and a commercial forecast, not a government monitor network. In an emergency, call 911 and follow official orders. &nbsp;<a href="/">← Back to the hub</a></p>
   </footer>
-<script src="/nav.js?v=17" defer></script>
+<script src="/nav.js?v=18" defer></script>
 <script>
 "use strict";
 
 const $ = s => document.querySelector(s);
+
+// Storm season card: mid-September through April. It starts before the first rain on
+// purpose — flood insurance takes about 30 days to start, and drains get cleared
+// while it is dry. The El Niño paragraph carries its own end date (data-until), so
+// it retires with this winter instead of lingering into the next.
+(function () {
+  const sec = document.getElementById("storms"); if (!sec) return;
+  const now = new Date(), m = now.getMonth(), d = now.getDate();
+  if (!(m >= 9 || m <= 3 || (m === 8 && d >= 15))) return;
+  const today = new Date(now.getFullYear(), m, d);
+  sec.querySelectorAll("[data-until]").forEach(function (el) {
+    const p = String(el.getAttribute("data-until")).split("-").map(Number);
+    if (p.length === 3 && today > new Date(p[0], p[1] - 1, p[2])) el.hidden = true;
+  });
+  sec.hidden = false;
+})();
 function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function compass(deg){ const d=["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"]; return d[Math.round(deg/22.5)%16]; }
 function timeAgo(ts){ if(!ts) return ""; const s=Math.round((Date.now()-ts)/1000); if(s<45) return "updated just now"; if(s<90) return "updated 1 min ago"; if(s<3600) return "updated "+Math.round(s/60)+" min ago"; return "updated "+Math.round(s/3600)+"h ago"; }

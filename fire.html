@@ -238,6 +238,18 @@
     font-size:13px; padding:11px 13px; border:1px solid var(--line); border-radius:11px; background:var(--surface); }
   .links a:hover{ border-color:var(--muted); }
   .links a span { color:var(--muted); }
+  /* Who to call — one row per situation; the whole row is the tap target. */
+  .calls { display:grid; gap:8px; margin-top:8px; }
+  @media (min-width:640px){ .calls { grid-template-columns:1fr 1fr; } }
+  .calls a { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:52px;
+    padding:9px 14px; border:1px solid var(--line); border-radius:12px; background:var(--surface);
+    text-decoration:none; color:var(--ink); box-shadow:var(--shadow); }
+  .calls a:hover { border-color:var(--muted); }
+  .calls .what { font-size:13.5px; font-weight:620; line-height:1.3; }
+  .calls .who { display:block; font-size:12.5px; font-weight:400; color:var(--muted); margin-top:2px; }
+  .calls .num { flex:none; font-size:14.5px; font-weight:700; white-space:nowrap; }
+  .calls a.urgent .num { color:var(--dan-fg); }
+  .calls-note { font-size:12.5px; color:var(--muted); margin:8px 2px 0; }
 
   .sechead { display:flex; align-items:center; gap:8px; margin: 26px 2px 2px; }
   .sechead h2 { font-size:12px; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); margin:0; font-weight:680; }
@@ -392,6 +404,7 @@ footer{font-size:12.5px;}
     <a href="#map">🗺️ Map</a>
     <a href="#evac">🎒 Evacuation</a>
     <a href="#community">🏘️ Community</a>
+    <a href="#call">📞 Who to call</a>
   </nav>
 
   <!-- NEARBY FIRES — the question this page exists to answer, so it goes first.
@@ -601,6 +614,22 @@ footer{font-size:12.5px;}
   </div>
 
   <!-- SOURCES -->
+  <!-- WHO TO CALL — the situations neighbors actually phone about, one tap each.
+       Every number here is also on Living Here, the page neighbors use as the
+       directory; scripts/fire-status.test.mjs fails if the two drift apart. -->
+  <div class="sechead" id="call"><h2>Who to call</h2><div class="line"></div></div>
+  <div class="calls">
+    <a class="urgent" href="tel:911"><span class="what">Life-threatening emergency<span class="who">Fire, medical or police</span></span><span class="num">911</span></a>
+    <a href="tel:+16612604000"><span class="what">Police, not an emergency<span class="who">SCV Sheriff&#39;s Station</span></span><span class="num">(661) 260-4000</span></a>
+    <a href="tel:+18004272200"><span class="what">Smell gas? Leave first, then call<span class="who">SoCalGas, 24/7</span></span><span class="num">1-800-427-2200</span></a>
+    <a href="tel:+18006111911"><span class="what">Power out<span class="who">Southern California Edison</span></span><span class="num">1-800-611-1911</span></a>
+    <a href="tel:+16612227222"><span class="what">Flooding or a blocked storm drain<span class="who">City Storm Water Hotline, 24/7</span></span><span class="num">(661) 222-7222</span></a>
+    <a href="tel:+16612902200"><span class="what">Tree down on a street<span class="who">City Urban Forestry, 24/7</span></span><span class="num">(661) 290-2200</span></a>
+    <a href="tel:+16619404191"><span class="what">A bat, or an injured or dangerous animal<span class="who">LA County Animal Care, 24/7</span></span><span class="num">(661) 940-4191</span></a>
+    <a href="tel:+16612002000"><span class="what">Nearest emergency room<span class="who">Henry Mayo, 23845 McBean Pkwy</span></span><span class="num">(661) 200-2000</span></a>
+  </div>
+  <p class="calls-note">Numbers checked against each agency&#39;s own page, September 2026.</p>
+
   <div class="sechead" id="sources"><h2>Official sources</h2><div class="line"></div></div>
   <div class="links" style="margin-top:8px">
     <a href="https://protect.genasys.com/search?query=Valencia%2C%20CA" target="_blank" rel="noopener">Your evacuation zone <span>Genasys ↗</span></a>
@@ -608,7 +637,9 @@ footer{font-size:12.5px;}
     <a href="https://ready.lacounty.gov/" target="_blank" rel="noopener">Sign up for alerts <span>Ready LA ↗</span></a>
     <a href="https://fire.airnow.gov/" target="_blank" rel="noopener">Smoke & air map <span>AirNow ↗</span></a>
     <a href="https://www.sce.com/outages-safety/outage-center/check-outage-status" target="_blank" rel="noopener">Power outages & PSPS <span>SCE ↗</span></a>
-    <a href="https://www.santaclarita.gov/emergency-management/preparedness-information/" target="_blank" rel="noopener">City alert sign-up <span>santaclarita.gov ↗</span></a>
+    <a href="sms:888777?&amp;body=SCEMERGENCY">Text SCEMERGENCY to 888777 <span>City alerts</span></a>
+    <a href="https://santaclaritaemergency.com/" target="_blank" rel="noopener">City emergency updates <span>SantaClaritaEmergency.com ↗</span></a>
+    <a href="https://readyforrain.santaclarita.gov/" target="_blank" rel="noopener">Storm prep &amp; free sandbags <span>City of Santa Clarita ↗</span></a>
     <a href="https://www.watchduty.org/" target="_blank" rel="noopener">Live incident map <span>Watch Duty ↗</span></a>
     <a href="tel:911">Emergency <span>Call 911 ↗</span></a>
   </div>
@@ -734,7 +765,11 @@ function relevantAlerts(){
     event: f.properties.event,
     sev: (f.properties.severity||"unknown").toLowerCase(),
     headline: f.properties.headline || f.properties.description || "",
-    ends: f.properties.ends || f.properties.expires || null
+    ends: f.properties.ends || f.properties.expires || null,
+    // Flash floods: NWS tags the dangerous ones CONSIDERABLE, and a Flash Flood
+    // Emergency CATASTROPHIC. Urgency "past" marks a cancelled or expired bulletin.
+    threat: String(((f.properties.parameters || {}).flashFloodDamageThreat || [])[0] || "").toUpperCase(),
+    urgency: String(f.properties.urgency || "").toLowerCase()
   }));
 }
 
@@ -819,7 +854,7 @@ function overall(v){
   const endsOf = name => untilText((v.alerts.find(a => a.event === name) || {}).ends);
   // Anything NWS has active that isn't fire/heat/wind-shaped — floods, storms,
   // winter weather. It still means "not all clear".
-  const other = evts.find(e => e && !/red flag|fire weather|heat|wind/i.test(e));
+  const other = evts.find(e => e && !/red flag|fire weather|heat|wind|flash flood warning/i.test(e));
   const redFlag = evts.find(e => /red flag|fire weather/i.test(e));
   const heat = evts.find(e => /heat/i.test(e));
   const windAlert = evts.find(e => /wind/i.test(e));
@@ -851,6 +886,23 @@ function overall(v){
         : n.kind === "shelter" ? "Shelter-in-place ~" + mi + " mi to our " + n.dir
         : "Evacuation warning ~" + mi + " mi to our " + n.dir,
       "Not our zone — no order or warning here. Worth watching: check the map below and keep official alerts on.");
+  }
+  // Flash floods (2026-09-30, ahead of a very strong El Niño). NWS keeps the event
+  // name "Flash Flood Warning" and flags the dangerous ones in a damage-threat tag:
+  // CONSIDERABLE, or CATASTROPHIC for a Flash Flood Emergency. Both set off Wireless
+  // Emergency Alerts on every phone, so both go red here; a plain warning is amber,
+  // with the one instruction that saves lives. Same ladder as nav.js: 85 / 82 / 65.
+  const ffwRank = t => t === "CATASTROPHIC" ? 2 : t === "CONSIDERABLE" ? 1 : 0;
+  const ffw = v.alerts.filter(a => /flash flood warning/i.test(a.event || "") && a.urgency !== "past")
+    .sort((a, b) => ffwRank(b.threat) - ffwRank(a.threat))[0];
+  if (ffw) {
+    const u = untilText(ffw.ends);
+    if (ffw.threat === "CATASTROPHIC") say(85, 2, "Flash Flood Emergency" + u,
+      "The Weather Service calls this life-threatening flooding, which is rare. Stay off the roads, never drive or walk into moving water, and move to higher ground if water is rising near you.");
+    else if (ffw.threat === "CONSIDERABLE") say(82, 2, "Flash Flood Warning" + u,
+      "The Weather Service says this one is dangerous. Stay off the roads, never drive or walk into moving water, and keep away from flood channels.");
+    else say(65, 1, "Flash Flood Warning" + u,
+      "Flash flooding is expected or happening near us. Never drive or walk into moving water (a foot of it can carry away most cars), and stay off canyon roads and away from flood channels.");
   }
   if (air.lvl >= 3) say(80, 2, "Unhealthy air right now",
     "Keep everyone inside with windows closed and the AC on recirculate. The smoke playbook below has the rest.");
@@ -1581,7 +1633,7 @@ const CHECK_ITEMS = [
   ["🐾", "Pets sorted", "Carriers, leashes, food, vet records by the door"],
   ["⛽", "Cars fueled & facing out", "Keep tanks over half; back into the driveway"],
   ["📍", "Know your zone", "Look yourself up on protect.genasys.com so you know your zone name"],
-  ["🔔", "Alerts enabled", "Sign up at ready.lacounty.gov + turn on Wireless Emergency Alerts"],
+  ["🔔", "Alerts enabled", "Text SCEMERGENCY to 888777 for City of Santa Clarita alerts, sign up at ready.lacounty.gov, and turn on Wireless Emergency Alerts"],
   ["🧸", "Kids briefed", "Meeting spot, one comfort item each in their bag"],
   ["🏠", "Home hardened", "Vents screened, gutters clear, nothing flammable against the house"],
   ["🌿", "Defensible space", "Brush cut back near the house — and speak up about the common-area brush by the water towers and Avenida Rancho Tesoro"]
@@ -1672,7 +1724,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=17" defer></script>
+<script src="/nav.js?v=18" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>
