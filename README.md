@@ -191,9 +191,10 @@ Optional, for a featured neighborhood event (the Halloween party entry is the wo
 example): `featured` (true lifts the Community section to the top of /events and pins
 the event atop the home page's "Coming up" card until its date passes), `emoji`,
 `flyer` (a same-site image under `/img/`, plus `flyerW` / `flyerH` / `flyerAlt`),
-`price`, `priceNote`, `rsvpBy` (YYYY-MM-DD), `zelle`, `rsvp`, `detailsLabel`,
+`price`, `priceNote`, `rsvpBy` (YYYY-MM-DD) or, with no deadline, `rsvpHead` (a short
+urgency line such as "Space is limited — RSVP soon"), `zelle`, `rsvp`, `detailsLabel`,
 `details` (`[["Label", "Text"], …]`) and `host`. `date` may carry a start time
-(`2026-10-31T18:00`). A flyer is text-as-image, so everything on it must also be in
+(`2026-10-30T18:00`). A flyer is text-as-image, so everything on it must also be in
 the text fields. Only publish a phone number or payment handle with the organizer's OK.
 
 ### Share cards (link previews)

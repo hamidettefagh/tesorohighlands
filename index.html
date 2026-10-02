@@ -300,6 +300,7 @@
         pinned[p.title] = 1;
         var bits = [timeStr(p.date), p.place];
         if (p.rsvpBy && ymd(p.rsvpBy) >= day0) bits.push("RSVP by " + ymd(p.rsvpBy).toLocaleDateString([], { month: "short", day: "numeric" }));
+        else if (p.rsvpHead) bits.push(String(p.rsvpHead));
         return '<a class="wkrow wkpin" href="/events#community"><span class="wkt">' + esc(String(p.emoji || "📌").slice(0, 4)) + " <b>" +
           esc(ymd(p.date).toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" })) + "</b> · " + esc(p.title) +
           "<small>" + esc(bits.filter(Boolean).join(" · ")) + " →</small></span></a>";

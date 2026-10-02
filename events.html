@@ -387,7 +387,7 @@
         var flyer = /^\/[\w\-.\/]+\.(webp|png|jpe?g)$/i.test(e.flyer || "") ? e.flyer : "";
         var zelle = /^[\d\-() +.]{7,20}$/.test(e.zelle || "") ? e.zelle : "";
         var details = Array.isArray(e.details) ? e.details.filter(function (d) { return Array.isArray(d) && d.length === 2; }) : [];
-        if (!flyer && !e.price && !e.rsvp && !zelle && !e.rsvpBy && !details.length) return "";
+        if (!flyer && !e.price && !e.rsvp && !zelle && !e.rsvpBy && !e.rsvpHead && !details.length) return "";
         var h = '<div class="cfeat">';
         if (flyer) {
           h += '<a class="cflyer" href="' + esc(flyer) + '" target="_blank" rel="noopener"><img src="' + esc(flyer) + '" alt="' + esc(e.flyerAlt || ("Flyer for " + e.title)) + '" loading="lazy"' +
@@ -395,13 +395,15 @@
         }
         h += '<div class="cmain">' + (e.note ? "<p>" + esc(e.note) + "</p>" : "") +
           (e.price ? '<p class="cprice">🎟️ <b>' + esc(e.price) + "</b>" + (e.priceNote ? "<small>" + esc(e.priceNote) + "</small>" : "") + "</p>" : "") + "</div>";
-        if (e.rsvp || zelle || e.rsvpBy) {
+        if (e.rsvp || zelle || e.rsvpBy || e.rsvpHead) {
           var by = "";
           if (e.rsvpBy) {
             var rb = parseStart(e.rsvpBy).d;
             var rbTxt = rb.toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" });
             by = rb.getTime() >= today.getTime() ? "RSVP by " + rbTxt : "The RSVP deadline was " + rbTxt;
           }
+          // No deadline, just urgency ("Space is limited — RSVP soon"), in the organizer's words.
+          else if (e.rsvpHead) by = String(e.rsvpHead);
           h += '<div class="crsvp">' + (by ? "<b>" + esc(by) + "</b>" : "") +
             (zelle ? '<div class="zrow">Pay by Zelle to <span class="znum">' + esc(zelle) + '</span><button class="copybtn zcopy" type="button" data-num="' + esc(zelle) + '">Copy number</button></div>' : "") +
             (e.rsvp ? "<p>" + esc(e.rsvp) + "</p>" : "") + "</div>";
