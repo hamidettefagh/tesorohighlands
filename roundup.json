@@ -1,17 +1,26 @@
 {
-  "generatedAt": "2026-09-25T19:21:39.284Z",
-  "weekendOf": "2026-09-25",
+  "generatedAt": "2026-10-02T19:59:39.044Z",
+  "weekendOf": "2026-10-02",
   "model": "claude-haiku-4-5",
-  "intro": "Here are some great ways to spend your weekend in Tesoro Highlands.",
+  "intro": "Here's what's happening in Tesoro Highlands this weekend.",
   "picks": [
     {
       "emoji": "🎃",
       "day": "Sat",
       "time": "9 AM",
       "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "price": "free",
-      "note": "Pumpkins, farm fun, free entry for all ages.",
+      "price": "",
+      "note": "Free admission, perfect for little ones and families.",
       "url": "https://www.gilchristfarm.com/pumpkin-patch"
+    },
+    {
+      "emoji": "🌾",
+      "day": "Sat",
+      "time": "8:30 AM",
+      "title": "Old Town Newhall Farmers Market",
+      "price": "free",
+      "note": "Sunday morning local farmers market, great for breakfast and browsing.",
+      "url": "https://santaclaritaevents.com/blog/santa-clarita-farmers-markets-guide/"
     },
     {
       "emoji": "🎸",
@@ -19,36 +28,36 @@
       "time": "4 PM",
       "title": "Loud @ the Library: Powered by Music Lab 🎸",
       "price": "free",
-      "note": "Live music for kids and teens at the library.",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37432"
+      "note": "Music Lab live performance at the library—free and fun for kids.",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37433"
+    },
+    {
+      "emoji": "🎵",
+      "day": "Sun",
+      "time": "1 PM",
+      "title": "Afternoon Acoustic Jam",
+      "price": "free",
+      "note": "Acoustic jam for adults who love live local music.",
+      "url": "https://santaclarita.librarycalendar.com/event/placeholder-afternoon-acoustic-jam-31694"
     },
     {
       "emoji": "🎢",
       "day": "Fri",
       "time": "6:30 PM",
       "title": "Fright Fest at Six Flags Magic Mountain",
-      "price": "",
-      "note": "Evening thrills for the whole family at Magic Mountain.",
+      "price": "admission varies",
+      "note": "Halloween thrills at Six Flags for older kids and adults.",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest"
     },
     {
-      "emoji": "🌽",
+      "emoji": "🥕",
       "day": "Sun",
-      "time": "8:30 AM",
-      "title": "Valencia FivePoint Farmers Market",
+      "time": "8 AM",
+      "title": "Santa Clarita Certified Farmers Market",
       "price": "free",
-      "note": "Local farmers market to start Sunday morning.",
-      "url": "https://www.scvfarmersmarkets.com/locations/valencia/"
-    },
-    {
-      "emoji": "☕",
-      "day": "Fri",
-      "time": "11 AM",
-      "title": "The Breakfast Club - Molletes",
-      "price": "free",
-      "note": "Adults gather for food and conversation.",
-      "url": "https://santaclarita.librarycalendar.com/event/breakfast-club-breakfast-burritos-31597"
+      "note": "Farmers market Sunday morning, fresh local produce and community.",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nHere are some great ways to spend your weekend in Tesoro Highlands.\n\n🎃 *Sat 9 AM* — Gilchrist Farm Harvest Festival & Pumpkin Patch (free)\n   Pumpkins, farm fun, free entry for all ages.\n🎸 *Fri 4 PM* — Loud @ the Library: Powered by Music Lab 🎸 (free)\n   Live music for kids and teens at the library.\n🎢 *Fri 6:30 PM* — Fright Fest at Six Flags Magic Mountain\n   Evening thrills for the whole family at Magic Mountain.\n🌽 *Sun 8:30 AM* — Valencia FivePoint Farmers Market (free)\n   Local farmers market to start Sunday morning.\n☕ *Fri 11 AM* — The Breakfast Club - Molletes (free)\n   Adults gather for food and conversation.\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nHere's what's happening in Tesoro Highlands this weekend.\n\n🎃 *Sat 9 AM* — Gilchrist Farm Harvest Festival & Pumpkin Patch\n   Free admission, perfect for little ones and families.\n🌾 *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Sunday morning local farmers market, great for breakfast and browsing.\n🎸 *Fri 4 PM* — Loud @ the Library: Powered by Music Lab 🎸 (free)\n   Music Lab live performance at the library—free and fun for kids.\n🎵 *Sun 1 PM* — Afternoon Acoustic Jam (free)\n   Acoustic jam for adults who love live local music.\n🎢 *Fri 6:30 PM* — Fright Fest at Six Flags Magic Mountain (admission varies)\n   Halloween thrills at Six Flags for older kids and adults.\n🥕 *Sun 8 AM* — Santa Clarita Certified Farmers Market (free)\n   Farmers market Sunday morning, fresh local produce and community.\n\nFull list → https://tesorohighlands.com/events"
 }
