@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T19:13:22.311Z",
+  "generatedAt": "2026-10-03T23:03:25.836Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -29,34 +29,6 @@
       "startEpoch": 1790060460,
       "endEpoch": 1792652340,
       "moreWindows": 6
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Reconstruction",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1791028860,
-      "endEpoch": 1791075540,
-      "moreWindows": 25
-    },
-    {
-      "route": "SR-14",
-      "dir": "South",
-      "at": "Antelope Valley Freeway, Route 14",
-      "place": "Sylmar",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Slide Removal",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1791036060,
-      "endEpoch": 1791061260,
-      "moreWindows": 0
     },
     {
       "route": "I-5",
@@ -169,6 +141,34 @@
       "startEpoch": 1791079260,
       "endEpoch": 1791129540,
       "moreWindows": 32
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Calgrove Blvd",
+      "place": "Newhall",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4, 5",
+      "total": "5",
+      "startEpoch": 1791079260,
+      "endEpoch": 1791129540,
+      "moreWindows": 23
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Newhall",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Drainage Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1791079260,
+      "endEpoch": 1791158340,
+      "moreWindows": 101
     }
   ]
 }
