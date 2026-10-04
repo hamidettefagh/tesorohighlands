@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T23:03:25.836Z",
+  "generatedAt": "2026-10-04T05:51:25.650Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1789455660,
       "endEpoch": 1792047540,
-      "moreWindows": 19
+      "moreWindows": 17
     },
     {
       "route": "I-5",
@@ -28,91 +28,7 @@
       "total": "1",
       "startEpoch": 1790060460,
       "endEpoch": 1792652340,
-      "moreWindows": 6
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Parker Rd",
-      "place": "Castaic",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Roadway Excavation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1791064860,
-      "endEpoch": 1791129540,
-      "moreWindows": 17
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Magic Mountain Parkway, Route 126",
-      "place": "Valencia",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1791068460,
-      "endEpoch": 1791136740,
-      "moreWindows": 23
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Golden State Freeway, Route 5",
-      "place": "Valencia",
-      "facility": "Off Ramp",
-      "type": "Full",
-      "work": "Road Maintenance",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1791072060,
-      "endEpoch": 1791136740,
-      "moreWindows": 58
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Truck Weigh Station",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Shoulder Work",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1791072060,
-      "endEpoch": 1791136740,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Rye Canyon Rd",
-      "place": "Valencia",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Drainage Work",
-      "lanes": "All",
-      "total": "2",
-      "startEpoch": 1791072060,
-      "endEpoch": 1791133140,
-      "moreWindows": 5
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Gavin Canyon",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Roadway Excavation",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1791079260,
-      "endEpoch": 1791129540,
-      "moreWindows": 11
+      "moreWindows": 7
     },
     {
       "route": "I-5",
@@ -126,7 +42,7 @@
       "total": "4",
       "startEpoch": 1791079260,
       "endEpoch": 1791129540,
-      "moreWindows": 17
+      "moreWindows": 18
     },
     {
       "route": "I-5",
@@ -136,11 +52,25 @@
       "facility": "Mainline",
       "type": "Lane",
       "work": "Sawcutting Operation",
-      "lanes": "4, 5",
+      "lanes": "3, 4, 5",
       "total": "5",
-      "startEpoch": 1791079260,
+      "startEpoch": 1791093660,
+      "endEpoch": 1791122340,
+      "moreWindows": 31
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Magic Mountain Parkway, Route 126",
+      "place": "Valencia",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "3, 4",
+      "total": "4",
+      "startEpoch": 1791093660,
       "endEpoch": 1791129540,
-      "moreWindows": 32
+      "moreWindows": 23
     },
     {
       "route": "I-5",
@@ -150,25 +80,95 @@
       "facility": "Mainline",
       "type": "Lane",
       "work": "Shoulder Work",
-      "lanes": "4, 5",
+      "lanes": "3, 4, 5",
       "total": "5",
-      "startEpoch": 1791079260,
-      "endEpoch": 1791129540,
+      "startEpoch": 1791093660,
+      "endEpoch": 1791122340,
       "moreWindows": 23
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Pavement Rehabilitation",
+      "lanes": "1, 2, 3",
+      "total": "4",
+      "startEpoch": 1791097260,
+      "endEpoch": 1791115140,
+      "moreWindows": 31
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Lake Hughes Rd",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Pavement Rehabilitation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1791151260,
+      "endEpoch": 1791205140,
+      "moreWindows": 4
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Castaic",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Pavement Rehabilitation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1791158460,
+      "endEpoch": 1791205140,
+      "moreWindows": 9
     },
     {
       "route": "I-5",
       "dir": "South",
       "at": "Golden State Freeway, Route 5",
-      "place": "Newhall",
+      "place": "Castaic",
       "facility": "Off Ramp",
       "type": "Full",
-      "work": "Drainage Work",
+      "work": "Pavement Rehabilitation",
       "lanes": "All",
       "total": "1",
-      "startEpoch": 1791079260,
-      "endEpoch": 1791158340,
-      "moreWindows": 101
+      "startEpoch": 1791158460,
+      "endEpoch": 1791205140,
+      "moreWindows": 9
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Templin Highway",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Pavement Rehabilitation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1791158460,
+      "endEpoch": 1791205140,
+      "moreWindows": 4
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Templin Highway",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Pavement Rehabilitation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1791158460,
+      "endEpoch": 1791205140,
+      "moreWindows": 4
     }
   ]
 }
