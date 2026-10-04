@@ -1,139 +1,121 @@
 {
-  "generatedAt": "2026-10-03T17:25:58.212Z",
+  "generatedAt": "2026-10-04T17:40:29.811Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Punchlines at The MAIN",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-10-03",
-      "venue": "The MAIN",
-      "city": "Newhall",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-04T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
       "free": false,
-      "price": null,
+      "price": "$10 (farm entry), plus activities for purchase",
       "audience": [
-        "adults"
+        "kids"
       ],
       "source": "Web (AI)",
-      "via": "The MAIN Events Calendar"
+      "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Tricks and Treats",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-10-03T09:00",
+      "title": "Tricks and Treats at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events/tricks-and-treats",
+      "start": "2026-10-04T12:00",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
       "price": "Included with park admission",
       "audience": [
-        "kids",
-        "toddlers"
+        "kids"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "Six Flags Magic Mountain Official"
     },
     {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist-farm-harvest-festival-pumpkin-patch",
-      "start": "2026-10-03T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "Varies",
-      "audience": [
-        "kids",
-        "toddlers",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "The Heart of Tataviam Pow Wow",
-      "url": "https://calendar.santaclarita.gov/event/the-heart-of-tataviam-pow-wow",
-      "start": "2026-10-03T09:00",
-      "venue": "William S. Hart Park",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "36th Annual Art Classic Fine Art Competition & Exhibit",
-      "url": "https://calendar.santaclarita.gov/event/36th-annual-art-classic",
-      "start": "2026-10-03T10:00",
-      "venue": "Cedar Hall at The Centre",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults",
-        "teens"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Fright Fest presented by SNICKERS®",
+      "title": "Fright Fest 2026 at Six Flags Magic Mountain",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-03T18:30",
+      "start": "2026-10-04T18:30",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "Varies",
+      "price": "Included with park admission or separate Haunted Attractions Pass",
       "audience": [
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "Six Flags Magic Mountain Official"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-10-11T08:30",
-      "venue": "Valencia FivePoint Farmers' Market",
-      "city": "Valencia",
+      "title": "Old Town Newhall Fine Art Festival",
+      "url": "https://www.santaclaritaartists.org/call-to-artist-newhall-fine-art-festival.html",
+      "start": "2026-10-11T10:00",
+      "venue": "24200 block of Main Street, Old Town Newhall",
+      "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "Santa Clarita Artists Association"
     },
     {
-      "title": "Society Improv",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-11-07",
-      "venue": "The MAIN",
+      "title": "Old Town Newhall Oktoberfest",
+      "url": "https://www.hometownstation.com/events/old-town-newhall-oktoberfest",
+      "start": "2026-10-11T13:00",
+      "venue": "Main Street, Old Town Newhall",
       "city": "Newhall",
       "free": false,
-      "price": null,
+      "price": "Tickets available at otnoktoberfest.org",
       "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Hometown Station"
+    },
+    {
+      "title": "Old Town Newhall Fine Art Festival (Day 2)",
+      "url": "https://www.santaclaritaartists.org/call-to-artist-newhall-fine-art-festival.html",
+      "start": "2026-10-12T10:00",
+      "venue": "24200 block of Main Street, Old Town Newhall",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Artists Association"
+    },
+    {
+      "title": "Political Comedy 'The Outsider' - Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/2026-27season",
+      "start": "2026-10-15T20:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$",
+      "audience": [
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "The MAIN Events Calendar"
+      "via": "Canyon Theatre Guild"
     },
     {
-      "title": "Veterans Day Ceremony",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-11T11:00",
-      "venue": "Veterans Historical Plaza",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
+      "title": "Valencia Town Center Pumpkin Patch Festival",
+      "url": "https://www.valenciatowncenter.com/events",
+      "start": "2026-10-31T16:00",
+      "venue": "Valencia Town Center",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
       "audience": [
-        "everyone"
+        "kids"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita"
+      "via": "Valencia Town Center"
     }
   ]
 }
