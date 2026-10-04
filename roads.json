@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T05:51:25.650Z",
+  "generatedAt": "2026-10-04T14:04:36.055Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1789455660,
       "endEpoch": 1792047540,
-      "moreWindows": 17
+      "moreWindows": 18
     },
     {
       "route": "I-5",
@@ -28,77 +28,7 @@
       "total": "1",
       "startEpoch": 1790060460,
       "endEpoch": 1792652340,
-      "moreWindows": 7
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Magic Mountain Parkway, Route 126",
-      "place": "Valencia",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "4",
-      "total": "4",
-      "startEpoch": 1791079260,
-      "endEpoch": 1791129540,
-      "moreWindows": 18
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Lyons Ave",
-      "place": "Stevenson Ranch",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Sawcutting Operation",
-      "lanes": "3, 4, 5",
-      "total": "5",
-      "startEpoch": 1791093660,
-      "endEpoch": 1791122340,
-      "moreWindows": 31
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Magic Mountain Parkway, Route 126",
-      "place": "Valencia",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "3, 4",
-      "total": "4",
-      "startEpoch": 1791093660,
-      "endEpoch": 1791129540,
-      "moreWindows": 23
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Shoulder Work",
-      "lanes": "3, 4, 5",
-      "total": "5",
-      "startEpoch": 1791093660,
-      "endEpoch": 1791122340,
-      "moreWindows": 23
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Hasley Canyon Rd",
-      "place": "Castaic",
-      "facility": "Mainline",
-      "type": "Lane",
-      "work": "Pavement Rehabilitation",
-      "lanes": "1, 2, 3",
-      "total": "4",
-      "startEpoch": 1791097260,
-      "endEpoch": 1791115140,
-      "moreWindows": 31
+      "moreWindows": 6
     },
     {
       "route": "I-5",
@@ -169,6 +99,76 @@
       "startEpoch": 1791158460,
       "endEpoch": 1791205140,
       "moreWindows": 4
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Lake Hughes Rd",
+      "place": "Castaic",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Pavement Rehabilitation",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1791162060,
+      "endEpoch": 1791205140,
+      "moreWindows": 4
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Pavement Rehabilitation",
+      "lanes": "1",
+      "total": "4",
+      "startEpoch": 1791169260,
+      "endEpoch": 1791205140,
+      "moreWindows": 31
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Hasley Canyon Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Reconstruction",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1791205260,
+      "endEpoch": 1791237540,
+      "moreWindows": 24
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Parker Rd",
+      "place": "Castaic",
+      "facility": "Mainline",
+      "type": "Lane",
+      "work": "Shoulder Work",
+      "lanes": "4",
+      "total": "4",
+      "startEpoch": 1791205260,
+      "endEpoch": 1791237540,
+      "moreWindows": 17
+    },
+    {
+      "route": "I-5",
+      "dir": "North",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Newhall",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Road Survey",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1791216060,
+      "endEpoch": 1791237540,
+      "moreWindows": 58
     }
   ]
 }
