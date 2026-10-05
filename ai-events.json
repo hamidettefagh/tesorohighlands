@@ -1,121 +1,280 @@
 {
-  "generatedAt": "2026-10-04T17:40:29.811Z",
+  "generatedAt": "2026-10-05T21:14:40.086Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
       "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
       "url": "https://www.gilchristfarm.com/pumpkin-patch",
-      "start": "2026-10-04T09:00",
+      "start": "2026-10-10T09:00",
       "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$10 (farm entry), plus activities for purchase",
+      "city": "Saugus",
+      "free": true,
+      "price": "Free",
       "audience": [
-        "kids"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Tricks and Treats at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/tricks-and-treats",
-      "start": "2026-10-04T12:00",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "Included with park admission",
-      "audience": [
-        "kids"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain Official"
-    },
-    {
-      "title": "Fright Fest 2026 at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-04T18:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "Included with park admission or separate Haunted Attractions Pass",
-      "audience": [
-        "teens",
+        "toddlers",
+        "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain Official"
+      "via": "Gilchrist Farm official website"
     },
     {
-      "title": "Old Town Newhall Fine Art Festival",
-      "url": "https://www.santaclaritaartists.org/call-to-artist-newhall-fine-art-festival.html",
-      "start": "2026-10-11T10:00",
-      "venue": "24200 block of Main Street, Old Town Newhall",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Artists Association"
-    },
-    {
-      "title": "Old Town Newhall Oktoberfest",
-      "url": "https://www.hometownstation.com/events/old-town-newhall-oktoberfest",
-      "start": "2026-10-11T13:00",
-      "venue": "Main Street, Old Town Newhall",
-      "city": "Newhall",
-      "free": false,
-      "price": "Tickets available at otnoktoberfest.org",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Hometown Station"
-    },
-    {
-      "title": "Old Town Newhall Fine Art Festival (Day 2)",
-      "url": "https://www.santaclaritaartists.org/call-to-artist-newhall-fine-art-festival.html",
-      "start": "2026-10-12T10:00",
-      "venue": "24200 block of Main Street, Old Town Newhall",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Artists Association"
-    },
-    {
-      "title": "Political Comedy 'The Outsider' - Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/2026-27season",
-      "start": "2026-10-15T20:00",
+      "title": "The Outsider - Comedy at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/the-outsider",
+      "start": "2026-10-10T14:00",
       "venue": "Canyon Theatre Guild",
       "city": "Newhall",
       "free": false,
-      "price": "$",
+      "price": "$15-$20",
       "audience": [
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Canyon Theatre Guild"
     },
     {
-      "title": "Valencia Town Center Pumpkin Patch Festival",
-      "url": "https://www.valenciatowncenter.com/events",
-      "start": "2026-10-31T16:00",
-      "venue": "Valencia Town Center",
+      "title": "Fright Fest at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-10-10T18:30",
+      "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": null,
+      "price": "$74+ (park admission + maze access)",
       "audience": [
-        "kids"
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Valencia Town Center"
+      "via": "Six Flags Magic Mountain"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-11T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Saugus",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm official website"
+    },
+    {
+      "title": "Old Town Newhall Fine Art Festival",
+      "url": "https://www.santaclaritaartists.org/call-to-artist-newhall-fine-art-festival.html",
+      "start": "2026-10-11T10:00",
+      "venue": "Main Street & Market Street",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Artists Association"
+    },
+    {
+      "title": "Old Town Newhall Fine Art Festival",
+      "url": "https://www.santaclaritaartists.org/call-to-artist-newhall-fine-art-festival.html",
+      "start": "2026-10-12T10:00",
+      "venue": "Main Street & Market Street",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Artists Association"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-17T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Saugus",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm official website"
+    },
+    {
+      "title": "The Outsider - Comedy at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/the-outsider",
+      "start": "2026-10-17T14:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$15-$20",
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-18T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Saugus",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm official website"
+    },
+    {
+      "title": "The Outsider - Comedy at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/the-outsider",
+      "start": "2026-10-18T14:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$15-$20",
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-24T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Saugus",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm official website"
+    },
+    {
+      "title": "The Outsider - Comedy at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/the-outsider",
+      "start": "2026-10-24T19:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$15-$20",
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-25T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Saugus",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm official website"
+    },
+    {
+      "title": "The Outsider - Comedy at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/the-outsider",
+      "start": "2026-10-25T14:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$15-$20",
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild"
+    },
+    {
+      "title": "The Outsider - Comedy at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/the-outsider",
+      "start": "2026-10-30T20:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$15-$20",
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-31T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Saugus",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm official website"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-11-01T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Saugus",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm official website"
+    },
+    {
+      "title": "The Outsider - Comedy at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/the-outsider",
+      "start": "2026-11-01T19:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$15-$20",
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild"
     }
   ]
 }
