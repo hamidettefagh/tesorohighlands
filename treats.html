@@ -96,6 +96,9 @@
   #pickBar{position:absolute;left:10px;right:10px;bottom:28px;z-index:800;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 10px;
     background:var(--pump-btn);color:#fff;border-radius:12px;padding:8px 8px 8px 14px;font-size:15px;font-weight:650;box-shadow:0 4px 14px rgba(0,0,0,.35);}
   #pickBar .pb{display:flex;gap:8px;margin-left:auto;}
+  #tapHint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:460;pointer-events:none;white-space:nowrap;
+    background:rgba(22,11,41,.9);color:#ffe2bf;border:1px solid rgba(249,115,22,.6);border-radius:999px;padding:7px 14px;
+    font:650 14px/1.2 var(--font);box-shadow:0 0 14px rgba(249,115,22,.3);}
   #pickBar .btn{min-height:42px;background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);color:#fff;font-size:14px;}
   #pickBar .btn.yes{background:#fff;border-color:#fff;color:#7a3300;}
 
@@ -131,8 +134,6 @@
 
   #panel{margin-top:16px;}
   #panel h2 .em{font-size:1.05em;}
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
-  @media (max-width:420px){.two{grid-template-columns:1fr;}}
   fieldset.choice{border:0;padding:0;margin:14px 0 0;}
   fieldset.choice legend{font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:7px;padding:0;}
   .opt{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;cursor:pointer;margin-top:8px;}
@@ -203,6 +204,7 @@
       <div class="mapwrap">
         <div id="map" role="region" aria-label="Map of houses handing out treats. The same houses are listed by street below the map."></div>
         <div class="spooky" aria-hidden="true"><div class="moon"></div><span class="bat b1"><span>🦇</span></span><span class="bat b2"><span>🦇</span></span><span class="bat b3"><span>🦇</span></span></div>
+        <div id="tapHint" hidden>👆 <span class="verb">Tap</span> your house to add it</div>
         <div id="pickBar" hidden><span id="pickTxt">Tap your house on the map</span><span class="pb"><button class="btn yes" type="button" id="pickYes" hidden>Yes, that's it</button><button class="btn" type="button" id="pickCancel">Cancel</button></span></div>
       </div>
       <div class="legend" aria-hidden="true">
@@ -218,11 +220,7 @@
       <section id="panel" class="card pad" aria-live="polite">
         <div data-step="find">
           <h2>Handing out treats? Add your house</h2>
-          <p class="sub">First, find your house on the map.</p>
-          <div class="two">
-            <button class="btn" type="button" id="locBtn">📍 I'm home, find it</button>
-            <button class="btn" type="button" id="tapBtn">👆 Tap it on the map</button>
-          </div>
+          <p class="sub"><b><span class="verb">Tap</span> your house on the map</b> to add it. To find it, zoom in with <span id="zoomHow">two fingers or the + button</span>.</p>
           <p class="msg" id="findMsg"></p>
         </div>
 
@@ -429,7 +427,7 @@
       if (map) return;
       var bounds = L.latLngBounds(S.homes.map(function (h) { return [h.lat, h.lon]; })).extend(L.latLngBounds(PARK));
       canvas = L.canvas({ padding: 0.3, tolerance: 3 });
-      map = L.map("map", { scrollWheelZoom: false, minZoom: 15, maxZoom: 19, maxBounds: bounds.pad(0.6), zoomSnap: 0.5 });
+      map = L.map("map", { scrollWheelZoom: false, minZoom: 14.5, maxZoom: 19, maxBounds: bounds.pad(0.6), zoomSnap: 0.5 });
       map.fitBounds(bounds, { padding: [14, 14] });
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19, maxNativeZoom: 19,
@@ -441,12 +439,23 @@
         el.classList.toggle("mz-m", z >= 15.75 && z < 16.75);
       }
       map.on("zoomend", zoomClass); zoomClass();
+      map.on("dblclick", function () { clearTimeout(tapTimer); });
+      // A tap picks the lot it lands on, or, zoomed out where lots are a few pixels
+      // wide, the nearest one within a fingertip. The confirm bar catches a miss.
+      // A tap that only closes an open popup does nothing else.
+      var popupClosedAt = 0;
+      map.on("popupclose", function () { popupClosedAt = Date.now(); });
+      map.on("click", function (e) {
+        if (Date.now() - popupClosedAt < 350) return;
+        var id = lotAt(e.latlng);
+        if (id) lotClick(id);
+      });
       drawRoads();
       drawPark();
       S.homes.forEach(function (h) {
         var poly = L.polygon(h.ring, lotStyle(h.id));
         poly.options.renderer = canvas;
-        poly.on("click", function () { lotClick(h.id); });
+        poly.options.interactive = false; // taps are matched to lots by the map click below
         poly.addTo(map);
         lots[h.id] = poly;
       });
@@ -486,7 +495,7 @@
     // follows any change to the event.
     var party = null;
     function drawPark() {
-      var poly = L.polygon(PARK, { renderer: canvas, color: "#84cc16", weight: 2, dashArray: "5 5", fillColor: "#3f6212", fillOpacity: 0.55 }).addTo(map);
+      var poly = L.polygon(PARK, { renderer: canvas, bubblingMouseEvents: false, color: "#84cc16", weight: 2, dashArray: "5 5", fillColor: "#3f6212", fillOpacity: 0.55 }).addTo(map);
       var center = L.latLng(PARK_MID), things = L.layerGroup(), badge = L.layerGroup();
       // The name sits off the park's west edge, over the empty terraces, clear of the party.
       var west = PARK.reduce(function (a, c) { return c[1] < a[1] ? c : a; });
@@ -614,83 +623,53 @@
       };
     }
 
-    // ---- choosing a house
-    // The bar on the map: "Tap your house", then "This house, on X? Yes / No", so the
-    // highlighted house is still in view when a neighbor confirms it.
-    function setPick(on) {
-      S.mode = on ? "pick" : "";
-      $("pickBar").hidden = !on;
-      $("pickTxt").textContent = "Tap your house on the map";
-      $("pickYes").hidden = true;
-      $("pickCancel").textContent = "Cancel";
-      if (on) {
-        $("map").scrollIntoView({ behavior: "smooth", block: "center" });
-        if (map.getZoom() < 17) map.setZoom(17);
-      }
-    }
-    function confirmBar(id) {
+    // ---- choosing a house: tap (phone) or click (computer) it on the map.
+    var touch = !!(window.matchMedia && matchMedia("(hover: none)").matches);
+    Array.prototype.forEach.call(document.querySelectorAll(".verb"), function (el) { el.textContent = touch ? "Tap" : "Click"; });
+    $("zoomHow").textContent = touch ? "two fingers or the + button" : "the + button or a double-click";
+
+    // The bar on the map asks "Add this house, on X?" while the highlighted house
+    // is still in view, so a stray tap never adds anything by itself.
+    function hideBar() { S.mode = ""; $("pickBar").hidden = true; hint(); }
+    function bar(text, yes, no) {
       S.mode = "confirm";
+      $("pickTxt").textContent = text;
+      $("pickYes").hidden = !yes;
+      $("pickCancel").textContent = no;
       $("pickBar").hidden = false;
-      $("pickTxt").textContent = "This house, on " + S.byId[id].street + "?";
-      $("pickYes").hidden = false;
-      $("pickCancel").textContent = "No, pick again";
-      $("map").scrollIntoView({ behavior: "smooth", block: "center" });
+      hint();
     }
-    $("tapBtn").onclick = function () { $("findMsg").textContent = ""; setPick(true); };
-    $("pickCancel").onclick = function () {
-      if (S.mode === "confirm") { select(null); setPick(true); return; }
-      setPick(false); panelDefault();
-    };
-    $("pickYes").onclick = function () {
-      S.mode = ""; $("pickBar").hidden = true;
-      $("panel").scrollIntoView({ behavior: "smooth", block: "start" });
-    };
+    // "Tap your house to add it", on the map, for phones without a house on it yet.
+    // Not on the night itself, when the map is mostly for trick-or-treaters.
+    function hint() {
+      var finding = !$("panel").querySelector('[data-step="find"]').hidden;
+      $("tapHint").hidden = !(finding && $("pickBar").hidden && !isNight());
+    }
+    $("pickCancel").onclick = function () { hideBar(); select(null); panelDefault(); };
+    $("pickYes").onclick = function () { hideBar(); $("panel").scrollIntoView({ behavior: "smooth", block: "start" }); };
 
+    // A double-tap zooms; it shouldn't also pick the house under the finger.
+    var tapTimer = null;
     function lotClick(id) {
-      if (S.mode === "pick" || S.mode === "confirm") { choose(id); return; }
-      if (markers[id]) markers[id].openPopup();
+      clearTimeout(tapTimer);
+      tapTimer = setTimeout(function () { onLot(id); }, 280);
+    }
+    function onLot(id) {
+      if (S.pins[id]) { if (markers[id]) markers[id].openPopup(); return; }
+      var mine = S.mine.filter(function (x) { return S.pins[x]; });
+      if (mine.length >= 2 && S.role !== "admin") { select(id); bar(ERR.limit, false, "OK"); return; }
+      choose(id);
     }
 
-    function choose(id, why) {
-      var pin = S.pins[id];
-      if (pin && S.mine.indexOf(id) < 0 && S.role !== "admin") {
-        setPick(false); select(null); step("find"); $("findMsg").textContent = ERR.taken;
-        $("panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
-        return;
-      }
-      select(id);
-      openForm(id, why);
-      confirmBar(id);
+    function lotAt(ll) {
+      for (var i = 0; i < S.homes.length; i++) if (inRing(ll.lat, ll.lng, S.homes[i].ring)) return S.homes[i].id;
+      var at = map.latLngToContainerPoint(ll), best = null, bestD = Infinity;
+      S.homes.forEach(function (h) {
+        var d = map.latLngToContainerPoint([h.lat, h.lon]).distanceTo(at);
+        if (d < bestD) { bestD = d; best = h.id; }
+      });
+      return bestD <= 24 ? best : null;
     }
-
-    function select(id, stay) {
-      var prev = S.sel; S.sel = id;
-      if (prev && lots[prev]) lots[prev].setStyle(lotStyle(prev));
-      if (id && lots[id]) {
-        lots[id].setStyle(lotStyle(id)); lots[id].bringToFront();
-        if (!stay) map.setView([S.byId[id].lat, S.byId[id].lon], Math.max(map.getZoom(), 18));
-      }
-    }
-
-    $("locBtn").onclick = function () {
-      var btn = this;
-      $("findMsg").textContent = "";
-      if (!navigator.geolocation) { $("findMsg").textContent = "This phone can't share its location here. Tap your house on the map instead."; return; }
-      btn.disabled = true; btn.textContent = "📍 Finding you…";
-      navigator.geolocation.getCurrentPosition(function (pos) {
-        btn.disabled = false; btn.textContent = "📍 I'm home, find it";
-        var lat = pos.coords.latitude, lon = pos.coords.longitude, best = null, bestD = Infinity;
-        S.homes.forEach(function (h) {
-          if (inRing(lat, lon, h.ring)) { best = h; bestD = 0; }
-          else if (bestD > 0) { var d = meters(lat, lon, h.lat, h.lon); if (d < bestD) { bestD = d; best = h; } }
-        });
-        if (!best || bestD > 60) { $("findMsg").textContent = "You don't seem to be behind the gate right now. Tap your house on the map instead."; return; }
-        choose(best.id, pos.coords.accuracy > 40 ? "rough" : "gps");
-      }, function (err) {
-        btn.disabled = false; btn.textContent = "📍 I'm home, find it";
-        $("findMsg").textContent = err && err.code === 1 ? "Location is turned off for this site. Tap your house on the map instead." : "Couldn't get your location. Tap your house on the map instead.";
-      }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 20000 });
-    };
     function inRing(lat, lon, ring) {
       var c = false;
       for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
@@ -699,12 +678,37 @@
       }
       return c;
     }
-    function meters(a, b, c, d) { var kx = 111320 * Math.cos(a * Math.PI / 180); return Math.hypot((b - d) * kx, (a - c) * 110540); }
+
+    function choose(id) {
+      var pin = S.pins[id];
+      if (pin && S.mine.indexOf(id) < 0 && S.role !== "admin") {
+        hideBar(); select(null); step("find"); $("findMsg").textContent = ERR.taken;
+        $("panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+        return;
+      }
+      select(id);
+      openForm(id);
+      bar((pin ? "Change this house, on " : "Add this house, on ") + S.byId[id].street + "?", true, "Cancel");
+    }
+
+    function select(id, stay) {
+      var prev = S.sel; S.sel = id;
+      if (prev && lots[prev]) lots[prev].setStyle(lotStyle(prev));
+      if (id && lots[id]) {
+        lots[id].setStyle(lotStyle(id)); lots[id].bringToFront();
+        if (!stay) {
+          var ll = [S.byId[id].lat, S.byId[id].lon];
+          // Zoom in enough to see the house; once there, only nudge it into view.
+          if (map.getZoom() < 17) map.setView(ll, 18); else map.panInside(ll, { padding: [70, 70] });
+        }
+      }
+    }
 
     // ---- the panel
     function step(name) {
       Array.prototype.forEach.call(document.querySelectorAll("#panel [data-step]"), function (el) { el.hidden = el.getAttribute("data-step") !== name; });
       ["findMsg", "formMsg", "manageMsg"].forEach(function (m) { $(m).textContent = ""; });
+      hint();
     }
     function panelDefault() {
       var mine = S.mine.filter(function (id) { return S.pins[id]; });
@@ -713,23 +717,26 @@
       else { if (S.sel) select(null); step("find"); }
     }
 
-    function openForm(id, why) {
+    function openForm(id) {
       S.cur = id;
       var p = S.pins[id], h = S.byId[id];
       step("form");
       $("formTitle").textContent = p ? "Change your house" : "Your house";
       var where = "Highlighted in yellow on the map, on " + esc(h.street) + ".";
-      if (why === "rough") where = "Your phone's location is rough, so double-check the house highlighted in yellow on " + esc(h.street) + ".";
       if (S.role === "admin" && p && S.mine.indexOf(id) < 0) where = "Editing a neighbor's house on " + esc(h.street) + " (admin).";
       $("formWhere").innerHTML = where + ' <button class="linkbtn" type="button" id="wrongHouse">Not this house?</button>';
-      $("wrongHouse").onclick = function () { select(null); setPick(true); };
+      $("wrongHouse").onclick = function () {
+        hideBar(); select(null); step("find");
+        $("findMsg").textContent = (touch ? "Tap" : "Click") + " the right house on the map.";
+        $("map").scrollIntoView({ behavior: "smooth", block: "center" });
+      };
       document.querySelector('input[name="how"][value="' + (p && p.how === "bowl" ? "bowl" : "knock") + '"]').checked = true;
       $("teal").checked = !!(p && p.teal);
       $("decor").checked = !!(p && p.decor);
       $("until").value = p ? p.until || "" : "";
       $("saveBtn").textContent = p ? "Save changes" : "Put my house on the map";
     }
-    $("cancelBtn").onclick = function () { setPick(false); select(null); panelDefault(); };
+    $("cancelBtn").onclick = function () { hideBar(); select(null); panelDefault(); };
 
     $("saveBtn").onclick = function () {
       var id = S.cur, btn = this, p = S.pins[id];
@@ -742,7 +749,7 @@
       }).then(function (j) {
         btn.disabled = false;
         if (!j.ok) { $("formMsg").textContent = errText(j); return; }
-        apply(j); setPick(false); render();
+        apply(j); hideBar(); render();
         if (S.mine.indexOf(id) >= 0) manage(id); else { select(null); panelDefault(); }
         // Show them their pumpkin.
         $("map").scrollIntoView({ behavior: "smooth", block: "center" });
@@ -769,7 +776,7 @@
     }
     $("myList").onclick = function (ev) { var b = ev.target.closest("[data-mine]"); if (b) manage(b.getAttribute("data-mine")); };
     $("editBtn").onclick = function () { openForm(S.cur); };
-    $("addAnother").onclick = function () { select(null); step("find"); };
+    $("addAnother").onclick = function () { select(null); step("find"); $("map").scrollIntoView({ behavior: "smooth", block: "center" }); };
 
     $("outSw").onchange = function () {
       var sw = this, id = S.cur, p = S.pins[id];
