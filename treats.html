@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Halloween Treat Map — Tesoro Highlands</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="Neighbors behind the gate: put your house on the treat map so trick-or-treaters know where to go." />
+<meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#14161b" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="/icon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Tesoro Highlands" />
+<meta property="og:title" content="🎃 Halloween treat map — Tesoro Highlands" />
+<meta property="og:description" content="Neighbors behind the gate: put your house on the map, knock-for-candy or candy-out-front, so trick-or-treaters know where to go." />
+<meta property="og:url" content="https://tesorohighlands.com/treats" />
+<meta property="og:image" content="https://tesorohighlands.com/og-image.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Tesoro Highlands — a neighbor project for our community in Valencia, CA" />
+<meta name="twitter:card" content="summary_large_image" />
+<script src="/theme.js"></script>
+<link rel="stylesheet" href="/th.css" />
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css" />
+<style>
+  /* Halloween colors, for this page only. The safety colors (--ok/--cau/--dan) stay out of it. */
+  :root{--pump:#f97316;--pump-btn:#c2560a;--pump-fg:#9a4a00;--pump-bg:#fff1e3;--candy:#8b5cf6;--candy-bg:#f1eafe;--tealp:#14b8a6;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pump-fg:#ffb36b;--pump-bg:#2c1a0b;--candy-bg:#221a36;}}
+  :root[data-theme="dark"]{--pump-fg:#ffb36b;--pump-bg:#2c1a0b;--candy-bg:#221a36;}
+
+  .hub-head h1 .em{font-size:.95em;}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);}
+  .card.pad{padding:16px;}
+  .card h2{font-size:17px;margin:0;letter-spacing:-0.01em;}
+  .sub{font-size:14px;color:var(--ink-2);line-height:1.5;margin:5px 0 0;}
+  .note{font-size:12.5px;color:var(--muted);line-height:1.55;margin:10px 2px 0;}
+  .msg{font-size:14px;line-height:1.45;color:var(--pump-fg);font-weight:600;margin:10px 0 0;}
+  .msg:empty{display:none;}
+  .btn{min-height:46px;padding:0 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+    font:inherit;font-size:15px;font-weight:620;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;}
+  .btn:hover{border-color:var(--muted);}
+  .btn.primary{background:var(--pump-btn);border-color:var(--pump-btn);color:#fff;}
+  .btn.primary:hover{filter:brightness(1.08);}
+  .btn[disabled]{opacity:.6;cursor:progress;}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .row .btn{flex:1 1 150px;}
+  .linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--pump-fg);font-weight:650;text-decoration:underline;cursor:pointer;min-height:0;}
+
+  #gate form{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  #gate label{width:100%;font-size:13px;font-weight:650;color:var(--ink-2);}
+  #gate input{flex:1 1 180px;min-height:46px;font:inherit;font-size:17px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);}
+  #gate input:focus{outline:2px solid var(--pump);outline-offset:1px;}
+  #gate .btn{flex:0 0 auto;}
+
+  .tally{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;margin:18px 2px 0;font-size:15px;color:var(--ink-2);}
+  .tally b{font-size:26px;color:var(--ink);letter-spacing:-0.02em;}
+  .tally .done{font-size:13px;color:var(--muted);}
+  .admin{font-size:11.5px;font-weight:700;background:var(--candy-bg);color:var(--candy);border-radius:999px;padding:2px 9px;}
+
+  .mapwrap{position:relative;margin-top:10px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#15171b;}
+  #map{height:min(66vh,580px);min-height:360px;background:#15171b;}
+  @media (max-width:520px){#map{height:58vh;min-height:340px;}}
+  /* Always a night map: it's a Halloween map. */
+  #map .leaflet-tile-pane{filter:invert(1) hue-rotate(195deg) brightness(.8) contrast(.9) saturate(.4);}
+  #map .leaflet-control-attribution{background:rgba(21,23,27,.82);color:#aab2bd;font-size:10.5px;}
+  #map .leaflet-control-attribution a{color:#d6dbe2;}
+  #map .leaflet-bar a{width:40px;height:40px;line-height:40px;background:#22252b;color:#e7e9ee;border-bottom-color:#33373e;}
+  #pickBar{position:absolute;left:10px;right:10px;bottom:28px;z-index:800;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 10px;
+    background:var(--pump-btn);color:#fff;border-radius:12px;padding:8px 8px 8px 14px;font-size:15px;font-weight:650;box-shadow:0 4px 14px rgba(0,0,0,.35);}
+  #pickBar .pb{display:flex;gap:8px;margin-left:auto;}
+  #pickBar .btn{min-height:42px;background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);color:#fff;font-size:14px;}
+  #pickBar .btn.yes{background:#fff;border-color:#fff;color:#7a3300;}
+
+  .pin{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:17px;line-height:1;border:2px solid #fff;
+    box-shadow:0 1px 5px rgba(0,0,0,.55);position:relative;}
+  .pin.knock{background:var(--pump);}
+  .pin.bowl{background:var(--candy);}
+  .pin.teal{box-shadow:0 0 0 3px var(--tealp),0 1px 6px rgba(0,0,0,.55);}
+  .pin.done{background:#4b5058;opacity:.8;}
+  .pin.done span{filter:grayscale(1);opacity:.55;}
+  .pin.mine{border-color:#fde047;}
+  .pin i{position:absolute;top:-9px;right:-10px;font-style:normal;font-size:13px;}
+  /* Zoomed out, the whole neighborhood fits a phone, and full-size pins would pile up. */
+  #map.mz-s .pin{transform:scale(.62);}
+  #map.mz-m .pin{transform:scale(.8);}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:12px 2px 0;font-size:13px;color:var(--ink-2);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .legend .pin{width:22px;height:22px;font-size:12px;border-width:1.5px;box-shadow:none;}
+  .legend .pin.teal{box-shadow:0 0 0 2px var(--tealp);}
+
+  .leaflet-popup-content{margin:12px 14px;font:14px/1.5 var(--font);}
+  .pop b{font-size:15px;}
+  .pop .st{color:#5b6470;font-size:12.5px;margin-top:3px;}
+  .pop .flag{font-weight:700;color:#9a4a00;}
+  .pop .row{margin-top:10px;}
+  .pop .btn{min-height:38px;font-size:13.5px;padding:0 12px;}
+
+  #panel{margin-top:16px;}
+  #panel h2 .em{font-size:1.05em;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
+  @media (max-width:420px){.two{grid-template-columns:1fr;}}
+  fieldset.choice{border:0;padding:0;margin:14px 0 0;}
+  fieldset.choice legend{font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:7px;padding:0;}
+  .opt{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;cursor:pointer;margin-top:8px;}
+  .opt input{position:absolute;opacity:0;pointer-events:none;}
+  .opt .ic{font-size:24px;flex:none;width:30px;text-align:center;}
+  .opt b{display:block;font-size:15px;color:var(--ink);}
+  .opt small{display:block;font-size:13px;color:var(--muted);margin-top:1px;}
+  .opt:has(input:checked){border-color:var(--pump-btn);background:var(--pump-bg);}
+  .opt:has(input[value="bowl"]:checked){border-color:var(--candy);background:var(--candy-bg);}
+  .opt:has(input:focus-visible){outline:2px solid var(--pump);outline-offset:2px;}
+  .chk{display:flex;align-items:flex-start;gap:11px;padding:12px 2px;border-top:1px solid var(--line-2);font-size:14.5px;line-height:1.45;color:var(--ink-2);cursor:pointer;}
+  .chk:first-of-type{margin-top:12px;}
+  .chk input{width:22px;height:22px;margin:0;flex:none;accent-color:var(--pump-btn);}
+  .chk b{color:var(--ink);}
+  .sel{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 2px;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);font-size:14.5px;color:var(--ink);font-weight:600;}
+  .sel select{min-height:44px;font:inherit;font-size:15px;padding:0 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);}
+  .bigswitch{display:flex;align-items:center;gap:14px;margin-top:14px;padding:13px 14px;border:1.5px solid var(--line);border-radius:14px;cursor:pointer;}
+  .bigswitch input{position:absolute;opacity:0;pointer-events:none;}
+  .bigswitch .track{flex:none;width:54px;height:32px;border-radius:999px;background:var(--neu-line);position:relative;transition:background .15s;}
+  .bigswitch .track:after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .15s;}
+  .bigswitch input:checked + .track{background:var(--pump-btn);}
+  .bigswitch input:checked + .track:after{left:25px;}
+  .bigswitch input:focus-visible + .track{outline:2px solid var(--pump);outline-offset:2px;}
+  .bigswitch b{display:block;font-size:16px;color:var(--ink);}
+  .bigswitch small{display:block;font-size:13px;color:var(--muted);margin-top:1px;}
+  .mylist{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+
+  details.bystreet{margin-top:12px;}
+  details.bystreet summary{cursor:pointer;font-size:14px;font-weight:650;color:var(--ink-2);padding:10px 2px;min-height:40px;}
+  details.bystreet ul{list-style:none;margin:0;padding:0;}
+  details.bystreet li{border-top:1px solid var(--line-2);}
+  details.bystreet li button{width:100%;display:flex;justify-content:space-between;gap:10px;background:none;border:0;padding:11px 2px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer;text-align:left;min-height:40px;}
+  details.bystreet li span{color:var(--muted);white-space:nowrap;}
+
+  .sechead{display:flex;align-items:center;gap:8px;margin:26px 2px 8px;}
+  .sechead h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:680;}
+  .sechead .line{flex:1;height:1px;background:var(--line);}
+  .tips{list-style:none;margin:0;padding:4px 16px;}
+  .tips li{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line-2);font-size:14px;line-height:1.55;color:var(--ink-2);}
+  .tips li:first-child{border-top:0;}
+  .tips .ic{font-size:19px;flex:none;width:26px;text-align:center;line-height:1.4;}
+  .tips b{color:var(--ink);}
+</style>
+</head>
+<body class="th">
+  <main id="main" tabindex="-1" class="thwrap">
+    <div class="hub-head">
+      <h1><span class="em">🎃</span> Halloween treat map</h1>
+      <p>Trick-or-treat night is <b id="nightLbl">Saturday, Oct 31</b>. Neighbors behind the gate: put your house on the map so kids know where to go, then flip it to <b>out of candy</b> when you're done.</p>
+    </div>
+
+    <section id="gate" class="card pad" hidden>
+      <h2>Neighbors only</h2>
+      <p class="sub">Enter the neighbor code from the community WhatsApp group.</p>
+      <form id="gateForm" autocomplete="off">
+        <label for="code">Neighbor code</label>
+        <input id="code" name="code" type="text" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" required />
+        <button class="btn primary" type="submit">Open the map</button>
+      </form>
+      <p class="msg" id="gateMsg" role="alert"></p>
+      <p class="note">Only a pumpkin shows on the map: no names, addresses or phone numbers. Everything is erased at midnight after Halloween.</p>
+    </section>
+
+    <section id="notice" class="card pad" hidden role="status"></section>
+
+    <section id="app" hidden>
+      <div class="tally" aria-live="polite"><b id="count">0</b><span id="countLbl">houses on the map so far</span><span class="done" id="doneLbl"></span><span class="admin" id="adminTag" hidden>Admin</span></div>
+      <div class="mapwrap">
+        <div id="map" role="region" aria-label="Map of houses handing out treats. The same houses are listed by street below the map."></div>
+        <div id="pickBar" hidden><span id="pickTxt">Tap your house on the map</span><span class="pb"><button class="btn yes" type="button" id="pickYes" hidden>Yes, that's it</button><button class="btn" type="button" id="pickCancel">Cancel</button></span></div>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <span><span class="pin knock"><span>🎃</span></span>Knock or ring</span>
+        <span><span class="pin bowl"><span>🍬</span></span>Candy out front</span>
+        <span><span class="pin knock teal"></span>Teal pumpkin: non-food treats</span>
+        <span>👻 Spooky yard</span>
+        <span><span class="pin done"></span>Done for the night</span>
+      </div>
+      <details class="bystreet" id="bystreet"><summary>Houses by street</summary><ul id="streetList"></ul></details>
+
+      <section id="panel" class="card pad" aria-live="polite">
+        <div data-step="find">
+          <h2>Handing out treats? Add your house</h2>
+          <p class="sub">First, find your house on the map.</p>
+          <div class="two">
+            <button class="btn" type="button" id="locBtn">📍 I'm home, find it</button>
+            <button class="btn" type="button" id="tapBtn">👆 Tap it on the map</button>
+          </div>
+          <p class="msg" id="findMsg"></p>
+        </div>
+
+        <div data-step="form" hidden>
+          <h2 id="formTitle">Your house</h2>
+          <p class="sub" id="formWhere"></p>
+          <fieldset class="choice">
+            <legend>How do kids get candy?</legend>
+            <label class="opt"><input type="radio" name="how" value="knock" checked /><span class="ic">🎃</span><span><b>Knock or ring</b><small>Someone's home handing it out</small></span></label>
+            <label class="opt"><input type="radio" name="how" value="bowl" /><span class="ic">🍬</span><span><b>Candy out front</b><small>A bowl by the door, help yourself</small></span></label>
+          </fieldset>
+          <label class="chk"><input type="checkbox" id="teal" /><span>🩵 <b>Teal pumpkin</b>: non-food treats too, for kids with allergies</span></label>
+          <label class="chk"><input type="checkbox" id="decor" /><span>👻 <b>Spooky yard</b>: decorations worth a look</span></label>
+          <label class="sel" for="until">Handing out until
+            <select id="until">
+              <option value="">the candy runs out</option>
+              <option value="19:00">7:00 PM</option>
+              <option value="19:30">7:30 PM</option>
+              <option value="20:00">8:00 PM</option>
+              <option value="20:30">8:30 PM</option>
+              <option value="21:00">9:00 PM</option>
+              <option value="21:30">9:30 PM</option>
+            </select>
+          </label>
+          <div class="row">
+            <button class="btn primary" type="button" id="saveBtn">Put my house on the map</button>
+            <button class="btn" type="button" id="cancelBtn">Cancel</button>
+          </div>
+          <p class="msg" id="formMsg"></p>
+        </div>
+
+        <div data-step="manage" hidden>
+          <h2>Your house is on the map <span class="em">🎃</span></h2>
+          <p class="sub" id="manageSum"></p>
+          <div class="mylist" id="myList" hidden></div>
+          <label class="bigswitch"><input type="checkbox" id="outSw" role="switch" /><span class="track"></span><span><b>Out of candy</b><small>Turns your pin gray so kids skip the walk.</small></span></label>
+          <div class="row">
+            <button class="btn" type="button" id="editBtn">Change details</button>
+            <button class="btn" type="button" id="removeBtn">Remove my house</button>
+          </div>
+          <div class="row" id="addAnotherRow" hidden><button class="btn" type="button" id="addAnother">Add another house</button></div>
+          <p class="msg" id="manageMsg"></p>
+        </div>
+      </section>
+    </section>
+
+    <div class="sechead"><h2>Trick-or-treat on the hill</h2><div class="line"></div></div>
+    <div class="card">
+      <ul class="tips">
+        <li><span class="ic">🕯️</span><span><b>LED lights in pumpkins, not candles.</b> We live in a Very High fire hazard zone, and late October can bring Santa Ana winds. If a Red Flag Warning is up, the banner at the top of this page will say so.</span></li>
+        <li><span class="ic">💡</span><span><b>Porch light on means treats.</b> Off means not tonight, map or no map.</span></li>
+        <li><span class="ic">🚗</span><span><b>Drive slowly.</b> Our streets are curvy and steep, and kids dart out between parked cars.</span></li>
+        <li><span class="ic">🔦</span><span><b>Flashlights or glow sticks</b> help drivers see kids after dark.</span></li>
+        <li><span class="ic">🩵</span><span><b>A teal pumpkin</b> means non-food treats (stickers, glow sticks, small toys), so kids with food allergies can join in.</span></li>
+      </ul>
+    </div>
+    <p class="note">The neighbor code keeps this map off search engines and out of casual view. It's not a vault: add your house only if you're happy for neighbors to see a pumpkin there. Only the phone that added a house can change it, and everything is erased at midnight after Halloween. A pin in the wrong place, or a question? Tell me in the group chat.</p>
+  </main>
+  <footer class="thfoot"><p>Unofficial, resident-run. Lot outlines from LA County Assessor parcel maps; streets © OpenStreetMap contributors. &nbsp;<a href="/events">← Back to Events</a></p></footer>
+
+  <script src="/vendor/leaflet/leaflet.js"></script>
+  <script>
+  (function () {
+    "use strict";
+    var $ = function (id) { return document.getElementById(id); };
+    function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+
+    // ---- small persistent bits: the code, and this phone's random token (its key to its own pins)
+    var mem = {};
+    function load(k) { try { var v = localStorage.getItem(k); if (v != null) return v; } catch (e) {} return mem[k] || ""; }
+    function save(k, v) { mem[k] = v; try { if (v) localStorage.setItem(k, v); else localStorage.removeItem(k); } catch (e) {} }
+    var code = load("tesoro.treats.code");
+    var token = load("tesoro.treats.token");
+    if (!/^[A-Za-z0-9_-]{20,80}$/.test(token)) {
+      var a = new Uint8Array(18); (window.crypto || window.msCrypto).getRandomValues(a);
+      token = Array.prototype.map.call(a, function (b) { return ("0" + b.toString(16)).slice(-2); }).join("");
+      save("tesoro.treats.token", token);
+    }
+
+    // ---- time, Pacific. ?at=2026-10-31T19:45-07:00 previews the page at another moment (display only).
+    var skew = (function () { var m = /[?&]at=([^&]+)/.exec(location.search); var t = m ? Date.parse(decodeURIComponent(m[1])) : NaN; return isNaN(t) ? 0 : t - Date.now(); })();
+    var PT = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+    function pacific() { var o = {}; PT.formatToParts(new Date(Date.now() + skew)).forEach(function (p) { o[p.type] = p.value; }); return { date: o.year + "-" + o.month + "-" + o.day, hm: o.hour + ":" + o.minute }; }
+    function hm12(hm) { if (!hm) return ""; var h = +hm.slice(0, 2), m = hm.slice(3); return (h % 12 || 12) + ":" + m + " " + (h < 12 ? "AM" : "PM"); }
+
+    // ---- state
+    var S = { role: "", phase: "", night: "", pins: {}, mine: [], homes: [], byId: {}, sel: null, mode: "" };
+    var map, lots = {}, markers = {}, canvas;
+
+    function isNight() { var p = pacific(); return p.date === S.night && p.hm >= "15:00"; }
+    function isDone(pin) {
+      var p = pacific();
+      if (pin.out || p.date > S.night) return true;
+      return p.date === S.night && !!pin.until && p.hm >= pin.until;
+    }
+
+    // ---- API
+    function api(method, body, skipHomes) {
+      var ctl = window.AbortController ? new AbortController() : null;
+      var timer = ctl && setTimeout(function () { ctl.abort(); }, 12000);
+      var opts = { method: method, headers: {}, cache: "no-store", signal: ctl ? ctl.signal : undefined };
+      if (method === "GET") {
+        opts.headers["x-treat-code"] = encodeURIComponent(code || "");
+        opts.headers["x-treat-token"] = token;
+      } else {
+        opts.headers["Content-Type"] = "application/json";
+        body.code = code; body.token = token;
+        opts.body = JSON.stringify(body);
+      }
+      return fetch("/api/treats" + (skipHomes ? "?homes=0" : ""), opts).then(function (r) {
+        return r.json().catch(function () { return { ok: false, error: "net" }; }).then(function (j) { j.status = r.status; return j; });
+      }, function () { return { ok: false, error: "net", status: 0 }; }).then(function (j) { if (timer) clearTimeout(timer); return j; });
+    }
+    var ERR = {
+      code: "That code didn't work. Check the community WhatsApp group for the current one.",
+      slow: "Too many tries. Wait 15 minutes, then try again.",
+      net: "Couldn't reach the map. Check your connection and try again.",
+      store: "The map is having trouble saving right now. Try again in a minute.",
+      taken: "That house is already on the map. If it's yours, tell me in the group chat and I'll sort it out.",
+      limit: "This phone already has two houses on the map. Remove one first, or tell me in the group chat.",
+      closed: "The map has closed for this year.",
+      before: "The map isn't open yet.",
+      token: "Something went wrong on this phone. Reload the page and try again.",
+      home: "That house isn't on this map. Try tapping it again.",
+      fields: "Something went wrong. Reload the page and try again.",
+      bad: "Something went wrong. Reload the page and try again."
+    };
+    function errText(j) { return ERR[j.error] || ERR.net; }
+
+    function show(id) { ["gate", "notice", "app"].forEach(function (x) { $(x).hidden = x !== id; }); }
+    function notice(html) { $("notice").innerHTML = html; show("notice"); }
+
+    function apply(j) {
+      S.role = j.role; S.phase = j.phase; S.night = j.night; S.pins = j.pins || {}; S.mine = j.mine || [];
+      if (j.homes) setHomes(j.homes);
+      if (S.night) {
+        var d = new Date(S.night + "T12:00:00Z");
+        $("nightLbl").textContent = d.toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric", timeZone: "UTC" });
+      }
+      if (S.phase === "closed") {
+        notice('<h2>That’s a wrap for this year <span class="em">🎃</span></h2><p class="sub">Thanks to every house that handed out treats. The map has been cleared, and it’ll be back next October.</p>');
+        return false;
+      }
+      if (S.phase === "before") {
+        notice('<h2>The treat map opens October 1</h2><p class="sub">Check back then, and watch the community WhatsApp group.</p>');
+        return false;
+      }
+      $("adminTag").hidden = S.role !== "admin";
+      return true;
+    }
+
+    // ---- boot: ask whether the map is set up (no code), or open it with the saved code
+    function boot() {
+      api("GET").then(function (j) {
+        if (j.ok) { if (apply(j)) { show("app"); initMap(); render(); panelDefault(); startRefresh(); } return; }
+        if (j.error === "setup") return notice('<h2>The treat map isn’t open yet</h2><p class="sub">Check back soon. It’ll be announced in the community WhatsApp groups.</p>');
+        if (j.error === "code") {
+          if (code) { save("tesoro.treats.code", ""); $("gateMsg").textContent = "The neighbor code has changed. Enter the new one from the WhatsApp group."; code = ""; }
+          show("gate"); return;
+        }
+        notice('<h2>Couldn’t open the map</h2><p class="sub">' + esc(errText(j)) + '</p><div class="row"><button class="btn" type="button" onclick="location.reload()">Try again</button></div>');
+      });
+    }
+    $("gateForm").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var btn = ev.target.querySelector("button"), val = $("code").value.trim();
+      if (!val) { $("gateMsg").textContent = "Enter the code first."; return; }
+      code = val; btn.disabled = true; $("gateMsg").textContent = "";
+      api("GET").then(function (j) {
+        btn.disabled = false;
+        if (!j.ok) { code = ""; $("gateMsg").textContent = j.error === "setup" ? "The treat map isn't open yet. Check back soon." : errText(j); return; }
+        save("tesoro.treats.code", val);
+        if (apply(j)) { show("app"); initMap(); render(); panelDefault(); startRefresh(); }
+      });
+    });
+    $("code").addEventListener("input", function () { $("gateMsg").textContent = ""; });
+
+    // ---- homes and map
+    function setHomes(H) {
+      var b = H.base;
+      S.homes = H.homes.map(function (h) {
+        var ring = [], r = h[4];
+        for (var i = 0; i + 1 < r.length; i += 2) ring.push([b[0] + r[i] / 1e6, b[1] + r[i + 1] / 1e6]);
+        return { id: h[0], street: H.streets[h[1]], lat: b[0] + h[2] / 1e6, lon: b[1] + h[3] / 1e6, ring: ring };
+      });
+      S.byId = {};
+      S.homes.forEach(function (h) { S.byId[h.id] = h; });
+    }
+
+    function initMap() {
+      if (map) return;
+      var bounds = L.latLngBounds(S.homes.map(function (h) { return [h.lat, h.lon]; }));
+      canvas = L.canvas({ padding: 0.3, tolerance: 3 });
+      map = L.map("map", { scrollWheelZoom: false, minZoom: 15, maxZoom: 19, maxBounds: bounds.pad(0.6), zoomSnap: 0.5 });
+      map.fitBounds(bounds, { padding: [14, 14] });
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19, maxNativeZoom: 19,
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · lots: LA County Assessor'
+      }).addTo(map);
+      function zoomClass() {
+        var z = map.getZoom(), el = $("map");
+        el.classList.toggle("mz-s", z < 15.75);
+        el.classList.toggle("mz-m", z >= 15.75 && z < 16.75);
+      }
+      map.on("zoomend", zoomClass); zoomClass();
+      S.homes.forEach(function (h) {
+        var poly = L.polygon(h.ring, { renderer: canvas, weight: 1, color: "#8d939c", opacity: 0.55, fillColor: "#9aa1ab", fillOpacity: 0.1 });
+        poly.on("click", function () { lotClick(h.id); });
+        poly.addTo(map);
+        lots[h.id] = poly;
+      });
+    }
+
+    function lotStyle(id) {
+      var pin = S.pins[id];
+      if (S.sel === id) return { color: "#fde047", weight: 3, opacity: 1, fillColor: "#fde047", fillOpacity: 0.35 };
+      if (!pin) return { color: "#8d939c", weight: 1, opacity: 0.55, fillColor: "#9aa1ab", fillOpacity: 0.1 };
+      if (isDone(pin)) return { color: "#8d939c", weight: 1, opacity: 0.6, fillColor: "#6b7280", fillOpacity: 0.25 };
+      var c = pin.how === "bowl" ? "#8b5cf6" : "#f97316";
+      return { color: c, weight: 1.5, opacity: 0.9, fillColor: c, fillOpacity: 0.38 };
+    }
+
+    function pinIcon(id) {
+      var p = S.pins[id], done = isDone(p);
+      var cls = "pin " + (p.how === "bowl" ? "bowl" : "knock") + (p.teal ? " teal" : "") + (done ? " done" : "") + (S.mine.indexOf(id) >= 0 ? " mine" : "");
+      return L.divIcon({ className: "", html: '<div class="' + cls + '"><span>' + (p.how === "bowl" ? "🍬" : "🎃") + "</span>" + (p.decor ? "<i>👻</i>" : "") + "</div>", iconSize: [32, 32], iconAnchor: [16, 16], popupAnchor: [0, -14] });
+    }
+
+    function popupHtml(id) {
+      var p = S.pins[id], h = S.byId[id], done = isDone(p), out = [];
+      out.push("<b>" + (p.how === "bowl" ? "🍬 Candy out front" : "🎃 Knock or ring") + "</b>");
+      if (p.out) out.push('<div class="flag">Out of candy</div>');
+      else if (done) out.push('<div class="flag">Done for the night</div>');
+      else out.push("<div>" + (p.until ? "Until " + hm12(p.until) : "Until the candy runs out") + "</div>");
+      if (p.how === "bowl" && !done) out.push("<div>A bowl by the door, help yourself</div>");
+      if (p.teal) out.push("<div>🩵 Teal pumpkin: non-food treats too</div>");
+      if (p.decor) out.push("<div>👻 Spooky yard</div>");
+      out.push('<div class="st">on ' + esc(h.street) + "</div>");
+      var mine = S.mine.indexOf(id) >= 0;
+      if (mine) out.push('<div class="st"><b>Your house.</b> Change it below the map.</div>');
+      if (S.role === "admin") out.push('<div class="row"><button class="btn" type="button" data-edit="' + id + '">Edit</button><button class="btn" type="button" data-remove="' + id + '">Remove</button></div>');
+      return '<div class="pop">' + out.join("") + "</div>";
+    }
+
+    function render() {
+      if (!map) return;
+      var live = 0, done = 0;
+      S.homes.forEach(function (h) {
+        var id = h.id, pin = S.pins[id];
+        lots[id].setStyle(lotStyle(id));
+        if (pin) {
+          if (isDone(pin)) done++; else live++;
+          if (!markers[id]) {
+            markers[id] = L.marker([h.lat, h.lon], { icon: pinIcon(id), zIndexOffset: isDone(pin) ? 0 : 500, keyboard: true, title: (pin.how === "bowl" ? "Candy out front" : "Knock or ring") + " on " + h.street, riseOnHover: true })
+              .bindPopup(function () { return popupHtml(id); }, { maxWidth: 260 })
+              .addTo(map);
+          } else {
+            markers[id].setIcon(pinIcon(id));
+            markers[id].setZIndexOffset(isDone(pin) ? 0 : 500); // live pins sit on top of finished ones
+            if (markers[id].isPopupOpen()) markers[id].setPopupContent(popupHtml(id));
+          }
+        } else if (markers[id]) {
+          map.removeLayer(markers[id]); delete markers[id];
+        }
+      });
+      var night = isNight();
+      $("count").textContent = night ? live : live + done;
+      var n = night ? live : live + done;
+      $("countLbl").textContent = night ? (n === 1 ? "house handing out treats right now" : "houses handing out treats right now") : (n === 1 ? "house on the map so far" : "houses on the map so far");
+      $("doneLbl").textContent = night && done ? "· " + done + " done for the night" : "";
+      renderStreets();
+    }
+
+    function renderStreets() {
+      var by = {};
+      Object.keys(S.pins).forEach(function (id) {
+        var h = S.byId[id]; if (!h) return;
+        var p = S.pins[id], s = by[h.street] || (by[h.street] = { knock: 0, bowl: 0, done: 0, ids: [] });
+        s.ids.push(id);
+        if (isDone(p)) s.done++; else s[p.how === "bowl" ? "bowl" : "knock"]++;
+      });
+      var names = Object.keys(by).sort(function (a, b) { return (by[b].knock + by[b].bowl) - (by[a].knock + by[a].bowl) || a.localeCompare(b); });
+      $("bystreet").hidden = !names.length;
+      $("streetList").innerHTML = names.map(function (n) {
+        var s = by[n], bits = [];
+        if (s.knock) bits.push(s.knock + " 🎃");
+        if (s.bowl) bits.push(s.bowl + " 🍬");
+        if (s.done) bits.push(s.done + " done");
+        return '<li><button type="button" data-street="' + esc(n) + '">' + esc(n) + "<span>" + bits.join(" · ") + "</span></button></li>";
+      }).join("");
+      $("streetList").onclick = function (ev) {
+        var b = ev.target.closest("button[data-street]"); if (!b) return;
+        var ids = by[b.getAttribute("data-street")].ids;
+        map.fitBounds(L.latLngBounds(ids.map(function (id) { return [S.byId[id].lat, S.byId[id].lon]; })), { padding: [50, 50], maxZoom: 18 });
+        $("map").scrollIntoView({ behavior: "smooth", block: "center" });
+      };
+    }
+
+    // ---- choosing a house
+    // The bar on the map: "Tap your house", then "This house, on X? Yes / No", so the
+    // highlighted house is still in view when a neighbor confirms it.
+    function setPick(on) {
+      S.mode = on ? "pick" : "";
+      $("pickBar").hidden = !on;
+      $("pickTxt").textContent = "Tap your house on the map";
+      $("pickYes").hidden = true;
+      $("pickCancel").textContent = "Cancel";
+      if (on) {
+        $("map").scrollIntoView({ behavior: "smooth", block: "center" });
+        if (map.getZoom() < 17) map.setZoom(17);
+      }
+    }
+    function confirmBar(id) {
+      S.mode = "confirm";
+      $("pickBar").hidden = false;
+      $("pickTxt").textContent = "This house, on " + S.byId[id].street + "?";
+      $("pickYes").hidden = false;
+      $("pickCancel").textContent = "No, pick again";
+      $("map").scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    $("tapBtn").onclick = function () { $("findMsg").textContent = ""; setPick(true); };
+    $("pickCancel").onclick = function () {
+      if (S.mode === "confirm") { select(null); setPick(true); return; }
+      setPick(false); panelDefault();
+    };
+    $("pickYes").onclick = function () {
+      S.mode = ""; $("pickBar").hidden = true;
+      $("panel").scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    function lotClick(id) {
+      if (S.mode === "pick" || S.mode === "confirm") { choose(id); return; }
+      if (markers[id]) markers[id].openPopup();
+    }
+
+    function choose(id, why) {
+      var pin = S.pins[id];
+      if (pin && S.mine.indexOf(id) < 0 && S.role !== "admin") {
+        setPick(false); select(null); step("find"); $("findMsg").textContent = ERR.taken;
+        $("panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+        return;
+      }
+      select(id);
+      openForm(id, why);
+      confirmBar(id);
+    }
+
+    function select(id, stay) {
+      var prev = S.sel; S.sel = id;
+      if (prev && lots[prev]) lots[prev].setStyle(lotStyle(prev));
+      if (id && lots[id]) {
+        lots[id].setStyle(lotStyle(id)); lots[id].bringToFront();
+        if (!stay) map.setView([S.byId[id].lat, S.byId[id].lon], Math.max(map.getZoom(), 18));
+      }
+    }
+
+    $("locBtn").onclick = function () {
+      var btn = this;
+      $("findMsg").textContent = "";
+      if (!navigator.geolocation) { $("findMsg").textContent = "This phone can't share its location here. Tap your house on the map instead."; return; }
+      btn.disabled = true; btn.textContent = "📍 Finding you…";
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        btn.disabled = false; btn.textContent = "📍 I'm home, find it";
+        var lat = pos.coords.latitude, lon = pos.coords.longitude, best = null, bestD = Infinity;
+        S.homes.forEach(function (h) {
+          if (inRing(lat, lon, h.ring)) { best = h; bestD = 0; }
+          else if (bestD > 0) { var d = meters(lat, lon, h.lat, h.lon); if (d < bestD) { bestD = d; best = h; } }
+        });
+        if (!best || bestD > 60) { $("findMsg").textContent = "You don't seem to be behind the gate right now. Tap your house on the map instead."; return; }
+        choose(best.id, pos.coords.accuracy > 40 ? "rough" : "gps");
+      }, function (err) {
+        btn.disabled = false; btn.textContent = "📍 I'm home, find it";
+        $("findMsg").textContent = err && err.code === 1 ? "Location is turned off for this site. Tap your house on the map instead." : "Couldn't get your location. Tap your house on the map instead.";
+      }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 20000 });
+    };
+    function inRing(lat, lon, ring) {
+      var c = false;
+      for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+        var yi = ring[i][0], xi = ring[i][1], yj = ring[j][0], xj = ring[j][1];
+        if ((yi > lat) !== (yj > lat) && lon < (xj - xi) * (lat - yi) / (yj - yi) + xi) c = !c;
+      }
+      return c;
+    }
+    function meters(a, b, c, d) { var kx = 111320 * Math.cos(a * Math.PI / 180); return Math.hypot((b - d) * kx, (a - c) * 110540); }
+
+    // ---- the panel
+    function step(name) {
+      Array.prototype.forEach.call(document.querySelectorAll("#panel [data-step]"), function (el) { el.hidden = el.getAttribute("data-step") !== name; });
+      ["findMsg", "formMsg", "manageMsg"].forEach(function (m) { $(m).textContent = ""; });
+    }
+    function panelDefault() {
+      var mine = S.mine.filter(function (id) { return S.pins[id]; });
+      // Highlight their house without moving the map: on the night they're out walking.
+      if (mine.length) manage(mine.indexOf(S.cur) >= 0 ? S.cur : mine[0], true);
+      else { if (S.sel) select(null); step("find"); }
+    }
+
+    function openForm(id, why) {
+      S.cur = id;
+      var p = S.pins[id], h = S.byId[id];
+      step("form");
+      $("formTitle").textContent = p ? "Change your house" : "Your house";
+      var where = "Highlighted in yellow on the map, on " + esc(h.street) + ".";
+      if (why === "rough") where = "Your phone's location is rough, so double-check the house highlighted in yellow on " + esc(h.street) + ".";
+      if (S.role === "admin" && p && S.mine.indexOf(id) < 0) where = "Editing a neighbor's house on " + esc(h.street) + " (admin).";
+      $("formWhere").innerHTML = where + ' <button class="linkbtn" type="button" id="wrongHouse">Not this house?</button>';
+      $("wrongHouse").onclick = function () { select(null); setPick(true); };
+      document.querySelector('input[name="how"][value="' + (p && p.how === "bowl" ? "bowl" : "knock") + '"]').checked = true;
+      $("teal").checked = !!(p && p.teal);
+      $("decor").checked = !!(p && p.decor);
+      $("until").value = p ? p.until || "" : "";
+      $("saveBtn").textContent = p ? "Save changes" : "Put my house on the map";
+    }
+    $("cancelBtn").onclick = function () { setPick(false); select(null); panelDefault(); };
+
+    $("saveBtn").onclick = function () {
+      var id = S.cur, btn = this, p = S.pins[id];
+      btn.disabled = true;
+      api("POST", {
+        action: "set", home: id,
+        how: document.querySelector('input[name="how"]:checked').value,
+        teal: $("teal").checked, decor: $("decor").checked, until: $("until").value,
+        out: !!(p && p.out)
+      }).then(function (j) {
+        btn.disabled = false;
+        if (!j.ok) { $("formMsg").textContent = errText(j); return; }
+        apply(j); setPick(false); render();
+        if (S.mine.indexOf(id) >= 0) manage(id); else { select(null); panelDefault(); }
+        // Show them their pumpkin.
+        $("map").scrollIntoView({ behavior: "smooth", block: "center" });
+        if (markers[id]) markers[id].openPopup();
+      });
+    };
+
+    function manage(id, stay) {
+      S.cur = id;
+      if (S.sel !== id) select(id, stay);
+      step("manage");
+      var p = S.pins[id], h = S.byId[id];
+      var bits = [p.how === "bowl" ? "🍬 Candy out front" : "🎃 Knock or ring", p.until ? "until " + hm12(p.until) : "until the candy runs out"];
+      if (p.teal) bits.push("🩵 teal pumpkin");
+      if (p.decor) bits.push("👻 spooky yard");
+      $("manageSum").textContent = "On " + h.street + ": " + bits.join(" · ") + ".";
+      $("outSw").checked = !!p.out;
+      var mine = S.mine.filter(function (x) { return S.pins[x]; });
+      $("myList").hidden = mine.length < 2;
+      $("myList").innerHTML = mine.length < 2 ? "" : mine.map(function (x) {
+        return '<button class="btn" type="button" data-mine="' + x + '"' + (x === id ? ' aria-pressed="true" style="border-color:var(--pump-btn)"' : "") + ">" + esc(S.byId[x].street) + "</button>";
+      }).join("");
+      $("addAnotherRow").hidden = mine.length >= 2 && S.role !== "admin";
+    }
+    $("myList").onclick = function (ev) { var b = ev.target.closest("[data-mine]"); if (b) manage(b.getAttribute("data-mine")); };
+    $("editBtn").onclick = function () { openForm(S.cur); };
+    $("addAnother").onclick = function () { select(null); step("find"); };
+
+    $("outSw").onchange = function () {
+      var sw = this, id = S.cur, p = S.pins[id];
+      sw.disabled = true;
+      api("POST", { action: "set", home: id, how: p.how, teal: p.teal, decor: p.decor, until: p.until, out: sw.checked }).then(function (j) {
+        sw.disabled = false;
+        if (!j.ok) { sw.checked = !sw.checked; $("manageMsg").textContent = errText(j); return; }
+        apply(j); render(); manage(id);
+        $("manageMsg").textContent = sw.checked ? "Your pin is gray now. Thanks for handing out treats!" : "";
+      });
+    };
+
+    $("removeBtn").onclick = function () {
+      var id = S.cur, btn = this;
+      if (!confirm("Take your house off the treat map?")) return;
+      btn.disabled = true;
+      api("POST", { action: "remove", home: id }).then(function (j) {
+        btn.disabled = false;
+        if (!j.ok) { $("manageMsg").textContent = errText(j); return; }
+        apply(j); select(null); render(); panelDefault();
+      });
+    };
+
+    // admin buttons inside popups
+    document.addEventListener("click", function (ev) {
+      var e = ev.target.closest("[data-edit]"), r = ev.target.closest("[data-remove]");
+      if (e) { map.closePopup(); choose(e.getAttribute("data-edit")); }
+      if (r) {
+        var id = r.getAttribute("data-remove");
+        if (!confirm("Remove this house from the map?")) return;
+        api("POST", { action: "remove", home: id }).then(function (j) {
+          if (!j.ok) { alert(errText(j)); return; }
+          map.closePopup(); apply(j); render(); panelDefault();
+        });
+      }
+    });
+
+    // ---- keep it fresh: every minute on the night, every five otherwise, only while looking
+    var lastPull = Date.now();
+    function pull() {
+      if (document.visibilityState !== "visible" || S.mode) return;
+      lastPull = Date.now();
+      api("GET", null, true).then(function (j) {
+        if (!j.ok) return;
+        var editing = !$("panel").querySelector('[data-step="form"]').hidden;
+        if (apply(j)) { render(); if (!editing) panelDefault(); }
+      });
+    }
+    function startRefresh() {
+      setInterval(function () { if (Date.now() - lastPull >= (isNight() ? 60e3 : 300e3)) pull(); }, 15e3);
+      document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && Date.now() - lastPull > 30e3) pull(); });
+    }
+
+    boot();
+  })();
+  </script>
+  <script src="/nav.js?v=18" defer></script>
+</body>
+</html>

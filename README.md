@@ -61,6 +61,8 @@ functions (some need repo secrets on Vercel).
              neighbor-recommended local pros
 /hoa         CA homeowner rights, your documents, the dispute ladder
              (deliberately no board schedules or internal community matters)
+/treats      Halloween treat map for the houses behind the gate: neighbors-only
+             (needs the code), not in the nav, noindex (see "Halloween treat map")
 ```
 
 ## Project layout
@@ -83,6 +85,8 @@ api/tempest.js        neighbor Tempest fire weather
                       (needs TEMPEST_TOKEN + TEMPEST_STATION_ID on Vercel)
 api/tempest-forecast.js  WeatherFlow Better Forecast hourly + 10-day (/weather)
 api/_epa.js           shared EPA ATM correction math (used by purpleair.js)
+api/treats.js         Halloween treat map pins, in Upstash Redis, behind TREAT_CODE
+api/_treat-homes.js   the house lots behind the gate, built by scripts/treat-homes.mjs
 server.js             tiny static server for LOCAL dev only (mimics clean URLs)
 vendor/leaflet/       self-hosted Leaflet 1.9.4 — no CDN dependency in an emergency
 scripts/*.mjs         the data builders (see below)
@@ -213,6 +217,38 @@ dependencies. **Adding a featured event:** put the flyer in `/img/`, add the ent
 `node scripts/make-og.mjs`, and commit the `og-events*.jpg` files and `og-events.json`
 along with it. Facebook caches previews per URL; refresh one with "Scrape Again" at
 developers.facebook.com/tools/debug.
+
+## Halloween treat map
+
+`/treats` lets houses behind the gate mark themselves **knock or ring** or **candy out
+front**, add a teal pumpkin (non-food treats) or a spooky yard, say when they stop
+handing out, and flip to **out of candy** on the night. It covers only the gated part
+of the neighborhood: the 368 house lots north of Avenida Rancho Tesoro, between the
+Camino Oceano gate and the Camino Los Robles entrance.
+
+- **Neighbors only.** Everything, house outlines included, comes from `api/treats.js`
+  and needs the neighbor code. The code is shared in the WhatsApp groups and is never
+  written in this repo or on the site. The page is `noindex` and not in the nav. The
+  code keeps the map off search engines and out of casual view; it isn't a vault, and
+  the page says so.
+- **What's stored,** per house: the choices above, a timestamp, and a hash of a random
+  token the adding phone made up. No names, addresses or phone numbers. Only that
+  phone (or the admin code) can change a pin, and one phone can hold two houses.
+  Wrong-code and write limits key on a hash of the IP address, kept 10 to 15 minutes.
+- **Season:** opens Oct 1 and closes at midnight after Halloween, Pacific time. The
+  pins expire then on their own, and the map reopens by itself the next October.
+- **Setup, once:** in Vercel, Storage → create an Upstash Redis database (free plan)
+  and connect it to this project with the default `KV` prefix. Then add `TREAT_CODE`,
+  plus optionally `TREAT_ADMIN_CODE` (it can edit or remove any pin), and redeploy.
+  Until both exist, the page says the map isn't open yet.
+- **Every year, before October:** run `node scripts/treat-homes.mjs` to rebuild the
+  house list from LA County parcels (the newest phase is still being built), and update
+  the count in `scripts/treats.test.mjs`. Lot ids are hashes of the parcel number, so
+  re-running mid-season keeps every pin on its house.
+- **Locally,** `node server.js` serves it with an in-memory store and the codes
+  `pumpkin` / `pumpkin-admin`. Add `?at=2026-10-31T20:45:00-07:00` to the page URL to
+  see it at another moment (display only).
+- **Test:** `node scripts/treats.test.mjs`.
 
 ## Theming
 

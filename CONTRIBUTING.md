@@ -94,6 +94,9 @@ together — that is the point. Don't reintroduce a second formula.
 
 **EPA correction unit test:** `node scripts/epa-correct.test.mjs` (no npm test runner).
 
+**Treat map test:** `node scripts/treats.test.mjs` covers the Halloween map's code check,
+who can change which pin, the limits, and the season edges.
+
 **Fire status ladder test:** `node scripts/fire-status.test.mjs`. It reads `overall()` straight
 out of `fire.html`, so it fails if the headline ladder drifts — including the two rules that are
 easy to break: a shelter-in-place must never read "leave now", and an evacuation warning for our
@@ -138,6 +141,10 @@ running the old copy for up to five minutes and cached status text lingers.
 **Don't add CDN dependencies.**
 Leaflet is vendored locally on purpose. During an emergency the network is the least
 reliable thing in the picture, so the site shouldn't depend on someone else's server.
+
+**The treat map's neighbor code never goes in the repo, the site, or a commit message.**
+It lives in Vercel env (`TREAT_CODE`) and the WhatsApp groups. The map shows a pin per
+house and nothing about who lives there; keep it that way.
 
 **Never slice a string containing emoji by character count.**
 Compound emoji (like 🧑‍🌾) span multiple units, and cutting one in half produces
