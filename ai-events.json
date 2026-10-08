@@ -1,390 +1,145 @@
 {
-  "generatedAt": "2026-10-07T19:24:30.529Z",
+  "generatedAt": "2026-10-08T19:19:50.347Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Fright Fest 2026 at Six Flags Magic Mountain",
+      "title": "Trick and Treats at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain",
+      "start": "2026-10-08T10:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Park admission required",
+      "audience": [
+        "toddlers",
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Official Site"
+    },
+    {
+      "title": "Oktoberfest at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/blog/the-ultimate-guide-to-fall-events-at-six-flags-2026",
+      "start": "2026-10-08T10:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Park admission required",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Official Site"
+    },
+    {
+      "title": "Fright Fest at Six Flags Magic Mountain",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
       "start": "2026-10-08T18:30",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "$74+",
+      "price": "Park admission required; Haunted Attractions Pass additional",
       "audience": [
-        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "Six Flags Official Site"
     },
     {
-      "title": "Circus Vargas \"Masquerade\"",
-      "url": "https://tickets.circusvargas.com/",
-      "start": "2026-10-10",
-      "venue": "Valencia Town Center",
-      "city": "Valencia",
-      "free": false,
-      "price": "$25-$90",
-      "audience": [
-        "kids",
-        "teens",
-        "adults",
-        "toddlers"
-      ],
-      "source": "Web (AI)",
-      "via": "Circus Vargas"
-    },
-    {
-      "title": "\"The Outsider\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/the-outsider",
-      "start": "2026-10-10T14:00",
-      "venue": "Canyon Theatre Guild",
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://newhallfarmersmarket.com/",
+      "start": "2026-10-10T08:30",
+      "venue": "Old Town Newhall Library",
       "city": "Newhall",
-      "free": false,
-      "price": "$20",
+      "free": true,
+      "price": "Free",
       "audience": [
-        "teens",
+        "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
+      "via": "City of Santa Clarita Events"
     },
     {
-      "title": "\"Dial M for Murder\" at Canyon Theatre Guild",
+      "title": "Dial M for Murder at Canyon Theatre Guild",
       "url": "https://www.canyontheatre.org/dial-m-for-murder",
       "start": "2026-10-10T19:00",
       "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
+      "city": "Santa Clarita",
       "free": false,
-      "price": "$20",
+      "price": "$20 adults; $18 seniors; $15 students",
       "audience": [
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
+      "via": "Canyon Theatre Guild Official Site"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://visitsantaclarita.com/eat-drink/fresh-food-santa-clarita-california-farmers-markets/",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita/",
+      "start": "2026-10-11T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM Official Site"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/calendar/9",
       "start": "2026-10-11T08:30",
-      "venue": "Valencia FivePoint community",
+      "venue": "Valencia FivePoint Farmers Market",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Visit Santa Clarita"
-    },
-    {
-      "title": "\"Dial M for Murder\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-11T14:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "Fright Fest 2026 at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-11T18:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "$74+",
-      "audience": [
         "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "\"Dial M for Murder\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-16T20:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "\"The Outsider\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/the-outsider",
-      "start": "2026-10-17T14:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "\"Dial M for Murder\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-17T19:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "\"The Outsider\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/the-outsider",
-      "start": "2026-10-18T14:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "Fright Fest 2026 at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-18T18:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "$74+",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
-    },
-    {
-      "title": "Circus Vargas \"Masquerade\"",
-      "url": "https://tickets.circusvargas.com/",
-      "start": "2026-10-19",
-      "venue": "Valencia Town Center",
-      "city": "Valencia",
-      "free": false,
-      "price": "$25-$90",
-      "audience": [
-        "kids",
-        "teens",
-        "adults",
-        "toddlers"
-      ],
-      "source": "Web (AI)",
-      "via": "Circus Vargas"
-    },
-    {
-      "title": "\"Dial M for Murder\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-23T20:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "\"Dial M for Murder\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-24T14:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "\"The Outsider\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/the-outsider",
-      "start": "2026-10-24T19:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "\"The Outsider\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/the-outsider",
-      "start": "2026-10-25T14:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "Stevenson Ranch Puzzle Lounge",
-      "url": "https://lacountylibrary.org/location/stevenson-ranch-library/",
-      "start": "2026-10-25T15:00",
-      "venue": "Stevenson Ranch Library",
-      "city": "Stevenson Ranch",
+      "title": "Veterans Day Ceremony",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-11-11T11:00",
+      "venue": "Veterans Historical Plaza",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "LA County Library"
+      "via": "City of Santa Clarita Events"
     },
     {
-      "title": "Fright Fest 2026 at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-25T18:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "$74+",
+      "title": "Light Up Main Street",
+      "url": "https://oldtownnewhall.com/events/light-up-main/",
+      "start": "2026-11-21T16:00",
+      "venue": "Main Street, Old Town Newhall",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
       "audience": [
         "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
-    },
-    {
-      "title": "\"Dial M for Murder\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-25T19:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "\"The Outsider\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/the-outsider",
-      "start": "2026-10-30T20:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "\"Dial M for Murder\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-31T14:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "Fright Fest 2026 at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-31T18:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "$74+",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
-    },
-    {
-      "title": "Fright Fest 2026 at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-11-01T18:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "$74+",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
-    },
-    {
-      "title": "\"The Outsider\" at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/the-outsider",
-      "start": "2026-11-01T19:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
+      "via": "Old Town Newhall Official Site"
     }
   ]
 }
