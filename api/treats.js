@@ -26,7 +26,7 @@ const DATA = require("./_treat-homes.js");
 const HOME_IDS = new Set(DATA.homes.map(h => h[0]));
 const HOW = ["knock", "bowl"];
 const UNTIL = ["", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30"]; // "" = until it runs out
-const PER_PHONE = 2;      // room to add a parent's house next door, not to paint the map
+const PER_PHONE = 1;      // one house per phone; the admin code can add houses for neighbors who ask
 const BAD_CODES = 8;      // wrong codes per address before a 15-minute wait
 const WRITES = 40;        // changes per address per 10 minutes
 

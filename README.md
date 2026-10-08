@@ -235,7 +235,8 @@ Camino Oceano gate and the Camino Los Robles entrance.
   the page says so.
 - **What's stored,** per house: the choices above, a timestamp, and a hash of a random
   token the adding phone made up. No names, addresses or phone numbers. Only that
-  phone (or the admin code) can change a pin, and one phone can hold two houses.
+  phone (or the admin code) can change a pin, and each phone can add one house; the
+  admin code can add more, for neighbors who ask.
   Wrong-code and write limits key on a hash of the IP address, kept 10 to 15 minutes.
 - **Season:** opens Oct 1 and closes at midnight after Halloween, Pacific time. The
   pins expire then on their own, and the map reopens by itself the next October.

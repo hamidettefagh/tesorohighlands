@@ -277,7 +277,6 @@
     <div class="sechead"><h2>Trick-or-treat on the hill</h2><div class="line"></div></div>
     <div class="card">
       <ul class="tips">
-        <li><span class="ic">🕯️</span><span><b>LED lights in pumpkins, not candles.</b> We live in a Very High fire hazard zone, and late October can bring Santa Ana winds. If a Red Flag Warning is up, the banner at the top of this page will say so.</span></li>
         <li><span class="ic">💡</span><span><b>Porch light on means treats.</b> Off means not tonight, map or no map.</span></li>
         <li><span class="ic">🚗</span><span><b>Drive slowly.</b> Our streets are curvy and steep, and kids dart out between parked cars.</span></li>
         <li><span class="ic">🔦</span><span><b>Flashlights or glow sticks</b> help drivers see kids after dark.</span></li>
@@ -347,7 +346,7 @@
       net: "Couldn't reach the map. Check your connection and try again.",
       store: "The map is having trouble saving right now. Try again in a minute.",
       taken: "That house is already on the map. If it's yours, tell me in the group chat and I'll sort it out.",
-      limit: "This phone already has two houses on the map. Remove one first, or tell me in the group chat.",
+      limit: "This phone already has a house on the map. To move it, remove it below the map first, or tell me in the group chat.",
       closed: "The map has closed for this year.",
       before: "The map isn't open yet.",
       token: "Something went wrong on this phone. Reload the page and try again.",
@@ -672,7 +671,8 @@
     function onLot(id) {
       if (S.pins[id]) { if (markers[id]) markers[id].openPopup(); return; }
       var mine = S.mine.filter(function (x) { return S.pins[x]; });
-      if (mine.length >= 2 && S.role !== "admin") { select(id); bar(ERR.limit, false, "OK"); return; }
+      // One house per phone; the admin can add houses for neighbors who ask.
+      if (mine.length >= 1 && S.role !== "admin") { select(id); bar(ERR.limit, false, "OK"); return; }
       choose(id);
     }
 
@@ -787,7 +787,7 @@
       $("myList").innerHTML = mine.length < 2 ? "" : mine.map(function (x) {
         return '<button class="btn" type="button" data-mine="' + x + '"' + (x === id ? ' aria-pressed="true" style="border-color:var(--pump-btn)"' : "") + ">" + esc(S.byId[x].street) + "</button>";
       }).join("");
-      $("addAnotherRow").hidden = mine.length >= 2 && S.role !== "admin";
+      $("addAnotherRow").hidden = S.role !== "admin";
     }
     $("myList").onclick = function (ev) { var b = ev.target.closest("[data-mine]"); if (b) manage(b.getAttribute("data-mine")); };
     $("editBtn").onclick = function () { openForm(S.cur); };

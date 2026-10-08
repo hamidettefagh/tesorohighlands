@@ -93,7 +93,7 @@ check("every street with houses gets drawn", [...homeStreets].every(n => DATA.ro
 // --- pins: who can change what
 {
   const h = fresh();
-  const home = ids[10], home2 = ids[11], home3 = ids[12];
+  const home = ids[10], home2 = ids[11], home3 = ids[12], home4 = ids[13];
   const bad = await call(h, { method: "POST", code: "pumpkin", token: A, body: set(home, { how: "fullsize" }) });
   check("unknown candy style is refused", bad.status === 400, bad.status);
   const badUntil = await call(h, { method: "POST", code: "pumpkin", token: A, body: set(home, { until: "23:00" }) });
@@ -123,12 +123,15 @@ check("every street with houses gets drawn", [...homeStreets].every(n => DATA.ro
   check("...and it stays in the owner's hands", still.status === 200, still.status);
 
   const two = await call(h, { method: "POST", code: "pumpkin", token: A, body: set(home2) });
-  check("a phone can add a second house (a parent next door)", two.status === 200, two.status);
-  const three = await call(h, { method: "POST", code: "pumpkin", token: A, body: set(home3) });
-  check("but not a third", three.status === 409 && three.json.error === "limit", three.status);
+  check("one house per phone: a second is refused", two.status === 409 && two.json.error === "limit", two.status);
+  await call(h, { method: "POST", code: "big-pumpkin", token: ADMIN_PHONE, body: set(home2) });
+  const many = await call(h, { method: "POST", code: "big-pumpkin", token: ADMIN_PHONE, body: set(home3) });
+  check("the admin can add several houses (for neighbors who ask)", many.status === 200 && many.json.pins[home2] && many.json.pins[home3], many.status);
 
   const del = await call(h, { method: "POST", code: "pumpkin", token: A, body: { action: "remove", home } });
   check("phone A removes its house", del.status === 200 && !del.json.pins[home], del.status);
+  const moved = await call(h, { method: "POST", code: "pumpkin", token: A, body: set(home4) });
+  check("...and can then add a different one (moving it)", moved.status === 200 && moved.json.mine.includes(home4), moved.status);
   const adminDel = await call(h, { method: "POST", code: "big-pumpkin", token: ADMIN_PHONE, body: { action: "remove", home: home2 } });
   check("the admin can remove any house", adminDel.status === 200 && !adminDel.json.pins[home2], adminDel.status);
 }
