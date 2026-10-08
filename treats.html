@@ -93,6 +93,12 @@
   .party{font-size:19px;line-height:1;filter:drop-shadow(0 0 4px rgba(255,200,120,.7));cursor:pointer;}
   .party.big{font-size:24px;}
   #map .leaflet-control-attribution a{color:rgba(214,200,240,.55);text-decoration:none;}
+  /* After five seconds, or the first pan, zoom or tap, the credit folds into a small
+     "i" that shows it again when tapped (OpenStreetMap's attribution guidelines allow this). */
+  #map .leaflet-control-attribution.mini{width:26px;height:26px;padding:0;margin:0 8px 8px 0;border-radius:50%;
+    background:rgba(22,11,41,.6);border:1px solid rgba(196,181,253,.25);cursor:pointer;display:grid;place-items:center;}
+  #map .leaflet-control-attribution.mini a{display:none;}
+  #map .leaflet-control-attribution.mini:before{content:"i";font:italic 700 13px/1 Georgia,serif;color:rgba(214,200,240,.7);}
   #map .leaflet-bar a{width:40px;height:40px;line-height:40px;background:#22252b;color:#e7e9ee;border-bottom-color:#33373e;}
   #pickBar{position:absolute;left:10px;right:10px;bottom:28px;z-index:800;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 10px;
     background:var(--pump-btn);color:#fff;border-radius:12px;padding:8px 8px 8px 14px;font-size:15px;font-weight:650;box-shadow:0 4px 14px rgba(0,0,0,.35);}
@@ -439,7 +445,14 @@
         el.classList.toggle("mz-s", z < 15.75);
         el.classList.toggle("mz-m", z >= 15.75 && z < 16.75);
       }
-      L.control.attribution({ prefix: false }).addTo(map); // no "Leaflet" tag, just the map credit
+      // No "Leaflet" tag, just the map credit, folding away once it has been seen.
+      var credit = L.control.attribution({ prefix: false }).addTo(map).getContainer(), creditTimer;
+      credit.setAttribute("title", "Map credit");
+      function foldCredit() { credit.classList.add("mini"); }
+      function showCredit() { credit.classList.remove("mini"); clearTimeout(creditTimer); creditTimer = setTimeout(foldCredit, 5000); }
+      showCredit();
+      map.on("movestart zoomstart click", foldCredit);
+      L.DomEvent.on(credit, "click", function (e) { if (credit.classList.contains("mini")) { L.DomEvent.stop(e); showCredit(); } });
       map.on("zoomend", zoomClass); zoomClass();
       map.on("dblclick", function () { clearTimeout(tapTimer); });
       // A tap picks the lot it lands on, or, zoomed out where lots are a few pixels
