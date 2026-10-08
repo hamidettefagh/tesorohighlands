@@ -249,7 +249,7 @@ Camino Oceano gate and the Camino Los Robles entrance.
   re-running mid-season keeps every pin on its house.
 - **The look:** a night map. The street map is tinted purple, the streets with houses
   glow orange (their lines come from OpenStreetMap, saved in `api/_treat-homes.js`),
-  and Gardens Park is drawn just outside the main gate. While the Halloween party in
+  and Gardens Park is drawn on Avenida Sierra Madre, below the water-tank hill. While the Halloween party in
   `community-events.json` (place "Gardens Park") is still ahead, the park shows the
   party: a 🎉 badge zoomed out, and the jumper, ice cream, pizza, beer and wine, DJ and
   costume contest zoomed in. Its date and time come from that entry.

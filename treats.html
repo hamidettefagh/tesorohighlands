@@ -413,10 +413,15 @@
       S.roads = H.roads || []; S.streetNames = H.streets; S.base = b;
     }
 
-    // Gardens Park, from the county parcel map: just south of the main gate, where
-    // Avenida Sierra Madre crosses Avenida Rancho Tesoro.
-    var PARK = [[34.48148,-118.565557],[34.481748,-118.566448],[34.481373,-118.566731],[34.481041,-118.56707],[34.480868,-118.567312],
-      [34.480782,-118.567229],[34.480892,-118.566839],[34.480925,-118.566516],[34.480919,-118.566253],[34.480891,-118.565873],[34.48118,-118.565704]];
+    // Gardens Park, from the county parcel map: the flat crescent on Avenida Sierra
+    // Madre below the water-tank hill, between Corte Trono and Calle Palomino.
+    var PARK = [[34.485439,-118.561897],[34.485744,-118.562598],[34.485622,-118.562552],[34.485493,-118.562531],[34.485363,-118.562537],
+      [34.485236,-118.562568],[34.485118,-118.562624],[34.485014,-118.562703],[34.484927,-118.5628],[34.484891,-118.562855],[34.484787,-118.56278],
+      [34.484802,-118.562748],[34.485003,-118.562343],[34.485081,-118.562204],[34.485182,-118.562082],[34.485303,-118.561978],[34.485369,-118.561935]];
+    // The widest point (for the party badge), and six spots inside the crescent
+    // about 20 m apart, north to south, for the party's things.
+    var PARK_MID = [34.485343, -118.562266];
+    var PARK_SPOTS = [[34.485588,-118.562446],[34.485411,-118.562021],[34.485248,-118.562463],[34.485181,-118.562217],[34.485072,-118.562381],[34.484923,-118.562675]];
     // What's at the party, from the organizer's flyer.
     var PARTY_THINGS = [["🏰", "Jumper for the kids"], ["🍦", "Ice cream"], ["🍕", "Pizza for everyone"], ["🍷", "Beer and wine for the adults"], ["🎧", "DJ, music and dancing"], ["🏆", "Costume contest"]];
 
@@ -482,13 +487,13 @@
     var party = null;
     function drawPark() {
       var poly = L.polygon(PARK, { renderer: canvas, color: "#84cc16", weight: 2, dashArray: "5 5", fillColor: "#3f6212", fillOpacity: 0.55 }).addTo(map);
-      var center = poly.getBounds().getCenter(), things = L.layerGroup(), badge = L.layerGroup();
-      // The name sits just below the park, clear of the party in the middle of it.
-      var south = PARK.reduce(function (a, c) { return c[0] < a[0] ? c : a; });
-      L.tooltip({ permanent: true, direction: "bottom", offset: [0, 4], className: "park-lbl" })
-        .setLatLng([south[0], (poly.getBounds().getWest() + poly.getBounds().getEast()) / 2]).setContent("🌳 Gardens Park").addTo(map);
+      var center = L.latLng(PARK_MID), things = L.layerGroup(), badge = L.layerGroup();
+      // The name sits off the park's west edge, over the empty terraces, clear of the party.
+      var west = PARK.reduce(function (a, c) { return c[1] < a[1] ? c : a; });
+      L.tooltip({ permanent: true, direction: "left", offset: [-4, 0], className: "park-lbl" })
+        .setLatLng([PARK_MID[0], west[1]]).setContent("🌳 Gardens Park").addTo(map);
       function popup() {
-        if (!party) return "<div class=\"pop\"><b>🌳 Gardens Park</b><div class=\"st\">Just outside the main gate, on Avenida Sierra Madre</div></div>";
+        if (!party) return "<div class=\"pop\"><b>🌳 Gardens Park</b><div class=\"st\">On Avenida Sierra Madre, below the water tanks</div></div>";
         return '<div class="pop"><b>🎃 ' + esc(party.title) + "</b><div>" + esc(party.when) + "</div>" +
           PARTY_THINGS.map(function (t) { return "<div>" + t[0] + " " + esc(t[1]) + "</div>"; }).join("") +
           '<div class="row"><a class="btn" href="/events#community">Details and RSVP</a></div></div>';
@@ -499,9 +504,7 @@
         if (!party) return;
         // Zoomed in, the party fills the park; zoomed out, one badge marks it.
         PARTY_THINGS.forEach(function (t, i) {
-          var ang = (i / PARTY_THINGS.length) * 2 * Math.PI - Math.PI / 2, m = 30;
-          var ll = [center.lat + (m * Math.sin(ang)) / 110540, center.lng + (m * Math.cos(ang)) / (111320 * Math.cos(center.lat * Math.PI / 180))];
-          L.marker(ll, { icon: L.divIcon({ className: "", html: '<div class="party" title="' + esc(t[1]) + '">' + t[0] + "</div>", iconSize: [24, 24], iconAnchor: [12, 12] }), title: t[1] })
+          L.marker(PARK_SPOTS[i], { icon: L.divIcon({ className: "", html: '<div class="party" title="' + esc(t[1]) + '">' + t[0] + "</div>", iconSize: [24, 24], iconAnchor: [12, 12] }), title: t[1] })
             .on("click", function () { poly.openPopup(center); }).addTo(things);
         });
         L.marker(center, { icon: L.divIcon({ className: "", html: '<div class="party big">🎉</div>', iconSize: [28, 28], iconAnchor: [14, 14] }), title: party.title })
@@ -510,7 +513,7 @@
       }
       function zoomParty() {
         if (!party) return;
-        var near = map.getZoom() >= 17;
+        var near = map.getZoom() >= 17.5;
         if (near) { badge.remove(); things.addTo(map); } else { things.remove(); badge.addTo(map); }
       }
       map.on("zoomend", zoomParty);

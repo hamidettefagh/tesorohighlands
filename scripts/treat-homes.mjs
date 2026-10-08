@@ -146,8 +146,7 @@ for (const f of parcels.features) {
 homes.sort((a, b) => a[2] - b[2] || a[3] - b[3]);
 
 // Streets for the page to draw as glowing roads and label: every street with a
-// house on this map, plus Avenida Rancho Tesoro along the gates (drawn dimmer) and
-// the bit of Avenida Sierra Madre that runs south to Gardens Park.
+// house on this map, plus Avenida Rancho Tesoro along the gates (drawn dimmer).
 function simplifyLine(pts, tol) {
   const p = pts.map(q => xy(q.lon, q.lat));
   const keep = new Array(p.length).fill(false);
