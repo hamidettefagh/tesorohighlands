@@ -47,6 +47,9 @@ check("368 house lots behind the gate", DATA.homes.length === 368, DATA.homes.le
 check("house ids are unique", new Set(ids).size === ids.length);
 check("every lot outline has at least 3 corners", DATA.homes.every(h => h[4].length >= 6));
 check("no parcel numbers in the house list", !/\b3244\d{6}\b/.test(JSON.stringify(DATA)));
+check("the streets to draw are included", DATA.roads.length > 0 && DATA.roads.every(r => DATA.streets[r[0]] && r[2].length >= 4));
+const homeStreets = new Set(DATA.homes.map(h => DATA.streets[h[1]]));
+check("every street with houses gets drawn", [...homeStreets].every(n => DATA.roads.some(r => DATA.streets[r[0]] === n)));
 
 // --- not set up yet
 {

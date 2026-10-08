@@ -247,6 +247,12 @@ Camino Oceano gate and the Camino Los Robles entrance.
   house list from LA County parcels (the newest phase is still being built), and update
   the count in `scripts/treats.test.mjs`. Lot ids are hashes of the parcel number, so
   re-running mid-season keeps every pin on its house.
+- **The look:** a night map. The street map is tinted purple, the streets with houses
+  glow orange (their lines come from OpenStreetMap, saved in `api/_treat-homes.js`),
+  and Gardens Park is drawn just outside the main gate. While the Halloween party in
+  `community-events.json` (place "Gardens Park") is still ahead, the park shows the
+  party: a 🎉 badge zoomed out, and the jumper, ice cream, pizza, beer and wine, DJ and
+  costume contest zoomed in. Its date and time come from that entry.
 - **Locally,** `node server.js` serves it with an in-memory store and the codes
   `pumpkin` / `pumpkin-admin`. Add `?at=2026-10-31T20:45:00-07:00` to the page URL to
   see it at another moment (display only).
