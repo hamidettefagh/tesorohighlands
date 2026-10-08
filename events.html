@@ -419,7 +419,8 @@
         var w = parseStart(e.date), feat = featHtml(e);
         var title = (e.emoji ? esc(String(e.emoji).slice(0, 4)) + " " : "") + esc(e.title);
         return '<div class="evitem' + (feat ? " hasfeat" : "") + '">' + commWhen(e.date) +
-          '<div class="what">' + (/^https?:\/\//i.test(e.url || "") ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + title + "</a>" : title) +
+          '<div class="what">' + (/^https?:\/\//i.test(e.url || "") ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + title + "</a>" :
+            /^\/[a-z]/i.test(e.url || "") ? '<a href="' + esc(e.url) + '">' + title + "</a>" : title) +
           (w.isToday ? '<span class="chip today">Today</span>' : "") +
           // A featured row says its note in the body below, not squeezed into the sub line.
           '<div class="sub">' + esc([e.time, e.place, feat ? "" : e.note].filter(Boolean).join(" · ")) + "</div></div>" + feat + "</div>";

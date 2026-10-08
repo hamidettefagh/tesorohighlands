@@ -189,7 +189,9 @@ event that doesn't exist.
    "place": "The park", "note": "BYO toppings", "url": "" }]
 ```
 
-Past-dated entries drop off automatically; keeping history in the file is fine.
+`url` is a full `https://` link (opens in a new tab) or a page on this site such as
+`/treats` (same tab). Past-dated entries drop off automatically; keeping history in
+the file is fine.
 
 Optional, for a featured neighborhood event (the Halloween party entry is the worked
 example): `featured` (true lifts the Community section to the top of /events and pins
