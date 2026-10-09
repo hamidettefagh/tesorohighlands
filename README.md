@@ -248,6 +248,10 @@ Camino Oceano gate and the Camino Los Robles entrance.
   house list from LA County parcels (the newest phase is still being built), and update
   the count in `scripts/treats.test.mjs`. Lot ids are hashes of the parcel number, so
   re-running mid-season keeps every pin on its house.
+- **Wrong street on a house?** The county has no addresses for these homes yet, so each
+  lot's street is worked out from its shape against the street centrelines (corner lots
+  follow their row). When a neighbor reports a wrong one, add the parcel to `OVERRIDES`
+  in `scripts/treat-homes.mjs` and re-run it; the pin stays where it is.
 - **The look:** a night map. The street map is tinted purple, the streets with houses
   glow orange (their lines come from OpenStreetMap, saved in `api/_treat-homes.js`),
   and Gardens Park is drawn on Avenida Sierra Madre, below the water-tank hill. While the Halloween party in

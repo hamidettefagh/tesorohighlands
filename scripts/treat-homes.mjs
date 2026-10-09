@@ -14,7 +14,8 @@
 //
 // Each lot gets a stable id: a hash of its parcel number, so re-running this
 // mid-season keeps everyone's pin on the same house, and the page never carries
-// the parcel number itself.
+// the parcel number itself. Each lot's street comes from its shape against the
+// street centrelines (see "which street each house is on" below).
 //
 // Checked against satellite imagery on 2026-10-07: 368 house lots. Some lots in
 // the newest Lennar phase were still bare pads; they stay in, since they'll be
@@ -43,6 +44,11 @@ const NOT_HOMES = {
   "3244215055": "landscape strip along Avenida Rancho Tesoro",
   "3244215066": "landscape strip along Avenida Rancho Tesoro",
   "3244218052": "landscape strip along Avenida Rancho Tesoro",
+};
+// Street corrections confirmed on the ground or against imagery, by parcel number.
+// A neighbour reporting "my house shows the wrong street" goes here.
+const OVERRIDES = {
+  "3244215054": "Corte Parillada", // corner lot at Camino Oceano; reported by the owner, 2026-10-08
 };
 // House lots here run about 300–2,400 m². Smaller parcels are slivers; bigger ones
 // are the private streets, slopes, parks and the water tanks.
@@ -107,25 +113,64 @@ const [parcels, osm] = await Promise.all([
 ]);
 if (parcels.exceededTransferLimit) throw new Error("parcel query was truncated; page it");
 
+// ---- which street each house is on
+// The county has no addresses for these new homes yet, so the street is worked out
+// from the lot's shape against OpenStreetMap's centrelines: the lot fronts the
+// street whose centreline its lot line comes nearest to, ignoring a street that only
+// clips a corner at a junction. A corner lot with two streets within a metre of each
+// other follows its row (the street its unambiguous neighbours are on). Checked
+// against satellite imagery on 2026-10-08; OVERRIDES settles what the rule gets wrong.
+const TOUCH = 14;   // a lot line within this many metres of a centreline is along that street
+const BULB = 11;    // OSM draws a cul-de-sac only to the middle of its bulb: extend it that far
+const TIE = 1;      // two streets this close in distance are a tie, settled by the row
+const MINADJ = 8;   // metres of lot line along a street before it counts as a frontage
+
+// A way end is a dead end only if no node of any OTHER way lies within 2 m of it
+// (side streets join at a node in the middle of the through street).
+const allNodes = osm.elements.flatMap(w => w.geometry.map(q => [w.id, xy(q.lon, q.lat)]));
+const deadEnd = (wid, p) => !allNodes.some(([oid, [x, y]]) => oid !== wid && Math.hypot(x - p[0], y - p[1]) <= 2);
 const segs = [];
 for (const w of osm.elements) {
-  const g = w.geometry.map(q => xy(q.lon, q.lat));
+  let g = w.geometry.map(q => xy(q.lon, q.lat));
+  const stretch = (p, q) => { const dx = p[0] - q[0], dy = p[1] - q[1], L = Math.hypot(dx, dy) || 1; return [p[0] + dx / L * BULB, p[1] + dy / L * BULB]; };
+  if (deadEnd(w.id, g[0])) g = [stretch(g[0], g[1]), ...g];
+  if (deadEnd(w.id, g[g.length - 1])) g = [...g, stretch(g[g.length - 1], g[g.length - 2])];
   for (let i = 0; i < g.length - 1; i++) segs.push([w.tags.name, g[i], g[i + 1]]);
 }
-function nearestStreet(pt) {
-  let best = [Infinity, ""];
-  for (const [name, a, b] of segs) {
-    const dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy || 1e-9;
-    const t = Math.max(0, Math.min(1, ((pt[0] - a[0]) * dx + (pt[1] - a[1]) * dy) / L));
-    const d = Math.hypot(a[0] + t * dx - pt[0], a[1] + t * dy - pt[1]);
-    if (d < best[0]) best = [d, name];
+const dSeg = (p, a, b) => {
+  const dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy || 1e-9;
+  const t = Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / L));
+  return Math.hypot(a[0] + t * dx - p[0], a[1] + t * dy - p[1]);
+};
+const dPoly = (p, edges) => { let m = Infinity; for (const [a, b] of edges) { const d = dSeg(p, a, b); if (d < m) m = d; } return m; };
+
+// For one lot outline ([lon, lat] ring): how near each street's centreline comes to the
+// lot line, how much lot line runs along it, and the streets that qualify as frontages.
+function lotFacts(ring) {
+  const pts = ring.map(c => xy(c[0], c[1]));
+  const near = new Map(), adj = new Map(), samples = [];
+  for (let i = 0; i < pts.length - 1; i++) {
+    const a = pts[i], c = pts[i + 1], L = Math.hypot(c[0] - a[0], c[1] - a[1]), n = Math.max(1, Math.floor(L));
+    for (let k = 0; k < n; k++) {
+      const t = (k + 0.5) / n, p = [a[0] + (c[0] - a[0]) * t, a[1] + (c[1] - a[1]) * t];
+      samples.push(p);
+      const ds = new Map();
+      for (const [name, s1, s2] of segs) { const d = dSeg(p, s1, s2); if (!ds.has(name) || d < ds.get(name)) ds.set(name, d); }
+      for (const [name, d] of ds) {
+        if (!near.has(name) || d < near.get(name)) near.set(name, d);
+        if (d <= TOUCH) adj.set(name, (adj.get(name) || 0) + L / n);
+      }
+    }
   }
-  return best[1];
+  const top = Math.max(0, ...adj.values());
+  const cands = [...adj.keys()].filter(n => adj.get(n) >= Math.max(MINADJ, 0.5 * top)).sort((a, b) => near.get(a) - near.get(b));
+  const xs = pts.map(q => q[0]), ys = pts.map(q => q[1]);
+  return { edges: pts.slice(0, -1).map((q, i) => [q, pts[i + 1]]), samples, near, adj, cands, box: [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)] };
 }
 
 const BASE = [34.48, -118.56];
 const enc = (lat, lon) => [Math.round((lat - BASE[0]) * 1e6), Math.round((lon - BASE[1]) * 1e6)];
-const streets = [], homes = [], ids = new Set();
+const lots = [], ids = new Set();
 for (const f of parcels.features) {
   const p = f.properties, g = f.geometry;
   if (!g || g.type !== "Polygon") continue;
@@ -138,10 +183,39 @@ for (const f of parcels.features) {
   const id = crypto.createHash("sha256").update("tesoro-treats|" + p.AIN).digest("hex").slice(0, 8);
   if (ids.has(id)) throw new Error("id collision " + id);
   ids.add(id);
-  const st = nearestStreet(xy(lon, lat));
+  lots.push({ id, ain: p.AIN, lat, lon, ring: g.coordinates[0], facts: lotFacts(g.coordinates[0]) });
+}
+
+// Neighbours: lots sharing at least 5 m of lot line.
+const nbrs = new Map(lots.map(l => [l.id, new Set()]));
+for (let i = 0; i < lots.length; i++) for (let j = i + 1; j < lots.length; j++) {
+  const A = lots[i].facts, B = lots[j].facts;
+  if (A.box[0] > B.box[2] + 1 || B.box[0] > A.box[2] + 1 || A.box[1] > B.box[3] + 1 || B.box[1] > A.box[3] + 1) continue;
+  let shared = 0;
+  for (let k = 0; k < A.samples.length; k += 2) if (dPoly(A.samples[k], B.edges) <= 0.6) shared += 2;
+  if (shared >= 5) { nbrs.get(lots[i].id).add(lots[j].id); nbrs.get(lots[j].id).add(lots[i].id); }
+}
+const sure = new Map(lots.filter(l => l.facts.cands.length === 1).map(l => [l.id, l.facts.cands[0]]));
+function streetOf(l) {
+  if (OVERRIDES[l.ain]) return OVERRIDES[l.ain];
+  const { cands, near, adj } = l.facts;
+  if (!cands.length) return [...near.entries()].sort((a, b) => a[1] - b[1])[0][0];
+  if (cands.length === 1) return cands[0];
+  if (near.get(cands[1]) - near.get(cands[0]) > TIE) return cands[0];
+  const tied = cands.filter(n => near.get(n) - near.get(cands[0]) <= TIE);
+  const votes = new Map();
+  for (const n of nbrs.get(l.id)) { const s = sure.get(n); if (s && tied.includes(s)) votes.set(s, (votes.get(s) || 0) + 1); }
+  const ranked = [...votes.entries()].sort((a, b) => b[1] - a[1]);
+  if (ranked.length && (ranked.length === 1 || ranked[0][1] > ranked[1][1])) return ranked[0][0];
+  return tied.slice().sort((a, b) => (adj.get(a) - adj.get(b)) || (near.get(a) - near.get(b)))[0];
+}
+
+const streets = [], homes = [];
+for (const l of lots) {
+  const st = streetOf(l);
   if (!streets.includes(st)) streets.push(st);
-  const ring = simplify(g.coordinates[0], 0.5).slice(0, -1).flatMap(c => enc(c[1], c[0]));
-  homes.push([id, streets.indexOf(st), ...enc(lat, lon), ring]);
+  const ring = simplify(l.ring, 0.5).slice(0, -1).flatMap(c => enc(c[1], c[0]));
+  homes.push([l.id, streets.indexOf(st), ...enc(l.lat, l.lon), ring]);
 }
 homes.sort((a, b) => a[2] - b[2] || a[3] - b[3]);
 
