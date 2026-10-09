@@ -1,26 +1,17 @@
 {
-  "generatedAt": "2026-10-02T19:59:39.044Z",
-  "weekendOf": "2026-10-02",
+  "generatedAt": "2026-10-09T20:09:35.136Z",
+  "weekendOf": "2026-10-09",
   "model": "claude-haiku-4-5",
-  "intro": "Here's what's happening in Tesoro Highlands this weekend.",
+  "intro": "Here's what to do this weekend in Tesoro Highlands and around Santa Clarita.",
   "picks": [
     {
-      "emoji": "🎃",
-      "day": "Sat",
-      "time": "9 AM",
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "price": "",
-      "note": "Free admission, perfect for little ones and families.",
-      "url": "https://www.gilchristfarm.com/pumpkin-patch"
-    },
-    {
-      "emoji": "🌾",
-      "day": "Sat",
-      "time": "8:30 AM",
-      "title": "Old Town Newhall Farmers Market",
+      "emoji": "🎵",
+      "day": "Fri",
+      "time": "10:30 AM",
+      "title": "Music Time with Mr. Michael",
       "price": "free",
-      "note": "Sunday morning local farmers market, great for breakfast and browsing.",
-      "url": "https://santaclaritaevents.com/blog/santa-clarita-farmers-markets-guide/"
+      "note": "Perfect for the littles on Friday morning",
+      "url": "https://santaclarita.librarycalendar.com/event/contract-music-time-mr-michael-32236"
     },
     {
       "emoji": "🎸",
@@ -28,36 +19,45 @@
       "time": "4 PM",
       "title": "Loud @ the Library: Powered by Music Lab 🎸",
       "price": "free",
-      "note": "Music Lab live performance at the library—free and fun for kids.",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37433"
+      "note": "Free live music for kids and teens Friday",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37434"
     },
     {
-      "emoji": "🎵",
-      "day": "Sun",
+      "emoji": "🎃",
+      "day": "Sat",
+      "time": "9 AM",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "price": "from $10",
+      "note": "Harvest fun with pumpkins and farm activities",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch"
+    },
+    {
+      "emoji": "🎪",
+      "day": "Sat",
+      "time": "",
+      "title": "Circus Vargas - Masquerade",
+      "price": "$25-$90",
+      "note": "Circus Vargas brings spectacle and fun for all ages",
+      "url": "https://tickets.circusvargas.com/"
+    },
+    {
+      "emoji": "📚",
+      "day": "Sat",
       "time": "1 PM",
-      "title": "Afternoon Acoustic Jam",
+      "title": "Tales From the Dark Stacks",
       "price": "free",
-      "note": "Acoustic jam for adults who love live local music.",
-      "url": "https://santaclarita.librarycalendar.com/event/placeholder-afternoon-acoustic-jam-31694"
+      "note": "Spooky storytelling for adults Saturday afternoon",
+      "url": "https://santaclarita.librarycalendar.com/event/adult-hold-tales-dark-stacks-22909"
     },
     {
-      "emoji": "🎢",
-      "day": "Fri",
-      "time": "6:30 PM",
-      "title": "Fright Fest at Six Flags Magic Mountain",
-      "price": "admission varies",
-      "note": "Halloween thrills at Six Flags for older kids and adults.",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest"
-    },
-    {
-      "emoji": "🥕",
-      "day": "Sun",
-      "time": "8 AM",
-      "title": "Santa Clarita Certified Farmers Market",
-      "price": "free",
-      "note": "Farmers market Sunday morning, fresh local produce and community.",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195"
+      "emoji": "🎭",
+      "day": "Sat",
+      "time": "7 PM",
+      "title": "Dial M for Murder",
+      "price": "$20",
+      "note": "Local theater production, perfect for a date night",
+      "url": "https://www.canyontheatre.org"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nHere's what's happening in Tesoro Highlands this weekend.\n\n🎃 *Sat 9 AM* — Gilchrist Farm Harvest Festival & Pumpkin Patch\n   Free admission, perfect for little ones and families.\n🌾 *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Sunday morning local farmers market, great for breakfast and browsing.\n🎸 *Fri 4 PM* — Loud @ the Library: Powered by Music Lab 🎸 (free)\n   Music Lab live performance at the library—free and fun for kids.\n🎵 *Sun 1 PM* — Afternoon Acoustic Jam (free)\n   Acoustic jam for adults who love live local music.\n🎢 *Fri 6:30 PM* — Fright Fest at Six Flags Magic Mountain (admission varies)\n   Halloween thrills at Six Flags for older kids and adults.\n🥕 *Sun 8 AM* — Santa Clarita Certified Farmers Market (free)\n   Farmers market Sunday morning, fresh local produce and community.\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nHere's what to do this weekend in Tesoro Highlands and around Santa Clarita.\n\n🎵 *Fri 10:30 AM* — Music Time with Mr. Michael (free)\n   Perfect for the littles on Friday morning\n🎸 *Fri 4 PM* — Loud @ the Library: Powered by Music Lab 🎸 (free)\n   Free live music for kids and teens Friday\n🎃 *Sat 9 AM* — Gilchrist Farm Harvest Festival & Pumpkin Patch (from $10)\n   Harvest fun with pumpkins and farm activities\n🎪 *Sat* — Circus Vargas - Masquerade ($25-$90)\n   Circus Vargas brings spectacle and fun for all ages\n📚 *Sat 1 PM* — Tales From the Dark Stacks (free)\n   Spooky storytelling for adults Saturday afternoon\n🎭 *Sat 7 PM* — Dial M for Murder ($20)\n   Local theater production, perfect for a date night\n\nFull list → https://tesorohighlands.com/events"
 }
