@@ -1,145 +1,99 @@
 {
-  "generatedAt": "2026-10-08T19:19:50.347Z",
+  "generatedAt": "2026-10-09T18:52:24.343Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Trick and Treats at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain",
-      "start": "2026-10-08T10:30",
-      "venue": "Six Flags Magic Mountain",
+      "title": "Circus Vargas - Masquerade",
+      "url": "https://tickets.circusvargas.com/",
+      "start": "2026-10-10",
+      "venue": "Valencia Town Center",
       "city": "Valencia",
       "free": false,
-      "price": "Park admission required",
-      "audience": [
-        "toddlers",
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Official Site"
-    },
-    {
-      "title": "Oktoberfest at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/blog/the-ultimate-guide-to-fall-events-at-six-flags-2026",
-      "start": "2026-10-08T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "Park admission required",
+      "price": "$25-$90",
       "audience": [
         "kids",
-        "teens",
-        "adults"
+        "adults",
+        "toddlers"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Official Site"
+      "via": "Circus Vargas official website"
     },
     {
-      "title": "Fright Fest at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-08T18:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "Park admission required; Haunted Attractions Pass additional",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Official Site"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://newhallfarmersmarket.com/",
-      "start": "2026-10-10T08:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita Events"
-    },
-    {
-      "title": "Dial M for Murder at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-10T19:00",
-      "venue": "Canyon Theatre Guild",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-10T09:00",
+      "venue": "Gilchrist Farm",
       "city": "Santa Clarita",
       "free": false,
-      "price": "$20 adults; $18 seniors; $15 students",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild Official Site"
-    },
-    {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-10-11T08:00",
-      "venue": "College of the Canyons Parking Lot 5",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
+      "price": "From $10",
       "audience": [
         "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "VCCFM Official Site"
-    },
-    {
-      "title": "Valencia FivePoint Farmers Market",
-      "url": "https://calendar.santaclarita.gov/calendar/9",
-      "start": "2026-10-11T08:30",
-      "venue": "Valencia FivePoint Farmers Market",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
+        "adults",
+        "toddlers"
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Veterans Day Ceremony",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-11T11:00",
-      "venue": "Veterans Historical Plaza",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
+      "title": "Fright Fest",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-10-10T18:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "$74 bundle (admission + mazes); park admission and scare zones included with admission",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain official website"
+    },
+    {
+      "title": "Dial M for Murder",
+      "url": "https://www.canyontheatre.org",
+      "start": "2026-10-10T19:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$20",
       "audience": [
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita Events"
+      "via": "Canyon Theatre Guild / KHTS News"
+    },
+    {
+      "title": "Dial Up Festival",
+      "url": "https://dialupfest.com/",
+      "start": "2026-11-07T12:00",
+      "venue": "Castaic Lake Recreation Area",
+      "city": "Castaic",
+      "free": false,
+      "price": "$54.99-$139.99",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Dial Up Festival official website"
     },
     {
       "title": "Light Up Main Street",
       "url": "https://oldtownnewhall.com/events/light-up-main/",
       "start": "2026-11-21T16:00",
-      "venue": "Main Street, Old Town Newhall",
+      "venue": "Main Street in Old Town Newhall",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
-        "teens",
-        "adults"
+        "adults",
+        "toddlers"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall Official Site"
+      "via": "Old Town Newhall / City of Santa Clarita"
     }
   ]
 }
