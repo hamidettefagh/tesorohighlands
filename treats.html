@@ -17,11 +17,11 @@
 <meta property="og:title" content="🎃 Halloween treat map — Tesoro Highlands" />
 <meta property="og:description" content="Neighbors behind the gate: put your house on the map, knock-for-candy or candy-out-front, so trick-or-treaters know where to go." />
 <meta property="og:url" content="https://tesorohighlands.com/treats" />
-<meta property="og:image" content="https://tesorohighlands.com/og-image.jpg" />
+<meta property="og:image" content="https://tesorohighlands.com/og-treats.jpg" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Tesoro Highlands — a neighbor project for our community in Valencia, CA" />
+<meta property="og:image:alt" content="Tesoro Highlands Halloween treat map: see which houses behind the gate are handing out candy, and add yours" />
 <meta name="twitter:card" content="summary_large_image" />
 <script src="/theme.js"></script>
 <link rel="stylesheet" href="/th.css" />
@@ -48,7 +48,9 @@
   .btn[disabled]{opacity:.6;cursor:progress;}
   .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
   .row .btn{flex:1 1 150px;}
-  .linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--pump-fg);font-weight:650;text-decoration:underline;cursor:pointer;min-height:0;}
+  /* Narrow phones: the manage buttons stack rather than wrapping their labels. */
+  @media (max-width:400px){[data-step="manage"] .row .btn{flex-basis:100%;}}
+  .linkbtn{background:none;border:0;padding:8px 0;display:inline-block;font:inherit;color:var(--pump-fg);font-weight:650;text-decoration:underline;cursor:pointer;min-height:0;}
 
   #gate form{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
   #gate label{width:100%;font-size:13px;font-weight:650;color:var(--ink-2);}
@@ -100,10 +102,10 @@
   #map .leaflet-control-attribution.mini a{display:none;}
   #map .leaflet-control-attribution.mini:before{content:"i";font:italic 700 13px/1 Georgia,serif;color:rgba(214,200,240,.7);}
   #map .leaflet-bar a{width:40px;height:40px;line-height:40px;background:#22252b;color:#e7e9ee;border-bottom-color:#33373e;}
-  #pickBar{position:absolute;left:10px;right:10px;bottom:28px;z-index:800;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 10px;
+  #pickBar{position:absolute;left:10px;right:10px;bottom:28px;z-index:1100;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 10px;
     background:var(--pump-btn);color:#fff;border-radius:12px;padding:8px 8px 8px 14px;font-size:15px;font-weight:650;box-shadow:0 4px 14px rgba(0,0,0,.35);}
   #pickBar .pb{display:flex;gap:8px;margin-left:auto;}
-  #tapHint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:460;pointer-events:none;white-space:nowrap;
+  #tapHint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:1100;pointer-events:none;white-space:nowrap;
     background:rgba(22,11,41,.9);color:#ffe2bf;border:1px solid rgba(249,115,22,.6);border-radius:999px;padding:7px 14px;
     font:650 14px/1.2 var(--font);box-shadow:0 0 14px rgba(249,115,22,.3);}
   #pickBar .btn{min-height:42px;background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);color:#fff;font-size:14px;}
@@ -125,8 +127,8 @@
   .legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:12px 2px 0;font-size:13px;color:var(--ink-2);}
   .legend span{display:inline-flex;align-items:center;gap:6px;}
   .legend .pin{width:22px;height:22px;font-size:12px;border-width:1.5px;box-shadow:none;}
-  .legend .pin.teal{box-shadow:0 0 0 2px var(--tealp);}
   .legend .pin.knock,.legend .pin.bowl{box-shadow:none;}
+  .legend .pin.knock.teal{box-shadow:0 0 0 2px var(--tealp);}
 
   /* Popups dressed for the night too. */
   #map .leaflet-popup-content-wrapper,#map .leaflet-popup-tip{background:#22123a;color:#f3e8ff;box-shadow:0 0 0 1px rgba(249,115,22,.45),0 6px 22px rgba(0,0,0,.5);}
@@ -229,6 +231,7 @@
           <h2>Handing out treats? Add your house</h2>
           <p class="sub"><b><span class="verb">Tap</span> your house on the map</b> to add it. To find it, zoom in with <span id="zoomHow">two fingers or the + button</span>.</p>
           <p class="msg" id="findMsg"></p>
+          <p class="note">Can't find your house, or can't tap the map? Tell me in the group chat and I'll add it for you.</p>
         </div>
 
         <div data-step="form" hidden>
@@ -312,7 +315,14 @@
     function pacific() { var o = {}; PT.formatToParts(new Date(Date.now() + skew)).forEach(function (p) { o[p.type] = p.value; }); return { date: o.year + "-" + o.month + "-" + o.day, hm: o.hour + ":" + o.minute }; }
     function hm12(hm) { if (!hm) return ""; var h = +hm.slice(0, 2), m = hm.slice(3); return (h % 12 || 12) + ":" + m + " " + (h < 12 ? "AM" : "PM"); }
 
+    // Until the API answers, name the night from this year's calendar.
+    (function () {
+      var y = +pacific().date.slice(0, 4);
+      $("nightLbl").textContent = new Date(Date.UTC(y, 9, 31, 12)).toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric", timeZone: "UTC" });
+    })();
+
     // ---- state
+    var busy = 0; // POSTs in flight; the background refresh waits for them
     var S = { role: "", phase: "", night: "", pins: {}, mine: [], homes: [], byId: {}, sel: null, mode: "" };
     var map, lots = {}, markers = {}, canvas;
 
@@ -336,9 +346,10 @@
         body.code = code; body.token = token;
         opts.body = JSON.stringify(body);
       }
+      if (method === "POST") busy++;
       return fetch("/api/treats" + (skipHomes ? "?homes=0" : ""), opts).then(function (r) {
         return r.json().catch(function () { return { ok: false, error: "net" }; }).then(function (j) { j.status = r.status; return j; });
-      }, function () { return { ok: false, error: "net", status: 0 }; }).then(function (j) { if (timer) clearTimeout(timer); return j; });
+      }, function () { return { ok: false, error: "net", status: 0 }; }).then(function (j) { if (timer) clearTimeout(timer); if (method === "POST") busy--; return j; });
     }
     var ERR = {
       code: "That code didn't work. Check the community WhatsApp group for the current one.",
@@ -447,6 +458,8 @@
       // No "Leaflet" tag, just the map credit, folding away once it has been seen.
       var credit = L.control.attribution({ prefix: false }).addTo(map).getContainer(), creditTimer;
       credit.setAttribute("title", "Map credit");
+      credit.setAttribute("role", "button"); credit.setAttribute("tabindex", "0"); credit.setAttribute("aria-label", "Map credit");
+      L.DomEvent.on(credit, "keydown", function (e) { if ((e.key === "Enter" || e.key === " ") && credit.classList.contains("mini")) { L.DomEvent.stop(e); showCredit(); } });
       function foldCredit() { credit.classList.add("mini"); }
       function showCredit() { credit.classList.remove("mini"); clearTimeout(creditTimer); creditTimer = setTimeout(foldCredit, 5000); }
       showCredit();
@@ -763,7 +776,19 @@
         out: !!(p && p.out)
       }).then(function (j) {
         btn.disabled = false;
-        if (!j.ok) { $("formMsg").textContent = errText(j); return; }
+        if (!j.ok) {
+          // Someone else added this house since the map last refreshed. Show the
+          // fresh map and start over, rather than leaving a form that can't save.
+          if (j.error === "taken") {
+            hideBar(); select(null);
+            return api("GET", null, true).then(function (f) {
+              if (f.ok && apply(f)) render();
+              panelDefault(); $("findMsg").textContent = ERR.taken;
+              $("panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+            });
+          }
+          $("formMsg").textContent = errText(j); return;
+        }
         apply(j); hideBar(); render();
         if (S.mine.indexOf(id) >= 0) manage(id); else { select(null); panelDefault(); }
         // Show them their pumpkin.
@@ -832,7 +857,7 @@
     // ---- keep it fresh: every minute on the night, every five otherwise, only while looking
     var lastPull = Date.now();
     function pull() {
-      if (document.visibilityState !== "visible" || S.mode) return;
+      if (document.visibilityState !== "visible" || S.mode || busy) return;
       lastPull = Date.now();
       api("GET", null, true).then(function (j) {
         if (!j.ok) return;

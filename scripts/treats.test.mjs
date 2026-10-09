@@ -74,9 +74,9 @@ check("every street with houses gets drawn", [...homeStreets].every(n => DATA.ro
   const admin = await call(h, { code: "big-pumpkin" });
   check("the admin code is recognized", admin.json.role === "admin");
 
-  for (let i = 0; i < 8; i++) await call(h, { code: "guess" + i, ip: "10.9.9.9" });
-  const ninth = await call(h, { code: "guess-9", ip: "10.9.9.9" });
-  check("the 9th wrong code in 15 minutes waits", ninth.status === 429 && ninth.json.error === "slow", ninth.status);
+  for (let i = 0; i < 20; i++) await call(h, { code: "guess" + i, ip: "10.9.9.9" });
+  const ninth = await call(h, { code: "guess-21", ip: "10.9.9.9" });
+  check("the 21st wrong code in 15 minutes waits", ninth.status === 429 && ninth.json.error === "slow", ninth.status);
   const right = await call(h, { code: "pumpkin", ip: "10.9.9.9" });
   check("...and so does the right code from that address", right.status === 429, right.status);
   const other = await call(h, { code: "pumpkin", ip: "10.1.1.1" });
@@ -140,8 +140,22 @@ check("every street with houses gets drawn", [...homeStreets].every(n => DATA.ro
 {
   const h = fresh();
   let last;
-  for (let i = 0; i < 41; i++) last = await call(h, { method: "POST", code: "pumpkin", token: A, body: set(ids[0], { out: i % 2 === 1 }), ip: "10.5.5.5" });
-  check("the 41st change in 10 minutes waits", last.status === 429, last.status);
+  for (let i = 0; i < 121; i++) last = await call(h, { method: "POST", code: "pumpkin", token: A, body: set(ids[0], { out: i % 2 === 1 }), ip: "10.5.5.5" });
+  check("the 121st change in 10 minutes waits", last.status === 429, last.status);
+}
+
+// --- too many new houses from one address (a script making up tokens)
+{
+  const h = fresh();
+  let r;
+  for (let i = 0; i < 6; i++) r = await call(h, { method: "POST", code: "pumpkin", token: "phone-" + i + "-0123456789abcdef", body: set(ids[20 + i]), ip: "10.6.6.6" });
+  check("six new houses from one address are fine", r.status === 200, r.status);
+  const seventh = await call(h, { method: "POST", code: "pumpkin", token: "phone-7-0123456789abcdef", body: set(ids[27]), ip: "10.6.6.6" });
+  check("the 7th new house in an hour from one address waits", seventh.status === 429 && seventh.json.error === "slow", seventh.status);
+  const edit = await call(h, { method: "POST", code: "pumpkin", token: "phone-0-0123456789abcdef", body: set(ids[20], { out: true }), ip: "10.6.6.6" });
+  check("...but changing a house there still works", edit.status === 200, edit.status);
+  const adm = await call(h, { method: "POST", code: "big-pumpkin", token: ADMIN_PHONE, body: set(ids[28]), ip: "10.6.6.6" });
+  check("...and the admin code is exempt", adm.status === 200, adm.status);
 }
 
 // --- the season

@@ -27,8 +27,11 @@ const HOME_IDS = new Set(DATA.homes.map(h => h[0]));
 const HOW = ["knock", "bowl"];
 const UNTIL = ["", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30"]; // "" = until it runs out
 const PER_PHONE = 1;      // one house per phone; the admin code can add houses for neighbors who ask
-const BAD_CODES = 8;      // wrong codes per address before a 15-minute wait
-const WRITES = 40;        // changes per address per 10 minutes
+// The limits key on the address, and phones on one carrier can share an address,
+// so they are generous: the point is to blunt a script, not to count neighbors.
+const BAD_CODES = 20;     // wrong codes per address before a 15-minute wait
+const WRITES = 120;       // changes per address per 10 minutes
+const NEW_PINS = 6;       // new houses per address per hour (the admin code is exempt)
 
 // The map opens Oct 1 and closes at midnight after Halloween, Pacific time.
 // Midnight on Nov 1 is always still daylight time (it ends the first Sunday of
@@ -126,7 +129,7 @@ function makeHandler(opts) {
     const now = clock(), S = season(now);
     const KEY = "treats:" + S.year + ":pins";
     const ip = String(req.headers["x-forwarded-for"] || (req.socket && req.socket.remoteAddress) || "").split(",")[0].trim();
-    const who = hash("ip", ip), badKey = "treats:bad:" + who, writeKey = "treats:w:" + who;
+    const who = hash("ip", ip), badKey = "treats:bad:" + who, writeKey = "treats:w:" + who, newKey = "treats:new:" + who;
 
     let body = {};
     if (req.method === "POST") { try { body = await readBody(req); } catch (e) { return send(res, 400, { ok: false, error: "bad" }); } }
@@ -178,6 +181,10 @@ function makeHandler(opts) {
         if (cur) { await store.pipe([["HDEL", KEY, home]]); delete all[home]; }
       } else {
         if (!cur && role !== "admin" && mineOf(all, own).length >= PER_PHONE) return send(res, 409, { ok: false, error: "limit" });
+        if (!cur && role !== "admin") {
+          const [n] = await store.pipe([["INCR", newKey], ["EXPIRE", newKey, 3600, "NX"]]);
+          if (n > NEW_PINS) return send(res, 429, { ok: false, error: "slow" });
+        }
         // An admin fixing someone's pin leaves it in their hands.
         pin.own = cur && cur.own ? cur.own : own;
         await store.pipe([["HSET", KEY, home, JSON.stringify(pin)], ["EXPIREAT", KEY, Math.floor(S.close / 1000)]]);

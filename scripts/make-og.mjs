@@ -5,6 +5,7 @@
 //
 //   node scripts/make-og.mjs                  events cards + og-events.json manifest
 //   node scripts/make-og.mjs --home [out.jpg] the site-wide card (default: og-image.jpg)
+//   node scripts/make-og.mjs --treats [out.jpg] the Halloween treat map card (default: og-treats.jpg)
 //
 // Run it whenever a featured event (community-events.json: "featured": true plus a
 // "flyer") is added, changed or removed. It writes one card per "phase" — all the
@@ -38,14 +39,52 @@ function ridgePath(f) {
   for (let x = 8; x <= W; x += 8) d += " L" + x + " " + f(x).toFixed(1);
   return d + ` L${W} ${H} L0 ${H} Z`;
 }
-function houses(list) {
+function houses(list, fill = "#21112f") {
   let body = "", lit = "";
   for (const [x, w, h, win] of list) {
     const base = ridge.near(x + w / 2) + 6, top = base - h, roof = Math.round(w * 0.42);
     body += `<path d="M${x} ${base} V${top} L${x + w / 2} ${top - roof} L${x + w} ${top} V${base} Z"/>`;
     for (const [dx, dy] of win) lit += `<rect x="${x + dx}" y="${(top + dy).toFixed(1)}" width="6" height="7" rx="1"/>`;
   }
-  return `<g fill="#21112f">${body}</g><g fill="#ffd27a">${lit}</g>`;
+  return `<g fill="${fill}">${body}</g><g fill="#ffd27a">${lit}</g>`;
+}
+// Jack-o'-lanterns on the foreground ridge: [x, radius].
+function pumpkins(list) {
+  return list.map(([x, r]) => {
+    const y = ridge.fore(x) - r * 0.55, rx = r, ry = r * 0.8;
+    return `<rect x="${x - 3}" y="${(y - ry - 9).toFixed(1)}" width="7" height="12" rx="2" fill="#4d7c0f"/>
+      <ellipse cx="${x}" cy="${y.toFixed(1)}" rx="${rx}" ry="${ry}" fill="#f97316"/>
+      <ellipse cx="${x}" cy="${y.toFixed(1)}" rx="${(rx * 0.45).toFixed(1)}" ry="${ry}" fill="none" stroke="#c2560a" stroke-width="2"/>
+      <path d="M${x - r * 0.52} ${y - r * 0.12} l${r * 0.2} ${r * 0.28} l${r * 0.2} -${r * 0.28} Z M${x + r * 0.12} ${y - r * 0.12} l${r * 0.2} ${r * 0.28} l${r * 0.2} -${r * 0.28} Z" fill="#fde047"/>
+      <path d="M${x - r * 0.55} ${y + r * 0.22} q${r * 0.55} ${r * 0.5} ${r * 1.1} 0 l-${r * 0.1} -${r * 0.12} q-${r * 0.45} ${r * 0.3} -${r * 0.9} 0 Z" fill="#fde047"/>`;
+  }).join("");
+}
+// The same hills at night, under a full moon, for the Halloween card.
+function nightScene({ moonX = 940, moonY = 150 } = {}) {
+  const stars = [[92, 64, 1.6], [188, 128, 1.1], [266, 52, 1.3], [352, 150, 1], [438, 78, 1.5], [531, 40, 1.1], [612, 118, 1.2], [705, 58, 1.4],
+    [148, 214, 1], [820, 96, 1], [1076, 288, 1.1], [1142, 38, 1.4], [486, 196, 0.9], [760, 230, 1.2], [1020, 330, 1], [240, 300, 1.1], [660, 310, 0.9]]
+    .map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity="${(0.45 + r * 0.3).toFixed(2)}"/>`).join("");
+  return `<svg class="scene" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">
+  <defs>
+    <linearGradient id="nsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#07040f"/><stop offset=".5" stop-color="#190e33"/><stop offset="1" stop-color="#3b1a5c"/></linearGradient>
+    <radialGradient id="moonglow" cx="${moonX}" cy="${moonY}" r="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffe9b0" stop-opacity=".5"/><stop offset=".3" stop-color="#ffd27a" stop-opacity=".16"/><stop offset="1" stop-color="#ffb066" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moon" cx=".38" cy=".34" r=".72"><stop offset="0" stop-color="#fffdf0"/><stop offset=".6" stop-color="#f6e6b4"/><stop offset="1" stop-color="#d9c07c"/></radialGradient>
+  </defs>
+  <rect width="${W}" height="${H}" fill="url(#nsky)"/>
+  ${stars}
+  <rect width="${W}" height="${H}" fill="url(#moonglow)"/>
+  <circle cx="${moonX}" cy="${moonY}" r="66" fill="url(#moon)"/>
+  <circle cx="${moonX - 18}" cy="${moonY + 14}" r="9" fill="#b9a060" opacity=".45"/><circle cx="${moonX + 17}" cy="${moonY - 13}" r="6" fill="#b9a060" opacity=".4"/><circle cx="${moonX + 8}" cy="${moonY + 28}" r="4" fill="#b9a060" opacity=".4"/>
+  <path d="${ridgePath(ridge.far)}" fill="#3a1f5e"/>
+  <path d="${ridgePath(ridge.mid)}" fill="#2a1446"/>
+  ${houses([[742, 30, 22, [[6, 7], [18, 7]]], [780, 36, 28, [[7, 8], [22, 8]]], [826, 28, 20, [[11, 6]]], [986, 34, 26, [[7, 8], [21, 8]]],
+    [1028, 28, 21, [[6, 6], [16, 6]]], [1066, 38, 30, [[8, 9], [24, 9]]], [1114, 30, 22, [[12, 7]]]], "#0a0514")}
+  <path d="${ridgePath(ridge.near)}" fill="#190c30"/>
+  <path d="${ridgePath(ridge.fore)}" fill="#0c0619"/>
+  ${pumpkins([[850, 24], [1000, 34], [1130, 20]])}
+</svg>`;
 }
 function scene({ sunX = 880, sunY = 350, withHouses = true } = {}) {
   const stars = [[92, 64, 1.6], [188, 128, 1.1], [266, 52, 1.3], [352, 150, 1], [438, 78, 1.5], [531, 40, 1.1], [612, 118, 1.2],
@@ -166,6 +205,14 @@ function cardHome() {
     ${foot("tesorohighlands.com")}`);
 }
 
+function cardTreats() {
+  return page(`${nightScene()}<div class="scrim"></div>
+    <div class="copy wide"><div class="eyebrow">Tesoro Highlands · Halloween</div><h1>Halloween<br>treat map</h1>
+    <div class="sub">See which houses behind the gate are handing out candy, and add yours.</div>
+    <div class="pills"><span class="pill">🎃 Knock or ring</span><span class="pill">🍬 Candy out front</span><span class="pill">🩵 Teal pumpkin</span></div></div>
+    ${foot("tesorohighlands.com/treats")}`);
+}
+
 // ---------------------------------------------------------------- headless Chrome over CDP
 function findChrome() {
   const c = [process.env.CHROME_PATH,
@@ -228,6 +275,8 @@ const chrome = await launch();
 try {
   if (args[0] === "--home") {
     await render(chrome, cardHome(), args[1] ? path.resolve(args[1]) : path.join(ROOT, "og-image.jpg"));
+  } else if (args[0] === "--treats") {
+    await render(chrome, cardTreats(), args[1] ? path.resolve(args[1]) : path.join(ROOT, "og-treats.jpg"));
   } else {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const list = JSON.parse(fs.readFileSync(path.join(ROOT, "community-events.json"), "utf8"));

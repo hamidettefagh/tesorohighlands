@@ -257,6 +257,8 @@ Camino Oceano gate and the Camino Los Robles entrance.
 - **Locally,** `node server.js` serves it with an in-memory store and the codes
   `pumpkin` / `pumpkin-admin`. Add `?at=2026-10-31T20:45:00-07:00` to the page URL to
   see it at another moment (display only).
+- **Share card:** `node scripts/make-og.mjs --treats` writes `og-treats.jpg`, the link
+  preview for /treats. Re-run it if the card's wording changes.
 - **Test:** `node scripts/treats.test.mjs`.
 
 ## Theming
