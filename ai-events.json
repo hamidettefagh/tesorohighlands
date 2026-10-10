@@ -1,99 +1,130 @@
 {
-  "generatedAt": "2026-10-09T18:52:24.343Z",
+  "generatedAt": "2026-10-10T17:54:48.622Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
-    {
-      "title": "Circus Vargas - Masquerade",
-      "url": "https://tickets.circusvargas.com/",
-      "start": "2026-10-10",
-      "venue": "Valencia Town Center",
-      "city": "Valencia",
-      "free": false,
-      "price": "$25-$90",
-      "audience": [
-        "kids",
-        "adults",
-        "toddlers"
-      ],
-      "source": "Web (AI)",
-      "via": "Circus Vargas official website"
-    },
     {
       "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
       "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
       "start": "2026-10-10T09:00",
       "venue": "Gilchrist Farm",
       "city": "Santa Clarita",
-      "free": false,
-      "price": "From $10",
+      "free": true,
+      "price": "Free",
       "audience": [
+        "toddlers",
         "kids",
-        "adults",
-        "toddlers"
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Fright Fest",
+      "title": "The Outsider at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/the-outsider",
+      "start": "2026-10-10T14:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$20",
+      "audience": [
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild"
+    },
+    {
+      "title": "SCAA Gallery Pop Up Meet and Greet Mini Reception",
+      "url": "https://calendar.santaclarita.gov/",
+      "start": "2026-10-10T18:00",
+      "venue": "SCAA Gallery",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar"
+    },
+    {
+      "title": "Six Flags Magic Mountain Fright Fest",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
       "start": "2026-10-10T18:30",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "$74 bundle (admission + mazes); park admission and scare zones included with admission",
+      "price": null,
       "audience": [
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain official website"
+      "via": "Six Flags"
     },
     {
-      "title": "Dial M for Murder",
-      "url": "https://www.canyontheatre.org",
+      "title": "Dial \"M\" for Murder at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/",
       "start": "2026-10-10T19:00",
       "venue": "Canyon Theatre Guild",
       "city": "Newhall",
       "free": false,
       "price": "$20",
       "audience": [
-        "adults"
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
-      "via": "Canyon Theatre Guild / KHTS News"
+      "via": "Canyon Theatre Guild"
     },
     {
-      "title": "Dial Up Festival",
-      "url": "https://dialupfest.com/",
-      "start": "2026-11-07T12:00",
-      "venue": "Castaic Lake Recreation Area",
-      "city": "Castaic",
-      "free": false,
-      "price": "$54.99-$139.99",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
+      "start": "2026-10-11T08:00",
+      "venue": "College of the Canyons",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
       "audience": [
-        "teens",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Dial Up Festival official website"
+      "via": "Santa Clarita Community Calendar"
+    },
+    {
+      "title": "Veterans Day Ceremony",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-11-11T11:00",
+      "venue": "Veterans Historical Plaza",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita"
     },
     {
       "title": "Light Up Main Street",
       "url": "https://oldtownnewhall.com/events/light-up-main/",
       "start": "2026-11-21T16:00",
-      "venue": "Main Street in Old Town Newhall",
+      "venue": "Main Street - Old Town Newhall",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
+        "toddlers",
         "kids",
-        "adults",
-        "toddlers"
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall / City of Santa Clarita"
+      "via": "Old Town Newhall"
     }
   ]
 }
