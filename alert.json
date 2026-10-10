@@ -1,10 +1,12 @@
 {
   "active": true,
-  "sig": "fire:BOUQUET:t4",
+  "sig": "fire:BOUQUET:t4|outage:SCE 136725677",
   "level": "caution",
   "title": "Bouquet Fire ~9.4 mi northeast of us",
   "text": "🔥 Bouquet Fire — about 1,048 acres, ~9.4 mi northeast of Tesoro Highlands (straight-line — farther by road).\nNot close, and no evacuation activity for our area — sharing for awareness only.\nLive map & status: https://tesorohighlands.com/fire",
   "waText": "🔥 *Bouquet Fire* — about 1,048 acres, ~9.4 mi northeast of Tesoro Highlands (straight-line — farther by road).\nNot close, and no evacuation activity for our area — sharing for awareness only.\nLive map & status: https://tesorohighlands.com/fire",
-  "others": [],
-  "updatedAt": "2026-10-06T19:15:48.248Z"
+  "others": [
+    "Large SCE outage ~8 mi south of us"
+  ],
+  "updatedAt": "2026-10-10T07:12:36.543Z"
 }
