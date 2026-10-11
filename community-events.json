@@ -16,27 +16,27 @@
     "price": "Free to join — all families welcome"
   },
   {
-    "title": "Free Toy Giveaway",
-    "short": "Toy Giveaway",
+    "title": "Toy Drive for Families in Need",
+    "short": "Toy Drive",
     "emoji": "🎁",
     "featured": true,
-    "date": "2026-10-18T10:00",
-    "time": "10:00 AM – 3:00 PM",
-    "place": "SCV Sheriff’s Station",
-    "note": "Milestone Nonprofit Org is hosting a community giveaway at the Santa Clarita Valley Sheriff’s Station, 26201 Golden Valley Road. Visit their booth and pick up a brand-new toy and movie collectible: in the flyer’s words, “completely free for single family households, while supplies last.”",
+    "date": "2026-10-17",
+    "time": "By Sat, Oct 17",
+    "place": "Drop off on Calle Oruga",
+    "note": "A neighbor is collecting brand-new toys for Milestone Nonprofit Org’s community giveaway, where families in need each pick up a free toy. The giveaway itself is for those families; our part is the toys.",
     "url": "https://milestonenonprofit.org",
     "flyer": "/img/toy-giveaway-2026.png",
     "flyerW": 843,
     "flyerH": 1095,
-    "flyerAlt": "Flyer: You are invited to a special community giveaway hosted by Milestone Nonprofit Org. Free toys and collectibles on October 18, 10 AM to 3 PM, at the Los Angeles County Sheriff’s Department in Santa Clarita. Everything on it is written out in the text beside it.",
-    "price": "Free, while supplies last",
-    "rsvpHead": "Want to donate? Brand-new toys only",
-    "rsvp": "Bring brand-new, unopened toys to 24229 Calle Oruga before the giveaway. Used toys can’t be accepted, because some of these go to hospitals. For the best time to drop off, message the organizer in the community group chat.",
-    "detailsLabel": "🤝 Who’s behind it",
+    "flyerAlt": "The flyer for the giveaway these toys are for: a special community giveaway hosted by Milestone Nonprofit Org, with free toys and collectibles on October 18, 10 AM to 3 PM, at the Los Angeles County Sheriff’s Department in Santa Clarita. The details are written out in the text beside it.",
+    "rsvpHead": "Brand-new toys only, by Sat, Oct 17",
+    "rsvp": "Bring brand-new, unopened toys to 24229 Calle Oruga by Saturday, Oct 17. Used toys can’t be accepted, because some of these go to hospitals. For the best time to drop off, message the organizer in the community group chat.",
+    "detailsLabel": "🎁 Where the toys go",
     "details": [
+      ["🎁 The giveaway", "Sunday, Oct 18, 10 AM – 3 PM at the Santa Clarita Valley Sheriff’s Station, hosted by Milestone Nonprofit Org in partnership with the station. It is for families in need, not a general community event."],
       ["🤝 Supported by", "AMC Thousand Oaks, Sprouts Farmers Market – Valencia, and Farmer Boys – Valencia."]
     ],
-    "host": "Hosted by Milestone Nonprofit Org, in partnership with the SCV Sheriff’s Station. This site only shares the details."
+    "host": "A neighbor is collecting the donations; the giveaway is run by Milestone Nonprofit Org. This site only shares the details."
   },
   {
     "title": "2nd Annual Community Halloween Party",
