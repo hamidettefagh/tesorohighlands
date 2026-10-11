@@ -94,8 +94,9 @@ together — that is the point. Don't reintroduce a second formula.
 
 **EPA correction unit test:** `node scripts/epa-correct.test.mjs` (no npm test runner).
 
-**Business list test:** `node scripts/business.test.mjs` checks `neighbor-businesses.json`:
-required fields, known categories, real links, and no address-like fields.
+**Business list test:** `node scripts/business.test.mjs` runs the submission and approval
+flow: nothing is public until approved, private details never reach the public list,
+home addresses are refused, and the limits hold.
 
 **Treat map test:** `node scripts/treats.test.mjs` covers the Halloween map's code check,
 who can change which pin, the limits, and the season edges.
@@ -145,9 +146,10 @@ running the old copy for up to five minutes and cached status text lingers.
 Leaflet is vendored locally on purpose. During an emergency the network is the least
 reliable thing in the picture, so the site shouldn't depend on someone else's server.
 
-**Business listings come from their owners, through the site owner.**
-A pull request that adds or edits a business in `neighbor-businesses.json` isn't accepted
-on its own: the owner has to ask for it. Never put a home address in that file.
+**Business listings come from their owners, through the form, and the site owner approves each one.**
+Listings live in the site's database, not in the repo, so a pull request can't add one.
+Don't loosen the API's checks that keep home addresses out, or let anything a visitor
+submits show before it has been approved.
 
 **The treat map's neighbor code never goes in the repo, the site, or a commit message.**
 It lives in Vercel env (`TREAT_CODE`) and the WhatsApp groups. The map shows a pin per

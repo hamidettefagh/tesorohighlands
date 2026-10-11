@@ -61,7 +61,7 @@ functions (some need repo secrets on Vercel).
              neighbor-recommended local pros
 /hoa         CA homeowner rights, your documents, the dispute ladder
              (deliberately no board schedules or internal community matters)
-/business    neighbor-owned businesses: owner-listed, free, from neighbor-businesses.json
+/business    neighbor-owned businesses: owners submit a form, the site owner approves
 /treats      Halloween treat map for the houses behind the gate: neighbors-only
              (needs the code), not in the nav, noindex (see "Halloween treat map")
 ```
@@ -86,13 +86,14 @@ api/tempest.js        neighbor Tempest fire weather
                       (needs TEMPEST_TOKEN + TEMPEST_STATION_ID on Vercel)
 api/tempest-forecast.js  WeatherFlow Better Forecast hourly + 10-day (/weather)
 api/_epa.js           shared EPA ATM correction math (used by purpleair.js)
+api/business.js       neighbor-owned businesses: submissions, the approval queue, the public list
+api/_kv.js            the Upstash Redis store (and its in-memory stand-in) shared by business.js and treats.js
 api/treats.js         Halloween treat map pins, in Upstash Redis, behind TREAT_CODE
 api/_treat-homes.js   the house lots behind the gate, built by scripts/treat-homes.mjs
 server.js             tiny static server for LOCAL dev only (mimics clean URLs)
 vendor/leaflet/       self-hosted Leaflet 1.9.4 — no CDN dependency in an emergency
 scripts/*.mjs         the data builders (see below)
 community-events.json neighbor events, hand-maintained (schema below)
-neighbor-businesses.json  neighbor-owned businesses, hand-maintained (see "Neighbor-owned businesses")
 events.json ai-events.json roads.json alert.json roundup.json purpleair-history.json
                       bot-written — never hand-edit, they get overwritten
 updates.json          the "new on this site" changelog, hand-maintained
@@ -224,38 +225,38 @@ developers.facebook.com/tools/debug.
 
 ## Neighbor-owned businesses
 
-`/business` lists businesses owned by people who live in Tesoro Highlands, from
-`neighbor-businesses.json`. It is deliberately small and hand-kept, like the events list.
+`/business` lists businesses owned by people who live in Tesoro Highlands. Owners add
+themselves with the form on the page; nothing shows until the site owner approves it.
 
-```json
-[{ "name": "Example Plumbing", "category": "home", "what": "One sentence on what you do.",
-   "phone": "661-555-0100", "text": true, "url": "https://example.com", "instagram": "example",
-   "email": "", "license": "CSLB #1234567", "offer": "10% off for neighbors",
-   "owner": "", "area": "Comes to you", "community": "Tesoro Highlands",
-   "added": "2026-10-10", "confirmed": "2026-10-10" }]
-```
-
-`name`, `category` and `what` are required; everything else is optional. `category` is one
-of the keys in the page's `CATS` list (`home`, `food`, `health`, `kids`, `pets`, `pro`,
-`beauty`, `tech`, `auto`, `other`).
-
-The rules, which the page states too:
-
-- **Owners list their own business.** Add a listing only when its owner asks, and take it
-  down the day they ask. Never add one from a recommendation; those go under Local pros
-  on `/living`.
-- **No home addresses, ever.** `area` is for "Comes to you", "Online" or a shop address.
-  `owner` is a first name, and only if the owner wants it shown.
-- **License numbers** go in `license` for trades that need one. California requires
-  contractors (B&P Code §7030.5) and real-estate agents (§10140.6) to show theirs in
-  advertising; a value containing "CSLB" or "DRE" gets a "look it up" link.
-- **Free, alphabetical, not vetted.** No paid placement and no ranking.
+- **The flow:** a neighbor fills in the form → it lands in a queue (`api/business.js`,
+  in the same Upstash Redis store as the treat map) → the page says it is waiting for
+  approval → the owner opens **Admin** at the foot of the page (or `/business#admin`),
+  enters the admin code, and approves, edits or rejects it. Approved listings are
+  public within a minute or two (the list is cached at the edge for 60 seconds).
+- **The admin code** is `ADMIN_CODE` if set, otherwise the treat map's
+  `TREAT_ADMIN_CODE`. From the admin view the owner can also add a listing directly,
+  edit or remove one, and re-confirm it for another year.
+- **A phone ping per submission** is optional: set `NTFY_TOPIC` in Vercel to the same
+  ntfy topic the alert bot uses.
+- **What a submission carries:** the listing itself, plus two private fields (the
+  sender's name and a phone or email) so the owner can check it really is a
+  neighbor's. Those are shown only in the admin view, never by the public `GET`.
+- **Spam:** nothing unapproved is ever public. On top of that there is a hidden field
+  bots fill in, 3 submissions an hour per address, and a queue capped at 60.
+- **The rules,** which the page states too: owners list their own business; **no home
+  addresses** (the API rejects anything that looks like one, in either word order, and
+  any neighborhood street as the "where you work"); free, alphabetical, not vetted;
+  license numbers for trades that need one (California requires contractors, B&P Code
+  §7030.5, and real-estate agents, §10140.6, to show theirs in advertising; a value
+  containing "CSLB" or "DRE" gets a "look it up" link).
 - **Re-confirm yearly.** A listing whose `confirmed` date is more than about 13 months
-  old stops showing by itself. Update the date when the owner confirms.
-- `community` is there for the day the list opens to the wider Tesoro community; the
-  page shows it only once more than one community is listed.
-
-**Test:** `node scripts/business.test.mjs` checks the file's shape.
+  old stops showing by itself; the admin view flags it, with a "Confirm for a year"
+  button.
+- `community` is stored on every listing for the day the list opens to the wider Tesoro
+  community; the page shows it only once more than one community is listed.
+- **Locally,** `node server.js` serves it with an in-memory store (submissions vanish on
+  restart) and the admin code `pumpkin-admin`.
+- **Test:** `node scripts/business.test.mjs`.
 
 ## Halloween treat map
 

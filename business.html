@@ -52,7 +52,7 @@
   .biz .ic{font-size:19px;flex:none;width:26px;text-align:center;line-height:1.4;}
   .biz .bd{flex:1;min-width:0;}
   .biz .nm{font-size:15px;font-weight:650;color:var(--ink);letter-spacing:-0.005em;}
-  .biz .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--neu-fg);background:var(--neu-bg);
+  .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--neu-fg);background:var(--neu-bg);
     border:1px solid var(--neu-line);border-radius:999px;padding:1px 8px;margin-left:6px;white-space:nowrap;vertical-align:1px;}
   .biz .dt{font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-top:3px;}
   .biz .meta{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:4px;}
@@ -77,6 +77,51 @@
   .note{font-size:12.5px;color:var(--muted);line-height:1.55;margin:10px 2px 0;}
   .note a{color:var(--accent);font-weight:600;}
   section[id]{scroll-margin-top:64px;}
+
+  /* The form. Inputs are 16px so phones don't zoom in on focus. */
+  :root{--err:#b3261e;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--err:#ff8a80;}}
+  :root[data-theme="dark"]{--err:#ff8a80;}
+  .btn{min-height:46px;padding:0 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+    font:inherit;font-size:15px;font-weight:620;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;}
+  .btn:hover{border-color:var(--muted);}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+  .btn[disabled]{opacity:.6;cursor:progress;}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .row .btn{flex:1 1 150px;}
+  .fl{display:block;font-size:13.5px;font-weight:650;color:var(--ink);margin:16px 0 6px;}
+  .req,.opt{font-size:11.5px;font-weight:650;margin-left:6px;color:var(--muted);}
+  .req{color:var(--ink-2);}
+  .in{display:block;width:100%;min-height:46px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);}
+  textarea.in{min-height:84px;resize:vertical;line-height:1.45;}
+  .in:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .in[aria-invalid="true"]{border-color:var(--err);box-shadow:0 0 0 1px var(--err);}
+  .tick input[aria-invalid="true"]{outline:2px solid var(--err);outline-offset:2px;}
+  .hint{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:5px;}
+  .grp{border:1px solid var(--line);border-radius:14px;padding:4px 14px 14px;margin:18px 0 0;min-width:0;}
+  .grp legend{font-size:13.5px;font-weight:700;color:var(--ink);padding:0 6px;}
+  .grp.priv{background:var(--neu-bg);border-color:var(--neu-line);}
+  .grp.priv .in{background:var(--surface);}
+  .grp .fl{margin-top:12px;}
+  .tick{display:flex;align-items:flex-start;gap:11px;margin-top:14px;font-size:14.5px;line-height:1.45;color:var(--ink-2);cursor:pointer;}
+  .tick input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--accent);}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .msg{font-size:14px;line-height:1.5;color:var(--err);font-weight:620;margin:14px 0 0;}
+  .msg:empty{display:none;}
+  .callout{background:var(--neu-bg);border:1px solid var(--neu-line);border-radius:12px;padding:11px 14px;margin-top:12px;font-size:13.5px;line-height:1.5;color:var(--ink-2);}
+  .callout b{color:var(--ink);}
+  /* The owner's side */
+  .count{font-size:12px;font-weight:700;background:var(--neu-bg);color:var(--neu-fg);border-radius:999px;padding:1px 9px;margin-left:4px;vertical-align:2px;}
+  .arow{padding:14px 0;border-top:1px solid var(--line-2);}
+  .arow:first-child{border-top:0;}
+  .arow .nm{font-size:15px;font-weight:650;color:var(--ink);line-height:1.5;}
+  .arow .dt{font-size:13.5px;color:var(--ink-2);line-height:1.5;margin-top:3px;}
+  .tag.warn{background:var(--surface);border-color:var(--err);color:var(--err);}
+  .kv{font-size:13px;color:var(--ink-2);line-height:1.65;margin-top:6px;overflow-wrap:anywhere;}
+  .kv span{color:var(--muted);display:inline-block;min-width:108px;}
+  .kv a{color:var(--accent);font-weight:600;}
+  .arow .row{margin-top:10px;}
+  .arow .row .btn{flex:1 1 104px;min-height:42px;font-size:14px;}
 </style>
 </head>
 <body class="th">
@@ -94,20 +139,79 @@
     <div id="list">
       <div class="card pad" id="loading"><p style="margin:0">Loading the list…</p></div>
     </div>
-    <noscript><div class="card pad"><p style="margin:0">This list needs JavaScript to load. The listings live in <a href="/neighbor-businesses.json">neighbor-businesses.json</a>.</p></div></noscript>
+    <noscript><div class="card pad"><p style="margin:0">This list, and the form to join it, need JavaScript turned on.</p></div></noscript>
 
     <section id="join">
       <div class="sechead"><h2>List your business</h2><div class="line"></div></div>
       <div class="card pad">
         <h3>Own a business and live in Tesoro Highlands?</h3>
-        <p>It's free. Send me these in the community group chat and I'll add you:</p>
-        <ol class="steps">
-          <li><b>Your business name</b>, and what you do in one sentence.</li>
-          <li><b>How neighbors reach you:</b> a phone number, website, email or Instagram. Only what you want public.</li>
-          <li><b>Your license number</b>, if your work needs one. California requires contractors and real-estate agents to show it in their advertising, and it lets neighbors look you up.</li>
-          <li><b>A neighbor offer</b>, if you'd like to make one. Optional.</li>
-        </ol>
-        <p class="note" style="margin-left:0">Running a business from home? HOA and city home-business rules still apply; this page is only a list.</p>
+        <p>It's free. Fill in the form and send it. I look at each one before it appears, to keep out spam and make sure it's a neighbor's business.</p>
+        <div class="callout" id="mySub" hidden></div>
+        <div class="row" id="openRow"><button class="btn primary" type="button" id="openForm">List my business</button></div>
+
+        <form id="bizForm" novalidate hidden>
+          <h3 id="formTitle" style="margin-top:16px">Your listing</h3>
+          <label class="fl" for="f_name">Business name <span class="req">required</span></label>
+          <input class="in" id="f_name" maxlength="80" autocomplete="organization" />
+
+          <label class="fl" for="f_category">Category <span class="req">required</span></label>
+          <select class="in" id="f_category"><option value="">Pick one…</option></select>
+
+          <label class="fl" for="f_what">What you do, in one sentence <span class="req">required</span></label>
+          <textarea class="in" id="f_what" rows="3" maxlength="220"></textarea>
+          <div class="hint"><span id="whatCount">0</span> / 220</div>
+
+          <fieldset class="grp" id="reachGroup">
+            <legend>How neighbors reach you <span class="req">at least one</span></legend>
+            <label class="fl" for="f_phone">Phone</label>
+            <input class="in" id="f_phone" type="tel" inputmode="tel" maxlength="25" autocomplete="tel" />
+            <label class="tick"><input type="checkbox" id="f_text" /><span>Texts are OK at this number</span></label>
+            <label class="fl" for="f_url">Website</label>
+            <input class="in" id="f_url" type="url" inputmode="url" maxlength="200" autocapitalize="none" spellcheck="false" placeholder="yourbusiness.com" />
+            <label class="fl" for="f_instagram">Instagram</label>
+            <input class="in" id="f_instagram" maxlength="80" autocapitalize="none" spellcheck="false" placeholder="@yourbusiness" />
+            <label class="fl" for="f_email">Email</label>
+            <input class="in" id="f_email" type="email" inputmode="email" maxlength="120" autocapitalize="none" spellcheck="false" autocomplete="email" />
+          </fieldset>
+
+          <label class="fl" for="f_license">License number <span class="opt">if your work needs one</span></label>
+          <input class="in" id="f_license" maxlength="60" placeholder="CSLB #1234567 or DRE #01234567" />
+          <div class="hint">California requires contractors and real-estate agents to show it in their advertising, and it lets neighbors look you up.</div>
+
+          <label class="fl" for="f_offer">A neighbor offer <span class="opt">optional</span></label>
+          <input class="in" id="f_offer" maxlength="120" placeholder="10% off for Tesoro Highlands neighbors" />
+
+          <label class="fl" for="f_area">Where you work <span class="opt">optional</span></label>
+          <input class="in" id="f_area" maxlength="60" placeholder="Comes to you, Online, or the shop's city" />
+          <div class="hint">No home addresses, please.</div>
+
+          <label class="fl" for="f_owner">Your first name, to show on the listing <span class="opt">optional</span></label>
+          <input class="in" id="f_owner" maxlength="40" autocomplete="given-name" />
+
+          <fieldset class="grp priv" id="privGroup">
+            <legend>For me only</legend>
+            <div class="hint" style="margin-top:0">Not shown on the site. I use it to confirm the listing with you.</div>
+            <label class="fl" for="f_by">Your name <span class="req" data-priv>required</span></label>
+            <input class="in" id="f_by" maxlength="80" autocomplete="name" />
+            <label class="fl" for="f_contact">Your phone or email <span class="req" data-priv>required</span></label>
+            <input class="in" id="f_contact" maxlength="120" autocapitalize="none" />
+          </fieldset>
+
+          <label class="tick" id="agreeRow"><input type="checkbox" id="f_agree" /><span>I own this business and I live in Tesoro Highlands.</span></label>
+
+          <div class="hp" aria-hidden="true"><label>Leave this empty <input id="f_hp" tabindex="-1" autocomplete="off" /></label></div>
+
+          <p class="msg" id="formMsg" role="alert"></p>
+          <div class="row">
+            <button class="btn primary" type="submit" id="sendBtn">Send for approval</button>
+            <button class="btn" type="button" id="cancelForm">Cancel</button>
+          </div>
+        </form>
+
+        <div id="sent" hidden>
+          <h3 style="margin-top:14px">✅ Sent. It's waiting for approval.</h3>
+          <p>I check each listing before it goes up, usually within a day or two. You don't need to do anything else. Need to change something? Tell me in the community group chat.</p>
+        </div>
       </div>
     </section>
 
@@ -116,21 +220,46 @@
       <div class="card">
         <ul class="rules">
           <li><b>Free, with no paid spots.</b> Listings are in alphabetical order within each category.</li>
-          <li><b>Owners list their own business.</b> Nobody is added without asking for it, and a listing comes down the day its owner asks.</li>
+          <li><b>Owners list their own business.</b> Each one is checked before it appears, and it comes down the day its owner asks.</li>
           <li><b>No home addresses.</b> A shop or office address is fine; where a neighbor lives is not.</li>
-          <li><b>Listed, not vetted.</b> This site doesn't check, rank or endorse anyone. Look up a license and read reviews before you hire.</li>
+          <li><b>Listed, not vetted.</b> This site doesn't rank or endorse anyone. Look up a license and read reviews before you hire.</li>
           <li><b>Kept current.</b> Each listing is re-confirmed with its owner once a year, and drops off if it isn't.</li>
         </ul>
       </div>
       <p class="note">Looking for a pro neighbors recommend, rather than one a neighbor owns? See <a href="/living#pros">Local pros on Living Here</a>.</p>
     </section>
+
+    <section id="admin" hidden>
+      <div class="sechead"><h2>Admin</h2><div class="line"></div></div>
+      <div class="card pad" id="adminGate">
+        <h3>Approve listings</h3>
+        <form id="adminForm" class="row" style="margin-top:8px" autocomplete="off">
+          <input class="in" id="adminCode" type="password" placeholder="Admin code" aria-label="Admin code" style="flex:1 1 180px;margin:0" />
+          <button class="btn primary" type="submit" style="flex:0 0 auto">Open</button>
+        </form>
+        <p class="msg" id="adminMsg" role="alert"></p>
+      </div>
+      <div id="adminPanel" hidden>
+        <div class="card pad">
+          <h3>Waiting for approval <span class="count" id="pendCount"></span></h3>
+          <div id="pendList"></div>
+        </div>
+        <div class="card pad" style="margin-top:12px">
+          <h3>On the list <span class="count" id="liveCount"></span></h3>
+          <div id="liveAdmin"></div>
+          <div class="row"><button class="btn" type="button" id="adminAdd">Add a listing myself</button><button class="btn" type="button" id="adminOut">Sign out</button></div>
+        </div>
+        <p class="msg" id="panelMsg" role="alert"></p>
+      </div>
+    </section>
   </main>
-  <footer class="thfoot"><p><b>Unofficial and resident-run</b>, not the HOA. A listing here is not a recommendation or a guarantee; each business speaks for itself. &nbsp;<a href="/">← Back to the hub</a></p></footer>
+  <footer class="thfoot"><p><b>Unofficial and resident-run</b>, not the HOA. A listing here is not a recommendation or a guarantee; each business speaks for itself. &nbsp;<a href="/">← Back to the hub</a> &nbsp;·&nbsp; <a href="#admin" id="adminLink">Admin</a></p></footer>
 
   <script>
   (function () {
     "use strict";
-    // Categories, in display order: [key, emoji, label]. scripts/business.test.mjs reads this list.
+    // Categories, in display order: [key, emoji, label]. The keys must match CATS in
+    // api/business.js (scripts/business.test.mjs checks).
     var CATS = [
       ["home", "🔧", "Home & yard"],
       ["food", "🍰", "Food & treats"],
@@ -143,25 +272,36 @@
       ["auto", "🚗", "Auto"],
       ["other", "✨", "Everything else"]
     ];
-    // A listing not re-confirmed with its owner in about 13 months drops off by itself.
-    var STALE_DAYS = 400;
+    var CAT = {};
+    CATS.forEach(function (c) { CAT[c[0]] = c; });
 
     var $ = function (id) { return document.getElementById(id); };
     function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
-    function days(ymd) { var t = Date.parse(String(ymd || "") + "T12:00:00"); return isNaN(t) ? Infinity : (Date.now() - t) / 864e5; }
+    var mem = {};
+    function load(k) { try { var v = localStorage.getItem(k); if (v != null) return v; } catch (e) {} return mem[k] || ""; }
+    function save(k, v) { mem[k] = v; try { if (v) localStorage.setItem(k, v); else localStorage.removeItem(k); } catch (e) {} }
+    var keyOf = function (name) { return String(name || "").toLowerCase().replace(/[^a-z0-9]/g, ""); };
 
-    function current(b) {
-      return b && typeof b === "object" && b.name && b.what && days(b.confirmed || b.added) <= STALE_DAYS;
+    function post(body) {
+      return fetch("/api/business", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), cache: "no-store" })
+        .then(function (r) { return r.json().catch(function () { return { ok: false, error: "net" }; }); }, function () { return { ok: false, error: "net" }; });
     }
 
-    function listing(b, cat, showCommunity) {
-      // Only ever link to real web, phone and mail addresses: this file is hand-kept, but a typo must not mint a javascript: link.
+    // ---------------------------------------------------------------- the public list
+    var listings = null; // null until the first load answers
+
+    // Only ever link to real web, phone and mail addresses, whatever the data says.
+    function links(b) {
       var phone = /^[\d\-() +.]{7,20}$/.test(b.phone || "") ? String(b.phone) : "";
-      var tel = phone.replace(/[^\d+]/g, "");
-      var url = /^https?:\/\/[^\s"'<>]+$/i.test(b.url || "") ? b.url : "";
-      var email = /^[^\s@"'<>]+@[^\s@"'<>]+\.[a-z]{2,}$/i.test(b.email || "") ? b.email : "";
-      var ig = /^[A-Za-z0-9._]{1,30}$/.test(String(b.instagram || "").replace(/^@/, "")) ? String(b.instagram).replace(/^@/, "") : "";
-      var lic = String(b.license || ""), look = "";
+      return {
+        phone: phone, tel: phone.replace(/[^\d+]/g, ""),
+        url: /^https:\/\/[^\s"'<>]+$/i.test(b.url || "") ? b.url : "",
+        email: /^[^\s@"'<>]+@[^\s@"'<>]+\.[a-z]{2,}$/i.test(b.email || "") ? b.email : "",
+        ig: /^[A-Za-z0-9._]{1,30}$/.test(b.instagram || "") ? b.instagram : ""
+      };
+    }
+    function listing(b, cat, showCommunity) {
+      var k = links(b), lic = String(b.license || ""), look = "";
       if (/cslb/i.test(lic)) look = ' · <a href="https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/CheckLicense.aspx" target="_blank" rel="noopener">look it up ↗</a>';
       else if (/dre/i.test(lic)) look = ' · <a href="https://www2.dre.ca.gov/publicasp/pplinfo.asp" target="_blank" rel="noopener">look it up ↗</a>';
       var meta = [];
@@ -169,11 +309,11 @@
       if (b.area) meta.push(esc(b.area));
       if (showCommunity && b.community) meta.push(esc(b.community));
       var acts = "";
-      if (tel) acts += '<a href="tel:' + esc(tel) + '">📞 Call ' + esc(phone) + "</a>";
-      if (tel && b.text === true) acts += '<a href="sms:' + esc(tel) + '">💬 Text</a>';
-      if (url) acts += '<a href="' + esc(url) + '" target="_blank" rel="noopener">🌐 Website ↗</a>';
-      if (ig) acts += '<a href="https://www.instagram.com/' + esc(ig) + '/" target="_blank" rel="noopener">📷 @' + esc(ig) + " ↗</a>";
-      if (email) acts += '<a href="mailto:' + esc(email) + '">✉️ Email</a>';
+      if (k.tel) acts += '<a href="tel:' + esc(k.tel) + '">📞 Call ' + esc(k.phone) + "</a>";
+      if (k.tel && b.text === true) acts += '<a href="sms:' + esc(k.tel) + '">💬 Text</a>';
+      if (k.url) acts += '<a href="' + esc(k.url) + '" target="_blank" rel="noopener">🌐 Website ↗</a>';
+      if (k.ig) acts += '<a href="https://www.instagram.com/' + esc(k.ig) + '/" target="_blank" rel="noopener">📷 @' + esc(k.ig) + " ↗</a>";
+      if (k.email) acts += '<a href="mailto:' + esc(k.email) + '">✉️ Email</a>';
       return '<div class="biz"><span class="ic" aria-hidden="true">' + cat[1] + '</span><div class="bd">' +
         '<div class="nm">' + esc(b.name) + "</div>" +
         '<div class="dt">' + esc(b.what) + "</div>" +
@@ -184,24 +324,24 @@
         "</div></div>";
     }
 
-    function render(raw) {
-      var all = (Array.isArray(raw) ? raw : []).filter(current);
-      var known = {};
-      CATS.forEach(function (c) { known[c[0]] = c; });
+    function render() {
+      var all = (listings || []).filter(function (b) { return b && b.name && b.what; });
       var groups = {}, communities = {};
       all.forEach(function (b) {
-        var k = known[b.category] ? b.category : "other";
+        var k = CAT[b.category] ? b.category : "other";
         (groups[k] = groups[k] || []).push(b);
         communities[b.community || "Tesoro Highlands"] = 1;
       });
       var showCommunity = Object.keys(communities).length > 1;
       var used = CATS.filter(function (c) { return groups[c[0]]; });
+      var chips = $("chips");
+      chips.hidden = used.length < 2;
 
       if (!all.length) {
         $("tally").textContent = "";
         $("list").innerHTML = '<div class="card pad"><h3>No listings yet. Be the first.</h3>' +
-          '<p>This page just opened. If you own a business and live in Tesoro Highlands, <a href="#join" style="color:var(--accent);font-weight:600">here\'s how to get on it</a>.</p></div>';
-        return;
+          '<p>This page just opened. If you own a business and live in Tesoro Highlands, <a href="#join" style="color:var(--accent);font-weight:600">add it below</a>.</p></div>';
+        myNote(); return;
       }
       $("tally").textContent = all.length + (all.length === 1 ? " neighbor-owned business" : " neighbor-owned businesses");
       $("list").innerHTML = used.map(function (c) {
@@ -209,29 +349,245 @@
         return '<section data-cat="' + c[0] + '"><div class="sechead"><h2>' + esc(c[2]) + '</h2><div class="line"></div></div><div class="card">' +
           rows.map(function (b) { return listing(b, c, showCommunity); }).join("") + "</div></section>";
       }).join("");
-
       if (used.length > 1) {
-        var chips = $("chips");
-        chips.hidden = false;
         chips.innerHTML = '<button type="button" data-cat="" aria-pressed="true">All</button>' + used.map(function (c) {
           return '<button type="button" data-cat="' + c[0] + '" aria-pressed="false">' + c[1] + " " + esc(c[2]) + "</button>";
         }).join("");
-        chips.onclick = function (ev) {
-          var b = ev.target.closest("button[data-cat]"); if (!b) return;
-          var want = b.getAttribute("data-cat");
-          Array.prototype.forEach.call(chips.querySelectorAll("button"), function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-          Array.prototype.forEach.call(document.querySelectorAll("#list section[data-cat]"), function (s) { s.hidden = !!want && s.getAttribute("data-cat") !== want; });
-        };
       }
+      myNote();
+    }
+    $("chips").onclick = function (ev) {
+      var b = ev.target.closest("button[data-cat]"); if (!b) return;
+      var want = b.getAttribute("data-cat");
+      Array.prototype.forEach.call($("chips").querySelectorAll("button"), function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      Array.prototype.forEach.call(document.querySelectorAll("#list section[data-cat]"), function (s) { s.hidden = !!want && s.getAttribute("data-cat") !== want; });
+    };
+
+    function loadList() {
+      return fetch("/api/business", { cache: "no-cache" })
+        .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+        .then(function (j) { listings = j.listings || []; render(); })
+        .catch(function () {
+          // A failed load is not an empty list: say so, rather than "no listings yet".
+          $("list").innerHTML = '<div class="card pad"><h3>Couldn\'t load the list just now</h3><p>Check your connection and reload the page.</p></div>';
+        });
     }
 
-    fetch("/neighbor-businesses.json", { cache: "no-cache" })
-      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
-      .then(render)
-      .catch(function () {
-        // A failed load is not an empty list: say so, rather than "no listings yet".
-        $("list").innerHTML = '<div class="card pad"><h3>Couldn\'t load the list just now</h3><p>Check your connection and reload the page.</p></div>';
+    // "Your listing is waiting": this phone remembers what it sent, with the receipt id
+    // the server gave it, and asks what became of it. The name alone isn't enough: the
+    // owner may tidy it before approving.
+    var subState = "";
+    function myNote() {
+      var s = null;
+      try { s = JSON.parse(load("tesoro.biz.sub") || "null"); } catch (e) {}
+      var box = $("mySub");
+      if (!s || !s.name) { box.hidden = true; return; }
+      var isLive = subState === "live" || (!s.id && (listings || []).some(function (b) { return keyOf(b.name) === keyOf(s.name); }));
+      box.hidden = false;
+      if (isLive) { save("tesoro.biz.sub", ""); box.innerHTML = "✅ <b>" + esc(s.liveName || s.name) + "</b> is on the list. Thanks for adding it!"; return; }
+      if (subState === "gone") { save("tesoro.biz.sub", ""); box.innerHTML = "<b>" + esc(s.name) + "</b> wasn’t added to the list. Questions? Tell me in the community group chat."; return; }
+      var when = new Date(s.at || Date.now()).toLocaleDateString([], { month: "short", day: "numeric" });
+      box.innerHTML = "⏳ <b>" + esc(s.name) + "</b> was sent on " + esc(when) + " and is waiting for approval.";
+    }
+    function checkMine() {
+      var s = null;
+      try { s = JSON.parse(load("tesoro.biz.sub") || "null"); } catch (e) {}
+      if (!s || !s.id) return;
+      post({ action: "status", id: s.id }).then(function (j) {
+        if (!j.ok || !j.state) return; // a failed check changes nothing: still "waiting"
+        subState = j.state;
+        if (j.name) { s.liveName = j.name; save("tesoro.biz.sub", JSON.stringify(s)); }
+        myNote();
       });
+    }
+
+    // ---------------------------------------------------------------- the form
+    var FIELDS = ["name", "category", "what", "phone", "url", "instagram", "email", "license", "offer", "area", "owner", "by", "contact"];
+    var mode = { kind: "submit" }; // or {kind:"add"} / {kind:"edit", id, where} on the owner's side
+    $("f_category").innerHTML += CATS.map(function (c) { return '<option value="' + c[0] + '">' + c[1] + " " + esc(c[2]) + "</option>"; }).join("");
+    $("f_what").addEventListener("input", function () { $("whatCount").textContent = this.value.length; });
+
+    function readForm() {
+      var item = {};
+      FIELDS.forEach(function (f) { item[f] = $("f_" + f).value.trim(); });
+      item.text = $("f_text").checked;
+      item.agree = $("f_agree").checked;
+      return item;
+    }
+    function fillForm(item) {
+      item = item || {};
+      FIELDS.forEach(function (f) { $("f_" + f).value = f === "by" || f === "contact" ? ((item.private || {})[f] || "") : (item[f] || ""); });
+      $("f_text").checked = item.text === true;
+      $("f_agree").checked = false;
+      $("f_hp").value = "";
+      $("whatCount").textContent = $("f_what").value.length;
+      clearErrors();
+    }
+    function openForm(m, item) {
+      mode = m;
+      var owner = m.kind !== "submit";
+      fillForm(item);
+      $("formTitle").textContent = m.kind === "edit" ? "Edit this listing" : m.kind === "add" ? "Add a listing" : "Your listing";
+      $("sendBtn").textContent = m.kind === "edit" ? "Save changes" : m.kind === "add" ? "Add to the list" : "Send for approval";
+      $("agreeRow").hidden = owner;
+      Array.prototype.forEach.call(document.querySelectorAll("[data-priv]"), function (el) { el.textContent = owner ? "optional" : "required"; el.className = owner ? "opt" : "req"; });
+      $("bizForm").hidden = false; $("openRow").hidden = true; $("sent").hidden = true;
+      $("bizForm").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    function closeForm() { $("bizForm").hidden = true; $("openRow").hidden = false; mode = { kind: "submit" }; }
+    $("openForm").onclick = function () { openForm({ kind: "submit" }); };
+    $("cancelForm").onclick = function () { closeForm(); };
+
+    var MSG = {
+      name: "Enter the business name.",
+      category: "Pick a category.",
+      what: "Say what you do in a sentence (at least 10 characters).",
+      reach: "Add at least one way to reach you: phone, website, Instagram or email.",
+      phone: "That phone number doesn't look right.",
+      url: "That website address doesn't look right.",
+      instagram: "That Instagram name doesn't look right. Use just the name, like @yourbusiness.",
+      email: "That email address doesn't look right.",
+      address: "Leave out street addresses. For where you work, say “Comes to you”, “Online” or the shop's city.",
+      by: "Enter your name, so I know who sent this.",
+      contact: "Enter a phone number or email where I can confirm it with you.",
+      agree: "Tick the box to confirm it's your business and you live here.",
+      dupe: "A business with that name is already listed or waiting for approval.",
+      slow: "That's a lot of submissions from one place. Try again in an hour.",
+      full: "The approval queue is full right now. Try again tomorrow.",
+      setup: "The list isn't taking submissions right now. Try again later.",
+      store: "Couldn't save that just now. Try again in a minute.",
+      net: "Couldn't reach the site. Check your connection and try again.",
+      code: "That code didn't work.",
+      gone: "That one was already handled. The lists below are up to date."
+    };
+    // Which input each problem points at.
+    var WHERE = { reach: "phone", address: "area", agree: "agree" };
+    function clearErrors() {
+      $("formMsg").textContent = "";
+      Array.prototype.forEach.call($("bizForm").querySelectorAll("[aria-invalid]"), function (el) { el.removeAttribute("aria-invalid"); });
+    }
+    function showErrors(fields) {
+      clearErrors();
+      var first = null;
+      fields.forEach(function (f) {
+        var el = $("f_" + (WHERE[f] || f));
+        if (el) { el.setAttribute("aria-invalid", "true"); first = first || el; }
+      });
+      $("formMsg").innerHTML = fields.map(function (f) { return esc(MSG[f] || MSG.store); }).join("<br>");
+      if (first) first.focus();
+      $("formMsg").scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    // The same checks the server makes, so most slips are caught without a round trip.
+    function precheck(item, owner) {
+      var bad = [];
+      if (item.name.length < 2) bad.push("name");
+      if (!item.category) bad.push("category");
+      if (item.what.length < 10) bad.push("what");
+      if (!item.phone && !item.url && !item.instagram && !item.email) bad.push("reach");
+      if (!owner) {
+        if (item.by.length < 2) bad.push("by");
+        if (item.contact.length < 5) bad.push("contact");
+        if (!item.agree) bad.push("agree");
+      }
+      return bad;
+    }
+
+    $("bizForm").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var item = readForm(), owner = mode.kind !== "submit", btn = $("sendBtn");
+      var bad = precheck(item, owner);
+      if (bad.length) return showErrors(bad);
+      clearErrors();
+      var body = owner ? { action: mode.kind === "add" ? "add" : "save", code: adminCode, id: mode.id, where: mode.where, item: item }
+                       : { action: "submit", item: item, hp: $("f_hp").value };
+      btn.disabled = true;
+      post(body).then(function (j) {
+        btn.disabled = false;
+        if (!j.ok) return showErrors(j.error === "fields" ? j.fields : [j.error]);
+        if (owner) { closeForm(); showAdmin(j); $("admin").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+        subState = "";
+        save("tesoro.biz.sub", JSON.stringify({ id: j.id || "", name: item.name, at: Date.now() }));
+        $("bizForm").hidden = true; $("sent").hidden = false; myNote();
+        $("sent").scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    });
+
+    // ---------------------------------------------------------------- the owner's side
+    var adminCode = load("tesoro.biz.admin"), adminData = { pending: [], live: [] };
+
+    function line(label, v) { return v ? "<div><span>" + label + "</span> " + v + "</div>" : ""; }
+    function contactLink(c) {
+      c = String(c || "");
+      if (/^[^\s@"'<>]+@[^\s@"'<>]+\.[a-z]{2,}$/i.test(c)) return '<a href="mailto:' + esc(c) + '">' + esc(c) + "</a>";
+      if (/^[\d\-() +.]{7,20}$/.test(c)) return '<a href="tel:' + esc(c.replace(/[^\d+]/g, "")) + '">' + esc(c) + "</a>";
+      return esc(c);
+    }
+    function adminRow(l, where) {
+      var k = links(l), p = l.private || {}, cat = CAT[l.category] || CAT.other;
+      var reach = [k.phone ? "📞 " + esc(k.phone) + (l.text ? " (texts OK)" : "") : "", k.url ? '<a href="' + esc(k.url) + '" target="_blank" rel="noopener">' + esc(k.url) + " ↗</a>" : "",
+        k.ig ? '<a href="https://www.instagram.com/' + esc(k.ig) + '/" target="_blank" rel="noopener">@' + esc(k.ig) + " ↗</a>" : "", k.email ? esc(k.email) : ""].filter(Boolean).join(" · ");
+      var when = l.at ? new Date(l.at).toLocaleDateString([], { month: "short", day: "numeric", year: "numeric" }) : "";
+      var btns = where === "pending"
+        ? '<button class="btn primary" type="button" data-act="approve">Approve</button><button class="btn" type="button" data-act="edit">Edit</button><button class="btn" type="button" data-act="reject">Reject</button>'
+        : '<button class="btn" type="button" data-act="edit">Edit</button><button class="btn" type="button" data-act="confirm">Confirm for a year</button><button class="btn" type="button" data-act="remove">Remove</button>';
+      return '<div class="arow" data-id="' + esc(l.id) + '" data-where="' + where + '">' +
+        '<div class="nm">' + esc(l.name) + ' <span class="tag">' + cat[1] + " " + esc(cat[2]) + "</span>" + (l.stale ? ' <span class="tag warn">Not showing: needs re-confirming</span>' : "") + "</div>" +
+        '<div class="dt">' + esc(l.what) + "</div>" +
+        '<div class="kv">' + line("Reach", reach) + line("License", esc(l.license)) + line("Offer", esc(l.offer)) + line("Works", esc(l.area)) + line("Shows owner as", esc(l.owner)) +
+          line("From", (p.by ? esc(p.by) : "") + (p.contact ? " · " + contactLink(p.contact) : "")) +
+          line(where === "pending" ? "Sent" : "Confirmed", where === "pending" ? esc(when) : esc(l.confirmed || "")) + "</div>" +
+        '<div class="row">' + btns + "</div></div>";
+    }
+    function showAdmin(j) {
+      adminData = { pending: j.pending || [], live: j.live || [] };
+      $("adminGate").hidden = true; $("adminPanel").hidden = false; $("panelMsg").textContent = "";
+      $("pendCount").textContent = adminData.pending.length;
+      $("liveCount").textContent = adminData.live.length;
+      $("pendList").innerHTML = adminData.pending.length ? adminData.pending.map(function (l) { return adminRow(l, "pending"); }).join("") : '<p style="margin-top:6px">Nothing waiting. New submissions show up here.</p>';
+      $("liveAdmin").innerHTML = adminData.live.length ? adminData.live.map(function (l) { return adminRow(l, "live"); }).join("") : '<p style="margin-top:6px">Nothing on the list yet.</p>';
+      // The public list above is cached for a minute; show the owner the result right away.
+      listings = adminData.live.filter(function (l) { return !l.stale; });
+      render();
+    }
+    function adminCall(body, msgEl) {
+      body.code = adminCode;
+      return post(body).then(function (j) {
+        if (j.ok) { showAdmin(j); return j; }
+        if (j.error === "code") { save("tesoro.biz.admin", ""); adminCode = ""; $("adminPanel").hidden = true; $("adminGate").hidden = false; }
+        (msgEl || $("panelMsg")).textContent = MSG[j.error] || MSG.store;
+        if (j.error === "gone") post({ action: "list", code: adminCode }).then(function (f) { if (f.ok) { showAdmin(f); $("panelMsg").textContent = MSG.gone; } });
+        return j;
+      });
+    }
+    function openAdmin() {
+      $("admin").hidden = false;
+      if (adminCode) adminCall({ action: "list" }, $("adminMsg"));
+      $("admin").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    $("adminLink").onclick = function (ev) { ev.preventDefault(); openAdmin(); };
+    $("adminForm").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var v = $("adminCode").value.trim();
+      if (!v) { $("adminMsg").textContent = "Enter the code first."; return; }
+      adminCode = v; $("adminMsg").textContent = "";
+      adminCall({ action: "list" }, $("adminMsg")).then(function (j) { if (j.ok) { save("tesoro.biz.admin", v); $("adminCode").value = ""; } });
+    });
+    $("adminOut").onclick = function () { save("tesoro.biz.admin", ""); adminCode = ""; $("adminPanel").hidden = true; $("adminGate").hidden = false; $("admin").hidden = true; closeForm(); loadList(); };
+    $("adminAdd").onclick = function () { openForm({ kind: "add" }); };
+    $("adminPanel").addEventListener("click", function (ev) {
+      var b = ev.target.closest("button[data-act]"); if (!b) return;
+      var row = b.closest(".arow"), id = row.getAttribute("data-id"), where = row.getAttribute("data-where"), act = b.getAttribute("data-act");
+      var item = adminData[where].filter(function (l) { return l.id === id; })[0];
+      if (act === "edit") return openForm({ kind: "edit", id: id, where: where }, item);
+      if (act === "reject" && !confirm("Reject “" + item.name + "”? It will be deleted.")) return;
+      if (act === "remove" && !confirm("Take “" + item.name + "” off the list?")) return;
+      b.disabled = true;
+      adminCall({ action: act, id: id }).then(function () { b.disabled = false; });
+    });
+
+    loadList();
+    checkMine();
+    if (location.hash === "#admin") openAdmin();
   })();
   </script>
   <script src="/nav.js?v=18" defer></script>

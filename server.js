@@ -17,6 +17,15 @@ const treatsApi = treatsMod.makeHandler({
   now: treatNow,
 });
 
+// Neighbor-owned businesses API, same in-memory store idea. The local admin code is
+// TREAT_ADMIN_CODE (default "pumpkin-admin"); submissions vanish on restart.
+const bizMod = require("./api/business.js");
+const bizApi = bizMod.makeHandler({
+  env: { TREAT_ADMIN_CODE: process.env.TREAT_ADMIN_CODE || "pumpkin-admin" },
+  store: bizMod.memoryStore(),
+  notify: async name => console.log("[business] new submission waiting for approval: " + name),
+});
+
 const dir = __dirname;
 const port = process.env.PORT || 3100;
 const liveFeeds = process.env.WEATHER_LIVE === "1";
@@ -41,6 +50,7 @@ http
   .createServer((req, res) => {
     let p = decodeURIComponent((req.url || "/").split("?")[0]);
     if (p === "/api/treats") return treatsApi(req, res);
+    if (p === "/api/business") return bizApi(req, res);
     if (!liveFeeds) {
       if (p === "/api/purpleair") return sendJson(res, demoPurpleair());
       if (p === "/api/tempest-forecast") return sendJson(res, demoForecast());
