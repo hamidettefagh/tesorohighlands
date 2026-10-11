@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neighbor-Owned Businesses — Tesoro Highlands</title>
+<meta name="description" content="Businesses owned by people who live in Tesoro Highlands. Hire a neighbor, or list your own. Free, owner-listed, unofficial and resident-run." />
+<meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#14161b" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="/icon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="canonical" href="https://tesorohighlands.com/business" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Tesoro Highlands" />
+<meta property="og:title" content="Neighbor-Owned Businesses — Tesoro Highlands" />
+<meta property="og:description" content="Businesses owned by people who live in Tesoro Highlands. Hire a neighbor, or list your own." />
+<meta property="og:url" content="https://tesorohighlands.com/business" />
+<meta property="og:image" content="https://tesorohighlands.com/og-image.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Tesoro Highlands — a neighbor project for our community in Valencia, CA" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Neighbor-Owned Businesses — Tesoro Highlands" />
+<meta name="twitter:description" content="Businesses owned by people who live in Tesoro Highlands. Hire a neighbor, or list your own." />
+<meta name="twitter:image" content="https://tesorohighlands.com/og-image.jpg" />
+<script src="/theme.js"></script>
+<link rel="stylesheet" href="/th.css" />
+<style>
+  .preview{display:flex;gap:9px;align-items:flex-start;background:var(--neu-bg);color:var(--neu-fg);border:1px solid var(--neu-line);
+    border-radius:12px;padding:11px 14px;font-size:12.5px;line-height:1.5;margin:14px 0 6px;}
+  .preview b{font-weight:680;color:var(--ink);}
+  .preview a{color:var(--accent);font-weight:600;}
+  .chips{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin:14px 0 4px;-webkit-overflow-scrolling:touch;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chips button{flex:none;min-height:40px;font:inherit;font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--surface);
+    border:1px solid var(--line);border-radius:999px;padding:6px 13px;white-space:nowrap;cursor:pointer;}
+  .chips button:hover{border-color:var(--muted);color:var(--ink);}
+  .chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+  .tally{font-size:13px;color:var(--muted);margin:14px 2px 0;}
+  .sechead{display:flex;align-items:center;gap:8px;margin:26px 2px 8px;}
+  .sechead h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:680;}
+  .sechead .line{flex:1;height:1px;background:var(--line);}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:6px 16px;box-shadow:var(--shadow);}
+  .card.pad{padding:15px 16px;}
+  .card h3{font-size:16px;margin:0 0 4px;letter-spacing:-0.01em;}
+  .card.pad p{font-size:13.5px;color:var(--ink-2);line-height:1.55;margin:6px 0 0;}
+  .biz{display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line-2);}
+  .biz:first-child{border-top:0;}
+  .biz .ic{font-size:19px;flex:none;width:26px;text-align:center;line-height:1.4;}
+  .biz .bd{flex:1;min-width:0;}
+  .biz .nm{font-size:15px;font-weight:650;color:var(--ink);letter-spacing:-0.005em;}
+  .biz .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--neu-fg);background:var(--neu-bg);
+    border:1px solid var(--neu-line);border-radius:999px;padding:1px 8px;margin-left:6px;white-space:nowrap;vertical-align:1px;}
+  .biz .dt{font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-top:3px;}
+  .biz .meta{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:4px;}
+  .biz .meta a{color:var(--accent);font-weight:600;text-decoration:none;}
+  .biz .meta a:hover{text-decoration:underline;}
+  .biz .offer{font-size:13px;font-weight:640;color:var(--ink);margin-top:5px;}
+  .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+  .acts a{min-height:40px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13.5px;font-weight:620;color:var(--ink);
+    background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:0 13px;}
+  .acts a:hover{border-color:var(--muted);}
+  .steps{counter-reset:step;list-style:none;margin:8px 0 0;padding:0;}
+  .steps li{font-size:13.5px;color:var(--ink-2);line-height:1.55;padding:9px 0 9px 36px;position:relative;border-top:1px solid var(--line-2);counter-increment:step;}
+  .steps li:first-child{border-top:0;}
+  .steps li:before{content:counter(step);position:absolute;left:2px;top:9px;width:22px;height:22px;border-radius:999px;
+    background:var(--neu-bg);color:var(--neu-fg);font-size:11.5px;font-weight:700;display:grid;place-items:center;}
+  .steps b,.rules b{color:var(--ink);font-weight:620;}
+  .rules{list-style:none;margin:4px 0 0;padding:0;}
+  .rules li{font-size:13.5px;color:var(--ink-2);line-height:1.55;padding:9px 0 9px 30px;position:relative;border-top:1px solid var(--line-2);}
+  .rules li:first-child{border-top:0;}
+  .rules li:before{content:"✓";position:absolute;left:6px;top:9px;color:var(--muted);font-size:13px;font-weight:700;}
+  .rules a{color:var(--accent);text-decoration:none;font-weight:600;}
+  .note{font-size:12.5px;color:var(--muted);line-height:1.55;margin:10px 2px 0;}
+  .note a{color:var(--accent);font-weight:600;}
+  section[id]{scroll-margin-top:64px;}
+</style>
+</head>
+<body class="th">
+  <main id="main" tabindex="-1" class="thwrap">
+    <div class="hub-head">
+      <h1>Neighbor-owned businesses</h1>
+      <p>Businesses owned by people who live in Tesoro Highlands. Hire a neighbor, or <a href="#join" style="color:var(--accent);font-weight:600">list your own</a>.</p>
+    </div>
+
+    <div class="preview"><span>ℹ️</span><div><b>Listed by their owners, not vetted by this site.</b> Check licenses and reviews as you would for anyone you hire: <a href="https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/CheckLicense.aspx" target="_blank" rel="noopener">contractors (CSLB) ↗</a> · <a href="https://www2.dre.ca.gov/publicasp/pplinfo.asp" target="_blank" rel="noopener">real estate (DRE) ↗</a></div></div>
+
+    <div class="chips" id="chips" role="group" aria-label="Filter by category" hidden></div>
+    <p class="tally" id="tally" aria-live="polite"></p>
+
+    <div id="list">
+      <div class="card pad" id="loading"><p style="margin:0">Loading the list…</p></div>
+    </div>
+    <noscript><div class="card pad"><p style="margin:0">This list needs JavaScript to load. The listings live in <a href="/neighbor-businesses.json">neighbor-businesses.json</a>.</p></div></noscript>
+
+    <section id="join">
+      <div class="sechead"><h2>List your business</h2><div class="line"></div></div>
+      <div class="card pad">
+        <h3>Own a business and live in Tesoro Highlands?</h3>
+        <p>It's free. Send me these in the community group chat and I'll add you:</p>
+        <ol class="steps">
+          <li><b>Your business name</b>, and what you do in one sentence.</li>
+          <li><b>How neighbors reach you:</b> a phone number, website, email or Instagram. Only what you want public.</li>
+          <li><b>Your license number</b>, if your work needs one. California requires contractors and real-estate agents to show it in their advertising, and it lets neighbors look you up.</li>
+          <li><b>A neighbor offer</b>, if you'd like to make one. Optional.</li>
+        </ol>
+        <p class="note" style="margin-left:0">Running a business from home? HOA and city home-business rules still apply; this page is only a list.</p>
+      </div>
+    </section>
+
+    <section id="rules">
+      <div class="sechead"><h2>How this list works</h2><div class="line"></div></div>
+      <div class="card">
+        <ul class="rules">
+          <li><b>Free, with no paid spots.</b> Listings are in alphabetical order within each category.</li>
+          <li><b>Owners list their own business.</b> Nobody is added without asking for it, and a listing comes down the day its owner asks.</li>
+          <li><b>No home addresses.</b> A shop or office address is fine; where a neighbor lives is not.</li>
+          <li><b>Listed, not vetted.</b> This site doesn't check, rank or endorse anyone. Look up a license and read reviews before you hire.</li>
+          <li><b>Kept current.</b> Each listing is re-confirmed with its owner once a year, and drops off if it isn't.</li>
+        </ul>
+      </div>
+      <p class="note">Looking for a pro neighbors recommend, rather than one a neighbor owns? See <a href="/living#pros">Local pros on Living Here</a>.</p>
+    </section>
+  </main>
+  <footer class="thfoot"><p><b>Unofficial and resident-run</b>, not the HOA. A listing here is not a recommendation or a guarantee; each business speaks for itself. &nbsp;<a href="/">← Back to the hub</a></p></footer>
+
+  <script>
+  (function () {
+    "use strict";
+    // Categories, in display order: [key, emoji, label]. scripts/business.test.mjs reads this list.
+    var CATS = [
+      ["home", "🔧", "Home & yard"],
+      ["food", "🍰", "Food & treats"],
+      ["health", "🩺", "Health & wellness"],
+      ["kids", "🎓", "Kids, tutoring & lessons"],
+      ["pets", "🐾", "Pets"],
+      ["pro", "💼", "Real estate, money & legal"],
+      ["beauty", "💇", "Beauty & style"],
+      ["tech", "💻", "Tech, design & photo"],
+      ["auto", "🚗", "Auto"],
+      ["other", "✨", "Everything else"]
+    ];
+    // A listing not re-confirmed with its owner in about 13 months drops off by itself.
+    var STALE_DAYS = 400;
+
+    var $ = function (id) { return document.getElementById(id); };
+    function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+    function days(ymd) { var t = Date.parse(String(ymd || "") + "T12:00:00"); return isNaN(t) ? Infinity : (Date.now() - t) / 864e5; }
+
+    function current(b) {
+      return b && typeof b === "object" && b.name && b.what && days(b.confirmed || b.added) <= STALE_DAYS;
+    }
+
+    function listing(b, cat, showCommunity) {
+      // Only ever link to real web, phone and mail addresses: this file is hand-kept, but a typo must not mint a javascript: link.
+      var phone = /^[\d\-() +.]{7,20}$/.test(b.phone || "") ? String(b.phone) : "";
+      var tel = phone.replace(/[^\d+]/g, "");
+      var url = /^https?:\/\/[^\s"'<>]+$/i.test(b.url || "") ? b.url : "";
+      var email = /^[^\s@"'<>]+@[^\s@"'<>]+\.[a-z]{2,}$/i.test(b.email || "") ? b.email : "";
+      var ig = /^[A-Za-z0-9._]{1,30}$/.test(String(b.instagram || "").replace(/^@/, "")) ? String(b.instagram).replace(/^@/, "") : "";
+      var lic = String(b.license || ""), look = "";
+      if (/cslb/i.test(lic)) look = ' · <a href="https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/CheckLicense.aspx" target="_blank" rel="noopener">look it up ↗</a>';
+      else if (/dre/i.test(lic)) look = ' · <a href="https://www2.dre.ca.gov/publicasp/pplinfo.asp" target="_blank" rel="noopener">look it up ↗</a>';
+      var meta = [];
+      if (b.owner) meta.push("Owned by " + esc(b.owner));
+      if (b.area) meta.push(esc(b.area));
+      if (showCommunity && b.community) meta.push(esc(b.community));
+      var acts = "";
+      if (tel) acts += '<a href="tel:' + esc(tel) + '">📞 Call ' + esc(phone) + "</a>";
+      if (tel && b.text === true) acts += '<a href="sms:' + esc(tel) + '">💬 Text</a>';
+      if (url) acts += '<a href="' + esc(url) + '" target="_blank" rel="noopener">🌐 Website ↗</a>';
+      if (ig) acts += '<a href="https://www.instagram.com/' + esc(ig) + '/" target="_blank" rel="noopener">📷 @' + esc(ig) + " ↗</a>";
+      if (email) acts += '<a href="mailto:' + esc(email) + '">✉️ Email</a>';
+      return '<div class="biz"><span class="ic" aria-hidden="true">' + cat[1] + '</span><div class="bd">' +
+        '<div class="nm">' + esc(b.name) + "</div>" +
+        '<div class="dt">' + esc(b.what) + "</div>" +
+        (b.offer ? '<div class="offer">🏷️ ' + esc(b.offer) + "</div>" : "") +
+        (meta.length ? '<div class="meta">' + meta.join(" · ") + "</div>" : "") +
+        (lic ? '<div class="meta">License: ' + esc(lic) + look + "</div>" : "") +
+        (acts ? '<div class="acts">' + acts + "</div>" : "") +
+        "</div></div>";
+    }
+
+    function render(raw) {
+      var all = (Array.isArray(raw) ? raw : []).filter(current);
+      var known = {};
+      CATS.forEach(function (c) { known[c[0]] = c; });
+      var groups = {}, communities = {};
+      all.forEach(function (b) {
+        var k = known[b.category] ? b.category : "other";
+        (groups[k] = groups[k] || []).push(b);
+        communities[b.community || "Tesoro Highlands"] = 1;
+      });
+      var showCommunity = Object.keys(communities).length > 1;
+      var used = CATS.filter(function (c) { return groups[c[0]]; });
+
+      if (!all.length) {
+        $("tally").textContent = "";
+        $("list").innerHTML = '<div class="card pad"><h3>No listings yet. Be the first.</h3>' +
+          '<p>This page just opened. If you own a business and live in Tesoro Highlands, <a href="#join" style="color:var(--accent);font-weight:600">here\'s how to get on it</a>.</p></div>';
+        return;
+      }
+      $("tally").textContent = all.length + (all.length === 1 ? " neighbor-owned business" : " neighbor-owned businesses");
+      $("list").innerHTML = used.map(function (c) {
+        var rows = groups[c[0]].slice().sort(function (a, b) { return String(a.name).localeCompare(String(b.name)); });
+        return '<section data-cat="' + c[0] + '"><div class="sechead"><h2>' + esc(c[2]) + '</h2><div class="line"></div></div><div class="card">' +
+          rows.map(function (b) { return listing(b, c, showCommunity); }).join("") + "</div></section>";
+      }).join("");
+
+      if (used.length > 1) {
+        var chips = $("chips");
+        chips.hidden = false;
+        chips.innerHTML = '<button type="button" data-cat="" aria-pressed="true">All</button>' + used.map(function (c) {
+          return '<button type="button" data-cat="' + c[0] + '" aria-pressed="false">' + c[1] + " " + esc(c[2]) + "</button>";
+        }).join("");
+        chips.onclick = function (ev) {
+          var b = ev.target.closest("button[data-cat]"); if (!b) return;
+          var want = b.getAttribute("data-cat");
+          Array.prototype.forEach.call(chips.querySelectorAll("button"), function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+          Array.prototype.forEach.call(document.querySelectorAll("#list section[data-cat]"), function (s) { s.hidden = !!want && s.getAttribute("data-cat") !== want; });
+        };
+      }
+    }
+
+    fetch("/neighbor-businesses.json", { cache: "no-cache" })
+      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+      .then(render)
+      .catch(function () {
+        // A failed load is not an empty list: say so, rather than "no listings yet".
+        $("list").innerHTML = '<div class="card pad"><h3>Couldn\'t load the list just now</h3><p>Check your connection and reload the page.</p></div>';
+      });
+  })();
+  </script>
+  <script src="/nav.js?v=18" defer></script>
+</body>
+</html>

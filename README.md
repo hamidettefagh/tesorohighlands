@@ -61,6 +61,7 @@ functions (some need repo secrets on Vercel).
              neighbor-recommended local pros
 /hoa         CA homeowner rights, your documents, the dispute ladder
              (deliberately no board schedules or internal community matters)
+/business    neighbor-owned businesses: owner-listed, free, from neighbor-businesses.json
 /treats      Halloween treat map for the houses behind the gate: neighbors-only
              (needs the code), not in the nav, noindex (see "Halloween treat map")
 ```
@@ -91,6 +92,7 @@ server.js             tiny static server for LOCAL dev only (mimics clean URLs)
 vendor/leaflet/       self-hosted Leaflet 1.9.4 — no CDN dependency in an emergency
 scripts/*.mjs         the data builders (see below)
 community-events.json neighbor events, hand-maintained (schema below)
+neighbor-businesses.json  neighbor-owned businesses, hand-maintained (see "Neighbor-owned businesses")
 events.json ai-events.json roads.json alert.json roundup.json purpleair-history.json
                       bot-written — never hand-edit, they get overwritten
 updates.json          the "new on this site" changelog, hand-maintained
@@ -219,6 +221,41 @@ dependencies. **Adding a featured event:** put the flyer in `/img/`, add the ent
 `node scripts/make-og.mjs`, and commit the `og-events*.jpg` files and `og-events.json`
 along with it. Facebook caches previews per URL; refresh one with "Scrape Again" at
 developers.facebook.com/tools/debug.
+
+## Neighbor-owned businesses
+
+`/business` lists businesses owned by people who live in Tesoro Highlands, from
+`neighbor-businesses.json`. It is deliberately small and hand-kept, like the events list.
+
+```json
+[{ "name": "Example Plumbing", "category": "home", "what": "One sentence on what you do.",
+   "phone": "661-555-0100", "text": true, "url": "https://example.com", "instagram": "example",
+   "email": "", "license": "CSLB #1234567", "offer": "10% off for neighbors",
+   "owner": "", "area": "Comes to you", "community": "Tesoro Highlands",
+   "added": "2026-10-10", "confirmed": "2026-10-10" }]
+```
+
+`name`, `category` and `what` are required; everything else is optional. `category` is one
+of the keys in the page's `CATS` list (`home`, `food`, `health`, `kids`, `pets`, `pro`,
+`beauty`, `tech`, `auto`, `other`).
+
+The rules, which the page states too:
+
+- **Owners list their own business.** Add a listing only when its owner asks, and take it
+  down the day they ask. Never add one from a recommendation; those go under Local pros
+  on `/living`.
+- **No home addresses, ever.** `area` is for "Comes to you", "Online" or a shop address.
+  `owner` is a first name, and only if the owner wants it shown.
+- **License numbers** go in `license` for trades that need one. California requires
+  contractors (B&P Code §7030.5) and real-estate agents (§10140.6) to show theirs in
+  advertising; a value containing "CSLB" or "DRE" gets a "look it up" link.
+- **Free, alphabetical, not vetted.** No paid placement and no ranking.
+- **Re-confirm yearly.** A listing whose `confirmed` date is more than about 13 months
+  old stops showing by itself. Update the date when the owner confirms.
+- `community` is there for the day the list opens to the wider Tesoro community; the
+  page shows it only once more than one community is listed.
+
+**Test:** `node scripts/business.test.mjs` checks the file's shape.
 
 ## Halloween treat map
 
