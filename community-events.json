@@ -16,6 +16,29 @@
     "price": "Free to join — all families welcome"
   },
   {
+    "title": "Free Toy Giveaway",
+    "short": "Toy Giveaway",
+    "emoji": "🎁",
+    "featured": true,
+    "date": "2026-10-18T10:00",
+    "time": "10:00 AM – 3:00 PM",
+    "place": "SCV Sheriff’s Station",
+    "note": "Milestone Nonprofit Org is hosting a community giveaway at the Santa Clarita Valley Sheriff’s Station, 26201 Golden Valley Road. Visit their booth and pick up a brand-new toy and movie collectible: in the flyer’s words, “completely free for single family households, while supplies last.”",
+    "url": "https://milestonenonprofit.org",
+    "flyer": "/img/toy-giveaway-2026.png",
+    "flyerW": 843,
+    "flyerH": 1095,
+    "flyerAlt": "Flyer: You are invited to a special community giveaway hosted by Milestone Nonprofit Org. Free toys and collectibles on October 18, 10 AM to 3 PM, at the Los Angeles County Sheriff’s Department in Santa Clarita. Everything on it is written out in the text beside it.",
+    "price": "Free, while supplies last",
+    "rsvpHead": "Want to donate? Brand-new toys only",
+    "rsvp": "Bring brand-new, unopened toys to 24229 Calle Oruga before the giveaway. Used toys can’t be accepted, because some of these go to hospitals. For the best time to drop off, message the organizer in the community group chat.",
+    "detailsLabel": "🤝 Who’s behind it",
+    "details": [
+      ["🤝 Supported by", "AMC Thousand Oaks, Sprouts Farmers Market – Valencia, and Farmer Boys – Valencia."]
+    ],
+    "host": "Hosted by Milestone Nonprofit Org, in partnership with the SCV Sheriff’s Station. This site only shares the details."
+  },
+  {
     "title": "2nd Annual Community Halloween Party",
     "short": "Halloween Party",
     "emoji": "🎃",
