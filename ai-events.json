@@ -1,45 +1,31 @@
 {
-  "generatedAt": "2026-10-11T18:10:41.968Z",
+  "generatedAt": "2026-10-12T21:47:03.002Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-10-11T08:30",
-      "venue": "Valencia FivePoint Farmers' Market",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Dial \"M\" for Murder - Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-11T14:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20 adults, $18 seniors, $15 students",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "Fright Fest 2026 - Six Flags Magic Mountain",
+      "title": "Tricks and Treats (Family Halloween)",
       "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-11T18:30",
+      "start": "2026-10-12",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "$74 bundle (admission + mazes); $25 maze pass only (with pass)",
+      "price": "Included with park admission",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain"
+    },
+    {
+      "title": "Fright Fest",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-10-12T18:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Included with park admission (Haunted Attractions Pass additional)",
       "audience": [
         "teens",
         "adults"
@@ -48,126 +34,9 @@
       "via": "Six Flags Magic Mountain"
     },
     {
-      "title": "Live Music at Lucky Luke Brewing",
-      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
-      "start": "2026-10-16T18:00",
-      "venue": "Lucky Luke Brewing",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Dial \"M\" for Murder - Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-17T19:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20 adults, $18 seniors, $15 students",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "Live Music at Lucky Luke Brewing",
-      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
-      "start": "2026-10-23T18:00",
-      "venue": "Lucky Luke Brewing",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch (Weekends)",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-10-24T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "Admission free; activities vary",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Dial \"M\" for Murder - Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-24T14:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20 adults, $18 seniors, $15 students",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
-      "title": "Live Music at Lucky Luke Brewing",
-      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
-      "start": "2026-10-30T18:00",
-      "venue": "Lucky Luke Brewing",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch (Weekends)",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-10-31T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "Admission free; activities vary",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Dial \"M\" for Murder - Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/dial-m-for-murder",
-      "start": "2026-10-31T14:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": "$20 adults, $18 seniors, $15 students",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
-    },
-    {
       "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://www.vccfm.org/santa-clarita/",
-      "start": "2026-11-01T08:00",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market",
+      "start": "2026-10-18T08:00",
       "venue": "College of the Canyons Parking Lot 5",
       "city": "Santa Clarita",
       "free": true,
@@ -176,12 +45,12 @@
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "VCCFM"
+      "via": "Santa Clarita Community Calendar"
     },
     {
       "title": "Valencia FivePoint Farmers' Market",
       "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-01T08:30",
+      "start": "2026-10-18T08:30",
       "venue": "Valencia FivePoint Farmers' Market",
       "city": "Valencia",
       "free": true,
@@ -193,102 +62,79 @@
       "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Live Music at Lucky Luke Brewing",
-      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
-      "start": "2026-11-06T18:00",
-      "venue": "Lucky Luke Brewing",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-18T09:00",
+      "venue": "Gilchrist Farm",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
+        "kids",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Veterans Day Ceremony",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-11T11:00",
-      "venue": "Veterans Historical Plaza",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
+      "title": "War of the Worlds presented by MeMain Productions",
+      "url": "https://www.eventbrite.com/e/war-of-the-worlds-presented-by-memain-productions-tickets-1985147633009",
+      "start": "2026-10-30T20:00",
+      "venue": "The MAIN",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
       "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita"
-    },
-    {
-      "title": "Live Music at Lucky Luke Brewing",
-      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
-      "start": "2026-11-13T18:00",
-      "venue": "Lucky Luke Brewing",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "Eventbrite"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-15T08:30",
-      "venue": "Valencia FivePoint Farmers' Market",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
+      "title": "Pipeline presented by Open Wings Theatre Company",
+      "url": "https://www.eventbrite.com/e/pipeline-presented-by-open-wings-theatre-company-tickets-1985396730065",
+      "start": "2026-11-13T20:00",
+      "venue": "The MAIN",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
       "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "Live Music at Lucky Luke Brewing",
-      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
-      "start": "2026-11-20T18:00",
-      "venue": "Lucky Luke Brewing",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "Eventbrite"
     },
     {
       "title": "Light Up Main Street",
       "url": "https://oldtownnewhall.com/events/light-up-main/",
       "start": "2026-11-21T16:00",
-      "venue": "Main Street, Old Town Newhall",
+      "venue": "Main Street",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "Old Town Newhall"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-22T08:30",
-      "venue": "Valencia FivePoint Farmers' Market",
+      "title": "Holiday in the Park",
+      "url": "https://www.sixflags.com/magicmountain/",
+      "start": "2026-11-26T10:30",
+      "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
-      "free": true,
-      "price": "Free",
+      "free": false,
+      "price": "Most activities included with park admission",
       "audience": [
-        "everyone"
+        "kids",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "Six Flags Magic Mountain"
     }
   ]
 }
