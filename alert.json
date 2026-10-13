@@ -1,12 +1,10 @@
 {
   "active": true,
-  "sig": "fire:BIKE:t2|fire:BOUQUET:t4",
+  "sig": "fire:BIKE:t2",
   "level": "caution",
-  "title": "Bouquet Fire ~9.4 mi northeast of us",
-  "text": "🔥 Bouquet Fire — about 1,048 acres, ~9.4 mi northeast of Tesoro Highlands (straight-line — farther by road).\nNot close, and no evacuation activity for our area — sharing for awareness only.\nLive map & status: https://tesorohighlands.com/fire",
-  "waText": "🔥 *Bouquet Fire* — about 1,048 acres, ~9.4 mi northeast of Tesoro Highlands (straight-line — farther by road).\nNot close, and no evacuation activity for our area — sharing for awareness only.\nLive map & status: https://tesorohighlands.com/fire",
-  "others": [
-    "Bike Fire ~9.1 mi southeast of us"
-  ],
-  "updatedAt": "2026-10-12T06:15:56.180Z"
+  "title": "Bike Fire ~9.1 mi southeast of us",
+  "text": "🔥 Bike Fire — about 172 acres, ~9.1 mi southeast of Tesoro Highlands (straight-line — farther by road).\nNot close, and no evacuation activity for our area — sharing for awareness only.\nLive map & status: https://tesorohighlands.com/fire",
+  "waText": "🔥 *Bike Fire* — about 172 acres, ~9.1 mi southeast of Tesoro Highlands (straight-line — farther by road).\nNot close, and no evacuation activity for our area — sharing for awareness only.\nLive map & status: https://tesorohighlands.com/fire",
+  "others": [],
+  "updatedAt": "2026-10-13T03:08:21.049Z"
 }
