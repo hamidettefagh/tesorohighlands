@@ -1,41 +1,57 @@
 {
-  "generatedAt": "2026-10-12T21:47:03.002Z",
+  "generatedAt": "2026-10-13T19:54:17.294Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Tricks and Treats (Family Halloween)",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-12",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
+      "start": "2026-10-13T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Agua Dulce",
       "free": false,
-      "price": "Included with park admission",
+      "price": "$10",
       "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
-    },
-    {
-      "title": "Fright Fest",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-12T18:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "Included with park admission (Haunted Attractions Pass additional)",
-      "audience": [
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "Gilchrist Farm Official"
+    },
+    {
+      "title": "Six Flags Magic Mountain - Fright Fest",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-10-13T18:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "$25-$74",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Official"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://newhallfarmersmarket.com",
+      "start": "2026-10-17T08:30",
+      "venue": "Old Town Newhall Library Parking Lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Newhall Farmers Market"
     },
     {
       "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market",
+      "url": "https://www.vccfm.org/santa-clarita",
       "start": "2026-10-18T08:00",
       "venue": "College of the Canyons Parking Lot 5",
       "city": "Santa Clarita",
@@ -45,13 +61,13 @@
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "VCCFMA"
     },
     {
       "title": "Valencia FivePoint Farmers' Market",
       "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
       "start": "2026-10-18T08:30",
-      "venue": "Valencia FivePoint Farmers' Market",
+      "venue": "Valencia FivePoint",
       "city": "Valencia",
       "free": true,
       "price": "Free",
@@ -62,79 +78,66 @@
       "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://www.gilchristfarm.com/pumpkin-patch",
-      "start": "2026-10-18T09:00",
-      "venue": "Gilchrist Farm",
+      "title": "The Outsider at Canyon Theatre Guild",
+      "url": "https://calendar.santaclarita.gov/canyon_theatre_guild_145",
+      "start": "2026-10-30T20:00",
+      "venue": "Canyon Theatre Guild",
       "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
+      "free": false,
+      "price": "$20",
       "audience": [
-        "kids",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Community Calendar"
     },
     {
-      "title": "War of the Worlds presented by MeMain Productions",
-      "url": "https://www.eventbrite.com/e/war-of-the-worlds-presented-by-memain-productions-tickets-1985147633009",
-      "start": "2026-10-30T20:00",
-      "venue": "The MAIN",
-      "city": "Newhall",
+      "title": "It's a Wonderful Life at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/2026-27season",
+      "start": "2026-11-01T19:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Santa Clarita",
       "free": false,
-      "price": null,
+      "price": "$20",
       "audience": [
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Eventbrite"
-    },
-    {
-      "title": "Pipeline presented by Open Wings Theatre Company",
-      "url": "https://www.eventbrite.com/e/pipeline-presented-by-open-wings-theatre-company-tickets-1985396730065",
-      "start": "2026-11-13T20:00",
-      "venue": "The MAIN",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Eventbrite"
+      "via": "Canyon Theatre Guild"
     },
     {
       "title": "Light Up Main Street",
-      "url": "https://oldtownnewhall.com/events/light-up-main/",
+      "url": "https://oldtownnewhall.com/light-up-main/",
       "start": "2026-11-21T16:00",
-      "venue": "Main Street",
+      "venue": "Main Street, Old Town Newhall",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall"
+      "via": "Old Town Newhall Association"
     },
     {
-      "title": "Holiday in the Park",
-      "url": "https://www.sixflags.com/magicmountain/",
+      "title": "Holiday in the Park at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain",
       "start": "2026-11-26T10:30",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "Most activities included with park admission",
+      "price": null,
       "audience": [
         "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain"
+      "via": "Six Flags Official"
     }
   ]
 }
