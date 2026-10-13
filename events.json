@@ -1,24 +1,7 @@
 {
-  "generatedAt": "2026-10-12T17:53:34.479Z",
+  "generatedAt": "2026-10-13T11:46:51.810Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Indigenous Peoples Day/Columbus Day",
-      "url": "https://santaclarita.librarycalendar.com/event/indigenous-peoples-daycolumbus-day-28068",
-      "start": "2026-10-12",
-      "venue": "Some Branches",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-10-12"
-      ],
-      "added": "2026-10-08T15:35:59.552Z"
-    },
     {
       "title": "Baby and Toddler Storytime",
       "url": "https://santaclarita.librarycalendar.com/event/baby-and-toddler-storytime-31475",
@@ -513,6 +496,23 @@
         "2026-10-15T16:00"
       ],
       "added": "2026-10-12T17:53:34.478Z"
+    },
+    {
+      "title": "Blue Print for Financial Success Seminar",
+      "url": "https://santaclarita.librarycalendar.com/event/hold-financial-education-seminar-31742",
+      "start": "2026-10-16T16:00",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-16T16:00"
+      ],
+      "added": "2026-10-13T11:46:51.809Z"
     },
     {
       "title": "Eternamente: A Dia De Los Muertos Spectacular!",
