@@ -1,10 +1,12 @@
 {
   "active": true,
-  "sig": "fire:BIKE:t2",
+  "sig": "fire:BIKE:t2|redflag:a663aaaa8d1a5d37a4.002.1",
   "level": "caution",
   "title": "Bike Fire ~9.1 mi southeast of us",
   "text": "🔥 Bike Fire — about 172 acres, ~9.1 mi southeast of Tesoro Highlands (straight-line — farther by road).\nNot close, and no evacuation activity for our area — sharing for awareness only.\nLive map & status: https://tesorohighlands.com/fire",
   "waText": "🔥 *Bike Fire* — about 172 acres, ~9.1 mi southeast of Tesoro Highlands (straight-line — farther by road).\nNot close, and no evacuation activity for our area — sharing for awareness only.\nLive map & status: https://tesorohighlands.com/fire",
-  "others": [],
-  "updatedAt": "2026-10-13T03:08:21.049Z"
+  "others": [
+    "Red Flag Warning"
+  ],
+  "updatedAt": "2026-10-13T21:57:40.401Z"
 }
