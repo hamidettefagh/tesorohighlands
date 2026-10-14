@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T23:43:28.542Z",
+  "generatedAt": "2026-10-14T04:52:23.558Z",
   "note": "Planned Caltrans lane/ramp closures on I-5 and SR-14 near Tesoro Highlands, from the District 7 Lane Closure System (cwwp2.dot.ca.gov). Planned roadwork only — for live incidents use quickmap.dot.ca.gov.",
   "closures": [
     {
@@ -14,7 +14,7 @@
       "total": "1",
       "startEpoch": 1789455660,
       "endEpoch": 1792047540,
-      "moreWindows": 28
+      "moreWindows": 29
     },
     {
       "route": "I-5",
@@ -28,7 +28,7 @@
       "total": "1",
       "startEpoch": 1790060460,
       "endEpoch": 1792652340,
-      "moreWindows": 6
+      "moreWindows": 7
     },
     {
       "route": "I-5",
@@ -42,7 +42,7 @@
       "total": "1",
       "startEpoch": 1791943260,
       "endEpoch": 1791982740,
-      "moreWindows": 23
+      "moreWindows": 26
     },
     {
       "route": "I-5",
@@ -56,7 +56,7 @@
       "total": "4",
       "startEpoch": 1791943260,
       "endEpoch": 1791982740,
-      "moreWindows": 28
+      "moreWindows": 30
     },
     {
       "route": "I-5",
@@ -70,7 +70,7 @@
       "total": "4",
       "startEpoch": 1791943260,
       "endEpoch": 1791982740,
-      "moreWindows": 23
+      "moreWindows": 24
     },
     {
       "route": "I-5",
@@ -84,7 +84,7 @@
       "total": "1",
       "startEpoch": 1791943260,
       "endEpoch": 1791982740,
-      "moreWindows": 17
+      "moreWindows": 19
     },
     {
       "route": "I-5",
@@ -93,54 +93,26 @@
       "place": "Stevenson Ranch",
       "facility": "On Ramp",
       "type": "Full",
-      "work": "Drain Inspection",
+      "work": "Electrical Work",
       "lanes": "All",
       "total": "1",
       "startEpoch": 1791943260,
       "endEpoch": 1791982740,
-      "moreWindows": 33
-    },
-    {
-      "route": "I-5",
-      "dir": "South",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Shoulder Reconstruction",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1791943260,
-      "endEpoch": 1791982740,
-      "moreWindows": 23
+      "moreWindows": 35
     },
     {
       "route": "I-5",
       "dir": "North",
       "at": "Golden State Freeway, Route 5",
-      "place": "Newhall",
+      "place": "Valencia",
       "facility": "Off Ramp",
       "type": "Full",
-      "work": "Road Survey",
+      "work": "Road Maintenance",
       "lanes": "All",
       "total": "1",
       "startEpoch": 1791943260,
       "endEpoch": 1791982740,
-      "moreWindows": 59
-    },
-    {
-      "route": "I-5",
-      "dir": "North",
-      "at": "Calgrove Blvd",
-      "place": "Newhall",
-      "facility": "On Ramp",
-      "type": "Full",
-      "work": "Sawcutting Operation",
-      "lanes": "All",
-      "total": "1",
-      "startEpoch": 1791943260,
-      "endEpoch": 1791982740,
-      "moreWindows": 11
+      "moreWindows": 60
     },
     {
       "route": "I-5",
@@ -154,12 +126,40 @@
       "total": "1",
       "startEpoch": 1791943260,
       "endEpoch": 1791982740,
-      "moreWindows": 23
+      "moreWindows": 25
     },
     {
       "route": "I-5",
       "dir": "North",
-      "at": "Valencia Blvd",
+      "at": "Truck Weigh Station",
+      "place": "Valencia",
+      "facility": "On Ramp",
+      "type": "Full",
+      "work": "Shoulder Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1791943260,
+      "endEpoch": 1791982740,
+      "moreWindows": 7
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "Golden State Freeway, Route 5",
+      "place": "Castaic",
+      "facility": "Off Ramp",
+      "type": "Full",
+      "work": "Utility Work",
+      "lanes": "All",
+      "total": "1",
+      "startEpoch": 1791943260,
+      "endEpoch": 1791982740,
+      "moreWindows": 106
+    },
+    {
+      "route": "I-5",
+      "dir": "South",
+      "at": "McBean Parkway",
       "place": "Valencia",
       "facility": "On Ramp",
       "type": "Full",
@@ -168,7 +168,7 @@
       "total": "1",
       "startEpoch": 1791943260,
       "endEpoch": 1791982740,
-      "moreWindows": 11
+      "moreWindows": 19
     }
   ]
 }
