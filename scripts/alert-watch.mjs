@@ -19,6 +19,9 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 
 const HOME = { lat: 34.478, lon: -118.531 };
+// A fire this far contained stops raising alerts (same number as fire.html and
+// nav.js; scripts/fire-status.test.mjs checks they match).
+const WELL_CONTAINED = 75;
 const SITE = "https://tesorohighlands.com";
 const OUT = process.env.ALERT_OUT || new URL("../alert.json", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
 
@@ -123,14 +126,16 @@ async function checkFires() {
     const p = f.properties || {}, c = f.geometry.coordinates;
     const nm = String(p.IncidentName || "").trim();
     if (/^LAC-?\d+$/i.test(nm)) continue;
-    let acres = p.IncidentSize, mod = p.ModifiedOnDateTime_dt, calDist = null;
+    let acres = p.IncidentSize, mod = p.ModifiedOnDateTime_dt, contain = p.PercentContained, calDist = null;
     for (const cf of calList) {
       if (normName(cf.Name) !== normName(nm)) continue;
       const cd = haversine(c[1], c[0], cf.Latitude, cf.Longitude);
       if (cd > 15) continue;
       calDist = cd;
       const cu = Date.parse(cf.Updated || "");
-      if (cf.AcresBurned != null && (acres == null || acres === 0 || (!isNaN(cu) && (mod == null || cu >= mod)))) acres = cf.AcresBurned;
+      const calFresher = !isNaN(cu) && (mod == null || cu >= mod);
+      if (cf.AcresBurned != null && (acres == null || acres === 0 || calFresher)) acres = cf.AcresBurned;
+      if (cf.PercentContained != null && (contain == null || calFresher)) contain = cf.PercentContained;
       if (!isNaN(cu) && (mod == null || cu > mod)) mod = cu;
       break;
     }
@@ -139,7 +144,7 @@ async function checkFires() {
       const quiet = Date.now() - mod, sized = acres != null && acres >= 10;
       if (quiet > (sized ? 48 : 12) * 3600 * 1000) continue;
     }
-    cands.push({ nm, norm: normName(nm), acres, mod, calDist, lat: c[1], lon: c[0] });
+    cands.push({ nm, norm: normName(nm), acres, contain, mod, calDist, lat: c[1], lon: c[0] });
   }
   // IRWIN's duplicate records for one fire can sit miles apart (Holser's two
   // were 3.7 mi apart — the site listed one, this watcher alerted from the
@@ -159,6 +164,7 @@ async function checkFires() {
   }
   const out = [];
   for (const k of kept) {
+    if (k.contain != null && Number(k.contain) >= WELL_CONTAINED) continue;   // mostly done — no longer news for the group
     const dist = haversine(HOME.lat, HOME.lon, k.lat, k.lon);
     const acres = k.acres || 0;
     // WhatsApp-worthy only when genuinely action-relevant for THIS neighborhood.

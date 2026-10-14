@@ -246,6 +246,18 @@ console.log(`AI discovery: ${events.length} confirmed events (model ${MODEL}).`)
 
 let old = null;
 try { old = JSON.parse(readFileSync(OUT, "utf8")); } catch {}
+
+// When each event was first found (same rule as fetch-events.mjs), so the events
+// page can list it under "✨ New". Identity is title + venue; events from before
+// this stamp existed inherit the old file's generatedAt.
+{
+  const idOf = (e) => e.title.toLowerCase().replace(/\W+/g, " ").trim() + "|" + String(e.venue || "").toLowerCase();
+  const prior = new Map();
+  for (const e of (old && Array.isArray(old.events) ? old.events : [])) prior.set(idOf(e), e.added || old.generatedAt || null);
+  const nowIso = new Date().toISOString();
+  for (const e of events) e.added = prior.has(idOf(e)) ? (prior.get(idOf(e)) || nowIso) : nowIso;
+}
+
 if (old && JSON.stringify(old.events) === JSON.stringify(events)) {
   console.log("No content change.");
   process.exit(0);

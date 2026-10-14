@@ -28,9 +28,14 @@ function grab(name) {
   throw new Error("unbalanced braces reading " + name + "()");
 }
 
+// The well-contained cutoff is a page constant that fireRisk() reads.
+const wellContained = (s) => { const m = /\bWELL_CONTAINED\s*=\s*(\d+)/.exec(s); return m ? +m[1] : null; };
+const CUTOFF = wellContained(src);
+if (CUTOFF == null) throw new Error("fire.html no longer defines WELL_CONTAINED");
 const mod = { exports: {} };
 new Function("module", "exports",
-  ["aqiInfo", "fireWx", "fireRisk", "untilText", "overall"].map(grab).join("\n") +
+  "const WELL_CONTAINED = " + CUTOFF + ";\n" +
+  ["aqiInfo", "fireWx", "alertable", "fireRisk", "untilText", "overall"].map(grab).join("\n") +
   "\nfunction todayHigh(){ return null; }\n" +        // DOM-free stub
   "\nmodule.exports = { overall };")(mod, mod.exports);
 const { overall } = mod.exports;
@@ -62,6 +67,16 @@ check("warning alone", V({ evac: { lvl: 1 } }), { lvl: 1, klass: "caution", titl
 check("warning + unhealthy air keeps the warning, goes red", V({ evac: { lvl: 1 }, aqi: 165 }), { lvl: 2, klass: "danger", ey: "Take action", title: /Evacuation warning/, text: /AQI 165/ });
 check("warning + sizable nearby fire keeps the warning", V({ evac: { lvl: 1 }, fires: [fire(4, 800)] }), { lvl: 2, klass: "danger", title: /Evacuation warning/ });
 check("order still outranks everything", V({ evac: { lvl: 2 }, aqi: 200, fires: [fire(3, 5000)] }), { lvl: 2, title: /Evacuation order/ });
+
+// --- A well-contained fire stops raising the alert (it stays in the list). The Bike
+// Fire sat at 81% contained, 9 miles out, and still headlined the page.
+const contained = (pct) => ({ ...fire(9.1, 172), contain: pct });
+check("a 172-acre fire 9 mi out is worth watching", V({ fires: [fire(9.1, 172)] }), { lvl: 1, title: /Fire activity/ });
+check("the same fire " + CUTOFF + "%+ contained no longer alerts", V({ fires: [contained(81)] }), { lvl: 0 });
+check("the same fire half contained still alerts", V({ fires: [contained(50)] }), { lvl: 1, title: /Fire activity/ });
+check("containment given as text counts too", V({ fires: [contained("90")] }), { lvl: 0 });
+check("a close, big fire " + CUTOFF + "%+ contained no longer alerts", V({ fires: [{ ...fire(4, 900), contain: CUTOFF }] }), { lvl: 0 });
+check("a contained fire doesn't hide an uncontained one", V({ fires: [contained(95), fire(5, 120)] }), { lvl: 2, title: /sizable fire/i });
 
 // --- A nearby evacuation is not our zone (lvl 0) but it is NOT "all clear" either.
 // This shipped green -- "Looks safe right now" -- while nav.js said amber for the
@@ -131,6 +146,11 @@ const ladder = [
 const drift = ladder.filter(([inNav, inFire]) => !inNav.test(navSrc) || !inFire.test(src)).map(l => l[2]);
 if (drift.length) { failed++; console.log("FAIL flash-flood ladder differs between nav.js and fire.html: " + drift.join(", ")); }
 else console.log("ok   flash-flood ladder matches in nav.js and fire.html");
+
+// (3b) The well-contained cutoff is the same number in all three copies.
+const cutoffs = { "fire.html": CUTOFF, "nav.js": wellContained(navSrc), "scripts/alert-watch.mjs": wellContained(fs.readFileSync(path.join(ROOT, "scripts/alert-watch.mjs"), "utf8")) };
+if (new Set(Object.values(cutoffs)).size !== 1 || Object.values(cutoffs).includes(null)) { failed++; console.log("FAIL the well-contained cutoff differs: " + JSON.stringify(cutoffs)); }
+else console.log("ok   the well-contained cutoff (" + CUTOFF + "%) matches in fire.html, nav.js and the alert bot");
 
 // (4) Phone numbers. The Fire page's "Who to call" list is the site's one copy of the
 // 24/7 numbers; the Weather storm card and Living Here's utilities link to it instead

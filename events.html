@@ -192,11 +192,13 @@
       <div class="chiprow">
         <div class="chips" id="audChips" role="group" aria-label="Filter events by audience">
           <button data-aud="all" aria-pressed="true">All</button>
+          <button data-aud="new" aria-pressed="false">✨ New</button>
+          <button data-aud="gift" aria-pressed="false">🎁 Giveaways</button>
+          <button data-aud="free" aria-pressed="false">Free</button>
           <button data-aud="toddlers" aria-pressed="false">🧸 Toddlers</button>
           <button data-aud="kids" aria-pressed="false">🎨 Kids</button>
           <button data-aud="teens" aria-pressed="false">🎧 Teens</button>
           <button data-aud="adults" aria-pressed="false">🎭 Adults</button>
-          <button data-aud="free" aria-pressed="false">Free</button>
         </div>
         <span class="chipdiv" aria-hidden="true"></span>
         <div class="chips" id="dateChips" role="group" aria-label="Filter events by date">
@@ -292,7 +294,7 @@
 
   </main>
     <footer class="thfoot"><p><b>A neighbor project — not the official HOA.</b> Event listings belong to their organizers and can change — always confirm on the linked page before heading out. &nbsp;<a href="/">← Back to the hub</a></p></footer>
-  <script src="/nav.js?v=18" defer></script>
+  <script src="/nav.js?v=19" defer></script>
   <script>
   (function () {
     "use strict";
@@ -460,6 +462,9 @@
     }
     if (seenAt < 0) seenAt = 0;
     function isNew(e) { return !!(seenAt && e.added && Date.parse(e.added) > seenAt); }
+    // The "✨ New" filter: everything badged New since your last visit, plus anything
+    // first listed in the past week (a first visit has no "last visit" to go by).
+    function isRecent(e) { return isNew(e) || !!(e.added && Date.now() - Date.parse(e.added) < 7 * 86400000); }
     function dayLabel(dstr) {
       var p = dstr.split("-").map(Number);
       var d = new Date(p[0], p[1] - 1, p[2]);
@@ -517,16 +522,22 @@
         if (currentQuery && ((e.title || "") + " " + (e.venue || "") + " " + (e.city || "")).toLowerCase().indexOf(currentQuery) < 0) return false;
         if (currentFilter === "all") return true;
         if (currentFilter === "free") return !!e.free;
+        if (currentFilter === "new") return isRecent(e);
+        if (currentFilter === "gift") return isGiveaway(e);
         return (e.audience || []).indexOf(currentFilter) >= 0;
       });
       if (!list.length) {
-        el.innerHTML = '<div class="empty">Nothing matches — try clearing the search, or All + Any time.</div>';
+        el.innerHTML = '<div class="empty">' + (
+          currentFilter === "gift" ? "No giveaways listed right now. Spotted one at a local store? Share it in the community group chat and it gets added." :
+          currentFilter === "new" ? "Nothing new added in the past week." :
+          "Nothing matches — try clearing the search, or All + Any time.") + "</div>";
         return;
       }
       // Default view is the next two weeks — the long tail is one tap away, and
       // the sections below the feed stop being buried under a two-month scroll.
+      // New and Giveaways are short lists, so they show every date.
       var hiddenCount = 0, total = list.length;
-      if (currentWhen === "any" && !currentQuery && !showAllEvents) {
+      if (currentWhen === "any" && !currentQuery && !showAllEvents && currentFilter !== "new" && currentFilter !== "gift") {
         var limit = Date.now() + 14 * 86400000;
         var near = list.filter(function (e) { return startMs(e._start) <= limit; });
         if (near.length && near.length < list.length) { hiddenCount = list.length - near.length; list = near; }

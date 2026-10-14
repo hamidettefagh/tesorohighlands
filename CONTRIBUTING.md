@@ -116,7 +116,9 @@ zone must keep the headline even when the air or a nearby fire is worse.
 `scripts/alert-watch.mjs` (the alert bot) each compute this independently. If you
 change how a fire is selected, how far counts as "near us," or how an evacuation zone
 is matched, change all three. They disagreeing is a bug that has bitten this project
-more than once.
+more than once. One shared number: `WELL_CONTAINED` (75), the containment at which a
+fire stops raising alerts but stays in the list. The fire-status test checks all three
+copies carry the same value.
 
 **Escape everything from an external feed before it touches `innerHTML`.**
 Fire names, alert headlines, event titles, and Cal OES notes all come from feeds we

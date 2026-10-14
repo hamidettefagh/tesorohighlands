@@ -135,7 +135,10 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v18";  // v18: flash floods get their own tier — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v19";  // v19: well-contained fires stop counting — keep in step with nav.js?v=N
+  // A fire this far contained stops raising alerts (same number as fire.html and
+  // scripts/alert-watch.mjs; scripts/fire-status.test.mjs checks they match).
+  var WELL_CONTAINED = 75;
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
@@ -252,7 +255,7 @@
         else if (rest.length) { say(15, 1, rest[0] + " in effect" + until(rest[0]) + "."); }
       }).catch(function () {}),
       Promise.all([
-        fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=" + encodeURIComponent("IncidentTypeCategory='WF' AND FireOutDateTime IS NULL AND (PercentContained < 100 OR PercentContained IS NULL)") + "&outFields=IncidentName,IncidentSize,ModifiedOnDateTime_dt&geometry=" + (L.lon - 1.3) + "," + (L.lat - 1) + "," + (L.lon + 1.3) + "," + (L.lat + 1) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326&f=geojson").then(function (r) { return r.json(); }),
+        fetch("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=" + encodeURIComponent("IncidentTypeCategory='WF' AND FireOutDateTime IS NULL AND (PercentContained < 100 OR PercentContained IS NULL)") + "&outFields=IncidentName,IncidentSize,PercentContained,ModifiedOnDateTime_dt&geometry=" + (L.lon - 1.3) + "," + (L.lat - 1) + "," + (L.lon + 1.3) + "," + (L.lat + 1) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326&f=geojson").then(function (r) { return r.json(); }),
         // This strip only speaks up at 50+ acres, and the federal feed leaves local
         // fires unsized — so without CAL FIRE the hero silently missed a 58-acre
         // fire five miles away. See /api/calfire.
@@ -263,7 +266,7 @@
         function nrm(s) { return String(s || "").toUpperCase().replace(/\bFIRE\b/g, " ").replace(/[^A-Z0-9]/g, ""); }
         var fires = f.features.filter(function (ft) { return ft.geometry && ft.geometry.coordinates; }).map(function (ft) {
           var c = ft.geometry.coordinates, p = ft.properties || {};
-          var acres = p.IncidentSize, mod = p.ModifiedOnDateTime_dt, calDist = null;
+          var acres = p.IncidentSize, mod = p.ModifiedOnDateTime_dt, contain = p.PercentContained, calDist = null;
           for (var i = 0; i < cal.length; i++) {
             var cf = cal[i];
             if (cf.acres == null || nrm(cf.name) !== nrm(p.IncidentName)) continue;
@@ -272,14 +275,16 @@
             if (cd > 15) continue;  // same name, but ours?
             calDist = cd;
             var cu = cf.updated ? Date.parse(cf.updated) : NaN;
+            var calFresher = !isNaN(cu) && (mod == null || cu >= mod);
             // CAL FIRE wins on gaps and when it's fresher: the federal feed often
             // freezes a local fire at its dispatch-time 0.1 acres and walks away,
             // which would keep it under this strip's 50-acre bar forever.
-            if (acres == null || acres === 0 || (!isNaN(cu) && (mod == null || cu >= mod))) acres = cf.acres;
+            if (acres == null || acres === 0 || calFresher) acres = cf.acres;
+            if (cf.contained != null && (contain == null || calFresher)) contain = cf.contained;
             if (!isNaN(cu) && (mod == null || cu > mod)) mod = cu;
             break;
           }
-          return { name: p.IncidentName, acres: acres || 0, mod: mod, calDist: calDist, lat: c[1], lon: c[0], d: haversine(L.lat, L.lon, c[1], c[0]) };
+          return { name: p.IncidentName, acres: acres || 0, contain: contain, mod: mod, calDist: calDist, lat: c[1], lon: c[0], d: haversine(L.lat, L.lon, c[1], c[0]) };
         });
         // IRWIN can carry one fire as two records miles apart — same name within
         // 10 mi is one fire; keep the sized record, then the fresher (the SAME
@@ -298,9 +303,11 @@
           if (sB > sA || (sB === sA && dB < dA) || (sB === sA && dB === dA && (c2.mod || 0) > (kept[hit].mod || 0))) kept[hit] = c2;
         }
         fires = kept.filter(function (x) {
-          // Sizable and still being reported on — a record nobody has touched in two
-          // days is a fire that's out but never got flagged out.
-          return x.acres >= 50 && (x.mod == null || (Date.now() - x.mod) < 48 * 3600 * 1000);
+          // Sizable, still being reported on (a record nobody has touched in two
+          // days is a fire that's out but never got flagged out), and not yet
+          // well contained.
+          return x.acres >= 50 && (x.mod == null || (Date.now() - x.mod) < 48 * 3600 * 1000) &&
+            !(x.contain != null && Number(x.contain) >= WELL_CONTAINED);
         }).sort(function (a, b) { return a.d - b.d; });
         if (fires[0] && fires[0].d <= 15) {
           // Incident names come from WFIGS — escape before they hit innerHTML.

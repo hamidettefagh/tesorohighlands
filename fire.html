@@ -763,7 +763,7 @@ function airAdvice(v){
   } else if(air.lvl===2){
     s="caution"; icon="😷";
     txt=`<b>Unhealthy for sensitive groups.</b> ${cap(SENSITIVE)} should keep it short and skip hard exercise — head in if anyone starts coughing. Everyone else is fine outside.`;
-  } else if(v.fires.some(f=>f.dist<=12 && (f.acres||0)>=50)){
+  } else if(v.fires.some(f=>alertable(f) && f.dist<=12 && (f.acres||0)>=50)){
     s="caution"; icon="🌬️";
     txt=`<b>Air reads clean, but there's a sizable fire within a dozen miles</b> — smoke can shift with the wind. Fine to be out; just watch the sky, and ${SENSITIVE} should stay close to home.`;
   } else if(fw.lvl>=2){
@@ -783,9 +783,15 @@ function airAdvice(v){
   }
   return { s, icon, txt };
 }
+// A fire this far contained stops raising alerts: the headline, the smoke advice,
+// the site-wide status strip and the WhatsApp bot all skip it, while it stays in
+// the list and on the map with its containment bar. The same number is in nav.js
+// and scripts/alert-watch.mjs; scripts/fire-status.test.mjs checks they match.
+const WELL_CONTAINED = 75;
+function alertable(f){ return !(f.contain != null && Number(f.contain) >= WELL_CONTAINED); }
 function fireRisk(fires){
   let lvl=0;
-  for(const f of (fires||[])){ const ac=f.acres||0;
+  for(const f of (fires||[]).filter(alertable)){ const ac=f.acres||0;
     if(f.dist<=6 && ac>=100) lvl=Math.max(lvl,2);
     else if(f.dist<=15 && ac>=100) lvl=Math.max(lvl,1);
     else if(f.dist<=6 && ac>=20) lvl=Math.max(lvl,1);
@@ -1540,7 +1546,7 @@ function render(){
 
   // open the smoke playbook automatically when the air is actually bad
   const smoke = $("#smokeCard");
-  if(smoke) smoke.open = (aqiInfo(v.aqi).lvl>=2) || v.fires.some(f=>f.dist<=12 && (f.acres||0)>=50);
+  if(smoke) smoke.open = (aqiInfo(v.aqi).lvl>=2) || v.fires.some(f=>alertable(f) && f.dist<=12 && (f.acres||0)>=50);
   // the "smell smoke?" triage card opens itself only when the fire feed is down
   // (unknown ≠ quiet); on normal days it stays a one-line collapsed prompt.
   // live.ok must EXIST — before the first fetch completes, "not loaded yet"
@@ -1695,7 +1701,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=18" defer></script>
+<script src="/nav.js?v=19" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>
