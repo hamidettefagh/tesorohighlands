@@ -94,6 +94,7 @@ server.js             tiny static server for LOCAL dev only (mimics clean URLs)
 vendor/leaflet/       self-hosted Leaflet 1.9.4 — no CDN dependency in an emergency
 scripts/*.mjs         the data builders (see below)
 community-events.json neighbor events, hand-maintained (schema below)
+event-tips.json       outside events a neighbor passed along (store freebies), hand-maintained
 events.json ai-events.json alert.json roundup.json purpleair-history.json
                       bot-written — never hand-edit, they get overwritten
 updates.json          the "new on this site" changelog, hand-maintained
@@ -145,7 +146,7 @@ cleanly and commit nothing. The PurpleAir history job needs `PURPLEAIR_API_KEY` 
 | Power outages incl. PSPS | Cal OES statewide utility feed | **Live**, no key |
 | Shutoff (PSPS) status of our own circuit — alert bot only | The layers behind SCE's outage map (not a published API) | **Live**, no key |
 | Earthquakes | USGS | **Live**, no key |
-| Local events | City of Santa Clarita (Localist) + Eventbrite + SC Public Library → `events.json` | **Auto** |
+| Local events | City of Santa Clarita (Localist) + Eventbrite + SC Public Library + Performing Arts Center + Valencia Town Center + neighbor tips → `events.json` | **Auto** |
 | Extra events from the wider web | Claude web search → `ai-events.json`, merged into the main list | **Auto** (needs key) |
 | Weekend picks | Claude, choosing by index from our own verified feed → `roundup.json` | **Auto** (needs key) |
 | Community events | `community-events.json` | Curated |
@@ -164,14 +165,41 @@ disagree sometimes — see `CONTRIBUTING.md`.
 
 ## The local events pipeline
 
-`scripts/fetch-events.mjs` pulls three sources: the **City of Santa Clarita** calendar
+`scripts/fetch-events.mjs` pulls these sources: the **City of Santa Clarita** calendar
 (a Localist install, public `/api/2/events` JSON); **Eventbrite** public search pages
 for four SCV city slugs (embedded `__SERVER_DATA__`, filtered to SCV venues, spam
-dropped, each event page fetched for real pricing); and the **Santa Clarita Public
-Library** per-day feed (using the library's own age taxonomy). Everything is tagged by
+dropped, each event page fetched for real pricing); the **Santa Clarita Public
+Library** per-day feed (using the library's own age taxonomy); the **Performing Arts
+Center** season page; **Valencia Town Center**'s events page (store events and the
+mall's own trick-or-treating, Santa and pet-adoption days, read from the page's embedded
+`__NEXT_DATA__`; runs longer than three weeks, like a month-long pumpkin patch, and
+ribbon cuttings are skipped); and **`event-tips.json`**, below. Everything is tagged by
 audience, recurring programs carry all their dates so they roll forward, results are
 deduped, and the file is written only when content actually changed. Each source fails
-soft and carries its previous events forward.
+soft and carries its previous events forward. A venue that is just a street address
+(someone hosting at home, on Eventbrite or the City calendar) shows as the city only.
+
+**Store freebies** (a free toy car at Toys"R"Us inside Macy's, the Home Depot and
+Lowe's kids' workshops) are announced on each chain's own site, so no local calendar
+carries them. Two ways in: the daily AI search (below) looks for them at the chains that
+have a store in the valley, and anything a neighbor spots goes in `event-tips.json`.
+The events page tags a listing "🎁 Giveaway" when its title offers something free to
+take home.
+
+### event-tips.json
+
+```json
+{ "events": [{ "title": "Geoffrey's birthday: a free Gold Lightning McQueen car for kids",
+  "start": "2026-10-16T16:00", "venue": "Toys\"R\"Us inside Macy's, Valencia Town Center (select stores, call ahead)",
+  "city": "Valencia", "url": "https://www.macys.com/s/events/", "free": true, "price": "Free",
+  "audience": ["toddlers", "kids"] }] }
+```
+
+`start` is Pacific time; `url` must be an `https://` page that announces the event; the
+venue or city must be in the Santa Clarita Valley. Put what kids get in the title, and
+say "select stores, call ahead" when a chain doesn't promise every store. Past entries
+drop off by themselves; the next feed refresh (or `node scripts/fetch-events.mjs`)
+publishes a new one.
 
 **Sources checked and rejected** (so nobody re-litigates them): Visit Santa Clarita
 (no feed), KHTS (no API), SCVNews and santa-clarita.com (bot-blocked), The MAIN (404s;
@@ -187,7 +215,9 @@ page shows "feed may be stale" past 5 days.
 ### AI-assisted discovery
 
 `scripts/fetch-ai-events.mjs` uses Claude's web search for events no feed carries —
-venue pages, farms, breweries, churches. Results come back through a strict-schema
+venue pages, farms, breweries, churches, and free in-store kids' events at the chains
+with a store in the valley (the list is in the prompt; a chain without a local store
+isn't searched). Results come back through a strict-schema
 tool, get validated hard (real URL, in-window date, SCV city), and land in a separate
 `ai-events.json` that the events page merges into the main list.
 

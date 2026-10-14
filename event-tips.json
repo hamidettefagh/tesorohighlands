@@ -1,0 +1,25 @@
+{
+  "note": "Outside events no feed carries, passed along by a neighbor (a store freebie from an email, a one-off at a local shop). One entry per event; past ones drop off the site by themselves. Fields: title (say what kids get), start (YYYY-MM-DDTHH:MM, Pacific time), venue and city (must be in the Santa Clarita Valley), url (the https page that announces it), free, price, audience (toddlers/kids/teens/adults). For a chain event at 'select stores', say so in the venue.",
+  "events": [
+    {
+      "title": "Geoffrey's birthday: a free Gold Lightning McQueen car for kids",
+      "start": "2026-10-16T16:00",
+      "venue": "Toys\"R\"Us inside Macy's, Valencia Town Center (select stores, call ahead)",
+      "city": "Valencia",
+      "url": "https://www.macys.com/s/events/",
+      "free": true,
+      "price": "Free",
+      "audience": ["toddlers", "kids"]
+    },
+    {
+      "title": "Geoffrey's birthday: build and take home a free LEGO giraffe",
+      "start": "2026-10-17T12:00",
+      "venue": "Toys\"R\"Us inside Macy's, Valencia Town Center (select stores, call ahead)",
+      "city": "Valencia",
+      "url": "https://www.macys.com/s/events/",
+      "free": true,
+      "price": "Free",
+      "audience": ["kids"]
+    }
+  ]
+}

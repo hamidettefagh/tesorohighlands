@@ -5,6 +5,12 @@
 //   2. Santa Clarita Public Library calendar (santaclarita.librarycalendar.com)
 //      via its server-rendered per-day calendar feed — free programs with
 //      official age-group labels (Babies/Toddler/Preschool/Teens/Adults...).
+//   3. City of Santa Clarita calendar (Localist JSON).
+//   4. Santa Clarita Performing Arts Center season page.
+//   5. Valencia Town Center events page: store events, giveaways and the mall's
+//      own happenings (trick-or-treating, Santa's arrival, pet adoptions).
+//   6. event-tips.json: outside events a neighbor passed along by hand, such as
+//      a store freebie seen in an email. Past ones drop off by themselves.
 // Each event is tagged by audience (toddlers/kids/teens/adults) for the site's
 // filter chips. Run by .github/workflows/refresh-events.yml (note: Eventbrite
 // 405-blocks GitHub runner IPs — the library source may still work there; real
@@ -50,6 +56,14 @@ const AUDIENCES = [
 function classify(text) {
   const hits = AUDIENCES.filter((a) => a.rx.test(text)).map((a) => a.key);
   return hits.length ? hits : ["everyone"];
+}
+// Someone hosting at home lists their street address as the "venue" (on
+// Eventbrite, and on the City calendar too). The site keeps home addresses off
+// its pages, so show just the city; the event's own page still has the details.
+const STREET_ADDRESS = /^\d+\s+[\w .'-]*\b(ave(nue)?|st(reet)?|r(oa)?d|dr(ive)?|lane|ln|way|c(our)?t|pl(ace)?|blvd|boulevard|cir(cle)?|terr(ace)?|pkwy|parkway|trail|tr)\.?$/i;
+function venueName(v) {
+  v = String(v || "").trim();
+  return v && !STREET_ADDRESS.test(v) ? v : null;
 }
 function decode(s) {
   return String(s)
@@ -102,7 +116,7 @@ async function fetchEventbrite() {
             title: (e.name || "").trim(),
             url: e.url,
             start: e.start_date && e.start_time ? `${e.start_date}T${e.start_time}` : e.start_date,
-            venue: e.primary_venue?.name || null,
+            venue: venueName(e.primary_venue?.name),
             city: city.replace(/,\s*CA\s*$/i, "").trim().replace(/\b\w/g, (c) => c.toUpperCase()),
             free: null,
             price: null,
@@ -258,7 +272,7 @@ async function fetchLocalist() {
         start: insts[0],
         dates: insts,
         repeats: insts.length - 1,
-        venue: e.location_name || null,
+        venue: venueName(e.location_name),
         city: "Santa Clarita",
         free: !!e.free,
         price: e.free ? "Free" : (cost || null),
@@ -360,14 +374,104 @@ async function fetchPac() {
   return { events, ok };
 }
 
+/* ---------------- Valencia Town Center (the mall) ----------------
+   Store events and giveaways (Lush workshops, grand openings) plus the mall's
+   own happenings (Mall-o-Ween trick-or-treating, Santa's arrival, pet
+   adoptions). The page is server-rendered with its data embedded as
+   __NEXT_DATA__, so one fetch gets every event with exact times. */
+const VTC = "https://www.valenciatowncenter.com";
+const VTC_MAX_RUN_DAYS = 21;   // a pumpkin patch open all month, or a coat drive, isn't a day to show up
+
+// "2026-10-31T23:00:00.000000Z" -> "2026-10-31T16:00" in Los Angeles time
+function laStamp(iso) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit",
+    day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date(iso)).map((x) => [x.type, x.value]));
+  return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}`;
+}
+
+async function fetchTownCenter() {
+  const events = [];
+  let ok = false;
+  try {
+    const html = await get(VTC + "/events");
+    const m = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
+    const list = m && JSON.parse(m[1])?.props?.pageProps?.sectionsData?.events_list_container?.events;
+    if (!Array.isArray(list)) throw new Error("event data not found on the page");
+    ok = true;
+    const today = laDate(0);
+    for (const w of list) {
+      const e = w && w.event;
+      if (!e || !e.title || !e.url) continue;
+      const title = decode(e.title).replace(/\s+/g, " ").trim();
+      const text = decode(String(e.body || "").replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ");
+      // A ribbon cutting is a ceremony for the business, not something to bring the kids to.
+      if (/grand opening|ribbon[- ]cutting/i.test(title + " " + text) && !/\bfree\b|giveaway|gift/i.test(text)) continue;
+      const o = e.occurrence || {};
+      let start = null, dates = null;
+      if (o.starts_at) start = laStamp(o.starts_at);
+      else if (o.start_date && o.end_date) {
+        const days = [];
+        for (let d = new Date(o.start_date + "T12:00:00Z"); d <= new Date(o.end_date + "T12:00:00Z"); d = new Date(d.getTime() + 86400000)) days.push(d.toISOString().slice(0, 10));
+        if (!days.length || days.length > VTC_MAX_RUN_DAYS) continue;
+        dates = days.filter((d) => d >= today);
+        if (!dates.length) continue;
+        start = dates[0];
+      }
+      if (!start || start.slice(0, 10) < today) continue;
+      // The price is a dollar amount that isn't a fee or donation (a pet adoption
+      // day's "$20 licensing fee" is for adopters, not for walking in).
+      const dollars = [...text.matchAll(/\$\s?\d[\d,.]*/g)]
+        .find((d) => !/fee|deposit|donat/i.test(text.slice(Math.max(0, d.index - 30), d.index + d[0].length + 25)));
+      const free = /\bfree\b/i.test(text) && !dollars && !/ticket/i.test(text);
+      const store = w.store && w.store.name ? decode(w.store.name) : null;
+      events.push({
+        title,
+        url: `${VTC}/${String(e.url).replace(/^\//, "")}`,
+        start,
+        ...(dates && dates.length > 1 ? { dates, repeats: dates.length - 1 } : {}),
+        venue: store && store !== "Santa Claus" ? `${store}, Valencia Town Center` : "Valencia Town Center",
+        city: "Valencia",
+        free,
+        price: free ? "Free" : (dollars ? dollars[0].replace(/\s/g, "") : null),
+        audience: classify(title + " " + text),
+        source: "Valencia Town Center",
+      });
+    }
+  } catch (err) {
+    console.error("town center:", String(err).slice(0, 100));
+  }
+  return { events, ok };
+}
+
+/* ---------------- Neighbor tips (event-tips.json, hand-maintained) ----------------
+   Outside events that no feed carries, passed along by a neighbor: a store
+   freebie from an email, a one-off at a local shop. Same checks as everything
+   else: a real link, a Santa Clarita Valley place, and a date that hasn't passed. */
+function readTips() {
+  let list = [];
+  try { list = JSON.parse(readFileSync(new URL("../event-tips.json", import.meta.url), "utf8")).events || []; }
+  catch (err) { console.error("tips:", String(err).slice(0, 100)); return []; }
+  const today = laDate(0);
+  return list.filter((e) => e && e.title && /^https:\/\//.test(e.url || "") && /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2})?$/.test(e.start || "") &&
+      e.start.slice(0, 10) >= today && SCV.test(`${e.venue || ""} ${e.city || ""}`))
+    .map((e) => ({
+      title: String(e.title).trim(), url: e.url, start: e.start,
+      venue: e.venue || null, city: e.city || "Santa Clarita",
+      free: !!e.free, price: e.free ? "Free" : (e.price || null),
+      audience: Array.isArray(e.audience) && e.audience.length ? e.audience : classify(e.title),
+      source: "Neighbor tip",
+    }));
+}
+
 /* ---------------- merge, dedupe, write ---------------- */
-const [eb, lib, loc, pac] = await Promise.all([fetchEventbrite(), fetchLibrary(), fetchLocalist(), fetchPac()]);
-console.log(`eventbrite: ${eb.events.length} (${eb.pagesOk} pages) | library: ${lib.events.length} (${lib.daysOk}/${LIB_DAYS} days) | city: ${loc.events.length} (${loc.ok ? "ok" : "FAILED"}) | PAC: ${pac.events.length} (${pac.ok ? "ok" : "FAILED"})`);
+const [eb, lib, loc, pac, vtc] = await Promise.all([fetchEventbrite(), fetchLibrary(), fetchLocalist(), fetchPac(), fetchTownCenter()]);
+const tips = readTips();
+console.log(`eventbrite: ${eb.events.length} (${eb.pagesOk} pages) | library: ${lib.events.length} (${lib.daysOk}/${LIB_DAYS} days) | city: ${loc.events.length} (${loc.ok ? "ok" : "FAILED"}) | PAC: ${pac.events.length} (${pac.ok ? "ok" : "FAILED"}) | town center: ${vtc.events.length} (${vtc.ok ? "ok" : "FAILED"}) | tips: ${tips.length}`);
 
 let old = null;
 try { old = JSON.parse(readFileSync(OUT, "utf8")); } catch {}
 
-if (eb.pagesOk === 0 && lib.daysOk === 0 && !loc.ok && !pac.ok) {
+if (eb.pagesOk === 0 && lib.daysOk === 0 && !loc.ok && !pac.ok && !vtc.ok) {
   console.error("All sources failed; keeping last good file.");
   process.exit(0);
 }
@@ -382,13 +486,15 @@ function carryForward(source) {
   console.error(`${source} fetch failed — carrying forward ${kept.length} previous events.`);
   return kept;
 }
-const ebEvents = eb.pagesOk === 0 ? carryForward("Eventbrite") : eb.events;
+// venueName() again on carried-forward Eventbrite events, which predate it.
+const ebEvents = (eb.pagesOk === 0 ? carryForward("Eventbrite") : eb.events).map((e) => ({ ...e, venue: venueName(e.venue) }));
 const libEvents = lib.daysOk === 0 ? carryForward("SC Library") : lib.events;
 const locEvents = !loc.ok ? carryForward("City of Santa Clarita") : loc.events;
 const pacEvents = !pac.ok ? carryForward("SC Performing Arts Center") : pac.events;
+const vtcEvents = !vtc.ok ? carryForward("Valencia Town Center") : vtc.events;
 
 const seen = new Set();
-const events = [...ebEvents, ...libEvents, ...locEvents, ...pacEvents]
+const events = [...ebEvents, ...libEvents, ...locEvents, ...pacEvents, ...vtcEvents, ...tips]
   .filter((e) => {
     const k = e.title.toLowerCase().replace(/\W+/g, " ").trim() + "|" + e.start;
     if (seen.has(k)) return false;
@@ -424,7 +530,7 @@ writeFileSync(
   JSON.stringify(
     {
       generatedAt: new Date().toISOString(),
-      note: "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, and the City of Santa Clarita calendar by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
+      note: "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
       events,
     },
     null,

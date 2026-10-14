@@ -63,6 +63,7 @@
   .chip{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:1px 7px;border-radius:999px;background:var(--neu-bg);color:var(--neu-fg);margin:4px 4px 0 0;}
   .chip.today{background:var(--ok-bg);color:var(--ok-fg);}
   .chip.new{background:var(--cau-bg);color:var(--cau-fg);}
+  .chip.gift{background:var(--ok-bg);color:var(--ok-fg);}
   .chiprow{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:2px 0 10px;-webkit-overflow-scrolling:touch;align-items:center;}
   .chiprow::-webkit-scrollbar{display:none;}
   .chiprow .chips{margin:0;flex:none;flex-wrap:nowrap;}
@@ -549,6 +550,13 @@
         return head + itemHtml(g.e, g.times);
       }).join("") + (hiddenCount ? '<div class="morewrap"><button type="button" class="showall" id="showAllBtn">Show all ' + total + " events →</button></div>" : "");
     }
+    // Something to take home for free ("a free LEGO giraffe", "free Kids Workshop"
+    // kits, giveaways). A free movie night or free admission is just Free, not this.
+    function isGiveaway(e) {
+      var t = String(e.title || "");
+      return /giveaway|giving away/i.test(t) ||
+        /\bfree\s+(?!admission|entry|parking|event|concert|movie|show|night|day|music|tour|class|swim|skate)\w/i.test(t);
+    }
     // Some feeds bake the showtime into the title ("Hart Mansion Tour 12:00p.m."),
     // which both defeats grouping and duplicates the time column next to it.
     function cleanTitle(t) {
@@ -563,6 +571,7 @@
         '<div class="what">' + (u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(cleanTitle(e.title)) + "</a>" : esc(cleanTitle(e.title))) +
         (w.isToday ? '<span class="chip today">Today</span>' : "") +
         (isNew(e) ? '<span class="chip new">✨ New</span>' : "") +
+        (isGiveaway(e) ? '<span class="chip gift">🎁 Giveaway</span>' : "") +
         '<div class="sub">' + esc([e.venue, e.city].filter(Boolean).join(" · ")) + "</div>" +
         auds.map(function (a) { return '<span class="chip">' + esc(AUD_LABEL[a] || a) + "</span>"; }).join("") +
         (e._repeats ? '<span class="chip">↻ +' + e._repeats + ' more dates</span>' : "") +
@@ -679,13 +688,13 @@
       var stale = (feed && feed.generatedAt && Date.now() - new Date(feed.generatedAt).getTime() > 5 * DAY) ||
                   (aiList.length && ai && ai.generatedAt && Date.now() - new Date(ai.generatedAt).getTime() > 5 * DAY);
       document.getElementById("feedMeta").innerHTML =
-        "Across the Santa Clarita Valley — City of Santa Clarita, Eventbrite, the SC Public Library &amp; the COC Performing Arts Center" +
-        (aiList.length ? ", plus listings found by AI web search" : "") +
+        "Across the Santa Clarita Valley — City of Santa Clarita, Eventbrite, the SC Public Library, the COC Performing Arts Center, Valencia Town Center &amp; neighbor tips" +
+        (aiList.length ? ", plus listings found by AI web search, including free kids' events at local stores" : "") +
         (when.length ? " · updated " + esc(when.join(" · ")) : "") +
         (stale ? ' · <b style="color:var(--cau-fg)">feed may be stale</b>' : "") +
         " · details can change — confirm on the listing.";
     }).catch(function () {
-      document.getElementById("feedList").innerHTML = '<div class="empty">Couldn&#39;t load the events feed right now — try the links below.</div>';
+      document.getElementById("feedList").innerHTML = '<div class="empty">Couldn&#39;t load the events feed right now. Try again in a few minutes, or see the <a href="https://calendar.santaclarita.gov/" target="_blank" rel="noopener">City&#39;s calendar ↗</a>.</div>';
     });
   })();
   </script>

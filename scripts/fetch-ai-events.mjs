@@ -7,8 +7,13 @@
 // This is a SUPPLEMENT, not the backbone. An LLM can get a date or price wrong,
 // so: every event links to the page it was found on, the prompt is tuned hard
 // for accuracy-over-quantity, results are validated (real URL, future date, SCV
-// city), and the output is written to a SEPARATE ai-events.json for review —
-// it is NOT merged into the live feed unless a human wires it in.
+// city), and the output goes to a separate ai-events.json, which the events page
+// blends in only where the official feeds don't already have the event.
+//
+// It also hunts free in-store kids' events and giveaways at the chains that have
+// a store in the valley (Toys"R"Us at Macy's, Home Depot and Lowe's workshops,
+// Barnes & Noble, PetSmart): chains announce those on their own sites, so no
+// local calendar carries them.
 //
 // Runs in GitHub Actions (.github/workflows/refresh-ai-events.yml). The web
 // search runs on Anthropic's servers, so — unlike the Eventbrite scraper — this
@@ -85,7 +90,16 @@ Use web search to find real events. PRIORITIZE these local venues — they publi
 - Valencia Town Center and Westfield-area happenings, Old Town Newhall street events (SENSES block party), city Concerts in the Park
 Also check: Macaroni KID Santa Clarita, Visit Santa Clarita, community organizations, churches, schools, and local event roundups.
 
-INCLUDE things a family or an adult can physically show up to: festivals, farmers markets, live music, comedy, kids' activities and classes, story times, farm events, holiday events, community and rec events.
+ALSO LOOK FOR FREE IN-STORE KIDS' EVENTS AND GIVEAWAYS. National chains announce these on their own websites (deal sites repeat them), so no local calendar lists them. Only these chains have a store in the Santa Clarita Valley:
+- Toys"R"Us, the shop inside Macy's at Valencia Town Center, Valencia (Geoffrey's birthday, LEGO and Hot Wheels days; macys.com/s/events)
+- The Home Depot Kids Workshop (free, usually the first Saturday of the month): stores on Golden Triangle Rd, Santa Clarita, and Newhall Ranch Rd, Valencia
+- Lowe's Kids Workshops (free, one Saturday a month): stores on Bouquet Canyon Rd and Golden Valley Rd, Santa Clarita
+- Barnes & Noble, 23630 Valencia Blvd, Valencia (storytimes, LEGO builds, kids' events)
+- PetSmart, Golden Valley Rd, Santa Clarita (free events such as Tricks for Treats)
+- JCPenney, Valencia Town Center, Valencia
+For these: use the chain's own page, or a deal site that states the date and time, as "url". Set "venue" to the local store (for example "Lowe's, Bouquet Canyon Rd") and "city" to its city. If the chain says "select" or "participating" stores, end the venue with " (select stores, call ahead)". Set "free" to true only when no purchase is needed, and put what kids get in the title (for example "Free Lightning McQueen car for kids: Geoffrey's birthday"). Do not include any other chain unless a search shows it has a store in the Santa Clarita Valley.
+
+INCLUDE things a family or an adult can physically show up to: festivals, farmers markets, live music, comedy, kids' activities and classes, story times, farm events, holiday events, community and rec events, and free in-store kids' events.
 EXCLUDE online/virtual events, corporate training or professional certification courses, anything outside the Santa Clarita Valley, and anything that has already happened.
 
 ACCURACY MATTERS MORE THAN QUANTITY:
@@ -104,7 +118,7 @@ const WEB_SEARCH_TYPE = /opus-4-6|opus-4-7|opus-4-8|sonnet-5|sonnet-4-6|fable-5|
   : "web_search_20250305";
 
 const tools = [
-  { type: WEB_SEARCH_TYPE, name: "web_search", max_uses: 12 },
+  { type: WEB_SEARCH_TYPE, name: "web_search", max_uses: 16 },   // 12 for venues + room for the store chains
   {
     name: "submit_events",
     description: "Record the confirmed local events you found. Call this exactly once when done.",
