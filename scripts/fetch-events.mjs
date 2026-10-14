@@ -491,7 +491,16 @@ const ebEvents = (eb.pagesOk === 0 ? carryForward("Eventbrite") : eb.events).map
 const libEvents = lib.daysOk === 0 ? carryForward("SC Library") : lib.events;
 const locEvents = !loc.ok ? carryForward("City of Santa Clarita") : loc.events;
 const pacEvents = !pac.ok ? carryForward("SC Performing Arts Center") : pac.events;
-const vtcEvents = !vtc.ok ? carryForward("Valencia Town Center") : vtc.events;
+// The mall's events often sit on the City calendar too, under a longer title
+// ("Circus Vargas" / "Circus Vargas: Masquerade"), so the mall's copy is kept
+// only when no other feed already has that event on one of its days.
+const normTitle = (s) => String(s || "").toLowerCase().replace(/\b(the|a|an|at|of|in|and|valencia|town center)\b/g, " ").replace(/\W+/g, " ").trim();
+const daysOf = (e) => (e.dates && e.dates.length ? e.dates : [e.start]).map((s) => String(s).slice(0, 10));
+const others = [...ebEvents, ...libEvents, ...locEvents, ...pacEvents];
+const vtcEvents = (!vtc.ok ? carryForward("Valencia Town Center") : vtc.events).filter((v) => {
+  const vn = normTitle(v.title), vd = new Set(daysOf(v));
+  return !others.some((o) => { const on = normTitle(o.title); return vn && on && (on.includes(vn) || vn.includes(on)) && daysOf(o).some((d) => vd.has(d)); });
+});
 
 const seen = new Set();
 const events = [...ebEvents, ...libEvents, ...locEvents, ...pacEvents, ...vtcEvents, ...tips]

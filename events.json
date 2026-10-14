@@ -1,30 +1,7 @@
 {
-  "generatedAt": "2026-10-14T07:58:22.412Z",
+  "generatedAt": "2026-10-14T08:00:14.273Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Circus Vargas",
-      "url": "https://www.valenciatowncenter.com/event/44139-circus-vargas",
-      "start": "2026-10-14",
-      "dates": [
-        "2026-10-14",
-        "2026-10-15",
-        "2026-10-16",
-        "2026-10-17",
-        "2026-10-18",
-        "2026-10-19"
-      ],
-      "repeats": 5,
-      "venue": "Valencia Town Center",
-      "city": "Valencia",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids"
-      ],
-      "source": "Valencia Town Center",
-      "added": "2026-10-14T07:55:13.493Z"
-    },
     {
       "title": "The Velocity of Autumn",
       "url": "https://www.valenciatowncenter.com/event/44131-the-velocity-of-autumn",
@@ -164,9 +141,10 @@
         "2026-10-22T09:30",
         "2026-10-27T09:30",
         "2026-10-28T09:30",
-        "2026-10-29T09:30"
+        "2026-10-29T09:30",
+        "2026-11-03T09:30"
       ],
-      "repeats": 7,
+      "repeats": 8,
       "added": "2026-10-09T15:17:51.926Z"
     },
     {
@@ -294,10 +272,9 @@
         "2026-10-29T12:00",
         "2026-10-30T12:00",
         "2026-10-31T12:00",
-        "2026-11-01T12:00",
         "2026-11-01T12:00"
       ],
-      "repeats": 15,
+      "repeats": 14,
       "added": "2026-07-25T09:59:46.269Z"
     },
     {
@@ -327,10 +304,9 @@
         "2026-10-29T13:00",
         "2026-10-30T13:00",
         "2026-10-31T13:00",
-        "2026-11-01T13:00",
         "2026-11-01T13:00"
       ],
-      "repeats": 15,
+      "repeats": 14,
       "added": "2026-07-25T09:59:46.269Z"
     },
     {
@@ -360,10 +336,9 @@
         "2026-10-29T14:00",
         "2026-10-30T14:00",
         "2026-10-31T14:00",
-        "2026-11-01T14:00",
         "2026-11-01T14:00"
       ],
-      "repeats": 15,
+      "repeats": 14,
       "added": "2026-07-25T09:59:46.269Z"
     },
     {
@@ -581,9 +556,10 @@
         "2026-10-20T11:00",
         "2026-10-22T09:30",
         "2026-10-27T11:00",
-        "2026-10-29T09:30"
+        "2026-10-29T09:30",
+        "2026-11-03T11:00"
       ],
-      "repeats": 4,
+      "repeats": 5,
       "added": "2026-10-06T11:16:00.911Z"
     },
     {
@@ -1091,10 +1067,9 @@
         "2026-10-24T11:00",
         "2026-10-25T11:00",
         "2026-10-31T11:00",
-        "2026-11-01T11:00",
         "2026-11-01T11:00"
       ],
-      "repeats": 6,
+      "repeats": 5,
       "added": "2026-10-14T07:55:13.493Z"
     },
     {
@@ -1180,10 +1155,9 @@
         "2026-10-24T15:00",
         "2026-10-25T15:00",
         "2026-10-31T15:00",
-        "2026-11-01T15:00",
         "2026-11-01T15:00"
       ],
-      "repeats": 6,
+      "repeats": 5,
       "added": "2026-10-14T07:55:13.493Z"
     },
     {
@@ -1201,20 +1175,6 @@
       "dates": [
         "2026-10-17T15:00"
       ],
-      "added": "2026-10-14T07:55:13.493Z"
-    },
-    {
-      "title": "SoCal Etsy Guild Market",
-      "url": "https://www.valenciatowncenter.com/event/44537-socal-etsy-guild-market",
-      "start": "2026-10-17T15:00",
-      "venue": "Valencia Town Center",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Valencia Town Center",
       "added": "2026-10-14T07:55:13.493Z"
     },
     {
