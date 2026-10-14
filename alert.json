@@ -1,12 +1,13 @@
 {
   "active": true,
-  "sig": "fire:BIKE:t2|redflag:a663aaaa8d1a5d37a4.002.1",
+  "sig": "fire:BIKE:t2|power:ours:watch:1792069200000-1792198800000|redflag:a663aaaa8d1a5d37a4.002.1",
   "level": "caution",
-  "title": "Bike Fire ~9.1 mi southeast of us",
-  "text": "🔥 Bike Fire — about 172 acres, ~9.1 mi southeast of Tesoro Highlands (straight-line — farther by road).\nNot close, and no evacuation activity for our area — sharing for awareness only.\nLive map & status: https://tesorohighlands.com/fire",
-  "waText": "🔥 *Bike Fire* — about 172 acres, ~9.1 mi southeast of Tesoro Highlands (straight-line — farther by road).\nNot close, and no evacuation activity for our area — sharing for awareness only.\nLive map & status: https://tesorohighlands.com/fire",
+  "title": "SCE may shut off our power Thu 6 AM – Fri 6 PM",
+  "text": "⚡ Possible power shutoff — our circuit (Orion)\nSCE has our circuit on its list for a possible wildfire-safety shutoff, Thu, Oct 15, 6 AM to Fri, Oct 16, 6 PM. It isn’t certain yet: SCE decides from the actual wind.\nCharge phones, power banks and home batteries before then, and know how to open your garage door by hand. If someone at home relies on powered medical equipment, plan for that now.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "waText": "⚡ *Possible power shutoff — our circuit (Orion)*\nSCE has our circuit on its list for a possible wildfire-safety shutoff, Thu, Oct 15, 6 AM to Fri, Oct 16, 6 PM. It isn’t certain yet: SCE decides from the actual wind.\nCharge phones, power banks and home batteries before then, and know how to open your garage door by hand. If someone at home relies on powered medical equipment, plan for that now.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
   "others": [
+    "Bike Fire ~9.1 mi southeast of us",
     "Red Flag Warning"
   ],
-  "updatedAt": "2026-10-13T21:57:40.401Z"
+  "updatedAt": "2026-10-14T10:27:03.517Z"
 }
