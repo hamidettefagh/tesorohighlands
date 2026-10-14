@@ -84,12 +84,6 @@
     .dstrip::-webkit-scrollbar{display:none;}
     .dcell{flex:none;width:72px;}
   }
-  .xgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-  @media(max-width:520px){.xgrid{grid-template-columns:1fr;}}
-  .xtile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
-  .xtile .lab{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;}
-  .xtile .val{font-size:18px;font-weight:680;color:var(--ink);margin-top:4px;letter-spacing:-0.01em;}
-  .xtile .sub{font-size:11.5px;color:var(--ink-2);margin-top:3px;line-height:1.45;}
   .sources{font-size:12px;color:var(--muted);line-height:1.6;margin:28px 2px 0;padding-top:14px;border-top:1px solid var(--line);}
   .sources a{color:var(--accent);font-weight:600;text-decoration:none;}
   .sources a:hover{text-decoration:underline;}
@@ -108,12 +102,8 @@
 .storm li:first-child{border-top:0;}
 .storm li b{color:var(--ink);}
 .storm a{color:var(--accent);font-weight:600;}
-.scalls{display:grid;gap:8px;margin-top:6px;}
-@media(min-width:600px){.scalls{grid-template-columns:repeat(3,1fr);}}
-.scalls a{display:flex;flex-direction:column;justify-content:center;min-height:52px;padding:9px 13px;border:1px solid var(--line);border-radius:11px;text-decoration:none;color:var(--ink);font-size:13px;font-weight:600;}
-.scalls a:hover{border-color:var(--muted);}
-.scalls a span{font-size:15px;font-weight:700;color:var(--ink);margin-top:2px;}
 .storm .snote{font-size:12.5px;color:var(--muted);margin:12px 0 0;line-height:1.55;}
+.storm .snote b{color:var(--ink);}
 
 /* ---- Phone readability floor — see th.css ---- */
 .wxhero .hilo{font-size:12.5px;}
@@ -122,8 +112,6 @@
 .spark-cap{font-size:12px;}
 .hcell .t,.dcell .wd{font-size:12px;}
 .hcell .pop,.dcell .pop{font-size:11.5px;}
-.xtile .lab{font-size:11px;}
-.xtile .sub{font-size:12.5px;}
 </style>
 </head>
 <body class="th">
@@ -174,19 +162,8 @@
         <li><b>Stay off canyon roads and away from flood channels.</b> Heavy rain on burn areas can send mud and debris downhill fast. <a href="https://dpw.lacounty.gov/wrd/forecast/index.cfm" target="_blank" rel="noopener">LA County debris-flow forecast ↗</a></li>
       </ul>
 
-      <h3>Who to call</h3>
-      <div class="scalls">
-        <a href="tel:+16612227222">Flooding or a blocked storm drain <span>(661) 222-7222</span></a>
-        <a href="tel:+16612902200">Tree down on a street <span>(661) 290-2200</span></a>
-        <a href="tel:+18006111911">Power out <span>1-800-611-1911</span></a>
-      </div>
-      <p class="snote">The first two are City lines, answered 24/7. Flood alerts from the Weather Service show in the status bar at the top of every page. City storm hub: <a href="https://readyforrain.santaclarita.gov/" target="_blank" rel="noopener">ReadyforRain.SantaClarita.gov ↗</a></p>
+      <p class="snote">📞 <b>Flooding, a tree down, or the power out?</b> The 24/7 numbers are in one tap-to-call list: <a href="/fire#call">Who to call →</a> Flood alerts from the Weather Service show in the status bar at the top of every page. City storm hub: <a href="https://readyforrain.santaclarita.gov/" target="_blank" rel="noopener">ReadyforRain.SantaClarita.gov ↗</a></p>
     </div>
-  </section>
-
-  <section id="extra">
-    <div class="sechead"><h2>Extra stats</h2><div class="line"></div></div>
-    <div id="extraBand"><div class="band-unavail">Loading…</div></div>
   </section>
 
   <div class="sources" id="sources">
@@ -317,13 +294,6 @@ function fmtIn(n){
   return n.toFixed(2)+" in";
 }
 
-function pressureLabel(trend){
-  if(trend==="rising") return "Rising";
-  if(trend==="falling") return "Falling";
-  if(trend==="steady") return "Steady";
-  return "—";
-}
-
 function todayHighLow(daily){
   if(!daily||!daily.length) return null;
   const key=LA.dayKey(Math.floor(Date.now()/1000));
@@ -364,6 +334,9 @@ function renderWx(fc){
   if(cur.wdir!=null) chips.push("Wind from "+compass(cur.wdir));
   if(cur.rh!=null) chips.push("Humidity "+Math.round(cur.rh)+"%");
   if(cur.uv!=null) chips.push('<span class="chip uv '+uv.cls+'">UV '+Math.round(cur.uv)+" · "+uv.label+"</span>");
+  // Rain only when there is some: today's total, or the next 3 hours look wet.
+  if(cur.precipTodayIn>0) chips.push("Rain today "+fmtIn(cur.precipTodayIn));
+  if(precipSoon(fc.hourly||[])) chips.push("Rain likely within 3 hours");
   el.innerHTML=
     '<p class="ey">Weather here</p>'+
     '<div class="wxhero"><span class="ico">'+esc(wxIcon(cur.icon))+'</span><div>'+
@@ -450,25 +423,6 @@ function renderDaily(fc){
   }).join("")+'</div>';
 }
 
-function renderExtra(fc){
-  const el=$("#extraBand");
-  const cur=fc&&fc.ok&&fc.current&&!fc.currentStale?fc.current:null;
-  if(!cur){
-    el.innerHTML='<div class="band-unavail">Extra stats unavailable</div>';
-    return;
-  }
-  const occurring=(cur.precipMinutesToday!=null&&cur.precipMinutesToday>0);
-  const soon=precipSoon(fc.hourly||[]);
-  let precipSub=fmtIn(cur.precipTodayIn)+" today";
-  if(occurring) precipSub+=" · rain occurring now";
-  else if(soon) precipSub+=" · rain likely within 3 hours";
-  el.innerHTML='<div class="xgrid">'+
-    '<div class="xtile"><div class="lab">Pressure</div><div class="val">'+(cur.pressureMb!=null?Math.round(cur.pressureMb)+" mb":"—")+'</div><div class="sub">'+esc(pressureLabel(cur.pressureTrend))+'</div></div>'+
-    '<div class="xtile"><div class="lab">Precipitation</div><div class="val">'+esc(fmtIn(cur.precipTodayIn))+'</div><div class="sub">'+esc(precipSub)+'</div></div>'+
-    '<div class="xtile"><div class="lab">Dew point</div><div class="val">'+(cur.dewpointF!=null?Math.round(cur.dewpointF)+"°":"—")+'</div><div class="sub">From the backyard station</div></div>'+
-    '</div>';
-}
-
 (async function(){
   const [paR, histR, fcR] = await Promise.allSettled([
     loadJson("/api/purpleair"),
@@ -488,7 +442,6 @@ function renderExtra(fc){
   try { renderAqi(pa, hist); } catch (e) { $("#aqiNow").innerHTML='<p class="ey">Air quality</p><div class="band-unavail">Air quality unavailable</div>'; }
   try { renderHourly(fc); } catch (e) { $("#hourlyBand").innerHTML='<div class="band-unavail">Hourly forecast unavailable</div>'; }
   try { renderDaily(fc); } catch (e) { $("#dailyBand").innerHTML='<div class="band-unavail">10-day forecast unavailable</div>'; }
-  try { renderExtra(fc); } catch (e) { $("#extraBand").innerHTML='<div class="band-unavail">Extra stats unavailable</div>'; }
 })();
 </script>
 </body>

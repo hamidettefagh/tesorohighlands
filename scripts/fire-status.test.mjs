@@ -132,20 +132,22 @@ const drift = ladder.filter(([inNav, inFire]) => !inNav.test(navSrc) || !inFire.
 if (drift.length) { failed++; console.log("FAIL flash-flood ladder differs between nav.js and fire.html: " + drift.join(", ")); }
 else console.log("ok   flash-flood ladder matches in nav.js and fire.html");
 
-// (4) Phone numbers. Every number on the Fire page's "Who to call" list and in the
-// Weather storm card must also be on Living Here, the page neighbors use as the
-// directory -- so a changed number can't be fixed in one place and left stale in another.
+// (4) Phone numbers. The Fire page's "Who to call" list is the site's one copy of the
+// 24/7 numbers; the Weather storm card and Living Here's utilities link to it instead
+// of repeating them, so a changed number can't be fixed in one place and left stale in another.
 const living = fs.readFileSync(path.join(ROOT, "living.html"), "utf8");
 const weatherSrc = fs.readFileSync(path.join(ROOT, "weather.html"), "utf8");
 const between = (s, from, to) => { const i = s.indexOf(from); if (i < 0) return ""; const j = s.indexOf(to, i); return j < 0 ? s.slice(i) : s.slice(i, j); };
-const listed = [
-  ...between(src, 'id="call"', 'id="sources"').matchAll(/href="tel:([+\d]+)"/g),
-  ...between(weatherSrc, 'id="storms"', "</section>").matchAll(/href="tel:([+\d]+)"/g),
-].map(m => m[1]).filter(n => n !== "911");
-const notOnLiving = [...new Set(listed)].filter(n => !living.includes('href="tel:' + n + '"'));
-if (!listed.length) { failed++; console.log("FAIL found no phone numbers in the Who to call list or the storm card"); }
-else if (notOnLiving.length) { failed++; console.log("FAIL these numbers are not on Living Here -- update both places: " + notOnLiving.join(", ")); }
-else console.log("ok   all " + new Set(listed).size + " call-list numbers are also on Living Here");
+const calls = [...between(src, 'id="call"', 'id="sources"').matchAll(/href="tel:([+\d]+)"/g)].map(m => m[1]);
+const others = { "the Weather storm card": between(weatherSrc, 'id="storms"', "</section>"), "Living Here's utilities": between(living, 'id="utilities"', "</section>") };
+if (calls.length < 8 || !calls.includes("911")) { failed++; console.log("FAIL the Who to call list lost numbers: " + calls.join(", ")); }
+else console.log("ok   the Who to call list has " + calls.length + " numbers, 911 first");
+for (const [where, html] of Object.entries(others)) {
+  const repeated = [...html.matchAll(/href="tel:([+\d]+)"/g)].map(m => m[1]).filter(n => calls.includes(n));
+  if (!html || !html.includes('href="/fire#call"')) { failed++; console.log("FAIL " + where + " should link to the Who to call list"); }
+  else if (repeated.length) { failed++; console.log("FAIL " + where + " repeats Who to call numbers -- link instead: " + repeated.join(", ")); }
+  else console.log("ok   " + where + " links to Who to call instead of repeating its numbers");
+}
 
 console.log(failed ? "\n" + failed + " FAILED" : "\nall fire-status scenarios pass");
 process.exit(failed ? 1 : 0);

@@ -24,11 +24,9 @@ jobs:
           node-version: 20
       - name: Fetch feeds
         run: node scripts/fetch-events.mjs
-      - name: Fetch road closures
-        run: node scripts/fetch-roads.mjs
       - name: Commit if changed
         run: |
-          git add events.json roads.json
+          git add events.json
           if git diff --cached --quiet; then
             echo "No changes."
           else

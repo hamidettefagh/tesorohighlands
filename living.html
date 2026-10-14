@@ -34,9 +34,6 @@
 <script src="/theme.js"></script>
 <link rel="stylesheet" href="/th.css" />
 <style>
-  .preview{display:flex;gap:9px;align-items:flex-start;background:var(--cau-bg);color:var(--cau-fg);border:1px solid var(--cau-line);
-    border-radius:12px;padding:11px 14px;font-size:12.5px;line-height:1.5;margin:14px 0 6px;}
-  .preview b{font-weight:680;}
   .jumpnav{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin:14px 0 4px;-webkit-overflow-scrolling:touch;}
   .jumpnav::-webkit-scrollbar{display:none;}
   .jumpnav a{flex:none;min-height:40px;display:inline-flex;align-items:center;text-decoration:none;font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--surface);
@@ -102,8 +99,6 @@
       <p>The practical stuff — utilities, trash days, schools, and the fire-zone details that are a pain to hunt down.</p>
     </div>
 
-    <div class="preview"><span>🚧</span><div><b>Preview — still coming together.</b> Everything here points to an official source; always confirm important details there. Spot something wrong or missing? Tell me in the group chat and I'll fix it.</div></div>
-
     <nav class="jumpnav" aria-label="Jump to a section">
       <a href="#setup">🆕 New here</a>
       <a href="#amenities">🏓 Amenities</a>
@@ -159,15 +154,15 @@
     </section>
 
     <section id="utilities">
-      <div class="sechead"><h2>Utilities &amp; who to call</h2><div class="line"></div></div>
+      <div class="sechead"><h2>Utilities</h2><div class="line"></div></div>
       <div class="card">
         <div class="svc"><span class="ic">💧</span><div class="bd"><div class="nm">Water — SCV Water</div><div class="dt">The regional water agency (formerly Valencia Water). <a href="https://www.yourscvwater.com/" target="_blank" rel="noopener">yourscvwater.com ↗</a> · Customer service <a href="tel:+16612940828">(661) 294-0828</a></div></div></div>
-        <div class="svc"><span class="ic">⚡</span><div class="bd"><div class="nm">Electricity — Southern California Edison (SCE)</div><div class="dt"><a href="https://www.sce.com/" target="_blank" rel="noopener">sce.com ↗</a> · Report an outage <a class="em" href="tel:+18006111911">1-800-611-1911</a> · <a href="https://www.sce.com/outages-safety/outage-center/check-outage-status" target="_blank" rel="noopener">Outage &amp; PSPS map ↗</a></div></div></div>
-        <div class="svc"><span class="ic">🔥</span><div class="bd"><div class="nm">Gas — SoCalGas</div><div class="dt"><a href="https://www.socalgas.com/" target="_blank" rel="noopener">socalgas.com ↗</a> · <b>Smell gas? Leave the area, then call</b> <a class="em" href="tel:+18004272200">1-800-427-2200</a> (24/7) — or 911.</div></div></div>
-        <div class="svc"><span class="ic">🌧️</span><div class="bd"><div class="nm">Storms — City of Santa Clarita</div><div class="dt">Flooding or a blocked storm drain: Storm Water Hotline, 24/7, <a href="tel:+16612227222">(661) 222-7222</a> · A tree down on a street: Urban Forestry, 24/7, <a href="tel:+16612902200">(661) 290-2200</a> · <a href="https://readyforrain.santaclarita.gov/" target="_blank" rel="noopener">Storm prep &amp; free sandbags ↗</a></div></div></div>
+        <div class="svc"><span class="ic">⚡</span><div class="bd"><div class="nm">Electricity — Southern California Edison (SCE)</div><div class="dt"><a href="https://www.sce.com/" target="_blank" rel="noopener">sce.com ↗</a> · <a href="https://www.sce.com/outages-safety/outage-center/check-outage-status" target="_blank" rel="noopener">Outage &amp; PSPS map ↗</a></div></div></div>
+        <div class="svc"><span class="ic">🔥</span><div class="bd"><div class="nm">Gas — SoCalGas</div><div class="dt"><a href="https://www.socalgas.com/" target="_blank" rel="noopener">socalgas.com ↗</a></div></div></div>
         <div class="svc"><span class="ic">🗑️</span><div class="bd"><div class="nm">Trash &amp; recycling — Burrtec</div><div class="dt">The city's exclusive hauler. <a href="https://www.burrtec.com/scv/" target="_blank" rel="noopener">burrtec.com/scv ↗</a> · Start service / missed pickup <a href="tel:+16612222249">(661) 222-2249</a></div></div></div>
         <div class="svc"><span class="ic">🌐</span><div class="bd"><div class="nm">Internet &amp; TV</div><div class="dt">Multiple providers serve the area (Spectrum, AT&amp;T Fiber where available, and others). Check your exact address with each for what's on your street.</div></div></div>
       </div>
+      <div class="callout">📞 <b>Power out, smell gas, flooding, or a tree down?</b> The 24/7 numbers are in one tap-to-call list: <a href="/fire#call" style="color:inherit;font-weight:680">Who to call →</a></div>
     </section>
 
     <section id="trash">

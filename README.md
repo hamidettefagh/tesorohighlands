@@ -94,7 +94,7 @@ server.js             tiny static server for LOCAL dev only (mimics clean URLs)
 vendor/leaflet/       self-hosted Leaflet 1.9.4 — no CDN dependency in an emergency
 scripts/*.mjs         the data builders (see below)
 community-events.json neighbor events, hand-maintained (schema below)
-events.json ai-events.json roads.json alert.json roundup.json purpleair-history.json
+events.json ai-events.json alert.json roundup.json purpleair-history.json
                       bot-written — never hand-edit, they get overwritten
 updates.json          the "new on this site" changelog, hand-maintained
 ```
@@ -103,7 +103,7 @@ updates.json          the "new on this site" changelog, hand-maintained
 
 | Workflow | Cadence | What it does | Costs money? |
 |---|---|---|---|
-| `refresh-events.yml` | every 4h | Rebuilds `events.json` + `roads.json` | No |
+| `refresh-events.yml` | every 4h | Rebuilds `events.json` | No |
 | `alert-watch.yml` | every 10 min | Checks evac/fire/red-flag/quake for our area and SCE's shutoff (PSPS) list for our own circuit, writes `alert.json` (the one-tap WhatsApp share card), optional phone ping via ntfy | No |
 | `refresh-purpleair-history.yml` | hourly (:12) | Fetches 24h PurpleAir history → `purpleair-history.json` (sparkline on `/weather`) | No (needs the `PURPLEAIR_API_KEY` and `PURPLEAIR_SENSOR_INDEX` repo secrets; exits cleanly without them) |
 | `refresh-ai-events.yml` | daily ~6:23am PT | Claude web-search sweep for events the feeds miss → `ai-events.json` | Yes |
@@ -145,11 +145,9 @@ cleanly and commit nothing. The PurpleAir history job needs `PURPLEAIR_API_KEY` 
 | Power outages incl. PSPS | Cal OES statewide utility feed | **Live**, no key |
 | Shutoff (PSPS) status of our own circuit — alert bot only | The layers behind SCE's outage map (not a published API) | **Live**, no key |
 | Earthquakes | USGS | **Live**, no key |
-| Road closures | Caltrans D7 Lane Closure System → `roads.json` | **Auto** |
 | Local events | City of Santa Clarita (Localist) + Eventbrite + SC Public Library → `events.json` | **Auto** |
 | Extra events from the wider web | Claude web search → `ai-events.json`, merged into the main list | **Auto** (needs key) |
 | Weekend picks | Claude, choosing by index from our own verified feed → `roundup.json` | **Auto** (needs key) |
-| Fire history (439 fires on record) | NIFC Interagency Fire Perimeter History | Baked snapshot (Jul 2026) |
 | Community events | `community-events.json` | Curated |
 
 Every live panel degrades honestly: **a failed feed says "unavailable," never "all
@@ -331,7 +329,7 @@ group chat, credited in-app as local knowledge (not official) and kept anonymous
 Apache-2.0 — see [LICENSE](LICENSE).
 
 This covers the site's own code and writing. It does **not** cover: the data files
-built from third-party feeds (`events.json`, `ai-events.json`, `roads.json`,
+built from third-party feeds (`events.json`, `ai-events.json`,
 `alert.json`), whose listings belong to their organizers and agencies; or
 `vendor/leaflet/`, which is Leaflet under BSD-2-Clause.
 
