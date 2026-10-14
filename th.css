@@ -156,6 +156,7 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
 .tcell .tlab{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;}
 .tcell .tval{display:block;margin-top:5px;font-size:12.5px;color:var(--ink-2);line-height:1.45;}
 .tcell .tval b{color:var(--ink);}
+.tcell.season{margin-top:12px;border-left:4px solid var(--cau-fg);}
 .hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
 @media(max-width:560px){.hub-grid{grid-template-columns:1fr;}}
 .hub-card{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);color:var(--ink);transition:border-color .15s,transform .05s;}

@@ -92,6 +92,11 @@
     </div>
     <div class="asof"><span class="livedot"></span><span id="asof">checking live data…</span></div>
 
+    <a class="tcell season" id="treatLink" href="/treats" hidden>
+      <span class="tico">🎃</span><span class="tlab">Halloween treat map</span>
+      <span class="tval"><b>See which houses are handing out treats</b>, or add yours. Neighbors only: the code is in the community WhatsApp group.</span>
+    </a>
+
     <div class="week" id="wkCard" hidden>
       <div class="wkhead"><h2>📅 Coming up</h2><a href="/events">All events →</a></div>
       <div id="wkList"></div>
@@ -169,6 +174,12 @@
     if (!p.delayed) return;
     el.innerHTML = "🗑️ Trash is a day late for " + p.holiday + " — pickup <b>" + T.fmt(p.date) + "</b>";
     el.hidden = false;
+  })();
+  // Treat map link: only while the map is open, Oct 1 until midnight on Halloween
+  // (Pacific; always daylight time then) — the same season as api/treats.js.
+  (function () {
+    var el = document.getElementById("treatLink"), now = Date.now(), y = new Date().getFullYear();
+    if (el && now >= Date.parse(y + "-10-01T00:00:00-07:00") && now < Date.parse(y + "-11-01T00:00:00-07:00")) el.hidden = false;
   })();
   </script>
   <script src="/nav.js?v=18" defer></script>
