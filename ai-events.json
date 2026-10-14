@@ -1,59 +1,106 @@
 {
-  "generatedAt": "2026-10-13T19:54:17.294Z",
+  "generatedAt": "2026-10-14T18:04:21.226Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://www.gilchristfarm.com/pumpkin-patch",
-      "start": "2026-10-13T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Agua Dulce",
-      "free": false,
-      "price": "$10",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Gilchrist Farm Official"
-    },
-    {
-      "title": "Six Flags Magic Mountain - Fright Fest",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-13T18:30",
-      "venue": "Six Flags Magic Mountain",
+      "title": "Free Gold Lightning McQueen die-cast car: Geoffrey's Birthday at Toys R Us",
+      "url": "https://www.macys.com/s/events/",
+      "start": "2026-10-16T16:00",
+      "venue": "Toys R Us at Macy's, Valencia Town Center",
       "city": "Valencia",
-      "free": false,
-      "price": "$25-$74",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Official"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://newhallfarmersmarket.com",
-      "start": "2026-10-17T08:30",
-      "venue": "Old Town Newhall Library Parking Lot",
-      "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids"
       ],
       "source": "Web (AI)",
-      "via": "Newhall Farmers Market"
+      "via": "Macy's official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-17T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$10",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-13T19:54:17.294Z"
+    },
+    {
+      "title": "Free Firefighting Plane for kids: Lowe's Kids Workshop",
+      "url": "https://www.lowes.com/diy-projects-and-ideas/workshops",
+      "start": "2026-10-17T10:00",
+      "venue": "Lowe's, Bouquet Canyon Rd",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Web (AI)",
+      "via": "Lowe's official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Weekly Saturday Storytime at Barnes & Noble",
+      "url": "https://stores.barnesandnoble.com/store/2642?view=list&month=Month&day=Day&type=CY",
+      "start": "2026-10-17T11:00",
+      "venue": "Barnes & Noble, Valencia",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Web (AI)",
+      "via": "Barnes & Noble official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Free LEGO Geoffrey build and take home: Geoffrey's Birthday at Toys R Us",
+      "url": "https://www.macys.com/s/events/",
+      "start": "2026-10-17T12:00",
+      "venue": "Toys R Us at Macy's, Valencia Town Center",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Web (AI)",
+      "via": "Macy's official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Fright Fest at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-10-17T18:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Included with admission",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain official website",
+      "added": "2026-10-14T18:04:21.226Z"
     },
     {
       "title": "Santa Clarita Certified Farmers Market",
       "url": "https://www.vccfm.org/santa-clarita",
       "start": "2026-10-18T08:00",
-      "venue": "College of the Canyons Parking Lot 5",
+      "venue": "College of the Canyons, Parking Lot 5",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -61,13 +108,14 @@
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "VCCFMA"
+      "via": "VCCFM official website",
+      "added": "2026-10-14T18:04:21.226Z"
     },
     {
       "title": "Valencia FivePoint Farmers' Market",
       "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
       "start": "2026-10-18T08:30",
-      "venue": "Valencia FivePoint",
+      "venue": "Valencia FivePoint Farmers' Market",
       "city": "Valencia",
       "free": true,
       "price": "Free",
@@ -75,69 +123,275 @@
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-14T18:04:21.226Z"
     },
     {
-      "title": "The Outsider at Canyon Theatre Guild",
-      "url": "https://calendar.santaclarita.gov/canyon_theatre_guild_145",
-      "start": "2026-10-30T20:00",
-      "venue": "Canyon Theatre Guild",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-18T09:00",
+      "venue": "Gilchrist Farm",
       "city": "Santa Clarita",
       "free": false,
-      "price": "$20",
+      "price": "$10",
       "audience": [
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar"
-    },
-    {
-      "title": "It's a Wonderful Life at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/2026-27season",
-      "start": "2026-11-01T19:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$20",
-      "audience": [
+        "toddlers",
         "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Canyon Theatre Guild"
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-13T19:54:17.294Z"
     },
     {
-      "title": "Light Up Main Street",
-      "url": "https://oldtownnewhall.com/light-up-main/",
-      "start": "2026-11-21T16:00",
-      "venue": "Main Street, Old Town Newhall",
-      "city": "Newhall",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-24T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$10",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-13T19:54:17.294Z"
+    },
+    {
+      "title": "Weekly Saturday Storytime at Barnes & Noble",
+      "url": "https://stores.barnesandnoble.com/store/2642?view=list&month=Month&day=Day&type=CY",
+      "start": "2026-10-24T11:00",
+      "venue": "Barnes & Noble, Valencia",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "teens",
-        "adults"
+        "kids"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall Association"
+      "via": "Barnes & Noble official website",
+      "added": "2026-10-14T18:04:21.226Z"
     },
     {
-      "title": "Holiday in the Park at Six Flags Magic Mountain",
-      "url": "https://www.sixflags.com/magicmountain",
-      "start": "2026-11-26T10:30",
+      "title": "Fright Fest at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-10-24T18:30",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": null,
+      "price": "Included with admission",
       "audience": [
-        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Official"
+      "via": "Six Flags Magic Mountain official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-10-25T08:00",
+      "venue": "College of the Canyons, Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-10-25T08:30",
+      "venue": "Valencia FivePoint Farmers' Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-25T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$10",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-13T19:54:17.294Z"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-31T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$10",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-13T19:54:17.294Z"
+    },
+    {
+      "title": "Weekly Saturday Storytime at Barnes & Noble",
+      "url": "https://stores.barnesandnoble.com/store/2642?view=list&month=Month&day=Day&type=CY",
+      "start": "2026-10-31T11:00",
+      "venue": "Barnes & Noble, Valencia",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Web (AI)",
+      "via": "Barnes & Noble official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Fright Fest at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-10-31T18:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Included with admission",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-11-01T08:00",
+      "venue": "College of the Canyons, Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-01T08:30",
+      "venue": "Valencia FivePoint Farmers' Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-11-01T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$10",
+      "audience": [
+        "toddlers",
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-13T19:54:17.294Z"
+    },
+    {
+      "title": "Free Dump Truck for kids: Home Depot Kids Workshop",
+      "url": "https://www.homedepot.com/c/kids-workshop",
+      "start": "2026-11-07T09:00",
+      "venue": "Home Depot, Golden Triangle Rd",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Web (AI)",
+      "via": "Home Depot official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Weekly Saturday Storytime at Barnes & Noble",
+      "url": "https://stores.barnesandnoble.com/store/2642?view=list&month=Month&day=Day&type=CY",
+      "start": "2026-11-07T11:00",
+      "venue": "Barnes & Noble, Valencia",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Web (AI)",
+      "via": "Barnes & Noble official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-11-08T08:00",
+      "venue": "College of the Canyons, Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "VCCFM official website",
+      "added": "2026-10-14T18:04:21.226Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-08T08:30",
+      "venue": "Valencia FivePoint Farmers' Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-14T18:04:21.226Z"
     }
   ]
 }
