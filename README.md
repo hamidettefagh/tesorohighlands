@@ -104,10 +104,22 @@ updates.json          the "new on this site" changelog, hand-maintained
 | Workflow | Cadence | What it does | Costs money? |
 |---|---|---|---|
 | `refresh-events.yml` | every 4h | Rebuilds `events.json` + `roads.json` | No |
-| `alert-watch.yml` | every 10 min | Checks evac/fire/red-flag/quake/PSPS for our area, writes `alert.json` (the one-tap WhatsApp share card), optional phone ping via ntfy | No |
+| `alert-watch.yml` | every 10 min | Checks evac/fire/red-flag/quake for our area and SCE's shutoff (PSPS) list for our own circuit, writes `alert.json` (the one-tap WhatsApp share card), optional phone ping via ntfy | No |
 | `refresh-purpleair-history.yml` | hourly (:12) | Fetches 24h PurpleAir history → `purpleair-history.json` (sparkline on `/weather`) | No (needs the `PURPLEAIR_API_KEY` and `PURPLEAIR_SENSOR_INDEX` repo secrets; exits cleanly without them) |
 | `refresh-ai-events.yml` | daily ~6:23am PT | Claude web-search sweep for events the feeds miss → `ai-events.json` | Yes |
 | `weekend-roundup.yml` | Fridays ~8:23am PT | Claude curates 5–7 weekend picks → `roundup.json` | Yes |
+
+**Power shutoffs in the alert bot.** The Cal OES feed only shows a shutoff once it has
+happened, as a distance, so it can't tell our power from the next circuit over. The bot
+also reads SCE's own outage-map layers (under consideration / shut off) and counts a
+shutoff as ours when SCE's area covers any of the street points behind the gate
+(`STREETS` in `scripts/alert-watch.mjs`; our circuit was called Orion in Oct 2026). It
+alerts on each SCE step — on the watch list, expected, off, restoring, back on — and
+labels shutoffs within 10 miles "not our circuit". Those layers aren't a published API
+and briefly read empty while SCE refreshes them, so a failed or suspicious read is
+re-read twice, 30 seconds apart; if SCE still fails, the Cal OES PSPS alert stays as
+the fallback and no "all clear" ping goes out. If SCE moves the service, update `PSPS`.
+Tests: `node scripts/alert-watch.test.mjs`.
 
 **Running cost:** roughly **$5–8/month** total on `claude-haiku-4-5` — the daily events
 sweep (~$0.15–0.20/run with web search capped at 12 uses) plus the Friday roundup
@@ -131,6 +143,7 @@ cleanly and commit nothing. The PurpleAir history job needs `PURPLEAIR_API_KEY` 
 | Satellite heat detection | NASA VIIRS (Esri Living Atlas mirror) | **Live**, no key |
 | Evacuation status (Order / Warning / Shelter) | Cal OES statewide evacuation zones | **Live**, no key |
 | Power outages incl. PSPS | Cal OES statewide utility feed | **Live**, no key |
+| Shutoff (PSPS) status of our own circuit — alert bot only | The layers behind SCE's outage map (not a published API) | **Live**, no key |
 | Earthquakes | USGS | **Live**, no key |
 | Road closures | Caltrans D7 Lane Closure System → `roads.json` | **Auto** |
 | Local events | City of Santa Clarita (Localist) + Eventbrite + SC Public Library → `events.json` | **Auto** |

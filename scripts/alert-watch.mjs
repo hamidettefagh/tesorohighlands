@@ -2,8 +2,8 @@
 //
 // Every ~10 minutes (GitHub Actions cron) this checks the same official feeds
 // the site reads live — Cal OES evacuation zones, the WFIGS national fire feed
-// enriched with CAL FIRE, and NWS alerts — and when something NEW starts
-// affecting Tesoro Highlands it:
+// enriched with CAL FIRE, and NWS alerts — plus SCE's own shutoff (PSPS) list
+// for our circuit, and when something NEW starts affecting Tesoro Highlands it:
 //   1. writes alert.json (deploys with the site → the Fire page shows a
 //      one-tap "Share on WhatsApp" card with the message already composed), and
 //   2. optionally pings the admin's phone via ntfy.sh (NTFY_TOPIC env) so a
@@ -11,14 +11,16 @@
 //
 // Messages are deterministic templates, NOT AI — alert wording is a safety
 // surface and must never be creative. Runs commit only on state transitions.
+// ALERT_OUT=some/file.json writes there instead of alert.json (a dry run).
 //
-// Node 20+, zero dependencies.
+// Node 20+, zero dependencies. Tests: node scripts/alert-watch.test.mjs
 
 import { readFileSync, writeFileSync } from "node:fs";
+import { pathToFileURL } from "node:url";
 
 const HOME = { lat: 34.478, lon: -118.531 };
 const SITE = "https://tesorohighlands.com";
-const OUT = new URL("../alert.json", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
+const OUT = process.env.ALERT_OUT || new URL("../alert.json", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
 
 const UA = { "User-Agent": "tesorohighlands.com alert watcher (neighbor community site)" };
 
@@ -247,50 +249,198 @@ async function checkOutages() {
   return out;
 }
 
+/* ---------- SCE power shutoffs (PSPS) for our own circuit ----------
+   The state feed above only sees a shutoff once it has happened, and only as a
+   distance, so it can't tell our power from the next circuit over. SCE's own
+   outage map can: layer 0 is "under consideration", layer 1 "power is shut
+   off". Those layers aren't a published API — they can change without notice,
+   and they briefly come back empty while SCE refreshes them — so a failed or
+   suspicious read is retried, and one that still fails leaves the state feed's
+   PSPS alert in place and says nothing about our circuit. */
+const PSPS = "https://sce-outage-ags.esriemcs.com/arcgis/rest/services/43/psps/MapServer";
+// What SCE called our circuit in Oct 2026; named in messages when SCE's data doesn't name one.
+const OUR_CIRCUIT = "Orion";
+// One point per street behind the gate (street centres from api/_treat-homes.js).
+// A shutoff is ours when SCE's area covers any of them — by place, not by name,
+// so a renamed circuit still counts and a far-off section of Orion doesn't.
+const STREETS = [[-118.5581,34.4878],[-118.5573,34.4878],[-118.559,34.4876],[-118.5627,34.487],[-118.5588,34.487],[-118.5565,34.487],
+  [-118.5578,34.4869],[-118.5624,34.4865],[-118.5596,34.4863],[-118.5584,34.4861],[-118.5578,34.4858],[-118.5607,34.4856],[-118.559,34.4853],
+  [-118.5592,34.4845],[-118.561,34.4843],[-118.5623,34.4841],[-118.5673,34.484],[-118.5707,34.484],[-118.5632,34.4837],[-118.5674,34.4837],
+  [-118.5657,34.4834],[-118.569,34.4834],[-118.5581,34.4833],[-118.5608,34.4833],[-118.5634,34.4828],[-118.5686,34.4827]];
+const MID = { lat: 34.4845, lon: -118.564 };   // middle of those houses
+const NEAR_MI = 10;
+
+async function pspsRead() {
+  const q = (layer, env, offset) => getJson(`${PSPS}/${layer}/query?where=1%3D1&geometry=${env}` +
+    "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects" +
+    "&outFields=OBJECTID,CIRCUIT_NAME,PSPS,PSPS_Details,StartDate,EndDate,ERT" +
+    `&returnGeometry=true&outSR=4326&maxAllowableOffset=${offset}&f=json`).then((j) => {
+    if (!j || j.error || !Array.isArray(j.features)) throw new Error(`SCE PSPS layer ${layer} error`);
+    return j.features.map((f) => ({ layer, a: f.attributes || {}, rings: f.geometry?.rings || [] }));
+  });
+  const ours = "-118.5727,34.4807,-118.5545,34.4898";   // the streets above, padded ~200 m: exact shapes
+  const wide = `${MID.lon - 0.18},${MID.lat - 0.15},${MID.lon + 0.18},${MID.lat + 0.15}`;   // ~10 mi out: rough shapes
+  const [watch, off, around] = await Promise.all([q(0, ours, 0.0001), q(1, ours, 0.0001), q(1, wide, 0.002)]);
+  const seen = new Set(off.map((f) => f.a.OBJECTID));
+  return [...watch, ...off, ...around.filter((f) => !seen.has(f.a.OBJECTID))];
+}
+
+export function pspsRecords(feats) {
+  return feats.map(({ layer, a, rings }) => {
+    let dist = Infinity, at = null;
+    for (const g of rings) for (const p of g) {
+      const d = haversine(MID.lat, MID.lon, p[1], p[0]);
+      if (d < dist) { dist = d; at = p; }
+    }
+    return { layer, name: title(a.CIRCUIT_NAME), status: [a.PSPS, a.PSPS_Details].filter(Boolean).join(" "),
+      start: a.StartDate, end: a.EndDate, ert: a.ERT, dist,
+      covers: STREETS.filter(([x, y]) => inPoly(x, y, rings)).length,
+      dir: at ? bearingWord(MID.lat, MID.lon, at[1], at[0]) : "" };
+  });
+}
+
+// SCE's steps: Monitored → De-Energization Expected → De-Energized →
+// Re-Energization Expected → Re-Energized. Anything else ("Downstream": off
+// because a circuit feeding it is) goes with the layer it sits on.
+export function pspsStage(r) {
+  const s = r.status;
+  if (/re-?energi[sz]ation expected/i.test(s)) return "restoring";
+  if (/re-?energi[sz]ed/i.test(s)) return "restored";
+  if (/de-?energi[sz]ation expected/i.test(s)) return "expected";
+  if (/de-?energi[sz]ed/i.test(s)) return "off";
+  if (/monitor/i.test(s)) return "watch";
+  return r.layer === 1 ? "off" : "watch";
+}
+
+const RANK = { off: 5, restoring: 4, expected: 3, watch: 2, restored: 1 };
+const pt = (ms, o) => new Date(ms).toLocaleString("en-US", { timeZone: "America/Los_Angeles", ...o }).replace(/ /g, " ");
+const clock = (ms) => pt(ms, { hour: "numeric", minute: "2-digit" }).replace(":00 ", " ");               // "6 AM"
+const day = (ms) => `${pt(ms, { weekday: "short" })} ${clock(ms)}`;                                         // "Thu 6 AM"
+const date = (ms) => `${pt(ms, { weekday: "short", month: "short", day: "numeric" })}, ${clock(ms)}`;      // "Thu, Oct 15, 6 AM"
+const andList = (a) => (a.length < 2 ? a.join("") : `${a.slice(0, -1).join(", ")} and ${a[a.length - 1]}`);
+
+// Prio: a shutoff of OUR power outranks a distant fire (58); shutoffs that
+// aren't ours sit just above a Red Flag Warning (50).
+export function pspsConditions(recs, now = Date.now()) {
+  const ours = recs.filter((r) => r.covers > 0).sort((x, y) => RANK[pspsStage(y)] - RANK[pspsStage(x)]);
+  const lead = ours[0], stage = lead ? pspsStage(lead) : null;
+  const names = [...new Set(ours.map((r) => r.name).filter(Boolean))];
+  const circuit = andList(names) || OUR_CIRCUIT;
+  const part = lead && lead.covers < STREETS.length ? " SCE’s map shows part of our neighborhood, not all of it." : "";
+  const asOf = clock(now), tail = `SCE status: sce.com/outagemap\nLive info: ${SITE}/fire`;
+  const back = lead?.ert ? ` SCE’s estimate at ${asOf}: back by ${date(lead.ert)}.` : "";
+
+  const near = [];
+  for (const r of recs.filter((r) => !r.covers && r.dist <= NEAR_MI && ["off", "restoring"].includes(pspsStage(r))).sort((x, y) => x.dist - y.dist)) {
+    if (!near.some((n) => n.name === r.name)) near.push(r);
+  }
+  const shown = near.slice(0, 4).map((r) => `${r.name && (names.includes(r.name) || r.name === OUR_CIRCUIT) ? `another section of ${r.name}` : r.name || "a circuit"}` +
+    ` (${r.dist < 1 ? "under 1 mi" : `~${Math.round(r.dist)} mi`} ${r.dir})`);
+  const nearTxt = `SCE has shut off power on ${near.length === 1 ? "one circuit" : `${near.length} circuits`} near us: ` +
+    `${andList(near.length > shown.length ? [...shown, `${near.length - shown.length} more`] : shown)}.`;
+
+  const out = [];
+  if (stage === "off") out.push({ id: "power:ours:off", prio: 68, level: "caution",
+    title: "Our power is shut off (SCE safety shutoff)",
+    text: `⚡ *Our power is shut off — SCE safety shutoff (${circuit} circuit)*\nSCE has shut off our circuit to prevent wildfires.${part} Power comes back after the wind dies down and crews inspect the lines.${back}\nKeep the fridge closed: it stays cold about 4 hours, a full freezer about 2 days. Downed line? Stay away and call 911.\n${tail}` });
+  else if (stage === "restoring") out.push({ id: "power:ours:restoring", prio: 64, level: "caution",
+    title: "SCE is restoring our power",
+    text: `⚡ *Power coming back — our circuit (${circuit})*\nSCE is working to turn our power back on; crews inspect the lines first.${back}\nDowned line? Stay away and call 911.\n${tail}` });
+  else if (stage === "expected") out.push({ id: "power:ours:expected", prio: 67, level: "caution",
+    title: "SCE expects to shut off our power soon",
+    text: `⚡ *Power shutoff expected — our circuit (${circuit})*\nAs of ${asOf}, SCE expects to shut off our power, typically within 1 to 4 hours.${part}\nCharge phones and batteries now, and know how to open your garage door by hand. A closed fridge stays cold about 4 hours, a full freezer about 2 days.\n${tail}` });
+  else if (stage === "watch") {
+    const starts = ours.map((r) => r.start).filter(Boolean), ends = ours.map((r) => r.end).filter(Boolean);
+    const start = starts.length ? Math.min(...starts) : 0, end = ends.length ? Math.max(...ends) : 0;
+    const id = `power:ours:watch:${start}-${end}`;
+    if (near.length) out.push({ id: `${id}:near`, prio: 59, level: "caution",
+      title: "Shutoffs near us; our power still on",
+      text: `⚡ *Power shutoffs near us — ours still on*\n${nearTxt} Our circuit (${circuit}) was still on at ${asOf}${end ? `, and SCE lists it for a possible shutoff until ${day(end)}` : ", and SCE still lists it for a possible shutoff"}.\nCharge phones and batteries now, and know how to open your garage door by hand.\n${tail}` });
+    else out.push({ id, prio: 59, level: "caution",
+      title: start && end ? `SCE may shut off our power ${day(start)} – ${day(end)}` : "SCE may shut off our power in the next few days",
+      text: `⚡ *Possible power shutoff — our circuit (${circuit})*\nSCE has our circuit on its list for a possible wildfire-safety shutoff${start && end ? `, ${date(start)} to ${date(end)}` : ""}. It isn’t certain yet: SCE decides from the actual wind.${part}\nCharge phones, power banks and home batteries before then, and know how to open your garage door by hand. If someone at home relies on powered medical equipment, plan for that now.\n${tail}` });
+  } else if (stage === "restored") out.push({ id: "power:ours:restored", prio: 40, level: "caution",
+    title: "Our power is back on",
+    text: `✅ *Power is back on — our circuit (${circuit})*\nSCE has restored our circuit after the safety shutoff. Still dark at your house? Report it at sce.com/outagemap\nLive info: ${SITE}/fire` });
+
+  if (near.length && (!stage || stage === "restored")) out.push({ id: "power:near", prio: 56, level: "caution",
+    title: "SCE shut off power nearby — not our circuit",
+    text: `⚡ *Power shutoffs nearby — not our circuit*\n${nearTxt} Our circuit (${circuit}) ${stage ? "is back on" : `was not on SCE’s shutoff list at ${asOf}`}.\nCheck your address: sce.com/outagemap\nLive info: ${SITE}/fire` });
+  return out;
+}
+
+async function checkPsps(prevSig) {
+  // Our circuit (or nearby shutoffs) vanishing from one read is also how SCE's
+  // refresh looks, so that gets re-read too before we believe it.
+  const had = { ours: /power:ours:/.test(prevSig), near: /power:near|:near(\||$)/.test(prevSig) };
+  for (let attempt = 1; ; attempt++) {
+    try {
+      const out = pspsConditions(pspsRecords(await pspsRead()));
+      const ours = out.some((c) => c.id.startsWith("power:ours:")), near = out.some((c) => /^power:near$|:near$/.test(c.id));
+      if (attempt < 3 && ((had.ours && !ours) || (had.near && !near))) throw new Error("what SCE listed last time is gone");
+      return out;
+    } catch (e) {
+      if (attempt >= 3) throw e;
+      console.log(`SCE shutoff read ${attempt} not trusted yet (${e.message}); reading again in 30 s.`);
+      await new Promise((r) => setTimeout(r, 30000));
+    }
+  }
+}
+
 /* ---------- main ---------- */
-let prev = { sig: "", active: false };
-try { prev = JSON.parse(readFileSync(OUT, "utf8")); } catch {}
+async function main() {
+  let prev = { sig: "", active: false };
+  try { prev = JSON.parse(readFileSync(OUT, "utf8")); } catch {}
 
-const results = await Promise.allSettled([checkEvac(), checkFires(), checkNws(), checkQuakes(), checkOutages()]);
-const failed = results.filter((r) => r.status === "rejected");
-// If EVERY check failed we know nothing — keep previous state rather than
-// declaring a false all-clear (same honesty rule as the site).
-if (failed.length === results.length) {
-  console.error("All feeds failed; keeping previous alert state.");
-  process.exit(0);
+  const results = await Promise.allSettled([checkEvac(), checkFires(), checkNws(), checkQuakes(), checkOutages(), checkPsps(prev.sig || "")]);
+  const failed = results.filter((r) => r.status === "rejected");
+  for (const r of failed) console.error("Feed failed:", r.reason?.message || r.reason);
+  // If EVERY check failed we know nothing — keep previous state rather than
+  // declaring a false all-clear (same honesty rule as the site).
+  if (failed.length === results.length) {
+    console.error("All feeds failed; keeping previous alert state.");
+    return;
+  }
+  let conds = results.flatMap((r) => (r.status === "fulfilled" ? r.value : [])).sort((a, b) => b.prio - a.prio);
+  // When SCE's read worked it knows which shutoff is ours, so it replaces the
+  // state feed's distance-only PSPS alerts; when it failed, those stay.
+  if (results[5].status === "fulfilled") conds = conds.filter((c) => !c.id.startsWith("psps:"));
+  const sig = conds.map((c) => c.id).sort().join("|");
+
+  if (sig === (prev.sig || "")) {
+    console.log(conds.length ? `Unchanged: ${conds.length} active condition(s).` : "All quiet, no change.");
+    return;
+  }
+
+  const prevIds = new Set((prev.sig || "").split("|").filter(Boolean));
+  const fresh = conds.filter((c) => !prevIds.has(c.id));
+  const top = conds[0] || null;
+
+  const alert = top
+    ? { active: true, sig, level: top.level, title: top.title, text: top.text.replace(/\*/g, ""), waText: top.text,
+        others: conds.slice(1).map((c) => c.title), updatedAt: new Date().toISOString() }
+    : { active: false, sig: "", updatedAt: new Date().toISOString() };
+  writeFileSync(OUT, JSON.stringify(alert, null, 2) + "\n");
+  console.log(top ? `ALERT: ${top.title} (${conds.length} condition(s), ${fresh.length} new)` : "Cleared — back to quiet.");
+
+  // Optional phone ping so an admin can forward to the group within seconds.
+  // No "all clear" while a feed is failing: its conditions may only be hidden.
+  const topic = process.env.NTFY_TOPIC;
+  if (topic && (fresh.length || (!top && prev.active && !failed.length))) {
+    const body = top
+      ? `${top.title}\n\nWhatsApp-ready message is one tap away:\n${SITE}/fire`
+      : "All clear — the earlier alert condition has ended.";
+    try {
+      await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, {
+        method: "POST", body,
+        headers: { Title: top ? "Tesoro Highlands alert" : "Tesoro Highlands all clear",
+          Priority: top?.level === "danger" ? "urgent" : "high", Tags: top ? "rotating_light" : "white_check_mark", ...UA },
+        signal: AbortSignal.timeout(15000),
+      });
+      console.log("ntfy ping sent.");
+    } catch (e) { console.error("ntfy ping failed (non-fatal):", e.message); }
+  }
 }
-const conds = results.flatMap((r) => (r.status === "fulfilled" ? r.value : [])).sort((a, b) => b.prio - a.prio);
-const sig = conds.map((c) => c.id).sort().join("|");
 
-if (sig === (prev.sig || "")) {
-  console.log(conds.length ? `Unchanged: ${conds.length} active condition(s).` : "All quiet, no change.");
-  process.exit(0);
-}
-
-const prevIds = new Set((prev.sig || "").split("|").filter(Boolean));
-const fresh = conds.filter((c) => !prevIds.has(c.id));
-const top = conds[0] || null;
-
-const alert = top
-  ? { active: true, sig, level: top.level, title: top.title, text: top.text.replace(/\*/g, ""), waText: top.text,
-      others: conds.slice(1).map((c) => c.title), updatedAt: new Date().toISOString() }
-  : { active: false, sig: "", updatedAt: new Date().toISOString() };
-writeFileSync(OUT, JSON.stringify(alert, null, 2) + "\n");
-console.log(top ? `ALERT: ${top.title} (${conds.length} condition(s), ${fresh.length} new)` : "Cleared — back to quiet.");
-
-// Optional phone ping so an admin can forward to the group within seconds.
-const topic = process.env.NTFY_TOPIC;
-if (topic && (fresh.length || (!top && prev.active))) {
-  const body = top
-    ? `${top.title}\n\nWhatsApp-ready message is one tap away:\n${SITE}/fire`
-    : "All clear — the earlier alert condition has ended.";
-  try {
-    await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, {
-      method: "POST", body,
-      headers: { Title: top ? "Tesoro Highlands alert" : "Tesoro Highlands all clear",
-        Priority: top?.level === "danger" ? "urgent" : "high", Tags: top ? "rotating_light" : "white_check_mark", ...UA },
-      signal: AbortSignal.timeout(15000),
-    });
-    console.log("ntfy ping sent.");
-  } catch (e) { console.error("ntfy ping failed (non-fatal):", e.message); }
-}
+// Run when called as a script; tests import the PSPS helpers without running it.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) await main();

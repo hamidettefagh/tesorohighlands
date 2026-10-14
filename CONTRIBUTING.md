@@ -98,6 +98,10 @@ together — that is the point. Don't reintroduce a second formula.
 flow: nothing is public until approved, private details never reach the public list,
 home addresses are refused, and the limits hold.
 
+**Alert bot shutoff test:** `node scripts/alert-watch.test.mjs` covers SCE's shutoff steps,
+which shutoff counts as ours (by place, not name), and that a shutoff nearby is never
+reported as ours.
+
 **Treat map test:** `node scripts/treats.test.mjs` covers the Halloween map's code check,
 who can change which pin, the limits, and the season edges.
 
