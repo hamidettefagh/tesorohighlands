@@ -1,12 +1,12 @@
 {
   "active": true,
-  "sig": "power:ours:expected|redflag:11ea57aaf7edc4646a.002.1",
+  "sig": "power:ours:off|redflag:b684f2305219788c77.004.1",
   "level": "caution",
-  "title": "SCE expects to shut off our power soon",
-  "text": "⚡ Power shutoff expected — our circuit (Orion)\nAs of 11:36 AM, SCE expects to shut off our power, typically within 1 to 4 hours.\nCharge phones and batteries now, and know how to open your garage door by hand. A closed fridge stays cold about 4 hours, a full freezer about 2 days.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
-  "waText": "⚡ *Power shutoff expected — our circuit (Orion)*\nAs of 11:36 AM, SCE expects to shut off our power, typically within 1 to 4 hours.\nCharge phones and batteries now, and know how to open your garage door by hand. A closed fridge stays cold about 4 hours, a full freezer about 2 days.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "title": "Our power is shut off (SCE safety shutoff)",
+  "text": "⚡ Our power is shut off — SCE safety shutoff (Orion circuit)\nSCE has shut off our circuit to prevent wildfires. Power comes back after the wind dies down and crews inspect the lines. SCE’s estimate at 2:42 PM: back by Sat, Oct 17, 5 AM.\nKeep the fridge closed: it stays cold about 4 hours, a full freezer about 2 days. Downed line? Stay away and call 911.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "waText": "⚡ *Our power is shut off — SCE safety shutoff (Orion circuit)*\nSCE has shut off our circuit to prevent wildfires. Power comes back after the wind dies down and crews inspect the lines. SCE’s estimate at 2:42 PM: back by Sat, Oct 17, 5 AM.\nKeep the fridge closed: it stays cold about 4 hours, a full freezer about 2 days. Downed line? Stay away and call 911.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
   "others": [
     "Red Flag Warning"
   ],
-  "updatedAt": "2026-10-15T18:36:55.678Z"
+  "updatedAt": "2026-10-15T21:42:55.391Z"
 }
