@@ -88,6 +88,8 @@ api/tempest-forecast.js  WeatherFlow Better Forecast hourly + 10-day (/weather)
 api/_epa.js           shared EPA ATM correction math (used by purpleair.js)
 api/business.js       neighbor-owned businesses: submissions, the approval queue, the public list
 api/_kv.js            the Upstash Redis store (and its in-memory stand-in) shared by business.js and treats.js
+api/power.js          live power status for our circuit from SCE's outage map (strip, home, Fire page)
+api/_power.js         which SCE shutoff is ours (street points, SCE's steps), shared with the alert bot
 api/treats.js         Halloween treat map pins, in Upstash Redis, behind TREAT_CODE
 api/_treat-homes.js   the house lots behind the gate, built by scripts/treat-homes.mjs
 server.js             tiny static server for LOCAL dev only (mimics clean URLs)
@@ -110,17 +112,26 @@ updates.json          the "new on this site" changelog, hand-maintained
 | `refresh-ai-events.yml` | daily ~6:23am PT | Claude web-search sweep for events the feeds miss → `ai-events.json` | Yes |
 | `weekend-roundup.yml` | Fridays ~8:23am PT | Claude curates 5–7 weekend picks → `roundup.json` | Yes |
 
-**Power shutoffs in the alert bot.** The Cal OES feed only shows a shutoff once it has
-happened, as a distance, so it can't tell our power from the next circuit over. The bot
-also reads SCE's own outage-map layers (under consideration / shut off) and counts a
-shutoff as ours when SCE's area covers any of the street points behind the gate
-(`STREETS` in `scripts/alert-watch.mjs`; our circuit was called Orion in Oct 2026). It
-alerts on each SCE step — on the watch list, expected, off, restoring, back on — and
-labels shutoffs within 10 miles "not our circuit". Those layers aren't a published API
-and briefly read empty while SCE refreshes them, so a failed or suspicious read is
-re-read twice, 30 seconds apart; if SCE still fails, the Cal OES PSPS alert stays as
-the fallback and no "all clear" ping goes out. If SCE moves the service, update `PSPS`.
-Tests: `node scripts/alert-watch.test.mjs`.
+**Our power, live.** The Cal OES feed only shows a shutoff once it has happened, as a
+distance (and on Oct 15, 2026 it didn't list our shutoff at all), so it can't tell our
+power from the next circuit over. `api/power.js` reads SCE's own outage-map layers
+(shutoff under consideration / shut off, plus repair outages) and counts a shutoff as
+ours when SCE's area covers any of the street points behind the gate (`STREETS` in
+`api/_power.js`; our circuit was called Orion in Oct 2026). The edge caches it for a
+minute, so SCE sees about one request a minute however many neighbors are looking. The
+status strip and home page check it on every load and every 4 minutes while open; the
+Fire page every 2 minutes. Tiers, the same in `nav.js` and `fire.html`: off 72,
+expected or restoring 71, a repair outage near our streets 64, on SCE's watch list 62,
+so it leads over a Red Flag or a distant fire but never over an evacuation or a close
+fire. A failed read shows "unknown", never "power on". If SCE moves the service, update
+`PSPS` / `OUTAGES` in `api/_power.js`.
+
+**Power shutoffs in the alert bot.** The bot uses the same `api/_power.js` rules. It
+alerts on each SCE step (on the watch list, expected, off, restoring, back on) and
+labels shutoffs within 10 miles "not our circuit". SCE's layers briefly read empty while
+SCE refreshes them, so a failed or suspicious read is re-read twice, 30 seconds apart;
+if SCE still fails, the Cal OES PSPS alert stays as the fallback and no "all clear" ping
+goes out. Tests: `node scripts/alert-watch.test.mjs`.
 
 **Running cost:** roughly **$5–8/month** total on `claude-haiku-4-5` — the daily events
 sweep (~$0.15–0.20/run with web search capped at 12 uses) plus the Friday roundup
@@ -144,7 +155,7 @@ cleanly and commit nothing. The PurpleAir history job needs `PURPLEAIR_API_KEY` 
 | Satellite heat detection | NASA VIIRS (Esri Living Atlas mirror) | **Live**, no key |
 | Evacuation status (Order / Warning / Shelter) | Cal OES statewide evacuation zones | **Live**, no key |
 | Power outages incl. PSPS | Cal OES statewide utility feed | **Live**, no key |
-| Shutoff (PSPS) status of our own circuit — alert bot only | The layers behind SCE's outage map (not a published API) | **Live**, no key |
+| Our own power: shutoff status of our circuit + repair outages near our streets | The layers behind SCE's outage map (not a published API), via `api/power.js` (edge-cached 60 s) and the alert bot | **Live**, no key |
 | Earthquakes | USGS | **Live**, no key |
 | Local events | City of Santa Clarita (Localist) + Eventbrite + SC Public Library + Performing Arts Center + Valencia Town Center + neighbor tips → `events.json` | **Auto** |
 | Extra events from the wider web | Claude web search → `ai-events.json`, merged into the main list | **Auto** (needs key) |

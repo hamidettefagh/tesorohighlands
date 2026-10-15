@@ -26,6 +26,9 @@ const bizApi = bizMod.makeHandler({
   notify: async name => console.log("[business] new submission waiting for approval: " + name),
 });
 
+// Live SCE power status for our circuit: the real handler, reading SCE's live data.
+const powerApi = require("./api/power.js");
+
 const dir = __dirname;
 const port = process.env.PORT || 3100;
 const liveFeeds = process.env.WEATHER_LIVE === "1";
@@ -51,6 +54,7 @@ http
     let p = decodeURIComponent((req.url || "/").split("?")[0]);
     if (p === "/api/treats") return treatsApi(req, res);
     if (p === "/api/business") return bizApi(req, res);
+    if (p === "/api/power") return powerApi(req, res);
     if (!liveFeeds) {
       if (p === "/api/purpleair") return sendJson(res, demoPurpleair());
       if (p === "/api/tempest-forecast") return sendJson(res, demoForecast());

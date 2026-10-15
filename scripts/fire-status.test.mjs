@@ -35,7 +35,7 @@ if (CUTOFF == null) throw new Error("fire.html no longer defines WELL_CONTAINED"
 const mod = { exports: {} };
 new Function("module", "exports",
   "const WELL_CONTAINED = " + CUTOFF + ";\n" +
-  ["aqiInfo", "fireWx", "alertable", "fireRisk", "untilText", "overall"].map(grab).join("\n") +
+  ["aqiInfo", "fireWx", "alertable", "fireRisk", "untilText", "whenText", "overall"].map(grab).join("\n") +
   "\nfunction todayHigh(){ return null; }\n" +        // DOM-free stub
   "\nmodule.exports = { overall };")(mod, mod.exports);
 const { overall } = mod.exports;
@@ -77,6 +77,19 @@ check("the same fire half contained still alerts", V({ fires: [contained(50)] })
 check("containment given as text counts too", V({ fires: [contained("90")] }), { lvl: 0 });
 check("a close, big fire " + CUTOFF + "%+ contained no longer alerts", V({ fires: [{ ...fire(4, 900), contain: CUTOFF }] }), { lvl: 0 });
 check("a contained fire doesn't hide an uncontained one", V({ fires: [contained(95), fire(5, 120)] }), { lvl: 2, title: /sizable fire/i });
+
+// --- Our own power (SCE's status for our circuit, from /api/power). It leads over a
+// fire in the area and a Red Flag, but never over an evacuation or a close fire.
+const power = (stage, extra) => ({ ok: true, ours: { stage, circuit: "Orion", wholeNeighborhood: true, ert: Date.parse("2026-10-17T05:00:00-07:00"), ...extra }, outages: [] });
+check("power shut off leads the page", V({ power: power("off") }), { lvl: 1, klass: "caution", title: /Our power is off/, text: /back by/ });
+check("power off beats a fire in the area", V({ power: power("off"), fires: [fire(9.1, 172)] }), { title: /Our power is off/ });
+check("power off beats a Red Flag Warning", V({ power: power("off"), alerts: [{ event: "Red Flag Warning" }] }), { title: /Our power is off/ });
+check("a close, sizable fire beats power off", V({ power: power("off"), fires: [fire(4, 300)] }), { lvl: 2, title: /sizable fire/i });
+check("an evacuation order beats power off", V({ power: power("off"), evac: { lvl: 2 } }), { lvl: 2, title: /Evacuation order/ });
+check("shutoff expected", V({ power: power("expected") }), { lvl: 1, title: /expects to shut off our power/ });
+check("power coming back", V({ power: power("restoring") }), { lvl: 1, title: /restoring our power/ });
+check("on SCE's watch list", V({ power: power("watch", { windowEnd: Date.parse("2026-10-16T21:00:00-07:00") }) }), { lvl: 1, title: /may shut off our power until/ });
+check("no shutoff for our circuit says nothing about power", V({ power: { ok: true, ours: null, outages: [] } }), { lvl: 0 });
 
 // --- A nearby evacuation is not our zone (lvl 0) but it is NOT "all clear" either.
 // This shipped green -- "Looks safe right now" -- while nav.js said amber for the
@@ -139,13 +152,17 @@ else if (warnOur[1] !== "90" || warnOur[2] !== "caution") {
 // and must agree: emergency 85/level 2, considerable 82/level 2, warning 65/level 1.
 const navSrc = fs.readFileSync(path.join(ROOT, "nav.js"), "utf8");
 const ladder = [
+  [/say\(72, 1, "⚡ Our power is off/, /say\(72, 1, "Our power is off/, "power off 72/1"],
+  [/say\(71, 1, "⚡ SCE is restoring/, /say\(71, 1, "SCE is restoring/, "power restoring 71/1"],
+  [/say\(71, 1, "⚡ SCE expects/, /say\(71, 1, "SCE expects/, "power expected 71/1"],
+  [/say\(62, 1, "⚡ SCE may shut off/, /say\(62, 1, "SCE may shut off/, "power watch 62/1"],
   [/say\(85, 2, "Flash Flood Emergency"/, /say\(85, 2, "Flash Flood Emergency"/, "emergency 85/2"],
   [/say\(82, 2, "Flash Flood Warning"/, /say\(82, 2, "Flash Flood Warning"/, "considerable 82/2"],
   [/say\(65, 1, "Flash Flood Warning"/, /say\(65, 1, "Flash Flood Warning"/, "warning 65/1"],
 ];
 const drift = ladder.filter(([inNav, inFire]) => !inNav.test(navSrc) || !inFire.test(src)).map(l => l[2]);
-if (drift.length) { failed++; console.log("FAIL flash-flood ladder differs between nav.js and fire.html: " + drift.join(", ")); }
-else console.log("ok   flash-flood ladder matches in nav.js and fire.html");
+if (drift.length) { failed++; console.log("FAIL the ladder differs between nav.js and fire.html: " + drift.join(", ")); }
+else console.log("ok   the flash-flood and power ladders match in nav.js and fire.html");
 
 // (3b) The well-contained cutoff is the same number in all three copies.
 const cutoffs = { "fire.html": CUTOFF, "nav.js": wellContained(navSrc), "scripts/alert-watch.mjs": wellContained(fs.readFileSync(path.join(ROOT, "scripts/alert-watch.mjs"), "utf8")) };

@@ -135,11 +135,18 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v19";  // v19: well-contained fires stop counting — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v20";  // v20: our power status (SCE) joins the strip — keep in step with nav.js?v=N
   // A fire this far contained stops raising alerts (same number as fire.html and
   // scripts/alert-watch.mjs; scripts/fire-status.test.mjs checks they match).
   var WELL_CONTAINED = 75;
   // Feed strings (alert names, Cal OES notes) end up in innerHTML — escape them.
+  // "Sat 5 AM", or just "5 PM" today — for SCE's times.
+  function whenT(ms) {
+    var d = new Date(ms); if (isNaN(d)) return "";
+    var o = { hour: "numeric" }; if (d.getMinutes()) o.minute = "2-digit";
+    if (d.toDateString() !== new Date().toDateString()) o.weekday = "short";
+    return d.toLocaleString([], o);
+  }
   function escT(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   // Cal OES NOTES sometimes carries a whole public alert ("LEAVE NOW. Your
   // safety is in danger…") — never echo that inside OUR banner. Keep short
@@ -173,6 +180,22 @@
       return Promise.race([p, new Promise(function (_, rej) { setTimeout(function () { rej(new Error("timeout")); }, ms); })]);
     }
     var jobs = [
+      // Our own power: SCE's status for our circuit (via /api/power, edge-cached a
+      // minute). Same tiers as fire.html: off 72, expected or restoring 71, on SCE's
+      // list 62; a repair outage near our streets 64. A failed read says nothing.
+      fetch("/api/power").then(function (r) { return r.json(); }).then(function (p) {
+        if (!p || !p.ok) return;
+        var o = p.ours, back = o && o.ert ? " SCE's estimate: back by " + whenT(o.ert) + "." : "";
+        if (o && o.stage === "off") say(72, 1, "⚡ Our power is off — SCE safety shutoff" + (o.wholeNeighborhood ? "" : " for part of the neighborhood") + "." + back);
+        else if (o && o.stage === "restoring") say(71, 1, "⚡ SCE is restoring our power." + back);
+        else if (o && o.stage === "expected") say(71, 1, "⚡ SCE expects to shut off our power soon — charge phones and batteries now.");
+        else if (o && o.stage === "watch") say(62, 1, "⚡ SCE may shut off our power" + (o.windowEnd ? " until " + whenT(o.windowEnd) : "") + ".");
+        else if (p.outages && p.outages.length) {
+          var x = p.outages[0];
+          say(64, 1, "⚡ SCE reports a power outage ~" + (x.dist < 1 ? "under a mile" : x.dist + " mi") + " " + escT(x.dir) + " of our streets" +
+            (x.customers ? " (" + Number(x.customers).toLocaleString() + " customers)" : "") + (x.ert ? " — estimate: back by " + whenT(x.ert) : "") + ".");
+        }
+      }).catch(function () {}),
       fetch("/api/tempest").then(function (r) { return r.json(); }).then(function (t) {
         if (t && t.ok && t.station && t.station.rainingNow) rain = t.station;
       }).catch(function () {}),
@@ -438,6 +461,8 @@
       if (c && c.st && Date.now() - c.ts < 5 * 60 * 1000) render(c.st);
     } catch (e) {}
     refreshStatus();
+    // Keep an open page current: a shutoff can start or end while it sits there.
+    setInterval(function () { if (document.visibilityState === "visible") refreshStatus(); }, 4 * 60 * 1000);
     // Phones pause background tabs — recheck when the tab comes back if the
     // cached status is older than 5 minutes, so the strip can't silently age.
     document.addEventListener("visibilitychange", function () {

@@ -17,6 +17,7 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
+import { createRequire } from "node:module";
 
 const HOME = { lat: 34.478, lon: -118.531 };
 // A fire this far contained stops raising alerts (same number as fire.html and
@@ -263,17 +264,12 @@ async function checkOutages() {
    and they briefly come back empty while SCE refreshes them — so a failed or
    suspicious read is retried, and one that still fails leaves the state feed's
    PSPS alert in place and says nothing about our circuit. */
-const PSPS = "https://sce-outage-ags.esriemcs.com/arcgis/rest/services/43/psps/MapServer";
-// What SCE called our circuit in Oct 2026; named in messages when SCE's data doesn't name one.
-const OUR_CIRCUIT = "Orion";
-// One point per street behind the gate (street centres from api/_treat-homes.js).
-// A shutoff is ours when SCE's area covers any of them — by place, not by name,
-// so a renamed circuit still counts and a far-off section of Orion doesn't.
-const STREETS = [[-118.5581,34.4878],[-118.5573,34.4878],[-118.559,34.4876],[-118.5627,34.487],[-118.5588,34.487],[-118.5565,34.487],
-  [-118.5578,34.4869],[-118.5624,34.4865],[-118.5596,34.4863],[-118.5584,34.4861],[-118.5578,34.4858],[-118.5607,34.4856],[-118.559,34.4853],
-  [-118.5592,34.4845],[-118.561,34.4843],[-118.5623,34.4841],[-118.5673,34.484],[-118.5707,34.484],[-118.5632,34.4837],[-118.5674,34.4837],
-  [-118.5657,34.4834],[-118.569,34.4834],[-118.5581,34.4833],[-118.5608,34.4833],[-118.5634,34.4828],[-118.5686,34.4827]];
-const MID = { lat: 34.4845, lon: -118.564 };   // middle of those houses
+// Which shutoff is ours (the street points, SCE's steps) lives in api/_power.js,
+// shared with the site's live power status (api/power.js) so the two can't disagree.
+const power = createRequire(import.meta.url)("../api/_power.js");
+const { PSPS, OUR_CIRCUIT, STREETS, MID } = power;
+export const pspsRecords = power.pspsRecords;
+export const pspsStage = power.pspsStage;
 const NEAR_MI = 10;
 
 async function pspsRead() {
@@ -284,41 +280,14 @@ async function pspsRead() {
     if (!j || j.error || !Array.isArray(j.features)) throw new Error(`SCE PSPS layer ${layer} error`);
     return j.features.map((f) => ({ layer, a: f.attributes || {}, rings: f.geometry?.rings || [] }));
   });
-  const ours = "-118.5727,34.4807,-118.5545,34.4898";   // the streets above, padded ~200 m: exact shapes
+  const ours = power.ENVELOPE;   // our streets, padded ~200 m: exact shapes
   const wide = `${MID.lon - 0.18},${MID.lat - 0.15},${MID.lon + 0.18},${MID.lat + 0.15}`;   // ~10 mi out: rough shapes
   const [watch, off, around] = await Promise.all([q(0, ours, 0.0001), q(1, ours, 0.0001), q(1, wide, 0.002)]);
   const seen = new Set(off.map((f) => f.a.OBJECTID));
   return [...watch, ...off, ...around.filter((f) => !seen.has(f.a.OBJECTID))];
 }
 
-export function pspsRecords(feats) {
-  return feats.map(({ layer, a, rings }) => {
-    let dist = Infinity, at = null;
-    for (const g of rings) for (const p of g) {
-      const d = haversine(MID.lat, MID.lon, p[1], p[0]);
-      if (d < dist) { dist = d; at = p; }
-    }
-    return { layer, name: title(a.CIRCUIT_NAME), status: [a.PSPS, a.PSPS_Details].filter(Boolean).join(" "),
-      start: a.StartDate, end: a.EndDate, ert: a.ERT, dist,
-      covers: STREETS.filter(([x, y]) => inPoly(x, y, rings)).length,
-      dir: at ? bearingWord(MID.lat, MID.lon, at[1], at[0]) : "" };
-  });
-}
-
-// SCE's steps: Monitored → De-Energization Expected → De-Energized →
-// Re-Energization Expected → Re-Energized. Anything else ("Downstream": off
-// because a circuit feeding it is) goes with the layer it sits on.
-export function pspsStage(r) {
-  const s = r.status;
-  if (/re-?energi[sz]ation expected/i.test(s)) return "restoring";
-  if (/re-?energi[sz]ed/i.test(s)) return "restored";
-  if (/de-?energi[sz]ation expected/i.test(s)) return "expected";
-  if (/de-?energi[sz]ed/i.test(s)) return "off";
-  if (/monitor/i.test(s)) return "watch";
-  return r.layer === 1 ? "off" : "watch";
-}
-
-const RANK = { off: 5, restoring: 4, expected: 3, watch: 2, restored: 1 };
+const RANK = power.STAGE_RANK;
 const pt = (ms, o) => new Date(ms).toLocaleString("en-US", { timeZone: "America/Los_Angeles", ...o }).replace(/ /g, " ");
 const clock = (ms) => pt(ms, { hour: "numeric", minute: "2-digit" }).replace(":00 ", " ");               // "6 AM"
 const day = (ms) => `${pt(ms, { weekday: "short" })} ${clock(ms)}`;                                         // "Thu 6 AM"
