@@ -1,12 +1,12 @@
 {
   "active": true,
-  "sig": "power:ours:watch:1792069200000-1792209600000:near|redflag:b684f2305219788c77.004.1",
+  "sig": "power:ours:expected|redflag:b684f2305219788c77.004.1",
   "level": "caution",
-  "title": "Shutoffs near us; our power still on",
-  "text": "⚡ Power shutoffs near us — ours still on\nSCE has shut off power on 14 circuits near us: Guitar (under 1 mi west), Tuba (~2 mi north-northwest), Bouquet (~3 mi east), Neargate (~5 mi south-southeast) and 10 more. Our circuit (Orion) was still on at 12:02 AM, and SCE lists it for a possible shutoff until Fri 9 PM.\nCharge phones and batteries now, and know how to open your garage door by hand.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
-  "waText": "⚡ *Power shutoffs near us — ours still on*\nSCE has shut off power on 14 circuits near us: Guitar (under 1 mi west), Tuba (~2 mi north-northwest), Bouquet (~3 mi east), Neargate (~5 mi south-southeast) and 10 more. Our circuit (Orion) was still on at 12:02 AM, and SCE lists it for a possible shutoff until Fri 9 PM.\nCharge phones and batteries now, and know how to open your garage door by hand.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "title": "SCE expects to shut off our power soon",
+  "text": "⚡ Power shutoff expected — our circuit (Orion)\nAs of 5:18 AM, SCE expects to shut off our power, typically within 1 to 4 hours.\nCharge phones and batteries now, and know how to open your garage door by hand. A closed fridge stays cold about 4 hours, a full freezer about 2 days.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "waText": "⚡ *Power shutoff expected — our circuit (Orion)*\nAs of 5:18 AM, SCE expects to shut off our power, typically within 1 to 4 hours.\nCharge phones and batteries now, and know how to open your garage door by hand. A closed fridge stays cold about 4 hours, a full freezer about 2 days.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
   "others": [
     "Red Flag Warning"
   ],
-  "updatedAt": "2026-10-16T07:02:42.651Z"
+  "updatedAt": "2026-10-16T12:18:11.500Z"
 }
