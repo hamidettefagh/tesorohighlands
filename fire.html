@@ -1736,12 +1736,12 @@ async function boot(){
   try { render(); } catch(e){}
   setInterval(async ()=>{ await fetchAll(); render(); }, 10*60*1000);
   // Our power can change at any moment during a shutoff, and it's one cached
-  // request, so it gets its own 2-minute check. A failed check keeps the last
+  // request, so it gets its own 1-minute check. A failed check keeps the last
   // reading, whose "checked N min ago" line shows its age.
   setInterval(async ()=>{
     if (document.visibilityState !== "visible") return;
     try { live.power = await fetchPower(); if (live.ok) live.ok.power = true; render(); } catch(e){}
-  }, 2*60*1000);
+  }, 60*1000);
   // Phones pause timers in background tabs — refetch when the tab comes back if
   // the data is older than 5 minutes, so a reopened page isn't quietly stale.
   document.addEventListener("visibilitychange", async ()=>{
@@ -1753,7 +1753,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=20" defer></script>
+<script src="/nav.js?v=21" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>

@@ -117,10 +117,10 @@ distance (and on Oct 15, 2026 it didn't list our shutoff at all), so it can't te
 power from the next circuit over. `api/power.js` reads SCE's own outage-map layers
 (shutoff under consideration / shut off, plus repair outages) and counts a shutoff as
 ours when SCE's area covers any of the street points behind the gate (`STREETS` in
-`api/_power.js`; our circuit was called Orion in Oct 2026). The edge caches it for a
-minute, so SCE sees about one request a minute however many neighbors are looking. The
-status strip and home page check it on every load and every 4 minutes while open; the
-Fire page every 2 minutes. Tiers, the same in `nav.js` and `fire.html`: off 72,
+`api/_power.js`; our circuit was called Orion in Oct 2026). The edge caches it for 30
+seconds, so SCE sees about two requests a minute however many neighbors are looking.
+Every open page checks it each minute (the strip and home page redraw when our power
+status changes), so a change shows within a minute or two of SCE posting it. Tiers, the same in `nav.js` and `fire.html`: off 72,
 expected or restoring 71, a repair outage near our streets 64, on SCE's watch list 62,
 so it leads over a Red Flag or a distant fire but never over an evacuation or a close
 fire. A failed read shows "unknown", never "power on". If SCE moves the service, update

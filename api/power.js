@@ -1,8 +1,8 @@
 // Live power status for the houses behind the gate, from SCE's own outage map
 // data: is our circuit shut off (or about to be, or coming back), and is there a
 // repair outage near our streets. The site's status strip, home page and Fire
-// page read this; the edge caches it for a minute, so however many neighbors are
-// checking, SCE sees about one request a minute from us.
+// page read this every minute; the edge caches it for 30 seconds, so however many
+// neighbors are checking, SCE sees about two requests a minute from us.
 //
 //   GET /api/power  ->  { ok, checkedAt, ours: {...} | null, outages: [...] }
 //
@@ -74,7 +74,7 @@ module.exports = async function handler(req, res) {
     }).filter((o) => o.dist <= NEAR_OUTAGE_MI && isFinite(o.dist)).sort((x, y) => x.dist - y.dist).slice(0, 3);
 
     send(res, 200, { ok: true, checkedAt: new Date().toISOString(), ours, outages },
-      "public, max-age=0, s-maxage=60, stale-while-revalidate=120");
+      "public, max-age=0, s-maxage=30, stale-while-revalidate=30");
   } catch (e) {
     send(res, 502, { ok: false, checkedAt: new Date().toISOString(), error: "SCE's outage data didn't answer" },
       "public, max-age=0, s-maxage=20");

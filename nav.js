@@ -135,7 +135,17 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v20";  // v20: our power status (SCE) joins the strip — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v21";  // v21: power rechecked every minute — keep in step with nav.js?v=N
+  // What the strip last saw about our power. A one-request check runs every
+  // minute and redraws the strip only when this changes; the full status check
+  // hits nine feeds, so it stays at every 4 minutes.
+  var powerSig = null;
+  function powerSigOf(p) {
+    if (!p || !p.ok) return "unknown";
+    var o = p.ours;
+    return (o ? o.stage + "|" + (o.ert || "") + "|" + (o.windowEnd || "") : "none") + "|" +
+      (p.outages || []).map(function (x) { return x.dist + ":" + (x.ert || ""); }).join(",");
+  }
   // A fire this far contained stops raising alerts (same number as fire.html and
   // scripts/alert-watch.mjs; scripts/fire-status.test.mjs checks they match).
   var WELL_CONTAINED = 75;
@@ -180,11 +190,12 @@
       return Promise.race([p, new Promise(function (_, rej) { setTimeout(function () { rej(new Error("timeout")); }, ms); })]);
     }
     var jobs = [
-      // Our own power: SCE's status for our circuit (via /api/power, edge-cached a
-      // minute). Same tiers as fire.html: off 72, expected or restoring 71, on SCE's
+      // Our own power: SCE's status for our circuit (via /api/power, edge-cached 30
+      // seconds). Same tiers as fire.html: off 72, expected or restoring 71, on SCE's
       // list 62; a repair outage near our streets 64. A failed read says nothing.
       fetch("/api/power").then(function (r) { return r.json(); }).then(function (p) {
         if (!p || !p.ok) return;
+        powerSig = powerSigOf(p);
         var o = p.ours, back = o && o.ert ? " SCE's estimate: back by " + whenT(o.ert) + "." : "";
         if (o && o.stage === "off") say(72, 1, "⚡ Our power is off — SCE safety shutoff" + (o.wholeNeighborhood ? "" : " for part of the neighborhood") + "." + back);
         else if (o && o.stage === "restoring") say(71, 1, "⚡ SCE is restoring our power." + back);
@@ -463,13 +474,20 @@
     refreshStatus();
     // Keep an open page current: a shutoff can start or end while it sits there.
     setInterval(function () { if (document.visibilityState === "visible") refreshStatus(); }, 4 * 60 * 1000);
+    function checkPower() {
+      fetch("/api/power").then(function (r) { return r.json(); }).then(function (p) {
+        var s = powerSigOf(p);
+        if (powerSig !== null && s !== "unknown" && s !== powerSig) refreshStatus();
+      }).catch(function () {});
+    }
+    setInterval(function () { if (document.visibilityState === "visible") checkPower(); }, 60 * 1000);
     // Phones pause background tabs — recheck when the tab comes back if the
     // cached status is older than 5 minutes, so the strip can't silently age.
     document.addEventListener("visibilitychange", function () {
       if (document.visibilityState !== "visible") return;
       try {
         var c2 = JSON.parse(sessionStorage.getItem(CACHE_KEY));
-        if (c2 && Date.now() - c2.ts < 5 * 60 * 1000) return;
+        if (c2 && Date.now() - c2.ts < 5 * 60 * 1000) { checkPower(); return; }
       } catch (e) {}
       refreshStatus();
     });
