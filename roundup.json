@@ -1,63 +1,72 @@
 {
-  "generatedAt": "2026-10-09T20:09:35.136Z",
-  "weekendOf": "2026-10-09",
+  "generatedAt": "2026-10-16T18:51:43.434Z",
+  "weekendOf": "2026-10-16",
   "model": "claude-haiku-4-5",
-  "intro": "Here's what to do this weekend in Tesoro Highlands and around Santa Clarita.",
+  "intro": "Family fun and local flavor this weekend in Tesoro Highlands.",
   "picks": [
     {
-      "emoji": "🎵",
-      "day": "Fri",
-      "time": "10:30 AM",
-      "title": "Music Time with Mr. Michael",
-      "price": "free",
-      "note": "Perfect for the littles on Friday morning",
-      "url": "https://santaclarita.librarycalendar.com/event/contract-music-time-mr-michael-32236"
-    },
-    {
-      "emoji": "🎸",
-      "day": "Fri",
-      "time": "4 PM",
-      "title": "Loud @ the Library: Powered by Music Lab 🎸",
-      "price": "free",
-      "note": "Free live music for kids and teens Friday",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37434"
-    },
-    {
       "emoji": "🎃",
-      "day": "Sat",
-      "time": "9 AM",
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "price": "from $10",
-      "note": "Harvest fun with pumpkins and farm activities",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch"
+      "day": "Fri",
+      "time": "6 PM",
+      "title": "Mission View Trunk or Treat",
+      "price": "free",
+      "note": "Free trunk-or-treat for all ages—festive and easy.",
+      "url": "https://calendar.santaclarita.gov/event/mission-view-trunk-or-treat"
     },
     {
-      "emoji": "🎪",
+      "emoji": "🌽",
       "day": "Sat",
-      "time": "",
-      "title": "Circus Vargas - Masquerade",
-      "price": "$25-$90",
-      "note": "Circus Vargas brings spectacle and fun for all ages",
-      "url": "https://tickets.circusvargas.com/"
+      "time": "8:30 AM",
+      "title": "Old Town Newhall Farmers Market",
+      "price": "free",
+      "note": "Fresh local produce and community vibe Saturday morning.",
+      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/"
+    },
+    {
+      "emoji": "🧱",
+      "day": "Sat",
+      "time": "12 PM",
+      "title": "Geoffrey's birthday: build and take home a free LEGO giraffe",
+      "price": "free",
+      "note": "Free LEGO building activity keeps kids engaged and happy.",
+      "url": "https://www.macys.com/s/events/"
     },
     {
       "emoji": "📚",
       "day": "Sat",
-      "time": "1 PM",
-      "title": "Tales From the Dark Stacks",
+      "time": "11 AM",
+      "title": "Family Storytime",
       "price": "free",
-      "note": "Spooky storytelling for adults Saturday afternoon",
-      "url": "https://santaclarita.librarycalendar.com/event/adult-hold-tales-dark-stacks-22909"
+      "note": "Cozy library storytime for the littlest listeners.",
+      "url": "https://santaclarita.librarycalendar.com/event/family-storytime-37824"
     },
     {
-      "emoji": "🎭",
-      "day": "Sat",
+      "emoji": "👻",
+      "day": "Fri",
       "time": "7 PM",
-      "title": "Dial M for Murder",
-      "price": "$20",
-      "note": "Local theater production, perfect for a date night",
-      "url": "https://www.canyontheatre.org"
+      "title": "Bar Harbor Scares",
+      "price": "free",
+      "note": "Spooky scares that work for families and thrill-seekers.",
+      "url": "https://calendar.santaclarita.gov/event/bar-harbor-scares-7914"
+    },
+    {
+      "emoji": "🍺",
+      "day": "Fri",
+      "time": "6 PM",
+      "title": "Live Music at Lucky Luke Brewing",
+      "price": "",
+      "note": "Live music and craft beer for adults to unwind Friday.",
+      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing"
+    },
+    {
+      "emoji": "📖",
+      "day": "Sun",
+      "time": "2:30 PM",
+      "title": "Silent Book Club",
+      "price": "free",
+      "note": "Quiet time to read with fellow book lovers Sunday afternoon.",
+      "url": "https://santaclarita.librarycalendar.com/event/hold-adult-silent-book-club-23816"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nHere's what to do this weekend in Tesoro Highlands and around Santa Clarita.\n\n🎵 *Fri 10:30 AM* — Music Time with Mr. Michael (free)\n   Perfect for the littles on Friday morning\n🎸 *Fri 4 PM* — Loud @ the Library: Powered by Music Lab 🎸 (free)\n   Free live music for kids and teens Friday\n🎃 *Sat 9 AM* — Gilchrist Farm Harvest Festival & Pumpkin Patch (from $10)\n   Harvest fun with pumpkins and farm activities\n🎪 *Sat* — Circus Vargas - Masquerade ($25-$90)\n   Circus Vargas brings spectacle and fun for all ages\n📚 *Sat 1 PM* — Tales From the Dark Stacks (free)\n   Spooky storytelling for adults Saturday afternoon\n🎭 *Sat 7 PM* — Dial M for Murder ($20)\n   Local theater production, perfect for a date night\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nFamily fun and local flavor this weekend in Tesoro Highlands.\n\n🎃 *Fri 6 PM* — Mission View Trunk or Treat (free)\n   Free trunk-or-treat for all ages—festive and easy.\n🌽 *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Fresh local produce and community vibe Saturday morning.\n🧱 *Sat 12 PM* — Geoffrey's birthday: build and take home a free LEGO giraffe (free)\n   Free LEGO building activity keeps kids engaged and happy.\n📚 *Sat 11 AM* — Family Storytime (free)\n   Cozy library storytime for the littlest listeners.\n👻 *Fri 7 PM* — Bar Harbor Scares (free)\n   Spooky scares that work for families and thrill-seekers.\n🍺 *Fri 6 PM* — Live Music at Lucky Luke Brewing\n   Live music and craft beer for adults to unwind Friday.\n📖 *Sun 2:30 PM* — Silent Book Club (free)\n   Quiet time to read with fellow book lovers Sunday afternoon.\n\nFull list → https://tesorohighlands.com/events"
 }
