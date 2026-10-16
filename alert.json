@@ -1,12 +1,12 @@
 {
   "active": true,
-  "sig": "power:ours:restoring|redflag:b684f2305219788c77.004.1",
+  "sig": "power:ours:watch:1792069200000-1792209600000:near|redflag:b684f2305219788c77.004.1",
   "level": "caution",
-  "title": "SCE is restoring our power",
-  "text": "⚡ Power coming back — our circuit (Orion)\nSCE is working to turn our power back on; crews inspect the lines first. SCE’s estimate at 7:02 PM: back by Sat, Oct 17, 5 AM.\nDowned line? Stay away and call 911.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
-  "waText": "⚡ *Power coming back — our circuit (Orion)*\nSCE is working to turn our power back on; crews inspect the lines first. SCE’s estimate at 7:02 PM: back by Sat, Oct 17, 5 AM.\nDowned line? Stay away and call 911.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "title": "Shutoffs near us; our power still on",
+  "text": "⚡ Power shutoffs near us — ours still on\nSCE has shut off power on 14 circuits near us: Guitar (under 1 mi west), Tuba (~2 mi north-northwest), Bouquet (~3 mi east), Neargate (~5 mi south-southeast) and 10 more. Our circuit (Orion) was still on at 12:02 AM, and SCE lists it for a possible shutoff until Fri 9 PM.\nCharge phones and batteries now, and know how to open your garage door by hand.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "waText": "⚡ *Power shutoffs near us — ours still on*\nSCE has shut off power on 14 circuits near us: Guitar (under 1 mi west), Tuba (~2 mi north-northwest), Bouquet (~3 mi east), Neargate (~5 mi south-southeast) and 10 more. Our circuit (Orion) was still on at 12:02 AM, and SCE lists it for a possible shutoff until Fri 9 PM.\nCharge phones and batteries now, and know how to open your garage door by hand.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
   "others": [
     "Red Flag Warning"
   ],
-  "updatedAt": "2026-10-16T02:02:12.994Z"
+  "updatedAt": "2026-10-16T07:02:42.651Z"
 }
