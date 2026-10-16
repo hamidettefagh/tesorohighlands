@@ -320,7 +320,7 @@ export function pspsConditions(recs, now = Date.now()) {
     text: `⚡ *Our power is shut off — SCE safety shutoff (${circuit} circuit)*\nSCE has shut off our circuit to prevent wildfires.${part} Power comes back after the wind dies down and crews inspect the lines.${back}\nKeep the fridge closed: it stays cold about 4 hours, a full freezer about 2 days. Downed line? Stay away and call 911.\n${tail}` });
   else if (stage === "restoring") out.push({ id: "power:ours:restoring", prio: 64, level: "caution",
     title: "SCE is restoring our power",
-    text: `⚡ *Power coming back — our circuit (${circuit})*\nSCE is working to turn our power back on; crews inspect the lines first.${back}\nDowned line? Stay away and call 911.\n${tail}` });
+    text: `⚡ *Power coming back — our circuit (${circuit})*\nSCE is turning our power back on; crews inspect the lines first, so some streets come back before others. If yours is already on, SCE’s map just hasn’t caught up.${back}\nDowned line? Stay away and call 911.\n${tail}` });
   else if (stage === "expected") out.push({ id: "power:ours:expected", prio: 67, level: "caution",
     title: "SCE expects to shut off our power soon",
     text: `⚡ *Power shutoff expected — our circuit (${circuit})*\nAs of ${asOf}, SCE expects to shut off our power, typically within 1 to 4 hours.${part}\nCharge phones and batteries now, and know how to open your garage door by hand. A closed fridge stays cold about 4 hours, a full freezer about 2 days.\n${tail}` });

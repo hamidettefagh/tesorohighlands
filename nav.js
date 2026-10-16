@@ -135,7 +135,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v21";  // v21: power rechecked every minute — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v22";  // v22: "restoring" says power may already be back — keep in step with nav.js?v=N
   // What the strip last saw about our power. A one-request check runs every
   // minute and redraws the strip only when this changes; the full status check
   // hits nine feeds, so it stays at every 4 minutes.
@@ -198,7 +198,10 @@
         powerSig = powerSigOf(p);
         var o = p.ours, back = o && o.ert ? " SCE's estimate: back by " + whenT(o.ert) + "." : "";
         if (o && o.stage === "off") say(72, 1, "⚡ Our power is off — SCE safety shutoff" + (o.wholeNeighborhood ? "" : " for part of the neighborhood") + "." + back);
-        else if (o && o.stage === "restoring") say(71, 1, "⚡ SCE is restoring our power." + back);
+        // SCE marks a circuit "restoring" while crews bring streets back one by one,
+        // and its map often lags homes that already have power.
+        else if (o && o.stage === "restoring") say(71, 1, "⚡ SCE is restoring our power. If yours is already back, SCE's map just hasn't caught up" +
+          (o.ert ? "; its estimate for everyone is " + whenT(o.ert) + "." : "."));
         else if (o && o.stage === "expected") say(71, 1, "⚡ SCE expects to shut off our power soon — charge phones and batteries now.");
         else if (o && o.stage === "watch") say(62, 1, "⚡ SCE may shut off our power" + (o.windowEnd ? " until " + whenT(o.windowEnd) : "") + ".");
         else if (p.outages && p.outages.length) {

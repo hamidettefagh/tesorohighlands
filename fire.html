@@ -899,7 +899,8 @@ function overall(v){
     if (pw.stage === "off") say(72, 1, "Our power is off — SCE safety shutoff",
       "SCE shut off our circuit to prevent wildfires. Power comes back after the wind dies down and crews inspect the lines." + back + " Keep the fridge closed, and stay away from any downed line (call 911).");
     else if (pw.stage === "restoring") say(71, 1, "SCE is restoring our power",
-      "Crews inspect the lines before turning power back on." + back);
+      "Crews inspect the lines before turning power back on, so some streets come back before others. If yours is already on, SCE's map just hasn't caught up yet." +
+      (pw.ert ? " SCE's estimate for everyone: back by " + whenText(pw.ert) + "." : ""));
     else if (pw.stage === "expected") say(71, 1, "SCE expects to shut off our power soon",
       "Charge phones and batteries now, and know how to open your garage door by hand.");
     else if (pw.stage === "watch") say(62, 1, "SCE may shut off our power" + (pw.windowEnd ? " until " + whenText(pw.windowEnd) : ""),
@@ -1531,7 +1532,7 @@ function render(){
     const our = pw.ours, at = ms => ms ? new Date(ms).toLocaleString([], {weekday:"short", hour:"numeric", minute:"2-digit"}) : "";
     const what = !our ? `<b>No SCE shutoff for our circuit</b> right now.`
       : our.stage === "off" ? `<b style="color:var(--cau-fg)">⚡ Our power is off — SCE safety shutoff</b> (${esc(our.circuit)} circuit${our.wholeNeighborhood ? "" : ", part of the neighborhood"}).${our.ert ? ` SCE's estimate: back by <b>${at(our.ert)}</b>.` : ""}`
-      : our.stage === "restoring" ? `<b style="color:var(--cau-fg)">⚡ SCE is restoring our power</b> (${esc(our.circuit)} circuit).${our.ert ? ` Estimate: back by <b>${at(our.ert)}</b>.` : ""}`
+      : our.stage === "restoring" ? `<b style="color:var(--cau-fg)">⚡ SCE is restoring our power</b> (${esc(our.circuit)} circuit). If yours is already back, SCE's map just hasn't caught up yet.${our.ert ? ` Estimate for everyone: back by <b>${at(our.ert)}</b>.` : ""}`
       : our.stage === "expected" ? `<b style="color:var(--cau-fg)">⚡ SCE expects to shut off our power soon</b> (${esc(our.circuit)} circuit). Charge phones and batteries now.`
       : our.stage === "watch" ? `<b>⚡ SCE may shut off our power</b>${our.windowEnd ? ` until ${at(our.windowEnd)}` : ""} (${esc(our.circuit)} circuit is on its watch list).`
       : `<b>Power is back on</b> for our circuit (${esc(our.circuit)}).`;
@@ -1753,7 +1754,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=21" defer></script>
+<script src="/nav.js?v=22" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>
