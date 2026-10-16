@@ -155,7 +155,7 @@ cleanly and commit nothing. The PurpleAir history job needs `PURPLEAIR_API_KEY` 
 | Panel | Source | Status |
 |---|---|---|
 | Air quality (US AQI) on Fire / Home / nav | **Neighbor PurpleAir** EPA-corrected 10-min (`primary.aqi`), then EPA AirNow, Open-Meteo fallback | **Live** (`/api/purpleair`) |
-| Air quality on `/weather` | **Backyard PurpleAir** EPA Oct 2021 ATM 60-min (`primary.aqiEpa`); 24h sparkline from `purpleair-history.json` | **Live** + **Auto** history |
+| Air quality on `/weather` | **Backyard PurpleAir** EPA Oct 2021 ATM 60-min (`primary.aqiEpa`), or the nearest EPA AirNow monitor when the sensor is down or fails its confidence check; 24h sparkline from `purpleair-history.json`, dropping hours where the sensor's two counters disagree (>5 µg/m³ and >70%) | **Live** + **Auto** history |
 | Backyard weather now (`/weather`) | Neighbor **Tempest** via WeatherFlow (`/api/tempest-forecast` current block) | **Live** (needs `TEMPEST_TOKEN` + `TEMPEST_STATION_ID`) |
 | Hourly + 10-day forecast (`/weather`) | WeatherFlow **Better Forecast** model for that station — labeled forecast, not measured | **Live** (same Tempest keys) |
 | Fire weather (wind, gusts, humidity, temp) | **Neighbor Tempest** near Tesoro Highlands, Open-Meteo as fallback + 7-day outlook | **Live** (`/api/tempest`) |

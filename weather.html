@@ -168,7 +168,7 @@
 
   <div class="sources" id="sources">
     <b>Sources.</b> Right-now weather is a backyard WeatherFlow Tempest in Tesoro Highlands.
-    Air quality is a backyard PurpleAir, shown as EPA-corrected US AQI.
+    Air quality is a backyard PurpleAir, shown as EPA-corrected US AQI; when it's down or fails its quality check, the nearest EPA monitor stands in.
     The 24-hour and 10-day bands are WeatherFlow&rsquo;s Better Forecast for that same station — a model, not something the sensors measured.
     For fires, evacuation, and official alerts, see <a href="/fire">Fire &amp; Emergency</a>.
   </div>
@@ -349,12 +349,48 @@ function renderWx(fc){
     (cur.obsTime?'<div class="aqi-note">'+esc(timeAgo(cur.obsTime*1000))+' · from the backyard station</div>':"");
 }
 
-function renderAqi(pa, hist){
+// The EPA AirNow monitor nearest us: the fallback when the backyard sensor is down
+// or failing its own quality check. Same query and rules as the Fire page.
+function milesBetween(la1, lo1, la2, lo2){
+  const R=3958.8, t=x=>x*Math.PI/180, dla=t(la2-la1), dlo=t(lo2-lo1);
+  const h=Math.sin(dla/2)**2+Math.cos(t(la1))*Math.cos(t(la2))*Math.sin(dlo/2)**2;
+  return 2*R*Math.asin(Math.sqrt(h));
+}
+async function loadAirNow(){
+  const lat=34.478, lon=-118.531;
+  const u="https://services.arcgis.com/cJ9YHowT8TU7DUyn/arcgis/rest/services/Air%20Now%20Current%20Monitor%20Data%20Public/FeatureServer/0/query"+
+    "?where="+encodeURIComponent("OZONEPM_AQI IS NOT NULL")+"&geometry="+encodeURIComponent((lon-0.35).toFixed(2)+","+(lat-0.30).toFixed(2)+","+(lon+0.35).toFixed(2)+","+(lat+0.30).toFixed(2))+
+    "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=SiteName,OZONEPM_AQI,ValidTime&returnGeometry=true&outSR=4326&f=json";
+  const j=await loadJson(u);
+  if(!j||j.error||!Array.isArray(j.features)) throw new Error("airnow feed error");
+  const sites=j.features.map(f=>{ const a=f.attributes||{}, g=f.geometry||{};
+    return { name:String(a.SiteName||"monitor"), aqi:a.OZONEPM_AQI, valid:a.ValidTime, dist:milesBetween(lat,lon,g.y,g.x) }; })
+    .filter(x=>x.aqi!=null && x.dist<=15 && x.valid!=null && Date.now()-x.valid<2.5*3600*1000).sort((a,b)=>a.dist-b.dist);
+  return sites[0]||null;
+}
+// Why the backyard sensor isn't shown, in words.
+function sensorWhy(pa){
+  const e=String((pa&&pa.error)||"");
+  if(/confidence/i.test(e)) return "The backyard sensor's two readings don't agree right now (usually an insect or dust inside it), so it's set aside until it reads cleanly.";
+  if(/stale/i.test(e)) return "The backyard sensor hasn't reported in a while.";
+  if(/indoor/i.test(e)) return "The backyard sensor is set to indoor mode.";
+  return "The backyard sensor isn't answering right now.";
+}
+function renderAqi(pa, hist, an){
   const el=$("#aqiNow");
   const p=pa&&pa.ok&&pa.primary?pa.primary:null;
   if(!p){
+    if(an&&an.aqi!=null){
+      const info=aqiInfo(an.aqi);
+      el.className="nowcard aqi "+info.klass;
+      el.innerHTML='<p class="ey">Air quality</p>'+
+        '<div class="aqinum"><span class="n">'+Math.round(an.aqi)+'</span><span class="cat '+info.klass+'">'+esc(info.name)+'</span></div>'+
+        '<div class="aqi-meta">'+esc(aqiActivity(an.aqi))+' · EPA monitor, '+esc(an.name)+', ~'+an.dist.toFixed(1)+' mi</div>'+
+        '<div class="aqi-note">'+esc(sensorWhy(pa))+' This is the nearest official EPA monitor instead, updated hourly.</div>';
+      return;
+    }
     el.className="nowcard";
-    el.innerHTML='<p class="ey">Air quality</p><div class="band-unavail">Air quality unavailable</div>';
+    el.innerHTML='<p class="ey">Air quality</p><div class="band-unavail">Air quality unavailable</div><div class="aqi-note">'+esc(sensorWhy(pa))+' The EPA monitor didn&rsquo;t answer either.</div>';
     return;
   }
   const epa=p.aqiEpa;
@@ -424,22 +460,24 @@ function renderDaily(fc){
 }
 
 (async function(){
-  const [paR, histR, fcR] = await Promise.allSettled([
+  const [paR, histR, fcR, anR] = await Promise.allSettled([
     loadJson("/api/purpleair"),
     // Live 24h history from the edge-cached endpoint; the hourly-committed file
     // is the fallback for the times that endpoint cannot answer.
     loadJson("/api/purpleair-history").then(h => (h && h.ok && h.history && h.history.length) ? h : loadJson("/purpleair-history.json")),
-    loadJson("/api/tempest-forecast")
+    loadJson("/api/tempest-forecast"),
+    loadAirNow()
   ]);
   const pa = paR.status==="fulfilled"?paR.value:null;
   const hist = histR.status==="fulfilled"?histR.value:null;
   const fc = fcR.status==="fulfilled"?fcR.value:null;
+  const an = anR.status==="fulfilled"?anR.value:null;
   if (pa && pa.demo || hist && hist.demo || fc && fc.demo) {
     const b = $("#demoBanner");
     if (b) b.classList.add("on");
   }
   try { renderWx(fc); } catch (e) { $("#wxNow").innerHTML='<p class="ey">Weather here</p><div class="band-unavail">Weather unavailable</div>'; }
-  try { renderAqi(pa, hist); } catch (e) { $("#aqiNow").innerHTML='<p class="ey">Air quality</p><div class="band-unavail">Air quality unavailable</div>'; }
+  try { renderAqi(pa, hist, an); } catch (e) { $("#aqiNow").innerHTML='<p class="ey">Air quality</p><div class="band-unavail">Air quality unavailable</div>'; }
   try { renderHourly(fc); } catch (e) { $("#hourlyBand").innerHTML='<div class="band-unavail">Hourly forecast unavailable</div>'; }
   try { renderDaily(fc); } catch (e) { $("#dailyBand").innerHTML='<div class="band-unavail">10-day forecast unavailable</div>'; }
 })();

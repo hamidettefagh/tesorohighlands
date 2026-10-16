@@ -10,7 +10,7 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { rowsFromHistoryPayload } from "./purpleair-history-parse.mjs";
 
 const OUT = new URL("../purpleair-history.json", import.meta.url);
-const FIELDS = "pm2.5_atm,humidity";
+const FIELDS = "pm2.5_atm,pm2.5_atm_a,pm2.5_atm_b,humidity";   // same as api/purpleair-history.js
 
 const apiKey = process.env.PURPLEAIR_API_KEY;
 // Env-only, no default: a sensor index resolves to a street on PurpleAir's

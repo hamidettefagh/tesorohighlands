@@ -13,7 +13,8 @@
 
 const { correctAtmPm25, aqiFromPm25 } = require("./_epa.js");
 
-const FIELDS = "pm2.5_atm,humidity";
+// The two laser counters separately too, for the agreement check below.
+const FIELDS = "pm2.5_atm,pm2.5_atm_a,pm2.5_atm_b,humidity";
 
 // Shared with scripts/purpleair-history-parse.mjs so the cron and the endpoint
 // cannot drift apart.
@@ -24,6 +25,7 @@ function rowsFromHistoryPayload(raw) {
   const ti = fields.indexOf("time_stamp");
   const pi = fields.indexOf("pm2.5_atm");
   const hi = fields.indexOf("humidity");
+  const ai = fields.indexOf("pm2.5_atm_a"), bi = fields.indexOf("pm2.5_atm_b");
   if (ti < 0 || pi < 0 || hi < 0) return [];
   const rows = [];
   for (const row of data) {
@@ -32,6 +34,17 @@ function rowsFromHistoryPayload(raw) {
     const pmRaw = row[pi];
     const rhRaw = row[hi];
     if (pmRaw == null || rhRaw == null) continue;
+    // A PurpleAir has two laser counters. When they disagree by more than 5 µg/m³
+    // AND 70%, one of them is faulty (an insect or dust inside), and the hour is
+    // dropped rather than charted: the agreement check the EPA uses with this
+    // correction. In Oct 2026 our sensor charted AQI 500 overnight and 30 by day.
+    if (ai >= 0 && bi >= 0) {
+      const a = Number(row[ai]), b = Number(row[bi]);
+      if (Number.isFinite(a) && Number.isFinite(b)) {
+        const diff = Math.abs(a - b), mean = (a + b) / 2;
+        if (diff > 5 && mean > 0 && diff / mean > 0.7) continue;
+      }
+    }
     const y = correctAtmPm25(pmRaw, rhRaw);
     const aqi = y == null ? null : aqiFromPm25(y);
     if (!Number.isFinite(t) || aqi == null) continue;
