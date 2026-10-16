@@ -893,14 +893,18 @@ function overall(v){
     "Nothing at our doorstep, but there's an active fire worth watching — details below.");
   // Our own power (SCE's status for our circuit, via /api/power). Same tiers as
   // nav.js: off 72, expected or restoring 71, on SCE's list 62.
-  const pw = v.power && v.power.ours;
+  const pw = v.power && v.power.ours, rep = (v.power && v.power.reports) || {};
+  const nb = rep.on ? " " + rep.on + (rep.on === 1 ? " neighbor says theirs is" : " neighbors say theirs is") + " back." : "";
   if (pw) {
     const back = pw.ert ? " SCE's estimate: back by " + whenText(pw.ert) + "." : "";
-    if (pw.stage === "off") say(72, 1, "Our power is off — SCE safety shutoff",
-      "SCE shut off our circuit to prevent wildfires. Power comes back after the wind dies down and crews inspect the lines." + back + " Keep the fridge closed, and stay away from any downed line (call 911).");
+    // Enough neighbors say their power is back (check-ins below): say so, ahead of SCE's map.
+    if (/^(off|restoring)$/.test(pw.stage) && rep.verdict === "back") say(71, 1, "Power is back for most of us",
+      rep.on + " neighbors say theirs is on. SCE's map still says " + (pw.stage === "off" ? "shut off" : "restoring") + "; it often lags homes that already have power. Still out? Check in below.");
+    else if (pw.stage === "off") say(72, 1, "Our power is off — SCE safety shutoff",
+      "SCE shut off our circuit to prevent wildfires. Power comes back after the wind dies down and crews inspect the lines." + back + nb + " Keep the fridge closed, and stay away from any downed line (call 911).");
     else if (pw.stage === "restoring") say(71, 1, "SCE is restoring our power",
       "Crews inspect the lines before turning power back on, so some streets come back before others. If yours is already on, SCE's map just hasn't caught up yet." +
-      (pw.ert ? " SCE's estimate for everyone: back by " + whenText(pw.ert) + "." : ""));
+      (pw.ert ? " SCE's estimate for everyone: back by " + whenText(pw.ert) + "." : "") + nb);
     else if (pw.stage === "expected") say(71, 1, "SCE expects to shut off our power soon",
       "Charge phones and batteries now, and know how to open your garage door by hand.");
     else if (pw.stage === "watch") say(62, 1, "SCE may shut off our power" + (pw.windowEnd ? " until " + whenText(pw.windowEnd) : ""),
@@ -1158,8 +1162,8 @@ async function fetchQuakes(lat, lon){
 // Our own circuit, from SCE's outage map via /api/power (edge-cached a minute): shut
 // off, about to be, coming back, or on SCE's watch list; plus repair outages near
 // our streets. A failed read is "unknown", never "power on".
-async function fetchPower(){
-  const j = await fetch("/api/power").then(r=>r.json());
+async function fetchPower(bust){
+  const j = await fetch("/api/power" + (bust || "")).then(r=>r.json());
   if(!j || !j.ok) throw new Error("power status unavailable");
   return j;
 }
@@ -1537,7 +1541,13 @@ function render(){
       : our.stage === "watch" ? `<b>⚡ SCE may shut off our power</b>${our.windowEnd ? ` until ${at(our.windowEnd)}` : ""} (${esc(our.circuit)} circuit is on its watch list).`
       : `<b>Power is back on</b> for our circuit (${esc(our.circuit)}).`;
     const near = (pw.outages||[]).map(o => `<br>⚡ SCE outage ~${o.dist < 1 ? "under 1" : o.dist} mi ${esc(o.dir)} of our streets${o.customers ? ` · ~${Number(o.customers).toLocaleString()} customers` : ""}${o.cause ? ` · ${esc(o.cause)}` : ""}${o.ert ? ` · est. back ${at(o.ert)}` : ""}`).join("");
-    po.innerHTML = `<div class="note">${what}${near}<br><span style="color:var(--muted)">From SCE's outage map, checked ${(m => m < 1 ? "just now" : m + " min ago")(Math.round((Date.now() - Date.parse(pw.checkedAt)) / 60000))}. <a href="https://www.sce.com/outages-safety/outage-center/check-outage-status" target="_blank" rel="noopener">SCE's map ↗</a></span></div>`;
+    // Neighbor check-ins, while SCE has our circuit off, expected off, or coming back.
+    const r = pw.reports || {}, askNow = our && /^(off|restoring|expected)$/.test(our.stage);
+    let mine = ""; try { const m = JSON.parse(localStorage.getItem("tesoro.power.mine") || "null"); if (m && Date.now() - m.t < 12*3600*1000) mine = m.s; } catch(e){}
+    const tallyLine = (r.on || r.off) ? `<br><b>Neighbors checking in (last 2 hours):</b> ${r.on || 0} say their power is back · ${r.off || 0} still out.` : "";
+    const askHtml = askNow ? `<div class="pwask" role="group" aria-label="Is your power back?"><span>${mine ? "Thanks for checking in. Changed?" : "Is your power back? Tell neighbors (anonymous):"}</span>` +
+      `<button type="button" data-pw="on" aria-pressed="${mine === "on"}">💡 Yes, it's back</button><button type="button" data-pw="off" aria-pressed="${mine === "off"}">🕯️ Still out</button></div>` : "";
+    po.innerHTML = `<div class="note">${what}${near}${tallyLine}${askHtml}<br><span style="color:var(--muted)">From SCE's outage map, checked ${(m => m < 1 ? "just now" : m + " min ago")(Math.round((Date.now() - Date.parse(pw.checkedAt)) / 60000))}. <a href="https://www.sce.com/outages-safety/outage-center/check-outage-status" target="_blank" rel="noopener">SCE's map ↗</a></span></div>`;
   }
 
   // power outages — a failed feed says so; "none nearby" is a real claim
@@ -1743,6 +1753,26 @@ async function boot(){
     if (document.visibilityState !== "visible") return;
     try { live.power = await fetchPower(); if (live.ok) live.ok.power = true; render(); } catch(e){}
   }, 60*1000);
+  // A power check-in from the power card: anonymous, one per device (the same token
+  // and answer the home page uses), then a fresh read that skips the edge cache.
+  document.addEventListener("click", async (ev) => {
+    const b = ev.target.closest && ev.target.closest("#powerOurs .pwask button[data-pw]");
+    if (!b) return;
+    const state = b.getAttribute("data-pw");
+    let t = null; try { t = localStorage.getItem("tesoro.power.token"); } catch(e){}
+    if (!t || !/^[A-Za-z0-9_-]{16,64}$/.test(t)) {
+      const a = new Uint8Array(18); crypto.getRandomValues(a);
+      t = Array.from(a, x => x.toString(16).padStart(2, "0")).join("");
+      try { localStorage.setItem("tesoro.power.token", t); } catch(e){}
+    }
+    b.disabled = true;
+    try {
+      const j = await fetch("/api/power", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ state, token: t }) }).then(r => r.json());
+      if (!j || !j.ok) throw new Error("not saved");
+      try { localStorage.setItem("tesoro.power.mine", JSON.stringify({ s: state, t: Date.now() })); } catch(e){}
+      live.power = await fetchPower("?r=" + Date.now()); render();
+    } catch(e) { b.disabled = false; b.textContent = "Couldn't send, tap to retry"; }
+  });
   // Phones pause timers in background tabs — refetch when the tab comes back if
   // the data is older than 5 minutes, so a reopened page isn't quietly stale.
   document.addEventListener("visibilitychange", async ()=>{
@@ -1754,7 +1784,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=22" defer></script>
+<script src="/nav.js?v=23" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>

@@ -99,6 +99,10 @@ together — that is the point. Don't reintroduce a second formula.
 flow: nothing is public until approved, private details never reach the public list,
 home addresses are refused, and the limits hold.
 
+**Power test:** `node scripts/power.test.mjs` covers the live power endpoint and the
+neighbor check-ins: how they're counted, when they say "back for most of us", and the
+limits.
+
 **Alert bot shutoff test:** `node scripts/alert-watch.test.mjs` covers SCE's shutoff steps,
 which shutoff counts as ours (by place, not name), and that a shutoff nearby is never
 reported as ours.

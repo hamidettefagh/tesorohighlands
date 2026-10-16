@@ -90,6 +90,12 @@ check("shutoff expected", V({ power: power("expected") }), { lvl: 1, title: /exp
 check("power coming back", V({ power: power("restoring") }), { lvl: 1, title: /restoring our power/ });
 check("on SCE's watch list", V({ power: power("watch", { windowEnd: Date.parse("2026-10-16T21:00:00-07:00") }) }), { lvl: 1, title: /may shut off our power until/ });
 check("no shutoff for our circuit says nothing about power", V({ power: { ok: true, ours: null, outages: [] } }), { lvl: 0 });
+// Neighbor check-ins: SCE's map lags homes that already have power.
+const checkins = (stage, on, off, verdict) => ({ ...power(stage), reports: { on, off, verdict } });
+check("most neighbors say power is back: say so ahead of SCE", V({ power: checkins("restoring", 5, 1, "back") }), { lvl: 1, title: /Power is back for most of us/, text: /5 neighbors say theirs is on.*still says restoring/ });
+check("...even while SCE's map still says shut off", V({ power: checkins("off", 4, 0, "back") }), { title: /Power is back for most of us/, text: /still says shut off/ });
+check("a few check-ins are mentioned, not trusted over SCE", V({ power: checkins("off", 1, 2, "mixed") }), { title: /Our power is off/, text: /1 neighbor says theirs is back/ });
+check("check-ins don't override an evacuation", V({ power: checkins("restoring", 9, 0, "back"), evac: { lvl: 2 } }), { title: /Evacuation order/ });
 
 // --- A nearby evacuation is not our zone (lvl 0) but it is NOT "all clear" either.
 // This shipped green -- "Looks safe right now" -- while nav.js said amber for the
@@ -153,6 +159,7 @@ else if (warnOur[1] !== "90" || warnOur[2] !== "caution") {
 const navSrc = fs.readFileSync(path.join(ROOT, "nav.js"), "utf8");
 const ladder = [
   [/say\(72, 1, "⚡ Our power is off/, /say\(72, 1, "Our power is off/, "power off 72/1"],
+  [/say\(71, 1, "💡 Power is back for most of us/, /say\(71, 1, "Power is back for most of us/, "power back (check-ins) 71/1"],
   [/say\(71, 1, "⚡ SCE is restoring/, /say\(71, 1, "SCE is restoring/, "power restoring 71/1"],
   [/say\(71, 1, "⚡ SCE expects/, /say\(71, 1, "SCE expects/, "power expected 71/1"],
   [/say\(62, 1, "⚡ SCE may shut off/, /say\(62, 1, "SCE may shut off/, "power watch 62/1"],

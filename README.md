@@ -126,6 +126,16 @@ so it leads over a Red Flag or a distant fire but never over an evacuation or a 
 fire. A failed read shows "unknown", never "power on". If SCE moves the service, update
 `PSPS` / `OUTAGES` in `api/_power.js`.
 
+**Neighbor check-ins.** SCE's map lags homes that already have power (on Oct 15, 2026
+homes were back about two hours before SCE cleared the shutoff). While SCE lists our
+circuit as off, expected off, or restoring, the home page and the Fire page ask "Is your
+power back?" (💡 Yes / 🕯️ Still out). `POST /api/power` stores one anonymous answer per
+device (a random token in localStorage, hashed) in Upstash Redis; a check-in counts for
+two hours, and one address can send six an hour. When at least 3 say it's back and they
+outnumber "still out" 3 to 1, the pages say "Power is back for most of us" ahead of
+SCE (tier 71); otherwise SCE's line gains "N neighbors say theirs is back". Tests:
+`node scripts/power.test.mjs`.
+
 **Power shutoffs in the alert bot.** The bot uses the same `api/_power.js` rules. It
 alerts on each SCE step (on the watch list, expected, off, restoring, back on) and
 labels shutoffs within 10 miles "not our circuit". SCE's layers briefly read empty while

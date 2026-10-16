@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-15", "text": "During a power shutoff, neighbors can now tap “my power’s back” or “still out” on the home and Fire pages; once most say it’s back, the site says so, often hours before SCE’s map does", "href": "/" },
   { "date": "2026-10-15", "text": "When SCE is restoring our power, the site now says so plainly: power often comes back to some streets before SCE’s map catches up", "href": "/fire" },
   { "date": "2026-10-15", "text": "Live power status: the top of every page now says when SCE has shut off our power (or is about to), with SCE’s estimate for when it’s back, straight from SCE’s outage map and rechecked every minute", "href": "/fire" },
   { "date": "2026-10-14", "text": "Events has two new filters: ✨ New (anything added in the past week) and 🎁 Giveaways (free things for kids to take home)", "href": "/events" },

@@ -26,8 +26,9 @@ const bizApi = bizMod.makeHandler({
   notify: async name => console.log("[business] new submission waiting for approval: " + name),
 });
 
-// Live SCE power status for our circuit: the real handler, reading SCE's live data.
-const powerApi = require("./api/power.js");
+// Live SCE power status for our circuit: the real handler, reading SCE's live data,
+// with neighbor check-ins kept in memory (they vanish on restart).
+const powerApi = require("./api/power.js").makeHandler({ store: require("./api/_kv.js").memoryStore() });
 
 const dir = __dirname;
 const port = process.env.PORT || 3100;

@@ -135,7 +135,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v22";  // v22: "restoring" says power may already be back — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v23";  // v23: neighbor power check-ins — keep in step with nav.js?v=N
   // What the strip last saw about our power. A one-request check runs every
   // minute and redraws the strip only when this changes; the full status check
   // hits nine feeds, so it stays at every 4 minutes.
@@ -144,7 +144,28 @@
     if (!p || !p.ok) return "unknown";
     var o = p.ours;
     return (o ? o.stage + "|" + (o.ert || "") + "|" + (o.windowEnd || "") : "none") + "|" +
-      (p.outages || []).map(function (x) { return x.dist + ":" + (x.ert || ""); }).join(",");
+      (p.outages || []).map(function (x) { return x.dist + ":" + (x.ert || ""); }).join(",") + "|" +
+      (p.reports ? p.reports.on + ":" + p.reports.off : "");
+  }
+  // Neighbor check-ins during a shutoff ("my power's back" / "still out"). SCE's map
+  // lags homes that already have power; enough check-ins say so before SCE does.
+  // One anonymous random token per device; your own answer is kept for 12 hours.
+  var powerBust = "";   // set for one read right after a check-in, to skip the 30 s edge cache
+  function powerToken() {
+    var t = null;
+    try { t = localStorage.getItem("tesoro.power.token"); } catch (e) {}
+    if (!t || !/^[A-Za-z0-9_-]{16,64}$/.test(t)) {
+      var a = new Uint8Array(18); (window.crypto || window.msCrypto).getRandomValues(a);
+      t = Array.prototype.map.call(a, function (b) { return ("0" + b.toString(16)).slice(-2); }).join("");
+      try { localStorage.setItem("tesoro.power.token", t); } catch (e) {}
+    }
+    return t;
+  }
+  function myPower() {
+    try { var m = JSON.parse(localStorage.getItem("tesoro.power.mine") || "null"); return m && Date.now() - m.t < 12 * 3600 * 1000 ? m.s : ""; } catch (e) { return ""; }
+  }
+  function neighborsBack(r) {
+    return r && r.on ? " " + r.on + (r.on === 1 ? " neighbor says theirs is" : " neighbors say theirs is") + " back." : "";
   }
   // A fire this far contained stops raising alerts (same number as fire.html and
   // scripts/alert-watch.mjs; scripts/fire-status.test.mjs checks they match).
@@ -170,7 +191,7 @@
   var stripEl = null;
 
   async function computeStatus() {
-    var L = loc(), lvl = 0, text = "";
+    var L = loc(), lvl = 0, text = "", ask = false;
     var okAir = false, okAlerts = false, okFires = false, okEvac = false;
     var airAqi = null;
     // The checks race each other, so choose what to SAY by priority rather than by
@@ -193,15 +214,20 @@
       // Our own power: SCE's status for our circuit (via /api/power, edge-cached 30
       // seconds). Same tiers as fire.html: off 72, expected or restoring 71, on SCE's
       // list 62; a repair outage near our streets 64. A failed read says nothing.
-      fetch("/api/power").then(function (r) { return r.json(); }).then(function (p) {
+      fetch("/api/power" + powerBust).then(function (r) { return r.json(); }).then(function (p) {
         if (!p || !p.ok) return;
         powerSig = powerSigOf(p);
-        var o = p.ours, back = o && o.ert ? " SCE's estimate: back by " + whenT(o.ert) + "." : "";
-        if (o && o.stage === "off") say(72, 1, "⚡ Our power is off — SCE safety shutoff" + (o.wholeNeighborhood ? "" : " for part of the neighborhood") + "." + back);
+        var o = p.ours, rep = p.reports || {}, back = o && o.ert ? " SCE's estimate: back by " + whenT(o.ert) + "." : "";
+        // Neighbors can check in while SCE has our circuit off, expected off, or coming back.
+        ask = !!(o && /^(off|restoring|expected)$/.test(o.stage));
+        // Enough neighbors say their power is back: say so, ahead of SCE's map.
+        if (o && /^(off|restoring)$/.test(o.stage) && rep.verdict === "back") say(71, 1, "💡 Power is back for most of us: " + rep.on +
+          " neighbors say theirs is on. SCE's map still says " + (o.stage === "off" ? "shut off" : "restoring") + ".");
+        else if (o && o.stage === "off") say(72, 1, "⚡ Our power is off — SCE safety shutoff" + (o.wholeNeighborhood ? "" : " for part of the neighborhood") + "." + back + neighborsBack(rep));
         // SCE marks a circuit "restoring" while crews bring streets back one by one,
         // and its map often lags homes that already have power.
         else if (o && o.stage === "restoring") say(71, 1, "⚡ SCE is restoring our power. If yours is already back, SCE's map just hasn't caught up" +
-          (o.ert ? "; its estimate for everyone is " + whenT(o.ert) + "." : "."));
+          (o.ert ? "; its estimate for everyone is " + whenT(o.ert) + "." : ".") + neighborsBack(rep));
         else if (o && o.stage === "expected") say(71, 1, "⚡ SCE expects to shut off our power soon — charge phones and batteries now.");
         else if (o && o.stage === "watch") say(62, 1, "⚡ SCE may shut off our power" + (o.windowEnd ? " until " + whenT(o.windowEnd) : "") + ".");
         else if (p.outages && p.outages.length) {
@@ -424,10 +450,10 @@
           // "Good" is EPA's word for AQI 0–50; 51–100 is Moderate, and saying "good" there overstates it.
           : "All clear — " + (wet ? wet + ", " : "") + "air is " + (airAqi != null && airAqi > 50 ? "moderate" : "good") + " and no active alerts.";
       }
-      else if (okCount === 0) return { level: "neutral", text: "Live status unavailable right now — open the dashboard for details.", alerts: [] };
-      else return { level: "neutral", text: "No alerts in the live checks that loaded (" + okCount + "/4) — see the dashboard.", alerts: activeAlerts };
+      else if (okCount === 0) return { level: "neutral", text: "Live status unavailable right now — open the dashboard for details.", alerts: [], ask: ask };
+      else return { level: "neutral", text: "No alerts in the live checks that loaded (" + okCount + "/4) — see the dashboard.", alerts: activeAlerts, ask: ask };
     }
-    return { level: lvl >= 2 ? "danger" : lvl >= 1 ? "caution" : "ok", text: text, alerts: activeAlerts };
+    return { level: lvl >= 2 ? "danger" : lvl >= 1 ? "caution" : "ok", text: text, alerts: activeAlerts, ask: ask };
   }
 
   function render(st) {
@@ -446,6 +472,11 @@
         '<div class="eyebrow">Right now in Tesoro Highlands</div>' +
         '<div class="htext">' + st.text + "</div>" +
         (chips ? '<div class="halerts">' + chips + "</div>" : "") +
+        (st.ask ? (function (m) {
+          return '<div class="pwask" role="group" aria-label="Is your power back?"><span>' + (m ? "Thanks for checking in. Changed?" : "Is your power back?") + "</span>" +
+            '<button type="button" data-pw="on" aria-pressed="' + (m === "on") + '">💡 Yes, it&#39;s back</button>' +
+            '<button type="button" data-pw="off" aria-pressed="' + (m === "off") + '">🕯️ Still out</button></div>';
+        })(myPower()) : "") +
         '<a class="hlink" href="/fire">Open the full fire &amp; emergency dashboard &rarr;</a>';
     } else {
       if (!stripEl) {
@@ -469,6 +500,20 @@
       render(st);
     }).catch(function () {});
   }
+  // A check-in from the home page: anonymous, one per device; the strip re-reads
+  // right away (skipping the edge cache) so the tally includes it.
+  if (isHome) document.addEventListener("click", function (ev) {
+    var b = ev.target.closest && ev.target.closest(".pwask button[data-pw]");
+    if (!b) return;
+    var state = b.getAttribute("data-pw");
+    b.disabled = true;
+    fetch("/api/power", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ state: state, token: powerToken() }) })
+      .then(function (r) { return r.json(); }).then(function (j) {
+        if (!j || !j.ok) throw new Error("no");
+        try { localStorage.setItem("tesoro.power.mine", JSON.stringify({ s: state, t: Date.now() })); } catch (e) {}
+        powerBust = "?r=" + Date.now(); refreshStatus(); powerBust = "";
+      }).catch(function () { b.disabled = false; b.textContent = "Couldn't send, tap to retry"; });
+  });
   if (!isFire) {
     try {
       var c = JSON.parse(sessionStorage.getItem(CACHE_KEY));
