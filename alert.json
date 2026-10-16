@@ -1,12 +1,12 @@
 {
   "active": true,
-  "sig": "power:ours:off|redflag:b684f2305219788c77.004.1",
+  "sig": "power:ours:off|redflag:7a274ac8f93dd50f41.002.1",
   "level": "caution",
   "title": "Our power is shut off (SCE safety shutoff)",
-  "text": "⚡ Our power is shut off — SCE safety shutoff (Orion circuit)\nSCE has shut off our circuit to prevent wildfires. Power comes back after the wind dies down and crews inspect the lines. SCE’s estimate at 12:42 PM: back by Sat, Oct 17, 5 AM.\nKeep the fridge closed: it stays cold about 4 hours, a full freezer about 2 days. Downed line? Stay away and call 911.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
-  "waText": "⚡ *Our power is shut off — SCE safety shutoff (Orion circuit)*\nSCE has shut off our circuit to prevent wildfires. Power comes back after the wind dies down and crews inspect the lines. SCE’s estimate at 12:42 PM: back by Sat, Oct 17, 5 AM.\nKeep the fridge closed: it stays cold about 4 hours, a full freezer about 2 days. Downed line? Stay away and call 911.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "text": "⚡ Our power is shut off — SCE safety shutoff (Orion circuit)\nSCE has shut off our circuit to prevent wildfires. Power comes back after the wind dies down and crews inspect the lines. SCE’s estimate at 3:12 PM: back by Sat, Oct 17, 5 AM.\nKeep the fridge closed: it stays cold about 4 hours, a full freezer about 2 days. Downed line? Stay away and call 911.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "waText": "⚡ *Our power is shut off — SCE safety shutoff (Orion circuit)*\nSCE has shut off our circuit to prevent wildfires. Power comes back after the wind dies down and crews inspect the lines. SCE’s estimate at 3:12 PM: back by Sat, Oct 17, 5 AM.\nKeep the fridge closed: it stays cold about 4 hours, a full freezer about 2 days. Downed line? Stay away and call 911.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
   "others": [
     "Red Flag Warning"
   ],
-  "updatedAt": "2026-10-16T19:42:43.389Z"
+  "updatedAt": "2026-10-16T22:12:25.749Z"
 }
