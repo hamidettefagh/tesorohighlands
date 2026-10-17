@@ -1,12 +1,12 @@
 {
   "active": true,
-  "sig": "power:near|redflag:7091f2efe9c1981b28.003.1",
+  "sig": "power:near|redflag:2608f7c2c48c784049.002.1",
   "level": "caution",
   "title": "SCE shut off power nearby — not our circuit",
-  "text": "⚡ Power shutoffs nearby — not our circuit\nSCE has shut off power on 15 circuits near us: Romanus (under 1 mi east-southeast), Guitar (under 1 mi west), Blackbird (~2 mi south-southwest), Nighthawk (~2 mi southwest) and 11 more. Our circuit (Orion) was not on SCE’s shutoff list at 1:55 AM.\nCheck your address: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
-  "waText": "⚡ *Power shutoffs nearby — not our circuit*\nSCE has shut off power on 15 circuits near us: Romanus (under 1 mi east-southeast), Guitar (under 1 mi west), Blackbird (~2 mi south-southwest), Nighthawk (~2 mi southwest) and 11 more. Our circuit (Orion) was not on SCE’s shutoff list at 1:55 AM.\nCheck your address: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "text": "⚡ Power shutoffs nearby — not our circuit\nSCE has shut off power on 7 circuits near us: Guitar (under 1 mi west), Tuba (~2 mi north-northwest), Hillfield (~7 mi east-southeast), Mamba (~7 mi southeast) and 3 more. Our circuit (Orion) was not on SCE’s shutoff list at 11:01 AM.\nCheck your address: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "waText": "⚡ *Power shutoffs nearby — not our circuit*\nSCE has shut off power on 7 circuits near us: Guitar (under 1 mi west), Tuba (~2 mi north-northwest), Hillfield (~7 mi east-southeast), Mamba (~7 mi southeast) and 3 more. Our circuit (Orion) was not on SCE’s shutoff list at 11:01 AM.\nCheck your address: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
   "others": [
     "Red Flag Warning"
   ],
-  "updatedAt": "2026-10-17T08:55:21.631Z"
+  "updatedAt": "2026-10-17T18:01:37.926Z"
 }
