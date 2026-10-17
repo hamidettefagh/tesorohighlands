@@ -1,12 +1,12 @@
 {
   "active": true,
-  "sig": "power:ours:restoring|redflag:7091f2efe9c1981b28.003.1",
+  "sig": "power:near|redflag:7091f2efe9c1981b28.003.1",
   "level": "caution",
-  "title": "SCE is restoring our power",
-  "text": "⚡ Power coming back — our circuit (Orion)\nSCE is turning our power back on; crews inspect the lines first, so some streets come back before others. If yours is already on, SCE’s map just hasn’t caught up. SCE’s estimate at 9:50 PM: back by Sat, Oct 17, 5 AM.\nDowned line? Stay away and call 911.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
-  "waText": "⚡ *Power coming back — our circuit (Orion)*\nSCE is turning our power back on; crews inspect the lines first, so some streets come back before others. If yours is already on, SCE’s map just hasn’t caught up. SCE’s estimate at 9:50 PM: back by Sat, Oct 17, 5 AM.\nDowned line? Stay away and call 911.\nSCE status: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "title": "SCE shut off power nearby — not our circuit",
+  "text": "⚡ Power shutoffs nearby — not our circuit\nSCE has shut off power on 15 circuits near us: Romanus (under 1 mi east-southeast), Guitar (under 1 mi west), Blackbird (~2 mi south-southwest), Nighthawk (~2 mi southwest) and 11 more. Our circuit (Orion) was not on SCE’s shutoff list at 1:55 AM.\nCheck your address: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
+  "waText": "⚡ *Power shutoffs nearby — not our circuit*\nSCE has shut off power on 15 circuits near us: Romanus (under 1 mi east-southeast), Guitar (under 1 mi west), Blackbird (~2 mi south-southwest), Nighthawk (~2 mi southwest) and 11 more. Our circuit (Orion) was not on SCE’s shutoff list at 1:55 AM.\nCheck your address: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
   "others": [
     "Red Flag Warning"
   ],
-  "updatedAt": "2026-10-17T04:50:20.354Z"
+  "updatedAt": "2026-10-17T08:55:21.631Z"
 }
