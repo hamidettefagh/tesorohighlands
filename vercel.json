@@ -1,6 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "tesorohighlands.vercel.app" }],
+      "destination": "https://tesorohighlands.com/:path*",
+      "permanent": true
+    }
+  ],
   "functions": {
     "api/og-events.js": { "includeFiles": "og-events*.jpg" }
   },
