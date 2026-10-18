@@ -1,12 +1,5 @@
 {
-  "active": true,
-  "sig": "power:near|redflag:da81c56a00f39a888e.002.1",
-  "level": "caution",
-  "title": "SCE shut off power nearby — not our circuit",
-  "text": "⚡ Power shutoffs nearby — not our circuit\nSCE has shut off power on 8 circuits near us: Guitar (under 1 mi west), Clarinet (~4 mi west-northwest), Hillfield (~7 mi east-southeast), Mamba (~7 mi southeast) and 4 more. Our circuit (Orion) was not on SCE’s shutoff list at 3:31 PM.\nCheck your address: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
-  "waText": "⚡ *Power shutoffs nearby — not our circuit*\nSCE has shut off power on 8 circuits near us: Guitar (under 1 mi west), Clarinet (~4 mi west-northwest), Hillfield (~7 mi east-southeast), Mamba (~7 mi southeast) and 4 more. Our circuit (Orion) was not on SCE’s shutoff list at 3:31 PM.\nCheck your address: sce.com/outagemap\nLive info: https://tesorohighlands.com/fire",
-  "others": [
-    "Red Flag Warning"
-  ],
-  "updatedAt": "2026-10-17T22:31:03.010Z"
+  "active": false,
+  "sig": "",
+  "updatedAt": "2026-10-18T04:36:40.178Z"
 }
