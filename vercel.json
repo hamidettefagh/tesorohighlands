@@ -3,6 +3,12 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "tesorohighlands.vercel.app" }],
+      "destination": "https://tesorohighlands.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "tesorohighlands.vercel.app" }],
       "destination": "https://tesorohighlands.com/:path*",
