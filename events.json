@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T13:32:46.874Z",
+  "generatedAt": "2026-10-20T19:59:40.857Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -532,6 +532,34 @@
       "added": "2026-10-20T13:32:46.873Z"
     },
     {
+      "title": "The Heavies at Mosaic",
+      "url": "https://www.valenciatowncenter.com/event/45037-the-heavies-at-mosaic",
+      "start": "2026-10-22T19:00",
+      "venue": "Mosaic Santa Clarita Arts & Cultural Center, Valencia Town Center",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids"
+      ],
+      "source": "Valencia Town Center",
+      "added": "2026-10-20T19:59:40.857Z"
+    },
+    {
+      "title": "Folklorico At The Mosaic",
+      "url": "https://www.valenciatowncenter.com/event/45028-folklorico",
+      "start": "2026-10-23T19:00",
+      "venue": "Mosaic Santa Clarita Arts & Cultural Center, Valencia Town Center",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Valencia Town Center",
+      "added": "2026-10-20T19:59:40.857Z"
+    },
+    {
       "title": "SoCal Etsy Guild Market",
       "url": "https://www.valenciatowncenter.com/event/44994-socal-etsy-guild-market",
       "start": "2026-10-24T12:00",
@@ -714,13 +742,13 @@
       "added": "2026-10-14T07:55:13.493Z"
     },
     {
-      "title": "Find Your New Best Friend: Pet Adoption Event",
-      "url": "https://www.valenciatowncenter.com/event/44550-find-your-new-best-friend-pet-adoption-event",
-      "start": "2026-11-07T11:00",
-      "venue": "Valencia Town Center",
+      "title": "Meet the Artists at Mosaic Gallery!",
+      "url": "https://www.valenciatowncenter.com/event/44781-mosaic-gallery-reception-fatima-aya-kian",
+      "start": "2026-11-01T16:00",
+      "venue": "Mosaic Santa Clarita Arts & Cultural Center, Valencia Town Center",
       "city": "Valencia",
-      "free": false,
-      "price": null,
+      "free": true,
+      "price": "Free",
       "audience": [
         "everyone"
       ],
@@ -728,13 +756,13 @@
       "added": "2026-10-14T07:55:13.493Z"
     },
     {
-      "title": "Meet the Artists at Mosaic Gallery!",
-      "url": "https://www.valenciatowncenter.com/event/44781-mosaic-gallery-reception-fatima-aya-kian",
-      "start": "2026-11-07T16:00",
-      "venue": "Mosaic Santa Clarita Arts & Cultural Center, Valencia Town Center",
+      "title": "Find Your New Best Friend: Pet Adoption Event",
+      "url": "https://www.valenciatowncenter.com/event/44550-find-your-new-best-friend-pet-adoption-event",
+      "start": "2026-11-07T11:00",
+      "venue": "Valencia Town Center",
       "city": "Valencia",
-      "free": true,
-      "price": "Free",
+      "free": false,
+      "price": null,
       "audience": [
         "everyone"
       ],
