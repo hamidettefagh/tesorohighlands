@@ -1,168 +1,7 @@
 {
-  "generatedAt": "2026-10-21T04:44:44.472Z",
+  "generatedAt": "2026-10-21T13:47:15.622Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Baby and Toddler Storytime",
-      "url": "https://santaclarita.librarycalendar.com/event/baby-and-toddler-storytime-31476",
-      "start": "2026-10-20T09:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-10-20T09:30",
-        "2026-10-27T09:30",
-        "2026-11-03T09:30"
-      ],
-      "repeats": 2,
-      "added": "2026-10-16T13:14:57.420Z"
-    },
-    {
-      "title": "Storytime",
-      "url": "https://santaclarita.librarycalendar.com/event/storytime-31769",
-      "start": "2026-10-20T09:30",
-      "venue": "Valencia Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-10-20T09:30",
-        "2026-10-21T09:30",
-        "2026-10-22T09:30",
-        "2026-10-27T09:30",
-        "2026-10-28T09:30",
-        "2026-10-29T09:30",
-        "2026-11-03T09:30",
-        "2026-11-04T09:30",
-        "2026-11-05T09:30"
-      ],
-      "repeats": 8,
-      "added": "2026-10-16T13:14:57.420Z"
-    },
-    {
-      "title": "Open House Makerspace!",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-placeheld-open-house-makerspace-32447",
-      "start": "2026-10-20T10:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-10-20T10:00",
-        "2026-11-07T13:00"
-      ],
-      "repeats": 1,
-      "added": "2026-10-16T13:14:57.420Z"
-    },
-    {
-      "title": "Storytime",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-storytime-31487",
-      "start": "2026-10-20T11:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-10-20T11:00",
-        "2026-10-22T09:30",
-        "2026-10-27T11:00",
-        "2026-10-29T09:30",
-        "2026-11-03T11:00",
-        "2026-11-05T09:30"
-      ],
-      "repeats": 5,
-      "added": "2026-10-17T12:10:51.211Z"
-    },
-    {
-      "title": "Decorate a Real Pumpkin",
-      "url": "https://santaclarita.librarycalendar.com/event/decorate-real-pumpkin-32246",
-      "start": "2026-10-20T15:30",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-10-20T15:30"
-      ],
-      "added": "2026-10-17T12:10:51.211Z"
-    },
-    {
-      "title": "LEGO® Block Party",
-      "url": "https://santaclarita.librarycalendar.com/event/legor-block-party-31493",
-      "start": "2026-10-20T15:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-10-20T15:30"
-      ],
-      "added": "2026-10-17T12:10:51.211Z"
-    },
-    {
-      "title": "Teen Library Eats: Ghost Brew!",
-      "url": "https://santaclarita.librarycalendar.com/event/teen-library-eats-ghost-brew-32643",
-      "start": "2026-10-20T15:30",
-      "venue": "Valencia Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-10-20T15:30"
-      ],
-      "added": "2026-10-18T12:36:10.509Z"
-    },
-    {
-      "title": "\"Sweep in Harmony\"",
-      "url": "https://santaclarita.librarycalendar.com/event/adult-hold-sweep-harmony-31070",
-      "start": "2026-10-20T17:30",
-      "venue": "Valencia Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-10-20T17:30"
-      ],
-      "added": "2026-10-18T12:36:10.509Z"
-    },
     {
       "title": "Cuenta Cuentos",
       "url": "https://santaclarita.librarycalendar.com/event/cuenta-cuentos-31500",
@@ -204,6 +43,32 @@
       ],
       "repeats": 2,
       "added": "2026-10-18T12:36:10.509Z"
+    },
+    {
+      "title": "Storytime",
+      "url": "https://santaclarita.librarycalendar.com/event/storytime-31770",
+      "start": "2026-10-21T09:30",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-21T09:30",
+        "2026-10-22T09:30",
+        "2026-10-27T09:30",
+        "2026-10-28T09:30",
+        "2026-10-29T09:30",
+        "2026-11-03T09:30",
+        "2026-11-04T09:30",
+        "2026-11-05T09:30",
+        "2026-11-10T09:30"
+      ],
+      "repeats": 8,
+      "added": "2026-10-16T13:14:57.420Z"
     },
     {
       "title": "Bella Vida Book Club",
@@ -474,6 +339,30 @@
       "added": "2026-10-20T13:32:46.873Z"
     },
     {
+      "title": "Storytime",
+      "url": "https://santaclarita.librarycalendar.com/event/storytime-31519",
+      "start": "2026-10-22T09:30",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-22T09:30",
+        "2026-10-27T11:00",
+        "2026-10-29T09:30",
+        "2026-11-03T11:00",
+        "2026-11-05T09:30",
+        "2026-11-10T11:00"
+      ],
+      "repeats": 5,
+      "added": "2026-10-17T12:10:51.211Z"
+    },
+    {
       "title": "Hart Mansion Group Tour 10:00a.m.",
       "url": "https://santaclarita.librarycalendar.com/event/copy-hart-mansion-group-tour-1000am-36535",
       "start": "2026-10-22T10:00",
@@ -532,6 +421,76 @@
       "added": "2026-10-20T13:32:46.873Z"
     },
     {
+      "title": "Drum it Out: Teen Rhythm Sessions with Samuel Mazur",
+      "url": "https://santaclarita.librarycalendar.com/event/drums-samuel-mazur-32652",
+      "start": "2026-10-22T15:30",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-22T15:30"
+      ],
+      "added": "2026-10-21T13:47:15.622Z"
+    },
+    {
+      "title": "Teen Library Eats: Spooky Spider Parfaits!",
+      "url": "https://santaclarita.librarycalendar.com/event/teen-library-eats-spooky-spider-parfaits-31709",
+      "start": "2026-10-22T15:30",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-22T15:30"
+      ],
+      "added": "2026-10-21T13:47:15.622Z"
+    },
+    {
+      "title": "Read to a Dog",
+      "url": "https://santaclarita.librarycalendar.com/event/read-dog-32430",
+      "start": "2026-10-22T16:00",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-22T16:00"
+      ],
+      "added": "2026-10-21T13:47:15.622Z"
+    },
+    {
+      "title": "Dozen Read Proses",
+      "url": "https://santaclarita.librarycalendar.com/event/dozen-read-proses-26065",
+      "start": "2026-10-22T18:00",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-22T18:00"
+      ],
+      "added": "2026-10-21T13:47:15.622Z"
+    },
+    {
       "title": "The Heavies at Mosaic",
       "url": "https://www.valenciatowncenter.com/event/45037-the-heavies-at-mosaic",
       "start": "2026-10-22T19:00",
@@ -546,6 +505,43 @@
       "added": "2026-10-20T19:59:40.857Z"
     },
     {
+      "title": "All Together, Now!",
+      "url": "https://santaclarita.librarycalendar.com/event/placeholder-all-together-now-31627",
+      "start": "2026-10-23T11:00",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-23T11:00"
+      ],
+      "added": "2026-10-21T13:47:15.622Z"
+    },
+    {
+      "title": "Loud @ the Library: Powered by Music Lab 🎸",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-loud-library-powered-music-lab-37435",
+      "start": "2026-10-23T16:00",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-23T16:00",
+        "2026-10-30T16:00"
+      ],
+      "repeats": 1,
+      "added": "2026-10-21T13:47:15.622Z"
+    },
+    {
       "title": "Folklorico At The Mosaic",
       "url": "https://www.valenciatowncenter.com/event/45028-folklorico",
       "start": "2026-10-23T19:00",
@@ -558,6 +554,23 @@
       ],
       "source": "Valencia Town Center",
       "added": "2026-10-20T19:59:40.857Z"
+    },
+    {
+      "title": "Sit and Stitch",
+      "url": "https://santaclarita.librarycalendar.com/event/sit-and-stitch-24356",
+      "start": "2026-10-24T10:00",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-10-24T10:00"
+      ],
+      "added": "2026-10-21T13:47:15.622Z"
     },
     {
       "title": "SoCal Etsy Guild Market",
