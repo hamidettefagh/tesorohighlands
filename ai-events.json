@@ -1,173 +1,93 @@
 {
-  "generatedAt": "2026-10-20T18:01:44.261Z",
+  "generatedAt": "2026-10-21T18:08:10.055Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Fright Fest (Nighttime Event)",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-22T18:30",
-      "venue": "Six Flags Magic Mountain, 26101 Magic Mountain Parkway",
-      "city": "Valencia",
-      "free": false,
-      "price": "Park admission (mazes extra)",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain",
-      "added": "2026-10-20T18:01:44.261Z"
-    },
-    {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch (Weekends)",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-10-24T09:00",
-      "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-20T18:01:44.261Z"
-    },
-    {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
-      "start": "2026-10-25T08:00",
-      "venue": "College of the Canyons Parking Lot 5, Valencia Blvd & Rockwell Canyon Rd",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-20T18:01:44.261Z"
-    },
-    {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch (Weekends)",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch",
       "start": "2026-10-25T09:00",
       "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
+        "toddlers",
         "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-20T18:01:44.261Z"
+      "via": "Gilchrist Farm",
+      "added": "2026-10-21T18:08:10.055Z"
     },
     {
-      "title": "Fright Fest (Tricks and Treats - Family-Friendly Daytime)",
-      "url": "https://www.sixflags.com/magicmountain/events/tricks-and-treats",
-      "start": "2026-10-25T12:00",
+      "title": "Tricks and Treats at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-10-29T12:00",
       "venue": "Six Flags Magic Mountain, 26101 Magic Mountain Parkway",
       "city": "Valencia",
       "free": false,
       "price": "Park admission",
       "audience": [
-        "kids",
-        "adults"
+        "kids"
       ],
       "source": "Web (AI)",
       "via": "Six Flags Magic Mountain",
-      "added": "2026-10-20T18:01:44.261Z"
+      "added": "2026-10-21T18:08:10.055Z"
     },
     {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch (Weekdays)",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-10-27T09:00",
-      "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-20T18:01:44.261Z"
-    },
-    {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch (Weekends)",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-10-31T09:00",
-      "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-20T18:01:44.261Z"
-    },
-    {
-      "title": "Fright Fest (Tricks and Treats - Family-Friendly Daytime)",
-      "url": "https://www.sixflags.com/magicmountain/events/tricks-and-treats",
-      "start": "2026-10-31T12:00",
+      "title": "Fright Fest at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-10-29T18:30",
       "venue": "Six Flags Magic Mountain, 26101 Magic Mountain Parkway",
       "city": "Valencia",
       "free": false,
-      "price": "Park admission",
+      "price": "Park admission + Haunted Attractions Pass",
       "audience": [
-        "kids",
+        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Six Flags Magic Mountain",
-      "added": "2026-10-20T18:01:44.261Z"
+      "added": "2026-10-21T18:08:10.055Z"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
-      "start": "2026-11-01T08:00",
-      "venue": "College of the Canyons Parking Lot 5, Valencia Blvd & Rockwell Canyon Rd",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-20T18:01:44.261Z"
-    },
-    {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch (Weekends)",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
-      "start": "2026-11-01T09:00",
-      "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
+      "title": "So Cal Bike Expo",
+      "url": "https://calendar.santaclarita.gov/calendar/10",
+      "start": "2026-10-30T12:00",
+      "venue": "Central Park, 27150 Bouquet Canyon Road",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita",
+      "added": "2026-10-21T18:08:10.055Z"
+    },
+    {
+      "title": "Eternamente: A Día de los Muertos Spectacular!",
+      "url": "https://pac.canyons.edu/shows/eternamente.php",
+      "start": "2026-10-30T20:00",
+      "venue": "Santa Clarita Performing Arts Center, College of the Canyons",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Check website for pricing",
+      "audience": [
         "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-20T18:01:44.261Z"
+      "via": "College of the Canyons",
+      "added": "2026-10-21T18:08:10.055Z"
     },
     {
-      "title": "Free Home Depot Kids Workshop: Dump Truck",
+      "title": "Free Build a Dump Truck: Home Depot Kids Workshop",
       "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-11-07T09:00",
-      "venue": "The Home Depot, 25250 Golden Triangle Rd",
+      "venue": "The Home Depot, Golden Triangle Rd",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -176,29 +96,13 @@
       ],
       "source": "Web (AI)",
       "via": "Home Depot",
-      "added": "2026-10-20T18:01:44.261Z"
+      "added": "2026-10-21T18:08:10.055Z"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
-      "start": "2026-11-08T08:00",
-      "venue": "College of the Canyons Parking Lot 5, Valencia Blvd & Rockwell Canyon Rd",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-20T18:01:44.261Z"
-    },
-    {
-      "title": "Free Lowe's Kids Workshop: Holiday Engine",
-      "url": "https://thekrazycouponlady.com/tips/store-hacks/lowes-kids-workshop-kits",
+      "title": "Free Build a Holiday Engine: Lowe's Kids Workshop",
+      "url": "https://www.lowes.com/l/find-a-store",
       "start": "2026-11-14T10:00",
-      "venue": "Lowe's, Golden Valley Rd",
+      "venue": "Lowe's (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -207,29 +111,13 @@
       ],
       "source": "Web (AI)",
       "via": "Lowe's",
-      "added": "2026-10-20T18:01:44.261Z"
+      "added": "2026-10-21T18:08:10.055Z"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
-      "start": "2026-11-15T08:00",
-      "venue": "College of the Canyons Parking Lot 5, Valencia Blvd & Rockwell Canyon Rd",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-20T18:01:44.261Z"
-    },
-    {
-      "title": "Free Home Depot Kids Workshop: Christmas Car Ornament",
+      "title": "Free Christmas Car Ornament: Home Depot Kids Workshop",
       "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-11-21T09:00",
-      "venue": "The Home Depot, 25250 Golden Triangle Rd",
+      "venue": "The Home Depot (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -238,11 +126,11 @@
       ],
       "source": "Web (AI)",
       "via": "Home Depot",
-      "added": "2026-10-20T18:01:44.261Z"
+      "added": "2026-10-21T18:08:10.055Z"
     },
     {
-      "title": "Light Up Main Street",
-      "url": "https://calendar.santaclarita.gov/event/light-up-main-street-presented-by-drinkpak-5329",
+      "title": "Light Up Main Street: Holiday Tree Lighting Ceremony",
+      "url": "https://www.eventsincalifornia.com/events/family/tree-lighting-ceremony-old-town-newhall-santa-clarita-ca-nov-21-2026/",
       "start": "2026-11-21T16:00",
       "venue": "Main Street, Old Town Newhall",
       "city": "Newhall",
@@ -253,28 +141,12 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-19T19:23:02.339Z"
+      "via": "City of Santa Clarita",
+      "added": "2026-10-21T18:08:10.055Z"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
-      "start": "2026-11-22T08:00",
-      "venue": "College of the Canyons Parking Lot 5, Valencia Blvd & Rockwell Canyon Rd",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-20T18:01:44.261Z"
-    },
-    {
-      "title": "Holiday in the Park (Select Days)",
-      "url": "https://www.sixflags.com/magicmountain/events/holiday-in-the-park",
+      "title": "Holiday in the Park at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain",
       "start": "2026-11-26T10:30",
       "venue": "Six Flags Magic Mountain, 26101 Magic Mountain Parkway",
       "city": "Valencia",
@@ -286,23 +158,38 @@
       ],
       "source": "Web (AI)",
       "via": "Six Flags Magic Mountain",
-      "added": "2026-10-20T18:01:44.261Z"
+      "added": "2026-10-21T18:08:10.055Z"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
-      "start": "2026-11-29T08:00",
-      "venue": "College of the Canyons Parking Lot 5, Valencia Blvd & Rockwell Canyon Rd",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
+      "title": "It's a Wonderful Life at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/2026-27season",
+      "start": "2026-11-27T19:00",
+      "venue": "Canyon Theatre Guild, 24242 Main Street",
+      "city": "Newhall",
+      "free": false,
+      "price": "$19-$21",
       "audience": [
         "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-20T18:01:44.261Z"
+      "via": "Canyon Theatre Guild",
+      "added": "2026-10-21T18:08:10.055Z"
+    },
+    {
+      "title": "Free Holiday Train: Home Depot Kids Workshop",
+      "url": "https://www.homedepot.com/c/kids-workshop",
+      "start": "2026-12-05T09:00",
+      "venue": "The Home Depot (select stores, call ahead)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Web (AI)",
+      "via": "Home Depot",
+      "added": "2026-10-21T18:08:10.055Z"
     }
   ]
 }
