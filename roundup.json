@@ -1,72 +1,63 @@
 {
-  "generatedAt": "2026-10-16T18:51:43.434Z",
-  "weekendOf": "2026-10-16",
+  "generatedAt": "2026-10-23T19:21:50.422Z",
+  "weekendOf": "2026-10-23",
   "model": "claude-haiku-4-5",
-  "intro": "Family fun and local flavor this weekend in Tesoro Highlands.",
+  "intro": "Good weekend vibes for Tesoro Highlands — here's what's worth your time:",
   "picks": [
     {
       "emoji": "🎃",
-      "day": "Fri",
-      "time": "6 PM",
-      "title": "Mission View Trunk or Treat",
-      "price": "free",
-      "note": "Free trunk-or-treat for all ages—festive and easy.",
-      "url": "https://calendar.santaclarita.gov/event/mission-view-trunk-or-treat"
-    },
-    {
-      "emoji": "🌽",
       "day": "Sat",
-      "time": "8:30 AM",
-      "title": "Old Town Newhall Farmers Market",
+      "time": "9 AM",
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
       "price": "free",
-      "note": "Fresh local produce and community vibe Saturday morning.",
-      "url": "https://oldtownnewhall.com/old-town-newhall-farmers-market/"
-    },
-    {
-      "emoji": "🧱",
-      "day": "Sat",
-      "time": "12 PM",
-      "title": "Geoffrey's birthday: build and take home a free LEGO giraffe",
-      "price": "free",
-      "note": "Free LEGO building activity keeps kids engaged and happy.",
-      "url": "https://www.macys.com/s/events/"
+      "note": "Perfect for little ones: pumpkins, hayrides, harvest fun",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch"
     },
     {
       "emoji": "📚",
       "day": "Sat",
       "time": "11 AM",
-      "title": "Family Storytime",
+      "title": "Weekly Saturday Storytime at Barnes & Noble Valencia",
       "price": "free",
-      "note": "Cozy library storytime for the littlest listeners.",
-      "url": "https://santaclarita.librarycalendar.com/event/family-storytime-37824"
+      "note": "Saturday storytime for the toddler crowd",
+      "url": "https://stores.barnesandnoble.com/store/2642"
     },
     {
-      "emoji": "👻",
-      "day": "Fri",
-      "time": "7 PM",
-      "title": "Bar Harbor Scares",
+      "emoji": "🛍️",
+      "day": "Sat",
+      "time": "12 PM",
+      "title": "SoCal Etsy Guild Market",
       "price": "free",
-      "note": "Spooky scares that work for families and thrill-seekers.",
-      "url": "https://calendar.santaclarita.gov/event/bar-harbor-scares-7914"
+      "note": "Local makers market, browse and support small businesses",
+      "url": "https://www.valenciatowncenter.com/event/44994-socal-etsy-guild-market"
     },
     {
       "emoji": "🍺",
       "day": "Fri",
       "time": "6 PM",
-      "title": "Live Music at Lucky Luke Brewing",
-      "price": "",
-      "note": "Live music and craft beer for adults to unwind Friday.",
+      "title": "Live Music at Lucky Luke Brewing Company",
+      "price": "free",
+      "note": "Live music and good beer for a Friday night out",
       "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing"
     },
     {
-      "emoji": "📖",
+      "emoji": "🎤",
+      "day": "Sat",
+      "time": "8 PM",
+      "title": "Standup Comedy @ Red Dot Pizza",
+      "price": "$17.85",
+      "note": "Saturday night laughs — standup comedy at Red Dot Pizza",
+      "url": "https://www.eventbrite.com/e/standup-comedy-red-dot-pizza-tickets-2003268777841"
+    },
+    {
+      "emoji": "🥕",
       "day": "Sun",
-      "time": "2:30 PM",
-      "title": "Silent Book Club",
+      "time": "8 AM",
+      "title": "Santa Clarita Certified Farmers Market",
       "price": "free",
-      "note": "Quiet time to read with fellow book lovers Sunday afternoon.",
-      "url": "https://santaclarita.librarycalendar.com/event/hold-adult-silent-book-club-23816"
+      "note": "Sunday morning farmers market, fresh local produce",
+      "url": "https://www.vccfm.org/santa-clarita"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nFamily fun and local flavor this weekend in Tesoro Highlands.\n\n🎃 *Fri 6 PM* — Mission View Trunk or Treat (free)\n   Free trunk-or-treat for all ages—festive and easy.\n🌽 *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Fresh local produce and community vibe Saturday morning.\n🧱 *Sat 12 PM* — Geoffrey's birthday: build and take home a free LEGO giraffe (free)\n   Free LEGO building activity keeps kids engaged and happy.\n📚 *Sat 11 AM* — Family Storytime (free)\n   Cozy library storytime for the littlest listeners.\n👻 *Fri 7 PM* — Bar Harbor Scares (free)\n   Spooky scares that work for families and thrill-seekers.\n🍺 *Fri 6 PM* — Live Music at Lucky Luke Brewing\n   Live music and craft beer for adults to unwind Friday.\n📖 *Sun 2:30 PM* — Silent Book Club (free)\n   Quiet time to read with fellow book lovers Sunday afternoon.\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nGood weekend vibes for Tesoro Highlands — here's what's worth your time:\n\n🎃 *Sat 9 AM* — Gilchrist Farm Harvest Festival & Pumpkin Patch (free)\n   Perfect for little ones: pumpkins, hayrides, harvest fun\n📚 *Sat 11 AM* — Weekly Saturday Storytime at Barnes & Noble Valencia (free)\n   Saturday storytime for the toddler crowd\n🛍️ *Sat 12 PM* — SoCal Etsy Guild Market (free)\n   Local makers market, browse and support small businesses\n🍺 *Fri 6 PM* — Live Music at Lucky Luke Brewing Company (free)\n   Live music and good beer for a Friday night out\n🎤 *Sat 8 PM* — Standup Comedy @ Red Dot Pizza ($17.85)\n   Saturday night laughs — standup comedy at Red Dot Pizza\n🥕 *Sun 8 AM* — Santa Clarita Certified Farmers Market (free)\n   Sunday morning farmers market, fresh local produce\n\nFull list → https://tesorohighlands.com/events"
 }
