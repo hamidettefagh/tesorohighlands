@@ -451,7 +451,7 @@
     });
 
     // ---- Auto-updated attendable events, filterable by audience + date ----
-    var allEvents = [], currentFilter = "all", currentWhen = "any", currentQuery = "", showAllEvents = false;
+    var allEvents = [], currentFilter = "all", currentWhen = "any", currentQuery = "", expandLevel = 0; // 0: first rows, 1: next two weeks, 2: every date
     // Last-visit snapshot (shared semantics with the home page): whichever page
     // loads first this session bumps tesoro.seenAt, so read the session snapshot.
     var seenAt = +(sessionStorage.getItem("tesoro.seenSnap") || 0);
@@ -515,6 +515,7 @@
       }
       return true;
     }
+    var FIRST_ROWS = 10;
     function renderFeed() {
       var el = document.getElementById("feedList");
       var list = allEvents.filter(function (e) {
@@ -537,7 +538,8 @@
       // the sections below the feed stop being buried under a two-month scroll.
       // New and Giveaways are short lists, so they show every date.
       var hiddenCount = 0, total = list.length;
-      if (currentWhen === "any" && !currentQuery && !showAllEvents && currentFilter !== "new" && currentFilter !== "gift") {
+      var trimmable = currentWhen === "any" && !currentQuery && currentFilter !== "new" && currentFilter !== "gift";
+      if (trimmable && expandLevel < 2) {
         var limit = Date.now() + 14 * 86400000;
         var near = list.filter(function (e) { return startMs(e._start) <= limit; });
         if (near.length && near.length < list.length) { hiddenCount = list.length - near.length; list = near; }
@@ -554,12 +556,22 @@
         groups.push(byKey[k]);
       });
 
+      // ...and it opens on the first few rows. With every calendar pulled in, two
+      // weeks ran to 70+ rows and about 13 phone screens.
+      var moreRows = 0;
+      if (trimmable && expandLevel < 1 && groups.length > FIRST_ROWS + 3) {
+        moreRows = groups.length - FIRST_ROWS;
+        groups = groups.slice(0, FIRST_ROWS);
+      }
+
       var lastDay = null;
       el.innerHTML = groups.map(function (g) {
         var head = "";
         if (g.day !== lastDay) { lastDay = g.day; head = '<div class="dayhead">' + dayLabel(g.day) + "</div>"; }
         return head + itemHtml(g.e, g.times);
-      }).join("") + (hiddenCount ? '<div class="morewrap"><button type="button" class="showall" id="showAllBtn">Show all ' + total + " events →</button></div>" : "");
+      }).join("") + (
+        moreRows ? '<div class="morewrap"><button type="button" class="showall" data-expand="1">Show ' + moreRows + " more in the next two weeks →</button></div>" :
+        hiddenCount ? '<div class="morewrap"><button type="button" class="showall" data-expand="2">Show all ' + total + " events →</button></div>" : "");
     }
     // Something to take home for free ("a free LEGO giraffe", "free Kids Workshop"
     // kits, giveaways). A free movie night or free admission is just Free, not this.
@@ -593,8 +605,9 @@
       renderFeed();
     });
     document.getElementById("feedList").addEventListener("click", function (ev) {
-      if (!ev.target.closest("#showAllBtn")) return;
-      showAllEvents = true;
+      var b = ev.target.closest(".showall[data-expand]");
+      if (!b) return;
+      expandLevel = Number(b.getAttribute("data-expand"));
       renderFeed();
     });
 

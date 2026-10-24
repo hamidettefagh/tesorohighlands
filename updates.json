@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-24", "text": "Shorter pages: Events opens on the next 10 things to do (tap for more), Living Here folds away the holiday dates and the where-does-this-go guide, and HOA lists each document and right as a title you tap to read", "href": "/events" },
   { "date": "2026-10-24", "text": "Steadier pages on phones: Home, Weather and the treat map no longer jump around while live readings load, so you don’t tap the wrong thing", "href": "/" },
   { "date": "2026-10-15", "text": "Weather page fix: when the backyard air sensor fails its quality check (it has been reading AQI 500 on and off, a sign it needs cleaning), the page now shows the EPA monitor’s reading and says why, instead of “unavailable,” and the 24-hour air chart leaves out the faulty hours", "href": "/weather" },
   { "date": "2026-10-15", "text": "During a power shutoff, neighbors can now tap “my power’s back” or “still out” on the home and Fire pages; once most say it’s back, the site says so, often hours before SCE’s map does", "href": "/" },

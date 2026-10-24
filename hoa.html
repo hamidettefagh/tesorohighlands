@@ -55,6 +55,16 @@
   .svc .dt{font-size:12.5px;color:var(--ink-2);line-height:1.55;margin-top:2px;}
   .svc .dt a{color:var(--accent);text-decoration:none;font-weight:600;}
   .svc .dt a:hover{text-decoration:underline;}
+  /* Each document and each right folds to its title (2026-10-24): the page reads
+     as a menu of nine questions instead of nearly five phone screens of text. */
+  details.svcf{display:block;padding:0;}
+  details.svcf > summary{display:flex;gap:12px;align-items:flex-start;padding:12px 0;min-height:44px;cursor:pointer;list-style:none;}
+  details.svcf > summary::-webkit-details-marker{display:none;}
+  details.svcf > summary::after{content:"▾";flex:none;color:var(--ink-2);font-size:17px;line-height:1.2;padding:0 2px;}
+  details.svcf[open] > summary::after{content:"▴";}
+  details.svcf > summary:hover .nm{text-decoration:underline;text-underline-offset:3px;}
+  details.svcf > .dt{margin:-4px 0 0;padding:0 18px 13px 38px;}
+  .foldhint{font-size:12.5px;color:var(--muted);margin:0 2px 8px;}
   .clist{list-style:none;margin:0;padding:2px 0;}
   .clist li{font-size:13.5px;color:var(--ink-2);line-height:1.55;padding:9px 0 9px 30px;position:relative;border-top:1px solid var(--line-2);}
   .clist li:first-child{border-top:0;}
@@ -98,22 +108,23 @@
 
     <section id="docs">
       <div class="sechead"><h2>Know your documents</h2><div class="line"></div></div>
+      <p class="foldhint">Tap any one to read more.</p>
       <div class="card">
-        <div class="svc"><span class="ic">📜</span><div class="bd"><div class="nm">CC&amp;Rs — the rulebook that runs with your deed</div><div class="dt">Covenants, Conditions &amp; Restrictions: what you can and can't do with your property, what the HOA maintains, and how assessments work. You agreed to these when you bought — worth actually reading once.</div></div></div>
-        <div class="svc"><span class="ic">🏛️</span><div class="bd"><div class="nm">Bylaws — how the association itself runs</div><div class="dt">Board size, terms, officer roles, meeting and election mechanics. This is the document to check when you wonder "can the board even do that?"</div></div></div>
-        <div class="svc"><span class="ic">🎨</span><div class="bd"><div class="nm">Architectural guidelines &amp; operating rules</div><div class="dt">Paint palettes, landscaping standards, parking rules, and the approval process for exterior changes. Submit the request <b>before</b> the work — retroactive approvals are the hard way.</div></div></div>
-        <div class="svc"><span class="ic">📥</span><div class="bd"><div class="nm">Where to get them</div><div class="dt">They're in your escrow/closing packet, and every owner is entitled to copies from the association (California Civil Code 5205) — request them through the management company. Buying or selling? The seller must provide them.</div></div></div>
+        <details class="svc svcf"><summary><span class="ic">📜</span><span class="bd"><span class="nm">CC&amp;Rs — the rulebook that runs with your deed</span></span></summary><div class="dt">Covenants, Conditions &amp; Restrictions: what you can and can't do with your property, what the HOA maintains, and how assessments work. You agreed to these when you bought — worth actually reading once.</div></details>
+        <details class="svc svcf"><summary><span class="ic">🏛️</span><span class="bd"><span class="nm">Bylaws — how the association itself runs</span></span></summary><div class="dt">Board size, terms, officer roles, meeting and election mechanics. This is the document to check when you wonder "can the board even do that?"</div></details>
+        <details class="svc svcf"><summary><span class="ic">🎨</span><span class="bd"><span class="nm">Architectural guidelines &amp; operating rules</span></span></summary><div class="dt">Paint palettes, landscaping standards, parking rules, and the approval process for exterior changes. Submit the request <b>before</b> the work — retroactive approvals are the hard way.</div></details>
+        <details class="svc svcf"><summary><span class="ic">📥</span><span class="bd"><span class="nm">Where to get them</span></span></summary><div class="dt">They're in your escrow/closing packet, and every owner is entitled to copies from the association (California Civil Code 5205) — request them through the management company. Buying or selling? The seller must provide them.</div></details>
       </div>
     </section>
 
     <section id="rights">
       <div class="sechead"><h2>Your rights under California law</h2><div class="line"></div></div>
       <div class="card">
-        <div class="svc"><span class="ic">🚪</span><div class="bd"><div class="nm">Board meetings are open to you <span class="code">Civil Code 4900–4955</span></div><div class="dt">The Open Meeting Act: members may attend board meetings, agendas are posted in advance, and there's an open forum where any member can speak. Boards can only handle limited topics (like personnel or litigation) in closed executive session.</div></div></div>
-        <div class="svc"><span class="ic">🗂️</span><div class="bd"><div class="nm">You can inspect the records <span class="code">Civil Code 5200–5240</span></div><div class="dt">Budgets, meeting minutes, vendor contracts, reserve studies, and more — put the request in writing and the association must produce them. This is how "where do our dues go?" gets answered with documents instead of rumors.</div></div></div>
-        <div class="svc"><span class="ic">📣</span><div class="bd"><div class="nm">You can speak up and organize <span class="code">Civil Code 4515</span></div><div class="dt">Peacefully assembling, canvassing neighbors, distributing flyers about community matters, and criticizing the board are all protected — the association can't retaliate or charge you a fee for it.</div></div></div>
-        <div class="svc"><span class="ic">🗳️</span><div class="bd"><div class="nm">Elections have real rules <span class="code">Civil Code 5100–5145</span></div><div class="dt">Director elections use secret ballots with independent inspectors of elections, and members can inspect the voter list and ballots afterward.</div></div></div>
-        <div class="svc"><span class="ic">☀️</span><div class="bd"><div class="nm">Improvements they can shape but not ban</div><div class="dt">California protects <b>solar panels</b> (Civil Code 714), <b>EV chargers</b> (4745), <b>drought-tolerant landscaping</b> (4735), and even <b>clotheslines</b> (4750). The HOA can apply reasonable aesthetic standards — it can't say no outright.</div></div></div>
+        <details class="svc svcf"><summary><span class="ic">🚪</span><span class="bd"><span class="nm">Board meetings are open to you <span class="code">Civil Code 4900–4955</span></span></span></summary><div class="dt">The Open Meeting Act: members may attend board meetings, agendas are posted in advance, and there's an open forum where any member can speak. Boards can only handle limited topics (like personnel or litigation) in closed executive session.</div></details>
+        <details class="svc svcf"><summary><span class="ic">🗂️</span><span class="bd"><span class="nm">You can inspect the records <span class="code">Civil Code 5200–5240</span></span></span></summary><div class="dt">Budgets, meeting minutes, vendor contracts, reserve studies, and more — put the request in writing and the association must produce them. This is how "where do our dues go?" gets answered with documents instead of rumors.</div></details>
+        <details class="svc svcf"><summary><span class="ic">📣</span><span class="bd"><span class="nm">You can speak up and organize <span class="code">Civil Code 4515</span></span></span></summary><div class="dt">Peacefully assembling, canvassing neighbors, distributing flyers about community matters, and criticizing the board are all protected — the association can't retaliate or charge you a fee for it.</div></details>
+        <details class="svc svcf"><summary><span class="ic">🗳️</span><span class="bd"><span class="nm">Elections have real rules <span class="code">Civil Code 5100–5145</span></span></span></summary><div class="dt">Director elections use secret ballots with independent inspectors of elections, and members can inspect the voter list and ballots afterward.</div></details>
+        <details class="svc svcf"><summary><span class="ic">☀️</span><span class="bd"><span class="nm">Improvements they can shape but not ban</span></span></summary><div class="dt">California protects <b>solar panels</b> (Civil Code 714), <b>EV chargers</b> (4745), <b>drought-tolerant landscaping</b> (4735), and even <b>clotheslines</b> (4750). The HOA can apply reasonable aesthetic standards — it can't say no outright.</div></details>
       </div>
       <div class="note">Section numbers refer to the California Civil Code (the "Davis-Stirling Act"). Always read the actual text — linked below — before acting on it.</div>
     </section>
