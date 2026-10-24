@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-24", "text": "Safety fix: evacuation alerts now check our own streets. The site used to check one point 1.8 miles east, which is in a different evacuation zone; in the January 2025 Hughes Fire our streets were under an evacuation ORDER while that point was only under a warning, so the site would have said “be ready” instead of “leave now”", "href": "/fire#evac" },
   { "date": "2026-10-24", "text": "Less to scroll on the Fire page: the power card shrinks to one line when there’s no outage, the group-chat share card is smaller, and the health advice only appears when the air or a nearby fire calls for it", "href": "/fire" },
   { "date": "2026-10-24", "text": "Shorter pages: Events opens on the next 10 things to do (tap for more), Living Here folds away the holiday dates and the where-does-this-go guide, and HOA lists each document and right as a title you tap to read", "href": "/events" },
   { "date": "2026-10-24", "text": "Steadier pages on phones: Home, Weather and the treat map no longer jump around while live readings load, so you don’t tap the wrong thing", "href": "/" },

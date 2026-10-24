@@ -107,6 +107,10 @@ limits.
 which shutoff counts as ours (by place, not name), and that a shutoff nearby is never
 reported as ours.
 
+**Evacuation zone test:** `node scripts/evac-zone.test.mjs` replays the Hughes Fire (Jan 2025)
+with the official zone boundaries through all three copies of the "is this our zone?" check,
+and fails if their copies of the street points or the home point drift apart.
+
 **Treat map test:** `node scripts/treats.test.mjs` covers the Halloween map's code check,
 who can change which pin, the limits, and the season edges.
 
@@ -123,6 +127,14 @@ is matched, change all three. They disagreeing is a bug that has bitten this pro
 more than once. One shared number: `WELL_CONTAINED` (75), the containment at which a
 fire stops raising alerts but stays in the list. The fire-status test checks all three
 copies carry the same value.
+
+**"Our zone" means our streets, not one point.** The site's home point (34.478, -118.531)
+sits about 1.8 miles east of the houses behind the gate, in a different evacuation zone. A
+zone counts as ours when it covers that point *or* any of the 26 street points in
+`api/_power.js` (`STREETS`). `fire.html` and `nav.js` carry copies of those points
+(browsers can't `require` it); the evacuation zone test checks they match. Never go back to
+a single point: in the Hughes Fire that would have shown "warning" while our streets were
+under an evacuation order.
 
 **Escape everything from an external feed before it touches `innerHTML`.**
 Fire names, alert headlines, event titles, and Cal OES notes all come from feeds we

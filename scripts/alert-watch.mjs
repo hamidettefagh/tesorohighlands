@@ -75,8 +75,24 @@ async function checkEvac() {
     "&outFields=STATUS,NOTES,ZONE_ID&returnGeometry=true&outSR=4326&f=json";
   const j = await getJson(u);
   if (!j || j.error || !Array.isArray(j.features)) throw new Error("evac feed error");
+  return evacConditions(j.features);
+}
+
+/* A zone is ours when it covers ANY of our points: the houses behind the gate
+   (api/_power.js STREETS) or the old single home point. HOME alone sits ~1.8 mi
+   east of the streets and in a different Genasys zone (SCL-BLACKPINE, the streets
+   are SCL-REYESADOBE): in the Hughes Fire (Jan 2025) the streets were under an
+   ORDER while HOME's zone was only a WARNING, and this read "WARNING". Adding
+   points can only escalate, never downgrade. Same rule in fire.html and nav.js;
+   scripts/evac-zone.test.mjs replays that fire through all three. */
+export function coversUs(rings) {
+  if (inPoly(HOME.lon, HOME.lat, rings)) return true;
+  return STREETS.some(([x, y]) => inPoly(x, y, rings));
+}
+
+export function evacConditions(features) {
   const out = [];
-  for (const f of j.features) {
+  for (const f of features) {
     const a = f.attributes || {}, rings = f.geometry?.rings || [];
     const st = String(a.STATUS || "");
     const isOrder = /order/i.test(st), isShelter = /shelter/i.test(st), isWarn = /warning/i.test(st);
@@ -84,7 +100,7 @@ async function checkEvac() {
     let cx = 0, cy = 0, n = 0;
     for (const ring of rings) for (const p of ring) { cx += p[0]; cy += p[1]; n++; }
     cx /= n; cy /= n;
-    const covers = inPoly(HOME.lon, HOME.lat, rings);
+    const covers = coversUs(rings);
     const dist = haversine(HOME.lat, HOME.lon, cy, cx);
     const dir = bearingWord(HOME.lat, HOME.lon, cy, cx);
     // NOTES can be a full public alert paragraph — reduce to the fire name.

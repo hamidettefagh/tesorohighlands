@@ -134,8 +134,32 @@
     try { localStorage.removeItem("tesoro.loc"); } catch (e) {}
     return { lat: 34.478, lon: -118.531 };
   }
+  // The houses behind the gate, [lon, lat]: same points as STREETS in
+  // api/_power.js (scripts/evac-zone.test.mjs checks the copies match). The loc()
+  // point is ~1.8 mi east of them, in a different evacuation zone; in the Hughes
+  // Fire (Jan 2025) the streets were under an ORDER while that point's zone was a
+  // WARNING. A zone is ours when it covers loc() or any street. Same rule in
+  // fire.html and scripts/alert-watch.mjs.
+  var STREETS = [[-118.5581,34.4878],[-118.5573,34.4878],[-118.559,34.4876],[-118.5627,34.487],[-118.5588,34.487],[-118.5565,34.487],[-118.5578,34.4869],[-118.5624,34.4865],[-118.5596,34.4863],[-118.5584,34.4861],[-118.5578,34.4858],[-118.5607,34.4856],[-118.559,34.4853],[-118.5592,34.4845],[-118.561,34.4843],[-118.5623,34.4841],[-118.5673,34.484],[-118.5707,34.484],[-118.5632,34.4837],[-118.5674,34.4837],[-118.5657,34.4834],[-118.569,34.4834],[-118.5581,34.4833],[-118.5608,34.4833],[-118.5634,34.4828],[-118.5686,34.4827]];
+  function coversUs(rings) {
+    function inPoly(px, py) {
+      var inside = false;
+      for (var r = 0; r < rings.length; r++) {
+        var g = rings[r];
+        for (var i = 0, j = g.length - 1; i < g.length; j = i++) {
+          var xi = g[i][0], yi = g[i][1], xj = g[j][0], yj = g[j][1];
+          if (((yi > py) !== (yj > py)) && (px < (xj - xi) * (py - yi) / (yj - yi) + xi)) inside = !inside;
+        }
+      }
+      return inside;
+    }
+    var L = loc();
+    if (inPoly(L.lon, L.lat)) return true;
+    for (var k = 0; k < STREETS.length; k++) if (inPoly(STREETS[k][0], STREETS[k][1])) return true;
+    return false;
+  }
 
-  var CACHE_KEY = "tesoro.status.v24";  // v24: holds the strip's place on first paint — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v25";  // v25: evacuation "our zone" covers the streets — keep in step with nav.js?v=N
   // What the strip last saw about our power. A one-request check runs every
   // minute and redraws the strip only when this changes; the full status check
   // hits nine feeds, so it stays at every 4 minutes.
@@ -383,20 +407,10 @@
       }).catch(function () {}),
       fetch("https://services.arcgis.com/BLN4oKB0N1YSgvY8/arcgis/rest/services/CA_EVACUATIONS_CalOESHosted_view/FeatureServer/0/query?where=1%3D1&geometry=" + (L.lon - 0.35) + "," + (L.lat - 0.35) + "," + (L.lon + 0.35) + "," + (L.lat + 0.35) + "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=STATUS,NOTES&returnGeometry=true&outSR=4326&f=json").then(function (r) { return r.json(); }).then(function (ev) {
         if (!ev || ev.error || !ev.features) return; okEvac = true;
-        // "Our zone" means home is INSIDE the polygon — a zone merely inside the
-        // search box gets distance-and-direction wording instead (a warning 13 mi
-        // away in another county is context, not "your area").
-        function inPoly(px, py, rings) {
-          var inside = false;
-          for (var r = 0; r < rings.length; r++) {
-            var g = rings[r];
-            for (var i = 0, j = g.length - 1; i < g.length; j = i++) {
-              var xi = g[i][0], yi = g[i][1], xj = g[j][0], yj = g[j][1];
-              if (((yi > py) !== (yj > py)) && (px < (xj - xi) * (py - yi) / (yj - yi) + xi)) inside = !inside;
-            }
-          }
-          return inside;
-        }
+        // "Our zone" means our streets (or loc()) are INSIDE the polygon — see
+        // coversUs(). A zone merely inside the search box gets distance-and-
+        // direction wording instead (a warning 13 mi away in another county is
+        // context, not "your area").
         var COMPASS = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
         var zones = [];
         for (var i = 0; i < ev.features.length; i++) {
@@ -413,7 +427,7 @@
           zones.push({
             order: isOrder,
             shelter: isShelter && !isOrder,
-            covers: inPoly(L.lon, L.lat, rings),
+            covers: coversUs(rings),
             dist: haversine(L.lat, L.lon, cy, cx),
             dir: COMPASS[Math.round(((Math.atan2(yb, xb) * 180 / Math.PI + 360) % 360) / 22.5) % 16],
             notes: escT(briefNote(a.NOTES))
