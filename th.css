@@ -323,3 +323,15 @@ a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:
 .fold > summary:hover::after{color:var(--ink);}
 .fold[open] > summary{margin-bottom:4px;}
 .fold > .clist{margin-top:0;}
+
+/* ---- Compact section cards on phones (2026-10-24) ----
+   Icon beside the title instead of above it, and the "Live" tags dropped (the
+   cards' live lines already say it): about 60px less per card, 5 cards. */
+@media(max-width:560px){
+  .hub-grid{gap:10px;}
+  .hub-card{display:grid;grid-template-columns:30px 1fr;column-gap:12px;align-items:start;padding:13px 15px;}
+  .hub-card .ico{grid-row:1 / span 3;font-size:22px;padding-top:1px;}
+  .hub-card h3{margin:0 0 3px;font-size:15.5px;}
+  .hub-card p,.hub-card .cardlive{grid-column:2;}
+  .hub-card .tag{display:none;}
+}

@@ -321,6 +321,8 @@
   .sharecard.danger h3 { color:var(--dan-fg); }
   .sharecard .q { margin:0 0 10px; }
   .sharebtns { display:flex; gap:8px; flex-wrap:wrap; }
+  .sharemsg { margin-top:8px; }
+  .sharemsg > summary { cursor:pointer; font-size:13px; font-weight:640; min-height:40px; display:flex; align-items:center; color:var(--ink-2); }
   .wabtn { display:inline-flex; align-items:center; min-height:40px; text-decoration:none; background:#0f7a3b; color:#fff; font-weight:700; font-size:13px;
     padding:9px 16px; border-radius:10px; }
   .wabtn:hover { filter:brightness(1.06); }
@@ -392,12 +394,12 @@ footer{font-size:12.5px;}
 
   <div class="sharecard" id="shareCard" hidden>
     <h3>📣 <span id="shareTitle"></span></h3>
-    <div class="q">Auto-detected from the official feeds, message ready to go — one tap warns the group chat.</div>
+    <div class="q">From the official feeds, with a message ready for the group chat.</div>
     <div class="sharebtns">
       <a class="wabtn" id="waBtn" target="_blank" rel="noopener">Share on WhatsApp</a>
       <button class="copybtn" id="copyAlert" type="button">Copy message</button>
     </div>
-    <pre class="sharetext" id="shareText"></pre>
+    <details class="sharemsg"><summary>See the message</summary><pre class="sharetext" id="shareText"></pre></details>
   </div>
 
   <nav class="jumpnav" aria-label="Jump to a section">
@@ -475,7 +477,7 @@ footer{font-size:12.5px;}
          heat) and says plainly who should take it easy. This is what survives of
          the old "Can the kids play outside?" card, minus the duplication. -->
     <div class="advice neutral" id="airAdvice"><span class="ai">⏳</span><div class="at skel">Checking conditions…</div></div>
-    <div class="note" style="margin:-4px 2px 0">General guidance based on public air-quality standards — not medical advice; follow your doctor's advice for your own conditions.</div>
+    <div class="note" id="airAdviceNote" style="margin:-4px 2px 0">General guidance based on public air-quality standards — not medical advice; follow your doctor's advice for your own conditions.</div>
 
     <!-- SMOKE PLAYBOOK — kept right under the air it answers; opens itself when the air turns -->
     <details class="card playbook" id="smokeCard">
@@ -509,6 +511,12 @@ footer{font-size:12.5px;}
       <h3>Active alerts <span class="cardtag pill live">Live · NWS</span></h3>
       <div class="q">Every warning, watch and advisory the National Weather Service has active for our location</div>
       <div id="alertList"><div class="skel">Checking National Weather Service…</div></div>
+    </div>
+
+    <!-- One line in place of the power card when power is quiet but other cards aren't -->
+    <div class="allquiet" id="powerQuiet" hidden>
+      <span>⚡</span>
+      <div class="qlist"><b>Power:</b> no shutoff or outage on our circuit, and none reported within 12 miles. <button type="button" class="qmore" id="powerMore">Show the power details</button></div>
     </div>
 
     <!-- POWER — the #1 non-fire "what's going on" question, incl. PSPS shutoffs -->
@@ -1401,6 +1409,12 @@ function render(){
     : { s:"neutral", icon:"🧭", txt:"<b>Live air data is unavailable right now,</b> so conditions can't be judged. If you can see or smell smoke, act as if the air is bad." };
   $("#airAdvice").className = "advice " + adv.s;
   $("#airAdvice").innerHTML = `<span class="ai">${adv.icon}</span><div class="at">${adv.txt}</div>`;
+  // Clean air with no fire, fire-weather or heat note just restates the air card
+  // ("Good"), so the advice and its disclaimer step aside. Moderate and worse,
+  // a nearby fire, extreme fire weather, heat, or unknown air all still show.
+  const plainClean = airKnown && adv.s === "ok" && aqiInfo(v.aqi).lvl === 0;
+  $("#airAdvice").hidden = plainClean;
+  $("#airAdviceNote").hidden = plainClean;
 
   // air
   const air = aqiInfo(v.aqi);
@@ -1594,7 +1608,10 @@ function render(){
     const allQuiet = alertsQuiet && powerQuiet && quakesQuiet && !quietForced;
     q.hidden = !allQuiet;
     $("#alerts").hidden = allQuiet;
-    $("#powerCard").hidden = allQuiet;
+    // Alerts to show but nothing on power: the power card becomes one line.
+    const powerLine = powerQuiet && !allQuiet && !quietForced;
+    $("#powerCard").hidden = allQuiet || powerLine;
+    $("#powerQuiet").hidden = !powerLine;
     if(allQuiet){
       $("#quietDetail").textContent = "No weather alerts, no power outages within 12 miles, no recent earthquakes nearby.";
     }
@@ -1705,6 +1722,7 @@ function renderChecklist(){
 /* ---------- events ---------- */
 $("#refreshBtn").addEventListener("click", async ()=>{ $("#refreshBtn").textContent="…"; await fetchAll(); $("#refreshBtn").textContent="↻"; render(); });
 $("#quietMore").addEventListener("click", ()=>{ quietForced = true; render(); });
+$("#powerMore").addEventListener("click", ()=>{ quietForced = true; render(); });
 
 /* ---------- one-tap WhatsApp alert share (alert.json, written by the watcher) ---------- */
 async function loadShareCard(){
