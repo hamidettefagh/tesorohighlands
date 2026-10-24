@@ -98,9 +98,9 @@
       <span class="tval"><b>See which houses are handing out treats</b>, or add yours. Neighbors only: the code is in the community WhatsApp group.</span>
     </a>
 
-    <div class="week" id="wkCard" hidden>
+    <div class="week" id="wkCard">
       <div class="wkhead"><h2>📅 Coming up</h2><a href="/events">All events →</a></div>
-      <div id="wkList"></div>
+      <div id="wkList"><div class="wkload">Loading what's coming up…</div></div>
       <div class="wknew" id="wkNew" hidden></div>
     </div>
 
@@ -315,7 +315,7 @@
           esc(ymd(p.date).toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" })) + "</b> · " + esc(p.title) +
           "<small>" + esc(bits.filter(Boolean).join(" · ")) + " →</small></span></a>";
       }).join("");
-      if (!evs.length && !pinHtml) return;
+      if (!evs.length && !pinHtml) { $("#wkCard").hidden = true; return; }
 
       // One event must not eat the whole strip. Some feeds bake the showtime
       // into the title ("Hart Mansion Tour 12:00p.m."), so strip that, then keep
@@ -380,7 +380,7 @@
       var cl = $("#clEvents");
       cl.innerHTML = "<b>" + near + " event" + (near === 1 ? "" : "s") + "</b> in the next two weeks" + (newCount ? " · " + newCount + " new" : "");
       cl.hidden = false;
-    }).catch(function () {});
+    }).catch(function () { if ($("#wkList .wkload")) $("#wkCard").hidden = true; });
 
     // "New on this site" — a tiny changelog kept in updates.json.
     fetch("/updates.json").then(function (r) { return r.json(); }).then(function (list) {
