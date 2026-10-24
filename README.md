@@ -61,7 +61,8 @@ functions (some need repo secrets on Vercel).
              neighbor-recommended local pros
 /hoa         CA homeowner rights, your documents, the dispute ladder
              (deliberately no board schedules or internal community matters)
-/business    neighbor-owned businesses: owners submit a form, the site owner approves
+/business    neighbor-owned businesses: owners submit a form, the site owner approves.
+             Hidden until it launches: unlinked, out of the sitemap, noindex
 /treats      Halloween treat map for the houses behind the gate: neighbors-only
              (needs the code), not in the nav, noindex (see "Halloween treat map")
 ```
@@ -289,6 +290,12 @@ developers.facebook.com/tools/debug.
 
 `/business` lists businesses owned by people who live in Tesoro Highlands. Owners add
 themselves with the form on the page; nothing shows until the site owner approves it.
+
+**Hidden until launch (since 2026-10-24).** The page works at its URL but isn't linked
+from Home or Living Here, isn't in `sitemap.xml`, and carries `noindex` (meta tag plus an
+`X-Robots-Tag` header in `vercel.json`). To launch it: put back the Home hub card and the
+Living Here callout (see git history for 2026-10-24), add it to `sitemap.xml`, remove
+both `noindex`es, and add an `updates.json` line.
 
 - **The flow:** a neighbor fills in the form → it lands in a queue (`api/business.js`,
   in the same Upstash Redis store as the treat map) → the page says it is waiting for
