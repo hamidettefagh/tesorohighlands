@@ -135,7 +135,7 @@
     return { lat: 34.478, lon: -118.531 };
   }
 
-  var CACHE_KEY = "tesoro.status.v23";  // v23: neighbor power check-ins — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v24";  // v24: holds the strip's place on first paint — keep in step with nav.js?v=N
   // What the strip last saw about our power. A one-request check runs every
   // minute and redraws the strip only when this changes; the full status check
   // hits nine feeds, so it stays at every 4 minutes.
@@ -479,26 +479,33 @@
         })(myPower()) : "") +
         '<a class="hlink" href="/fire">Open the full fire &amp; emergency dashboard &rarr;</a>';
     } else {
-      if (!stripEl) {
-        stripEl = document.createElement("a");
-        stripEl.href = "/fire";
-        stripEl.setAttribute("aria-live", "polite");
-        // Keep the emergency strip inside <main> so "Skip to content" does not
-        // jump past the line that may say "EVACUATION ORDER for our zone".
-        var main = document.getElementById("main");
-        if (main) main.insertBefore(stripEl, main.firstChild);
-        else nav.parentNode.insertBefore(stripEl, nav.nextSibling);
-      }
-      stripEl.className = "thstrip " + st.level;
-      stripEl.innerHTML = '<span class="dot"></span><span class="txt">' + st.text + '</span><span class="arrow">Fire &amp; Emergency &rarr;</span>';
+      paintStrip(st.level, st.text);
     }
   }
+  function paintStrip(level, text) {
+    if (!stripEl) {
+      stripEl = document.createElement("a");
+      stripEl.href = "/fire";
+      stripEl.setAttribute("aria-live", "polite");
+      // Keep the emergency strip inside <main> so "Skip to content" does not
+      // jump past the line that may say "EVACUATION ORDER for our zone".
+      var main = document.getElementById("main");
+      if (main) main.insertBefore(stripEl, main.firstChild);
+      else nav.parentNode.insertBefore(stripEl, nav.nextSibling);
+    }
+    stripEl.className = "thstrip " + level;
+    stripEl.innerHTML = '<span class="dot"></span><span class="txt">' + text + '</span><span class="arrow">Fire &amp; Emergency &rarr;</span>';
+  }
 
+  var statusShown = false;
   function refreshStatus() {
     computeStatus().then(function (st) {
       try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), st: st })); } catch (e) {}
-      render(st);
-    }).catch(function () {});
+      render(st); statusShown = true;
+    }).catch(function () {
+      // Never leave "Checking…" up forever; never imply all clear either.
+      if (!statusShown) render({ level: "neutral", text: "Couldn't check conditions just now.", alerts: [], ask: false });
+    });
   }
   // A check-in from the home page: anonymous, one per device; the strip re-reads
   // right away (skipping the edge cache) so the tally includes it.
@@ -515,10 +522,14 @@
       }).catch(function () { b.disabled = false; b.textContent = "Couldn't send, tap to retry"; });
   });
   if (!isFire) {
+    var painted = false;
     try {
       var c = JSON.parse(sessionStorage.getItem(CACHE_KEY));
-      if (c && c.st && Date.now() - c.ts < 5 * 60 * 1000) render(c.st);
+      if (c && c.st && Date.now() - c.ts < 5 * 60 * 1000) { render(c.st); painted = statusShown = true; }
     } catch (e) {}
+    // First visit: hold the strip's place now, so the page doesn't jump down
+    // when the live status arrives a second or two later.
+    if (!painted && !isHome) paintStrip("neutral", "Checking fire, air and power for our streets…");
     refreshStatus();
     // Keep an open page current: a shutoff can start or end while it sits there.
     setInterval(function () { if (document.visibilityState === "visible") refreshStatus(); }, 4 * 60 * 1000);

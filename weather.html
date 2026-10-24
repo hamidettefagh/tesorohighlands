@@ -88,6 +88,12 @@
   .sources a{color:var(--accent);font-weight:600;text-decoration:none;}
   .sources a:hover{text-decoration:underline;}
   .band-unavail{font-size:13px;color:var(--muted);padding:12px 2px;}
+  /* Hold each card's height while it loads, so nothing below jumps when the live
+     reading lands (the air card used to drop 150px on phones). */
+  #wxNow:has(> .band-unavail), #aqiNow:has(> .band-unavail){min-height:230px;}
+  @media(max-width:560px){#wxNow:has(> .band-unavail){min-height:265px;}}
+  #hourlyBand:has(> .band-unavail){min-height:120px;}
+  #dailyBand:has(> .band-unavail){min-height:140px;}
   .demo-banner{display:none;margin:0 0 16px;padding:9px 12px;border-radius:10px;font-size:13px;font-weight:600;color:var(--ink);background:var(--neu-bg);border:1px dashed var(--muted);}
   .demo-banner.on{display:block;}
 
@@ -178,7 +184,7 @@
   <footer class="thfoot">
     <p><b>A neighbor project — not the official HOA, and not an official warning system.</b> These are neighborhood sensors and a commercial forecast, not a government monitor network. In an emergency, call 911 and follow official orders. &nbsp;<a href="/">← Back to the hub</a></p>
   </footer>
-<script src="/nav.js?v=23" defer></script>
+<script src="/nav.js?v=24" defer></script>
 <script>
 "use strict";
 

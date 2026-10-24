@@ -300,3 +300,13 @@ a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:
 .wkrow.wkpin{background:var(--neu-bg);border:1px solid var(--neu-line);border-left:3px solid var(--accent);border-radius:10px;padding:10px 12px;margin:4px 0;}
 .wkrow.wkpin .wkt{white-space:normal;color:var(--ink);}
 .wkrow.wkpin .wkt small{display:block;font-size:12.5px;color:var(--ink-2);margin-top:2px;}
+
+/* ---- Hold space for live data (2026-10-24) ----
+   The hero and the two Home tiles fill in a second after the page draws. Without
+   a reserved height everything below them jumped down ~100px on a first visit,
+   just as people reached to tap (Google's layout-shift score was 0.42, "poor"). */
+#thToday .tval{min-height:2.9em;}
+@media (max-width:520px){
+  .hub-hero .htext{min-height:2.7em;}
+  #thToday .tval{min-height:4.35em;}
+}

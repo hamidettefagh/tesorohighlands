@@ -67,6 +67,8 @@
     border:1.5px solid rgba(249,115,22,.6);box-shadow:0 0 26px rgba(249,115,22,.22),var(--shadow);}
   #map{height:min(66vh,580px);min-height:360px;background:var(--night);}
   @media (max-width:520px){#map{height:58vh;min-height:340px;}}
+  #notice.opening{min-height:calc(min(66vh,580px) + 60px);}
+  @media (max-width:520px){#notice.opening{min-height:calc(58vh + 60px);}}
   /* Always a night map: it's a Halloween map. */
   /* A Halloween night: the street map turned deep purple, with our own glowing roads on top. */
   #map .leaflet-tile-pane{filter:invert(1) grayscale(1) brightness(.4) sepia(1) hue-rotate(228deg) saturate(2.6) contrast(1.1);opacity:.85;}
@@ -391,7 +393,17 @@
 
     // ---- boot: ask whether the map is set up (no code), or open it with the saved code
     function boot() {
+      // Draw the right box now rather than after the server answers, so the page
+      // doesn't jump: no saved code means the code box; a saved code means a
+      // map-sized "Opening" placeholder.
+      var bootCode = code;
+      if (!code) show("gate");
+      else { $("notice").className = "card pad opening"; notice('<p class="sub">Opening the map…</p>'); }
       api("GET").then(function (j) {
+        // Someone typed a code into the box (shown straight away now) while this
+        // first check was in flight: their submit handles the answer instead.
+        if (code !== bootCode) return;
+        $("notice").className = "card pad";
         if (j.ok) { if (apply(j)) { show("app"); initMap(); render(); panelDefault(); startRefresh(); } return; }
         if (j.error === "setup") return notice('<h2>The treat map isn’t open yet</h2><p class="sub">Check back soon. It’ll be announced in the community WhatsApp groups.</p>');
         if (j.error === "code") {
@@ -873,6 +885,6 @@
     boot();
   })();
   </script>
-  <script src="/nav.js?v=23" defer></script>
+  <script src="/nav.js?v=24" defer></script>
 </body>
 </html>
