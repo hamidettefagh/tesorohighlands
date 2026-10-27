@@ -1,7 +1,38 @@
 {
-  "generatedAt": "2026-10-26T15:10:46.988Z",
+  "generatedAt": "2026-10-27T05:02:39.740Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
+    {
+      "title": "AND LIGHTENING STRUCK: Mary Shelley and the Curse of Creation",
+      "url": "https://www.valenciatowncenter.com/event/45223-and-lightening-struck",
+      "start": "2026-10-26",
+      "dates": [
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07",
+        "2026-11-08"
+      ],
+      "repeats": 13,
+      "venue": "Olive Branch Theatricals, Valencia Town Center",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Valencia Town Center",
+      "added": "2026-10-27T05:02:39.739Z"
+    },
     {
       "title": "Little Explorers",
       "url": "https://santaclarita.librarycalendar.com/event/little-explorers-31511",
@@ -445,6 +476,26 @@
       "added": "2026-10-14T07:55:13.493Z"
     },
     {
+      "title": "War Of The Worlds",
+      "url": "https://www.valenciatowncenter.com/event/45216-war-of-the-worlds",
+      "start": "2026-10-29",
+      "dates": [
+        "2026-10-29",
+        "2026-10-30",
+        "2026-10-31"
+      ],
+      "repeats": 2,
+      "venue": "Olive Branch Theatricals, Valencia Town Center",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Valencia Town Center",
+      "added": "2026-10-27T05:02:39.739Z"
+    },
+    {
       "title": "Celebrating Value & Talent || Santa Clarita Mayor's Committee NDEAM Brunch",
       "url": "https://www.eventbrite.com/e/celebrating-value-talent-santa-clarita-mayors-committee-ndeam-brunch-tickets-2000215327890",
       "start": "2026-10-29T09:00",
@@ -504,6 +555,20 @@
       ],
       "repeats": 2,
       "added": "2026-10-26T15:10:46.988Z"
+    },
+    {
+      "title": "The Ages of Man",
+      "url": "https://www.valenciatowncenter.com/event/45214-the-ages-of-man",
+      "start": "2026-10-29T19:30",
+      "venue": "Mosaic Santa Clarita Arts & Cultural Center, Valencia Town Center",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Valencia Town Center",
+      "added": "2026-10-27T05:02:39.739Z"
     },
     {
       "title": "Eternamente: A Dia De Los Muertos Spectacular!",
