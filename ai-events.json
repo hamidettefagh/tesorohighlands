@@ -1,41 +1,168 @@
 {
-  "generatedAt": "2026-10-28T18:56:29.541Z",
+  "generatedAt": "2026-10-29T19:01:24.340Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Fright Fest 2026",
-      "url": "https://www.sixflags.com/magicmountain/events?event-type=groups",
-      "start": "2026-10-29",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
+      "title": "The Outsider (Political Comedy)",
+      "url": "https://www.canyontheatre.org/the-outsider",
+      "start": "2026-10-30T20:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
       "free": false,
-      "price": null,
+      "price": "$20",
       "audience": [
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags",
-      "added": "2026-10-28T18:56:29.541Z"
+      "via": "Canyon Theatre Guild",
+      "added": "2026-10-29T19:01:24.340Z"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-10-31T08:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Newhall",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
+      "start": "2026-10-31T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-10-28T18:56:29.541Z"
+      "via": "Santa Clarita Certified Farmers Market",
+      "added": "2026-10-29T19:01:24.340Z"
     },
     {
-      "title": "Free Kids Workshop: Dump Truck",
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-10-31T08:30",
+      "venue": "Valencia FivePoint Farmers' Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-10-31T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
+      "start": "2026-11-01T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Certified Farmers Market",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-01T08:30",
+      "venue": "Valencia FivePoint Farmers' Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch",
+      "start": "2026-11-01T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "The Outsider (Political Comedy)",
+      "url": "https://www.canyontheatre.org/the-outsider",
+      "start": "2026-11-01T19:00",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$20",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Fright Fest presented by SNICKERS (Extended Nights)",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-11-05T19:00",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "$25+",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Fright Fest presented by SNICKERS (Extended Nights)",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-11-06T19:00",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "$25+",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Free Home Depot Kids Workshop: Dump Truck",
       "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055",
       "start": "2026-11-07T09:00",
       "venue": "Home Depot, Newhall Ranch Rd",
@@ -43,30 +170,61 @@
       "free": true,
       "price": "Free",
       "audience": [
-        "kids"
+        "kids",
+        "toddlers"
       ],
       "source": "Web (AI)",
-      "via": "The Home Depot",
-      "added": "2026-10-28T18:56:29.541Z"
+      "via": "Home Depot",
+      "added": "2026-10-29T19:01:24.340Z"
     },
     {
-      "title": "Weekly Saturday Storytime",
-      "url": "https://stores.barnesandnoble.com/store/2642",
-      "start": "2026-11-07T11:00",
-      "venue": "Barnes & Noble, Valencia Blvd",
+      "title": "Fright Fest presented by SNICKERS (Extended Nights)",
+      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
+      "start": "2026-11-07T19:00",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "$25+",
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
+      "start": "2026-11-08T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "toddlers",
-        "kids"
+        "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Barnes & Noble",
-      "added": "2026-10-28T18:56:29.541Z"
+      "via": "Santa Clarita Certified Farmers Market",
+      "added": "2026-10-29T19:01:24.340Z"
     },
     {
-      "title": "Free Kids Workshop: Holiday Engine",
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-08T08:30",
+      "venue": "Valencia FivePoint Farmers' Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Free Lowe's Kids Workshop: Holiday Engine",
       "url": "https://www.lowes.com/diy-projects-and-ideas/workshops",
       "start": "2026-11-14T10:00",
       "venue": "Lowe's, Bouquet Canyon Rd",
@@ -74,87 +232,171 @@
       "free": true,
       "price": "Free",
       "audience": [
-        "kids"
+        "kids",
+        "toddlers"
       ],
       "source": "Web (AI)",
       "via": "Lowe's",
-      "added": "2026-10-28T18:56:29.541Z"
+      "added": "2026-10-29T19:01:24.340Z"
     },
     {
-      "title": "Light Up Main Street",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-21T16:00",
-      "venue": "Main Street, Old Town Newhall",
-      "city": "Newhall",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
+      "start": "2026-11-15T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
         "everyone"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-10-28T18:56:29.541Z"
+      "via": "Santa Clarita Certified Farmers Market",
+      "added": "2026-10-29T19:01:24.340Z"
     },
     {
-      "title": "Holiday in the Park 2026 (select dates)",
-      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
-      "start": "2026-11-26",
-      "venue": "Six Flags Magic Mountain",
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-15T08:30",
+      "venue": "Valencia FivePoint Farmers' Market",
       "city": "Valencia",
-      "free": false,
-      "price": null,
+      "free": true,
+      "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags",
-      "added": "2026-10-28T18:56:29.541Z"
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-29T19:01:24.340Z"
     },
     {
-      "title": "It's a Wonderful Life",
-      "url": "https://www.canyontheatre.org/auditions",
-      "start": "2026-11-27",
-      "venue": "Canyon Theatre Guild",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild",
-      "added": "2026-10-28T18:56:29.541Z"
-    },
-    {
-      "title": "Punchlines (Comedy show)",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-12-05T20:00",
-      "venue": "The MAIN",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "The MAIN",
-      "added": "2026-10-28T18:56:29.541Z"
-    },
-    {
-      "title": "Free Kids Workshop: Holiday Trolley Car",
-      "url": "https://www.lowes.com/diy-projects-and-ideas/workshops",
-      "start": "2026-12-12T10:00",
-      "venue": "Lowe's, Bouquet Canyon Rd",
+      "title": "Free Home Depot Kids Workshop: Christmas Car Ornament",
+      "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055",
+      "start": "2026-11-21T09:00",
+      "venue": "Home Depot, Newhall Ranch Rd",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids"
+        "kids",
+        "toddlers"
       ],
       "source": "Web (AI)",
-      "via": "Lowe's",
-      "added": "2026-10-28T18:56:29.541Z"
+      "via": "Home Depot",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Light Up Main Street, presented by DrinkPAK",
+      "url": "https://oldtownnewhall.com/events/light-up-main/",
+      "start": "2026-11-21T16:00",
+      "venue": "Main Street in Old Town Newhall",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
+      "start": "2026-11-22T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Certified Farmers Market",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-22T08:30",
+      "venue": "Valencia FivePoint Farmers' Market",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Holiday in the Park 2026",
+      "url": "https://www.tripster.com/travelguide/event/six-flags-holiday-in-the-park/",
+      "start": "2026-11-26T10:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Admission included",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Holiday in the Park 2026",
+      "url": "https://www.tripster.com/travelguide/event/six-flags-holiday-in-the-park/",
+      "start": "2026-11-27T10:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Admission included",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Holiday in the Park 2026",
+      "url": "https://www.tripster.com/travelguide/event/six-flags-holiday-in-the-park/",
+      "start": "2026-11-28T10:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Admission included",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags Magic Mountain",
+      "added": "2026-10-29T19:01:24.340Z"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
+      "start": "2026-11-29T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Certified Farmers Market",
+      "added": "2026-10-29T19:01:24.340Z"
     }
   ]
 }
