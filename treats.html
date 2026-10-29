@@ -358,7 +358,7 @@
       slow: "Too many tries. Wait 15 minutes, then try again.",
       net: "Couldn't reach the map. Check your connection and try again.",
       store: "The map is having trouble saving right now. Try again in a minute.",
-      taken: "That house is already on the map. If it's yours, tell me in the group chat and I'll sort it out.",
+      taken: "That house is already on the map, added from a different phone or browser. Only the one that added it can change it. To change it, open the map there (if you added it from a WhatsApp link, open it the same way), or tell me in the group chat and I'll take care of it.",
       limit: "This phone already has a house on the map. To move it, remove it below the map first, or tell me in the group chat.",
       closed: "The map has closed for this year.",
       before: "The map isn't open yet.",
@@ -841,9 +841,20 @@
       });
     };
 
+    // Two taps instead of confirm(): some in-app browsers (opened from a chat link)
+    // block pop-up dialogs without a word, which made Remove look broken.
+    function armed(btn, label) {
+      if (btn.getAttribute("data-armed") === "1") return true;
+      btn.setAttribute("data-armed", "1");
+      var was = btn.textContent;
+      btn.textContent = label;
+      setTimeout(function () { btn.removeAttribute("data-armed"); if (btn.isConnected) btn.textContent = was; }, 4000);
+      return false;
+    }
     $("removeBtn").onclick = function () {
       var id = S.cur, btn = this;
-      if (!confirm("Take your house off the treat map?")) return;
+      if (!armed(btn, "Tap again to remove it")) return;
+      btn.removeAttribute("data-armed"); btn.textContent = "Remove my house";
       btn.disabled = true;
       api("POST", { action: "remove", home: id }).then(function (j) {
         btn.disabled = false;
@@ -858,9 +869,11 @@
       if (e) { map.closePopup(); choose(e.getAttribute("data-edit")); }
       if (r) {
         var id = r.getAttribute("data-remove");
-        if (!confirm("Remove this house from the map?")) return;
+        if (!armed(r, "Tap again to remove")) return;
+        r.disabled = true;
         api("POST", { action: "remove", home: id }).then(function (j) {
-          if (!j.ok) { alert(errText(j)); return; }
+          r.disabled = false;
+          if (!j.ok) { r.textContent = errText(j); return; }
           map.closePopup(); apply(j); render(); panelDefault();
         });
       }
