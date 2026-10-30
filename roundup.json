@@ -1,53 +1,62 @@
 {
-  "generatedAt": "2026-10-23T19:21:50.422Z",
-  "weekendOf": "2026-10-23",
+  "generatedAt": "2026-10-30T19:57:49.320Z",
+  "weekendOf": "2026-10-30",
   "model": "claude-haiku-4-5",
-  "intro": "Good weekend vibes for Tesoro Highlands — here's what's worth your time:",
+  "intro": "A Halloween and fall weekend full of treats, scares, and local fun for everyone.",
   "picks": [
     {
       "emoji": "🎃",
       "day": "Sat",
+      "time": "6 AM",
+      "title": "Tesoro Monster Bash",
+      "price": "$0–$1068.91",
+      "note": "Right in Tesoro—costumes, candy, community.",
+      "url": "https://www.eventbrite.com/e/tesoro-monster-bash-tickets-2000228277623"
+    },
+    {
+      "emoji": "👻",
+      "day": "Sat",
+      "time": "4 PM",
+      "title": "Mall-o-Ween Trick-or-Treating!",
+      "price": "free",
+      "note": "Trick-or-treating at the mall, no traffic chaos.",
+      "url": "https://www.valenciatowncenter.com/event/44135-mall-o-ween-trick-or-t"
+    },
+    {
+      "emoji": "🏃",
+      "day": "Sat",
+      "time": "3:30 PM",
+      "title": "Halloween Scavenger Hunt, Parade and Stories",
+      "price": "free",
+      "note": "Halloween scavenger hunt keeps kids engaged.",
+      "url": "https://santaclarita.librarycalendar.com/event/halloween-scavenger-hunt-parade-and-stories-32268"
+    },
+    {
+      "emoji": "🌺",
+      "day": "Fri",
+      "time": "8 PM",
+      "title": "Eternamente: A Dia De Los Muertos Spectacular!",
+      "price": "",
+      "note": "Live performance celebrating Día de Los Muertos.",
+      "url": "https://pac.canyons.edu/shows/eternamente.php"
+    },
+    {
+      "emoji": "🎃",
+      "day": "Sun",
       "time": "9 AM",
       "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
       "price": "free",
-      "note": "Perfect for little ones: pumpkins, hayrides, harvest fun",
-      "url": "https://calendar.santaclarita.gov/event/gilchrist_farm_harvest_festival_pumpkin_patch"
+      "note": "Pumpkin patch and festival, perfect fall day out.",
+      "url": "https://www.gilchristfarm.com/pumpkin-patch"
     },
     {
-      "emoji": "📚",
-      "day": "Sat",
-      "time": "11 AM",
-      "title": "Weekly Saturday Storytime at Barnes & Noble Valencia",
+      "emoji": "🎸",
+      "day": "Sun",
+      "time": "1 PM",
+      "title": "Afternoon Acoustic Jam",
       "price": "free",
-      "note": "Saturday storytime for the toddler crowd",
-      "url": "https://stores.barnesandnoble.com/store/2642"
-    },
-    {
-      "emoji": "🛍️",
-      "day": "Sat",
-      "time": "12 PM",
-      "title": "SoCal Etsy Guild Market",
-      "price": "free",
-      "note": "Local makers market, browse and support small businesses",
-      "url": "https://www.valenciatowncenter.com/event/44994-socal-etsy-guild-market"
-    },
-    {
-      "emoji": "🍺",
-      "day": "Fri",
-      "time": "6 PM",
-      "title": "Live Music at Lucky Luke Brewing Company",
-      "price": "free",
-      "note": "Live music and good beer for a Friday night out",
-      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing"
-    },
-    {
-      "emoji": "🎤",
-      "day": "Sat",
-      "time": "8 PM",
-      "title": "Standup Comedy @ Red Dot Pizza",
-      "price": "$17.85",
-      "note": "Saturday night laughs — standup comedy at Red Dot Pizza",
-      "url": "https://www.eventbrite.com/e/standup-comedy-red-dot-pizza-tickets-2003268777841"
+      "note": "Free live music for adults looking to unwind.",
+      "url": "https://santaclarita.librarycalendar.com/event/placeholder-afternoon-acoustic-jam-31695"
     },
     {
       "emoji": "🥕",
@@ -55,9 +64,9 @@
       "time": "8 AM",
       "title": "Santa Clarita Certified Farmers Market",
       "price": "free",
-      "note": "Sunday morning farmers market, fresh local produce",
-      "url": "https://www.vccfm.org/santa-clarita"
+      "note": "Sunday farmers market, local vendors and fresh food.",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nGood weekend vibes for Tesoro Highlands — here's what's worth your time:\n\n🎃 *Sat 9 AM* — Gilchrist Farm Harvest Festival & Pumpkin Patch (free)\n   Perfect for little ones: pumpkins, hayrides, harvest fun\n📚 *Sat 11 AM* — Weekly Saturday Storytime at Barnes & Noble Valencia (free)\n   Saturday storytime for the toddler crowd\n🛍️ *Sat 12 PM* — SoCal Etsy Guild Market (free)\n   Local makers market, browse and support small businesses\n🍺 *Fri 6 PM* — Live Music at Lucky Luke Brewing Company (free)\n   Live music and good beer for a Friday night out\n🎤 *Sat 8 PM* — Standup Comedy @ Red Dot Pizza ($17.85)\n   Saturday night laughs — standup comedy at Red Dot Pizza\n🥕 *Sun 8 AM* — Santa Clarita Certified Farmers Market (free)\n   Sunday morning farmers market, fresh local produce\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nA Halloween and fall weekend full of treats, scares, and local fun for everyone.\n\n🎃 *Sat 6 AM* — Tesoro Monster Bash ($0–$1068.91)\n   Right in Tesoro—costumes, candy, community.\n👻 *Sat 4 PM* — Mall-o-Ween Trick-or-Treating! (free)\n   Trick-or-treating at the mall, no traffic chaos.\n🏃 *Sat 3:30 PM* — Halloween Scavenger Hunt, Parade and Stories (free)\n   Halloween scavenger hunt keeps kids engaged.\n🌺 *Fri 8 PM* — Eternamente: A Dia De Los Muertos Spectacular!\n   Live performance celebrating Día de Los Muertos.\n🎃 *Sun 9 AM* — Gilchrist Farm Harvest Festival & Pumpkin Patch (free)\n   Pumpkin patch and festival, perfect fall day out.\n🎸 *Sun 1 PM* — Afternoon Acoustic Jam (free)\n   Free live music for adults looking to unwind.\n🥕 *Sun 8 AM* — Santa Clarita Certified Farmers Market (free)\n   Sunday farmers market, local vendors and fresh food.\n\nFull list → https://tesorohighlands.com/events"
 }
