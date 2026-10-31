@@ -1,155 +1,174 @@
 {
-  "generatedAt": "2026-10-30T18:41:13.345Z",
+  "generatedAt": "2026-10-31T17:49:32.009Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Fright Fest 2026",
-      "url": "https://www.sixflags.com/magicmountain/events/fright-fest",
-      "start": "2026-10-31T19:00",
-      "venue": "Six Flags Magic Mountain",
+      "title": "Santa Photos at Valencia Town Center",
+      "url": "https://www.valenciatowncenter.com/event/44370-santa-photos",
+      "start": "2026-11-06",
+      "venue": "Valencia Town Center, 1st Floor Near H&M",
       "city": "Valencia",
       "free": false,
-      "price": "Varies",
+      "price": "Photo session pricing varies",
       "audience": [
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain official events page",
-      "added": "2026-10-30T18:41:13.345Z"
+      "via": "Valencia Town Center",
+      "added": "2026-10-31T17:49:32.008Z"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market",
-      "start": "2026-11-01T08:00",
-      "venue": "College of the Canyons Parking Lot 5",
+      "title": "Live Music at Lucky Luke Brewing",
+      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
+      "start": "2026-11-06T18:00",
+      "venue": "Lucky Luke Brewing, 25108 Rye Canyon Loop",
       "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-29T19:01:24.340Z"
-    },
-    {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-01T08:30",
-      "venue": "Valencia FivePoint community",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-10-30T18:41:13.345Z"
-    },
-    {
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
-      "url": "https://www.gilchristfarm.com/pumpkin-patch",
-      "start": "2026-11-01T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Gilchrist Farm official website",
-      "added": "2026-10-29T19:01:24.340Z"
-    },
-    {
-      "title": "Canyon Theatre Guild: It's a Wonderful Life",
-      "url": "https://www.canyontheatre.org/",
-      "start": "2026-11-06T19:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
       "free": false,
       "price": null,
       "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Lucky Luke Brewing",
+      "added": "2026-10-31T17:49:32.008Z"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://newhallfarmersmarket.com/",
+      "start": "2026-11-07T08:30",
+      "venue": "Old Town Newhall Library Parking Lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
         "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Visit Santa Clarita",
-      "added": "2026-10-30T18:41:13.345Z"
+      "via": "City of Santa Clarita",
+      "added": "2026-10-31T17:49:32.008Z"
     },
     {
-      "title": "Home Depot Kids Workshop: Dump Truck",
-      "url": "https://www.homedepot.com/",
+      "title": "Free Home Depot Kids Workshop: Dump Truck",
+      "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-11-07T09:00",
-      "venue": "Home Depot, Golden Triangle Rd",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids"
-      ],
-      "source": "Web (AI)",
-      "via": "Home Depot",
-      "added": "2026-10-30T18:41:13.345Z"
-    },
-    {
-      "title": "Barnes & Noble Weekly Saturday Storytime",
-      "url": "https://stores.barnesandnoble.com/store/2642",
-      "start": "2026-11-07T11:00",
-      "venue": "Barnes & Noble, 23630 Valencia Blvd",
+      "venue": "Home Depot, Newhall Ranch Rd, Valencia",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "toddlers",
         "kids"
       ],
       "source": "Web (AI)",
-      "via": "Barnes & Noble Valencia official events page",
-      "added": "2026-10-30T18:41:13.345Z"
+      "via": "Home Depot",
+      "added": "2026-10-31T17:49:32.008Z"
     },
     {
-      "title": "Veterans Day Ceremony",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-11T11:00",
-      "venue": "Veterans Historical Plaza",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
+      "title": "DEAF & ASL Social Gathering at Pocock Brewing Company",
+      "url": "https://deafcal.org/venue/pocock-brewing-company/",
+      "start": "2026-11-07T17:00",
+      "venue": "Pocock Brewing Company, 24907 Avenue Tibbitts",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
       "audience": [
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita official website",
-      "added": "2026-10-30T18:41:13.345Z"
+      "via": "Pocock Brewing Company",
+      "added": "2026-10-31T17:49:32.008Z"
     },
     {
-      "title": "Lowe's Kids Workshop: Holiday Engine",
-      "url": "https://www.lowes.com/l/kids-club-workshops",
-      "start": "2026-11-14T10:00",
-      "venue": "Lowe's, Bouquet Canyon Rd",
+      "title": "Live Music at Lucky Luke Brewing",
+      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
+      "start": "2026-11-13T18:00",
+      "venue": "Lucky Luke Brewing, 25108 Rye Canyon Loop",
       "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Lucky Luke Brewing",
+      "added": "2026-10-31T17:49:32.008Z"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://newhallfarmersmarket.com/",
+      "start": "2026-11-14T08:30",
+      "venue": "Old Town Newhall Library Parking Lot",
+      "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Lowe's official website",
-      "added": "2026-10-30T18:41:13.345Z"
+      "via": "City of Santa Clarita",
+      "added": "2026-10-31T17:49:32.008Z"
     },
     {
-      "title": "Home Depot Kids Workshop: Christmas Car Ornament",
-      "url": "https://www.homedepot.com/",
-      "start": "2026-11-21T09:00",
-      "venue": "Home Depot, Golden Triangle Rd",
+      "title": "Santa's Arrival Celebration at Valencia Town Center",
+      "url": "https://www.valenciatowncenter.com/events",
+      "start": "2026-11-14T13:00",
+      "venue": "Valencia Town Center",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Valencia Town Center",
+      "added": "2026-10-31T17:49:32.008Z"
+    },
+    {
+      "title": "Live Music at Lucky Luke Brewing",
+      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
+      "start": "2026-11-20T18:00",
+      "venue": "Lucky Luke Brewing, 25108 Rye Canyon Loop",
       "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Lucky Luke Brewing",
+      "added": "2026-10-31T17:49:32.008Z"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://newhallfarmersmarket.com/",
+      "start": "2026-11-21T08:30",
+      "venue": "Old Town Newhall Library Parking Lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita",
+      "added": "2026-10-31T17:49:32.008Z"
+    },
+    {
+      "title": "Free Home Depot Kids Workshop: Christmas Car Ornament",
+      "url": "https://www.homedepot.com/c/kids-workshop",
+      "start": "2026-11-21T09:00",
+      "venue": "Home Depot, Newhall Ranch Rd, Valencia",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
@@ -157,34 +176,33 @@
       ],
       "source": "Web (AI)",
       "via": "Home Depot",
-      "added": "2026-10-30T18:41:13.345Z"
+      "added": "2026-10-31T17:49:32.008Z"
     },
     {
-      "title": "Light Up Main Street, presented by DrinkPAK",
+      "title": "Light Up Main Street in Old Town Newhall",
       "url": "https://oldtownnewhall.com/events/light-up-main/",
       "start": "2026-11-21T16:00",
-      "venue": "Main Street in Old Town Newhall",
+      "venue": "Main Street, Old Town Newhall",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "toddlers",
         "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall Association official website",
-      "added": "2026-10-29T19:01:24.340Z"
+      "via": "Old Town Newhall",
+      "added": "2026-10-31T17:49:32.008Z"
     },
     {
-      "title": "Holiday in the Park 2026",
-      "url": "https://www.sixflags.com/magicmountain/events/",
-      "start": "2026-11-26",
+      "title": "Holiday in the Park at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-11-26T10:30",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
-      "price": "Varies",
+      "price": "Admission required",
       "audience": [
         "kids",
         "teens",
@@ -192,30 +210,80 @@
       ],
       "source": "Web (AI)",
       "via": "Six Flags Magic Mountain",
-      "added": "2026-10-29T19:01:24.340Z"
+      "added": "2026-10-31T17:49:32.008Z"
     },
     {
-      "title": "The MAIN: Punchlines Comedy",
-      "url": "https://atthemain.org/events-at-the-main/",
-      "start": "2026-12-05",
-      "venue": "The MAIN",
+      "title": "It's a Wonderful Life at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/shows",
+      "start": "2026-11-27",
+      "venue": "Canyon Theatre Guild, 24242 Main Street",
       "city": "Newhall",
       "free": false,
-      "price": null,
+      "price": "Tickets required",
       "audience": [
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "The MAIN official events page",
-      "added": "2026-10-30T18:41:13.345Z"
+      "via": "Canyon Theatre Guild",
+      "added": "2026-10-31T17:49:32.008Z"
     },
     {
-      "title": "Home Depot Kids Workshop: Holiday Train",
-      "url": "https://www.homedepot.com/",
-      "start": "2026-12-05T09:00",
-      "venue": "Home Depot, Golden Triangle Rd",
+      "title": "Live Music at Lucky Luke Brewing",
+      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
+      "start": "2026-11-27T18:00",
+      "venue": "Lucky Luke Brewing, 25108 Rye Canyon Loop",
       "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Lucky Luke Brewing",
+      "added": "2026-10-31T17:49:32.008Z"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://newhallfarmersmarket.com/",
+      "start": "2026-11-28T08:30",
+      "venue": "Old Town Newhall Library Parking Lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita",
+      "added": "2026-10-31T17:49:32.008Z"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://newhallfarmersmarket.com/",
+      "start": "2026-12-05T08:30",
+      "venue": "Old Town Newhall Library Parking Lot",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita",
+      "added": "2026-10-31T17:49:32.008Z"
+    },
+    {
+      "title": "Free Home Depot Kids Workshop: Holiday Train",
+      "url": "https://www.homedepot.com/c/kids-workshop",
+      "start": "2026-12-05T09:00",
+      "venue": "Home Depot, Newhall Ranch Rd, Valencia",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
@@ -223,22 +291,73 @@
       ],
       "source": "Web (AI)",
       "via": "Home Depot",
-      "added": "2026-10-30T18:41:13.345Z"
+      "added": "2026-10-31T17:49:32.008Z"
     },
     {
-      "title": "Lowe's Kids Workshop: Holiday Trolley Car",
-      "url": "https://www.lowes.com/l/kids-club-workshops",
-      "start": "2026-12-12T10:00",
-      "venue": "Lowe's, Bouquet Canyon Rd",
+      "title": "DEAF & ASL Social Gathering at Pocock Brewing Company",
+      "url": "https://deafcal.org/venue/pocock-brewing-company/",
+      "start": "2026-12-05T17:00",
+      "venue": "Pocock Brewing Company, 24907 Avenue Tibbitts",
       "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Pocock Brewing Company",
+      "added": "2026-10-31T17:49:32.008Z"
+    },
+    {
+      "title": "Sensory-Friendly Santa at Valencia Town Center",
+      "url": "https://www.valenciatowncenter.com/events",
+      "start": "2026-12-06T09:00",
+      "venue": "Valencia Town Center, 1st Floor Near H&M",
+      "city": "Valencia",
+      "free": false,
+      "price": "Photo session pricing varies",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Valencia Town Center",
+      "added": "2026-10-31T17:49:32.008Z"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://newhallfarmersmarket.com/",
+      "start": "2026-12-12T08:30",
+      "venue": "Old Town Newhall Library Parking Lot",
+      "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
-      "via": "Lowe's official website",
-      "added": "2026-10-30T18:41:13.345Z"
+      "via": "City of Santa Clarita",
+      "added": "2026-10-31T17:49:32.008Z"
+    },
+    {
+      "title": "One Christmas Night in Memphis at Santa Clarita Performing Arts Center",
+      "url": "https://pac.canyons.edu/shows/",
+      "start": "2026-12-12T19:00",
+      "venue": "Santa Clarita Performing Arts Center, 26455 Rockwell Canyon Road",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Admission required",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "College of the Canyons",
+      "added": "2026-10-31T17:49:32.008Z"
     }
   ]
 }
