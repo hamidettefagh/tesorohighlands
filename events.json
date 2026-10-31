@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T14:30:47.648Z",
+  "generatedAt": "2026-10-31T23:23:17.887Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -124,20 +124,6 @@
       ],
       "repeats": 1,
       "added": "2026-10-28T15:05:21.244Z"
-    },
-    {
-      "title": "Bath Bomb and Bubble Bar",
-      "url": "https://www.valenciatowncenter.com/event/44719-bath-bomb-and-bubble-bar",
-      "start": "2026-10-31T11:00",
-      "venue": "Lush Fresh Handmade Cosmetics, Valencia Town Center",
-      "city": "Valencia",
-      "free": false,
-      "price": "$10",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Valencia Town Center",
-      "added": "2026-10-14T07:55:13.493Z"
     },
     {
       "title": "Hart Mansion Tour 12:00p.m.",
