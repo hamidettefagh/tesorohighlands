@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T23:23:17.887Z",
+  "generatedAt": "2026-11-01T06:01:23.382Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -258,20 +258,6 @@
         "2026-10-31T15:30"
       ],
       "added": "2026-10-28T15:05:21.244Z"
-    },
-    {
-      "title": "Mall-o-Ween Trick-or-Treating!",
-      "url": "https://www.valenciatowncenter.com/event/44135-mall-o-ween-trick-or-t",
-      "start": "2026-10-31T16:00",
-      "venue": "Valencia Town Center",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids"
-      ],
-      "source": "Valencia Town Center",
-      "added": "2026-10-14T07:55:13.493Z"
     },
     {
       "title": "Spice Travels!",
