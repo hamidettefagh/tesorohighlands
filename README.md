@@ -65,8 +65,8 @@ functions (some need repo secrets on Vercel).
              Hidden until it launches: unlinked, out of the sitemap, noindex
 /treats      Halloween treat map for the houses behind the gate: neighbors-only
              (needs the code), not in the nav, noindex (see "Halloween treat map")
-/lights      Holiday lights map, Nov 1 through New Year's Day: the same houses, the
-             same code, a tree instead of a pumpkin (see "Holiday lights map")
+/lights      Holiday lights map, Nov 1 through New Year's Day: the same houses, no
+             code needed, a tree instead of a pumpkin (see "Holiday lights map")
 ```
 
 ## Project layout
@@ -383,11 +383,15 @@ Camino Oceano gate and the Camino Los Robles entrance.
 lights are set to music and when they go off, and take the house off when the lights
 come down. It's a separate page and a separate Redis key (`lights:<year>:pins`), so
 the two maps never see each other's pins, but everything else is shared through
-`api/_pins.js`: the house lots, the neighbor and admin codes (`TREAT_CODE`,
-`TREAT_ADMIN_CODE`), one house per phone, the limits, and the rule that only the
-phone that added a house (or the admin) can change it. A phone's token and saved
-code are shared with the treat map too, so a neighbor enters the code once.
+`api/_pins.js`: the house lots, the admin code (`TREAT_ADMIN_CODE`), one house per
+phone, the limits, and the rule that only the phone that added a house (or the admin)
+can change it. A phone's token and saved code are shared with the treat map too.
 
+- **No neighbor code.** The lights map is open to anyone with the link (`open: true`
+  in `api/lights.js`): a pin only says a house has its lights up, which anyone on
+  the street can see. The page stays `noindex` and out of the nav; the Home card
+  links it. The admin signs in through the small "Admin" link under the map; a
+  phone that saved the treat-map code is still just a neighbor here.
 - **Season:** opens Nov 1 (there's no set date to decorate, so a house goes on when
   its lights are up) and closes at midnight after New Year's Day, Pacific time. Pins
   expire then on their own. The season is named for the year it opens in, so Jan 1,

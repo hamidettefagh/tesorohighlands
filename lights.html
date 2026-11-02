@@ -178,15 +178,14 @@
     </div>
 
     <section id="gate" class="card pad" hidden>
-      <h2>Neighbors only</h2>
-      <p class="sub">Enter the neighbor code from the community WhatsApp group. It's the same code as the Halloween treat map.</p>
+      <h2>Admin</h2>
+      <p class="sub">The map itself needs no code. The admin code lets you fix or remove any house.</p>
       <form id="gateForm" autocomplete="off">
-        <label for="code">Neighbor code</label>
+        <label for="code">Admin code</label>
         <input id="code" name="code" type="text" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" required />
-        <button class="btn primary" type="submit">Open the map</button>
+        <button class="btn primary" type="submit">Sign in</button>
       </form>
       <p class="msg" id="gateMsg" role="alert"></p>
-      <p class="note">Only a tree shows on the map: no names, addresses or phone numbers. The map clears itself after New Year's Day.</p>
     </section>
 
     <section id="notice" class="card pad" hidden role="status"></section>
@@ -264,7 +263,7 @@
         <li><span class="ic">🏡</span><span><b>Enjoy it from the street.</b> Lawns, driveways and porches are someone's home, however good the photo would be.</span></li>
       </ul>
     </div>
-    <p class="note">The neighbor code keeps this map off search engines and out of casual view. It's not a vault: add your house only if you're happy for neighbors to see a tree there. Only the phone that added a house can change it, and the map clears itself after New Year's Day. A pin in the wrong place, or a question? Tell me in the group chat.</p>
+    <p class="note">No code needed: this map is open to anyone with the link, and it's kept off search engines. A pin only says a house has its lights up, which anyone on the street can see; there are no names, addresses or phone numbers. Add your house only if you're happy for people to walk by. Only the phone that added a house can change it, and the map clears itself after New Year's Day. A pin in the wrong place, or a question? Tell me in the group chat. <button class="linkbtn" type="button" id="adminLink">Admin</button></p>
   </main>
   <footer class="thfoot"><p>Unofficial, resident-run. Lot outlines from LA County Assessor parcel maps; streets © OpenStreetMap contributors. &nbsp;<a href="/">← Back to Home</a></p></footer>
 
@@ -275,9 +274,9 @@
     var $ = function (id) { return document.getElementById(id); };
     function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
 
-    // ---- small persistent bits: the code, and this phone's random token (its key to its own pins).
-    // Shared with the treat map on purpose: one code opens both maps, and a phone is
-    // the same phone on both.
+    // ---- small persistent bits: a saved code (only the admin needs one here), and
+    // this phone's random token (its key to its own pins). Shared with the treat map
+    // on purpose: the admin signs in once, and a phone is the same phone on both.
     var mem = {};
     function load(k) { try { var v = localStorage.getItem(k); if (v != null) return v; } catch (e) {} return mem[k] || ""; }
     function save(k, v) { mem[k] = v; try { if (v) localStorage.setItem(k, v); else localStorage.removeItem(k); } catch (e) {} }
@@ -321,7 +320,7 @@
       }, function () { return { ok: false, error: "net", status: 0 }; }).then(function (j) { if (timer) clearTimeout(timer); if (method === "POST") busy--; return j; });
     }
     var ERR = {
-      code: "That code didn't work. Check the community WhatsApp group for the current one.",
+      code: "That's not the admin code.",
       slow: "Too many tries. Wait 15 minutes, then try again.",
       net: "Couldn't reach the map. Check your connection and try again.",
       store: "The map is having trouble saving right now. Try again in a minute.",
@@ -336,7 +335,7 @@
     };
     function errText(j) { return ERR[j.error] || ERR.net; }
 
-    function show(id) { ["gate", "notice", "app"].forEach(function (x) { $(x).hidden = x !== id; }); }
+    function show(id) { ["notice", "app"].forEach(function (x) { $(x).hidden = x !== id; }); }
     function notice(html) { $("notice").innerHTML = html; show("notice"); }
 
     function apply(j) {
@@ -354,38 +353,40 @@
       return true;
     }
 
-    // ---- boot: ask whether the map is set up (no code), or open it with the saved code
+    // ---- boot: open the map. A saved code (the admin's, or the treat map's) rides
+    // along; a stale one is simply dropped, since the map needs none.
     function boot() {
-      // Draw the right box now rather than after the server answers, so the page
-      // doesn't jump: no saved code means the code box; a saved code means a
-      // map-sized "Opening" placeholder.
-      var bootCode = code;
-      if (!code) show("gate");
-      else { $("notice").className = "card pad opening"; notice('<p class="sub">Opening the map…</p>'); }
+      // A map-sized placeholder from the start, so the page doesn't jump when the
+      // server answers.
+      $("notice").className = "card pad opening"; notice('<p class="sub">Opening the map…</p>');
       api("GET").then(function (j) {
-        // Someone typed a code into the box (shown straight away now) while this
-        // first check was in flight: their submit handles the answer instead.
-        if (code !== bootCode) return;
+        if (!j.ok && j.error === "code" && code) { code = ""; return api("GET"); }
+        return j;
+      }).then(function (j) {
         $("notice").className = "card pad";
         if (j.ok) { if (apply(j)) { show("app"); initMap(); render(); panelDefault(); startRefresh(); } return; }
         if (j.error === "setup") return notice('<h2>The lights map isn’t open yet</h2><p class="sub">Check back soon. It’ll be announced in the community WhatsApp groups.</p>');
-        if (j.error === "code") {
-          if (code) { save("tesoro.treats.code", ""); $("gateMsg").textContent = "The neighbor code has changed. Enter the new one from the WhatsApp group."; code = ""; }
-          show("gate"); return;
-        }
         notice('<h2>Couldn’t open the map</h2><p class="sub">' + esc(errText(j)) + '</p><div class="row"><button class="btn" type="button" onclick="location.reload()">Try again</button></div>');
       });
     }
+    // The admin code, through the small link under the map. Anyone else never sees the box.
+    $("adminLink").onclick = function () {
+      $("gate").hidden = false;
+      $("gate").scrollIntoView({ behavior: "smooth", block: "center" });
+      $("code").focus();
+    };
     $("gateForm").addEventListener("submit", function (ev) {
       ev.preventDefault();
-      var btn = ev.target.querySelector("button"), val = $("code").value.trim();
+      var btn = ev.target.querySelector("button"), val = $("code").value.trim(), was = code;
       if (!val) { $("gateMsg").textContent = "Enter the code first."; return; }
       code = val; btn.disabled = true; $("gateMsg").textContent = "";
-      api("GET").then(function (j) {
+      api("GET", null, !!S.homes.length).then(function (j) {
         btn.disabled = false;
-        if (!j.ok) { code = ""; $("gateMsg").textContent = j.error === "setup" ? "The lights map isn't open yet. Check back soon." : errText(j); return; }
+        if (!j.ok) { code = was; $("gateMsg").textContent = errText(j); return; }
+        if (j.role !== "admin") { code = was; $("gateMsg").textContent = "That's the neighbor code. This map needs no code; the admin code is different."; return; }
         save("tesoro.treats.code", val);
-        if (apply(j)) { show("app"); initMap(); render(); panelDefault(); startRefresh(); }
+        $("gate").hidden = true; $("code").value = "";
+        if (apply(j)) { if (!map) { show("app"); initMap(); startRefresh(); } render(); panelDefault(); $("app").scrollIntoView({ behavior: "smooth", block: "start" }); }
       });
     });
     $("code").addEventListener("input", function () { $("gateMsg").textContent = ""; });

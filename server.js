@@ -7,7 +7,7 @@ const { demoPurpleair, demoHistory, demoForecast } = require("./scripts/weather-
 
 // Halloween treat map and holiday lights map APIs, with an in-memory store so
 // /treats and /lights work locally. Local-only codes: TREAT_CODE (default
-// "pumpkin"), TREAT_ADMIN_CODE (default "pumpkin-admin"), shared by both maps.
+// "pumpkin"; the lights map needs none), TREAT_ADMIN_CODE (default "pumpkin-admin").
 // TREAT_NOW=2026-11-01T00:30:00-07:00 sets the server clock, to try a map before
 // it opens or after it closes.
 const treatNow = process.env.TREAT_NOW ? () => Date.parse(process.env.TREAT_NOW) : Date.now;

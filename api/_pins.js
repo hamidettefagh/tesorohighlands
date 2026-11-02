@@ -2,11 +2,13 @@
 // behind the gate mark their own house on a map of the lots. One handler, two
 // configurations (api/treats.js and api/lights.js); the pages differ, the rules don't.
 //
-// Neighbors only. Every call carries the neighbor code (shared in the community
-// WhatsApp groups); without it this returns nothing, not even the house outlines.
-// The code keeps the maps off search engines and out of casual view. It is not a
-// vault, and the pages say so. Both maps share one code (TREAT_CODE) and one admin
-// code (TREAT_ADMIN_CODE), so a neighbor enters one code for both.
+// The treat map is neighbors only: every call carries the neighbor code (shared in
+// the community WhatsApp groups); without it this returns nothing, not even the
+// house outlines. The code keeps the map off search engines and out of casual view.
+// It is not a vault, and the page says so. The lights map is open (cfg.open): no
+// code needed, since a pin only says what anyone on the street can see. Both maps
+// share the admin code (TREAT_ADMIN_CODE), and the neighbor code (TREAT_CODE) is
+// accepted on both, so a phone that saved it for one map is signed in on the other.
 //
 // What's stored, per house: the choice (cfg.how), the extras (cfg.flags), an
 // "until" time (cfg.until), an on/off switch, and a hash of the random token the
@@ -47,8 +49,10 @@ function publicPins(cfg, all) {
 }
 const mineOf = (all, own) => own ? Object.keys(all).filter(id => all[id].own === own) : [];
 
-// cfg: { key, how, until, flags, season }
+// cfg: { key, how, until, flags, season, open }
 //   key     the map's name, prefixing its Redis keys ("treats", "lights")
+//   open    true: no neighbor code needed; a blank code is a neighbor, and only the
+//           admin code is checked
 //   how     the allowed values of a pin's main choice
 //   until   the allowed "until" times ("" allowed means "no set time")
 //   flags   the extra yes/no fields a pin carries
@@ -57,7 +61,7 @@ const mineOf = (all, own) => own ? Object.keys(all).filter(id => all[id].own ===
 function makeHandler(opts) {
   const cfg = opts.cfg, env = opts.env, store = opts.store, clock = opts.now || Date.now;
   return async function handler(req, res) {
-    if (!store || !env.TREAT_CODE) return send(res, 503, { ok: false, error: "setup" });
+    if (!store || (!env.TREAT_CODE && !cfg.open)) return send(res, 503, { ok: false, error: "setup" });
     if (req.method !== "GET" && req.method !== "POST") { res.setHeader("Allow", "GET, POST"); return send(res, 405, { ok: false, error: "method" }); }
 
     const now = clock(), S = cfg.season(now);
@@ -73,7 +77,7 @@ function makeHandler(opts) {
     let code = body.code;
     if (req.method === "GET") { code = String(req.headers["x-treat-code"] || ""); try { code = decodeURIComponent(code); } catch (e) {} }
     const token = req.method === "POST" ? body.token : req.headers["x-treat-token"];
-    const role = sameCode(code, env.TREAT_ADMIN_CODE) ? "admin" : sameCode(code, env.TREAT_CODE) ? "neighbor" : null;
+    const role = sameCode(code, env.TREAT_ADMIN_CODE) ? "admin" : sameCode(code, env.TREAT_CODE) ? "neighbor" : cfg.open && !norm(code) ? "neighbor" : null;
     const own = validToken(token) ? hash("own", token) : "";
 
     try {

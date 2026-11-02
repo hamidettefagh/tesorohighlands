@@ -1,8 +1,9 @@
 // Holiday lights map (/lights): neighbors behind the gate mark their house once the
 // lights are up, as "lights" or "lights + display" (inflatables, figures, a show),
-// so families know which streets to walk. The rules, the code check and the
-// storage are in _pins.js, shared with the Halloween treat map (treats.js); this
-// file is what makes it the lights one. Same neighbor code as the treat map.
+// so families know which streets to walk. The rules and the storage are in
+// _pins.js, shared with the Halloween treat map (treats.js); this file is what
+// makes it the lights one. No neighbor code: a pin only says a house has its
+// lights up, which anyone on the street can see. The admin code still works.
 
 const { mapModule } = require("./_pins.js");
 
@@ -24,4 +25,5 @@ module.exports = mapModule({
   until: ["", "20:00", "21:00", "22:00", "23:00"], // "" = no set time
   flags: ["music"],                                // the lights are set to music
   season,
+  open: true,
 });

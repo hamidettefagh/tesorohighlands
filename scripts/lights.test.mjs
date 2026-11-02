@@ -45,18 +45,26 @@ const A = "phone-a-0123456789abcdef", B = "phone-b-0123456789abcdef", ADMIN_PHON
 const ids = DATA.homes.map(h => h[0]);
 const set = (home, extra) => ({ action: "set", home, how: "lights", music: false, until: "", ...extra });
 
-// --- the same code opens it, the same way
+// --- no code needed; the admin code still works
 {
   const h = fresh();
-  const probe = await call(h, {});
-  check("no code is a probe: 401, no homes", probe.status === 401 && !probe.json.homes, probe.status);
-  const ok = await call(h, { code: "pumpkin" });
-  check("the neighbor code opens the lights map too", ok.status === 200 && ok.json.role === "neighbor" && ok.json.phase === "open", ok.json);
+  const ok = await call(h, {});
+  check("no code opens the lights map as a neighbor", ok.status === 200 && ok.json.role === "neighbor" && ok.json.phase === "open", ok.json);
   check("it serves the same houses", ok.json.homes && ok.json.homes.homes.length === DATA.homes.length);
   check("no Halloween 'night' in the answer", !("night" in ok.json), Object.keys(ok.json));
   check("responses are never cached and never indexed", ok.headers["cache-control"] === "no-store" && ok.headers["x-robots-tag"] === "noindex");
+  const saved = await call(h, { code: "pumpkin" });
+  check("a phone with the treat-map code saved is still a neighbor", saved.status === 200 && saved.json.role === "neighbor", saved.json);
+  const wrong = await call(h, { code: "guess" });
+  check("a wrong code (an admin guess) is refused", wrong.status === 401 && wrong.json.error === "code", wrong.status);
   const admin = await call(h, { code: "big-pumpkin" });
   check("the admin code is recognized", admin.json.role === "admin");
+  const noNeighborCode = await call(api.makeHandler({ env: { TREAT_ADMIN_CODE: "big-pumpkin" }, store: api.memoryStore(clock), now: clock }), {});
+  check("works without a neighbor code configured", noNeighborCode.status === 200 && noNeighborCode.json.role === "neighbor", noNeighborCode.status);
+  const noStore = await call(api.makeHandler({ env: ENV, store: null, now: clock }), {});
+  check("no store configured: 503 setup", noStore.status === 503 && noStore.json.error === "setup", noStore.status);
+  const add = await call(h, { method: "POST", token: A, body: set(ids[30]) });
+  check("adding a house needs no code either", add.status === 200 && add.json.pins[ids[30]], add.status);
 }
 
 // --- a lights pin
