@@ -6,6 +6,7 @@
 //   node scripts/make-og.mjs                  events cards + og-events.json manifest
 //   node scripts/make-og.mjs --home [out.jpg] the site-wide card (default: og-image.jpg)
 //   node scripts/make-og.mjs --treats [out.jpg] the Halloween treat map card (default: og-treats.jpg)
+//   node scripts/make-og.mjs --lights [out.jpg] the holiday lights map card (default: og-lights.jpg)
 //
 // Run it whenever a featured event (community-events.json: "featured": true plus a
 // "flyer") is added, changed or removed. It writes one card per "phase" — all the
@@ -58,6 +59,50 @@ function pumpkins(list) {
       <path d="M${x - r * 0.52} ${y - r * 0.12} l${r * 0.2} ${r * 0.28} l${r * 0.2} -${r * 0.28} Z M${x + r * 0.12} ${y - r * 0.12} l${r * 0.2} ${r * 0.28} l${r * 0.2} -${r * 0.28} Z" fill="#fde047"/>
       <path d="M${x - r * 0.55} ${y + r * 0.22} q${r * 0.55} ${r * 0.5} ${r * 1.1} 0 l-${r * 0.1} -${r * 0.12} q-${r * 0.45} ${r * 0.3} -${r * 0.9} 0 Z" fill="#fde047"/>`;
   }).join("");
+}
+// Strings of holiday lights along the rooflines and a lit tree, for the lights card.
+function lightsScene() {
+  const stars = [[92, 64, 1.6], [188, 128, 1.1], [266, 52, 1.3], [352, 150, 1], [438, 78, 1.5], [531, 40, 1.1], [612, 118, 1.2], [705, 58, 1.4],
+    [148, 214, 1], [820, 96, 1], [1076, 288, 1.1], [1142, 38, 1.4], [486, 196, 0.9], [760, 230, 1.2], [1020, 330, 1], [240, 300, 1.1], [660, 310, 0.9], [900, 160, 1.3], [980, 70, 1.1]]
+    .map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity="${(0.45 + r * 0.3).toFixed(2)}"/>`).join("");
+  // Houses on the near ridge, with a string of bulbs along each roofline.
+  const HOUSES = [[742, 30, 22, [[6, 7], [18, 7]]], [780, 36, 28, [[7, 8], [22, 8]]], [826, 28, 20, [[11, 6]]], [986, 34, 26, [[7, 8], [21, 8]]],
+    [1028, 28, 21, [[6, 6], [16, 6]]], [1066, 38, 30, [[8, 9], [24, 9]]], [1114, 30, 22, [[12, 7]]]];
+  const bulbColors = ["#f87171", "#4ade80", "#60a5fa", "#fde047", "#f472b6"];
+  let bulbs = "", k = 0;
+  for (const [x, w, h] of HOUSES) {
+    const base = ridge.near(x + w / 2) + 6, top = base - h, roof = Math.round(w * 0.42), peak = [x + w / 2, top - roof];
+    const steps = Math.max(3, Math.round(w / 6));
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps, px = x + t * w, py = t < 0.5 ? top - (t * 2) * roof : peak[1] + ((t - 0.5) * 2) * roof;
+      const c = bulbColors[k++ % bulbColors.length];
+      bulbs += `<circle cx="${px.toFixed(1)}" cy="${(py + 1).toFixed(1)}" r="2.2" fill="${c}"/><circle cx="${px.toFixed(1)}" cy="${(py + 1).toFixed(1)}" r="4.5" fill="${c}" opacity=".28"/>`;
+    }
+  }
+  // A lit tree on the foreground ridge.
+  const tx = 1000, ty = ridge.fore(tx) + 2, th = 86, tw = 62;
+  const tree = `<rect x="${tx - 6}" y="${ty - 10}" width="12" height="14" fill="#5b3a1e"/>
+    <path d="M${tx} ${ty - th} L${tx + tw * 0.28} ${ty - th * 0.62} L${tx + tw * 0.14} ${ty - th * 0.62} L${tx + tw * 0.4} ${ty - th * 0.32} L${tx + tw * 0.22} ${ty - th * 0.32} L${tx + tw / 2} ${ty - 8} L${tx - tw / 2} ${ty - 8} L${tx - tw * 0.22} ${ty - th * 0.32} L${tx - tw * 0.4} ${ty - th * 0.32} L${tx - tw * 0.14} ${ty - th * 0.62} L${tx - tw * 0.28} ${ty - th * 0.62} Z" fill="#166534"/>
+    ${[[-14, 0.2], [10, 0.28], [-4, 0.42], [18, 0.5], [-20, 0.58], [6, 0.68], [-10, 0.8], [16, 0.84], [-22, 0.9], [2, 0.94]].map(([dx, f], i) => {
+      const c = bulbColors[i % bulbColors.length], cy = ty - th * (1 - f) - 4;
+      return `<circle cx="${tx + dx}" cy="${cy.toFixed(1)}" r="2.6" fill="${c}"/><circle cx="${tx + dx}" cy="${cy.toFixed(1)}" r="5.5" fill="${c}" opacity=".3"/>`;
+    }).join("")}
+    <path d="M${tx} ${ty - th - 12} l3.2 7 7.4 .6 -5.6 4.8 1.8 7.4 -6.8 -4 -6.8 4 1.8 -7.4 -5.6 -4.8 7.4 -.6 Z" fill="#fde047"/>
+    <circle cx="${tx}" cy="${ty - th - 5}" r="16" fill="#fde047" opacity=".18"/>`;
+  return `<svg class="scene" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">
+  <defs>
+    <linearGradient id="lsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030816"/><stop offset=".55" stop-color="#0b1a3a"/><stop offset="1" stop-color="#1e3a6e"/></linearGradient>
+  </defs>
+  <rect width="${W}" height="${H}" fill="url(#lsky)"/>
+  ${stars}
+  <path d="${ridgePath(ridge.far)}" fill="#1f3a66"/>
+  <path d="${ridgePath(ridge.mid)}" fill="#14294d"/>
+  ${houses(HOUSES, "#060c1c")}
+  ${bulbs}
+  <path d="${ridgePath(ridge.near)}" fill="#0c1a36"/>
+  <path d="${ridgePath(ridge.fore)}" fill="#060d1f"/>
+  ${tree}
+</svg>`;
 }
 // The same hills at night, under a full moon, for the Halloween card.
 function nightScene({ moonX = 940, moonY = 150 } = {}) {
@@ -212,6 +257,13 @@ function cardTreats() {
     <div class="pills"><span class="pill">🎃 Knock or ring</span><span class="pill">🍬 Candy out front</span><span class="pill">🩵 Teal pumpkin</span></div></div>
     ${foot("tesorohighlands.com/treats")}`);
 }
+function cardLights() {
+  return page(`${lightsScene()}<div class="scrim"></div>
+    <div class="copy wide"><div class="eyebrow">Tesoro Highlands · Holidays</div><h1>Holiday<br>lights map</h1>
+    <div class="sub">See which houses behind the gate have their lights up, and add yours.</div>
+    <div class="pills"><span class="pill">🎄 Lights</span><span class="pill">⛄ Lights + display</span><span class="pill">🎵 Set to music</span></div></div>
+    ${foot("tesorohighlands.com/lights")}`);
+}
 
 // ---------------------------------------------------------------- headless Chrome over CDP
 function findChrome() {
@@ -277,6 +329,8 @@ try {
     await render(chrome, cardHome(), args[1] ? path.resolve(args[1]) : path.join(ROOT, "og-image.jpg"));
   } else if (args[0] === "--treats") {
     await render(chrome, cardTreats(), args[1] ? path.resolve(args[1]) : path.join(ROOT, "og-treats.jpg"));
+  } else if (args[0] === "--lights") {
+    await render(chrome, cardLights(), args[1] ? path.resolve(args[1]) : path.join(ROOT, "og-lights.jpg"));
   } else {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const list = JSON.parse(fs.readFileSync(path.join(ROOT, "community-events.json"), "utf8"));

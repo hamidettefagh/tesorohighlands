@@ -65,6 +65,8 @@ functions (some need repo secrets on Vercel).
              Hidden until it launches: unlinked, out of the sitemap, noindex
 /treats      Halloween treat map for the houses behind the gate: neighbors-only
              (needs the code), not in the nav, noindex (see "Halloween treat map")
+/lights      Holiday lights map, Nov 1 through New Year's Day: the same houses, the
+             same code, a tree instead of a pumpkin (see "Holiday lights map")
 ```
 
 ## Project layout
@@ -88,10 +90,12 @@ api/tempest.js        neighbor Tempest fire weather
 api/tempest-forecast.js  WeatherFlow Better Forecast hourly + 10-day (/weather)
 api/_epa.js           shared EPA ATM correction math (used by purpleair.js)
 api/business.js       neighbor-owned businesses: submissions, the approval queue, the public list
-api/_kv.js            the Upstash Redis store (and its in-memory stand-in) shared by business.js and treats.js
+api/_kv.js            the Upstash Redis store (and its in-memory stand-in) shared by business.js, treats.js and lights.js
+api/_pins.js          the house-pin map handler shared by treats.js and lights.js: the code check, who may change a pin, the limits
 api/power.js          live power status for our circuit from SCE's outage map (strip, home, Fire page)
 api/_power.js         which SCE shutoff is ours (street points, SCE's steps), shared with the alert bot
 api/treats.js         Halloween treat map pins, in Upstash Redis, behind TREAT_CODE
+api/lights.js         holiday lights map pins: the same handler and code, its own choices, season and Redis key
 api/_treat-homes.js   the house lots behind the gate, built by scripts/treat-homes.mjs
 server.js             tiny static server for LOCAL dev only (mimics clean URLs)
 vendor/leaflet/       self-hosted Leaflet 1.9.4 — no CDN dependency in an emergency
@@ -371,6 +375,35 @@ Camino Oceano gate and the Camino Los Robles entrance.
 - **Share card:** `node scripts/make-og.mjs --treats` writes `og-treats.jpg`, the link
   preview for /treats. Re-run it if the card's wording changes.
 - **Test:** `node scripts/treats.test.mjs`.
+
+## Holiday lights map
+
+`/lights` is the treat map's December cousin: houses behind the gate mark themselves
+**lights** or **lights + display** (inflatables, figures, a show), say whether the
+lights are set to music and when they go off, and take the house off when the lights
+come down. It's a separate page and a separate Redis key (`lights:<year>:pins`), so
+the two maps never see each other's pins, but everything else is shared through
+`api/_pins.js`: the house lots, the neighbor and admin codes (`TREAT_CODE`,
+`TREAT_ADMIN_CODE`), one house per phone, the limits, and the rule that only the
+phone that added a house (or the admin) can change it. A phone's token and saved
+code are shared with the treat map too, so a neighbor enters the code once.
+
+- **Season:** opens Nov 1 (there's no set date to decorate, so a house goes on when
+  its lights are up) and closes at midnight after New Year's Day, Pacific time. Pins
+  expire then on their own. The season is named for the year it opens in, so Jan 1,
+  2027 is still season 2026. The Home page shows the card over the same dates.
+- **No "out" switch and no night:** lights are up for weeks, not one evening, so the
+  page drops the treat map's out-of-candy switch and its Halloween-night mode. The
+  "until" time is nightly ("lights on until 10 PM") and only shows in the popup.
+- **Gardens Park** shows a 🎉 badge while a holiday get-together there (any
+  `community-events.json` entry at Gardens Park whose title mentions holiday,
+  Christmas, lights, tree, Santa, carol, Hanukkah or menorah) is still ahead.
+- **Locally,** `node server.js` serves it at /lights with the same in-memory store
+  and codes as the treat map.
+- **Share card:** `node scripts/make-og.mjs --lights` writes `og-lights.jpg`.
+- **Test:** `node scripts/lights.test.mjs` covers the lights map's own choices and
+  season, and that the two maps keep their pins apart; the shared rules are tested in
+  `scripts/treats.test.mjs`.
 
 ## Theming
 

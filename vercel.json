@@ -44,7 +44,7 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=60, stale-while-revalidate=300" }]
     },
     {
-      "source": "/treats",
+      "source": "/(treats|lights)",
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     },
     {

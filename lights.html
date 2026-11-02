@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Holiday Lights Map — Tesoro Highlands</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="Neighbors behind the gate: put your house on the lights map once it's decorated, so families know which streets to walk." />
+<meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#14161b" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="/icon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Tesoro Highlands" />
+<meta property="og:title" content="🎄 Holiday lights map — Tesoro Highlands" />
+<meta property="og:description" content="Neighbors behind the gate: put your house on the map once the lights are up, so families know which streets to walk." />
+<meta property="og:url" content="https://tesorohighlands.com/lights" />
+<meta property="og:image" content="https://tesorohighlands.com/og-lights.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Tesoro Highlands holiday lights map: see which houses behind the gate have their lights up, and add yours" />
+<meta name="twitter:card" content="summary_large_image" />
+<script src="/theme.js"></script>
+<link rel="stylesheet" href="/th.css" />
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css" />
+<style>
+  /* Holiday colors, for this page only. The safety colors (--ok/--cau/--dan) stay out of it. */
+  :root{--tree:#16a34a;--tree-btn:#15803d;--tree-fg:#166534;--tree-bg:#ecfdf3;--bow:#dc2626;--bow-fg:#991b1b;--bow-bg:#fee2e2;--gold:#fcd34d;--night:#0b1630;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--tree-fg:#86efac;--tree-bg:#0d2b1a;--bow-fg:#fca5a5;--bow-bg:#3b0f0f;}}
+  :root[data-theme="dark"]{--tree-fg:#86efac;--tree-bg:#0d2b1a;--bow-fg:#fca5a5;--bow-bg:#3b0f0f;}
+
+  .hub-head h1 .em{font-size:.95em;}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);}
+  .card.pad{padding:16px;}
+  .card h2{font-size:17px;margin:0;letter-spacing:-0.01em;}
+  .sub{font-size:14px;color:var(--ink-2);line-height:1.5;margin:5px 0 0;}
+  .note{font-size:12.5px;color:var(--muted);line-height:1.55;margin:10px 2px 0;}
+  .msg{font-size:14px;line-height:1.45;color:var(--tree-fg);font-weight:600;margin:10px 0 0;}
+  .msg:empty{display:none;}
+  .btn{min-height:46px;padding:0 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+    font:inherit;font-size:15px;font-weight:620;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;}
+  .btn:hover{border-color:var(--muted);}
+  .btn.primary{background:var(--tree-btn);border-color:var(--tree-btn);color:#fff;}
+  .btn.primary:hover{filter:brightness(1.08);}
+  .btn[disabled]{opacity:.6;cursor:progress;}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .row .btn{flex:1 1 150px;}
+  /* Narrow phones: the manage buttons stack rather than wrapping their labels. */
+  @media (max-width:400px){[data-step="manage"] .row .btn{flex-basis:100%;}}
+  .linkbtn{background:none;border:0;padding:8px 0;display:inline-block;font:inherit;color:var(--tree-fg);font-weight:650;text-decoration:underline;cursor:pointer;min-height:0;}
+
+  #gate form{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  #gate label{width:100%;font-size:13px;font-weight:650;color:var(--ink-2);}
+  #gate input{flex:1 1 180px;min-height:46px;font:inherit;font-size:17px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);}
+  #gate input:focus{outline:2px solid var(--tree);outline-offset:1px;}
+  #gate .btn{flex:0 0 auto;}
+
+  .tally{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;margin:18px 2px 0;font-size:15px;color:var(--ink-2);}
+  .tally b{font-size:26px;color:var(--ink);letter-spacing:-0.02em;}
+  .tally .done{font-size:13px;color:var(--muted);}
+  .admin{font-size:11.5px;font-weight:700;background:var(--bow-bg);color:var(--bow-fg);border-radius:999px;padding:2px 9px;}
+
+  .mapwrap{position:relative;margin-top:10px;border-radius:var(--radius);overflow:hidden;isolation:isolate;background:var(--night);
+    border:1.5px solid rgba(252,211,77,.55);box-shadow:0 0 26px rgba(252,211,77,.18),var(--shadow);}
+  #map{height:min(66vh,580px);min-height:360px;background:var(--night);}
+  @media (max-width:520px){#map{height:58vh;min-height:340px;}}
+  #notice.opening{min-height:calc(min(66vh,580px) + 60px);}
+  @media (max-width:520px){#notice.opening{min-height:calc(58vh + 60px);}}
+  /* Always a night map: lights are for after dark. The street map turned deep navy, with our own glowing roads on top. */
+  #map .leaflet-tile-pane{filter:invert(1) grayscale(1) brightness(.4) sepia(1) hue-rotate(185deg) saturate(2.2) contrast(1.1);opacity:.85;}
+  /* The one credit OpenStreetMap's license requires on the map, kept small and quiet. */
+  #map .leaflet-control-attribution{background:transparent;font-size:9.5px;line-height:1.4;padding:0 7px 3px;}
+  .snow{position:absolute;inset:0;pointer-events:none;z-index:450;overflow:hidden;box-shadow:inset 0 0 70px rgba(4,10,30,.75);}
+  .flake{position:absolute;top:-24px;font-size:15px;line-height:1;color:rgba(255,255,255,.8);text-shadow:0 0 6px rgba(255,255,255,.45);animation:fall 16s linear infinite;}
+  .flake span{display:inline-block;animation:sway 3.2s ease-in-out infinite alternate;}
+  .flake.f1{left:8%;}
+  .flake.f2{left:24%;font-size:11px;animation-duration:21s;animation-delay:-7s;}
+  .flake.f3{left:41%;font-size:13px;animation-duration:18s;animation-delay:-3s;}
+  .flake.f4{left:58%;font-size:10px;animation-duration:23s;animation-delay:-12s;}
+  .flake.f5{left:74%;font-size:14px;animation-duration:17s;animation-delay:-9s;}
+  .flake.f6{left:90%;font-size:11px;animation-duration:20s;animation-delay:-15s;}
+  @keyframes fall{from{top:-24px}to{top:105%}}
+  @keyframes sway{from{transform:translateX(-7px) rotate(-20deg)}to{transform:translateX(7px) rotate(20deg)}}
+  @media (prefers-reduced-motion:reduce){.flake,.flake span{animation:none;}.flake.f1{top:12%;}.flake.f2{top:30%;}.flake.f3{top:8%;}.flake.f4{top:44%;}.flake.f5{top:22%;}.flake.f6{top:36%;}}
+  .stl{pointer-events:none;}
+  .stl span{position:absolute;white-space:nowrap;font:600 11.5px/1 var(--font);color:#fff7d6;letter-spacing:.02em;
+    text-shadow:0 0 3px #0b1630,0 0 3px #0b1630,0 0 6px #0b1630;}
+  .park-lbl{background:rgba(11,22,48,.88);border:1px solid #4ade80;color:#dcfce7;border-radius:999px;padding:3px 9px;font:650 12px/1.3 var(--font);box-shadow:0 0 10px rgba(74,222,128,.35);}
+  .park-lbl:before{display:none;}
+  .fest{font-size:24px;line-height:1;filter:drop-shadow(0 0 4px rgba(255,230,150,.7));cursor:pointer;}
+  #map .leaflet-control-attribution a{color:rgba(200,214,240,.55);text-decoration:none;}
+  /* After five seconds, or the first pan, zoom or tap, the credit folds into a small
+     "i" that shows it again when tapped (OpenStreetMap's attribution guidelines allow this). */
+  #map .leaflet-control-attribution.mini{width:26px;height:26px;padding:0;margin:0 8px 8px 0;border-radius:50%;
+    background:rgba(11,22,48,.6);border:1px solid rgba(191,219,254,.25);cursor:pointer;display:grid;place-items:center;}
+  #map .leaflet-control-attribution.mini a{display:none;}
+  #map .leaflet-control-attribution.mini:before{content:"i";font:italic 700 13px/1 Georgia,serif;color:rgba(200,214,240,.7);}
+  #map .leaflet-bar a{width:40px;height:40px;line-height:40px;background:#22252b;color:#e7e9ee;border-bottom-color:#33373e;}
+  #pickBar{position:absolute;left:10px;right:10px;bottom:28px;z-index:1100;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 10px;
+    background:var(--tree-btn);color:#fff;border-radius:12px;padding:8px 8px 8px 14px;font-size:15px;font-weight:650;box-shadow:0 4px 14px rgba(0,0,0,.35);}
+  #pickBar .pb{display:flex;gap:8px;margin-left:auto;}
+  #tapHint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:1100;pointer-events:none;white-space:nowrap;
+    background:rgba(11,22,48,.9);color:#fff7d6;border:1px solid rgba(252,211,77,.6);border-radius:999px;padding:7px 14px;
+    font:650 14px/1.2 var(--font);box-shadow:0 0 14px rgba(252,211,77,.3);}
+  #pickBar .btn{min-height:42px;background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);color:#fff;font-size:14px;}
+  #pickBar .btn.yes{background:#fff;border-color:#fff;color:#14532d;}
+
+  .pin{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:17px;line-height:1;border:2px solid #fff;
+    box-shadow:0 1px 5px rgba(0,0,0,.55);position:relative;}
+  .pin.lights{background:var(--tree);box-shadow:0 0 12px rgba(34,197,94,.85),0 1px 5px rgba(0,0,0,.55);}
+  .pin.display{background:var(--bow);box-shadow:0 0 12px rgba(239,68,68,.85),0 1px 5px rgba(0,0,0,.55);}
+  .pin.mine{border-color:#fde047;}
+  .pin i{position:absolute;top:-9px;right:-10px;font-style:normal;font-size:13px;}
+  /* Zoomed out, the whole neighborhood fits a phone, and full-size pins would pile up. */
+  #map.mz-s .pin{transform:scale(.62);}
+  #map.mz-m .pin{transform:scale(.8);}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:12px 2px 0;font-size:13px;color:var(--ink-2);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .legend .pin{width:22px;height:22px;font-size:12px;border-width:1.5px;box-shadow:none;}
+  .legend .pin.lights,.legend .pin.display{box-shadow:none;}
+
+  /* Popups dressed for the night too. */
+  #map .leaflet-popup-content-wrapper,#map .leaflet-popup-tip{background:#132244;color:#eef2ff;box-shadow:0 0 0 1px rgba(252,211,77,.45),0 6px 22px rgba(0,0,0,.5);}
+  #map .leaflet-popup-close-button{color:#bfdbfe;}
+  .leaflet-popup-content{margin:12px 14px;font:14px/1.5 var(--font);}
+  .pop b{font-size:15px;color:#fff;}
+  .pop .st{color:#bfdbfe;font-size:12.5px;margin-top:3px;}
+  .pop .row{margin-top:10px;}
+  .pop .btn{min-height:38px;font-size:13.5px;padding:0 12px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28);color:#fff;text-decoration:none;}
+  .pop a.btn{background:var(--tree-btn);border-color:var(--tree-btn);}
+
+  #panel{margin-top:16px;}
+  #panel h2 .em{font-size:1.05em;}
+  fieldset.choice{border:0;padding:0;margin:14px 0 0;}
+  fieldset.choice legend{font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:7px;padding:0;}
+  .opt{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;cursor:pointer;margin-top:8px;}
+  .opt input{position:absolute;opacity:0;pointer-events:none;}
+  .opt .ic{font-size:24px;flex:none;width:30px;text-align:center;}
+  .opt b{display:block;font-size:15px;color:var(--ink);}
+  .opt small{display:block;font-size:13px;color:var(--muted);margin-top:1px;}
+  .opt:has(input:checked){border-color:var(--tree-btn);background:var(--tree-bg);}
+  .opt:has(input[value="display"]:checked){border-color:var(--bow);background:var(--bow-bg);}
+  .opt:has(input:focus-visible){outline:2px solid var(--tree);outline-offset:2px;}
+  .chk{display:flex;align-items:flex-start;gap:11px;padding:12px 2px;border-top:1px solid var(--line-2);font-size:14.5px;line-height:1.45;color:var(--ink-2);cursor:pointer;}
+  .chk:first-of-type{margin-top:12px;}
+  .chk input{width:22px;height:22px;margin:0;flex:none;accent-color:var(--tree-btn);}
+  .chk b{color:var(--ink);}
+  .sel{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 2px;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);font-size:14.5px;color:var(--ink);font-weight:600;}
+  .sel select{min-height:44px;font:inherit;font-size:15px;padding:0 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);}
+  .mylist{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+
+  details.bystreet{margin-top:12px;}
+  details.bystreet summary{cursor:pointer;font-size:14px;font-weight:650;color:var(--ink-2);padding:10px 2px;min-height:40px;}
+  details.bystreet ul{list-style:none;margin:0;padding:0;}
+  details.bystreet li{border-top:1px solid var(--line-2);}
+  details.bystreet li button{width:100%;display:flex;justify-content:space-between;gap:10px;background:none;border:0;padding:11px 2px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer;text-align:left;min-height:40px;}
+  details.bystreet li span{color:var(--muted);white-space:nowrap;}
+
+  .sechead{display:flex;align-items:center;gap:8px;margin:26px 2px 8px;}
+  .sechead h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:680;}
+  .sechead .line{flex:1;height:1px;background:var(--line);}
+  .tips{list-style:none;margin:0;padding:4px 16px;}
+  .tips li{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line-2);font-size:14px;line-height:1.55;color:var(--ink-2);}
+  .tips li:first-child{border-top:0;}
+  .tips .ic{font-size:19px;flex:none;width:26px;text-align:center;line-height:1.4;}
+  .tips b{color:var(--ink);}
+</style>
+</head>
+<body class="th">
+  <main id="main" tabindex="-1" class="thwrap">
+    <div class="hub-head">
+      <h1><span class="em">🎄</span> Holiday lights map</h1>
+      <p>Lights up? Neighbors behind the gate: put your house on the map so families know which streets to walk. Add it whenever your display is ready, and take it off when the lights come down.</p>
+    </div>
+
+    <section id="gate" class="card pad" hidden>
+      <h2>Neighbors only</h2>
+      <p class="sub">Enter the neighbor code from the community WhatsApp group. It's the same code as the Halloween treat map.</p>
+      <form id="gateForm" autocomplete="off">
+        <label for="code">Neighbor code</label>
+        <input id="code" name="code" type="text" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" required />
+        <button class="btn primary" type="submit">Open the map</button>
+      </form>
+      <p class="msg" id="gateMsg" role="alert"></p>
+      <p class="note">Only a tree shows on the map: no names, addresses or phone numbers. The map clears itself after New Year's Day.</p>
+    </section>
+
+    <section id="notice" class="card pad" hidden role="status"></section>
+
+    <section id="app" hidden>
+      <div class="tally" aria-live="polite"><b id="count">0</b><span id="countLbl">houses lit so far</span><span class="done" id="doneLbl"></span><span class="admin" id="adminTag" hidden>Admin</span></div>
+      <div class="mapwrap">
+        <div id="map" role="region" aria-label="Map of houses with holiday lights. The same houses are listed by street below the map."></div>
+        <div class="snow" aria-hidden="true"><span class="flake f1"><span>❄</span></span><span class="flake f2"><span>❅</span></span><span class="flake f3"><span>❄</span></span><span class="flake f4"><span>❆</span></span><span class="flake f5"><span>❅</span></span><span class="flake f6"><span>❄</span></span></div>
+        <div id="tapHint" hidden>👆 <span class="verb">Tap</span> your house to add it</div>
+        <div id="pickBar" hidden><span id="pickTxt">Tap your house on the map</span><span class="pb"><button class="btn yes" type="button" id="pickYes" hidden>Yes, that's it</button><button class="btn" type="button" id="pickCancel">Cancel</button></span></div>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <span><span class="pin lights"><span>🎄</span></span>Lights</span>
+        <span><span class="pin display"><span>⛄</span></span>Lights + display</span>
+        <span>🎵 Set to music</span>
+        <span id="eventChip" hidden>🎉 <span id="eventChipTxt"></span></span>
+      </div>
+      <details class="bystreet" id="bystreet"><summary>Houses by street</summary><ul id="streetList"></ul></details>
+
+      <section id="panel" class="card pad" aria-live="polite">
+        <div data-step="find">
+          <h2>Lights up? Add your house</h2>
+          <p class="sub"><b><span class="verb">Tap</span> your house on the map</b> to add it. To find it, zoom in with <span id="zoomHow">two fingers or the + button</span>.</p>
+          <p class="msg" id="findMsg"></p>
+          <p class="note">Can't find your house, or can't tap the map? Tell me in the group chat and I'll add it for you.</p>
+        </div>
+
+        <div data-step="form" hidden>
+          <h2 id="formTitle">Your house</h2>
+          <p class="sub" id="formWhere"></p>
+          <fieldset class="choice">
+            <legend>What's out there?</legend>
+            <label class="opt"><input type="radio" name="how" value="lights" checked /><span class="ic">🎄</span><span><b>Lights</b><small>Lights on the house or in the yard</small></span></label>
+            <label class="opt"><input type="radio" name="how" value="display" /><span class="ic">⛄</span><span><b>Lights + display</b><small>Inflatables, figures or a show: worth stopping for</small></span></label>
+          </fieldset>
+          <label class="chk"><input type="checkbox" id="music" /><span>🎵 <b>Set to music</b>: the lights run to a soundtrack</span></label>
+          <label class="sel" for="until">Lights on until
+            <select id="until">
+              <option value="">no set time</option>
+              <option value="20:00">8:00 PM</option>
+              <option value="21:00">9:00 PM</option>
+              <option value="22:00">10:00 PM</option>
+              <option value="23:00">11:00 PM</option>
+            </select>
+          </label>
+          <div class="row">
+            <button class="btn primary" type="button" id="saveBtn">Put my house on the map</button>
+            <button class="btn" type="button" id="cancelBtn">Cancel</button>
+          </div>
+          <p class="msg" id="formMsg"></p>
+        </div>
+
+        <div data-step="manage" hidden>
+          <h2>Your house is on the map <span class="em">🎄</span></h2>
+          <p class="sub" id="manageSum"></p>
+          <div class="mylist" id="myList" hidden></div>
+          <div class="row">
+            <button class="btn" type="button" id="editBtn">Change details</button>
+            <button class="btn" type="button" id="removeBtn">Remove my house</button>
+          </div>
+          <div class="row" id="addAnotherRow" hidden><button class="btn" type="button" id="addAnother">Add another house</button></div>
+          <p class="msg" id="manageMsg"></p>
+          <p class="note">Lights coming down? Remove your house so nobody walks over for nothing.</p>
+        </div>
+      </section>
+    </section>
+
+    <div class="sechead"><h2>Seeing the lights</h2><div class="line"></div></div>
+    <div class="card">
+      <ul class="tips">
+        <li><span class="ic">🚶</span><span><b>Walk it.</b> Our streets are narrow and curvy, and a slow car behind you blocks the road. Park once, then walk a street or two.</span></li>
+        <li><span class="ic">🚗</span><span><b>Driving? Headlights on, slow, and keep moving.</b> Kids in dark coats are hard to see, and neighbors still need to get home.</span></li>
+        <li><span class="ic">🔦</span><span><b>Flashlights or reflective jackets</b> for the kids. Sidewalks are patchy and some streets are steep.</span></li>
+        <li><span class="ic">🏡</span><span><b>Enjoy it from the street.</b> Lawns, driveways and porches are someone's home, however good the photo would be.</span></li>
+      </ul>
+    </div>
+    <p class="note">The neighbor code keeps this map off search engines and out of casual view. It's not a vault: add your house only if you're happy for neighbors to see a tree there. Only the phone that added a house can change it, and the map clears itself after New Year's Day. A pin in the wrong place, or a question? Tell me in the group chat.</p>
+  </main>
+  <footer class="thfoot"><p>Unofficial, resident-run. Lot outlines from LA County Assessor parcel maps; streets © OpenStreetMap contributors. &nbsp;<a href="/">← Back to Home</a></p></footer>
+
+  <script src="/vendor/leaflet/leaflet.js"></script>
+  <script>
+  (function () {
+    "use strict";
+    var $ = function (id) { return document.getElementById(id); };
+    function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+
+    // ---- small persistent bits: the code, and this phone's random token (its key to its own pins).
+    // Shared with the treat map on purpose: one code opens both maps, and a phone is
+    // the same phone on both.
+    var mem = {};
+    function load(k) { try { var v = localStorage.getItem(k); if (v != null) return v; } catch (e) {} return mem[k] || ""; }
+    function save(k, v) { mem[k] = v; try { if (v) localStorage.setItem(k, v); else localStorage.removeItem(k); } catch (e) {} }
+    var code = load("tesoro.treats.code");
+    var token = load("tesoro.treats.token");
+    if (!/^[A-Za-z0-9_-]{20,80}$/.test(token)) {
+      var a = new Uint8Array(18); (window.crypto || window.msCrypto).getRandomValues(a);
+      token = Array.prototype.map.call(a, function (b) { return ("0" + b.toString(16)).slice(-2); }).join("");
+      save("tesoro.treats.token", token);
+    }
+
+    // ---- today, Pacific. ?at=2026-12-20T19:00-08:00 previews the page at another day (display only).
+    var skew = (function () { var m = /[?&]at=([^&]+)/.exec(location.search); var t = m ? Date.parse(decodeURIComponent(m[1])) : NaN; return isNaN(t) ? 0 : t - Date.now(); })();
+    var PT = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit" });
+    function today() { var o = {}; PT.formatToParts(new Date(Date.now() + skew)).forEach(function (p) { o[p.type] = p.value; }); return o.year + "-" + o.month + "-" + o.day; }
+    function hm12(hm) { if (!hm) return ""; var h = +hm.slice(0, 2), m = hm.slice(3); return (h % 12 || 12) + ":" + m + " " + (h < 12 ? "AM" : "PM"); }
+
+    // ---- state
+    var busy = 0; // POSTs in flight; the background refresh waits for them
+    var S = { role: "", phase: "", pins: {}, mine: [], homes: [], byId: {}, sel: null, mode: "" };
+    var map, lots = {}, markers = {}, canvas;
+    var HOW = { lights: { em: "🎄", name: "Lights" }, display: { em: "⛄", name: "Lights + display" } };
+    function howOf(p) { return HOW[p && p.how === "display" ? "display" : "lights"]; }
+
+    // ---- API
+    function api(method, body, skipHomes) {
+      var ctl = window.AbortController ? new AbortController() : null;
+      var timer = ctl && setTimeout(function () { ctl.abort(); }, 12000);
+      var opts = { method: method, headers: {}, cache: "no-store", signal: ctl ? ctl.signal : undefined };
+      if (method === "GET") {
+        opts.headers["x-treat-code"] = encodeURIComponent(code || "");
+        opts.headers["x-treat-token"] = token;
+      } else {
+        opts.headers["Content-Type"] = "application/json";
+        body.code = code; body.token = token;
+        opts.body = JSON.stringify(body);
+      }
+      if (method === "POST") busy++;
+      return fetch("/api/lights" + (skipHomes ? "?homes=0" : ""), opts).then(function (r) {
+        return r.json().catch(function () { return { ok: false, error: "net" }; }).then(function (j) { j.status = r.status; return j; });
+      }, function () { return { ok: false, error: "net", status: 0 }; }).then(function (j) { if (timer) clearTimeout(timer); if (method === "POST") busy--; return j; });
+    }
+    var ERR = {
+      code: "That code didn't work. Check the community WhatsApp group for the current one.",
+      slow: "Too many tries. Wait 15 minutes, then try again.",
+      net: "Couldn't reach the map. Check your connection and try again.",
+      store: "The map is having trouble saving right now. Try again in a minute.",
+      taken: "That house is already on the map, added from a different phone or browser. Only the one that added it can change it. To change it, open the map there (if you added it from a WhatsApp link, open it the same way), or tell me in the group chat and I'll take care of it.",
+      limit: "This phone already has a house on the map. To move it, remove it below the map first, or tell me in the group chat.",
+      closed: "The map has closed for this season.",
+      before: "The lights map opens November 1.",
+      token: "Something went wrong on this phone. Reload the page and try again.",
+      home: "That house isn't on this map. Try tapping it again.",
+      fields: "Something went wrong. Reload the page and try again.",
+      bad: "Something went wrong. Reload the page and try again."
+    };
+    function errText(j) { return ERR[j.error] || ERR.net; }
+
+    function show(id) { ["gate", "notice", "app"].forEach(function (x) { $(x).hidden = x !== id; }); }
+    function notice(html) { $("notice").innerHTML = html; show("notice"); }
+
+    function apply(j) {
+      S.role = j.role; S.phase = j.phase; S.pins = j.pins || {}; S.mine = j.mine || [];
+      if (j.homes) setHomes(j.homes);
+      if (S.phase === "closed") {
+        notice('<h2>That’s a wrap for this season <span class="em">🎄</span></h2><p class="sub">Thanks to every house that lit up the hill. The map has been cleared, and it’ll be back next November.</p>');
+        return false;
+      }
+      if (S.phase === "before") {
+        notice('<h2>The lights map opens November 1</h2><p class="sub">Check back then, and watch the community WhatsApp group.</p>');
+        return false;
+      }
+      $("adminTag").hidden = S.role !== "admin";
+      return true;
+    }
+
+    // ---- boot: ask whether the map is set up (no code), or open it with the saved code
+    function boot() {
+      // Draw the right box now rather than after the server answers, so the page
+      // doesn't jump: no saved code means the code box; a saved code means a
+      // map-sized "Opening" placeholder.
+      var bootCode = code;
+      if (!code) show("gate");
+      else { $("notice").className = "card pad opening"; notice('<p class="sub">Opening the map…</p>'); }
+      api("GET").then(function (j) {
+        // Someone typed a code into the box (shown straight away now) while this
+        // first check was in flight: their submit handles the answer instead.
+        if (code !== bootCode) return;
+        $("notice").className = "card pad";
+        if (j.ok) { if (apply(j)) { show("app"); initMap(); render(); panelDefault(); startRefresh(); } return; }
+        if (j.error === "setup") return notice('<h2>The lights map isn’t open yet</h2><p class="sub">Check back soon. It’ll be announced in the community WhatsApp groups.</p>');
+        if (j.error === "code") {
+          if (code) { save("tesoro.treats.code", ""); $("gateMsg").textContent = "The neighbor code has changed. Enter the new one from the WhatsApp group."; code = ""; }
+          show("gate"); return;
+        }
+        notice('<h2>Couldn’t open the map</h2><p class="sub">' + esc(errText(j)) + '</p><div class="row"><button class="btn" type="button" onclick="location.reload()">Try again</button></div>');
+      });
+    }
+    $("gateForm").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var btn = ev.target.querySelector("button"), val = $("code").value.trim();
+      if (!val) { $("gateMsg").textContent = "Enter the code first."; return; }
+      code = val; btn.disabled = true; $("gateMsg").textContent = "";
+      api("GET").then(function (j) {
+        btn.disabled = false;
+        if (!j.ok) { code = ""; $("gateMsg").textContent = j.error === "setup" ? "The lights map isn't open yet. Check back soon." : errText(j); return; }
+        save("tesoro.treats.code", val);
+        if (apply(j)) { show("app"); initMap(); render(); panelDefault(); startRefresh(); }
+      });
+    });
+    $("code").addEventListener("input", function () { $("gateMsg").textContent = ""; });
+
+    // ---- homes and map
+    function setHomes(H) {
+      var b = H.base;
+      S.homes = H.homes.map(function (h) {
+        var ring = [], r = h[4];
+        for (var i = 0; i + 1 < r.length; i += 2) ring.push([b[0] + r[i] / 1e6, b[1] + r[i + 1] / 1e6]);
+        return { id: h[0], street: H.streets[h[1]], lat: b[0] + h[2] / 1e6, lon: b[1] + h[3] / 1e6, ring: ring };
+      });
+      S.byId = {};
+      S.homes.forEach(function (h) { S.byId[h.id] = h; });
+      S.roads = H.roads || []; S.streetNames = H.streets; S.base = b;
+    }
+
+    // Gardens Park, from the county parcel map: the flat crescent on Avenida Sierra
+    // Madre below the water-tank hill, between Corte Trono and Calle Palomino.
+    var PARK = [[34.485439,-118.561897],[34.485744,-118.562598],[34.485622,-118.562552],[34.485493,-118.562531],[34.485363,-118.562537],
+      [34.485236,-118.562568],[34.485118,-118.562624],[34.485014,-118.562703],[34.484927,-118.5628],[34.484891,-118.562855],[34.484787,-118.56278],
+      [34.484802,-118.562748],[34.485003,-118.562343],[34.485081,-118.562204],[34.485182,-118.562082],[34.485303,-118.561978],[34.485369,-118.561935]];
+    var PARK_MID = [34.485343, -118.562266];
+
+    function initMap() {
+      if (map) return;
+      var bounds = L.latLngBounds(S.homes.map(function (h) { return [h.lat, h.lon]; })).extend(L.latLngBounds(PARK));
+      canvas = L.canvas({ padding: 0.3, tolerance: 3 });
+      map = L.map("map", { attributionControl: false, scrollWheelZoom: false, minZoom: 14.5, maxZoom: 19, maxBounds: bounds.pad(0.6), zoomSnap: 0.5 });
+      map.fitBounds(bounds, { padding: [14, 14] });
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19, maxNativeZoom: 19,
+        attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>'
+      }).addTo(map);
+      function zoomClass() {
+        var z = map.getZoom(), el = $("map");
+        el.classList.toggle("mz-s", z < 15.75);
+        el.classList.toggle("mz-m", z >= 15.75 && z < 16.75);
+      }
+      // No "Leaflet" tag, just the map credit, folding away once it has been seen.
+      var credit = L.control.attribution({ prefix: false }).addTo(map).getContainer(), creditTimer;
+      credit.setAttribute("title", "Map credit");
+      credit.setAttribute("role", "button"); credit.setAttribute("tabindex", "0"); credit.setAttribute("aria-label", "Map credit");
+      L.DomEvent.on(credit, "keydown", function (e) { if ((e.key === "Enter" || e.key === " ") && credit.classList.contains("mini")) { L.DomEvent.stop(e); showCredit(); } });
+      function foldCredit() { credit.classList.add("mini"); }
+      function showCredit() { credit.classList.remove("mini"); clearTimeout(creditTimer); creditTimer = setTimeout(foldCredit, 5000); }
+      showCredit();
+      map.on("movestart zoomstart click", foldCredit);
+      L.DomEvent.on(credit, "click", function (e) { if (credit.classList.contains("mini")) { L.DomEvent.stop(e); showCredit(); } });
+      map.on("zoomend", zoomClass); zoomClass();
+      map.on("dblclick", function () { clearTimeout(tapTimer); });
+      // A tap picks the lot it lands on, or, zoomed out where lots are a few pixels
+      // wide, the nearest one within a fingertip. The confirm bar catches a miss.
+      // A tap that only closes an open popup does nothing else.
+      var popupClosedAt = 0;
+      map.on("popupclose", function () { popupClosedAt = Date.now(); });
+      map.on("click", function (e) {
+        if (Date.now() - popupClosedAt < 350) return;
+        var id = lotAt(e.latlng);
+        if (id) lotClick(id);
+      });
+      drawRoads();
+      drawPark();
+      S.homes.forEach(function (h) {
+        var poly = L.polygon(h.ring, lotStyle(h.id));
+        poly.options.renderer = canvas;
+        poly.options.interactive = false; // taps are matched to lots by the map click below
+        poly.addTo(map);
+        lots[h.id] = poly;
+      });
+    }
+
+    // Streets glow gold inside the gate, like a string of lights; the road along the
+    // gates glows faintly. Names appear once there's room for them.
+    function drawRoads() {
+      var R = S.roads || [], b = S.base, byName = {}, labels = L.layerGroup();
+      map.createPane("labels").style.zIndex = 550;
+      R.forEach(function (r) {
+        var pts = [], f = r[2], inside = r[1] === 1;
+        for (var i = 0; i + 1 < f.length; i += 2) pts.push([b[0] + f[i] / 1e6, b[1] + f[i + 1] / 1e6]);
+        L.polyline(pts, { renderer: canvas, interactive: false, color: "#fbbf24", weight: inside ? 10 : 8, opacity: inside ? 0.18 : 0.08, lineCap: "round", lineJoin: "round" }).addTo(map);
+        L.polyline(pts, { renderer: canvas, interactive: false, color: inside ? "#fde68a" : "#93c5fd", weight: inside ? 2.5 : 2, opacity: inside ? 0.95 : 0.5, lineCap: "round", lineJoin: "round" }).addTo(map);
+        var len = 0;
+        for (var j = 1; j < pts.length; j++) len += map.distance(pts[j - 1], pts[j]);
+        var name = S.streetNames[r[0]];
+        if (inside && (!byName[name] || byName[name].len < len)) byName[name] = { pts: pts, len: len };
+      });
+      Object.keys(byName).forEach(function (name) {
+        var pts = byName[name].pts, half = byName[name].len / 2, run = 0, k = 1;
+        for (; k < pts.length - 1; k++) { var d = map.distance(pts[k - 1], pts[k]); if (run + d >= half) break; run += d; }
+        var a = map.latLngToLayerPoint(pts[k - 1]), c = map.latLngToLayerPoint(pts[k]);
+        var ang = Math.atan2(c.y - a.y, c.x - a.x) * 180 / Math.PI;
+        if (ang > 90) ang -= 180; if (ang < -90) ang += 180;
+        var mid = [(pts[k - 1][0] + pts[k][0]) / 2, (pts[k - 1][1] + pts[k][1]) / 2];
+        L.marker(mid, { pane: "labels", interactive: false, keyboard: false,
+          icon: L.divIcon({ className: "stl", iconSize: [0, 0], html: '<span style="transform:translate(-50%,-50%) rotate(' + ang.toFixed(1) + 'deg)">' + esc(name) + "</span>" }) }).addTo(labels);
+      });
+      function showLabels() { if (map.getZoom() >= 17) labels.addTo(map); else labels.remove(); }
+      map.on("zoomend", showLabels); showLabels();
+    }
+
+    // The park, and any holiday get-together on it (a tree lighting, Santa, a
+    // caroling night) until the day it happens. The title, date and time come from
+    // community-events.json, so the map follows any change to the event.
+    var fest = null;
+    function drawPark() {
+      var poly = L.polygon(PARK, { renderer: canvas, bubblingMouseEvents: false, color: "#4ade80", weight: 2, dashArray: "5 5", fillColor: "#14532d", fillOpacity: 0.55 }).addTo(map);
+      var center = L.latLng(PARK_MID), badge = L.layerGroup().addTo(map);
+      // The name sits off the park's west edge, over the empty terraces.
+      var west = PARK.reduce(function (a, c) { return c[1] < a[1] ? c : a; });
+      L.tooltip({ permanent: true, direction: "left", offset: [-4, 0], className: "park-lbl" })
+        .setLatLng([PARK_MID[0], west[1]]).setContent("🌳 Gardens Park").addTo(map);
+      function popup() {
+        if (!fest) return "<div class=\"pop\"><b>🌳 Gardens Park</b><div class=\"st\">On Avenida Sierra Madre, below the water tanks</div></div>";
+        return '<div class="pop"><b>🎄 ' + esc(fest.title) + "</b><div>" + esc(fest.when) + "</div>" +
+          '<div class="row"><a class="btn" href="/events#community">Details</a></div></div>';
+      }
+      poly.bindPopup(popup, { maxWidth: 260 });
+      fetch("/community-events.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (list) {
+        var now = today();
+        var e = (list || []).filter(function (e) { return e && /gardens park/i.test(e.place || "") && /holiday|christmas|lights|tree|santa|carol|hanukkah|menorah/i.test(e.title || "") && String(e.date).slice(0, 10) >= now; })[0];
+        if (!e) return;
+        var day = new Date(String(e.date).slice(0, 10) + "T12:00:00Z").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
+        fest = { title: e.title, when: day + (e.time ? " · " + e.time : "") + " · Gardens Park" };
+        $("eventChipTxt").textContent = e.title + ", " + day;
+        $("eventChip").hidden = false;
+        L.marker(center, { icon: L.divIcon({ className: "", html: '<div class="fest">🎉</div>', iconSize: [28, 28], iconAnchor: [14, 14] }), title: e.title })
+          .on("click", function () { poly.openPopup(center); }).addTo(badge);
+      }).catch(function () {});
+    }
+
+    function lotStyle(id) {
+      var pin = S.pins[id];
+      if (S.sel === id) return { color: "#fde047", weight: 3, opacity: 1, fillColor: "#fde047", fillOpacity: 0.35 };
+      if (!pin) return { color: "#93c5fd", weight: 1, opacity: 0.35, fillColor: "#1d4ed8", fillOpacity: 0.07 };
+      var c = pin.how === "display" ? "#ef4444" : "#22c55e";
+      return { color: c, weight: 1.5, opacity: 0.95, fillColor: c, fillOpacity: 0.45 };
+    }
+
+    function pinIcon(id) {
+      var p = S.pins[id], h = howOf(p);
+      var cls = "pin " + (p.how === "display" ? "display" : "lights") + (S.mine.indexOf(id) >= 0 ? " mine" : "");
+      return L.divIcon({ className: "", html: '<div class="' + cls + '"><span>' + h.em + "</span>" + (p.music ? "<i>🎵</i>" : "") + "</div>", iconSize: [32, 32], iconAnchor: [16, 16], popupAnchor: [0, -14] });
+    }
+
+    function popupHtml(id) {
+      var p = S.pins[id], h = S.byId[id], how = howOf(p), out = [];
+      out.push("<b>" + how.em + " " + how.name + "</b>");
+      if (p.how === "display") out.push("<div>Inflatables, figures or a show: worth stopping for</div>");
+      if (p.until) out.push("<div>Lights on until " + hm12(p.until) + "</div>");
+      if (p.music) out.push("<div>🎵 Set to music</div>");
+      out.push('<div class="st">on ' + esc(h.street) + "</div>");
+      var mine = S.mine.indexOf(id) >= 0;
+      if (mine) out.push('<div class="st"><b>Your house.</b> Change it below the map.</div>');
+      if (S.role === "admin") out.push('<div class="row"><button class="btn" type="button" data-edit="' + id + '">Edit</button><button class="btn" type="button" data-remove="' + id + '">Remove</button></div>');
+      return '<div class="pop">' + out.join("") + "</div>";
+    }
+
+    function render() {
+      if (!map) return;
+      var n = 0, displays = 0;
+      S.homes.forEach(function (h) {
+        var id = h.id, pin = S.pins[id];
+        lots[id].setStyle(lotStyle(id));
+        if (pin) {
+          n++; if (pin.how === "display") displays++;
+          if (!markers[id]) {
+            markers[id] = L.marker([h.lat, h.lon], { icon: pinIcon(id), zIndexOffset: pin.how === "display" ? 500 : 0, keyboard: true, title: howOf(pin).name + " on " + h.street, riseOnHover: true })
+              .bindPopup(function () { return popupHtml(id); }, { maxWidth: 260 })
+              .addTo(map);
+          } else {
+            markers[id].setIcon(pinIcon(id));
+            markers[id].setZIndexOffset(pin.how === "display" ? 500 : 0); // displays sit on top where pins crowd
+            if (markers[id].isPopupOpen()) markers[id].setPopupContent(popupHtml(id));
+          }
+        } else if (markers[id]) {
+          map.removeLayer(markers[id]); delete markers[id];
+        }
+      });
+      $("count").textContent = n;
+      $("countLbl").textContent = n === 1 ? "house lit so far" : "houses lit so far";
+      $("doneLbl").textContent = displays ? "· " + displays + " with a display" : "";
+      renderStreets();
+    }
+
+    function renderStreets() {
+      var by = {};
+      Object.keys(S.pins).forEach(function (id) {
+        var h = S.byId[id]; if (!h) return;
+        var p = S.pins[id], s = by[h.street] || (by[h.street] = { lights: 0, display: 0, ids: [] });
+        s.ids.push(id);
+        s[p.how === "display" ? "display" : "lights"]++;
+      });
+      var names = Object.keys(by).sort(function (a, b) { return (by[b].lights + by[b].display) - (by[a].lights + by[a].display) || a.localeCompare(b); });
+      $("bystreet").hidden = !names.length;
+      $("streetList").innerHTML = names.map(function (n) {
+        var s = by[n], bits = [];
+        if (s.lights) bits.push(s.lights + " 🎄");
+        if (s.display) bits.push(s.display + " ⛄");
+        return '<li><button type="button" data-street="' + esc(n) + '">' + esc(n) + "<span>" + bits.join(" · ") + "</span></button></li>";
+      }).join("");
+      $("streetList").onclick = function (ev) {
+        var b = ev.target.closest("button[data-street]"); if (!b) return;
+        var ids = by[b.getAttribute("data-street")].ids;
+        map.fitBounds(L.latLngBounds(ids.map(function (id) { return [S.byId[id].lat, S.byId[id].lon]; })), { padding: [50, 50], maxZoom: 18 });
+        $("map").scrollIntoView({ behavior: "smooth", block: "center" });
+      };
+    }
+
+    // ---- choosing a house: tap (phone) or click (computer) it on the map.
+    var touch = !!(window.matchMedia && matchMedia("(hover: none)").matches);
+    Array.prototype.forEach.call(document.querySelectorAll(".verb"), function (el) { el.textContent = touch ? "Tap" : "Click"; });
+    $("zoomHow").textContent = touch ? "two fingers or the + button" : "the + button or a double-click";
+
+    // The bar on the map asks "Add this house, on X?" while the highlighted house
+    // is still in view, so a stray tap never adds anything by itself.
+    function hideBar() { S.mode = ""; $("pickBar").hidden = true; hint(); }
+    function bar(text, yes, no) {
+      S.mode = "confirm";
+      $("pickTxt").textContent = text;
+      $("pickYes").hidden = !yes;
+      $("pickCancel").textContent = no;
+      $("pickBar").hidden = false;
+      hint();
+    }
+    // "Tap your house to add it", on the map, for phones without a house on it yet.
+    function hint() {
+      var finding = !$("panel").querySelector('[data-step="find"]').hidden;
+      $("tapHint").hidden = !(finding && $("pickBar").hidden);
+    }
+    $("pickCancel").onclick = function () { hideBar(); select(null); panelDefault(); };
+    $("pickYes").onclick = function () { hideBar(); $("panel").scrollIntoView({ behavior: "smooth", block: "start" }); };
+
+    // A double-tap zooms; it shouldn't also pick the house under the finger.
+    var tapTimer = null;
+    function lotClick(id) {
+      clearTimeout(tapTimer);
+      tapTimer = setTimeout(function () { onLot(id); }, 280);
+    }
+    function onLot(id) {
+      if (S.pins[id]) { if (markers[id]) markers[id].openPopup(); return; }
+      var mine = S.mine.filter(function (x) { return S.pins[x]; });
+      // One house per phone; the admin can add houses for neighbors who ask.
+      if (mine.length >= 1 && S.role !== "admin") { select(id); bar(ERR.limit, false, "OK"); return; }
+      choose(id);
+    }
+
+    function lotAt(ll) {
+      for (var i = 0; i < S.homes.length; i++) if (inRing(ll.lat, ll.lng, S.homes[i].ring)) return S.homes[i].id;
+      var at = map.latLngToContainerPoint(ll), best = null, bestD = Infinity;
+      S.homes.forEach(function (h) {
+        var d = map.latLngToContainerPoint([h.lat, h.lon]).distanceTo(at);
+        if (d < bestD) { bestD = d; best = h.id; }
+      });
+      return bestD <= 24 ? best : null;
+    }
+    function inRing(lat, lon, ring) {
+      var c = false;
+      for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+        var yi = ring[i][0], xi = ring[i][1], yj = ring[j][0], xj = ring[j][1];
+        if ((yi > lat) !== (yj > lat) && lon < (xj - xi) * (lat - yi) / (yj - yi) + xi) c = !c;
+      }
+      return c;
+    }
+
+    function choose(id) {
+      var pin = S.pins[id];
+      if (pin && S.mine.indexOf(id) < 0 && S.role !== "admin") {
+        hideBar(); select(null); step("find"); $("findMsg").textContent = ERR.taken;
+        $("panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+        return;
+      }
+      select(id);
+      openForm(id);
+      bar((pin ? "Change this house, on " : "Add this house, on ") + S.byId[id].street + "?", true, "Cancel");
+    }
+
+    function select(id, stay) {
+      var prev = S.sel; S.sel = id;
+      if (prev && lots[prev]) lots[prev].setStyle(lotStyle(prev));
+      if (id && lots[id]) {
+        lots[id].setStyle(lotStyle(id)); lots[id].bringToFront();
+        if (!stay) {
+          var ll = [S.byId[id].lat, S.byId[id].lon];
+          // Zoom in enough to see the house; once there, only nudge it into view.
+          if (map.getZoom() < 17) map.setView(ll, 18); else map.panInside(ll, { padding: [70, 70] });
+        }
+      }
+    }
+
+    // ---- the panel
+    function step(name) {
+      Array.prototype.forEach.call(document.querySelectorAll("#panel [data-step]"), function (el) { el.hidden = el.getAttribute("data-step") !== name; });
+      ["findMsg", "formMsg", "manageMsg"].forEach(function (m) { $(m).textContent = ""; });
+      hint();
+    }
+    function panelDefault() {
+      var mine = S.mine.filter(function (id) { return S.pins[id]; });
+      // Highlight their house without moving the map.
+      if (mine.length) manage(mine.indexOf(S.cur) >= 0 ? S.cur : mine[0], true);
+      else { if (S.sel) select(null); step("find"); }
+    }
+
+    function openForm(id) {
+      S.cur = id;
+      var p = S.pins[id], h = S.byId[id];
+      step("form");
+      $("formTitle").textContent = p ? "Change your house" : "Your house";
+      var where = "Highlighted in yellow on the map, on " + esc(h.street) + ".";
+      if (S.role === "admin" && p && S.mine.indexOf(id) < 0) where = "Editing a neighbor's house on " + esc(h.street) + " (admin).";
+      $("formWhere").innerHTML = where + ' <button class="linkbtn" type="button" id="wrongHouse">Not this house?</button>';
+      $("wrongHouse").onclick = function () {
+        hideBar(); select(null); step("find");
+        $("findMsg").textContent = (touch ? "Tap" : "Click") + " the right house on the map.";
+        $("map").scrollIntoView({ behavior: "smooth", block: "center" });
+      };
+      document.querySelector('input[name="how"][value="' + (p && p.how === "display" ? "display" : "lights") + '"]').checked = true;
+      $("music").checked = !!(p && p.music);
+      $("until").value = p ? p.until || "" : "";
+      $("saveBtn").textContent = p ? "Save changes" : "Put my house on the map";
+    }
+    $("cancelBtn").onclick = function () { hideBar(); select(null); panelDefault(); };
+
+    $("saveBtn").onclick = function () {
+      var id = S.cur, btn = this;
+      btn.disabled = true;
+      api("POST", {
+        action: "set", home: id,
+        how: document.querySelector('input[name="how"]:checked').value,
+        music: $("music").checked, until: $("until").value
+      }).then(function (j) {
+        btn.disabled = false;
+        if (!j.ok) {
+          // Someone else added this house since the map last refreshed. Show the
+          // fresh map and start over, rather than leaving a form that can't save.
+          if (j.error === "taken") {
+            hideBar(); select(null);
+            return api("GET", null, true).then(function (f) {
+              if (f.ok && apply(f)) render();
+              panelDefault(); $("findMsg").textContent = ERR.taken;
+              $("panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+            });
+          }
+          $("formMsg").textContent = errText(j); return;
+        }
+        apply(j); hideBar(); render();
+        if (S.mine.indexOf(id) >= 0) manage(id); else { select(null); panelDefault(); }
+        // Show them their tree.
+        $("map").scrollIntoView({ behavior: "smooth", block: "center" });
+        if (markers[id]) markers[id].openPopup();
+      });
+    };
+
+    function manage(id, stay) {
+      S.cur = id;
+      if (S.sel !== id) select(id, stay);
+      step("manage");
+      var p = S.pins[id], h = S.byId[id], how = howOf(p);
+      var bits = [how.em + " " + how.name];
+      if (p.until) bits.push("on until " + hm12(p.until));
+      if (p.music) bits.push("🎵 set to music");
+      $("manageSum").textContent = "On " + h.street + ": " + bits.join(" · ") + ".";
+      var mine = S.mine.filter(function (x) { return S.pins[x]; });
+      $("myList").hidden = mine.length < 2;
+      $("myList").innerHTML = mine.length < 2 ? "" : mine.map(function (x) {
+        return '<button class="btn" type="button" data-mine="' + x + '"' + (x === id ? ' aria-pressed="true" style="border-color:var(--tree-btn)"' : "") + ">" + esc(S.byId[x].street) + "</button>";
+      }).join("");
+      $("addAnotherRow").hidden = S.role !== "admin";
+    }
+    $("myList").onclick = function (ev) { var b = ev.target.closest("[data-mine]"); if (b) manage(b.getAttribute("data-mine")); };
+    $("editBtn").onclick = function () { openForm(S.cur); };
+    $("addAnother").onclick = function () { select(null); step("find"); $("map").scrollIntoView({ behavior: "smooth", block: "center" }); };
+
+    // Two taps instead of confirm(): some in-app browsers (opened from a chat link)
+    // block pop-up dialogs without a word, which made Remove look broken.
+    function armed(btn, label) {
+      if (btn.getAttribute("data-armed") === "1") return true;
+      btn.setAttribute("data-armed", "1");
+      var was = btn.textContent;
+      btn.textContent = label;
+      setTimeout(function () { btn.removeAttribute("data-armed"); if (btn.isConnected) btn.textContent = was; }, 4000);
+      return false;
+    }
+    $("removeBtn").onclick = function () {
+      var id = S.cur, btn = this;
+      if (!armed(btn, "Tap again to remove it")) return;
+      btn.removeAttribute("data-armed"); btn.textContent = "Remove my house";
+      btn.disabled = true;
+      api("POST", { action: "remove", home: id }).then(function (j) {
+        btn.disabled = false;
+        if (!j.ok) { $("manageMsg").textContent = errText(j); return; }
+        apply(j); select(null); render(); panelDefault();
+      });
+    };
+
+    // admin buttons inside popups
+    document.addEventListener("click", function (ev) {
+      var e = ev.target.closest("[data-edit]"), r = ev.target.closest("[data-remove]");
+      if (e) { map.closePopup(); choose(e.getAttribute("data-edit")); }
+      if (r) {
+        var id = r.getAttribute("data-remove");
+        if (!armed(r, "Tap again to remove")) return;
+        r.disabled = true;
+        api("POST", { action: "remove", home: id }).then(function (j) {
+          r.disabled = false;
+          if (!j.ok) { r.textContent = errText(j); return; }
+          map.closePopup(); apply(j); render(); panelDefault();
+        });
+      }
+    });
+
+    // ---- keep it fresh: every five minutes, only while looking
+    var lastPull = Date.now();
+    function pull() {
+      if (document.visibilityState !== "visible" || S.mode || busy) return;
+      lastPull = Date.now();
+      api("GET", null, true).then(function (j) {
+        if (!j.ok) return;
+        var editing = !$("panel").querySelector('[data-step="form"]').hidden;
+        if (apply(j)) { render(); if (!editing) panelDefault(); }
+      });
+    }
+    function startRefresh() {
+      setInterval(function () { if (Date.now() - lastPull >= 300e3) pull(); }, 15e3);
+      document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && Date.now() - lastPull > 30e3) pull(); });
+    }
+
+    boot();
+  })();
+  </script>
+  <script src="/nav.js?v=25" defer></script>
+</body>
+</html>

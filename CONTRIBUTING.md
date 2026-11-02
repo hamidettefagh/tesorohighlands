@@ -112,7 +112,9 @@ with the official zone boundaries through all three copies of the "is this our z
 and fails if their copies of the street points or the home point drift apart.
 
 **Treat map test:** `node scripts/treats.test.mjs` covers the Halloween map's code check,
-who can change which pin, the limits, and the season edges.
+who can change which pin, the limits, and the season edges. The holiday lights map shares
+that handler (`api/_pins.js`); `node scripts/lights.test.mjs` covers what differs: its
+choices, its Nov 1 to New Year's Day season, and that the two maps never see each other's pins.
 
 **Fire status ladder test:** `node scripts/fire-status.test.mjs`. It reads `overall()` straight
 out of `fire.html`, so it fails if the headline ladder drifts — including the two rules that are
