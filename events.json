@@ -1,13 +1,12 @@
 {
-  "generatedAt": "2026-11-02T18:20:31.831Z",
+  "generatedAt": "2026-11-03T11:54:49.798Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
       "title": "AND LIGHTENING STRUCK: Mary Shelley and the Curse of Creation",
       "url": "https://www.valenciatowncenter.com/event/45223-and-lightening-struck",
-      "start": "2026-11-02",
+      "start": "2026-11-03",
       "dates": [
-        "2026-11-02",
         "2026-11-03",
         "2026-11-04",
         "2026-11-05",
@@ -15,7 +14,7 @@
         "2026-11-07",
         "2026-11-08"
       ],
-      "repeats": 6,
+      "repeats": 5,
       "venue": "Olive Branch Theatricals, Valencia Town Center",
       "city": "Valencia",
       "free": false,
@@ -25,81 +24,6 @@
       ],
       "source": "Valencia Town Center",
       "added": "2026-10-27T05:02:39.739Z"
-    },
-    {
-      "title": "Little Explorers",
-      "url": "https://santaclarita.librarycalendar.com/event/little-explorers-31512",
-      "start": "2026-11-02T13:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-02T13:00",
-        "2026-11-09T13:00",
-        "2026-11-16T13:00"
-      ],
-      "repeats": 2,
-      "added": "2026-10-29T15:12:53.311Z"
-    },
-    {
-      "title": "Learn and Launch Robotics",
-      "url": "https://santaclarita.librarycalendar.com/event/learn-and-launch-robotics-36149",
-      "start": "2026-11-02T16:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-02T16:00"
-      ],
-      "added": "2026-10-29T15:12:53.311Z"
-    },
-    {
-      "title": "Mindful Art Mondays",
-      "url": "https://santaclarita.librarycalendar.com/event/placeheld-mindful-art-monday-31716",
-      "start": "2026-11-02T18:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-02T18:00"
-      ],
-      "added": "2026-10-29T15:12:53.311Z"
-    },
-    {
-      "title": "The Secret Club",
-      "url": "https://santaclarita.librarycalendar.com/event/secret-club-32433",
-      "start": "2026-11-02T18:00",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-02T18:00",
-        "2026-11-09T18:00"
-      ],
-      "repeats": 1,
-      "added": "2026-10-29T15:12:53.311Z"
     },
     {
       "title": "Baby and Toddler Storytime",
@@ -492,6 +416,122 @@
         "2026-11-04T16:00"
       ],
       "added": "2026-11-02T18:20:31.831Z"
+    },
+    {
+      "title": "Canyon Country TAB",
+      "url": "https://santaclarita.librarycalendar.com/event/canyon-country-tab-29098",
+      "start": "2026-11-04T16:30",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-04T16:30"
+      ],
+      "added": "2026-11-03T11:54:49.798Z"
+    },
+    {
+      "title": "Fall Patchwork Totes",
+      "url": "https://santaclarita.librarycalendar.com/event/hold-fall-patchwork-totes-31842",
+      "start": "2026-11-04T18:00",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-04T18:00"
+      ],
+      "added": "2026-11-03T11:54:49.798Z"
+    },
+    {
+      "title": "Thrilled to Read Book Club",
+      "url": "https://santaclarita.librarycalendar.com/event/thrilled-read-book-club-24335",
+      "start": "2026-11-04T18:00",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-04T18:00"
+      ],
+      "added": "2026-11-03T11:54:49.798Z"
+    },
+    {
+      "title": "Hart Mansion Group Tour 10:00a.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-hart-mansion-group-tour-1000am-36541",
+      "start": "2026-11-05T10:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-05T10:00",
+        "2026-11-06T10:00",
+        "2026-11-07T10:00",
+        "2026-11-12T10:00",
+        "2026-11-13T10:00",
+        "2026-11-14T10:00",
+        "2026-11-19T10:00",
+        "2026-11-20T10:00",
+        "2026-11-21T10:00"
+      ],
+      "repeats": 8,
+      "added": "2026-11-03T11:54:49.798Z"
+    },
+    {
+      "title": "Cuenta Cuentos",
+      "url": "https://santaclarita.librarycalendar.com/event/cuenta-cuentos-32406",
+      "start": "2026-11-05T10:00",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-05T10:00",
+        "2026-11-12T10:00",
+        "2026-11-19T10:00"
+      ],
+      "repeats": 2,
+      "added": "2026-11-03T11:54:49.798Z"
+    },
+    {
+      "title": "Science Explorers: Little Chemist",
+      "url": "https://santaclarita.librarycalendar.com/event/science-explorers-little-chemist-prism-31533",
+      "start": "2026-11-05T15:30",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-05T15:30"
+      ],
+      "added": "2026-11-03T11:54:49.798Z"
     },
     {
       "title": "Find Your New Best Friend: Pet Adoption Event",
