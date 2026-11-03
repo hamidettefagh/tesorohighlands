@@ -1,60 +1,147 @@
 {
-  "generatedAt": "2026-11-02T22:23:04.425Z",
+  "generatedAt": "2026-11-03T20:10:40.036Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Old Town Newhall Farmers Market",
+      "title": "Canyon Country Farmers Market",
       "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-07T08:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
+      "start": "2026-11-04T16:00",
+      "venue": "Canyon Country Community Center, 18410 Sierra Hwy",
+      "city": "Canyon Country",
+      "free": false,
+      "price": null,
       "audience": [
-        "kids",
-        "teens",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita",
-      "added": "2026-11-02T22:23:04.425Z"
+      "added": "2026-11-03T20:10:40.036Z"
     },
     {
-      "title": "Free Dump Truck Build at Home Depot Kids Workshop",
+      "title": "Santa Photos at Valencia Town Center",
+      "url": "https://www.valenciatowncenter.com/event/44370-santa-photos",
+      "start": "2026-11-06",
+      "venue": "Valencia Town Center, 1st Floor Near H&M",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Valencia Town Center",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-11-07T08:30",
+      "venue": "Old Town Newhall Library, 24500 Main Street",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Home Depot Kids Workshop: Free Dump Truck Build",
       "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055",
       "start": "2026-11-07T09:00",
-      "venue": "The Home Depot, Newhall Ranch Rd",
-      "city": "Santa Clarita",
+      "venue": "Home Depot, Newhall Ranch Rd",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
         "kids"
       ],
       "source": "Web (AI)",
-      "via": "homedepot.com",
-      "added": "2026-11-02T22:23:04.425Z"
+      "via": "Home Depot",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Weekly Saturday Storytime at Barnes & Noble Valencia",
+      "url": "https://stores.barnesandnoble.com/store/2642",
+      "start": "2026-11-07T11:00",
+      "venue": "Barnes & Noble, 23630 Valencia Blvd",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Web (AI)",
+      "via": "Barnes & Noble",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-11-08T08:00",
+      "venue": "College of the Canyons Parking Lot 5, Rockwell Canyon Rd",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Certified Farmers Market",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-08T08:30",
+      "venue": "Navigation Ave at Westridge Pkwy",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Valencia FivePoint Farmers Market",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Canyon Country Farmers Market",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-11-11T16:00",
+      "venue": "Canyon Country Community Center, 18410 Sierra Hwy",
+      "city": "Canyon Country",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita",
+      "added": "2026-11-03T20:10:40.036Z"
     },
     {
       "title": "Old Town Newhall Farmers Market",
       "url": "https://santaclarita.gov/arts-and-culture/events/",
       "start": "2026-11-14T08:30",
-      "venue": "Old Town Newhall Library",
+      "venue": "Old Town Newhall Library, 24500 Main Street",
       "city": "Newhall",
-      "free": true,
-      "price": "Free",
+      "free": false,
+      "price": null,
       "audience": [
-        "kids",
-        "teens",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita",
-      "added": "2026-11-02T22:23:04.425Z"
+      "added": "2026-11-03T20:10:40.036Z"
     },
     {
-      "title": "Free Holiday Engine at Lowe's Kids Workshop",
-      "url": "https://www.lowes.com/l/workshops/diy-u-kids-workshops",
+      "title": "Lowe's Kids Workshop: Free Holiday Engine Build",
+      "url": "https://www.lowes.com/l/kids-workshops",
       "start": "2026-11-14T10:00",
       "venue": "Lowe's (select stores, call ahead)",
       "city": "Santa Clarita",
@@ -64,31 +151,89 @@
         "kids"
       ],
       "source": "Web (AI)",
-      "via": "lowes.com",
-      "added": "2026-11-02T22:23:04.425Z"
+      "via": "Lowe's",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Weekly Saturday Storytime at Barnes & Noble Valencia",
+      "url": "https://stores.barnesandnoble.com/store/2642",
+      "start": "2026-11-14T11:00",
+      "venue": "Barnes & Noble, 23630 Valencia Blvd",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Web (AI)",
+      "via": "Barnes & Noble",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-11-15T08:00",
+      "venue": "College of the Canyons Parking Lot 5, Rockwell Canyon Rd",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Certified Farmers Market",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-15T08:30",
+      "venue": "Navigation Ave at Westridge Pkwy",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Valencia FivePoint Farmers Market",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Canyon Country Farmers Market",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-11-18T16:00",
+      "venue": "Canyon Country Community Center, 18410 Sierra Hwy",
+      "city": "Canyon Country",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "City of Santa Clarita",
+      "added": "2026-11-03T20:10:40.036Z"
     },
     {
       "title": "Old Town Newhall Farmers Market",
       "url": "https://santaclarita.gov/arts-and-culture/events/",
       "start": "2026-11-21T08:30",
-      "venue": "Old Town Newhall Library",
+      "venue": "Old Town Newhall Library, 24500 Main Street",
       "city": "Newhall",
-      "free": true,
-      "price": "Free",
+      "free": false,
+      "price": null,
       "audience": [
-        "kids",
-        "teens",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita",
-      "added": "2026-11-02T22:23:04.425Z"
+      "added": "2026-11-03T20:10:40.036Z"
     },
     {
-      "title": "Free Christmas Car Ornament at Home Depot Kids Workshop",
+      "title": "Home Depot Kids Workshop: Free Christmas Car Ornament Build",
       "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-11-21T09:00",
-      "venue": "The Home Depot (select stores, call ahead)",
+      "venue": "Home Depot, Golden Triangle Rd",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -96,12 +241,27 @@
         "kids"
       ],
       "source": "Web (AI)",
-      "via": "homedepot.com",
-      "added": "2026-11-02T22:23:04.425Z"
+      "via": "Home Depot",
+      "added": "2026-11-03T20:10:40.036Z"
     },
     {
-      "title": "Light Up Main Street",
-      "url": "https://oldtownnewhall.com/events/light-up-main/",
+      "title": "Weekly Saturday Storytime at Barnes & Noble Valencia",
+      "url": "https://stores.barnesandnoble.com/store/2642",
+      "start": "2026-11-21T11:00",
+      "venue": "Barnes & Noble, 23630 Valencia Blvd",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids"
+      ],
+      "source": "Web (AI)",
+      "via": "Barnes & Noble",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Light Up Main Street: Holiday Tree Lighting & Festivities",
+      "url": "https://calendar.santaclarita.gov/event/light-up-main-street-presented-by-drinkpak-5329",
       "start": "2026-11-21T16:00",
       "venue": "Main Street, Old Town Newhall",
       "city": "Newhall",
@@ -109,312 +269,104 @@
       "price": "Free",
       "audience": [
         "kids",
-        "teens",
-        "adults"
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
-      "via": "oldtownnewhall.com",
-      "added": "2026-11-01T18:28:19.954Z"
+      "via": "City of Santa Clarita",
+      "added": "2026-11-03T20:10:40.036Z"
     },
     {
-      "title": "Holiday in the Park at Six Flags Magic Mountain",
-      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
-      "start": "2026-11-26T10:30",
-      "venue": "Six Flags Magic Mountain",
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://www.vccfm.org/santa-clarita",
+      "start": "2026-11-22T08:00",
+      "venue": "College of the Canyons Parking Lot 5, Rockwell Canyon Rd",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Certified Farmers Market",
+      "added": "2026-11-03T20:10:40.036Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-22T08:30",
+      "venue": "Navigation Ave at Westridge Pkwy",
       "city": "Valencia",
       "free": false,
       "price": null,
       "audience": [
-        "kids",
-        "teens",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
-      "via": "funwithkidsinla.com",
-      "added": "2026-10-31T17:49:32.008Z"
+      "via": "Valencia FivePoint Farmers Market",
+      "added": "2026-11-03T20:10:40.036Z"
     },
     {
-      "title": "Holiday in the Park at Six Flags Magic Mountain",
-      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
-      "start": "2026-11-27T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
+      "title": "Canyon Country Farmers Market",
+      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "start": "2026-11-25T16:00",
+      "venue": "Canyon Country Community Center, 18410 Sierra Hwy",
+      "city": "Canyon Country",
       "free": false,
       "price": null,
       "audience": [
-        "kids",
-        "teens",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
-      "via": "funwithkidsinla.com",
-      "added": "2026-10-31T17:49:32.008Z"
+      "via": "City of Santa Clarita",
+      "added": "2026-11-03T20:10:40.036Z"
     },
     {
-      "title": "It's a Wonderful Life",
+      "title": "It's a Wonderful Life at Canyon Theatre Guild",
       "url": "https://www.canyontheatre.org/shows",
       "start": "2026-11-27T19:00",
-      "venue": "Canyon Theatre Guild",
+      "venue": "Canyon Theatre Guild, 24242 Main Street",
       "city": "Newhall",
       "free": false,
-      "price": null,
+      "price": "Tickets available",
       "audience": [
-        "teens",
-        "adults"
+        "kids",
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
-      "via": "canyontheatre.org",
-      "added": "2026-11-02T22:23:04.425Z"
+      "via": "Canyon Theatre Guild",
+      "added": "2026-11-03T20:10:40.036Z"
     },
     {
       "title": "Old Town Newhall Farmers Market",
       "url": "https://santaclarita.gov/arts-and-culture/events/",
       "start": "2026-11-28T08:30",
-      "venue": "Old Town Newhall Library",
+      "venue": "Old Town Newhall Library, 24500 Main Street",
       "city": "Newhall",
-      "free": true,
-      "price": "Free",
+      "free": false,
+      "price": null,
       "audience": [
-        "kids",
-        "teens",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita",
-      "added": "2026-11-02T22:23:04.425Z"
+      "added": "2026-11-03T20:10:40.036Z"
     },
     {
-      "title": "Holiday in the Park at Six Flags Magic Mountain",
-      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
-      "start": "2026-11-28T10:30",
-      "venue": "Six Flags Magic Mountain",
+      "title": "Weekly Saturday Storytime at Barnes & Noble Valencia",
+      "url": "https://stores.barnesandnoble.com/store/2642",
+      "start": "2026-11-28T11:00",
+      "venue": "Barnes & Noble, 23630 Valencia Blvd",
       "city": "Valencia",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "funwithkidsinla.com",
-      "added": "2026-10-31T17:49:32.008Z"
-    },
-    {
-      "title": "It's a Wonderful Life",
-      "url": "https://www.canyontheatre.org/shows",
-      "start": "2026-11-28T20:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "canyontheatre.org",
-      "added": "2026-11-02T22:23:04.425Z"
-    },
-    {
-      "title": "Holiday in the Park at Six Flags Magic Mountain",
-      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
-      "start": "2026-11-29T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "funwithkidsinla.com",
-      "added": "2026-10-31T17:49:32.008Z"
-    },
-    {
-      "title": "It's a Wonderful Life",
-      "url": "https://www.canyontheatre.org/shows",
-      "start": "2026-11-29T14:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "canyontheatre.org",
-      "added": "2026-11-02T22:23:04.425Z"
-    },
-    {
-      "title": "Holiday in the Park at Six Flags Magic Mountain",
-      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
-      "start": "2026-12-04T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "funwithkidsinla.com",
-      "added": "2026-10-31T17:49:32.008Z"
-    },
-    {
-      "title": "Holipalooza at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/shows",
-      "start": "2026-12-04T19:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "canyontheatre.org",
-      "added": "2026-11-02T22:23:04.425Z"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-12-05T08:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-02T22:23:04.425Z"
-    },
-    {
-      "title": "Holiday in the Park at Six Flags Magic Mountain",
-      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
-      "start": "2026-12-05T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "funwithkidsinla.com",
-      "added": "2026-10-31T17:49:32.008Z"
-    },
-    {
-      "title": "Holiday in the Park at Six Flags Magic Mountain",
-      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
-      "start": "2026-12-06T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "funwithkidsinla.com",
-      "added": "2026-10-31T17:49:32.008Z"
-    },
-    {
-      "title": "It's a Wonderful Life",
-      "url": "https://www.canyontheatre.org/shows",
-      "start": "2026-12-06T14:00",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "canyontheatre.org",
-      "added": "2026-11-02T22:23:04.425Z"
-    },
-    {
-      "title": "Holiday in the Park at Six Flags Magic Mountain",
-      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
-      "start": "2026-12-11T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "funwithkidsinla.com",
-      "added": "2026-10-31T17:49:32.008Z"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-12-12T08:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-02T22:23:04.425Z"
-    },
-    {
-      "title": "Free Holiday Trolley Car at Lowe's Kids Workshop",
-      "url": "https://www.lowes.com/l/workshops/diy-u-kids-workshops",
-      "start": "2026-12-12T10:00",
-      "venue": "Lowe's (select stores, call ahead)",
-      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "kids"
       ],
       "source": "Web (AI)",
-      "via": "lowes.com",
-      "added": "2026-11-02T22:23:04.425Z"
-    },
-    {
-      "title": "Holiday in the Park at Six Flags Magic Mountain",
-      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
-      "start": "2026-12-12T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "funwithkidsinla.com",
-      "added": "2026-10-31T17:49:32.008Z"
+      "via": "Barnes & Noble",
+      "added": "2026-11-03T20:10:40.036Z"
     }
   ]
 }
