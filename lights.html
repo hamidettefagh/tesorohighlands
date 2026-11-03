@@ -117,6 +117,8 @@
   /* Zoomed out, the whole neighborhood fits a phone, and full-size pins would pile up. */
   #map.mz-s .pin{transform:scale(.62);}
   #map.mz-m .pin{transform:scale(.8);}
+  /* A mouse over a house: it's clickable, say so. */
+  #map.overlot:not(.leaflet-dragging){cursor:pointer;}
 
   .legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:12px 2px 0;font-size:13px;color:var(--ink-2);}
   .legend span{display:inline-flex;align-items:center;gap:6px;}
@@ -417,6 +419,20 @@
       canvas = L.canvas({ padding: 0.3, tolerance: 3 });
       map = L.map("map", { attributionControl: false, scrollWheelZoom: false, minZoom: 14.5, maxZoom: 19, maxBounds: bounds.pad(0.6), zoomSnap: 0.5 });
       map.fitBounds(bounds, { padding: [14, 14] });
+      // With a mouse: the wheel zooms once the map has been clicked (so a wheel over
+      // the map while reading the page still scrolls the page), and the cursor turns
+      // into a pointer over a house, since the lots are canvas and get no cursor of
+      // their own.
+      if (!touch) {
+        map.on("focus", function () { map.scrollWheelZoom.enable(); });
+        map.on("blur", function () { map.scrollWheelZoom.disable(); });
+        var hoverRaf = 0;
+        map.on("mousemove", function (e) {
+          if (hoverRaf) return;
+          hoverRaf = requestAnimationFrame(function () { hoverRaf = 0; $("map").classList.toggle("overlot", !!lotAt(e.latlng)); });
+        });
+        map.on("mouseout", function () { $("map").classList.remove("overlot"); });
+      }
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19, maxNativeZoom: 19,
         attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>'
