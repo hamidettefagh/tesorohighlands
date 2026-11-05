@@ -1,75 +1,74 @@
 {
-  "generatedAt": "2026-11-04T20:28:12.707Z",
+  "generatedAt": "2026-11-05T20:43:51.881Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-07T08:30",
-      "venue": "Old Town Newhall Library, 24500 Main Street",
+      "title": "Interrobang Sketch Comedy at The MAIN",
+      "url": "https://atthemain.org/events-at-the-main/",
+      "start": "2026-11-05",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN",
+      "added": "2026-11-05T20:43:51.881Z"
+    },
+    {
+      "title": "Society Improv at The MAIN",
+      "url": "https://atthemain.org/events-at-the-main/",
+      "start": "2026-11-07",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN",
+      "added": "2026-11-05T20:43:51.881Z"
+    },
+    {
+      "title": "Home Depot Kids Workshop: Dump Truck",
+      "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055",
+      "start": "2026-11-07T09:00",
+      "venue": "The Home Depot, Newhall Ranch Rd",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "adults"
+        "kids"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-03T20:10:40.036Z"
+      "via": "Home Depot",
+      "added": "2026-11-05T20:43:51.881Z"
     },
     {
-      "title": "Free Dump Truck Build at The Home Depot Kids Workshop",
-      "url": "https://www.homedepot.com/c/kids-workshop",
-      "start": "2026-11-07T09:00",
-      "venue": "The Home Depot, Newhall Ranch Rd, Valencia (select stores, call ahead)",
+      "title": "Weekly Saturday Storytime at Barnes & Noble",
+      "url": "https://stores.barnesandnoble.com/store/2642?view=list&month=Month&day=Day&type=CY",
+      "start": "2026-11-07T11:00",
+      "venue": "Barnes & Noble, 23630 Valencia Blvd",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids"
-      ],
-      "source": "Web (AI)",
-      "via": "The Home Depot",
-      "added": "2026-11-04T20:28:12.707Z"
-    },
-    {
-      "title": "Weekly Saturday Storytime at Barnes & Noble Valencia",
-      "url": "https://stores.barnesandnoble.com/store/2642",
-      "start": "2026-11-07T11:00",
-      "venue": "Barnes & Noble, 23630 Valencia Blvd",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
+        "toddlers",
         "kids"
       ],
       "source": "Web (AI)",
       "via": "Barnes & Noble",
-      "added": "2026-11-03T20:10:40.036Z"
+      "added": "2026-11-05T20:43:51.881Z"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-14T08:30",
-      "venue": "Old Town Newhall Library, 24500 Main Street",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-03T20:10:40.036Z"
-    },
-    {
-      "title": "Free Holiday Engine Build at Lowe's Kids Workshop",
-      "url": "https://www.lowes.com/l/workshops",
+      "title": "Lowe's Kids Workshop: Holiday Engine",
+      "url": "https://www.seacoastkidscalendar.com/free-diy-kids-workshops-at-lowes/",
       "start": "2026-11-14T10:00",
-      "venue": "Lowe's, Bouquet Canyon Rd, Santa Clarita (select stores, call ahead)",
+      "venue": "Lowe's, Bouquet Canyon Rd (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -78,45 +77,29 @@
       ],
       "source": "Web (AI)",
       "via": "Lowe's",
-      "added": "2026-11-04T20:28:12.707Z"
+      "added": "2026-11-05T20:43:51.881Z"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-21T08:30",
-      "venue": "Old Town Newhall Library, 24500 Main Street",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-03T20:10:40.036Z"
-    },
-    {
-      "title": "Free Christmas Car Ornament Build at The Home Depot Kids Workshop",
+      "title": "Home Depot Kids Workshop: Christmas Car Ornament",
       "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-11-21T09:00",
-      "venue": "The Home Depot, Newhall Ranch Rd, Valencia (select stores, call ahead)",
-      "city": "Valencia",
+      "venue": "The Home Depot, Golden Triangle Rd",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "kids"
       ],
       "source": "Web (AI)",
-      "via": "The Home Depot",
-      "added": "2026-11-04T20:28:12.707Z"
+      "via": "Home Depot",
+      "added": "2026-11-05T20:43:51.881Z"
     },
     {
-      "title": "Light Up Main Street, presented by DrinkPAK",
+      "title": "Light Up Main Street",
       "url": "https://oldtownnewhall.com/events/light-up-main/",
       "start": "2026-11-21T16:00",
       "venue": "Main Street, Old Town Newhall",
-      "city": "Santa Clarita",
+      "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
@@ -125,124 +108,107 @@
       ],
       "source": "Web (AI)",
       "via": "Old Town Newhall",
-      "added": "2026-11-04T20:28:12.707Z"
+      "added": "2026-11-05T20:43:51.881Z"
     },
     {
       "title": "It's a Wonderful Life at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/auditions",
+      "url": "https://www.canyontheatre.org/shows",
       "start": "2026-11-27",
-      "venue": "Canyon Theatre Guild, 24242 Main Street",
+      "venue": "Canyon Theatre Guild",
+      "city": "Newhall",
+      "free": false,
+      "price": "$24 Adults, $20 Seniors/Juniors",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild",
+      "added": "2026-11-05T20:43:51.881Z"
+    },
+    {
+      "title": "Punchlines Comedy at The MAIN",
+      "url": "https://atthemain.org/events-at-the-main/",
+      "start": "2026-12-05",
+      "venue": "The MAIN Theatre",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "The MAIN",
+      "added": "2026-11-05T20:43:51.881Z"
+    },
+    {
+      "title": "Breakfast with Santa at Gilchrist Farm",
+      "url": "https://la.kidsoutandabout.com/content/gilchrist-farm",
+      "start": "2026-12-05T08:00",
+      "venue": "Gilchrist Farm",
       "city": "Santa Clarita",
       "free": false,
       "price": null,
       "audience": [
-        "adults",
-        "teens"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild",
-      "added": "2026-11-03T20:10:40.036Z"
-    },
-    {
-      "title": "Holiday in the Park",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-11-27T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "Admission required",
-      "audience": [
         "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain",
-      "added": "2026-11-04T20:28:12.707Z"
+      "via": "Gilchrist Farm",
+      "added": "2026-11-05T20:43:51.881Z"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-28T08:30",
-      "venue": "Old Town Newhall Library, 24500 Main Street",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-03T20:10:40.036Z"
-    },
-    {
-      "title": "Holiday in the Park",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-12-04T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
-      "free": false,
-      "price": "Admission required",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain",
-      "added": "2026-11-04T20:28:12.707Z"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-12-05T08:30",
-      "venue": "Old Town Newhall Library, 24500 Main Street",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-03T20:10:40.036Z"
-    },
-    {
-      "title": "Free Holiday Train Build at The Home Depot Kids Workshop",
+      "title": "Home Depot Kids Workshop: Holiday Train",
       "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-12-05T09:00",
-      "venue": "The Home Depot, Newhall Ranch Rd, Valencia (select stores, call ahead)",
-      "city": "Valencia",
+      "venue": "The Home Depot, Golden Triangle Rd",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "kids"
       ],
       "source": "Web (AI)",
-      "via": "The Home Depot",
-      "added": "2026-11-04T20:28:12.707Z"
+      "via": "Home Depot",
+      "added": "2026-11-05T20:43:51.881Z"
     },
     {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-12-12T08:30",
-      "venue": "Old Town Newhall Library, 24500 Main Street",
+      "title": "Breakfast with Santa at Gilchrist Farm",
+      "url": "https://la.kidsoutandabout.com/content/gilchrist-farm",
+      "start": "2026-12-06T08:00",
+      "venue": "Gilchrist Farm",
       "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
+      "free": false,
+      "price": null,
       "audience": [
         "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-03T20:10:40.036Z"
+      "via": "Gilchrist Farm",
+      "added": "2026-11-05T20:43:51.881Z"
     },
     {
-      "title": "Free Holiday Trolley Car Build at Lowe's Kids Workshop",
-      "url": "https://www.lowes.com/l/workshops",
+      "title": "Breakfast with Santa at Gilchrist Farm",
+      "url": "https://la.kidsoutandabout.com/content/gilchrist-farm",
+      "start": "2026-12-12T08:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm",
+      "added": "2026-11-05T20:43:51.881Z"
+    },
+    {
+      "title": "Lowe's Kids Workshop: Holiday Trolley Car",
+      "url": "https://www.seacoastkidscalendar.com/free-diy-kids-workshops-at-lowes/",
       "start": "2026-12-12T10:00",
-      "venue": "Lowe's, Bouquet Canyon Rd, Santa Clarita (select stores, call ahead)",
+      "venue": "Lowe's, Bouquet Canyon Rd (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -251,7 +217,87 @@
       ],
       "source": "Web (AI)",
       "via": "Lowe's",
-      "added": "2026-11-04T20:28:12.707Z"
+      "added": "2026-11-05T20:43:51.881Z"
+    },
+    {
+      "title": "Breakfast with Santa at Gilchrist Farm",
+      "url": "https://la.kidsoutandabout.com/content/gilchrist-farm",
+      "start": "2026-12-13T08:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm",
+      "added": "2026-11-05T20:43:51.881Z"
+    },
+    {
+      "title": "Breakfast with Santa at Gilchrist Farm",
+      "url": "https://la.kidsoutandabout.com/content/gilchrist-farm",
+      "start": "2026-12-19T08:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm",
+      "added": "2026-11-05T20:43:51.881Z"
+    },
+    {
+      "title": "Holiday Hoedown at Gilchrist Farm",
+      "url": "https://mommypoppins.com/los-angeles-kids/christmashanukkah/gilchrist-farm-holiday-market-santa-breakfast-santa-clarita",
+      "start": "2026-12-19T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm",
+      "added": "2026-11-05T20:43:51.881Z"
+    },
+    {
+      "title": "Breakfast with Santa at Gilchrist Farm",
+      "url": "https://la.kidsoutandabout.com/content/gilchrist-farm",
+      "start": "2026-12-20T08:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm",
+      "added": "2026-11-05T20:43:51.881Z"
+    },
+    {
+      "title": "Holiday Hoedown at Gilchrist Farm",
+      "url": "https://mommypoppins.com/los-angeles-kids/christmashanukkah/gilchrist-farm-holiday-market-santa-breakfast-santa-clarita",
+      "start": "2026-12-20T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm",
+      "added": "2026-11-05T20:43:51.881Z"
     }
   ]
 }
