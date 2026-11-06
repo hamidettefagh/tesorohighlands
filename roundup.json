@@ -1,72 +1,63 @@
 {
-  "generatedAt": "2026-10-30T19:57:49.320Z",
-  "weekendOf": "2026-10-30",
+  "generatedAt": "2026-11-06T20:57:27.228Z",
+  "weekendOf": "2026-11-06",
   "model": "claude-haiku-4-5",
-  "intro": "A Halloween and fall weekend full of treats, scares, and local fun for everyone.",
+  "intro": "Plenty of local spots to explore this weekend in our area.",
   "picks": [
     {
-      "emoji": "🎃",
-      "day": "Sat",
-      "time": "6 AM",
-      "title": "Tesoro Monster Bash",
-      "price": "$0–$1068.91",
-      "note": "Right in Tesoro—costumes, candy, community.",
-      "url": "https://www.eventbrite.com/e/tesoro-monster-bash-tickets-2000228277623"
-    },
-    {
-      "emoji": "👻",
-      "day": "Sat",
-      "time": "4 PM",
-      "title": "Mall-o-Ween Trick-or-Treating!",
-      "price": "free",
-      "note": "Trick-or-treating at the mall, no traffic chaos.",
-      "url": "https://www.valenciatowncenter.com/event/44135-mall-o-ween-trick-or-t"
-    },
-    {
-      "emoji": "🏃",
-      "day": "Sat",
-      "time": "3:30 PM",
-      "title": "Halloween Scavenger Hunt, Parade and Stories",
-      "price": "free",
-      "note": "Halloween scavenger hunt keeps kids engaged.",
-      "url": "https://santaclarita.librarycalendar.com/event/halloween-scavenger-hunt-parade-and-stories-32268"
-    },
-    {
-      "emoji": "🌺",
+      "emoji": "🏛️",
       "day": "Fri",
-      "time": "8 PM",
-      "title": "Eternamente: A Dia De Los Muertos Spectacular!",
-      "price": "",
-      "note": "Live performance celebrating Día de Los Muertos.",
-      "url": "https://pac.canyons.edu/shows/eternamente.php"
-    },
-    {
-      "emoji": "🎃",
-      "day": "Sun",
-      "time": "9 AM",
-      "title": "Gilchrist Farm Harvest Festival & Pumpkin Patch",
+      "time": "10 AM",
+      "title": "Hart Mansion Group Tour 10:00a.m.",
       "price": "free",
-      "note": "Pumpkin patch and festival, perfect fall day out.",
-      "url": "https://www.gilchristfarm.com/pumpkin-patch"
-    },
-    {
-      "emoji": "🎸",
-      "day": "Sun",
-      "time": "1 PM",
-      "title": "Afternoon Acoustic Jam",
-      "price": "free",
-      "note": "Free live music for adults looking to unwind.",
-      "url": "https://santaclarita.librarycalendar.com/event/placeholder-afternoon-acoustic-jam-31695"
+      "note": "Free historic mansion tours, perfect for curious kids",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-hart-mansion-group-tour-1000am-36542"
     },
     {
       "emoji": "🥕",
-      "day": "Sun",
-      "time": "8 AM",
-      "title": "Santa Clarita Certified Farmers Market",
+      "day": "Sat",
+      "time": "8:30 AM",
+      "title": "Old Town Newhall Farmers Market",
       "price": "free",
-      "note": "Sunday farmers market, local vendors and fresh food.",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market"
+      "note": "Fresh local produce and family-friendly Saturday morning vibe",
+      "url": "https://santaclarita.gov/arts-and-culture/events/"
+    },
+    {
+      "emoji": "🚚",
+      "day": "Sat",
+      "time": "9 AM",
+      "title": "Free Home Depot Kids Workshop: Dump Truck",
+      "price": "free",
+      "note": "Kids build and take home a free workshop project",
+      "url": "https://www.homedepothelper.com/home-depot-kids-workshop/"
+    },
+    {
+      "emoji": "📚",
+      "day": "Sat",
+      "time": "11 AM",
+      "title": "Weekly Saturday Storytime at Barnes & Noble Valencia",
+      "price": "free",
+      "note": "Weekend storytime at the bookstore nearby",
+      "url": "https://stores.barnesandnoble.com/store/2642"
+    },
+    {
+      "emoji": "⚙️",
+      "day": "Sat",
+      "time": "1 PM",
+      "title": "Open House Makerspace!",
+      "price": "free",
+      "note": "Open makerspace for teens and adults to explore",
+      "url": "https://santaclarita.librarycalendar.com/event/placeheld-open-house-makerspace-32503"
+    },
+    {
+      "emoji": "🌾",
+      "day": "Sun",
+      "time": "8:30 AM",
+      "title": "Valencia FivePoint Farmers' Market",
+      "price": "free",
+      "note": "Sunday farmers market with local food vendors and community",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nA Halloween and fall weekend full of treats, scares, and local fun for everyone.\n\n🎃 *Sat 6 AM* — Tesoro Monster Bash ($0–$1068.91)\n   Right in Tesoro—costumes, candy, community.\n👻 *Sat 4 PM* — Mall-o-Ween Trick-or-Treating! (free)\n   Trick-or-treating at the mall, no traffic chaos.\n🏃 *Sat 3:30 PM* — Halloween Scavenger Hunt, Parade and Stories (free)\n   Halloween scavenger hunt keeps kids engaged.\n🌺 *Fri 8 PM* — Eternamente: A Dia De Los Muertos Spectacular!\n   Live performance celebrating Día de Los Muertos.\n🎃 *Sun 9 AM* — Gilchrist Farm Harvest Festival & Pumpkin Patch (free)\n   Pumpkin patch and festival, perfect fall day out.\n🎸 *Sun 1 PM* — Afternoon Acoustic Jam (free)\n   Free live music for adults looking to unwind.\n🥕 *Sun 8 AM* — Santa Clarita Certified Farmers Market (free)\n   Sunday farmers market, local vendors and fresh food.\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nPlenty of local spots to explore this weekend in our area.\n\n🏛️ *Fri 10 AM* — Hart Mansion Group Tour 10:00a.m. (free)\n   Free historic mansion tours, perfect for curious kids\n🥕 *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Fresh local produce and family-friendly Saturday morning vibe\n🚚 *Sat 9 AM* — Free Home Depot Kids Workshop: Dump Truck (free)\n   Kids build and take home a free workshop project\n📚 *Sat 11 AM* — Weekly Saturday Storytime at Barnes & Noble Valencia (free)\n   Weekend storytime at the bookstore nearby\n⚙️ *Sat 1 PM* — Open House Makerspace! (free)\n   Open makerspace for teens and adults to explore\n🌾 *Sun 8:30 AM* — Valencia FivePoint Farmers' Market (free)\n   Sunday farmers market with local food vendors and community\n\nFull list → https://tesorohighlands.com/events"
 }
