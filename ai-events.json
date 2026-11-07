@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T19:59:29.424Z",
+  "generatedAt": "2026-11-07T18:05:38.016Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
@@ -7,7 +7,7 @@
       "title": "Old Town Newhall Farmers Market",
       "url": "https://santaclarita.gov/arts-and-culture/events/",
       "start": "2026-11-07T08:30",
-      "venue": "Old Town Newhall Library",
+      "venue": "Old Town Newhall Library parking lot",
       "city": "Newhall",
       "free": true,
       "price": "Free",
@@ -16,13 +16,13 @@
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita",
-      "added": "2026-11-06T19:59:29.423Z"
+      "added": "2026-11-07T18:05:38.016Z"
     },
     {
       "title": "Free Home Depot Kids Workshop: Dump Truck",
-      "url": "https://www.homedepothelper.com/home-depot-kids-workshop/",
+      "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-11-07T09:00",
-      "venue": "The Home Depot, Golden Triangle Rd (select stores, call ahead)",
+      "venue": "The Home Depot (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -31,10 +31,10 @@
       ],
       "source": "Web (AI)",
       "via": "The Home Depot",
-      "added": "2026-11-06T19:59:29.423Z"
+      "added": "2026-11-07T18:05:38.016Z"
     },
     {
-      "title": "Weekly Saturday Storytime at Barnes & Noble Valencia",
+      "title": "Barnes & Noble Weekly Saturday Storytime",
       "url": "https://stores.barnesandnoble.com/store/2642",
       "start": "2026-11-07T11:00",
       "venue": "Barnes & Noble, 23630 Valencia Blvd",
@@ -42,33 +42,18 @@
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "toddlers"
+        "toddlers",
+        "kids"
       ],
       "source": "Web (AI)",
       "via": "Barnes & Noble",
-      "added": "2026-11-06T19:59:29.423Z"
-    },
-    {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-08T08:30",
-      "venue": "Valencia FivePoint, 27426 Navigation Ave",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-06T19:59:29.423Z"
+      "added": "2026-11-07T18:05:38.016Z"
     },
     {
       "title": "Free Lowe's Kids Workshop: Holiday Engine",
       "url": "https://www.seacoastkidscalendar.com/free-diy-kids-workshops-at-lowes/",
       "start": "2026-11-14T10:00",
-      "venue": "Lowe's, Bouquet Canyon Rd (select stores, call ahead)",
+      "venue": "Lowe's Home Improvement (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -77,13 +62,13 @@
       ],
       "source": "Web (AI)",
       "via": "Lowe's",
-      "added": "2026-11-06T19:59:29.423Z"
+      "added": "2026-11-07T18:05:38.016Z"
     },
     {
       "title": "Free Home Depot Kids Workshop: Christmas Car Ornament",
-      "url": "https://www.homedepothelper.com/home-depot-kids-workshop/",
+      "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-11-21T09:00",
-      "venue": "The Home Depot, Golden Triangle Rd (select stores, call ahead)",
+      "venue": "The Home Depot (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -92,43 +77,48 @@
       ],
       "source": "Web (AI)",
       "via": "The Home Depot",
-      "added": "2026-11-06T19:59:29.423Z"
+      "added": "2026-11-07T18:05:38.016Z"
     },
     {
-      "title": "Light Up Main Street, Old Town Newhall",
-      "url": "https://oldtownnewhall.com/events/light-up-main/",
+      "title": "Light Up Main Street, presented by DrinkPAK",
+      "url": "https://calendar.santaclarita.gov/event/light-up-main-street-presented-by-drinkpak-5329",
       "start": "2026-11-21T16:00",
-      "venue": "Main Street, Old Town Newhall",
+      "venue": "Main Street in Old Town Newhall",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults",
+        "toddlers"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall",
-      "added": "2026-11-06T19:59:29.423Z"
+      "via": "City of Santa Clarita",
+      "added": "2026-11-07T18:05:38.016Z"
     },
     {
-      "title": "It's a Wonderful Life at Canyon Theatre Guild",
+      "title": "Canyon Theatre Guild: It's a Wonderful Life",
       "url": "https://www.canyontheatre.org/2026-27season",
       "start": "2026-11-27T19:00",
-      "venue": "Canyon Theatre Guild",
+      "venue": "Canyon Theatre Guild, 24242 Main Street",
       "city": "Newhall",
       "free": false,
-      "price": "$15-$20",
+      "price": "$20",
       "audience": [
-        "everyone"
+        "kids",
+        "teens",
+        "adults"
       ],
       "source": "Web (AI)",
       "via": "Canyon Theatre Guild",
-      "added": "2026-11-05T20:43:51.881Z"
+      "added": "2026-11-07T18:05:38.016Z"
     },
     {
       "title": "Free Home Depot Kids Workshop: Holiday Train",
-      "url": "https://www.homedepothelper.com/home-depot-kids-workshop/",
+      "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-12-05T09:00",
-      "venue": "The Home Depot, Golden Triangle Rd (select stores, call ahead)",
+      "venue": "The Home Depot (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -137,43 +127,13 @@
       ],
       "source": "Web (AI)",
       "via": "The Home Depot",
-      "added": "2026-11-06T19:59:29.423Z"
-    },
-    {
-      "title": "Newhall Holiday Marketplace",
-      "url": "https://scvnews.com/dec-5-newhall-holiday-marketplace-100-curated-artisans-under-one-roof/",
-      "start": "2026-12-05T10:00",
-      "venue": "Newhall Community Center",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "SCVNews.com",
-      "added": "2026-11-06T19:59:29.423Z"
-    },
-    {
-      "title": "Polar Express Experience at the Santa Clarita History Center",
-      "url": "https://santaclaritamagazine.com/2026/10/polar-express-experience-returns-to-history-center-december-5/",
-      "start": "2026-12-05T12:00",
-      "venue": "Santa Clarita History Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$25 per family (up to 8 people)",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Magazine",
-      "added": "2026-11-06T19:59:29.423Z"
+      "added": "2026-11-07T18:05:38.016Z"
     },
     {
       "title": "Free Lowe's Kids Workshop: Holiday Trolley Car",
       "url": "https://www.seacoastkidscalendar.com/free-diy-kids-workshops-at-lowes/",
       "start": "2026-12-12T10:00",
-      "venue": "Lowe's, Bouquet Canyon Rd (select stores, call ahead)",
+      "venue": "Lowe's Home Improvement (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -182,7 +142,7 @@
       ],
       "source": "Web (AI)",
       "via": "Lowe's",
-      "added": "2026-11-06T19:59:29.423Z"
+      "added": "2026-11-07T18:05:38.016Z"
     }
   ]
 }
