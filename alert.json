@@ -1,10 +1,5 @@
 {
-  "active": true,
-  "sig": "redflag:97b833beefd9b12d01.001.1",
-  "level": "caution",
-  "title": "Red Flag Warning",
-  "text": "🚩 Red Flag Warning for our area — dry, windy conditions where a spark spreads fast.\nNo open flames, no yard equipment today; report smoke immediately (911).\nConditions: https://tesorohighlands.com/fire",
-  "waText": "🚩 *Red Flag Warning* for our area — dry, windy conditions where a spark spreads fast.\nNo open flames, no yard equipment today; report smoke immediately (911).\nConditions: https://tesorohighlands.com/fire",
-  "others": [],
-  "updatedAt": "2026-11-07T02:05:10.020Z"
+  "active": false,
+  "sig": "",
+  "updatedAt": "2026-11-08T08:17:59.810Z"
 }
