@@ -1,44 +1,7 @@
 {
-  "generatedAt": "2026-11-10T02:43:44.121Z",
+  "generatedAt": "2026-11-10T12:37:53.516Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Little Explorers",
-      "url": "https://santaclarita.librarycalendar.com/event/little-explorers-31513",
-      "start": "2026-11-09T13:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-09T13:00",
-        "2026-11-16T13:00"
-      ],
-      "repeats": 1,
-      "added": "2026-11-05T12:19:18.682Z"
-    },
-    {
-      "title": "The Secret Club",
-      "url": "https://santaclarita.librarycalendar.com/event/secret-club-32434",
-      "start": "2026-11-09T18:00",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-09T18:00"
-      ],
-      "added": "2026-11-05T12:19:18.682Z"
-    },
     {
       "title": "Baby and Toddler Storytime",
       "url": "https://santaclarita.librarycalendar.com/event/baby-and-toddler-storytime-31479",
@@ -465,6 +428,47 @@
       "added": "2026-11-09T18:47:08.330Z"
     },
     {
+      "title": "Hart Mansion Tour 11:00a.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1100am-36660",
+      "start": "2026-11-14T11:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-14T11:00",
+        "2026-11-15T11:00",
+        "2026-11-21T11:00",
+        "2026-11-22T11:00",
+        "2026-11-28T11:00",
+        "2026-11-29T11:00"
+      ],
+      "repeats": 5,
+      "added": "2026-11-10T12:37:53.516Z"
+    },
+    {
+      "title": "Family Storytime",
+      "url": "https://santaclarita.librarycalendar.com/event/family-storytime-37826",
+      "start": "2026-11-14T11:00",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-14T11:00"
+      ],
+      "added": "2026-11-10T12:37:53.516Z"
+    },
+    {
       "title": "Santa's Arrival Celebration!",
       "url": "https://www.valenciatowncenter.com/event/44551-santas-arrival",
       "start": "2026-11-14T12:00",
@@ -477,6 +481,40 @@
       ],
       "source": "Valencia Town Center",
       "added": "2026-10-14T07:55:13.493Z"
+    },
+    {
+      "title": "Tales From the Dark Stacks",
+      "url": "https://santaclarita.librarycalendar.com/event/adult-hold-tales-dark-stacks-22910",
+      "start": "2026-11-14T13:00",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-14T13:00"
+      ],
+      "added": "2026-11-10T12:37:53.516Z"
+    },
+    {
+      "title": "Bling it on! Decorated Hair Adornments",
+      "url": "https://santaclarita.librarycalendar.com/event/decorated-hair-clips-32196",
+      "start": "2026-11-14T14:00",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-14T14:00"
+      ],
+      "added": "2026-11-10T12:37:53.516Z"
     },
     {
       "title": "Come Out & Play: The Season Opener | A Grown-Up Game Night for Women",
