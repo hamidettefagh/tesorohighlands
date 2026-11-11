@@ -1,47 +1,13 @@
 {
-  "generatedAt": "2026-11-10T20:30:08.531Z",
+  "generatedAt": "2026-11-11T20:14:37.923Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-11T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-14T08:30",
-      "venue": "Old Town Newhall Library, 24500 Main St",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
       "title": "Free Lowe's Kids Workshop: Holiday Engine",
-      "url": "https://www.lowes.com/l/kids-workshop",
+      "url": "https://www.lowes.com/l/kids-workshops",
       "start": "2026-11-14T10:00",
-      "venue": "Lowe's Home Improvement (select stores, call ahead)",
+      "venue": "Lowe's (select Santa Clarita stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -50,98 +16,30 @@
       ],
       "source": "Web (AI)",
       "via": "Lowe's",
-      "added": "2026-11-10T20:30:08.531Z"
+      "added": "2026-11-11T20:14:37.923Z"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-15T08:00",
-      "venue": "College of the Canyons Parking Lot 5, 26455 Rockwell Canyon Rd",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-09T23:01:59.863Z"
-    },
-    {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-15T08:30",
-      "venue": "Valencia FivePoint Community, Magic Mountain Parkway and Navigation Avenue",
+      "title": "Festival of Trees",
+      "url": "https://santaclaritamagazine.com/2026/10/light-up-the-holidays-2026-festival-of-trees-boys-girls-club-of-santa-clarita/",
+      "start": "2026-11-20T10:00",
+      "venue": "Valencia Town Center, former Canyon location",
       "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
-      "title": "Canyon Country Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-18T16:00",
-      "venue": "Canyon Country Community Center",
-      "city": "Canyon Country",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
-      "title": "Village of Idiots",
-      "url": "https://pac.canyons.edu/shows/",
-      "start": "2026-11-19T19:00",
-      "venue": "Santa Clarita Performing Arts Center, Black Box Theater, 26455 Rockwell Canyon Rd",
-      "city": "Santa Clarita",
       "free": false,
-      "price": "$12 general admission; $6 students/seniors",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "College of the Canyons",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
-      "title": "Old Town Newhall Farmers Market",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
-      "start": "2026-11-21T08:30",
-      "venue": "Old Town Newhall Library, 24500 Main St",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
+      "price": "$10 adults, $5 kids/seniors/military",
       "audience": [
         "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-10T20:30:08.531Z"
+      "via": "Boys & Girls Club of Santa Clarita Valley",
+      "added": "2026-11-11T20:14:37.923Z"
     },
     {
       "title": "Free Home Depot Kids Workshop: Christmas Car Ornament",
-      "url": "https://www.homedepot.com/c/kids-workshop",
+      "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055",
       "start": "2026-11-21T09:00",
-      "venue": "The Home Depot, Golden Triangle Rd",
-      "city": "Santa Clarita",
+      "venue": "Home Depot, Newhall Ranch Rd",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
@@ -149,30 +47,14 @@
       ],
       "source": "Web (AI)",
       "via": "The Home Depot",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
-      "title": "Village of Idiots",
-      "url": "https://pac.canyons.edu/shows/",
-      "start": "2026-11-21T14:00",
-      "venue": "Santa Clarita Performing Arts Center, Black Box Theater, 26455 Rockwell Canyon Rd",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$12 general admission; $6 students/seniors",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "College of the Canyons",
-      "added": "2026-11-10T20:30:08.531Z"
+      "added": "2026-11-11T20:14:37.923Z"
     },
     {
       "title": "Light Up Main Street",
       "url": "https://santaclarita.gov/arts-and-culture/events/",
       "start": "2026-11-21T16:00",
       "venue": "Main Street, Old Town Newhall",
-      "city": "Santa Clarita",
+      "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
@@ -185,143 +67,44 @@
       "added": "2026-11-10T20:30:08.531Z"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-22T08:00",
-      "venue": "College of the Canyons Parking Lot 5, 26455 Rockwell Canyon Rd",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-09T23:01:59.863Z"
-    },
-    {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-22T08:30",
-      "venue": "Valencia FivePoint Community, Magic Mountain Parkway and Navigation Avenue",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
-      "title": "It's a Wonderful Life",
-      "url": "https://www.canyontheatre.org/shows",
-      "start": "2026-11-27",
-      "venue": "Canyon Theatre Guild Playhouse, 24242 Main St",
+      "title": "A Christmas Story",
+      "url": "https://www.canyontheatre.org",
+      "start": "2026-11-28T19:00",
+      "venue": "Canyon Theatre Guild",
       "city": "Newhall",
       "free": false,
-      "price": "Adult $21, Junior/Senior $19",
+      "price": "$24 adults, $20 seniors/juniors",
       "audience": [
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Canyon Theatre Guild",
-      "added": "2026-11-10T20:30:08.531Z"
+      "added": "2026-11-11T20:14:37.923Z"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-29T08:00",
-      "venue": "College of the Canyons Parking Lot 5, 26455 Rockwell Canyon Rd",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-09T23:01:59.863Z"
-    },
-    {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-29T08:30",
-      "venue": "Valencia FivePoint Community, Magic Mountain Parkway and Navigation Avenue",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
-      "title": "Community Jazz Band",
-      "url": "https://pac.canyons.edu/shows/",
-      "start": "2026-11-30T19:00",
-      "venue": "Santa Clarita Performing Arts Center, Main Stage, 26455 Rockwell Canyon Rd",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "College of the Canyons",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
-      "title": "Holipalooza",
-      "url": "https://www.canyontheatre.org/shows",
-      "start": "2026-12-04T17:30",
-      "venue": "Canyon Theatre Guild Playhouse, 24242 Main St",
+      "title": "14th Annual Bowling for Kids",
+      "url": "https://www.eventbrite.com/d/ca--santa-clarita/valencia/",
+      "start": "2026-12-01T17:00",
+      "venue": "Valencia Lanes",
       "city": "Newhall",
-      "free": false,
-      "price": "Pricing varies",
+      "free": true,
+      "price": "Free",
       "audience": [
         "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Canyon Theatre Guild",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
-      "title": "Commercial Music",
-      "url": "https://pac.canyons.edu/shows/",
-      "start": "2026-12-04T19:00",
-      "venue": "Santa Clarita Performing Arts Center, Main Stage, 26455 Rockwell Canyon Rd",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "College of the Canyons",
-      "added": "2026-11-10T20:30:08.531Z"
+      "via": "Children's Hospital of Los Angeles",
+      "added": "2026-11-11T20:14:37.923Z"
     },
     {
       "title": "Free Home Depot Kids Workshop: Holiday Train",
-      "url": "https://www.homedepot.com/c/kids-workshop",
+      "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055",
       "start": "2026-12-05T09:00",
-      "venue": "The Home Depot, Golden Triangle Rd",
-      "city": "Santa Clarita",
+      "venue": "Home Depot, Newhall Ranch Rd",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
@@ -329,74 +112,22 @@
       ],
       "source": "Web (AI)",
       "via": "The Home Depot",
-      "added": "2026-11-10T20:30:08.531Z"
+      "added": "2026-11-11T20:14:37.923Z"
     },
     {
-      "title": "Newhall Holiday Marketplace",
-      "url": "https://calendar.santaclarita.gov/event/newhall_holiday_marketplace",
-      "start": "2026-12-05T10:00",
-      "venue": "Newhall Community Center, 22421 Market St",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Newhall Marketplace",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
-      "title": "Vocal Jazz & Choral Concert",
-      "url": "https://pac.canyons.edu/shows/",
-      "start": "2026-12-05T19:00",
-      "venue": "Santa Clarita Performing Arts Center, Main Stage, 26455 Rockwell Canyon Rd",
+      "title": "Free Lowe's Kids Workshop: Holiday Trolley Car",
+      "url": "https://www.lowes.com/l/kids-workshops",
+      "start": "2026-12-12T10:00",
+      "venue": "Lowe's (select Santa Clarita stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "teens",
-        "adults"
+        "kids"
       ],
       "source": "Web (AI)",
-      "via": "College of the Canyons",
-      "added": "2026-11-10T20:30:08.531Z"
-    },
-    {
-      "title": "Santa Clarita Certified Farmers Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-12-06T08:00",
-      "venue": "College of the Canyons Parking Lot 5, 26455 Rockwell Canyon Rd",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-09T23:01:59.863Z"
-    },
-    {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-12-06T08:30",
-      "venue": "Valencia FivePoint Community, Magic Mountain Parkway and Navigation Avenue",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-10T20:30:08.531Z"
+      "via": "Lowe's",
+      "added": "2026-11-11T20:14:37.923Z"
     }
   ]
 }
