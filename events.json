@@ -1,141 +1,7 @@
 {
-  "generatedAt": "2026-11-10T21:47:44.170Z",
+  "generatedAt": "2026-11-11T16:09:34.120Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Baby and Toddler Storytime",
-      "url": "https://santaclarita.librarycalendar.com/event/baby-and-toddler-storytime-31479",
-      "start": "2026-11-10T09:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-10T09:30",
-        "2026-11-17T09:30"
-      ],
-      "repeats": 1,
-      "added": "2026-11-05T12:19:18.682Z"
-    },
-    {
-      "title": "Storytime",
-      "url": "https://santaclarita.librarycalendar.com/event/storytime-31778",
-      "start": "2026-11-10T09:30",
-      "venue": "Valencia Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-10T09:30",
-        "2026-11-12T09:30",
-        "2026-11-17T09:30",
-        "2026-11-18T09:30",
-        "2026-11-19T09:30"
-      ],
-      "repeats": 4,
-      "added": "2026-11-06T15:54:40.055Z"
-    },
-    {
-      "title": "Storytime",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-storytime-31490",
-      "start": "2026-11-10T11:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-10T11:00",
-        "2026-11-12T09:30",
-        "2026-11-17T11:00",
-        "2026-11-19T09:30"
-      ],
-      "repeats": 3,
-      "added": "2026-10-17T12:10:51.211Z"
-    },
-    {
-      "title": "KPop Demon Hunter Party: at the Canyon Country Jo Anne Darcy Library",
-      "url": "https://santaclarita.librarycalendar.com/event/kpop-demon-hunter-party-32439",
-      "start": "2026-11-10T15:30",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-10T15:30"
-      ],
-      "added": "2026-11-06T15:54:40.055Z"
-    },
-    {
-      "title": "Teen Crafts and Stuff: Perler Bead Keychains",
-      "url": "https://santaclarita.librarycalendar.com/event/teen-crafts-and-stuff-perler-bead-keychains-32646",
-      "start": "2026-11-10T15:30",
-      "venue": "Valencia Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-10T15:30"
-      ],
-      "added": "2026-11-06T15:54:40.055Z"
-    },
-    {
-      "title": "Read to a Dog",
-      "url": "https://santaclarita.librarycalendar.com/event/read-dog-31632",
-      "start": "2026-11-10T16:00",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-10T16:00"
-      ],
-      "added": "2026-11-06T15:54:40.055Z"
-    },
-    {
-      "title": "Paint N' Sip",
-      "url": "https://santaclarita.librarycalendar.com/event/adult-hold-paint-n-sip-31071",
-      "start": "2026-11-10T17:30",
-      "venue": "Valencia Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-10T17:30"
-      ],
-      "added": "2026-11-06T15:54:40.055Z"
-    },
     {
       "title": "Veterans Day",
       "url": "https://santaclarita.librarycalendar.com/event/veterans-day-28069",
@@ -152,6 +18,27 @@
         "2026-11-11"
       ],
       "added": "2026-11-07T14:53:23.321Z"
+    },
+    {
+      "title": "Storytime",
+      "url": "https://santaclarita.librarycalendar.com/event/storytime-31522",
+      "start": "2026-11-12T09:30",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-12T09:30",
+        "2026-11-17T11:00",
+        "2026-11-19T09:30"
+      ],
+      "repeats": 2,
+      "added": "2026-10-17T12:10:51.211Z"
     },
     {
       "title": "Hart Mansion Group Tour 10:00a.m.",
@@ -517,6 +404,29 @@
       "added": "2026-11-10T12:37:53.516Z"
     },
     {
+      "title": "Hart Mansion Tour 3:00p.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-300pm-36922",
+      "start": "2026-11-14T15:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-14T15:00",
+        "2026-11-15T15:00",
+        "2026-11-21T15:00",
+        "2026-11-22T15:00",
+        "2026-11-28T15:00",
+        "2026-11-29T15:00"
+      ],
+      "repeats": 5,
+      "added": "2026-11-11T16:09:34.120Z"
+    },
+    {
       "title": "Come Out & Play: The Season Opener | A Grown-Up Game Night for Women",
       "url": "https://www.eventbrite.com/e/come-out-play-the-season-opener-a-grown-up-game-night-for-women-tickets-2003953069576",
       "start": "2026-11-14T19:00",
@@ -557,6 +467,59 @@
       ],
       "source": "Eventbrite",
       "added": "2026-11-05T12:19:18.682Z"
+    },
+    {
+      "title": "Silent Book Club",
+      "url": "https://santaclarita.librarycalendar.com/event/hold-adult-silent-book-club-23817",
+      "start": "2026-11-15T14:30",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-15T14:30"
+      ],
+      "added": "2026-11-11T16:09:34.120Z"
+    },
+    {
+      "title": "Little Explorers",
+      "url": "https://santaclarita.librarycalendar.com/event/little-explorers-31514",
+      "start": "2026-11-16T13:00",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-16T13:00"
+      ],
+      "added": "2026-11-11T16:09:34.120Z"
+    },
+    {
+      "title": "Pokémon Trainer League",
+      "url": "https://santaclarita.librarycalendar.com/event/pokemon-trainer-league-31802",
+      "start": "2026-11-16T17:00",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-16T17:00"
+      ],
+      "added": "2026-11-11T16:09:34.120Z"
     },
     {
       "title": "Functional & Metabolic Psychiatry: Provider Education Session in Valencia",
