@@ -1,24 +1,7 @@
 {
-  "generatedAt": "2026-11-11T16:09:34.120Z",
+  "generatedAt": "2026-11-12T16:47:48.995Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Veterans Day",
-      "url": "https://santaclarita.librarycalendar.com/event/veterans-day-28069",
-      "start": "2026-11-11",
-      "venue": "Some Branches",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-11"
-      ],
-      "added": "2026-11-07T14:53:23.321Z"
-    },
     {
       "title": "Storytime",
       "url": "https://santaclarita.librarycalendar.com/event/storytime-31522",
@@ -85,6 +68,20 @@
       "added": "2026-11-07T14:53:23.321Z"
     },
     {
+      "title": "Santa Clarita Shuffle Scavenger Hunt",
+      "url": "https://www.eventbrite.com/e/santa-clarita-shuffle-scavenger-hunt-tickets-1994864312860",
+      "start": "2026-11-12T11:00",
+      "venue": "Coffee Kiosk",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$25",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-12T16:47:48.995Z"
+    },
+    {
       "title": "Hart Mansion Group Tour 11:00a.m.",
       "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-group-tour-1100am-36623",
       "start": "2026-11-12T11:00",
@@ -102,9 +99,10 @@
         "2026-11-18T11:00",
         "2026-11-19T11:00",
         "2026-11-20T11:00",
-        "2026-11-25T11:00"
+        "2026-11-25T11:00",
+        "2026-12-02T11:00"
       ],
-      "repeats": 5,
+      "repeats": 6,
       "added": "2026-11-01T15:06:02.210Z"
     },
     {
@@ -131,9 +129,10 @@
         "2026-11-22T12:00",
         "2026-11-25T12:00",
         "2026-11-28T12:00",
-        "2026-11-29T12:00"
+        "2026-11-29T12:00",
+        "2026-12-02T12:00"
       ],
-      "repeats": 11,
+      "repeats": 12,
       "added": "2026-07-25T09:59:46.269Z"
     },
     {
@@ -160,9 +159,10 @@
         "2026-11-22T13:00",
         "2026-11-25T13:00",
         "2026-11-28T13:00",
-        "2026-11-29T13:00"
+        "2026-11-29T13:00",
+        "2026-12-02T13:00"
       ],
-      "repeats": 11,
+      "repeats": 12,
       "added": "2026-10-20T13:32:46.873Z"
     },
     {
@@ -189,9 +189,10 @@
         "2026-11-22T14:00",
         "2026-11-25T14:00",
         "2026-11-28T14:00",
-        "2026-11-29T14:00"
+        "2026-11-29T14:00",
+        "2026-12-02T14:00"
       ],
-      "repeats": 11,
+      "repeats": 12,
       "added": "2026-10-20T13:32:46.873Z"
     },
     {
@@ -427,20 +428,6 @@
       "added": "2026-11-11T16:09:34.120Z"
     },
     {
-      "title": "Come Out & Play: The Season Opener | A Grown-Up Game Night for Women",
-      "url": "https://www.eventbrite.com/e/come-out-play-the-season-opener-a-grown-up-game-night-for-women-tickets-2003953069576",
-      "start": "2026-11-14T19:00",
-      "venue": "23287 Sierra Hwy",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$41.32–$52",
-      "audience": [
-        "adults"
-      ],
-      "source": "Eventbrite",
-      "added": "2026-11-05T12:19:18.682Z"
-    },
-    {
       "title": "The Paul T. Plew Singers in Concert | 2026 Season",
       "url": "https://www.eventbrite.com/e/the-paul-t-plew-singers-in-concert-2026-season-tickets-2003268377644",
       "start": "2026-11-14T19:30",
@@ -448,20 +435,6 @@
       "city": "Santa Clarita",
       "free": false,
       "price": "$0–$10",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Eventbrite",
-      "added": "2026-11-05T12:19:18.682Z"
-    },
-    {
-      "title": "The Glow Social | A Pre-Holiday Beauty & Skincare Experience",
-      "url": "https://www.eventbrite.com/e/the-glow-social-a-pre-holiday-beauty-skincare-experience-tickets-2004027418957",
-      "start": "2026-11-15T12:00",
-      "venue": "The Lookout at Skyline",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$49.87",
       "audience": [
         "everyone"
       ],
@@ -520,6 +493,23 @@
         "2026-11-16T17:00"
       ],
       "added": "2026-11-11T16:09:34.120Z"
+    },
+    {
+      "title": "A Look Inside the Studio with SCAA",
+      "url": "https://santaclarita.librarycalendar.com/event/placeholder-santa-clarita-artists-association-30604",
+      "start": "2026-11-16T17:30",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-16T17:30"
+      ],
+      "added": "2026-11-12T16:47:48.995Z"
     },
     {
       "title": "Functional & Metabolic Psychiatry: Provider Education Session in Valencia",
@@ -607,6 +597,34 @@
       "added": "2026-11-05T12:19:18.682Z"
     },
     {
+      "title": "2026 Stunts Turkey Bowl & Picnic",
+      "url": "https://www.eventbrite.com/e/2026-stunts-turkey-bowl-picnic-tickets-2003804320664",
+      "start": "2026-11-25T08:00",
+      "venue": "Central Park",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$33.85–$76.54",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-12T16:47:48.995Z"
+    },
+    {
+      "title": "Black Friday 21+ Reggaeton HipHop Latin Tech Party",
+      "url": "https://www.eventbrite.com/e/black-friday-21-reggaeton-hiphop-latin-tech-party-tickets-2004460202424",
+      "start": "2026-11-27T21:00",
+      "venue": "Santa Clarita Valley Venue",
+      "city": "Newhall",
+      "free": false,
+      "price": "$0–$23.18",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-12T16:47:48.995Z"
+    },
+    {
       "title": "Community Jazz Band: College Of The Canyons Music",
       "url": "https://pac.canyons.edu/shows/doo-wop.php",
       "start": "2026-11-30T19:00",
@@ -647,6 +665,20 @@
       ],
       "source": "SC Performing Arts Center",
       "added": "2026-10-13T23:43:27.554Z"
+    },
+    {
+      "title": "SCV Singles Trivia Night (Ages 30-45)",
+      "url": "https://www.eventbrite.com/e/scv-singles-trivia-night-ages-30-45-tickets-2003032562314",
+      "start": "2026-12-03T19:00",
+      "venue": "Society Pizza Lounge",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$28.52",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-12T16:47:48.995Z"
     },
     {
       "title": "Electronica: College Of The Canyons Music",
@@ -882,20 +914,6 @@
       "price": "$20",
       "audience": [
         "kids"
-      ],
-      "source": "Eventbrite",
-      "added": "2026-11-05T12:19:18.682Z"
-    },
-    {
-      "title": "Santa Clarita Job Fair - Santa Clarita Career Fair",
-      "url": "https://www.eventbrite.com/e/santa-clarita-job-fair-santa-clarita-career-fair-registration-2003382599284",
-      "start": "2026-12-18T11:00",
-      "venue": "Santa Clarita",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$395–$1395",
-      "audience": [
-        "everyone"
       ],
       "source": "Eventbrite",
       "added": "2026-11-05T12:19:18.682Z"
