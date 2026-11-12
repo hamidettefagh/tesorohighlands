@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-11T20:14:37.923Z",
+  "generatedAt": "2026-11-12T20:56:36.209Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Free Lowe's Kids Workshop: Holiday Engine",
-      "url": "https://www.lowes.com/l/kids-workshops",
+      "title": "Free holiday engine for kids: Lowe's Kids Workshop",
+      "url": "https://www.lowes.com/diy-projects-and-ideas/workshops",
       "start": "2026-11-14T10:00",
-      "venue": "Lowe's (select Santa Clarita stores, call ahead)",
+      "venue": "Lowe's, Bouquet Canyon Rd",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -16,30 +16,46 @@
       ],
       "source": "Web (AI)",
       "via": "Lowe's",
-      "added": "2026-11-11T20:14:37.923Z"
+      "added": "2026-11-12T20:56:36.209Z"
     },
     {
-      "title": "Festival of Trees",
-      "url": "https://santaclaritamagazine.com/2026/10/light-up-the-holidays-2026-festival-of-trees-boys-girls-club-of-santa-clarita/",
-      "start": "2026-11-20T10:00",
-      "venue": "Valencia Town Center, former Canyon location",
-      "city": "Valencia",
-      "free": false,
-      "price": "$10 adults, $5 kids/seniors/military",
+      "title": "Farmers Market - Santa Clarita Certified",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market",
+      "start": "2026-11-15T08:00",
+      "venue": "College of the Canyons Parking Lot 5",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
       "audience": [
         "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Boys & Girls Club of Santa Clarita Valley",
-      "added": "2026-11-11T20:14:37.923Z"
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-12T20:56:36.209Z"
     },
     {
-      "title": "Free Home Depot Kids Workshop: Christmas Car Ornament",
-      "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055",
-      "start": "2026-11-21T09:00",
-      "venue": "Home Depot, Newhall Ranch Rd",
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-15T08:30",
+      "venue": "Valencia FivePoint Farmers' Market",
       "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-12T20:56:36.209Z"
+    },
+    {
+      "title": "Free Christmas car ornament for kids: Home Depot Kids Workshop",
+      "url": "https://www.homedepot.com/c/kids-workshop",
+      "start": "2026-11-21T09:00",
+      "venue": "The Home Depot, Golden Triangle Rd and Newhall Ranch Rd",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
@@ -47,7 +63,7 @@
       ],
       "source": "Web (AI)",
       "via": "The Home Depot",
-      "added": "2026-11-11T20:14:37.923Z"
+      "added": "2026-11-12T20:56:36.209Z"
     },
     {
       "title": "Light Up Main Street",
@@ -67,13 +83,13 @@
       "added": "2026-11-10T20:30:08.531Z"
     },
     {
-      "title": "A Christmas Story",
-      "url": "https://www.canyontheatre.org",
-      "start": "2026-11-28T19:00",
+      "title": "It's a Wonderful Life at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/shows",
+      "start": "2026-11-27",
       "venue": "Canyon Theatre Guild",
       "city": "Newhall",
       "free": false,
-      "price": "$24 adults, $20 seniors/juniors",
+      "price": "TBD",
       "audience": [
         "kids",
         "teens",
@@ -81,30 +97,30 @@
       ],
       "source": "Web (AI)",
       "via": "Canyon Theatre Guild",
-      "added": "2026-11-11T20:14:37.923Z"
+      "added": "2026-11-12T20:56:36.209Z"
     },
     {
-      "title": "14th Annual Bowling for Kids",
-      "url": "https://www.eventbrite.com/d/ca--santa-clarita/valencia/",
-      "start": "2026-12-01T17:00",
-      "venue": "Valencia Lanes",
-      "city": "Newhall",
-      "free": true,
-      "price": "Free",
+      "title": "Breakfast with Santa at Gilchrist Farm",
+      "url": "https://www.gilchristfarm.com/holiday-hoedown",
+      "start": "2026-12-05T08:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$25 per child, $30 per adult",
       "audience": [
         "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Children's Hospital of Los Angeles",
-      "added": "2026-11-11T20:14:37.923Z"
+      "via": "Gilchrist Farm",
+      "added": "2026-11-12T20:56:36.209Z"
     },
     {
-      "title": "Free Home Depot Kids Workshop: Holiday Train",
-      "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055",
+      "title": "Free holiday train for kids: Home Depot Kids Workshop",
+      "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-12-05T09:00",
-      "venue": "Home Depot, Newhall Ranch Rd",
-      "city": "Valencia",
+      "venue": "The Home Depot, Golden Triangle Rd and Newhall Ranch Rd",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
@@ -112,13 +128,29 @@
       ],
       "source": "Web (AI)",
       "via": "The Home Depot",
-      "added": "2026-11-11T20:14:37.923Z"
+      "added": "2026-11-12T20:56:36.209Z"
     },
     {
-      "title": "Free Lowe's Kids Workshop: Holiday Trolley Car",
-      "url": "https://www.lowes.com/l/kids-workshops",
+      "title": "Holidays at Gilchrist Farm (free admission, paid attractions)",
+      "url": "https://www.gilchristfarm.com/holiday-hoedown",
+      "start": "2026-12-05T09:00",
+      "venue": "Gilchrist Farm",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm",
+      "added": "2026-11-12T20:56:36.209Z"
+    },
+    {
+      "title": "Free holiday trolley car for kids: Lowe's Kids Workshop",
+      "url": "https://www.lowes.com/diy-projects-and-ideas/workshops",
       "start": "2026-12-12T10:00",
-      "venue": "Lowe's (select Santa Clarita stores, call ahead)",
+      "venue": "Lowe's, Bouquet Canyon Rd",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -127,7 +159,7 @@
       ],
       "source": "Web (AI)",
       "via": "Lowe's",
-      "added": "2026-11-11T20:14:37.923Z"
+      "added": "2026-11-12T20:56:36.209Z"
     }
   ]
 }
