@@ -393,7 +393,7 @@ footer{font-size:12.5px;}
   </div>
 
   <div class="sharecard" id="shareCard" hidden>
-    <h3>📣 <span id="shareTitle"></span></h3>
+    <h3><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-megaphone"/></svg> <span id="shareTitle"></span></h3>
     <div class="q">From the official feeds, with a message ready for the group chat.</div>
     <div class="sharebtns">
       <a class="wabtn" id="waBtn" target="_blank" rel="noopener">Share on WhatsApp</a>
@@ -403,13 +403,13 @@ footer{font-size:12.5px;}
   </div>
 
   <nav class="jumpnav" aria-label="Jump to a section">
-    <a href="#fires">🔥 Fires</a>
-    <a href="#air">🫁 Air &amp; weather</a>
-    <a href="#alerts">⚠️ Alerts</a>
-    <a href="#map">🗺️ Map</a>
-    <a href="#evac">🎒 Evacuation</a>
-    <a href="#community">🏘️ Community</a>
-    <a href="#call">📞 Who to call</a>
+    <a href="#fires"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-flame"/></svg> Fires</a>
+    <a href="#air"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-wind"/></svg> Air &amp; weather</a>
+    <a href="#alerts"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-triangle-alert"/></svg> Alerts</a>
+    <a href="#map"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-map"/></svg> Map</a>
+    <a href="#evac"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-backpack"/></svg> Evacuation</a>
+    <a href="#community"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-users"/></svg> Community</a>
+    <a href="#call"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-phone"/></svg> Who to call</a>
   </nav>
 
   <!-- NEARBY FIRES — the question this page exists to answer, so it goes first.
@@ -427,7 +427,7 @@ footer{font-size:12.5px;}
        brand-new fire by 15–30 min — this card owns that gap. Collapsed on quiet
        days; auto-opens only when the fire feed itself is unreachable. -->
   <details class="card playbook" id="smokeHelp" style="margin-top:12px">
-    <summary><span class="pbtitle">👃 Smell smoke but nothing listed here?</span><span class="pbhint">tap to open</span></summary>
+    <summary><span class="pbtitle"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-cloud-fog"/></svg> Smell smoke but nothing listed here?</span><span class="pbhint">tap to open</span></summary>
     <div class="src">Official feeds can lag a brand-new fire by 15–30 minutes. Don't wait on this page — do this instead:</div>
     <ul class="plist">
       <li><b>Trust your nose.</b> If smoke is strong, close, or getting worse — act first, verify later.</li>
@@ -481,7 +481,7 @@ footer{font-size:12.5px;}
 
     <!-- SMOKE PLAYBOOK — kept right under the air it answers; opens itself when the air turns -->
     <details class="card playbook" id="smokeCard">
-      <summary><span class="pbtitle">🫁 When it's smoky — the playbook</span><span class="pbhint">tap to open</span></summary>
+      <summary><span class="pbtitle"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-wind"/></svg> When it's smoky — the playbook</span><span class="pbhint">tap to open</span></summary>
       <div class="src">Shared by a neighbor in the community group chat, lightly edited.</div>
       <ul class="plist">
         <li><b>Seal the house.</b> Close all windows and doors.</li>
@@ -586,10 +586,10 @@ footer{font-size:12.5px;}
   <!-- YOUR COMMUNITY -->
   <div class="sechead" id="community"><h2>Your community</h2><div class="line"></div></div>
   <div class="card" id="commCard" style="margin-top:8px">
-    <div class="commfact"><span class="ci">🚁</span><div><b>Four shared water tanks</b> in the community. Helicopters may refill here during a fire — that low, loud pass overhead is them working, not a reason to panic.</div></div>
-    <div class="commfact"><span class="ci">⚠️</span><div><b>Known brush hazard.</b> Dried brush sits in the common areas by the water towers and up Avenida Rancho Tesoro. It's the closest fuel to our homes — report it and push to clear it before peak season.</div></div>
-    <div class="commfact"><span class="ci">📖</span><div><b>Why it matters.</b> Last year the Hughes Fire started 6–7 mi away and its evacuation zones reached within 3–4 mi as it blew past 10,000 acres in a single day. Two fires in two years have come within about 4 miles.</div></div>
-    <div class="commfact"><span class="ci">📱</span><div><b>Neighbors recommend Watch Duty</b> for real-time fire alerts — pair it with this page.</div></div>
+    <div class="commfact"><span class="ci"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-droplets"/></svg></span><div><b>Four shared water tanks</b> in the community. Helicopters may refill here during a fire — that low, loud pass overhead is them working, not a reason to panic.</div></div>
+    <div class="commfact"><span class="ci"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-triangle-alert"/></svg></span><div><b>Known brush hazard.</b> Dried brush sits in the common areas by the water towers and up Avenida Rancho Tesoro. It's the closest fuel to our homes — report it and push to clear it before peak season.</div></div>
+    <div class="commfact"><span class="ci"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-book-open"/></svg></span><div><b>Why it matters.</b> Last year the Hughes Fire started 6–7 mi away and its evacuation zones reached within 3–4 mi as it blew past 10,000 acres in a single day. Two fires in two years have come within about 4 miles.</div></div>
+    <div class="commfact"><span class="ci"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-smartphone"/></svg></span><div><b>Neighbors recommend Watch Duty</b> for real-time fire alerts — pair it with this page.</div></div>
     <div class="src">Community notes shared by neighbors — local knowledge, not an official source.</div>
   </div>
 
@@ -1540,7 +1540,7 @@ function render(){
       const nm = link ? `<a href="${esc(link)}" target="_blank" rel="noopener" title="Open the CAL FIRE incident page">${esc(f.name)} ↗</a>` : esc(f.name);
       return `
       <div class="fire">
-        <div class="fi">🔥</div>
+        <div class="fi"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-flame"/></svg></div>
         <div class="fmeta">
           <div class="fn">${nm}${tag}</div>
           <div class="fs">${meta}</div>
@@ -1689,15 +1689,15 @@ function renderOutlook(){
 
 /* ---------- checklist ---------- */
 const CHECK_ITEMS = [
-  ["🎒", "Go-bag packed", "Meds, IDs, cash, phone chargers, water, N95 masks for smoke"],
-  ["📄", "Documents ready", "Passports, insurance, deed — photos on your phone count"],
-  ["🐾", "Pets sorted", "Carriers, leashes, food, vet records by the door"],
-  ["⛽", "Cars fueled & facing out", "Keep tanks over half; back into the driveway"],
-  ["📍", "Know your zone", "Look yourself up on protect.genasys.com so you know your zone name"],
-  ["🔔", "Alerts enabled", "Text SCEMERGENCY to 888777 for City of Santa Clarita alerts, sign up at ready.lacounty.gov, and turn on Wireless Emergency Alerts"],
-  ["🧸", "Kids briefed", "Meeting spot, one comfort item each in their bag"],
-  ["🏠", "Home hardened", "Vents screened, gutters clear, nothing flammable against the house"],
-  ["🌿", "Defensible space", "Brush cut back near the house — and speak up about the common-area brush by the water towers and Avenida Rancho Tesoro"]
+  ["backpack", "Go-bag packed", "Meds, IDs, cash, phone chargers, water, N95 masks for smoke"],
+  ["file-text", "Documents ready", "Passports, insurance, deed — photos on your phone count"],
+  ["paw-print", "Pets sorted", "Carriers, leashes, food, vet records by the door"],
+  ["fuel", "Cars fueled & facing out", "Keep tanks over half; back into the driveway"],
+  ["map-pin", "Know your zone", "Look yourself up on protect.genasys.com so you know your zone name"],
+  ["bell", "Alerts enabled", "Text SCEMERGENCY to 888777 for City of Santa Clarita alerts, sign up at ready.lacounty.gov, and turn on Wireless Emergency Alerts"],
+  ["users", "Kids briefed", "Meeting spot, one comfort item each in their bag"],
+  ["house", "Home hardened", "Vents screened, gutters clear, nothing flammable against the house"],
+  ["leaf", "Defensible space", "Brush cut back near the house — and speak up about the common-area brush by the water towers and Avenida Rancho Tesoro"]
 ];
 function loadChecks(){ try { return JSON.parse(localStorage.getItem("tesoro.checks"))||{}; } catch(e){ return {}; } }
 function updateProgress(){
@@ -1712,7 +1712,7 @@ function renderChecklist(){
   const el = $("#checklist");
   el.innerHTML = '<div class="checkgrid">' + CHECK_ITEMS.map((it,i)=>`
     <div class="chk ${state[i]?"done":""}" role="checkbox" aria-checked="${!!state[i]}" tabindex="0" data-i="${i}" aria-label="${it[1]}">
-      <span class="em">${it[0]}</span><span class="t">${it[1]}</span><span class="tick">✓</span>
+      <span class="em"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-${it[0]}"/></svg></span><span class="t">${it[1]}</span><span class="tick">✓</span>
     </div>`).join("") + '</div>'
     + `<details class="chkmore"><summary>What goes into each one?</summary><ul>${CHECK_ITEMS.map(it=>`<li><b>${it[1]}.</b> ${it[2]}</li>`).join("")}</ul></details>`;
   function toggle(node){

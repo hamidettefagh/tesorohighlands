@@ -378,7 +378,7 @@ body.th h1,.thnav .brand,.hub-hero .htext,.hub-card h3,.goal h2,.tcell .tbig{fon
 /* ---- Drawn icons on Home (2026-11-13) ----
    One line-icon set (Lucide, inlined in index.html) instead of emoji, which look
    different on every phone. Neutral ink on purpose: colour stays with safety status. */
-.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-0.16em;flex:none;}
+svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-0.16em;flex:none;}
 .tcell .tico{font-size:15px;color:var(--muted);}
 .tcell.ok .tico{color:var(--ok-fg);} .tcell.caution .tico{color:var(--cau-fg);} .tcell.danger .tico{color:var(--dan-fg);}
 .tcell.season.lights .tico{color:#16a34a;}
@@ -387,3 +387,16 @@ body.th h1,.thnav .brand,.hub-hero .htext,.hub-card h3,.goal h2,.tcell .tbig{fon
   .hub-card{grid-template-columns:40px 1fr;}
   .hub-card .ico{width:40px;height:40px;font-size:20px;padding-top:0;}
 }
+
+/* ---- The same drawn icons on the other pages (2026-11-13) ----
+   From the shared sprite, icons.svg (scripts/make-icons.mjs). "svg.ic", not ".ic":
+   Living Here and HOA already use .ic for the box an icon sits in. Emoji stay where
+   they are content rather than decoration: weather conditions, live status lines,
+   and whatever an event feed sends. */
+.jumpnav a svg.ic{margin-right:6px;font-size:14px;color:var(--muted);}
+.jumpnav a:hover svg.ic,.jumpnav a.on svg.ic{color:inherit;}
+.svc .ic,.commfact .ci,.chk .em{color:var(--ink-2);}
+.svc .ic svg.ic,.commfact .ci svg.ic{vertical-align:-0.2em;}
+.fire .fi{color:var(--dan-fg);}
+.chips button svg.ic,.chip svg.ic,.gmeta b svg.ic,.pbtitle svg.ic,.cprice svg.ic{margin-right:2px;}
+.th h3 > svg.ic:first-child{color:var(--muted);margin-right:3px;}
