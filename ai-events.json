@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-12T20:56:36.209Z",
+  "generatedAt": "2026-11-13T20:31:50.352Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Free holiday engine for kids: Lowe's Kids Workshop",
-      "url": "https://www.lowes.com/diy-projects-and-ideas/workshops",
+      "title": "Free Lowe's Kids Workshop: Holiday Engine",
+      "url": "https://www.lowes.com/l/kids-workshops",
       "start": "2026-11-14T10:00",
-      "venue": "Lowe's, Bouquet Canyon Rd",
+      "venue": "Lowe's (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -16,13 +16,13 @@
       ],
       "source": "Web (AI)",
       "via": "Lowe's",
-      "added": "2026-11-12T20:56:36.209Z"
+      "added": "2026-11-13T20:31:50.352Z"
     },
     {
-      "title": "Farmers Market - Santa Clarita Certified",
-      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market",
-      "start": "2026-11-15T08:00",
-      "venue": "College of the Canyons Parking Lot 5",
+      "title": "Jingle Fest '26: Free Holiday Market with 275 vendors, live entertainment, and Santa",
+      "url": "https://www.jinglefestscv.com/",
+      "start": "2026-11-14T10:00",
+      "venue": "Central Park",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -31,14 +31,14 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-12T20:56:36.209Z"
+      "via": "Jingle Fest SCV",
+      "added": "2026-11-13T20:31:50.352Z"
     },
     {
-      "title": "Valencia FivePoint Farmers' Market",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
-      "start": "2026-11-15T08:30",
-      "venue": "Valencia FivePoint Farmers' Market",
+      "title": "Santa's Arrival Celebration at Valencia Town Center",
+      "url": "https://www.valenciatowncenter.com/events",
+      "start": "2026-11-14T11:00",
+      "venue": "Valencia Town Center",
       "city": "Valencia",
       "free": true,
       "price": "Free",
@@ -47,15 +47,63 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-12T20:56:36.209Z"
+      "via": "Valencia Town Center",
+      "added": "2026-11-13T20:31:50.352Z"
     },
     {
-      "title": "Free Christmas car ornament for kids: Home Depot Kids Workshop",
-      "url": "https://www.homedepot.com/c/kids-workshop",
+      "title": "Weekly Saturday Storytime at Barnes & Noble Valencia",
+      "url": "https://stores.barnesandnoble.com/store/2642",
+      "start": "2026-11-14T11:00",
+      "venue": "Barnes & Noble, Valencia Blvd",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "kids",
+        "toddlers"
+      ],
+      "source": "Web (AI)",
+      "via": "Barnes & Noble",
+      "added": "2026-11-13T20:31:50.352Z"
+    },
+    {
+      "title": "Village of Idiots (College of the Canyons Theatre)",
+      "url": "https://pac.canyons.edu/shows/",
+      "start": "2026-11-19T19:00",
+      "venue": "Santa Clarita Performing Arts Center, Black Box Theater",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults",
+        "teens"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Performing Arts Center",
+      "added": "2026-11-13T20:31:50.352Z"
+    },
+    {
+      "title": "Festival of Trees & Magic of the Lights Gala",
+      "url": "https://www.eventsincalifornia.com/events/christmas/festival-of-trees-magic-of-the-lights-gala-valencia-ca-nov-20-22-2026",
+      "start": "2026-11-20T10:00",
+      "venue": "Valencia Town Center",
+      "city": "Valencia",
+      "free": false,
+      "price": "$5",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Valencia Town Center",
+      "added": "2026-11-13T20:31:50.352Z"
+    },
+    {
+      "title": "Free Home Depot Kids Workshop: Christmas Car Ornament",
+      "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055",
       "start": "2026-11-21T09:00",
-      "venue": "The Home Depot, Golden Triangle Rd and Newhall Ranch Rd",
-      "city": "Santa Clarita",
+      "venue": "The Home Depot, Newhall Ranch Rd",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
@@ -63,11 +111,11 @@
       ],
       "source": "Web (AI)",
       "via": "The Home Depot",
-      "added": "2026-11-12T20:56:36.209Z"
+      "added": "2026-11-13T20:31:50.352Z"
     },
     {
       "title": "Light Up Main Street",
-      "url": "https://santaclarita.gov/arts-and-culture/events/",
+      "url": "https://oldtownnewhall.com/events/light-up-main/",
       "start": "2026-11-21T16:00",
       "venue": "Main Street, Old Town Newhall",
       "city": "Newhall",
@@ -75,52 +123,97 @@
       "price": "Free",
       "audience": [
         "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita",
+      "via": "Old Town Newhall",
       "added": "2026-11-10T20:30:08.531Z"
     },
     {
-      "title": "It's a Wonderful Life at Canyon Theatre Guild",
-      "url": "https://www.canyontheatre.org/shows",
+      "title": "Six Flags Holiday in the Park",
+      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
+      "start": "2026-11-26T10:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Included with park admission",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Fun With Kids in LA",
+      "added": "2026-11-13T20:31:50.352Z"
+    },
+    {
+      "title": "Canyon Theatre Guild: It's a Wonderful Life",
+      "url": "https://www.canyontheatre.org/auditions",
       "start": "2026-11-27",
       "venue": "Canyon Theatre Guild",
       "city": "Newhall",
       "free": false,
-      "price": "TBD",
+      "price": null,
       "audience": [
-        "kids",
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Canyon Theatre Guild",
-      "added": "2026-11-12T20:56:36.209Z"
+      "added": "2026-11-13T20:31:50.352Z"
     },
     {
-      "title": "Breakfast with Santa at Gilchrist Farm",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-05T08:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
+      "title": "Six Flags Holiday in the Park",
+      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
+      "start": "2026-11-27T21:00",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
       "free": false,
-      "price": "$25 per child, $30 per adult",
+      "price": "Included with park admission",
       "audience": [
         "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-12T20:56:36.209Z"
+      "via": "Fun With Kids in LA",
+      "added": "2026-11-13T20:31:50.352Z"
     },
     {
-      "title": "Free holiday train for kids: Home Depot Kids Workshop",
+      "title": "Six Flags Holiday in the Park",
+      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
+      "start": "2026-11-28T22:00",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Included with park admission",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Fun With Kids in LA",
+      "added": "2026-11-13T20:31:50.352Z"
+    },
+    {
+      "title": "Six Flags Holiday in the Park",
+      "url": "https://www.funwithkidsinla.com/post/six-flags-magic-mountain-holiday-in-the-park-2026",
+      "start": "2026-11-29T20:00",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": "Included with park admission",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Fun With Kids in LA",
+      "added": "2026-11-13T20:31:50.352Z"
+    },
+    {
+      "title": "Free Home Depot Kids Workshop: Holiday Train",
       "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-12-05T09:00",
-      "venue": "The Home Depot, Golden Triangle Rd and Newhall Ranch Rd",
-      "city": "Santa Clarita",
+      "venue": "The Home Depot (select stores, call ahead)",
+      "city": "Santa Clarita, Valencia",
       "free": true,
       "price": "Free",
       "audience": [
@@ -128,29 +221,44 @@
       ],
       "source": "Web (AI)",
       "via": "The Home Depot",
-      "added": "2026-11-12T20:56:36.209Z"
+      "added": "2026-11-13T20:31:50.352Z"
     },
     {
-      "title": "Holidays at Gilchrist Farm (free admission, paid attractions)",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-05T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
+      "title": "Sensory-Friendly Santa at Valencia Town Center",
+      "url": "https://www.valenciatowncenter.com/event/44370-santa-photos",
+      "start": "2026-12-06",
+      "venue": "Valencia Town Center, 1st Floor Near H&M",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
       "audience": [
         "kids",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-12T20:56:36.209Z"
+      "via": "Valencia Town Center",
+      "added": "2026-11-13T20:31:50.352Z"
     },
     {
-      "title": "Free holiday trolley car for kids: Lowe's Kids Workshop",
-      "url": "https://www.lowes.com/diy-projects-and-ideas/workshops",
+      "title": "Santa Clarita Master Chorale: A Holiday to Remember",
+      "url": "https://pac.canyons.edu/shows/",
+      "start": "2026-12-06T16:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Performing Arts Center",
+      "added": "2026-11-13T20:31:50.352Z"
+    },
+    {
+      "title": "Free Lowe's Kids Workshop: Holiday Trolley Car",
+      "url": "https://www.lowes.com/l/kids-workshops",
       "start": "2026-12-12T10:00",
-      "venue": "Lowe's, Bouquet Canyon Rd",
+      "venue": "Lowe's (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -159,7 +267,39 @@
       ],
       "source": "Web (AI)",
       "via": "Lowe's",
-      "added": "2026-11-12T20:56:36.209Z"
+      "added": "2026-11-13T20:31:50.352Z"
+    },
+    {
+      "title": "One Christmas Night in Memphis",
+      "url": "https://pac.canyons.edu/shows/",
+      "start": "2026-12-12T19:00",
+      "venue": "Santa Clarita Performing Arts Center, Main Stage",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Performing Arts Center",
+      "added": "2026-11-13T20:31:50.352Z"
+    },
+    {
+      "title": "Santa Clarita Ballet Presents The Nutcracker",
+      "url": "https://pac.canyons.edu/shows/",
+      "start": "2026-12-19",
+      "venue": "Santa Clarita Performing Arts Center, Main Stage",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Performing Arts Center",
+      "added": "2026-11-13T20:31:50.352Z"
     }
   ]
 }
