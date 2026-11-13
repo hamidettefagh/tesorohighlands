@@ -75,6 +75,18 @@
 </script>
 </head>
 <body class="th">
+  <!-- Icons: Lucide (lucide.dev, ISC license), inlined so they need no request and look the same on every phone. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-fire" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+    <symbol id="i-weather" viewBox="0 0 24 24"><path d="M12 2v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="M20 12h2"/><path d="m19.07 4.93-1.41 1.41"/><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"/><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></symbol>
+    <symbol id="i-hoa" viewBox="0 0 24 24"><path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/></symbol>
+    <symbol id="i-air" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol>
+    <symbol id="i-new" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24"><path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.7 1.7H17Z"/><path d="M12 22v-3"/></symbol>
+  </svg>
   <main id="main" tabindex="-1" class="thwrap">
     <div class="hub-head photo">
       <img src="/img/home-sunset.webp" srcset="/img/home-sunset-960.webp 960w, /img/home-sunset.webp 1920w" sizes="(max-width:760px) 100vw, 720px" width="1920" height="795" alt="Sunset over the Santa Clarita Valley, seen across Tesoro Highlands rooftops" fetchpriority="high" />
@@ -82,7 +94,6 @@
         <h1>Tesoro Highlands</h1>
         <p>A neighbor-built hub for our community · Valencia, CA 91354</p>
       </div>
-      <span class="credit">📷 A neighbor’s sky camera</span>
     </div>
 
     <div id="th-hero" class="hub-hero neutral" aria-live="polite">
@@ -92,8 +103,8 @@
     </div>
 
     <div class="today" id="thToday">
-      <a class="tcell" href="/fire"><span class="tico">🫁</span><span class="tlab">Air today</span><span class="tval" id="tdAir">—</span></a>
-      <a class="tcell" href="/fire"><span class="tico">🌬️</span><span class="tlab">Fire weather</span><span class="tval" id="tdFw">—</span></a>
+      <a class="tcell" href="/fire"><span class="tico"><svg class="ic" aria-hidden="true"><use href="#i-air"/></svg></span><span class="tlab">Air today</span><span class="tval" id="tdAir">—</span></a>
+      <a class="tcell" href="/fire"><span class="tico"><svg class="ic" aria-hidden="true"><use href="#i-wind"/></svg></span><span class="tlab">Fire weather</span><span class="tval" id="tdFw">—</span></a>
     </div>
     <div class="asof"><span class="livedot"></span><span id="asof">checking live data…</span></div>
 
@@ -102,52 +113,52 @@
       <span class="tval"><b>See which houses are handing out treats</b>, or add yours. Neighbors only: the code is in the community WhatsApp group.</span>
     </a>
     <a class="tcell season lights" id="lightsLink" href="/lights" hidden>
-      <span class="tico">🎄</span><span class="tlab">Holiday lights map</span>
+      <span class="tico"><svg class="ic" aria-hidden="true"><use href="#i-tree"/></svg></span><span class="tlab">Holiday lights map</span>
       <span class="tval"><b>See which houses have their lights up</b>, or add yours once they're on. No code needed.</span>
     </a>
 
     <div class="week" id="wkCard">
-      <div class="wkhead"><h2>📅 Coming up</h2><a href="/events">All events →</a></div>
+      <div class="wkhead"><h2><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg> Coming up</h2><a href="/events">All events →</a></div>
       <div id="wkList"><div class="wkload">Loading what's coming up…</div></div>
       <div class="wknew" id="wkNew" hidden></div>
     </div>
 
     <div class="hub-grid">
       <a class="hub-card" href="/fire">
-        <div class="ico">🔥</div>
+        <div class="ico"><svg class="ic" aria-hidden="true"><use href="#i-fire"/></svg></div>
         <h3>Fire &amp; Emergency</h3>
         <p>Live air quality, fire weather, a nearby-fire map, evacuation status, and a saved go-bag checklist.</p>
         <span class="cardlive" id="clFire" hidden></span>
         <span class="tag live">Live</span>
       </a>
       <a class="hub-card" href="/weather">
-        <div class="ico">🌤️</div>
+        <div class="ico"><svg class="ic" aria-hidden="true"><use href="#i-weather"/></svg></div>
         <h3>Weather</h3>
         <p>Live backyard temp, wind, and corrected AQI from our neighborhood sensors, plus a 10-day forecast.</p>
         <span class="tag live">Live</span>
       </a>
       <a class="hub-card" href="/living">
-        <div class="ico">🏡</div>
+        <div class="ico"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg></div>
         <h3>Living Here</h3>
         <p>Trash day, utilities, schools, hospitals, and fire-zone insurance help for our area.</p>
         <span class="cardlive" id="clLiving" hidden></span>
       </a>
       <a class="hub-card" href="/events">
-        <div class="ico">📅</div>
+        <div class="ico"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg></div>
         <h3>Events &amp; Clubs</h3>
         <p>Local events you can actually attend — tagged for toddlers, kids, teens, and adults, free or paid — plus community happenings.</p>
         <span class="cardlive" id="clEvents" hidden></span>
         <span class="tag live">Auto-updated</span>
       </a>
       <a class="hub-card" href="/hoa">
-        <div class="ico">🏛️</div>
+        <div class="ico"><svg class="ic" aria-hidden="true"><use href="#i-hoa"/></svg></div>
         <h3>HOA &amp; Resources</h3>
         <p>Your HOA documents decoded, the rights every California homeowner has, and how to get involved.</p>
       </a>
     </div>
 
     <div class="sitenews" id="siteNews" hidden>
-      <h2>🆕 New on this site</h2>
+      <h2><svg class="ic" aria-hidden="true"><use href="#i-new"/></svg> New on this site</h2>
       <div id="snList"></div>
     </div>
 

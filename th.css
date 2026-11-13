@@ -355,7 +355,6 @@ body.th h1,.thnav .brand,.hub-hero .htext,.hub-card h3,.goal h2,.tcell .tbig{fon
 .hub-head.photo .hh{position:absolute;z-index:2;left:22px;right:22px;top:20px;}
 .hub-head.photo h1{color:#fff;font-size:36px;font-weight:800;letter-spacing:-0.03em;line-height:1.1;text-shadow:0 1px 16px rgba(6,8,20,.5);}
 .hub-head.photo p{color:rgba(255,255,255,.94);font-size:15px;font-weight:500;margin-top:7px;text-shadow:0 1px 10px rgba(6,8,20,.6);}
-.hub-head.photo .credit{position:absolute;z-index:2;right:10px;bottom:8px;font-size:11px;color:rgba(255,255,255,.85);background:rgba(9,12,26,.45);border-radius:999px;padding:2px 9px;}
 @media (max-width:520px){
   .hub-head.photo{height:190px;}
   .hub-head.photo .hh{left:16px;right:16px;top:15px;}
@@ -374,4 +373,17 @@ body.th h1,.thnav .brand,.hub-hero .htext,.hub-card h3,.goal h2,.tcell .tbig{fon
   .hub-hero .htext{font-size:21px;min-height:2.5em;}
   .tcell .tbig{font-size:22px;}
   #thToday .tval{min-height:66px;}
+}
+
+/* ---- Drawn icons on Home (2026-11-13) ----
+   One line-icon set (Lucide, inlined in index.html) instead of emoji, which look
+   different on every phone. Neutral ink on purpose: colour stays with safety status. */
+.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-0.16em;flex:none;}
+.tcell .tico{font-size:15px;color:var(--muted);}
+.tcell.ok .tico{color:var(--ok-fg);} .tcell.caution .tico{color:var(--cau-fg);} .tcell.danger .tico{color:var(--dan-fg);}
+.tcell.season.lights .tico{color:#16a34a;}
+.hub-card .ico{width:42px;height:42px;border-radius:12px;background:var(--neu-bg);border:1px solid var(--neu-line);display:grid;place-items:center;font-size:21px;color:var(--ink);}
+@media(max-width:560px){
+  .hub-card{grid-template-columns:40px 1fr;}
+  .hub-card .ico{width:40px;height:40px;font-size:20px;padding-top:0;}
 }
