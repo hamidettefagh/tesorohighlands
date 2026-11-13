@@ -339,3 +339,39 @@ a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:
 /* "Coming up" is drawn straight away with a placeholder its usual height
    (it used to appear ~0.6s in and push the section cards 300px down). */
 .week .wkload{min-height:270px;font-size:12.5px;color:var(--muted);padding:10px 0;}
+
+/* ---- A face for the place (2026-11-13) ----
+   Home opens on a photo of the neighborhood (a frame from a neighbor's backyard
+   sky camera), headings get a typeface of their own (Plus Jakarta Sans, the one
+   on the share cards, self-hosted), and the status box and its two tiles read
+   at a glance: a big headline, a big figure. The safety colours are untouched. */
+@font-face{font-family:"Plus Jakarta Sans";src:url("/fonts/plus-jakarta-sans-latin.woff2") format("woff2");font-weight:500 800;font-style:normal;font-display:swap;}
+:root{--font-head:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+body.th h1,.thnav .brand,.hub-hero .htext,.hub-card h3,.goal h2,.tcell .tbig{font-family:var(--font-head);}
+
+.hub-head.photo{position:relative;margin-top:14px;padding:0;height:250px;border-radius:var(--radius);overflow:hidden;background:#3a4a6b;box-shadow:var(--shadow);}
+.hub-head.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%;display:block;}
+.hub-head.photo:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,12,26,.66) 0%,rgba(9,12,26,.34) 38%,rgba(9,12,26,0) 66%);}
+.hub-head.photo .hh{position:absolute;z-index:2;left:22px;right:22px;top:20px;}
+.hub-head.photo h1{color:#fff;font-size:36px;font-weight:800;letter-spacing:-0.03em;line-height:1.1;text-shadow:0 1px 16px rgba(6,8,20,.5);}
+.hub-head.photo p{color:rgba(255,255,255,.94);font-size:15px;font-weight:500;margin-top:7px;text-shadow:0 1px 10px rgba(6,8,20,.6);}
+.hub-head.photo .credit{position:absolute;z-index:2;right:10px;bottom:8px;font-size:11px;color:rgba(255,255,255,.85);background:rgba(9,12,26,.45);border-radius:999px;padding:2px 9px;}
+@media (max-width:520px){
+  .hub-head.photo{height:190px;}
+  .hub-head.photo .hh{left:16px;right:16px;top:15px;}
+  .hub-head.photo h1{font-size:29px;}
+  .hub-head.photo p{font-size:13.5px;}
+}
+
+.hub-hero{padding:20px 22px;}
+.hub-hero .htext{font-size:24px;font-weight:700;letter-spacing:-0.02em;line-height:1.25;margin:6px 0 10px;}
+.tcell .tbig{display:block;font-size:24px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;color:var(--ink);}
+.tcell .tsub{display:block;margin-top:3px;font-size:12.5px;line-height:1.45;color:var(--ink-2);}
+.tcell .tsrc{color:var(--muted);}
+#thToday .tval{min-height:50px;}
+@media (max-width:520px){
+  .hub-hero{padding:17px 18px;}
+  .hub-hero .htext{font-size:21px;min-height:2.5em;}
+  .tcell .tbig{font-size:22px;}
+  #thToday .tval{min-height:66px;}
+}

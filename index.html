@@ -76,9 +76,13 @@
 </head>
 <body class="th">
   <main id="main" tabindex="-1" class="thwrap">
-    <div class="hub-head">
-      <h1>Tesoro Highlands</h1>
-      <p>A neighbor-built hub for our community · Valencia, CA 91354</p>
+    <div class="hub-head photo">
+      <img src="/img/home-sunset.webp" srcset="/img/home-sunset-960.webp 960w, /img/home-sunset.webp 1920w" sizes="(max-width:760px) 100vw, 720px" width="1920" height="795" alt="Sunset over the Santa Clarita Valley, seen across Tesoro Highlands rooftops" fetchpriority="high" />
+      <div class="hh">
+        <h1>Tesoro Highlands</h1>
+        <p>A neighbor-built hub for our community · Valencia, CA 91354</p>
+      </div>
+      <span class="credit">📷 A neighbor’s sky camera</span>
     </div>
 
     <div id="th-hero" class="hub-hero neutral" aria-live="polite">
@@ -250,7 +254,7 @@
       if (src === "neighbor sensor" && pa.primary.ageSec >= 600) src += " · " + Math.round(pa.primary.ageSec / 60) + " min old";
       // Same thresholds as the status line: green only for Good, amber past 100, red past 150.
       $("#tdAir").parentNode.className = "tcell" + (q <= 50 ? " ok" : q <= 100 ? "" : q <= 150 ? " caution" : " danger");
-      $("#tdAir").innerHTML = "<b>AQI " + Math.round(q) + "</b> · " + cat + ' <span style="color:var(--muted);font-size:12.5px">' + src + "</span>";
+      $("#tdAir").innerHTML = '<b class="tbig">AQI ' + Math.round(q) + '</b><span class="tsub">' + cat + ' <span class="tsrc">· ' + src + "</span></span>";
       liveBits.air = "<b>AQI " + Math.round(q) + "</b> " + cat.toLowerCase();
       paintFireCard(); asofDone(true);
     }).catch(function () { $("#tdAir").textContent = "unavailable right now"; asofDone(false); });
@@ -283,7 +287,7 @@
       var rain = (tx && tx.rainingNow) ? "🌧️ Raining now · " : "";
       // Green is reserved for rain — Normal is baseline, not good news.
       $("#tdFw").parentNode.className = "tcell" + (lvl === "Extreme" ? " danger" : lvl === "Elevated" ? " caution" : rain ? " ok" : "");
-      $("#tdFw").innerHTML = rain + "<b>" + windTxt + "</b> wind · " + rhTxt + " humidity · " + lvl + ' <span style="color:var(--muted);font-size:12.5px">' + src + "</span>";
+      $("#tdFw").innerHTML = '<b class="tbig">' + lvl + '</b><span class="tsub">' + rain + windTxt + " wind · " + rhTxt + ' humidity <span class="tsrc">· ' + src + "</span></span>";
       liveBits.fw = (rain ? "raining, " : "") + lvl.toLowerCase() + " fire weather";
       paintFireCard(); asofDone(true);
     }).catch(function () { $("#tdFw").textContent = "unavailable right now"; asofDone(false); });
