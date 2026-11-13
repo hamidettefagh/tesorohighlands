@@ -1,63 +1,72 @@
 {
-  "generatedAt": "2026-11-06T20:57:27.228Z",
-  "weekendOf": "2026-11-06",
+  "generatedAt": "2026-11-13T21:28:08.542Z",
+  "weekendOf": "2026-11-13",
   "model": "claude-haiku-4-5",
-  "intro": "Plenty of local spots to explore this weekend in our area.",
+  "intro": "Some solid picks for families and grown-ups around Tesoro Highlands this weekend.",
   "picks": [
     {
-      "emoji": "🏛️",
-      "day": "Fri",
+      "emoji": "🎄",
+      "day": "Sat",
       "time": "10 AM",
-      "title": "Hart Mansion Group Tour 10:00a.m.",
+      "title": "Jingle Fest '26: Free Holiday Market with 275 vendors, live entertainment, and Santa",
       "price": "free",
-      "note": "Free historic mansion tours, perfect for curious kids",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-hart-mansion-group-tour-1000am-36542"
+      "note": "275 vendors, live entertainment, plus Santa meet-and-greet",
+      "url": "https://www.jinglefestscv.com/"
     },
     {
-      "emoji": "🥕",
+      "emoji": "🛠️",
       "day": "Sat",
-      "time": "8:30 AM",
-      "title": "Old Town Newhall Farmers Market",
+      "time": "10 AM",
+      "title": "Free Lowe's Kids Workshop: Holiday Engine",
       "price": "free",
-      "note": "Fresh local produce and family-friendly Saturday morning vibe",
-      "url": "https://santaclarita.gov/arts-and-culture/events/"
+      "note": "Free holiday craft workshop perfect for young hands",
+      "url": "https://www.lowes.com/l/kids-workshops"
     },
     {
-      "emoji": "🚚",
+      "emoji": "🎭",
+      "day": "Fri",
+      "time": "7 PM",
+      "title": "Trinity Theatre Presents: KTCA Radio Mystery Hour",
+      "price": "$7.18–$23.18",
+      "note": "Local theatre group puts on quirky mystery hour fun",
+      "url": "https://www.eventbrite.com/e/trinity-theatre-presents-ktca-radio-mystery-hour-tickets-2002846971206"
+    },
+    {
+      "emoji": "🎅",
       "day": "Sat",
-      "time": "9 AM",
-      "title": "Free Home Depot Kids Workshop: Dump Truck",
+      "time": "11 AM",
+      "title": "Santa's Arrival Celebration at Valencia Town Center",
       "price": "free",
-      "note": "Kids build and take home a free workshop project",
-      "url": "https://www.homedepothelper.com/home-depot-kids-workshop/"
+      "note": "Santa's arrival with family activities at Valencia Town Center",
+      "url": "https://www.valenciatowncenter.com/events"
     },
     {
       "emoji": "📚",
       "day": "Sat",
       "time": "11 AM",
-      "title": "Weekly Saturday Storytime at Barnes & Noble Valencia",
+      "title": "Family Storytime",
       "price": "free",
-      "note": "Weekend storytime at the bookstore nearby",
-      "url": "https://stores.barnesandnoble.com/store/2642"
+      "note": "Perfect Saturday morning for toddlers and early readers",
+      "url": "https://santaclarita.librarycalendar.com/event/family-storytime-37826"
     },
     {
-      "emoji": "⚙️",
+      "emoji": "👻",
       "day": "Sat",
       "time": "1 PM",
-      "title": "Open House Makerspace!",
+      "title": "Tales From the Dark Stacks",
       "price": "free",
-      "note": "Open makerspace for teens and adults to explore",
-      "url": "https://santaclarita.librarycalendar.com/event/placeheld-open-house-makerspace-32503"
+      "note": "Adults-only spooky book discussion for the season",
+      "url": "https://santaclarita.librarycalendar.com/event/adult-hold-tales-dark-stacks-22910"
     },
     {
-      "emoji": "🌾",
-      "day": "Sun",
-      "time": "8:30 AM",
-      "title": "Valencia FivePoint Farmers' Market",
-      "price": "free",
-      "note": "Sunday farmers market with local food vendors and community",
-      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market"
+      "emoji": "🎵",
+      "day": "Sat",
+      "time": "7:30 PM",
+      "title": "The Paul T. Plew Singers in Concert | 2026 Season",
+      "price": "$0–$10",
+      "note": "Community choir concert, budget-friendly way to support local music",
+      "url": "https://www.eventbrite.com/e/the-paul-t-plew-singers-in-concert-2026-season-tickets-2003268377644"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nPlenty of local spots to explore this weekend in our area.\n\n🏛️ *Fri 10 AM* — Hart Mansion Group Tour 10:00a.m. (free)\n   Free historic mansion tours, perfect for curious kids\n🥕 *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Fresh local produce and family-friendly Saturday morning vibe\n🚚 *Sat 9 AM* — Free Home Depot Kids Workshop: Dump Truck (free)\n   Kids build and take home a free workshop project\n📚 *Sat 11 AM* — Weekly Saturday Storytime at Barnes & Noble Valencia (free)\n   Weekend storytime at the bookstore nearby\n⚙️ *Sat 1 PM* — Open House Makerspace! (free)\n   Open makerspace for teens and adults to explore\n🌾 *Sun 8:30 AM* — Valencia FivePoint Farmers' Market (free)\n   Sunday farmers market with local food vendors and community\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nSome solid picks for families and grown-ups around Tesoro Highlands this weekend.\n\n🎄 *Sat 10 AM* — Jingle Fest '26: Free Holiday Market with 275 vendors, live entertainment, and Santa (free)\n   275 vendors, live entertainment, plus Santa meet-and-greet\n🛠️ *Sat 10 AM* — Free Lowe's Kids Workshop: Holiday Engine (free)\n   Free holiday craft workshop perfect for young hands\n🎭 *Fri 7 PM* — Trinity Theatre Presents: KTCA Radio Mystery Hour ($7.18–$23.18)\n   Local theatre group puts on quirky mystery hour fun\n🎅 *Sat 11 AM* — Santa's Arrival Celebration at Valencia Town Center (free)\n   Santa's arrival with family activities at Valencia Town Center\n📚 *Sat 11 AM* — Family Storytime (free)\n   Perfect Saturday morning for toddlers and early readers\n👻 *Sat 1 PM* — Tales From the Dark Stacks (free)\n   Adults-only spooky book discussion for the season\n🎵 *Sat 7:30 PM* — The Paul T. Plew Singers in Concert | 2026 Season ($0–$10)\n   Community choir concert, budget-friendly way to support local music\n\nFull list → https://tesorohighlands.com/events"
 }
