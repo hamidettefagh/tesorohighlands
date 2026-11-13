@@ -33,8 +33,14 @@
     "rsvp": "Brand-new, unopened toys, by Saturday, Oct 17. Used toys can’t be accepted, because some of these go to hospitals. A neighbor is collecting them and making the drop-offs, so you don’t have to: her address is in the community group chat.",
     "detailsLabel": "🎁 Where the toys go",
     "details": [
-      ["🎁 The giveaway", "At Milestone Nonprofit Org’s booth during the SCV Sheriff’s Station Halloween Carnival: Sunday, Oct 18, 10 AM – 3 PM, 26201 Golden Valley Road. The toys at the booth are for families in need."],
-      ["🤝 Supported by", "AMC Thousand Oaks, Sprouts Farmers Market – Valencia, and Farmer Boys – Valencia."]
+      [
+        "🎁 The giveaway",
+        "At Milestone Nonprofit Org’s booth during the SCV Sheriff’s Station Halloween Carnival: Sunday, Oct 18, 10 AM – 3 PM, 26201 Golden Valley Road. The toys at the booth are for families in need."
+      ],
+      [
+        "🤝 Supported by",
+        "AMC Thousand Oaks, Sprouts Farmers Market – Valencia, and Farmer Boys – Valencia."
+      ]
     ],
     "host": "A neighbor is collecting the donations; the giveaway is run by Milestone Nonprofit Org. This site only shares the details."
   },
@@ -59,8 +65,14 @@
     "rsvp": "The limit is the park’s capacity. In the Zelle memo, include your family’s last name and how many adults and children are coming, so the committee can plan the right amount of food and drinks for each age group.",
     "detailsLabel": "🏆 Costume contest · 🙋 Volunteer or bring something",
     "details": [
-      ["🏆 Costume contest", "Come dressed to impress! Prizes for Best Family/Group Costume, Scariest Costume, Most Creative Costume, and Best Kids' Costume."],
-      ["🙋 Volunteers welcome", "Help is welcome: Halloween decor, a dish to share (a charcuterie board, cupcakes and the like), tables, chairs, or anything else that helps the evening. Message the organizer directly; they’re in the community group chat."]
+      [
+        "🏆 Costume contest",
+        "Come dressed to impress! Prizes for Best Family/Group Costume, Scariest Costume, Most Creative Costume, and Best Kids' Costume."
+      ],
+      [
+        "🙋 Volunteers welcome",
+        "Help is welcome: Halloween decor, a dish to share (a charcuterie board, cupcakes and the like), tables, chairs, or anything else that helps the evening. Message the organizer directly; they’re in the community group chat."
+      ]
     ],
     "host": "Run by the Tesoro Highlands event committee. This site only shares the details — payments and the guest list go through the committee."
   },
@@ -80,21 +92,16 @@
     "emoji": "🎁",
     "featured": true,
     "date": "2026-12-16",
-    "time": "Order by about Dec 10",
-    "place": "Walmart registry, ships to them",
-    "note": "MileStone Nonprofit, the same group behind October’s toy giveaway, is collecting brand-new toys for children in foster care. Pick something from their Walmart registry and it ships straight to them; no drop-off needed. Every toy is handed to a child at a DCFS holiday event on Wednesday, Dec 16.",
+    "time": "By about Dec 10",
+    "place": "Walmart registry, or drop off with a neighbor",
+    "note": "A neighbor’s nonprofit, MileStone, is working with DCFS to collect new toys and gifts for children in foster care, all ages. They go to the kids at a holiday event on Dec 16.",
     "url": "https://www.walmart.com/registry/RR/f99b1d3c-2b11-4f87-81d7-98e5be10eba1",
     "flyer": "/img/toy-drive-foster-2026.webp",
     "flyerW": 1236,
     "flyerH": 1600,
     "flyerAlt": "Flyer: MileStone Nonprofit Toys Drive for Foster Care Kids. Donate new toys and bring joy this season; use the registry to order. All toys will be donated to foster care children at the DCFS Santa Fe holiday event on Dec 16. milestonenonprofit.org, EIN 99-5121763. The details are written out in the text beside it.",
-    "rsvpHead": "Order early enough to arrive before Dec 16",
-    "rsvp": "Open the registry, pick a toy, and check out: Walmart ships it to the nonprofit, so there’s nothing to drop off. New, unopened toys only. Shipping takes a few days, so order by about Dec 10 to be safe.",
-    "detailsLabel": "🎁 Where the toys go",
-    "details": [
-      ["🎁 The kids", "Children in the care of LA County’s Department of Children and Family Services (DCFS). The toys are given out at the department’s holiday event on Wednesday, Dec 16; the flyer lists its Santa Fe office."],
-      ["🏷️ The organization", "MileStone Nonprofit Org, a Los Angeles County nonprofit (EIN 99-5121763) that supports single mothers and families. It ran the toy giveaway at the Sheriff’s Halloween carnival in October. milestonenonprofit.org"]
-    ],
-    "host": "Run by MileStone Nonprofit Org. This site only shares the details; the registry and the toys go through them."
+    "rsvpHead": "New toys only, by about Dec 10",
+    "rsvp": "Order from the Walmart registry and it ships straight to the nonprofit, or buy a new toy yourself and drop it at her house (her address is in the community group chat). Donations are tax-deductible to the extent the law allows: EIN 99-5121763.",
+    "host": "Run by a neighbor through MileStone Nonprofit Org Inc. (milestonenonprofit.org). This site only shares the details."
   }
 ]
