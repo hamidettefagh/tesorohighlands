@@ -73,5 +73,28 @@
     "place": "Behind the gate",
     "note": "Handing out treats? Put your house on the neighbors-only treat map (knock or ring, or candy out front) and flip it to out of candy when you're done. The code is in the community WhatsApp group.",
     "url": "/treats"
+  },
+  {
+    "title": "Toy Drive for Kids in Foster Care",
+    "short": "Foster-care toy drive",
+    "emoji": "🎁",
+    "featured": true,
+    "date": "2026-12-16",
+    "time": "Order by about Dec 10",
+    "place": "Walmart registry, ships to them",
+    "note": "MileStone Nonprofit, the same group behind October’s toy giveaway, is collecting brand-new toys for children in foster care. Pick something from their Walmart registry and it ships straight to them; no drop-off needed. Every toy is handed to a child at a DCFS holiday event on Wednesday, Dec 16.",
+    "url": "https://www.walmart.com/registry/RR/f99b1d3c-2b11-4f87-81d7-98e5be10eba1",
+    "flyer": "/img/toy-drive-foster-2026.webp",
+    "flyerW": 1236,
+    "flyerH": 1600,
+    "flyerAlt": "Flyer: MileStone Nonprofit Toys Drive for Foster Care Kids. Donate new toys and bring joy this season; use the registry to order. All toys will be donated to foster care children at the DCFS Santa Fe holiday event on Dec 16. milestonenonprofit.org, EIN 99-5121763. The details are written out in the text beside it.",
+    "rsvpHead": "Order early enough to arrive before Dec 16",
+    "rsvp": "Open the registry, pick a toy, and check out: Walmart ships it to the nonprofit, so there’s nothing to drop off. New, unopened toys only. Shipping takes a few days, so order by about Dec 10 to be safe.",
+    "detailsLabel": "🎁 Where the toys go",
+    "details": [
+      ["🎁 The kids", "Children in the care of LA County’s Department of Children and Family Services (DCFS). The toys are given out at the department’s holiday event on Wednesday, Dec 16; the flyer lists its Santa Fe office."],
+      ["🏷️ The organization", "MileStone Nonprofit Org, a Los Angeles County nonprofit (EIN 99-5121763) that supports single mothers and families. It ran the toy giveaway at the Sheriff’s Halloween carnival in October. milestonenonprofit.org"]
+    ],
+    "host": "Run by MileStone Nonprofit Org. This site only shares the details; the registry and the toys go through them."
   }
 ]

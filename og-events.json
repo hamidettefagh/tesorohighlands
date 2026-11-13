@@ -2,18 +2,10 @@
   "note": "Written by scripts/make-og.mjs — read by api/og-events.js. Do not edit by hand.",
   "variants": [
     {
-      "until": "2026-10-17",
+      "until": "2026-12-16",
       "file": "og-events-1.jpg",
       "events": [
-        "Toy Drive for Families in Need",
-        "2nd Annual Community Halloween Party"
-      ]
-    },
-    {
-      "until": "2026-10-30",
-      "file": "og-events-2.jpg",
-      "events": [
-        "2nd Annual Community Halloween Party"
+        "Toy Drive for Kids in Foster Care"
       ]
     }
   ],
