@@ -1,269 +1,7 @@
 {
-  "generatedAt": "2026-11-14T23:54:48.769Z",
+  "generatedAt": "2026-11-15T15:39:01.831Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Hart Mansion Group Tour 10:00a.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/copy-hart-mansion-group-tour-1000am-36546",
-      "start": "2026-11-14T10:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-14T10:00",
-        "2026-11-19T10:00",
-        "2026-11-20T10:00",
-        "2026-11-21T10:00",
-        "2026-11-28T10:00",
-        "2026-12-03T10:00",
-        "2026-12-04T10:00"
-      ],
-      "repeats": 6,
-      "added": "2026-11-03T11:54:49.798Z"
-    },
-    {
-      "title": "Sit and Stitch",
-      "url": "https://santaclarita.librarycalendar.com/event/sit-and-stitch-24357",
-      "start": "2026-11-14T10:00",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-14T10:00",
-        "2026-11-28T10:00"
-      ],
-      "repeats": 1,
-      "added": "2026-11-09T18:47:08.330Z"
-    },
-    {
-      "title": "B.A.B.E. Book Club",
-      "url": "https://santaclarita.librarycalendar.com/event/babe-book-club-24390",
-      "start": "2026-11-14T10:30",
-      "venue": "Old Town Newhall Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-14T10:30"
-      ],
-      "added": "2026-11-09T18:47:08.330Z"
-    },
-    {
-      "title": "Hart Mansion Tour 11:00a.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1100am-36660",
-      "start": "2026-11-14T11:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-14T11:00",
-        "2026-11-15T11:00",
-        "2026-11-21T11:00",
-        "2026-11-22T11:00",
-        "2026-11-28T11:00",
-        "2026-11-29T11:00"
-      ],
-      "repeats": 5,
-      "added": "2026-11-10T12:37:53.516Z"
-    },
-    {
-      "title": "Family Storytime",
-      "url": "https://santaclarita.librarycalendar.com/event/family-storytime-37826",
-      "start": "2026-11-14T11:00",
-      "venue": "Valencia Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "toddlers",
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-14T11:00"
-      ],
-      "added": "2026-11-10T12:37:53.516Z"
-    },
-    {
-      "title": "Hart Mansion Tour 12:00p.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1200pm-36721",
-      "start": "2026-11-14T12:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-14T12:00",
-        "2026-11-15T12:00",
-        "2026-11-18T12:00",
-        "2026-11-19T12:00",
-        "2026-11-20T12:00",
-        "2026-11-21T12:00",
-        "2026-11-22T12:00",
-        "2026-11-25T12:00",
-        "2026-11-28T12:00",
-        "2026-11-29T12:00",
-        "2026-12-02T12:00",
-        "2026-12-03T12:00",
-        "2026-12-04T12:00"
-      ],
-      "repeats": 12,
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "Hart Mansion Tour 1:00p.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-100pm-36799",
-      "start": "2026-11-14T13:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-14T13:00",
-        "2026-11-15T13:00",
-        "2026-11-18T13:00",
-        "2026-11-19T13:00",
-        "2026-11-20T13:00",
-        "2026-11-21T13:00",
-        "2026-11-22T13:00",
-        "2026-11-25T13:00",
-        "2026-11-28T13:00",
-        "2026-11-29T13:00",
-        "2026-12-02T13:00",
-        "2026-12-03T13:00",
-        "2026-12-04T13:00"
-      ],
-      "repeats": 12,
-      "added": "2026-10-20T13:32:46.873Z"
-    },
-    {
-      "title": "Tales From the Dark Stacks",
-      "url": "https://santaclarita.librarycalendar.com/event/adult-hold-tales-dark-stacks-22910",
-      "start": "2026-11-14T13:00",
-      "venue": "Valencia Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-14T13:00"
-      ],
-      "added": "2026-11-10T12:37:53.516Z"
-    },
-    {
-      "title": "Hart Mansion Tour 2:00p.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-200pm-36875",
-      "start": "2026-11-14T14:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-14T14:00",
-        "2026-11-15T14:00",
-        "2026-11-18T14:00",
-        "2026-11-19T14:00",
-        "2026-11-20T14:00",
-        "2026-11-21T14:00",
-        "2026-11-22T14:00",
-        "2026-11-25T14:00",
-        "2026-11-28T14:00",
-        "2026-11-29T14:00",
-        "2026-12-02T14:00",
-        "2026-12-03T14:00",
-        "2026-12-04T14:00"
-      ],
-      "repeats": 12,
-      "added": "2026-10-20T13:32:46.873Z"
-    },
-    {
-      "title": "Bling it on! Decorated Hair Adornments",
-      "url": "https://santaclarita.librarycalendar.com/event/decorated-hair-clips-32196",
-      "start": "2026-11-14T14:00",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-14T14:00"
-      ],
-      "added": "2026-11-10T12:37:53.516Z"
-    },
-    {
-      "title": "Hart Mansion Tour 3:00p.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-300pm-36922",
-      "start": "2026-11-14T15:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-14T15:00",
-        "2026-11-15T15:00",
-        "2026-11-21T15:00",
-        "2026-11-22T15:00",
-        "2026-11-28T15:00",
-        "2026-11-29T15:00"
-      ],
-      "repeats": 5,
-      "added": "2026-11-11T16:09:34.120Z"
-    },
-    {
-      "title": "The Paul T. Plew Singers in Concert | 2026 Season",
-      "url": "https://www.eventbrite.com/e/the-paul-t-plew-singers-in-concert-2026-season-tickets-2003268377644",
-      "start": "2026-11-14T19:30",
-      "venue": "The Master's University North Campus",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$0–$10",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Eventbrite",
-      "added": "2026-11-05T12:19:18.682Z"
-    },
     {
       "title": "Santa Clarita Shuffle Scavenger Hunt",
       "url": "https://www.eventbrite.com/e/santa-clarita-shuffle-scavenger-hunt-tickets-1994864318878",
@@ -277,6 +15,119 @@
       ],
       "source": "Eventbrite",
       "added": "2026-11-14T23:54:48.769Z"
+    },
+    {
+      "title": "Hart Mansion Tour 11:00a.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1100am-36661",
+      "start": "2026-11-15T11:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-15T11:00",
+        "2026-11-21T11:00",
+        "2026-11-22T11:00",
+        "2026-11-28T11:00",
+        "2026-11-29T11:00",
+        "2026-12-05T11:00"
+      ],
+      "repeats": 5,
+      "added": "2026-11-10T12:37:53.516Z"
+    },
+    {
+      "title": "Hart Mansion Tour 12:00p.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1200pm-36722",
+      "start": "2026-11-15T12:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-15T12:00",
+        "2026-11-18T12:00",
+        "2026-11-19T12:00",
+        "2026-11-20T12:00",
+        "2026-11-21T12:00",
+        "2026-11-22T12:00",
+        "2026-11-25T12:00",
+        "2026-11-28T12:00",
+        "2026-11-29T12:00",
+        "2026-12-02T12:00",
+        "2026-12-03T12:00",
+        "2026-12-04T12:00",
+        "2026-12-05T12:00"
+      ],
+      "repeats": 12,
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Hart Mansion Tour 1:00p.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-100pm-36800",
+      "start": "2026-11-15T13:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-15T13:00",
+        "2026-11-18T13:00",
+        "2026-11-19T13:00",
+        "2026-11-20T13:00",
+        "2026-11-21T13:00",
+        "2026-11-22T13:00",
+        "2026-11-25T13:00",
+        "2026-11-28T13:00",
+        "2026-11-29T13:00",
+        "2026-12-02T13:00",
+        "2026-12-03T13:00",
+        "2026-12-04T13:00",
+        "2026-12-05T13:00"
+      ],
+      "repeats": 12,
+      "added": "2026-10-20T13:32:46.873Z"
+    },
+    {
+      "title": "Hart Mansion Tour 2:00p.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-200pm-36876",
+      "start": "2026-11-15T14:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-15T14:00",
+        "2026-11-18T14:00",
+        "2026-11-19T14:00",
+        "2026-11-20T14:00",
+        "2026-11-21T14:00",
+        "2026-11-22T14:00",
+        "2026-11-25T14:00",
+        "2026-11-28T14:00",
+        "2026-11-29T14:00",
+        "2026-12-02T14:00",
+        "2026-12-03T14:00",
+        "2026-12-04T14:00",
+        "2026-12-05T14:00"
+      ],
+      "repeats": 12,
+      "added": "2026-10-20T13:32:46.873Z"
     },
     {
       "title": "Silent Book Club",
@@ -293,6 +144,29 @@
       "dates": [
         "2026-11-15T14:30"
       ],
+      "added": "2026-11-11T16:09:34.120Z"
+    },
+    {
+      "title": "Hart Mansion Tour 3:00p.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-300pm-36923",
+      "start": "2026-11-15T15:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-15T15:00",
+        "2026-11-21T15:00",
+        "2026-11-22T15:00",
+        "2026-11-28T15:00",
+        "2026-11-29T15:00",
+        "2026-12-05T15:00"
+      ],
+      "repeats": 5,
       "added": "2026-11-11T16:09:34.120Z"
     },
     {
@@ -490,6 +364,119 @@
       ],
       "source": "Eventbrite",
       "added": "2026-11-05T12:19:18.682Z"
+    },
+    {
+      "title": "Cuenta Cuentos",
+      "url": "https://santaclarita.librarycalendar.com/event/cuenta-cuentos-31504",
+      "start": "2026-11-18T09:30",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-18T09:30"
+      ],
+      "added": "2026-11-15T15:39:01.830Z"
+    },
+    {
+      "title": "Sensory Storytime",
+      "url": "https://santaclarita.librarycalendar.com/event/sensory-storytime-32392",
+      "start": "2026-11-18T09:30",
+      "venue": "Canyon Country Jo Anne Darcy Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-18T09:30"
+      ],
+      "added": "2026-11-15T15:39:01.830Z"
+    },
+    {
+      "title": "Bella Vida Book Club",
+      "url": "https://santaclarita.librarycalendar.com/event/bella-vida-book-club-27164",
+      "start": "2026-11-18T10:30",
+      "venue": "Off Site",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-18T10:30"
+      ],
+      "added": "2026-11-15T15:39:01.830Z"
+    },
+    {
+      "title": "Hart Mansion Group Tour 11:00a.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-group-tour-1100am-36625",
+      "start": "2026-11-18T11:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-18T11:00",
+        "2026-11-19T11:00",
+        "2026-11-20T11:00",
+        "2026-11-25T11:00",
+        "2026-12-02T11:00",
+        "2026-12-03T11:00",
+        "2026-12-04T11:00"
+      ],
+      "repeats": 6,
+      "added": "2026-11-15T15:39:01.830Z"
+    },
+    {
+      "title": "English Conversation Club",
+      "url": "https://santaclarita.librarycalendar.com/event/placeholder-english-conversation-club-31651",
+      "start": "2026-11-18T11:00",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-18T11:00",
+        "2026-12-02T11:00"
+      ],
+      "repeats": 1,
+      "added": "2026-11-15T15:39:01.830Z"
+    },
+    {
+      "title": "Sensory Storytime",
+      "url": "https://santaclarita.librarycalendar.com/event/baby-and-toddler-storytime-31794",
+      "start": "2026-11-18T11:00",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-18T11:00"
+      ],
+      "added": "2026-11-15T15:39:01.830Z"
     },
     {
       "title": "Kindred Spirits Wine Bar Pop-Up",
