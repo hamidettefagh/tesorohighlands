@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T18:31:04.706Z",
+  "generatedAt": "2026-11-17T02:55:05.945Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -697,7 +697,7 @@
     },
     {
       "title": "A Holiday To Remember: Santa Clarita Master Chorale",
-      "url": "https://pac.canyons.edu/shows/doo-wop.php",
+      "url": "https://pac.canyons.edu/shows/holiday-remember.php",
       "start": "2026-12-06T19:00",
       "venue": "Santa Clarita Performing Arts Center",
       "city": "Santa Clarita",
@@ -934,6 +934,20 @@
       "added": "2026-09-11T22:35:00.473Z"
     },
     {
+      "title": "To The Stars: Santa Clarita Master Chorale",
+      "url": "https://pac.canyons.edu/shows/stars.php",
+      "start": "2027-03-07T16:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-11-17T02:55:05.944Z"
+    },
+    {
       "title": "The Sixties Show",
       "url": "https://pac.canyons.edu/shows/sixties.php",
       "start": "2027-03-13T20:00",
@@ -988,6 +1002,20 @@
       ],
       "source": "SC Performing Arts Center",
       "added": "2026-08-23T03:24:58.764Z"
+    },
+    {
+      "title": "Singing Blue Jazz: Santa Clarita Master Chorale",
+      "url": "https://pac.canyons.edu/shows/singing-blue.php",
+      "start": "2027-06-06T16:00",
+      "venue": "Santa Clarita Performing Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Performing Arts Center",
+      "added": "2026-11-17T02:55:05.944Z"
     }
   ]
 }
