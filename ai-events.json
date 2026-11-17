@@ -1,95 +1,81 @@
 {
-  "generatedAt": "2026-11-16T22:56:45.517Z",
+  "generatedAt": "2026-11-17T21:49:47.764Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
       "title": "Free Home Depot Kids Workshop: Christmas Car Ornament",
-      "url": "https://www.homedepot.com/c/kids",
+      "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055",
       "start": "2026-11-21T09:00",
-      "venue": "The Home Depot, Golden Triangle Rd",
-      "city": "Santa Clarita",
+      "venue": "Home Depot, Newhall Ranch Rd, Valencia (select stores, call ahead)",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
         "kids"
       ],
       "source": "Web (AI)",
-      "via": "The Home Depot",
-      "added": "2026-11-16T22:56:45.517Z"
+      "via": "Home Depot",
+      "added": "2026-11-17T21:49:47.764Z"
     },
     {
-      "title": "Light Up Main Street - Tree Lighting & Holiday Festival",
-      "url": "https://oldtownnewhall.com/events/light-up-main/",
+      "title": "Light Up Main Street - Holiday Festival",
+      "url": "https://calendar.santaclarita.gov/main_street_in_old_town_newhall_22",
       "start": "2026-11-21T16:00",
-      "venue": "Main Street and Market Street, Old Town Newhall",
-      "city": "Newhall",
+      "venue": "Old Town Newhall, Main Street and Market Street",
+      "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
         "kids",
-        "teens",
-        "adults"
+        "toddlers",
+        "adults",
+        "teens"
       ],
       "source": "Web (AI)",
-      "via": "Old Town Newhall",
-      "added": "2026-11-16T22:56:45.517Z"
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-17T21:49:47.764Z"
     },
     {
-      "title": "It's a Wonderful Life",
-      "url": "https://www.canyontheatre.org/shows",
-      "start": "2026-11-27",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Canyon Theatre Guild",
-      "added": "2026-11-16T22:56:45.517Z"
-    },
-    {
-      "title": "Vocal Jazz & Choral Concert - College of the Canyons",
-      "url": "https://pac.canyons.edu/shows/",
-      "start": "2026-12-02T19:00",
-      "venue": "Santa Clarita Performing Arts Center",
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-22T08:30",
+      "venue": "FivePoint Valencia",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
+        "toddlers",
         "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Performing Arts Center",
-      "added": "2026-11-16T22:56:45.517Z"
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-17T21:49:47.764Z"
     },
     {
-      "title": "Holipalooza - Youth Fundraiser",
-      "url": "https://www.canyontheatre.org/shows",
-      "start": "2026-12-04",
-      "venue": "Canyon Theatre Guild",
-      "city": "Newhall",
-      "free": false,
-      "price": null,
+      "title": "Canyon Country Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/canyon_country_farmers_market",
+      "start": "2026-11-25T15:00",
+      "venue": "Canyon Country Community Center (18410 Sierra Hwy)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
       "audience": [
+        "toddlers",
         "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Canyon Theatre Guild",
-      "added": "2026-11-16T22:56:45.517Z"
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-17T21:49:47.764Z"
     },
     {
-      "title": "Holiday in the Park",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-12-04T10:30",
+      "title": "Holiday in the Park at Six Flags Magic Mountain",
+      "url": "https://www.tripster.com/travelguide/event/six-flags-holiday-in-the-park/",
+      "start": "2026-11-26T10:30",
       "venue": "Six Flags Magic Mountain",
       "city": "Valencia",
       "free": false,
@@ -100,14 +86,102 @@
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain",
-      "added": "2026-11-16T22:56:45.517Z"
+      "via": "Tripster",
+      "added": "2026-11-17T21:49:47.764Z"
+    },
+    {
+      "title": "It's a Wonderful Life at Canyon Theatre Guild",
+      "url": "https://www.canyontheatre.org/shows",
+      "start": "2026-11-27",
+      "venue": "Canyon Theatre Guild, 24242 Main St",
+      "city": "Newhall",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Canyon Theatre Guild",
+      "added": "2026-11-17T21:49:47.764Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-29T08:30",
+      "venue": "FivePoint Valencia",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-17T21:49:47.764Z"
+    },
+    {
+      "title": "Canyon Country Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/canyon_country_farmers_market",
+      "start": "2026-12-02T15:00",
+      "venue": "Canyon Country Community Center (18410 Sierra Hwy)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-17T21:49:47.764Z"
+    },
+    {
+      "title": "Holidays at Gilchrist Farm - Friday Evening",
+      "url": "https://www.gilchristfarm.com/",
+      "start": "2026-12-04T14:00",
+      "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "toddlers",
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Gilchrist Farm",
+      "added": "2026-11-17T21:49:47.764Z"
+    },
+    {
+      "title": "Family Literacy Festival",
+      "url": "https://library.santaclarita.gov/events/",
+      "start": "2026-12-05T09:00",
+      "venue": "Old Town Newhall Library Branch (24500 Main Street)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Public Library",
+      "added": "2026-11-17T21:49:47.764Z"
     },
     {
       "title": "Free Home Depot Kids Workshop: Holiday Train",
-      "url": "https://www.homedepot.com/c/kids",
+      "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-12-05T09:00",
-      "venue": "The Home Depot, Golden Triangle Rd",
+      "venue": "Home Depot, Golden Triangle Rd, Santa Clarita (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -115,157 +189,89 @@
         "kids"
       ],
       "source": "Web (AI)",
-      "via": "The Home Depot",
-      "added": "2026-11-16T22:56:45.517Z"
+      "via": "Home Depot",
+      "added": "2026-11-17T21:49:47.764Z"
     },
     {
       "title": "Holidays at Gilchrist Farm",
       "url": "https://www.gilchristfarm.com/",
       "start": "2026-12-05T09:00",
-      "venue": "Gilchrist Farm",
+      "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
       "city": "Santa Clarita",
       "free": false,
       "price": "$25-$30",
       "audience": [
-        "kids",
         "toddlers",
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Gilchrist Farm",
-      "added": "2026-11-16T22:56:45.517Z"
-    },
-    {
-      "title": "Polar Express Experience at Santa Clarita History Center",
-      "url": "https://santaclaritamagazine.com/2026/10/polar-express-experience-returns-to-history-center-december-5/",
-      "start": "2026-12-05T12:00",
-      "venue": "Santa Clarita History Center",
-      "city": "Newhall",
-      "free": false,
-      "price": "$25",
-      "audience": [
-        "kids",
-        "toddlers",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita History Center",
-      "added": "2026-11-16T22:56:45.517Z"
+      "added": "2026-11-17T21:49:47.764Z"
     },
     {
       "title": "Punchlines Comedy Show at The MAIN",
       "url": "https://atthemain.org/events-at-the-main/",
       "start": "2026-12-05T20:00",
-      "venue": "The MAIN",
+      "venue": "The MAIN, 24266 Main Street",
       "city": "Newhall",
       "free": false,
-      "price": null,
+      "price": "$19.07",
       "audience": [
-        "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "The MAIN",
-      "added": "2026-11-16T22:56:45.517Z"
+      "added": "2026-11-17T21:49:47.764Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-12-06T08:30",
+      "venue": "FivePoint Valencia",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-17T21:49:47.764Z"
     },
     {
       "title": "Holidays at Gilchrist Farm",
       "url": "https://www.gilchristfarm.com/",
       "start": "2026-12-06T09:00",
-      "venue": "Gilchrist Farm",
+      "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
       "city": "Santa Clarita",
       "free": false,
       "price": "$25-$30",
       "audience": [
-        "kids",
         "toddlers",
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Gilchrist Farm",
-      "added": "2026-11-16T22:56:45.517Z"
+      "added": "2026-11-17T21:49:47.764Z"
     },
     {
-      "title": "Studio Jazz Ensemble - College of the Canyons",
-      "url": "https://pac.canyons.edu/shows/",
-      "start": "2026-12-10T19:00",
-      "venue": "Santa Clarita Performing Arts Center",
-      "city": "Valencia",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Performing Arts Center",
-      "added": "2026-11-16T22:56:45.517Z"
-    },
-    {
-      "title": "Holiday in the Park",
-      "url": "https://www.sixflags.com/magicmountain/events",
-      "start": "2026-12-11T10:30",
-      "venue": "Six Flags Magic Mountain",
-      "city": "Valencia",
+      "title": "Polar Express Experience at Santa Clarita History Center",
+      "url": "https://visitsantaclarita.com/blog/5-reasons-why-santa-clarita-is-your-next-winter-break-getaway/",
+      "start": "2026-12-06T13:00",
+      "venue": "Santa Clarita History Center",
+      "city": "Santa Clarita",
       "free": false,
       "price": null,
       "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Six Flags Magic Mountain",
-      "added": "2026-11-16T22:56:45.517Z"
-    },
-    {
-      "title": "Holidays at Gilchrist Farm",
-      "url": "https://www.gilchristfarm.com/",
-      "start": "2026-12-12T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$25-$30",
-      "audience": [
-        "kids",
         "toddlers",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-16T22:56:45.517Z"
-    },
-    {
-      "title": "Free Lowe's Kids Workshop: Holiday Trolley Car",
-      "url": "https://www.lowes.com/l/DIYU-Kids-Workshops.html",
-      "start": "2026-12-12T10:00",
-      "venue": "Lowe's, Bouquet Canyon Rd",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids"
-      ],
-      "source": "Web (AI)",
-      "via": "Lowe's",
-      "added": "2026-11-16T22:56:45.517Z"
-    },
-    {
-      "title": "Barnyard Light Tour at William S. Hart Park",
-      "url": "https://visitsantaclarita.com/inspiration/seasonal-activities/winter-activities/barnyard-light-tour-at-william-s-hart-park/",
-      "start": "2026-12-12T17:00",
-      "venue": "William S. Hart Park",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
         "kids",
-        "toddlers",
         "teens",
         "adults"
       ],
@@ -274,92 +280,73 @@
       "added": "2026-11-16T22:56:45.517Z"
     },
     {
-      "title": "One Christmas Night in Memphis",
-      "url": "https://pac.canyons.edu/shows/",
-      "start": "2026-12-12T19:00",
-      "venue": "Santa Clarita Performing Arts Center",
-      "city": "Valencia",
+      "title": "Canyon Country Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/canyon_country_farmers_market",
+      "start": "2026-12-09T15:00",
+      "venue": "Canyon Country Community Center (18410 Sierra Hwy)",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-17T21:49:47.764Z"
+    },
+    {
+      "title": "Holidays at Gilchrist Farm - Friday Evening",
+      "url": "https://www.gilchristfarm.com/",
+      "start": "2026-12-11T14:00",
+      "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
+      "city": "Santa Clarita",
       "free": false,
       "price": null,
       "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Performing Arts Center",
-      "added": "2026-11-16T22:56:45.517Z"
-    },
-    {
-      "title": "Holidays at Gilchrist Farm",
-      "url": "https://www.gilchristfarm.com/",
-      "start": "2026-12-13T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$25-$30",
-      "audience": [
-        "kids",
         "toddlers",
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Gilchrist Farm",
-      "added": "2026-11-16T22:56:45.517Z"
+      "added": "2026-11-17T21:49:47.764Z"
     },
     {
       "title": "Holidays at Gilchrist Farm",
       "url": "https://www.gilchristfarm.com/",
-      "start": "2026-12-19T09:00",
-      "venue": "Gilchrist Farm",
+      "start": "2026-12-12T09:00",
+      "venue": "Gilchrist Farm, 30116 Bouquet Canyon Road",
       "city": "Santa Clarita",
       "free": false,
       "price": "$25-$30",
       "audience": [
-        "kids",
         "toddlers",
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Gilchrist Farm",
-      "added": "2026-11-16T22:56:45.517Z"
+      "added": "2026-11-17T21:49:47.764Z"
     },
     {
-      "title": "Santa Clarita Ballet Presents The Nutcracker",
-      "url": "https://pac.canyons.edu/shows/",
-      "start": "2026-12-19T13:00",
-      "venue": "Santa Clarita Performing Arts Center",
-      "city": "Valencia",
-      "free": false,
-      "price": null,
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Ballet",
-      "added": "2026-11-16T22:56:45.517Z"
-    },
-    {
-      "title": "Holidays at Gilchrist Farm",
-      "url": "https://www.gilchristfarm.com/",
-      "start": "2026-12-20T09:00",
-      "venue": "Gilchrist Farm",
+      "title": "Free Lowe's Kids Workshop: Holiday Trolley Car",
+      "url": "https://www.lowes.com/l/kids-workshops",
+      "start": "2026-12-12T10:00",
+      "venue": "Lowe's Home Improvement, Bouquet Canyon Rd or Golden Valley Rd, Santa Clarita (select stores, call ahead)",
       "city": "Santa Clarita",
-      "free": false,
-      "price": "$25-$30",
+      "free": true,
+      "price": "Free",
       "audience": [
-        "kids",
-        "toddlers",
-        "teens",
-        "adults"
+        "kids"
       ],
       "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-16T22:56:45.517Z"
+      "via": "Lowe's",
+      "added": "2026-11-17T21:49:47.764Z"
     }
   ]
 }
