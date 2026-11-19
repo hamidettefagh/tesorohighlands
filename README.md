@@ -102,6 +102,8 @@ api/_treat-homes.js   the house lots behind the gate, built by scripts/treat-hom
 server.js             tiny static server for LOCAL dev only (mimics clean URLs)
 vendor/leaflet/       self-hosted Leaflet 1.9.4 — no CDN dependency in an emergency
 scripts/*.mjs         the data builders (see below)
+scripts/ux-probe.mjs  measured check of one page: contrast, text and control sizes,
+                      focus rings, load jump (see CONTRIBUTING)
 community-events.json neighbor events, hand-maintained (schema below)
 event-tips.json       outside events a neighbor passed along (store freebies), hand-maintained
 events.json ai-events.json alert.json roundup.json purpleair-history.json
@@ -406,7 +408,7 @@ can change it. A phone's token and saved code are shared with the treat map too.
   Christmas, lights, tree, Santa, carol, Hanukkah or menorah) is still ahead.
 - **Locally,** `node server.js` serves it at /lights with the same in-memory store
   and codes as the treat map.
-- **Share card:** `node scripts/make-og.mjs --lights` writes `og-lights.jpg`. The Holidays page has its own: `--holidays-card` writes `og-holidays.jpg`. On `/holidays`, anything marked `data-until` drops off the day after that date and `data-from` appears on its date; add `?today=YYYY-MM-DD` to preview another day.
+- **Share card:** `node scripts/make-og.mjs --lights` writes `og-lights.jpg`. The Holidays page has its own: `--holidays-card` writes `og-holidays.jpg`. On `/holidays`, anything marked `data-until` drops off the day after that date and `data-from` appears on its date; a group or section with nothing left hides too. A one-time event with `data-date` gets a "Today", "Tomorrow" or "This Saturday" tag when it is under a week away. Add `?today=YYYY-MM-DD` to preview another day.
 - **Test:** `node scripts/lights.test.mjs` covers the lights map's own choices and
   season, and that the two maps keep their pins apart; the shared rules are tested in
   `scripts/treats.test.mjs`.

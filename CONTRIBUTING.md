@@ -75,6 +75,17 @@ site is worth trusting. Internal refactors, dependency bumps and feed refreshes 
 belong there. Only the top three show on the home page, so keep each line to one
 sentence and let the older ones fall off.
 
+**Measure a page before you call it done.**
+`node scripts/ux-probe.mjs http://localhost:3100/<page>` opens the page at phone width in
+the light and dark themes and fails on what looking at a screenshot misses: text below
+AA contrast, readable text under the 12.5px floor, controls under 40px, a missing focus
+ring, sideways scroll, and how far the page jumps while it loads. It needs only Chrome.
+On 2026-11-19 it found a jump on every page (the nav and status strip arrived after the
+first paint and pushed everything down ~150px) and four text sizes under the floor on
+`/holidays`, after three rounds of screenshot review had passed them. `th.css` now holds
+the nav's place before `nav.js` runs; if you change the nav's height, change those
+placeholder heights with it and re-run the probe.
+
 **A failed feed is "unknown", never "all clear."**
 If a data source doesn't load, the page must say so. It must never render silence as
 good news. Look at how `live.ok` is used in `fire.html` — every feed tracks whether it

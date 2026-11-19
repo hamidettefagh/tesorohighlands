@@ -99,6 +99,17 @@ body.th{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;l
    failed AA in all four tiers in dark. Weight and size carry the hierarchy. */
 .thstrip .arrow{font-size:12.5px;font-weight:600;flex:none;}
 
+/* ---- Hold the nav's and the strip's place until nav.js adds them (2026-11-19) ----
+   nav.js is deferred, so a page could paint without them and then drop ~150px a
+   moment later, just as someone started to read or tap (Lighthouse measured a
+   layout shift of 0.18 on a phone; "good" is under 0.1). These placeholders are the
+   same heights and stop matching the instant the real nav exists, so nothing moves.
+   Home shows its hero instead of a strip, and the Fire page has no strip at all. */
+body:not(:has(> .thnav))::before{content:"";display:block;height:59px;background:var(--surface);border-bottom:1px solid var(--line);}
+body.th:not(:has(> .thnav)):not(:has(#th-hero)) > main::before{content:"";display:block;height:44px;margin:0 -16px;background:var(--neu-bg);border-bottom:1px solid var(--neu-line);}
+@media(max-width:720px){body:not(:has(> .thnav))::before{height:93px;}}
+@media(max-width:480px){body.th:not(:has(> .thnav)):not(:has(#th-hero)) > main::before{height:55px;}}
+
 /* hub landing */
 .hub-head{padding:26px 0 4px;}
 .hub-head h1{font-size:26px;margin:0;letter-spacing:-0.02em;font-weight:700;}
