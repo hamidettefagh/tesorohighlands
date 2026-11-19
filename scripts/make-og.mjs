@@ -8,6 +8,7 @@
 //   node scripts/make-og.mjs --treats [out.jpg] the Halloween treat map card (default: og-treats.jpg)
 //   node scripts/make-og.mjs --lights [out.jpg] the holiday lights map card (default: og-lights.jpg)
 //   node scripts/make-og.mjs --holidays [out.jpg] the lights scene with no words, the banner on /holidays (default: img/holidays/banner.jpg)
+//   node scripts/make-og.mjs --holidays-card [out.jpg] the Holidays page card (default: og-holidays.jpg)
 //
 // Run it whenever a featured event (community-events.json: "featured": true plus a
 // "flyer") is added, changed or removed. It writes one card per "phase" — all the
@@ -266,6 +267,14 @@ function cardLights() {
     ${foot("tesorohighlands.com/lights")}`);
 }
 
+function cardHolidays() {
+  return page(`${lightsScene()}<div class="scrim"></div>
+    <div class="copy wide"><div class="eyebrow">Tesoro Highlands · Valencia, CA</div><h1 class="big">Holidays<br>2026</h1>
+    <div class="sub">Family outings near home, our lights map, and Santa’s phone number.</div>
+    <div class="pills"><span class="pill">🚂 Light trains</span><span class="pill">🎄 Lights map</span><span class="pill">📞 Call Santa</span></div></div>
+    ${foot("tesorohighlands.com/holidays")}`);
+}
+
 // ---------------------------------------------------------------- headless Chrome over CDP
 function findChrome() {
   const c = [process.env.CHROME_PATH,
@@ -330,6 +339,8 @@ try {
     await render(chrome, cardHome(), args[1] ? path.resolve(args[1]) : path.join(ROOT, "og-image.jpg"));
   } else if (args[0] === "--treats") {
     await render(chrome, cardTreats(), args[1] ? path.resolve(args[1]) : path.join(ROOT, "og-treats.jpg"));
+  } else if (args[0] === "--holidays-card") {
+    await render(chrome, cardHolidays(), args[1] ? path.resolve(args[1]) : path.join(ROOT, "og-holidays.jpg"));
   } else if (args[0] === "--holidays") {
     await render(chrome, page(lightsScene()), args[1] ? path.resolve(args[1]) : path.join(ROOT, "img", "holidays", "banner.jpg"));
   } else if (args[0] === "--lights") {

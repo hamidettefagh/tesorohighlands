@@ -406,7 +406,7 @@ can change it. A phone's token and saved code are shared with the treat map too.
   Christmas, lights, tree, Santa, carol, Hanukkah or menorah) is still ahead.
 - **Locally,** `node server.js` serves it at /lights with the same in-memory store
   and codes as the treat map.
-- **Share card:** `node scripts/make-og.mjs --lights` writes `og-lights.jpg`.
+- **Share card:** `node scripts/make-og.mjs --lights` writes `og-lights.jpg`. The Holidays page has its own: `--holidays-card` writes `og-holidays.jpg`. On `/holidays`, anything marked `data-until` drops off the day after that date and `data-from` appears on its date; add `?today=YYYY-MM-DD` to preview another day.
 - **Test:** `node scripts/lights.test.mjs` covers the lights map's own choices and
   season, and that the two maps keep their pins apart; the shared rules are tested in
   `scripts/treats.test.mjs`.
