@@ -112,9 +112,9 @@
       <span class="tico">🎃</span><span class="tlab">Halloween treat map</span>
       <span class="tval"><b>See which houses are handing out treats</b>, or add yours. Neighbors only: the code is in the community WhatsApp group.</span>
     </a>
-    <a class="tcell season lights" id="lightsLink" href="/lights" hidden>
-      <span class="tico"><svg class="ic" aria-hidden="true"><use href="#i-tree"/></svg></span><span class="tlab">Holiday lights map</span>
-      <span class="tval"><b>See which houses have their lights up</b>, or add yours once they're on. No code needed.</span>
+    <a class="tcell season lights" id="lightsLink" href="/holidays" hidden>
+      <span class="tico"><svg class="ic" aria-hidden="true"><use href="#i-tree"/></svg></span><span class="tlab">Holidays 2026</span>
+      <span class="tval"><b>Our lights map, family outings near home, and Santa's phone number.</b> Lights up? Add your house.</span>
     </a>
 
     <div class="week" id="wkCard">
@@ -193,7 +193,7 @@
     var el = document.getElementById("treatLink"), now = Date.now(), y = new Date().getFullYear();
     if (el && now >= Date.parse(y + "-10-01T00:00:00-07:00") && now < Date.parse(y + "-11-01T00:00:00-07:00")) el.hidden = false;
   })();
-  // Lights map link: Nov 1 (daylight time) until midnight after New Year's Day
+  // Holidays card (it leads to /holidays, which opens on the lights map): Nov 1 (daylight time) until midnight after New Year's Day
   // (standard time), the same season as api/lights.js. In January the season is
   // last year's.
   (function () {

@@ -16,7 +16,8 @@ const NAMES = `flame wind triangle-alert map backpack users phone megaphone clou
   smartphone file-text paw-print fuel map-pin bell baby house leaf sparkles volleyball wrench plug recycle
   graduation-cap hospital landmark construction sun droplet zap trash-2 wifi stethoscope shield siren
   calendar messages-square palette ferris-wheel gift headphones drama star tractor hammer library mountain
-  waves scale handshake hand scroll-text inbox door-open folder-open vote ticket`.split(/\s+/).filter(Boolean);
+  waves scale handshake hand scroll-text inbox door-open folder-open vote ticket
+  tree-pine train-front snowflake lightbulb phone-call calendar-days heart`.split(/\s+/).filter(Boolean);
 
 const symbols = [];
 for (const name of NAMES) {

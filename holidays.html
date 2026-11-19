@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Holidays 2026 — Tesoro Highlands</title>
+<meta name="description" content="Holiday season 2026 near Santa Clarita: our neighborhood lights map, the best family outings within an hour of Valencia 91354 (light trains, Zoo Lights, Magic Mountain, Old Town Newhall), and how kids can call Santa." />
+<meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#14161b" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="/icon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="canonical" href="https://tesorohighlands.com/holidays" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Tesoro Highlands" />
+<meta property="og:title" content="Holidays 2026 — Tesoro Highlands" />
+<meta property="og:description" content="Our lights map, the best family outings within an hour of Valencia, and how kids can call Santa. Put together by a neighbor." />
+<meta property="og:url" content="https://tesorohighlands.com/holidays" />
+<meta property="og:image" content="https://tesorohighlands.com/og-lights.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Tesoro Highlands holiday lights map: houses on a hill strung with lights, under a night sky" />
+<meta name="twitter:card" content="summary_large_image" />
+<script src="/theme.js"></script>
+<link rel="stylesheet" href="/th.css" />
+<style>
+  .jumpnav{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin:14px 0 4px;-webkit-overflow-scrolling:touch;}
+  .jumpnav::-webkit-scrollbar{display:none;}
+  .jumpnav a{flex:none;min-height:40px;display:inline-flex;align-items:center;text-decoration:none;font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--surface);
+    border:1px solid var(--line);border-radius:999px;padding:6px 13px;white-space:nowrap;}
+  .jumpnav a:hover{border-color:var(--muted);color:var(--ink);}
+  [hidden]{display:none !important;}
+  section{scroll-margin-top:70px;}
+  .sechead{display:flex;align-items:center;gap:8px;margin:26px 2px 8px;}
+  .sechead h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:680;}
+  .sechead .line{flex:1;height:1px;background:var(--line);}
+  .lede{font-size:13.5px;color:var(--ink-2);line-height:1.55;margin:0 2px 10px;}
+  .lede b{color:var(--ink);}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:6px 16px;box-shadow:var(--shadow);}
+  .card + .card{margin-top:12px;}
+
+  /* The lights map: the one thing on this page that is ours. */
+  .lightsmap{display:flex;gap:14px;align-items:center;text-decoration:none;color:#fff;background:#0b1a3a;border:1px solid #1e3a6e;border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);margin-top:14px;}
+  .lightsmap .lm{flex:none;width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:24px;color:#fde68a;}
+  .lightsmap b{display:block;font-family:var(--font-head);font-size:18px;letter-spacing:-0.01em;}
+  .lightsmap span.t{display:block;font-size:13.5px;color:rgba(255,255,255,.88);line-height:1.45;margin-top:2px;}
+  .lightsmap:hover{border-color:#fde68a;}
+
+  /* Top picks: numbered, open, one action each. */
+  .pick{display:flex;gap:13px;padding:14px 0;border-top:1px solid var(--line-2);}
+  .pick:first-child{border-top:0;}
+  .pick .n{flex:none;width:28px;height:28px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-family:var(--font-head);font-size:14px;font-weight:800;display:grid;place-items:center;}
+  .pick h3{margin:1px 0 0;font-size:16px;letter-spacing:-0.01em;line-height:1.3;}
+  .pick .when{font-size:13.5px;font-weight:650;color:var(--ink);margin-top:3px;}
+  .pick p{margin:4px 0 0;font-size:13.5px;color:var(--ink-2);line-height:1.55;}
+  .pick a,.svc .dt a,.clist a,.lede a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px;}
+
+  /* Everything else folds to a name, a drive time and one line. */
+  .svc{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line-2);}
+  .svc:first-child{border-top:0;}
+  .svc .ic{font-size:19px;flex:none;width:26px;text-align:center;line-height:1.4;}
+  .svc .bd{flex:1;min-width:0;}
+  .svc .nm{font-size:14.5px;font-weight:650;color:var(--ink);letter-spacing:-0.005em;}
+  .svc .nm .code{font-size:11.5px;font-weight:700;color:var(--muted);background:var(--neu-bg);border-radius:999px;padding:1px 8px;margin-left:6px;white-space:nowrap;vertical-align:1px;}
+  .svc .nm .code.best{color:var(--on-accent);background:var(--accent);}
+  .svc .sub{display:block;font-size:13px;color:var(--ink-2);line-height:1.5;margin-top:2px;}
+  .svc .dt{font-size:13px;color:var(--ink-2);line-height:1.6;margin-top:2px;}
+  .svc .dt b{color:var(--ink);font-weight:620;}
+  details.svcf{display:block;padding:0;}
+  details.svcf > summary{display:flex;gap:12px;align-items:flex-start;padding:12px 0;min-height:44px;cursor:pointer;list-style:none;}
+  details.svcf > summary::-webkit-details-marker{display:none;}
+  details.svcf > summary::after{content:"▾";flex:none;color:var(--ink-2);font-size:17px;line-height:1.2;padding:0 2px;}
+  details.svcf[open] > summary::after{content:"▴";}
+  details.svcf > .dt{margin:-4px 0 0;padding:0 18px 13px 38px;}
+  .foldhint{font-size:12.5px;color:var(--muted);margin:0 2px 8px;}
+
+  /* Call Santa: big tap-to-call rows. */
+  .call{display:flex;align-items:center;gap:13px;padding:13px 0;border-top:1px solid var(--line-2);text-decoration:none;color:var(--ink);min-height:44px;}
+  .call:first-child{border-top:0;}
+  .call .ic{flex:none;width:40px;height:40px;border-radius:12px;background:var(--neu-bg);border:1px solid var(--neu-line);display:grid;place-items:center;font-size:19px;}
+  .call b{display:block;font-size:15px;}
+  .call .num{display:block;font-family:var(--font-head);font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-top:1px;}
+  .call .t{display:block;font-size:13px;color:var(--ink-2);line-height:1.5;margin-top:2px;}
+
+  .clist{list-style:none;margin:0;padding:2px 0;}
+  .clist li{font-size:13.5px;color:var(--ink-2);line-height:1.55;padding:10px 0;border-top:1px solid var(--line-2);display:flex;gap:12px;}
+  .clist li:first-child{border-top:0;}
+  .clist .d{flex:none;width:88px;font-weight:700;color:var(--ink);}
+  .clist b{color:var(--ink);font-weight:620;}
+  .note{font-size:12.5px;color:var(--muted);line-height:1.55;margin:10px 2px 0;}
+  .note a{color:var(--accent);}
+</style>
+</head>
+<body class="th">
+  <main id="main" tabindex="-1" class="thwrap">
+    <div class="hub-head">
+      <h1>Holidays 2026</h1>
+      <p>The lights on our own streets, the best family outings within an hour of home, and how the kids can call Santa. Put together by a neighbor with little ones.</p>
+    </div>
+
+    <a class="lightsmap" href="/lights">
+      <span class="lm"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-tree-pine"/></svg></span>
+      <span><b>Our holiday lights map</b><span class="t">See which houses behind the gate have their lights up, or add yours. No code needed.</span></span>
+    </a>
+
+    <nav class="jumpnav" aria-label="Jump to a section">
+      <a href="#picks"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-star"/></svg> Top picks</a>
+      <a href="#local"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-house"/></svg> Close to home</a>
+      <a href="#trains"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-train-front"/></svg> Light trains</a>
+      <a href="#lights"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-lightbulb"/></svg> Light walks</a>
+      <a href="#parks"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-ferris-wheel"/></svg> Theme parks</a>
+      <a href="#shows"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-drama"/></svg> Shows</a>
+      <a href="#santa"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-phone-call"/></svg> Call Santa</a>
+      <a href="#calendar"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-calendar-days"/></svg> Calendar</a>
+    </nav>
+
+    <section id="picks">
+      <div class="sechead"><h2>Top picks</h2><div class="line"></div></div>
+      <p class="lede">If you only do three things. All are within 35 minutes of us and work for little kids, toddlers included.</p>
+      <div class="card">
+        <div class="pick" data-until="2026-11-21">
+          <span class="n">1</span>
+          <div>
+            <h3>Light Up Main Street, Old Town Newhall</h3>
+            <div class="when">Sat, Nov 21 · 4–8 PM · free · 15 min</div>
+            <p>Just go. Twenty tons of snow, Santa photos and the tree lighting around 5:30 PM. Parking is free, and so is Santa Clarita Transit on routes 4, 5, 6 and 14. <a href="https://oldtownnewhall.com/" target="_blank" rel="noopener">Old Town Newhall ↗</a></p>
+          </div>
+        </div>
+        <div class="pick">
+          <span class="n">2</span>
+          <div>
+            <h3>Griffith Park Holiday Lights Train, then L.A. Zoo Lights</h3>
+            <div class="when">A December weeknight: Dec 2, 3, 9 or 10 · 35 min</div>
+            <p>Ride the train at 5 PM, then drive five minutes to the zoo. <b>Book both for the same date:</b> train tickets are $10 each, and Zoo Lights is timed entry. <a href="https://www.griffithparktrainrides.com/" target="_blank" rel="noopener">Train ↗</a> · <a href="https://lazoo.org/" target="_blank" rel="noopener">L.A. Zoo ↗</a></p>
+          </div>
+        </div>
+        <div class="pick">
+          <span class="n">3</span>
+          <div>
+            <h3>Holiday in the Park, Magic Mountain</h3>
+            <div class="when">Nov 26–29, Dec 4–6, then daily Dec 11 – Jan 3 · 10 min</div>
+            <p>Lights, Santa's Cottage and story time with Mrs. Claus, ten minutes away. Included with a pass or day ticket, and kids 2 and under are free. No pass? The $79 Black Friday Silver Pass adds a free bring-a-friend ticket if you buy by Nov 30. <a href="https://www.sixflags.com/magicmountain/events/holiday-in-the-park" target="_blank" rel="noopener">Magic Mountain ↗</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="local">
+      <div class="sechead"><h2>Close to home in Santa Clarita</h2><div class="line"></div></div>
+      <p class="foldhint">Tap any one to read more.</p>
+      <div class="card">
+        <details class="svc svcf" data-until="2026-11-21"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-snowflake"/></svg></span><span class="bd"><span class="nm">Light Up Main Street <span class="code best">Top pick</span></span><span class="sub">Sat, Nov 21 · 4–8 PM · free · Old Town Newhall</span></span></summary><div class="dt">Snow Zone, Santa photos, letters to Santa, crafts, carnival games, and a quiet, sensory-friendly Chill Zone. Tree lighting about 5:30 PM. Free parking, and free Santa Clarita Transit rides on routes 4, 5, 6 and 14. <a href="https://oldtownnewhall.com/" target="_blank" rel="noopener">Old Town Newhall ↗</a></div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-lightbulb"/></svg></span><span class="bd"><span class="nm">Holiday Light Tour, Santa Clarita Transit</span><span class="sub">Dates not posted yet (last year Dec 12–14) · $3</span></span></summary><div class="dt">A 45-minute ride past the best local displays on decorated buses and a trolley, leaving McBean Transit Center between 6 and 9 PM. $3 a person or a toiletry donation; food trucks before and after. <a href="https://santaclaritatransit.com/" target="_blank" rel="noopener">Santa Clarita Transit ↗</a></div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-sparkles"/></svg></span><span class="bd"><span class="nm">River of Lights, Central Park <span class="code">15 min</span></span><span class="sub">Nightly, dusk to 10 PM · free</span></span></summary><div class="dt">The park's light installation. Last December it added holiday light sequences through New Year's Eve; this year's holiday version hasn't been announced yet.</div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-paw-print"/></svg></span><span class="bd"><span class="nm">Barnyard Light Tour, Hart Park</span><span class="sub">Watch for a date (last year Dec 13, 5–7:30 PM) · free</span></span></summary><div class="dt">A lit barnyard walk with Santa photos, crafts, and petting and feeding the park's animals.</div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-train-front"/></svg></span><span class="bd"><span class="nm">Polar Express photos, Saugus Train Station</span><span class="sub">Watch for a date (last year Dec 6, $25)</span></span></summary><div class="dt">Photos with a 125-year-old steam engine at the Santa Clarita History Center, plus cocoa, cookies and a gift for each child.</div></details>
+      </div>
+    </section>
+
+    <section id="trains">
+      <div class="sechead"><h2>Christmas light train rides</h2><div class="line"></div></div>
+      <p class="lede"><b>Book the Griffith Park train.</b> It's a real train looping a mile of light displays, $10 a person, and the 10-minute ride is the right length for a toddler.</p>
+      <div class="card">
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-train-front"/></svg></span><span class="bd"><span class="nm">Griffith Park Holiday Lights Train <span class="code best">Top pick</span> <span class="code">35 min</span></span><span class="sub">Nov 21 – Jan 3, nightly · $10 a person</span></span></summary><div class="dt">Trains about every 20 minutes, 5–8 PM Monday to Thursday and 5–9 PM Friday to Sunday. <b>Closed Nov 26, Dec 24, 25 and 31.</b> Only babies under 18 months ride free. Riders step up 8 inches to board.<br><br><b>Booking:</b> buy online for a specific date. Weekend and December nights usually sell out within 60 to 90 minutes of the 5 PM window opening; weeknights are easier. Priority Entry skips lines that can run 20 to 90 minutes. Parking is free; bring a flashlight. The site lists Nov 21 as opening day but also says "day after Thanksgiving," so confirm when you book. <a href="https://www.griffithparktrainrides.com/" target="_blank" rel="noopener">Griffith Park trains ↗</a></div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-train-front"/></svg></span><span class="bd"><span class="nm">North Pole Railway, Travel Town <span class="code">35 min</span></span><span class="sub">New this year · Nov 27 – Dec 24 · from about $47 adult, $27 child</span></span></summary><div class="dt">The train car stays put (screens, fog and motion effects), then you walk a lit village with historic trains, s'mores and Santa. Plan about 90 minutes. Listed at $39.99 adult and $19.99 child before fees; under 3 free. VIP adds a Santa photo and shorter lines. Closed Nov 30, Dec 7 and 14. <a href="https://northpolerailway.com/" target="_blank" rel="noopener">North Pole Railway ↗</a></div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-train-front"/></svg></span><span class="bd"><span class="nm">The Polar Express, Perris <span class="code">1 hr 45 min</span></span><span class="sub">Select Nov and Dec dates · $49–$88 a person</span></span></summary><div class="dt">The full Santa-on-a-train production: a one-hour onboard show with Santa, cocoa and the book read aloud. About two hours on site; arrive 60 minutes before showtime. Adults $56.25–$88.25, ages 2–11 $49.25–$81.25, under 2 free on a lap. <a href="https://socalrailway.org/" target="_blank" rel="noopener">Southern California Railway Museum ↗</a></div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-train-front"/></svg></span><span class="bd"><span class="nm">Irvine Park Railroad <span class="code">1 hr 30 min</span></span><span class="sub">Christmas Train is sold out · Train of Lights Dec 26–30</span></span></summary><div class="dt">The Christmas Train (Nov 27 – Dec 23, through a Tunnel of Lights to Santa's Village) shows as sold out on its site. Its separate Train of Lights runs Dec 26–30. <a href="https://www.irvineparkrailroad.com/" target="_blank" rel="noopener">Irvine Park Railroad ↗</a></div></details>
+      </div>
+      <p class="note">Metrolink's Holiday Express, the Santa train that leaves from Metrolink stations, is taking 2026 off.</p>
+    </section>
+
+    <section id="lights">
+      <div class="sechead"><h2>Light walks and gardens</h2><div class="line"></div></div>
+      <div class="card">
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-paw-print"/></svg></span><span class="bd"><span class="nm">L.A. Zoo Lights <span class="code">35 min</span></span><span class="sub">Nov 20 – Jan 10 · timed tickets from $19 · free parking</span></span></summary><div class="dt">An all-new lantern trail of plants, pollinators, marine life and Ice Age giants. A 60 to 90 minute self-guided walk, rain or shine; box office open 5:45–8:45 PM. Under 2 free. Extras: Santa photos on select nights, an ice rink (separate ticket), carousel, s'mores, churros and cocoa.<br><br><b>Closed</b> Nov 26 and 30; Dec 1, 7, 14, 15, 16, 24, 25 and 31; Jan 4–7. <b>Sensory-inclusive night</b> Dec 8.<br><br><b>Good to know:</b> the animals are in their night quarters, so seeing them is a separate daytime visit. Best nights to pair with the Griffith Park train: Dec 2, 3, 9 or 10, or Dec 21–23 and 28–30. <a href="https://lazoo.org/" target="_blank" rel="noopener">L.A. Zoo ↗</a></div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-leaf"/></svg></span><span class="bd"><span class="nm">Enchanted Forest of Light, Descanso Gardens <span class="code best">Top pick</span> <span class="code">35 min</span></span><span class="sub">Nov 22 – Jan 9 · 5:30–10 PM · kids from $19</span></span></summary><div class="dt">The best light walk near home: a mile-long trail in its 10th season, with a new laser show and snowfall finale, glowing stained-glass houses and giant koi. Timed entry every 30 minutes until 8:30 PM, <b>advance purchase only</b>. Non-members $29–$52 adult, $19–$37 ages 2–12, depending on the night. Holiday market Dec 2–6. <a href="https://www.descansogardens.org/" target="_blank" rel="noopener">Descanso Gardens ↗</a></div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-sparkles"/></svg></span><span class="bd"><span class="nm">Enchant Los Angeles, Santa Anita Park <span class="code">50 min</span></span><span class="sub">Nov 20 – Dec 27 · prices on its ticket site</span></span></summary><div class="dt">A Christmas light maze, a Santa visit, carolers and a shopping village are included. Skating, the snow slide, carousel, train ride and s'mores are add-ons. <a href="https://enchantchristmas.com/" target="_blank" rel="noopener">Enchant ↗</a></div></details>
+      </div>
+      <p class="note">Holiday Road in Calabasas is taking 2026 off.</p>
+    </section>
+
+    <section id="parks">
+      <div class="sechead"><h2>Theme parks</h2><div class="line"></div></div>
+      <div class="card">
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-ferris-wheel"/></svg></span><span class="bd"><span class="nm">Magic Mountain, Holiday in the Park <span class="code best">Top pick</span> <span class="code">10 min</span></span><span class="sub">Nov 26–29, Dec 4–6, daily Dec 11 – Jan 3 · included with admission</span></span></summary><div class="dt">Light displays, a tree lighting, Santa's Cottage, Story Time with Mrs. Claus, a Looney Tunes show, the North Pole Craft Depot and Post Office, a Tree Lot Maze and a new "Magic of the Holidays" show. S'mores pits and cookie decorating cost extra. Kids 2 and under are free. The Black Friday Silver Pass is $79; buy by Nov 30 for a free bring-a-friend ticket, usable through Dec 31. Dates come from a ticket seller, so check the park calendar. <a href="https://www.sixflags.com/magicmountain/events/holiday-in-the-park" target="_blank" rel="noopener">Magic Mountain ↗</a></div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-ferris-wheel"/></svg></span><span class="bd"><span class="nm">Universal Studios Hollywood <span class="code">35 min</span></span><span class="sub">Nov 21 – Jan 3, daily · included with admission</span></span></summary><div class="dt">Grinchmas, the new Merry Minions, Christmas in the Wizarding World and Super Nintendo World decorations. <a href="https://www.universalstudioshollywood.com/" target="_blank" rel="noopener">Universal ↗</a></div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-ferris-wheel"/></svg></span><span class="bd"><span class="nm">Disneyland Resort <span class="code">1 hr 15 min</span></span><span class="sub">Nov 13 – Jan 6 · included with admission</span></span></summary><div class="dt">A Christmas Fantasy Parade, holiday fireworks and World of Color Season of Light. Santa has moved to Mickey's Toontown Trolley Barn. <a href="https://disneyland.disney.go.com/" target="_blank" rel="noopener">Disneyland ↗</a></div></details>
+        <details class="svc svcf"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-ferris-wheel"/></svg></span><span class="bd"><span class="nm">Knott's Merry Farm <span class="code">1 hr 15 min</span></span><span class="sub">Nov 20 – Jan 3 · included with admission</span></span></summary><div class="dt">A new Snoopy ice show, Santa's Christmas Cabin and a nightly parkwide lighting moment. <a href="https://www.knotts.com/" target="_blank" rel="noopener">Knott's ↗</a></div></details>
+      </div>
+    </section>
+
+    <section id="shows">
+      <div class="sechead"><h2>Shows and parades</h2><div class="line"></div></div>
+      <div class="card">
+        <details class="svc svcf" data-until="2026-12-12"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-snowflake"/></svg></span><span class="bd"><span class="nm">A Christmas Carol on ice, The Cube <span class="code best">Top pick</span> <span class="code">10 min</span></span><span class="sub">Fri, Dec 11 at 7 PM · Sat, Dec 12 at noon and 5 PM</span></span></summary><div class="dt">Performed by The Cube's Skating Academy. Tickets are on Eventbrite; kids 2 and under sit free on a lap. <a href="https://www.thecubesantaclarita.com/" target="_blank" rel="noopener">The Cube ↗</a></div></details>
+        <details class="svc svcf" data-until="2026-12-20"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-drama"/></svg></span><span class="bd"><span class="nm">The Nutcracker, Santa Clarita Ballet <span class="code">10 min</span></span><span class="sub">Sat, Dec 19 at 1 and 7 PM · Sun, Dec 20 at 1 PM</span></span></summary><div class="dt">The full ballet at College of the Canyons; better for school-age kids than toddlers. Tickets through the Canyons Performing Arts Center box office, <a href="tel:+16613625304">661-362-5304</a>.</div></details>
+        <details class="svc svcf" data-until="2026-11-29"><summary><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-star"/></svg></span><span class="bd"><span class="nm">Hollywood Christmas Parade <span class="code">40 min</span></span><span class="sub">Sun, Nov 29 · free curbside</span></span></summary><div class="dt">Floats, balloons and marching bands. The start time isn't posted yet (6 PM in past years); grandstand seats are sold on the parade's site. <a href="https://thehollywoodchristmasparade.org/" target="_blank" rel="noopener">Hollywood Christmas Parade ↗</a></div></details>
+      </div>
+    </section>
+
+    <section id="santa">
+      <div class="sechead"><h2>Call Santa</h2><div class="line"></div></div>
+      <p class="lede"><b>Call the number yourself before you hand over the phone.</b> These lines change from year to year. Santa's Hotline is the one confirmed working this season.</p>
+      <div class="card">
+        <a class="call" href="tel:+16053134000">
+          <span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-phone-call"/></svg></span>
+          <span><b>Santa's Hotline</b><span class="num">(605) 313-4000</span><span class="t">Your kid leaves Santa a voicemail, then you get a text with a way to replay it, so you hear exactly what they asked for. Open 24/7. Free; normal carrier rates apply. En español: (605) 313-4001.</span></span>
+        </a>
+        <a class="call" href="tel:+18036725287">
+          <span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-phone-call"/></svg></span>
+          <span><b>The reindeer line</b><span class="num">(803) 672-5287</span><span class="t">That's (803) MR-CLAUS. The reindeer talk about Santa's Christmas Eve plans, the weather and how the naughty-or-nice list works. Free. This one is from earlier years, so test it first.</span></span>
+        </a>
+        <a class="call" href="tel:+18774466723">
+          <span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-map-pin"/></svg></span>
+          <span><b>Where's Santa? NORAD, Christmas Eve only</b><span class="num">1-877-446-6723</span><span class="t">That's 1-877-HI-NORAD. Volunteers answer and tell kids where Santa is right now. Last year the phones ran 3 AM to 11 PM Pacific on Dec 24. noradsanta.org tracks him online too.</span></span>
+        </a>
+      </div>
+      <p class="note">Skip the "Grinch" phone numbers going around. The most-shared one no longer plays the Grinch, according to Snopes.</p>
+    </section>
+
+    <section id="calendar">
+      <div class="sechead"><h2>The season at a glance</h2><div class="line"></div></div>
+      <div class="card">
+        <ul class="clist">
+          <li data-until="2026-11-21"><span class="d">Sat, Nov 21</span><span><b>Light Up Main Street</b>, 4–8 PM. No booking.</span></li>
+          <li data-until="2026-11-25"><span class="d">Nov 20–25</span><span>Openings: Zoo Lights (Nov 20), the Griffith Park train and Universal (Nov 21), Descanso (Nov 22). <b>Book</b> Zoo Lights, the train and Descanso.</span></li>
+          <li data-until="2026-11-29"><span class="d">Nov 26–29</span><span><b>Magic Mountain</b> Holiday in the Park opens Thanksgiving Day. Hollywood Christmas Parade Sunday, Nov 29.</span></li>
+          <li data-until="2026-12-03"><span class="d">Dec 2 or 3</span><span><b>Griffith Park train</b> at 5 PM, then <b>Zoo Lights</b>. Book both.</span></li>
+          <li data-until="2026-12-06"><span class="d">Dec 4–6</span><span>Descanso (holiday market Dec 2–6; book it) or Magic Mountain.</span></li>
+          <li data-until="2026-12-13"><span class="d">Dec 11–13</span><span><b>A Christmas Carol on ice</b> at The Cube, Dec 11–12 (book it). Magic Mountain is now open daily.</span></li>
+          <li data-until="2026-12-20"><span class="d">Dec 18–20</span><span><b>The Nutcracker</b>, Dec 19–20 (book it). Watch for the Holiday Light Tour and Barnyard Light Tour dates.</span></li>
+          <li data-until="2026-12-23"><span class="d">Dec 21–23</span><span>Backup weeknights for the train plus Zoo Lights, or Disneyland on a weekday.</span></li>
+          <li data-until="2027-01-03"><span class="d">Dec 26 – Jan 3</span><span>Magic Mountain daily. Zoo Lights Dec 26–30 and Jan 1–3. Irvine's Train of Lights Dec 26–30. Descanso runs to Jan 9, Disneyland to Jan 6.</span></li>
+        </ul>
+      </div>
+      <p class="note"><b>Closed nights to avoid.</b> Griffith Park train: Nov 26, Dec 24, 25, 31. Zoo Lights: Nov 26, 30; Dec 1, 7, 14–16, 24, 25, 31; Jan 4–7.</p>
+    </section>
+
+    <section id="giving">
+      <div class="sechead"><h2>Giving</h2><div class="line"></div></div>
+      <div class="card">
+        <div class="svc"><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-gift"/></svg></span><div class="bd"><div class="nm">Toy drive for kids in foster care</div><div class="dt">A neighbor's nonprofit is collecting new toys for children in foster care, for a holiday event on Dec 16. Order from the registry or drop off by about Dec 10. <a href="/events#community">Details on Events →</a></div></div></div>
+      </div>
+    </section>
+
+    <p class="note">Dates, prices and hours were checked on Nov 18, 2026 against each venue's own site and local listings. They change, and popular nights sell out, so confirm on the venue's site before you go. Drive times are approximate, without traffic, from Tesoro Highlands. Nothing here is sponsored. Know something that belongs on this page? Say so in the community group chat.</p>
+  </main>
+  <footer class="thfoot"><p>Unofficial, resident-run. A neighbor's own research, shared as-is; this site isn't affiliated with any venue listed. &nbsp;<a href="/">← Back to the hub</a></p></footer>
+
+  <script>
+  // Things that have happened drop off the page: anything marked data-until="YYYY-MM-DD"
+  // hides the day after that date, Pacific time.
+  (function () {
+    var o = {};
+    new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit" })
+      .formatToParts(new Date()).forEach(function (p) { o[p.type] = p.value; });
+    var today = o.year + "-" + o.month + "-" + o.day;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-until]"), function (el) {
+      if (el.getAttribute("data-until") < today) el.hidden = true;
+    });
+    // Top picks renumber themselves once one has passed.
+    Array.prototype.forEach.call(document.querySelectorAll("#picks .pick:not([hidden]) .n"), function (n, i) { n.textContent = i + 1; });
+  })();
+  </script>
+  <script src="/nav.js?v=25" defer></script>
+</body>
+</html>

@@ -65,6 +65,8 @@ functions (some need repo secrets on Vercel).
              Hidden until it launches: unlinked, out of the sitemap, noindex
 /treats      Halloween treat map for the houses behind the gate: neighbors-only
              (needs the code), not in the nav, noindex (see "Halloween treat map")
+/holidays    Holidays 2026: the lights map, a neighbor's guide to family outings near home,
+             and Santa phone lines. Seasonal; items hide themselves after their date (data-until)
 /lights      Holiday lights map, Nov 1 through New Year's Day: the same houses, no
              code needed, a tree instead of a pumpkin (see "Holiday lights map")
 ```
