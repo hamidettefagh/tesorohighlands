@@ -1,30 +1,14 @@
 {
-  "generatedAt": "2026-11-18T21:28:32.945Z",
+  "generatedAt": "2026-11-19T21:40:44.030Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "Pokémon Mewtwo Promo Card giveaway for 30th anniversary - In Macy's Toys R Us",
-      "url": "https://www.macys.com/stores/ca/santaclarita/valencia-town-center_493.html",
-      "start": "2026-11-20T16:00",
-      "venue": "Toys R Us inside Macy's, Valencia Town Center",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens"
-      ],
-      "source": "Web (AI)",
-      "via": "Macy's",
-      "added": "2026-11-18T21:28:32.945Z"
-    },
-    {
-      "title": "Free Home Depot Kids Workshop - Build a Christmas Car Ornament",
-      "url": "https://www.homedepot.com/l/Santa-Clarita/CA/Santa-Clarita/91351/653",
+      "title": "Home Depot Kids Workshop: Christmas Car Ornament",
+      "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-11-21T09:00",
-      "venue": "Home Depot, Golden Triangle Rd",
-      "city": "Santa Clarita",
+      "venue": "The Home Depot, Newhall Ranch Rd",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
@@ -32,13 +16,13 @@
       ],
       "source": "Web (AI)",
       "via": "The Home Depot",
-      "added": "2026-11-18T21:28:32.945Z"
+      "added": "2026-11-19T21:40:44.030Z"
     },
     {
-      "title": "Light Up Main Street - Holiday lighting ceremony, festive activities, live music, and snow zone",
-      "url": "https://santaclarita.gov/blog/2026/11/light-up-main-street-returns-to-old-town-newhall/",
+      "title": "Light Up Main Street",
+      "url": "https://calendar.santaclarita.gov/event/light-up-main-street-presented-by-drinkpak-5329",
       "start": "2026-11-21T16:00",
-      "venue": "Main Street and Market Street, Old Town Newhall",
+      "venue": "Main Street in Old Town Newhall",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -49,14 +33,31 @@
       ],
       "source": "Web (AI)",
       "via": "City of Santa Clarita",
-      "added": "2026-11-18T21:28:32.945Z"
+      "added": "2026-11-19T21:40:44.030Z"
     },
     {
-      "title": "It's a Wonderful Life - Stage adaptation of the classic holiday film at Canyon Theatre Guild",
+      "title": "Holiday in the Park at Six Flags Magic Mountain",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-11-26T10:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Six Flags",
+      "added": "2026-11-19T21:40:44.030Z"
+    },
+    {
+      "title": "It's a Wonderful Life at Canyon Theatre Guild",
       "url": "https://www.canyontheatre.org/2026-27season",
       "start": "2026-11-27",
-      "venue": "Canyon Theatre Guild",
-      "city": "Santa Clarita",
+      "venue": "Canyon Theatre Guild, 24242 Main Street",
+      "city": "Newhall",
       "free": false,
       "price": null,
       "audience": [
@@ -66,49 +67,31 @@
       ],
       "source": "Web (AI)",
       "via": "Canyon Theatre Guild",
-      "added": "2026-11-18T21:28:32.945Z"
+      "added": "2026-11-19T21:40:44.030Z"
     },
     {
-      "title": "Breakfast with Santa at Gilchrist Farm - Pancakes with Santa, petting zoo, holiday parade",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-05T08:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$25 child / $30 adult",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
-    },
-    {
-      "title": "Family Literacy Festival 2026 - A Midwinter Night's Dream with stories, activities, and family fun",
+      "title": "Family Literacy Festival",
       "url": "https://library.santaclarita.gov/events/",
       "start": "2026-12-05T09:00",
-      "venue": "Old Town Newhall Library Branch",
+      "venue": "Old Town Newhall Library Branch, 24500 Main Street",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "toddlers",
         "kids",
-        "teens",
+        "toddlers",
         "adults"
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Public Library",
-      "added": "2026-11-18T21:28:32.945Z"
+      "added": "2026-11-19T21:40:44.030Z"
     },
     {
-      "title": "Free Home Depot Kids Workshop - Build a Holiday Train",
-      "url": "https://www.homedepot.com/l/Santa-Clarita/CA/Santa-Clarita/91351/653",
+      "title": "Home Depot Kids Workshop: Holiday Train",
+      "url": "https://www.homedepot.com/c/kids-workshop",
       "start": "2026-12-05T09:00",
-      "venue": "Home Depot, Golden Triangle Rd",
-      "city": "Santa Clarita",
+      "venue": "The Home Depot, Newhall Ranch Rd",
+      "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
@@ -116,81 +99,29 @@
       ],
       "source": "Web (AI)",
       "via": "The Home Depot",
-      "added": "2026-11-18T21:28:32.945Z"
+      "added": "2026-11-19T21:40:44.030Z"
     },
     {
-      "title": "Holidays on the Farm at Gilchrist Farm - Free admission with petting zoo, parade, Santa, wagon rides, crafts",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-05T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
-    },
-    {
-      "title": "Polar Express Experience - Photos with historic steam engine, Polar Express readings, hot chocolate and cookies",
-      "url": "https://signalscv.com/2026/11/polar-express-experience-returns-to-history-center-in-hart-park/",
-      "start": "2026-12-05T12:00",
-      "venue": "Santa Clarita History Center, Hart Park",
-      "city": "Santa Clarita",
+      "title": "Punchlines at The MAIN",
+      "url": "https://www.eventbrite.com/o/the-main-12859302391",
+      "start": "2026-12-05T20:00",
+      "venue": "The MAIN, 24266 Main Street",
+      "city": "Newhall",
       "free": false,
-      "price": "$25",
+      "price": "$19.07",
       "audience": [
-        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Valley Historical Society",
-      "added": "2026-11-18T21:28:32.945Z"
+      "via": "The MAIN/Eventbrite",
+      "added": "2026-11-19T21:40:44.030Z"
     },
     {
-      "title": "Breakfast with Santa at Gilchrist Farm - Pancakes with Santa, petting zoo, holiday parade",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-06T08:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$25 child / $30 adult",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
-    },
-    {
-      "title": "Holidays on the Farm at Gilchrist Farm - Free admission with petting zoo, parade, Santa, wagon rides, crafts",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-06T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
-    },
-    {
-      "title": "Santa Clarita Master Chorale 'A Holiday to Remember' - Holiday music concert",
-      "url": "https://signalscv.com/2026/11/an-entertaining-season-in-southern-cal/",
+      "title": "Santa Clarita Master Chorale: A Holiday to Remember",
+      "url": "https://www.scmasterchorale.org/",
       "start": "2026-12-06T16:00",
-      "venue": "Santa Clarita Performing Arts Center at College of the Canyons",
+      "venue": "Santa Clarita Performing Arts Center, 26455 Rockwell Canyon Rd",
       "city": "Valencia",
       "free": false,
       "price": null,
@@ -200,143 +131,72 @@
       ],
       "source": "Web (AI)",
       "via": "Santa Clarita Master Chorale",
-      "added": "2026-11-18T21:28:32.945Z"
+      "added": "2026-11-19T21:40:44.030Z"
     },
     {
-      "title": "Breakfast with Santa at Gilchrist Farm - Pancakes with Santa, petting zoo, holiday parade",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-12T08:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$25 child / $30 adult",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
-    },
-    {
-      "title": "Holidays on the Farm at Gilchrist Farm - Free admission with petting zoo, parade, Santa, wagon rides, crafts",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-12T09:00",
-      "venue": "Gilchrist Farm",
+      "title": "Lowe's Kids Workshop: Holiday Trolley Car",
+      "url": "https://www.lowes.com/l/lowe-s-kids-workshops",
+      "start": "2026-12-12T10:00",
+      "venue": "Lowe's (select stores, call ahead)",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "teens",
-        "adults"
+        "kids"
       ],
       "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
+      "via": "Lowe's",
+      "added": "2026-11-19T21:40:44.030Z"
     },
     {
-      "title": "Breakfast with Santa at Gilchrist Farm - Pancakes with Santa, petting zoo, holiday parade",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-13T08:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
+      "title": "One Christmas Night in Memphis",
+      "url": "https://santaclaritapac.universitytickets.com/",
+      "start": "2026-12-12T19:00",
+      "venue": "Santa Clarita Performing Arts Center, 26455 Rockwell Canyon Rd",
+      "city": "Valencia",
       "free": false,
-      "price": "$25 child / $30 adult",
+      "price": "$35",
       "audience": [
-        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
+      "via": "Santa Clarita Performing Arts Center",
+      "added": "2026-11-19T21:40:44.030Z"
     },
     {
-      "title": "Holidays on the Farm at Gilchrist Farm - Free admission with petting zoo, parade, Santa, wagon rides, crafts",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-13T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
-    },
-    {
-      "title": "Breakfast with Santa at Gilchrist Farm - Pancakes with Santa, petting zoo, holiday parade",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-19T08:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
+      "title": "The Nutcracker at Santa Clarita Performing Arts Center",
+      "url": "https://santaclaritapac.universitytickets.com/",
+      "start": "2026-12-19T13:00",
+      "venue": "Santa Clarita Performing Arts Center, 26455 Rockwell Canyon Rd",
+      "city": "Valencia",
       "free": false,
-      "price": "$25 child / $30 adult",
+      "price": null,
       "audience": [
         "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
+      "via": "Santa Clarita Ballet",
+      "added": "2026-11-19T21:40:44.030Z"
     },
     {
-      "title": "Holidays on the Farm at Gilchrist Farm - Free admission with petting zoo, parade, Santa, wagon rides, crafts",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-19T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
-    },
-    {
-      "title": "Breakfast with Santa at Gilchrist Farm - Pancakes with Santa, petting zoo, holiday parade",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-20T08:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
+      "title": "The Nutcracker at Santa Clarita Performing Arts Center",
+      "url": "https://santaclaritapac.universitytickets.com/",
+      "start": "2026-12-20T13:00",
+      "venue": "Santa Clarita Performing Arts Center, 26455 Rockwell Canyon Rd",
+      "city": "Valencia",
       "free": false,
-      "price": "$25 child / $30 adult",
+      "price": null,
       "audience": [
         "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
-    },
-    {
-      "title": "Holidays on the Farm at Gilchrist Farm - Free admission with petting zoo, parade, Santa, wagon rides, crafts",
-      "url": "https://www.gilchristfarm.com/holiday-hoedown",
-      "start": "2026-12-20T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Gilchrist Farm",
-      "added": "2026-11-18T21:28:32.945Z"
+      "via": "Santa Clarita Ballet",
+      "added": "2026-11-19T21:40:44.030Z"
     }
   ]
 }
