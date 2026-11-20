@@ -1,7 +1,28 @@
 {
-  "generatedAt": "2026-11-19T23:02:31.910Z",
+  "generatedAt": "2026-11-20T07:16:59.302Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
+    {
+      "title": "VALENCIA TOWN CENTER FALL FESTIVAL!",
+      "url": "https://www.valenciatowncenter.com/event/46464-valencia-town-center-fall-festival",
+      "start": "2026-11-19",
+      "dates": [
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22"
+      ],
+      "repeats": 3,
+      "venue": "Valencia Town Center",
+      "city": "Valencia",
+      "free": false,
+      "price": "$29",
+      "audience": [
+        "kids"
+      ],
+      "source": "Valencia Town Center",
+      "added": "2026-11-20T07:16:59.302Z"
+    },
     {
       "title": "Storytime",
       "url": "https://santaclarita.librarycalendar.com/event/storytime-31523",
@@ -266,6 +287,20 @@
       "added": "2026-11-19T23:02:31.910Z"
     },
     {
+      "title": "Santa Clarita Shuffle Scavenger Hunt",
+      "url": "https://www.eventbrite.com/e/santa-clarita-shuffle-scavenger-hunt-tickets-1994864328908",
+      "start": "2026-11-20T11:00",
+      "venue": "Coffee Kiosk",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$25",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-20T07:16:59.302Z"
+    },
+    {
       "title": "Apostolic Prophetic Conference with Dialogue",
       "url": "https://www.eventbrite.com/e/apostolic-prophetic-conference-with-dialogue-tickets-1990897296407",
       "start": "2026-11-21T09:00",
@@ -278,6 +313,21 @@
       ],
       "source": "Eventbrite",
       "added": "2026-10-14T07:55:13.493Z"
+    },
+    {
+      "title": "Mean Girls Jr.",
+      "url": "https://www.eventbrite.com/e/mean-girls-jr-tickets-1999738627065",
+      "start": "2026-11-21T11:00",
+      "venue": "Canyon HIgh School",
+      "city": "Canyon Country",
+      "free": false,
+      "price": "$20",
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-20T07:16:59.302Z"
     },
     {
       "title": "SoCal Etsy Guild Market Valencia",
@@ -319,7 +369,7 @@
     {
       "title": "Experience Tesla: Ride & Drive Event!",
       "url": "https://www.valenciatowncenter.com/event/46414-experience-tesla-ride-drive-event",
-      "start": "2026-11-21T12:00",
+      "start": "2026-11-21T11:00",
       "venue": "Valencia Town Center",
       "city": "Valencia",
       "free": false,
@@ -331,18 +381,18 @@
       "added": "2026-11-19T23:02:31.910Z"
     },
     {
-      "title": "Collective Frequency Immersion: Meditation, Biofeedback, Longevity",
-      "url": "https://www.eventbrite.com/e/collective-frequency-immersion-meditation-biofeedback-longevity-tickets-2004468764032",
+      "title": "Befriending Fungi – A Mushroom Walk with Aaron Tupac (Santa Clarita)",
+      "url": "https://www.eventbrite.com/e/befriending-fungi-a-mushroom-walk-with-aaron-tupac-santa-clarita-tickets-2004865880819",
       "start": "2026-11-21T14:00",
-      "venue": null,
+      "venue": "Santa Clarita (exact info will be emailed)",
       "city": "Santa Clarita",
       "free": false,
-      "price": "$63.74",
+      "price": "$33.85",
       "audience": [
         "everyone"
       ],
       "source": "Eventbrite",
-      "added": "2026-11-17T13:24:35.323Z"
+      "added": "2026-11-20T07:16:59.302Z"
     },
     {
       "title": "Hear Ye, it's Royal Accessories Time!",
@@ -461,6 +511,20 @@
       ],
       "repeats": 1,
       "added": "2026-11-19T13:03:27.051Z"
+    },
+    {
+      "title": "2026 Stunts Turkey Bowl & Picnic",
+      "url": "https://www.eventbrite.com/e/2026-stunts-turkey-bowl-picnic-tickets-2003804320664",
+      "start": "2026-11-25T08:00",
+      "venue": "Central Park",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$39.19–$81.88",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-20T07:16:59.302Z"
     },
     {
       "title": "Different Zines, Different Themes",
@@ -784,6 +848,20 @@
       "added": "2026-11-04T12:06:26.438Z"
     },
     {
+      "title": "New Year, New Intentions: Journaling & Sound Bath",
+      "url": "https://www.eventbrite.com/e/new-year-new-intentions-journaling-sound-bath-tickets-2004031809088",
+      "start": "2026-12-06T17:00",
+      "venue": "The Haven",
+      "city": "Castaic",
+      "free": false,
+      "price": "$39.19",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-20T07:16:59.302Z"
+    },
+    {
       "title": "A Holiday To Remember: Santa Clarita Master Chorale",
       "url": "https://pac.canyons.edu/shows/holiday-remember.php",
       "start": "2026-12-06T19:00",
@@ -796,6 +874,20 @@
       ],
       "source": "SC Performing Arts Center",
       "added": "2026-11-10T02:43:44.121Z"
+    },
+    {
+      "title": "Retinal Imaging Meeting",
+      "url": "https://www.eventbrite.com/e/retinal-imaging-meeting-tickets-2004717940325",
+      "start": "2026-12-08T18:00",
+      "venue": "Kindred Spirits Wine Bar",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$20",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-20T07:16:59.302Z"
     },
     {
       "title": "Guitar Ensemble: College Of The Canyons Music",
@@ -922,6 +1014,20 @@
       ],
       "source": "SC Performing Arts Center",
       "added": "2026-08-23T03:24:58.764Z"
+    },
+    {
+      "title": "Pilates X Banda - La Posada Edition",
+      "url": "https://www.eventbrite.com/e/pilates-x-banda-la-posada-edition-tickets-2004830348541",
+      "start": "2026-12-13T10:00",
+      "venue": "15112 Sierra Hwy",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$101.08–$103.22",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-20T07:16:59.302Z"
     },
     {
       "title": "Finding Nemo Kids",
