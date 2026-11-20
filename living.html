@@ -63,7 +63,7 @@
   .clist li:before{content:"○";position:absolute;left:6px;top:9px;color:var(--muted);font-size:13px;}
   .clist b{color:var(--ink);font-weight:620;}
   .clist a{color:var(--accent);text-decoration:none;font-weight:600;}
-  .note{font-size:12px;color:var(--muted);line-height:1.55;margin:8px 2px 0;}
+  .note{font-size:12.5px;color:var(--muted);line-height:1.55;margin:8px 2px 0;}
   .callout{background:var(--ok-bg);border:1px solid var(--ok-line);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:12.5px;line-height:1.55;color:var(--ok-fg);}
   .callout b{font-weight:680;}
   .links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
@@ -71,7 +71,7 @@
   .links a{display:flex;justify-content:space-between;align-items:center;gap:8px;text-decoration:none;font-size:13px;color:var(--ink);
     padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:var(--surface);}
   .links a:hover{border-color:var(--muted);}
-  .links a span{color:var(--muted);font-size:12px;flex:none;}
+  .links a span{color:var(--muted);font-size:12.5px;flex:none;}
   /* Trash: next pickup line + upcoming-holidays table (data from /trash.js) */
   .nextpick{display:block;margin-top:5px;}
   .nextpick.late,.nextpick.late b{color:var(--cau-fg);}
@@ -88,6 +88,8 @@
 
 /* ---- Phone readability floor — see th.css ---- */
 .svc .nm .protag{font-size:11px;}
+/* A link that is a row's whole detail line is a tap target, not a word in a sentence. */
+.svc .dt a.tap{display:inline-flex;align-items:center;min-height:40px;}
 </style>
 </head>
 <body class="th">
@@ -155,7 +157,7 @@
       <div class="card">
         <div class="svc"><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-droplet"/></svg></span><div class="bd"><div class="nm">Water — SCV Water</div><div class="dt">The regional water agency (formerly Valencia Water). <a href="https://www.yourscvwater.com/" target="_blank" rel="noopener">yourscvwater.com ↗</a> · Customer service <a href="tel:+16612940828">(661) 294-0828</a></div></div></div>
         <div class="svc"><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-zap"/></svg></span><div class="bd"><div class="nm">Electricity — Southern California Edison (SCE)</div><div class="dt"><a href="https://www.sce.com/" target="_blank" rel="noopener">sce.com ↗</a> · <a href="https://www.sce.com/outages-safety/outage-center/check-outage-status" target="_blank" rel="noopener">Outage &amp; PSPS map ↗</a></div></div></div>
-        <div class="svc"><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-flame"/></svg></span><div class="bd"><div class="nm">Gas — SoCalGas</div><div class="dt"><a href="https://www.socalgas.com/" target="_blank" rel="noopener">socalgas.com ↗</a></div></div></div>
+        <div class="svc"><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-flame"/></svg></span><div class="bd"><div class="nm">Gas — SoCalGas</div><div class="dt"><a class="tap" href="https://www.socalgas.com/" target="_blank" rel="noopener">socalgas.com ↗</a></div></div></div>
         <div class="svc"><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-trash-2"/></svg></span><div class="bd"><div class="nm">Trash &amp; recycling — Burrtec</div><div class="dt">The city's exclusive hauler. <a href="https://www.burrtec.com/scv/" target="_blank" rel="noopener">burrtec.com/scv ↗</a> · Start service / missed pickup <a href="tel:+16612222249">(661) 222-2249</a></div></div></div>
         <div class="svc"><span class="ic"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-wifi"/></svg></span><div class="bd"><div class="nm">Internet &amp; TV</div><div class="dt">Multiple providers serve the area (Spectrum, AT&amp;T Fiber where available, and others). Check your exact address with each for what's on your street.</div></div></div>
       </div>
