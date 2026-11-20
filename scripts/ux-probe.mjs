@@ -6,9 +6,14 @@
 // Opens the page at phone width (390 unless given) in the light and the dark theme, opens
 // every <details>, and reports:
 //   contrast  text below WCAG AA (4.5:1, or 3:1 for large text). Text over a photo or a
-//             gradient can't be computed and is listed to check by eye.
+//             gradient can't be computed and is listed to check by eye. Emoji are skipped:
+//             they are drawn in their own colours, so the CSS colour says nothing about them.
 //   type      readable text under 12.5px, or anything under 11px (the floor written in th.css;
-//             uppercase labels may go down to 11px, and the footer's fine print is exempt)
+//             uppercase labels may go down to 11px, and the footer's fine print is exempt).
+//             A piece of text with no letter or digit in it (✓ ● ❅ 🎄) is an icon, not words
+//             to read, and is not held to the floor.
+//             Neither check looks at text that is not drawn at all: font-size 0, or a fully
+//             transparent colour (a tick waiting to be ticked, a label swapped for another).
 //   controls  links and buttons under 40px tall or wide (links inside a sentence are exempt)
 //   focus     controls that show no focus ring
 //   overflow  sideways scroll
@@ -73,6 +78,11 @@ const audit = async () => {
   const name = (e) => e.tagName.toLowerCase() + (e.id ? "#" + e.id : "") + (typeof e.className === "string" && e.className.trim() ? "." + e.className.trim().split(/\s+/).join(".") : "");
   const vis = (e) => { const r = e.getBoundingClientRect(), cs = getComputedStyle(e); return r.width > 0 && r.height > 0 && cs.visibility !== "hidden" && +cs.opacity > 0; };
   const say = (t) => t.replace(/\s+/g, " ").trim().slice(0, 36);
+  // Until 2026-11-20 every text node was treated as words to read. That failed /lights for
+  // its drifting snowflakes (10px) and for "low contrast" emoji on the map pins, and /fire
+  // for the go-bag ticks that are invisible until ticked. See "contrast" and "type" above.
+  const icon = (s) => !/[\p{L}\p{N}]/u.test(s);
+  const emoji = (s) => icon(s) && /\p{Extended_Pictographic}/u.test(s);
   // The colour behind an element; `unsure` when a photo or a gradient is in the way.
   const behind = (e) => {
     const layers = []; let unsure = false, n = e;
@@ -92,12 +102,14 @@ const audit = async () => {
   while (tw.nextNode()) {
     const t = tw.currentNode; if (!t.nodeValue.trim()) continue;
     const e = t.parentElement; if (!e || !vis(e) || e.closest("script,style,noscript")) continue;
-    const cs = getComputedStyle(e), px = parseFloat(cs.fontSize), weight = +cs.fontWeight || 400;
+    const cs = getComputedStyle(e), px = parseFloat(cs.fontSize), weight = +cs.fontWeight || 400, ink = parse(cs.color);
+    if (px === 0 || ink.a === 0) continue; // not drawn
     const upper = cs.textTransform === "uppercase" || (t.nodeValue.trim().length > 1 && t.nodeValue === t.nodeValue.toUpperCase() && /[A-Z]/.test(t.nodeValue));
-    if (!e.closest("footer") && (px < 10.99 || (px < 12.49 && !upper)) && !seenT.has(name(e) + px)) { seenT.add(name(e) + px); type.push(`${px}px  ${name(e)}  "${say(t.nodeValue)}"`); }
+    if (!icon(t.nodeValue) && !e.closest("footer") && (px < 10.99 || (px < 12.49 && !upper)) && !seenT.has(name(e) + px)) { seenT.add(name(e) + px); type.push(`${px}px  ${name(e)}  "${say(t.nodeValue)}"`); }
+    if (emoji(t.nodeValue)) continue;
     const { bg, unsure } = behind(e);
     if (unsure) { byEye.add(name(e)); continue; }
-    const fg = over(parse(cs.color), bg), r = ratio(fg, bg), need = px >= 24 || (px >= 18.66 && weight >= 700) ? 3 : 4.5;
+    const fg = over(ink, bg), r = ratio(fg, bg), need = px >= 24 || (px >= 18.66 && weight >= 700) ? 3 : 4.5;
     const key = name(e) + hex(fg) + hex(bg);
     if (r < need && !seenC.has(key)) { seenC.add(key); contrast.push(`${r.toFixed(2)}:1 (needs ${need})  ${name(e)}  ${hex(fg)} on ${hex(bg)}  "${say(t.nodeValue)}"`); }
   }

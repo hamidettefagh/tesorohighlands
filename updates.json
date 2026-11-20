@@ -1,4 +1,5 @@
 [
+  { "date": "2026-11-20", "text": "Easier reading on a phone on Fire, Events and the lights map: the small print is a size larger, the week-ahead fire weather is one line per day, and event titles and map pins are easier to tap", "href": "/fire" },
   { "date": "2026-11-19", "text": "Easier reading on a phone: the small print on Weather, Living Here and HOA is a size larger, and the “very high” UV label has stronger contrast", "href": "/weather" },
   { "date": "2026-11-19", "text": "Holidays now has its own tab at the top of every page through the New Year, and the page is dressed for the season: a string of lights, a photo on every outing (Magic Mountain’s now shows its holiday lights) and each one-time event’s date on its picture", "href": "/holidays" },
   { "date": "2026-11-19", "text": "Holidays page: each outing now has a Directions button, events in the next few days are flagged (“This Saturday”, “Today”), and pages across the site no longer jump down as they finish loading", "href": "/holidays" },

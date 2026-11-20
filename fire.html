@@ -117,7 +117,7 @@
     padding: 16px; box-shadow: var(--shadow);
   }
   .card h3 { margin:0 0 2px; font-size: 13px; font-weight:620; letter-spacing:-0.005em; }
-  .card .q { color: var(--muted); font-size:12px; margin-bottom:12px; }
+  .card .q { color: var(--muted); font-size:12.5px; margin-bottom:12px; }
   .verdict { display:flex; align-items:center; gap:10px; }
   .badge { flex:none; width:42px; height:42px; border-radius:12px; display:grid; place-items:center; font-size:20px; }
   .badge.ok{ background:var(--ok-bg); } .badge.caution{ background:var(--cau-bg); } .badge.danger{ background:var(--dan-bg); } .badge.neutral{ background:var(--neu-bg); }
@@ -140,9 +140,9 @@
   .cat.un{background:var(--aqi-un)} .cat.vun{background:var(--aqi-vun)} .cat.haz{background:var(--aqi-haz)} .cat.unk{background:var(--muted)}
   .spark { margin-top:10px; }
   .spark svg { width:100%; height:44px; display:block; }
-  .outlook { font-size:12px; color:var(--ink-2); margin-top:8px; }
+  .outlook { font-size:12.5px; color:var(--ink-2); margin-top:8px; }
   .pmrow { display:flex; gap:18px; margin-top:12px; padding-top:12px; border-top:1px solid var(--line-2); }
-  .pmrow div { font-size:12px; color:var(--muted); }
+  .pmrow div { font-size:12.5px; color:var(--muted); }
   .pmrow div b { display:block; font-size:16px; color:var(--ink); font-weight:640; }
 
   /* stat rows */
@@ -151,15 +151,14 @@
   .stat:nth-last-child(-n+2){ border-bottom:0; }
   .stat .lab { font-size:11.5px; color:var(--muted); }
   .stat .val { font-size:18px; font-weight:620; letter-spacing:-0.01em; margin-top:1px; }
-  .stat .val small { font-size:12px; color:var(--muted); font-weight:440; }
+  .stat .val small { font-size:12.5px; color:var(--muted); font-weight:440; }
 
-  .note { font-size:12px; color:var(--ink-2); background:var(--neu-bg); border:1px solid var(--neu-line);
+  .note { font-size:12.5px; color:var(--ink-2); background:var(--neu-bg); border:1px solid var(--neu-line);
     border-radius:10px; padding:10px 12px; margin-top:12px; }
   .note.santa { background:var(--cau-bg); border-color:var(--cau-line); color:var(--cau-fg); }
 
   /* 7-day outlook tiles */
-  .owgrid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:6px; margin-top:4px; }
-  @media (max-width:560px){ .owgrid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+  .owgrid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; margin-top:4px; }
   .owd { border:1px solid var(--line-2); border-radius:10px; padding:8px 4px; text-align:center; background:var(--bg); min-width:0; }
   .owd.cau { background:var(--cau-bg); border-color:var(--cau-line); }
   .owd.dan { background:var(--dan-bg); border-color:var(--dan-line); }
@@ -214,22 +213,22 @@
   .chk .t { font-size:12.5px; font-weight:600; color:var(--ink); line-height:1.25; }
   .chk.done .t { color:var(--ok-fg); }
   .chk .tick { margin-left:auto; flex:none; width:18px; height:18px; border-radius:50%;
-    border:1.5px solid var(--line); display:grid; place-items:center; font-size:11px; color:transparent; }
+    border:1.5px solid var(--line); display:grid; place-items:center; font-size:12.5px; color:transparent; }
   .chk.done .tick { background:var(--ok-fg); border-color:var(--ok-fg); color:var(--surface); }
   .chkmore { margin-top:12px; }
-  .chkmore summary { list-style:none; cursor:pointer; font-size:12px; color:var(--muted); font-weight:560; }
+  .chkmore summary { list-style:none; cursor:pointer; font-size:12.5px; color:var(--muted); font-weight:560; }
   .chkmore summary::-webkit-details-marker { display:none; }
   .chkmore summary::after { content:" ▾"; }
   .chkmore[open] summary::after { content:" ▴"; }
   .chkmore ul { margin:8px 0 0; padding-left:18px; }
-  .chkmore li { font-size:12px; color:var(--ink-2); line-height:1.55; margin-bottom:6px; }
+  .chkmore li { font-size:12.5px; color:var(--ink-2); line-height:1.55; margin-bottom:6px; }
   .chkmore li b { color:var(--ink); font-weight:620; }
   .prog { height:7px; background:var(--line); border-radius:999px; overflow:hidden; margin:4px 0 14px; }
   .prog i { display:block; height:100%; background:var(--ok-fg); transition:width .3s; }
 
   .routes { display:flex; flex-direction:column; gap:8px; }
   .route { display:flex; gap:10px; align-items:center; font-size:13px; padding:9px 11px; background:var(--neu-bg); border-radius:10px; border:1px solid var(--neu-line); }
-  .route .rn { flex:none; width:20px; height:20px; border-radius:6px; background:var(--accent); color:var(--on-accent); display:grid; place-items:center; font-size:11px; font-weight:700; }
+  .route .rn { flex:none; width:20px; height:20px; border-radius:6px; background:var(--accent); color:var(--on-accent); display:grid; place-items:center; font-size:12.5px; font-weight:700; }
 
   /* links */
   .links { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
@@ -330,7 +329,7 @@
     padding:9px 14px; font-size:13px; font-weight:600; cursor:pointer; font-family:var(--font); }
   .copybtn:hover { border-color:var(--muted); }
   .sharetext { margin:10px 0 0; padding:10px 12px; background:var(--surface); border:1px solid var(--line-2); border-radius:10px;
-    font-family:var(--font); font-size:12px; color:var(--ink-2); white-space:pre-wrap; line-height:1.5; }
+    font-family:var(--font); font-size:12.5px; color:var(--ink-2); white-space:pre-wrap; line-height:1.5; }
 
   /* collapsed methodology note */
   .how { margin-bottom:10px; }
@@ -343,9 +342,20 @@
 /* ---- Phone readability floor — see th.css ---- */
 .strip{font-size:12.5px;}
 .stat .lab{font-size:12.5px;}
-.owd .dw{font-size:12px;}
-.owd .w small{font-size:10.5px;}
-.owd .g,.owd .rh,.owd .sa{font-size:11px;}
+/* The week ahead at a size that can be read (2026-11-20). Seven tiles across left each
+   one about 73px of room (67px at four across on a phone), and "58° · 40% RH" only fits
+   that at 11px. So the tiles now go four across, and on a phone every day is a row
+   instead: day, wind, gusts, heat and humidity side by side. Same words and numbers
+   either way. */
+.owd .dw,.owd .w small,.owd .g,.owd .rh,.owd .sa{font-size:12.5px;}
+.owd .rh span{white-space:nowrap;}
+@media (max-width:560px){
+  .owgrid{grid-template-columns:1fr;gap:4px;}
+  .owd{display:grid;grid-template-columns:42px minmax(0,1.25fr) minmax(0,.8fr) minmax(0,1.2fr);column-gap:6px;align-items:baseline;padding:6px 8px;text-align:left;}
+  .owd .w,.owd .g,.owd .rh{margin-top:0;}
+  .owd .rh{text-align:right;}
+  .owd .sa{grid-column:2 / -1;margin-top:1px;}
+}
 .alert .tag,.pill{font-size:11px;}
 .fire .fdist .dir{font-size:12.5px;}
 .smokeline{font-size:12.5px;}
@@ -361,8 +371,24 @@ footer{font-size:12.5px;}
 /* Leaflet controls follow the theme; the vendored CSS hard-codes white. */
 .leaflet-bar a,.leaflet-bar a:hover{background:var(--surface);color:var(--ink);border-bottom-color:var(--line);}
 .leaflet-touch .leaflet-bar a,.leaflet-bar a{width:40px;height:40px;line-height:40px;}
-.leaflet-container .leaflet-control-attribution{background:var(--surface);color:var(--muted);}
+.leaflet-container .leaflet-control-attribution{background:var(--surface);color:var(--muted);font-size:12.5px;}
 .leaflet-container .leaflet-control-attribution a{color:var(--ink-2);}
+/* A popup's "×" keeps its place in the corner; the button around it grows to 40px, down and to the left. */
+#fireMap a.leaflet-popup-close-button{width:40px;height:40px;box-sizing:border-box;padding-right:7px;text-align:right;}
+/* The map key's swatches. On the dark theme the map's line colours were 2.5 to 3.4:1 against
+   the card (4.5 is the floor); there the key uses the brighter fills the map draws with. */
+:root{--key-fire:#b91c1c;--key-warn:#a25a09;--key-order:#b01c1c;--key-home:#2563eb;--cau-tag:#925006;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--key-fire:#ef4444;--key-warn:#f59e0b;--key-order:#ef4444;--key-home:#3b82f6;--cau-tag:var(--cau-fg);}}
+:root[data-theme="dark"]{--key-fire:#ef4444;--key-warn:#f59e0b;--key-order:#ef4444;--key-home:#3b82f6;--cau-tag:var(--cau-fg);}
+/* "MODERATE" on a weather alert: the amber text on its tinted chip was 4.16:1 in the light theme. */
+.alert.sev-moderate .tag{color:var(--cau-tag);}
+/* A fire's name links to its CAL FIRE page and was a 19px-tall line to hit. The link now
+   reaches 11px above and below its words without moving anything (padding on an inline
+   link adds no height to its line), so its dotted underline is drawn as an underline:
+   a bottom border would sit 11px under the words. */
+.fire .fmeta .fn a{border-bottom:0;text-decoration:underline dotted var(--muted);text-underline-offset:3px;padding:11px 0;position:relative;}
+.fire .fmeta .fn a:hover{text-decoration-style:solid;}
+.fire .fmeta .fn a:focus-visible{outline-offset:-9px;}
 
 /* ---- Hold the page still while the feeds load (2026-11-19) ----
    Until the first render() this page is its "Checking…" skeleton, and that skeleton
@@ -380,41 +406,42 @@ footer{font-size:12.5px;}
    - Every rule hangs off the fire list's "Checking…" line. render() replaces that
      line on every path, so none of this outlives the first render: once loaded, the
      page is laid out exactly as it was before these rules existed.
-   - The numbers are measured heights at a 390px phone and on a desktop (the week-ahead
-     tiles and the map legend wrap an extra line on narrower phones, so those two sit
-     between the 360px and 390px figures). Other widths wrap a line more or less, which
-     moves things a line, not a screen. If a card's quiet-day wording changes, measure
-     again (scripts/ux-probe.mjs).
+   - The numbers are measured heights at a 390px phone and on a desktop, re-measured on
+     2026-11-20 when this page's small print went up to 12.5px (the map legend wraps an
+     extra line under 380px and has its own figure). Other widths wrap a line more or
+     less, which moves things a line, not a screen. If a card's quiet-day wording or
+     its text size changes, measure again (scripts/ux-probe.mjs).
    - The hero is not held: its "Checking" text and its all-clear text already take the
      same room, and anything it says on a bad day is worth the space it takes. */
 .wrap:has(#fireList > .skel) #fireList{min-height:76px;}
-.wrap:has(#fireList > .skel) #aqiSrc{min-height:52px;}
+.wrap:has(#fireList > .skel) #aqiSrc{min-height:54px;}
 .wrap:has(#fireList > .skel) #aqiSpark{min-height:44px;}
-.wrap:has(#fireList > .skel) #aqiOutlook{min-height:35px;}
-.wrap:has(#fireList > .skel) #fwNote{min-height:115px;}
+.wrap:has(#fireList > .skel) #aqiOutlook{min-height:36px;}
+.wrap:has(#fireList > .skel) #fwNote{min-height:103px;}
 /* On a quiet day with clean air there is no advice box, and alerts, power and
    earthquakes fold into one line the height of the alerts card's own skeleton. So
    the skeleton leaves out the advice box and the power card rather than drawing
    two boxes that are about to vanish. They are back the moment render() runs. */
 .wrap:has(#fireList > .skel) :is(#airAdvice,#airAdviceNote,#powerCard){display:none;}
-.wrap:has(#fireList > .skel) #owGrid{min-height:216px;}
-.wrap:has(#fireList > .skel) #owNote{min-height:86px;}
+.wrap:has(#fireList > .skel) #owGrid{min-height:269px;}
+.wrap:has(#fireList > .skel) #owNote{min-height:58px;}
 .wrap:has(#fireList > .skel) #evacCard .verdict{min-height:70px;}
 .wrap:has(#fireList > .skel) #evacDetail:empty{display:block;min-height:86px;}
 /* The legend is written by the map's own script, on its own schedule: held until it has its coloured key. */
-#mapLegend:not(:has(*)){min-height:97px;}
+#mapLegend:not(:has(*)){min-height:96px;}
+@media (max-width:380px){#mapLegend:not(:has(*)){min-height:114px;}}
 /* The go-bag list is drawn by a script at the end of the page; on a slow connection
    the page can paint before that script arrives. */
 #checklist:empty{min-height:505px;}
 @media (min-width:521px){
-  .wrap:has(#fireList > .skel) #fireList{min-height:59px;}
-  .wrap:has(#fireList > .skel) #owNote{min-height:69px;}
+  .wrap:has(#fireList > .skel) #fireList{min-height:58px;}
+  .wrap:has(#fireList > .skel) #owNote{min-height:40px;}
   .wrap:has(#fireList > .skel) #evacCard .verdict{min-height:46px;}
   .wrap:has(#fireList > .skel) #evacDetail:empty{min-height:49px;}
-  #mapLegend:not(:has(*)){min-height:75px;}
+  #mapLegend:not(:has(*)){min-height:77px;}
   #checklist:empty{min-height:300px;}
 }
-@media (min-width:561px){.wrap:has(#fireList > .skel) #owGrid{min-height:94px;}}
+@media (min-width:561px){.wrap:has(#fireList > .skel) #owGrid{min-height:205px;}}
 </style>
 </head>
 <body>
@@ -617,7 +644,7 @@ footer{font-size:12.5px;}
     <div class="detail" id="evacDetail"></div>
   </div>
   <div class="card" style="margin-top:12px">
-    <h3>Your go-bag <span class="cardtag" id="progPct" style="font-size:12px;color:var(--muted);font-weight:600">0%</span></h3>
+    <h3>Your go-bag <span class="cardtag" id="progPct" style="font-size:12.5px;color:var(--muted);font-weight:600">0%</span></h3>
     <div class="q">Tap what's done — saved on this device. Do it once now, not during a fire.</div>
     <div class="prog"><i id="progBar" style="width:0"></i></div>
     <div id="checklist"></div>
@@ -1724,7 +1751,7 @@ function renderOutlook(){
       <div class="dw">${dw}</div>
       <div class="w">${wind!=null?Math.round(wind):"–"}<small> mph ${dir!=null?compass(dir):""}</small></div>
       <div class="g">gusts ${gust!=null?Math.round(gust):"–"}</div>
-      <div class="rh">${d.temperature_2m_max&&d.temperature_2m_max[i]!=null?Math.round(d.temperature_2m_max[i])+"° · ":""}${rh!=null?Math.round(rh)+"% RH":"–"}</div>
+      <div class="rh">${d.temperature_2m_max&&d.temperature_2m_max[i]!=null?"<span>"+Math.round(d.temperature_2m_max[i])+"° ·</span> ":""}<span>${rh!=null?Math.round(rh)+"% RH":"–"}</span></div>
       ${sa ? '<div class="sa">🌵 Santa Ana</div>' : ""}
     </div>`;
   }).join("");
@@ -1934,7 +1961,7 @@ boot();
   var env = "&geometry="+(H.lon-2.0)+","+(H.lat-1.4)+","+(H.lon+2.0)+","+(H.lat+1.4)+"&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=true&outSR=4326";
   var nFires=0, nEvac=0, done=0, fireOk=false, evacOk=false;
   function finish(){ if(++done<2) return;
-    var key = '<span style="color:#b91c1c">●</span> fire &nbsp; <span style="color:#a25a09">▧</span> evac warning &nbsp; <span style="color:#b01c1c">▧</span> evac order &nbsp; <span style="color:#2563eb">●</span> your community<br>';
+    var key = '<span style="color:var(--key-fire)">●</span> fire &nbsp; <span style="color:var(--key-warn)">▧</span> evac warning &nbsp; <span style="color:var(--key-order)">▧</span> evac order &nbsp; <span style="color:var(--key-home)">●</span> your community<br>';
     var when = new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
     var m;
     if(!fireOk && !evacOk){

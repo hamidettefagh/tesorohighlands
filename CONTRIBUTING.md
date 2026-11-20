@@ -80,6 +80,11 @@ sentence and let the older ones fall off.
 the light and dark themes and fails on what looking at a screenshot misses: text below
 AA contrast, readable text under the 12.5px floor, controls under 40px, a missing focus
 ring, sideways scroll, and how far the page jumps while it loads. It needs only Chrome.
+It looks at what is on screen that day, so a page also has states it never sees (a fire
+nearby, a weather alert, the weekend picks, an open map popup): when you change sizes,
+read the page's styles for those too. It leaves alone what is not reading text: emoji
+(their colours are their own), symbols with no letter or digit in them, and text that is
+not drawn.
 On 2026-11-19 it found a jump on every page (the nav and status strip arrived after the
 first paint and pushed everything down ~150px) and four text sizes under the floor on
 `/holidays`, after three rounds of screenshot review had passed them. `th.css` now holds
@@ -102,8 +107,9 @@ comment in its own styles:
   the first `render()`, so a failed feed still reads "unknown" exactly as before.
 
 Those held sizes are measured numbers. If you change what one of those blocks usually
-says, or add something near the top of a page that loads late, run the probe at both
-widths (`node scripts/ux-probe.mjs <url>` and `node scripts/ux-probe.mjs <url> 1100`).
+says or the size of its text, or add something near the top of a page that loads late,
+run the probe at both widths (`node scripts/ux-probe.mjs <url>` and
+`node scripts/ux-probe.mjs <url> 1100`).
 
 **A failed feed is "unknown", never "all clear."**
 If a data source doesn't load, the page must say so. It must never render silence as

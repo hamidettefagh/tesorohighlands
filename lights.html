@@ -52,7 +52,9 @@
   .row .btn{flex:1 1 150px;}
   /* Narrow phones: the manage buttons stack rather than wrapping their labels. */
   @media (max-width:400px){[data-step="manage"] .row .btn{flex-basis:100%;}}
-  .linkbtn{background:none;border:0;padding:8px 0;display:inline-block;font:inherit;color:var(--tree-fg);font-weight:650;text-decoration:underline;cursor:pointer;min-height:0;}
+  /* A link in a sentence, 40px tall to the finger. The negative margin takes that height back
+     out of the line, so the line it sits on is spaced like the ones above it. */
+  .linkbtn{background:none;border:0;padding:8px 0;margin:-10px 0;display:inline-block;font:inherit;color:var(--tree-fg);font-weight:650;text-decoration:underline;cursor:pointer;min-height:40px;min-width:40px;}
 
   #gate form{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
   #gate label{width:100%;font-size:13px;font-weight:650;color:var(--ink-2);}
@@ -63,7 +65,7 @@
   .tally{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;margin:18px 2px 0;font-size:15px;color:var(--ink-2);}
   .tally b{font-size:26px;color:var(--ink);letter-spacing:-0.02em;}
   .tally .done{font-size:13px;color:var(--muted);}
-  .admin{font-size:11.5px;font-weight:700;background:var(--bow-bg);color:var(--bow-fg);border-radius:999px;padding:2px 9px;}
+  .admin{font-size:12.5px;font-weight:700;background:var(--bow-bg);color:var(--bow-fg);border-radius:999px;padding:2px 9px;}
 
   .mapwrap{position:relative;margin-top:10px;border-radius:var(--radius);overflow:hidden;isolation:isolate;background:var(--night);
     border:1.5px solid rgba(252,211,77,.55);box-shadow:0 0 26px rgba(252,211,77,.18),var(--shadow);}
@@ -77,8 +79,10 @@
   @media (max-width:520px){#notice.opening{min-height:calc(max(58vh,340px) + 328px);}}
   /* Always a night map: lights are for after dark. The street map turned deep navy, with our own glowing roads on top. */
   #map .leaflet-tile-pane{filter:invert(1) grayscale(1) brightness(.4) sepia(1) hue-rotate(185deg) saturate(2.2) contrast(1.1);opacity:.85;}
-  /* The one credit OpenStreetMap's license requires on the map, kept small and quiet. */
-  #map .leaflet-control-attribution{background:transparent;font-size:9.5px;line-height:1.4;padding:0 7px 3px;}
+  /* The one credit OpenStreetMap's license requires on the map. Kept quiet, at a size that
+     can still be read, and as a link that can be hit: its box reaches 40px up from the
+     map's edge, and the words stay where they were, on the edge. */
+  #map .leaflet-control-attribution{background:transparent;font-size:12.5px;line-height:1.4;padding:0;}
   .snow{position:absolute;inset:0;pointer-events:none;z-index:450;overflow:hidden;box-shadow:inset 0 0 70px rgba(4,10,30,.75);}
   .flake{position:absolute;top:-24px;font-size:15px;line-height:1;color:rgba(255,255,255,.8);text-shadow:0 0 6px rgba(255,255,255,.45);animation:fall 16s linear infinite;}
   .flake span{display:inline-block;animation:sway 3.2s ease-in-out infinite alternate;}
@@ -92,18 +96,21 @@
   @keyframes sway{from{transform:translateX(-7px) rotate(-20deg)}to{transform:translateX(7px) rotate(20deg)}}
   @media (prefers-reduced-motion:reduce){.flake,.flake span{animation:none;}.flake.f1{top:12%;}.flake.f2{top:30%;}.flake.f3{top:8%;}.flake.f4{top:44%;}.flake.f5{top:22%;}.flake.f6{top:36%;}}
   .stl{pointer-events:none;}
-  .stl span{position:absolute;white-space:nowrap;font:600 11.5px/1 var(--font);color:#fff7d6;letter-spacing:.02em;
+  .stl span{position:absolute;white-space:nowrap;font:600 12.5px/1 var(--font);color:#fff7d6;letter-spacing:.02em;
     text-shadow:0 0 3px #0b1630,0 0 3px #0b1630,0 0 6px #0b1630;}
-  .park-lbl{background:rgba(11,22,48,.88);border:1px solid #4ade80;color:#dcfce7;border-radius:999px;padding:3px 9px;font:650 12px/1.3 var(--font);box-shadow:0 0 10px rgba(74,222,128,.35);}
+  .park-lbl{background:rgba(11,22,48,.88);border:1px solid #4ade80;color:#dcfce7;border-radius:999px;padding:3px 9px;font:650 12.5px/1.3 var(--font);box-shadow:0 0 10px rgba(74,222,128,.35);}
   .park-lbl:before{display:none;}
   .fest{font-size:24px;line-height:1;filter:drop-shadow(0 0 4px rgba(255,230,150,.7));cursor:pointer;}
-  #map .leaflet-control-attribution a{color:rgba(200,214,240,.55);text-decoration:none;}
+  #map .leaflet-control-attribution a{display:inline-flex;align-items:flex-end;min-height:40px;padding:0 7px 3px;color:rgba(200,214,240,.6);text-decoration:none;}
   /* After five seconds, or the first pan, zoom or tap, the credit folds into a small
-     "i" that shows it again when tapped (OpenStreetMap's attribution guidelines allow this). */
-  #map .leaflet-control-attribution.mini{width:26px;height:26px;padding:0;margin:0 8px 8px 0;border-radius:50%;
-    background:rgba(11,22,48,.6);border:1px solid rgba(191,219,254,.25);cursor:pointer;display:grid;place-items:center;}
+     "i" that shows it again when tapped (OpenStreetMap's attribution guidelines allow this).
+     The "i" is drawn 26px across, in the same spot as before; the button around it is 40px. */
+  #map .leaflet-control-attribution.mini{width:40px;height:40px;padding:0;margin:0 1px 1px 0;cursor:pointer;display:grid;place-items:center;}
   #map .leaflet-control-attribution.mini a{display:none;}
-  #map .leaflet-control-attribution.mini:before{content:"i";font:italic 700 13px/1 Georgia,serif;color:rgba(200,214,240,.7);}
+  #map .leaflet-control-attribution.mini:before{content:"i";box-sizing:border-box;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(11,22,48,.6);border:1px solid rgba(191,219,254,.25);font:italic 700 13px/1 Georgia,serif;color:rgba(200,214,240,.7);}
+  /* A popup's "×" keeps its place in the corner; the button around it grows to 40px, down and to the left. */
+  #map a.leaflet-popup-close-button{width:40px;height:40px;box-sizing:border-box;padding-right:7px;text-align:right;}
   #map .leaflet-bar a{width:40px;height:40px;line-height:40px;background:#22252b;color:#e7e9ee;border-bottom-color:#33373e;}
   #pickBar{position:absolute;left:10px;right:10px;bottom:28px;z-index:1100;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 10px;
     background:var(--tree-btn);color:#fff;border-radius:12px;padding:8px 8px 8px 14px;font-size:15px;font-weight:650;box-shadow:0 4px 14px rgba(0,0,0,.35);}
@@ -119,6 +126,8 @@
   .pin.lights{background:var(--tree);box-shadow:0 0 12px rgba(34,197,94,.85),0 1px 5px rgba(0,0,0,.55);}
   .pin.display{background:var(--bow);box-shadow:0 0 12px rgba(239,68,68,.85),0 1px 5px rgba(0,0,0,.55);}
   .pin.mine{border-color:#fde047;}
+  /* What a finger hits is 40px across; the pin drawn inside it stays 32px (smaller when zoomed out). */
+  .pinbox{display:grid;place-items:center;}
   .pin i{position:absolute;top:-9px;right:-10px;font-style:normal;font-size:13px;}
   /* Zoomed out, the whole neighborhood fits a phone, and full-size pins would pile up. */
   #map.mz-s .pin{transform:scale(.62);}
@@ -138,7 +147,7 @@
   .pop b{font-size:15px;color:#fff;}
   .pop .st{color:#bfdbfe;font-size:12.5px;margin-top:3px;}
   .pop .row{margin-top:10px;}
-  .pop .btn{min-height:38px;font-size:13.5px;padding:0 12px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28);color:#fff;text-decoration:none;}
+  .pop .btn{min-height:40px;font-size:13.5px;padding:0 12px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28);color:#fff;text-decoration:none;}
   .pop a.btn{background:var(--tree-btn);border-color:var(--tree-btn);}
 
   #panel{margin-top:16px;}
@@ -538,7 +547,7 @@
         fest = { title: e.title, when: day + (e.time ? " · " + e.time : "") + " · Gardens Park" };
         $("eventChipTxt").textContent = e.title + ", " + day;
         $("eventChip").hidden = false;
-        L.marker(center, { icon: L.divIcon({ className: "", html: '<div class="fest">🎉</div>', iconSize: [28, 28], iconAnchor: [14, 14] }), title: e.title })
+        L.marker(center, { icon: L.divIcon({ className: "pinbox", html: '<div class="fest">🎉</div>', iconSize: [40, 40], iconAnchor: [20, 20] }), title: e.title })
           .on("click", function () { poly.openPopup(center); }).addTo(badge);
       }).catch(function () {});
     }
@@ -554,7 +563,7 @@
     function pinIcon(id) {
       var p = S.pins[id], h = howOf(p);
       var cls = "pin " + (p.how === "display" ? "display" : "lights") + (S.mine.indexOf(id) >= 0 ? " mine" : "");
-      return L.divIcon({ className: "", html: '<div class="' + cls + '"><span>' + h.em + "</span>" + (p.music ? "<i>🎵</i>" : "") + "</div>", iconSize: [32, 32], iconAnchor: [16, 16], popupAnchor: [0, -14] });
+      return L.divIcon({ className: "pinbox", html: '<div class="' + cls + '"><span>' + h.em + "</span>" + (p.music ? "<i>🎵</i>" : "") + "</div>", iconSize: [40, 40], iconAnchor: [20, 20], popupAnchor: [0, -14] });
     }
 
     function popupHtml(id) {
