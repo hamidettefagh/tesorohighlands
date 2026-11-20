@@ -26,6 +26,8 @@
 <script src="/theme.js"></script>
 <link rel="stylesheet" href="/th.css" />
 <link rel="stylesheet" href="/vendor/leaflet/leaflet.css" />
+<!-- Without scripts the code box can't open the map, so don't show it. -->
+<noscript><style>#gate{display:none;}</style></noscript>
 <style>
   /* Halloween colors, for this page only. The safety colors (--ok/--cau/--dan) stay out of it. */
   :root{--pump:#f97316;--pump-btn:#c2560a;--pump-fg:#9a4a00;--pump-bg:#fff1e3;--candy:#ec4899;--candy-fg:#a3195b;--candy-bg:#fde7f3;--tealp:#14b8a6;--night:#160b29;}
@@ -198,10 +200,14 @@
       <p>Trick-or-treat night is <b id="nightLbl">Saturday, Oct 31</b>. Neighbors behind the gate: put your house on the map so kids know where to go, then flip it to <b>out of candy</b> when you're done.</p>
     </div>
 
-    <section id="gate" class="card pad" hidden>
+    <!-- The code box is in the page from the first paint, not un-hidden by the big script at
+         the bottom: that script waits for the map library, so the page could be on screen
+         without the box, and the tips below then dropped by its height. A press on "Open the
+         map" before that script is ready is held by the form (data-early) and acted on then. -->
+    <section id="gate" class="card pad">
       <h2>Neighbors only</h2>
       <p class="sub">Enter the neighbor code from the community WhatsApp group.</p>
-      <form id="gateForm" autocomplete="off">
+      <form id="gateForm" autocomplete="off" onsubmit="this.setAttribute('data-early','1');return false">
         <label for="code">Neighbor code</label>
         <input id="code" name="code" type="text" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" required />
         <button class="btn primary" type="submit">Open the map</button>
@@ -211,6 +217,24 @@
     </section>
 
     <section id="notice" class="card pad" hidden role="status"></section>
+    <script>
+    // A neighbor whose code is saved gets "Opening the map…" in place of the code box, also
+    // before anything is drawn. While the map is open (Oct 1 until midnight on Halloween,
+    // Pacific, always daylight time then: the same season as api/treats.js) that box is the
+    // size of the map about to replace it. The rest of the year the answer is a short
+    // "closed" message, so the box is short too.
+    // ?at=2026-10-31T19:45-07:00 previews the page at another moment (display only).
+    var treatsSkew = (function () { var m = /[?&]at=([^&]+)/.exec(location.search); var t = m ? Date.parse(decodeURIComponent(m[1])) : NaN; return isNaN(t) ? 0 : t - Date.now(); })();
+    (function () {
+      var code = ""; try { code = localStorage.getItem("tesoro.treats.code") || ""; } catch (e) {}
+      if (!code) return;
+      var box = document.getElementById("notice"), now = Date.now() + treatsSkew, y = new Date(now).getFullYear();
+      var open = now >= Date.parse(y + "-10-01T00:00:00-07:00") && now < Date.parse(y + "-11-01T00:00:00-07:00");
+      box.className = "card pad" + (open ? " opening" : "");
+      box.innerHTML = '<p class="sub">Opening the map…</p>';
+      document.getElementById("gate").hidden = true; box.hidden = false;
+    })();
+    </script>
 
     <section id="app" hidden>
       <div class="tally" aria-live="polite"><b id="count">0</b><span id="countLbl">houses on the map so far</span><span class="done" id="doneLbl"></span><span class="admin" id="adminTag" hidden>Admin</span></div>
@@ -313,8 +337,9 @@
       save("tesoro.treats.token", token);
     }
 
-    // ---- time, Pacific. ?at=2026-10-31T19:45-07:00 previews the page at another moment (display only).
-    var skew = (function () { var m = /[?&]at=([^&]+)/.exec(location.search); var t = m ? Date.parse(decodeURIComponent(m[1])) : NaN; return isNaN(t) ? 0 : t - Date.now(); })();
+    // ---- time, Pacific. ?at=2026-10-31T19:45-07:00 previews the page at another moment (display only);
+    // it is read by the small script next to the first boxes, which needs it before this one runs.
+    var skew = window.treatsSkew || 0;
     var PT = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
     function pacific() { var o = {}; PT.formatToParts(new Date(Date.now() + skew)).forEach(function (p) { o[p.type] = p.value; }); return { date: o.year + "-" + o.month + "-" + o.day, hm: o.hour + ":" + o.minute }; }
     function hm12(hm) { if (!hm) return ""; var h = +hm.slice(0, 2), m = hm.slice(3); return (h % 12 || 12) + ":" + m + " " + (h < 12 ? "AM" : "PM"); }
@@ -395,14 +420,12 @@
 
     // ---- boot: ask whether the map is set up (no code), or open it with the saved code
     function boot() {
-      // Draw the right box now rather than after the server answers, so the page
-      // doesn't jump: no saved code means the code box; a saved code means a
-      // map-sized "Opening" placeholder.
+      // The right box is already on screen, so the page doesn't jump when the server
+      // answers: no saved code means the code box, which is in the HTML; a saved code
+      // means the "Opening" placeholder, drawn by the small script next to the boxes.
       var bootCode = code;
-      if (!code) show("gate");
-      else { $("notice").className = "card pad opening"; notice('<p class="sub">Opening the map…</p>'); }
       api("GET").then(function (j) {
-        // Someone typed a code into the box (shown straight away now) while this
+        // Someone typed a code into the box (shown from the first paint) while this
         // first check was in flight: their submit handles the answer instead.
         if (code !== bootCode) return;
         $("notice").className = "card pad";
@@ -912,6 +935,9 @@
     }
 
     boot();
+    // "Open the map" was pressed before this script was ready (the form held it): act on it now.
+    // boot()'s own check steps aside for a code typed in the meantime.
+    if ($("gateForm").getAttribute("data-early")) $("gateForm").dispatchEvent(new Event("submit", { cancelable: true }));
   })();
   </script>
   <script src="/nav.js?v=26" defer></script>
