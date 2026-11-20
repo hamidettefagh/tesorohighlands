@@ -363,6 +363,58 @@ footer{font-size:12.5px;}
 .leaflet-touch .leaflet-bar a,.leaflet-bar a{width:40px;height:40px;line-height:40px;}
 .leaflet-container .leaflet-control-attribution{background:var(--surface);color:var(--muted);}
 .leaflet-container .leaflet-control-attribution a{color:var(--ink-2);}
+
+/* ---- Hold the page still while the feeds load (2026-11-19) ----
+   Until the first render() this page is its "Checking…" skeleton, and that skeleton
+   was hundreds of pixels shorter than the page that replaces it a second later: the
+   fire list, the air and fire-weather cards, the week ahead, the map legend and the
+   evacuation card all grew, and everything under them dropped. On a phone the first
+   screen jumped (layout shift 0.07; "good" is under 0.1), and a link straight to
+   "Who to call" slid 450px down the screen after it opened (some browsers, Safari
+   among them, don't correct for content growing above what you're reading).
+   So while the skeleton is up, each block is held at the size it has on an ordinary
+   quiet day: clean air, no fire nearby, no alerts, power on. On that day nothing
+   moves; on any other day only the block with something to report grows.
+   - Sizes only. A held block still says "Checking…". Nothing here states or implies
+     a result; render() writes the real answer, "unknown" for a failed feed included.
+   - Every rule hangs off the fire list's "Checking…" line. render() replaces that
+     line on every path, so none of this outlives the first render: once loaded, the
+     page is laid out exactly as it was before these rules existed.
+   - The numbers are measured heights at a 390px phone and on a desktop (the week-ahead
+     tiles and the map legend wrap an extra line on narrower phones, so those two sit
+     between the 360px and 390px figures). Other widths wrap a line more or less, which
+     moves things a line, not a screen. If a card's quiet-day wording changes, measure
+     again (scripts/ux-probe.mjs).
+   - The hero is not held: its "Checking" text and its all-clear text already take the
+     same room, and anything it says on a bad day is worth the space it takes. */
+.wrap:has(#fireList > .skel) #fireList{min-height:76px;}
+.wrap:has(#fireList > .skel) #aqiSrc{min-height:52px;}
+.wrap:has(#fireList > .skel) #aqiSpark{min-height:44px;}
+.wrap:has(#fireList > .skel) #aqiOutlook{min-height:35px;}
+.wrap:has(#fireList > .skel) #fwNote{min-height:115px;}
+/* On a quiet day with clean air there is no advice box, and alerts, power and
+   earthquakes fold into one line the height of the alerts card's own skeleton. So
+   the skeleton leaves out the advice box and the power card rather than drawing
+   two boxes that are about to vanish. They are back the moment render() runs. */
+.wrap:has(#fireList > .skel) :is(#airAdvice,#airAdviceNote,#powerCard){display:none;}
+.wrap:has(#fireList > .skel) #owGrid{min-height:216px;}
+.wrap:has(#fireList > .skel) #owNote{min-height:86px;}
+.wrap:has(#fireList > .skel) #evacCard .verdict{min-height:70px;}
+.wrap:has(#fireList > .skel) #evacDetail:empty{display:block;min-height:86px;}
+/* The legend is written by the map's own script, on its own schedule: held until it has its coloured key. */
+#mapLegend:not(:has(*)){min-height:97px;}
+/* The go-bag list is drawn by a script at the end of the page; on a slow connection
+   the page can paint before that script arrives. */
+#checklist:empty{min-height:505px;}
+@media (min-width:521px){
+  .wrap:has(#fireList > .skel) #fireList{min-height:59px;}
+  .wrap:has(#fireList > .skel) #owNote{min-height:69px;}
+  .wrap:has(#fireList > .skel) #evacCard .verdict{min-height:46px;}
+  .wrap:has(#fireList > .skel) #evacDetail:empty{min-height:49px;}
+  #mapLegend:not(:has(*)){min-height:75px;}
+  #checklist:empty{min-height:300px;}
+}
+@media (min-width:561px){.wrap:has(#fireList > .skel) #owGrid{min-height:94px;}}
 </style>
 </head>
 <body>

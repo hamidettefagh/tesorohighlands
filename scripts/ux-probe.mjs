@@ -12,8 +12,15 @@
 //   controls  links and buttons under 40px tall or wide (links inside a sentence are exempt)
 //   focus     controls that show no focus ring
 //   overflow  sideways scroll
-//   shift     how far the page jumps while it loads, with nav.js held back 1.5 s (the worst
-//             case: the page paints before the nav exists). Over 0.1 fails.
+//   shift     how far the page jumps while it loads. Over 0.1 fails. Measured in the worst
+//             case a phone sees, where the page paints before anything else has arrived:
+//             nav.js is held back 1.5 s, every other script but theme.js 0.9 s, and every
+//             data request (fetch/XHR) 0.8 s. Without the hold, localhost often answers
+//             before the first paint, and the same page read 0 on one run and 0.3 on the
+//             next. (The holds are over half a second on purpose: Chrome ignores jumps in
+//             the first 500 ms of a phone-sized load.) The total is taken before the checks
+//             below open the fold-out sections, because opening them moves the page too
+//             and that is this script's doing, not the page's.
 //   weight    total download and the heaviest files
 // Exit code 1 if anything but weight fails.
 //
@@ -48,6 +55,11 @@ const send = (method, params = {}, sessionId) => new Promise((res, rej) => { con
 
 // Runs in the page. Everything it returns is plain data.
 const audit = async () => {
+  // The load jump first, before anything below touches the page. Until 2026-11-19 this was
+  // read at the end, so it also counted the page moving when the next line opens every
+  // <details>: /fire, with two fold-outs on its first screen, read 0.22 too high on a phone.
+  if (window.__shiftFlush) window.__shiftFlush();
+  const shiftLog = (window.__shift || []).slice();
   document.querySelectorAll("details").forEach((d) => (d.open = true));
   document.querySelectorAll("img[loading=lazy]").forEach((i) => (i.loading = "eager"));
   await Promise.all([...document.images].map((i) => i.decode().catch(() => 0)));
@@ -102,16 +114,19 @@ const audit = async () => {
     e.blur();
   }
   const res = performance.getEntriesByType("resource").map((r) => ({ u: r.name.replace(location.origin, "").slice(0, 70), kb: r.transferSize / 1024 })).sort((a, b) => b.kb - a.kb);
-  const shift = (window.__shift || []).reduce((a, b) => a + b.v, 0);
+  const shift = shiftLog.reduce((a, b) => a + b.v, 0);
   return {
     contrast, type, controls, focus, byEye: [...byEye],
     overflow: document.documentElement.scrollWidth > innerWidth ? [`page is ${document.documentElement.scrollWidth}px wide in a ${innerWidth}px window`] : [],
-    shift: shift > 0.1 ? [`${shift.toFixed(3)} (good is under 0.1)  moved: ${[...new Set((window.__shift || []).flatMap((s) => s.src))].slice(0, 4).join(", ")}`] : [],
+    shift: shift > 0.1 ? [`${shift.toFixed(3)} (good is under 0.1)  moved: ${[...new Set(shiftLog.flatMap((s) => s.src))].slice(0, 4).join(", ")}`] : [],
     shiftTotal: shift, kb: res.reduce((a, r) => a + r.kb, 0), top: res.slice(0, 5).map((r) => `${r.kb.toFixed(0)} KB  ${r.u}`),
     height: document.documentElement.scrollHeight,
   };
 };
-const watchShift = "window.__shift=[];new PerformanceObserver(l=>{for(const e of l.getEntries())if(!e.hadRecentInput)window.__shift.push({v:e.value,src:(e.sources||[]).map(x=>x.node&&x.node.nodeName?(x.node.nodeName.toLowerCase()+(x.node.id?'#'+x.node.id:'')):'?')})}).observe({type:'layout-shift',buffered:true});";
+const watchShift = "window.__shift=[];(()=>{const add=l=>{for(const e of l)if(!e.hadRecentInput)window.__shift.push({v:e.value,src:(e.sources||[]).map(x=>x.node&&x.node.nodeName?(x.node.nodeName.toLowerCase()+(x.node.id?'#'+x.node.id:'')):'?')})};const o=new PerformanceObserver(l=>add(l.getEntries()));o.observe({type:'layout-shift',buffered:true});window.__shiftFlush=()=>add(o.takeRecords());})();";
+// How long each kind of request is held before it is let through (see "shift" at the top).
+// theme.js is let straight through: it sits in <head> so that it runs before the first paint.
+const holdMs = (p) => (/\/nav\.js/.test(p.request.url) ? 1500 : /\/theme\.js/.test(p.request.url) ? 0 : p.resourceType === "Script" ? 900 : p.resourceType === "XHR" || p.resourceType === "Fetch" ? 800 : 0);
 
 let failed = false;
 for (const scheme of ["light", "dark"]) {
@@ -121,8 +136,8 @@ for (const scheme of ["light", "dark"]) {
   await send("Emulation.setDeviceMetricsOverride", { width: W, height: 844, deviceScaleFactor: 2, mobile: W < 700 }, s);
   await send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-color-scheme", value: scheme }] }, s);
   await send("Page.addScriptToEvaluateOnNewDocument", { source: watchShift }, s);
-  await send("Fetch.enable", { patterns: [{ urlPattern: "*nav.js*" }] }, s);
-  listeners.push({ method: "Fetch.requestPaused", session: s, fn: (p) => setTimeout(() => send("Fetch.continueRequest", { requestId: p.requestId }, s).catch(() => {}), 1500) });
+  await send("Fetch.enable", { patterns: [{ urlPattern: "*" }] }, s);
+  listeners.push({ method: "Fetch.requestPaused", session: s, fn: (p) => setTimeout(() => send("Fetch.continueRequest", { requestId: p.requestId }, s).catch(() => {}), holdMs(p)) });
   const loaded = new Promise((res) => listeners.push({ method: "Page.loadEventFired", session: s, fn: res }));
   await send("Page.navigate", { url }, s); await loaded;
   await new Promise((r) => setTimeout(r, 4000));

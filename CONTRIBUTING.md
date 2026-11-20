@@ -86,6 +86,25 @@ first paint and pushed everything down ~150px) and four text sizes under the flo
 the nav's place before `nav.js` runs; if you change the nav's height, change those
 placeholder heights with it and re-run the probe.
 
+**Whatever arrives after the page has drawn needs its place held.**
+The probe measures the jump the way a phone on a slow connection gets it: it holds back
+scripts and data, so the page paints first and everything else lands late. (On localhost,
+without that, data often beats the first paint and the same page reads 0 on one run and
+0.3 on the next.) Three pages hold space for what comes later, and each says how in a
+comment in its own styles:
+- `/lights` has its "Opening the map…" box in the HTML from the start, at the size of
+  the map and the blocks around it.
+- `/events` keeps its jump chips and sections unseen, but taking up their space, until
+  its lists have loaded and it knows whether a featured neighborhood event goes on top
+  (`.evhold`). It then appears once, complete.
+- `/fire` sizes its "Checking…" skeleton like an ordinary quiet day. Sizes only: a held
+  block still says "Checking…" and never a result, and the rules switch themselves off at
+  the first `render()`, so a failed feed still reads "unknown" exactly as before.
+
+Those held sizes are measured numbers. If you change what one of those blocks usually
+says, or add something near the top of a page that loads late, run the probe at both
+widths (`node scripts/ux-probe.mjs <url>` and `node scripts/ux-probe.mjs <url> 1100`).
+
 **A failed feed is "unknown", never "all clear."**
 If a data source doesn't load, the page must say so. It must never render silence as
 good news. Look at how `live.ok` is used in `fire.html` — every feed tracks whether it

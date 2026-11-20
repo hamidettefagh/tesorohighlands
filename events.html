@@ -122,6 +122,31 @@
   .jumpnav a:hover{border-color:var(--muted);color:var(--ink);}
   section[id]{scroll-margin-top:64px;}
 
+  /* ---- Nothing jumps while this page loads (2026-11-19) ----
+     Two small files decide what sits at the top here: a featured neighborhood event
+     lifts "In the community" (and its jump chip) above the feed, and on weekends the
+     picks card opens above the search box. Both used to arrive after the page had
+     drawn and push everything a screen down, just as someone started to read or tap
+     (layout shift 0.18 to 0.30; "good" is under 0.1). So the jump chips and the
+     sections keep their space but stay unseen until those two files and the feed
+     have answered, which on a normal connection is a moment. The script then takes
+     .evhold off <main>, and the page appears once, complete. All four sections, not
+     only the two lists: if the feed fails, its card is short, and the sections under
+     it would otherwise be seen sliding up. The animation is the safety net: after
+     2.5 s everything shows anyway, script or no script. */
+  .evhold .jumpnav,.evhold .evsec{visibility:hidden;animation:evshow 0s 2.5s forwards;}
+  @keyframes evshow{to{visibility:visible;}}
+  /* A slow connection gets a word about it, drawn where the chips will be. */
+  .evhold .hub-head{position:relative;}
+  .evhold .hub-head::after{content:"Loading events…";position:absolute;left:2px;top:calc(100% + 12px);font-size:13px;color:var(--muted);opacity:0;animation:evhint 2.5s linear forwards;}
+  @keyframes evhint{0%,27%{opacity:0;}28%,99%{opacity:1;}100%{opacity:0;}}
+  /* If the feed is still loading when the safety net shows the page, its card is
+     held at about the height of its usual first ten rows, so what follows it starts
+     out where it ends up. Only while it says "Loading": a filtered list or an error
+     is as tall as it is. */
+  #feedList:has(> .evload){min-height:1100px;}
+  @media (min-width:600px){#feedList:has(> .evload){min-height:860px;}}
+
 /* ---- Featured neighborhood event: flyer + price + RSVP under the normal row ----
    Neutral box with an accent edge on purpose — green/amber/red stay reserved
    for safety status everywhere on this site. */
@@ -160,9 +185,12 @@
 .showall{min-height:40px;}
 .jumpnav a{min-height:40px;display:inline-flex;align-items:center;}
 </style>
+<!-- Without scripts nothing gets reordered, so there is nothing to hold back (see .evhold).
+     It sits after the styles above on purpose: the selectors are the same, so the later rule wins. -->
+<noscript><style>.evhold .jumpnav,.evhold .evsec{visibility:visible;animation:none;}.evhold .hub-head::after{display:none;}#feedList:has(> .evload){min-height:0;}</style></noscript>
 </head>
 <body class="th">
-  <main id="main" tabindex="-1" class="thwrap">
+  <main id="main" tabindex="-1" class="thwrap evhold">
     <div class="hub-head">
       <h1>Events &amp; Clubs</h1>
       <p>Things you can actually go to — here and around Santa Clarita.</p>
@@ -208,7 +236,7 @@
           <button data-when="week" aria-pressed="false">Next 7 days</button>
         </div>
       </div>
-      <div class="evcard"><div id="feedList"><div class="empty">Loading local events…</div></div></div>
+      <div class="evcard"><div id="feedList"><div class="empty evload">Loading local events…</div></div></div>
       <div class="evmeta" id="feedMeta">Attendable events across the Santa Clarita Valley — the City calendar, Eventbrite, the Santa Clarita Public Library, and the COC Performing Arts Center — updated regularly.</div>
     </section>
 
@@ -346,6 +374,14 @@
     }
     function stillUp(s) { return s && startMs(s) >= Date.now() - 45 * 60000; }
 
+    // ---- Show the page once its lists are ready (see .evhold in the styles) ----
+    // The community list, the weekend picks and the feed each call this once,
+    // loaded or failed. The third call shows the jump chips and the sections,
+    // already in their final order and filled in, so nothing a visitor can see
+    // moves.
+    var holdLeft = 3;
+    function holdDone() { if (--holdLeft === 0) document.getElementById("main").classList.remove("evhold"); }
+
     // ---- Community events (git-maintained JSON) ----
     fetch("/community-events.json").then(function (r) { return r.json(); }).then(function (list) {
       var el = document.getElementById("commList");
@@ -428,7 +464,7 @@
     }).catch(function () {
       // A failed load is unknown, not "nothing scheduled".
       document.getElementById("commList").innerHTML = '<div class="empty">Couldn&#39;t load the community list right now — try a refresh.</div>';
-    });
+    }).then(holdDone, holdDone);
 
     // "Copy number" on a featured event's Zelle line — paste it into the bank app.
     document.addEventListener("click", function (ev) {
@@ -645,7 +681,7 @@
         if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(safeText).then(done, done); }
         else { var ta = document.createElement("textarea"); ta.value = safeText; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); done(); }
       });
-    }).catch(function () {});
+    }).catch(function () {}).then(holdDone);
     document.getElementById("audChips").addEventListener("click", function (ev) {
       var b = ev.target.closest("button"); if (!b) return;
       currentFilter = b.dataset.aud;
@@ -720,7 +756,7 @@
         " · details can change — confirm on the listing.";
     }).catch(function () {
       document.getElementById("feedList").innerHTML = '<div class="empty">Couldn&#39;t load the events feed right now. Try again in a few minutes, or see the <a href="https://calendar.santaclarita.gov/" target="_blank" rel="noopener">City&#39;s calendar ↗</a>.</div>';
-    });
+    }).then(holdDone, holdDone);
   })();
   </script>
 </body>

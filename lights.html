@@ -26,6 +26,8 @@
 <script src="/theme.js"></script>
 <link rel="stylesheet" href="/th.css" />
 <link rel="stylesheet" href="/vendor/leaflet/leaflet.css" />
+<!-- Without scripts there is no map to open, so don't hold a place for one. -->
+<noscript><style>#notice{display:none;}</style></noscript>
 <style>
   /* Holiday colors, for this page only. The safety colors (--ok/--cau/--dan) stay out of it. */
   :root{--tree:#16a34a;--tree-btn:#15803d;--tree-fg:#166534;--tree-bg:#ecfdf3;--bow:#dc2626;--bow-fg:#991b1b;--bow-bg:#fee2e2;--gold:#fcd34d;--night:#0b1630;}
@@ -67,8 +69,12 @@
     border:1.5px solid rgba(252,211,77,.55);box-shadow:0 0 26px rgba(252,211,77,.18),var(--shadow);}
   #map{height:min(66vh,580px);min-height:360px;background:var(--night);}
   @media (max-width:520px){#map{height:58vh;min-height:340px;}}
-  #notice.opening{min-height:calc(min(66vh,580px) + 60px);}
-  @media (max-width:520px){#notice.opening{min-height:calc(58vh + 60px);}}
+  /* The "Opening the map…" box holds the map's place from the first paint: the map's own
+     height plus what sits around it (the count, the legend, "Houses by street" and the
+     add-your-house box). Nothing below moves when the map opens. If the map or those
+     blocks change size, change these with them and re-run scripts/ux-probe.mjs. */
+  #notice.opening{min-height:calc(max(min(66vh,580px),360px) + 288px);}
+  @media (max-width:520px){#notice.opening{min-height:calc(max(58vh,340px) + 328px);}}
   /* Always a night map: lights are for after dark. The street map turned deep navy, with our own glowing roads on top. */
   #map .leaflet-tile-pane{filter:invert(1) grayscale(1) brightness(.4) sepia(1) hue-rotate(185deg) saturate(2.2) contrast(1.1);opacity:.85;}
   /* The one credit OpenStreetMap's license requires on the map, kept small and quiet. */
@@ -190,7 +196,9 @@
       <p class="msg" id="gateMsg" role="alert"></p>
     </section>
 
-    <section id="notice" class="card pad" hidden role="status"></section>
+    <!-- In the page from the start, not added by the script: the browser can draw the page
+         before the map script has run, and everything below then dropped a screen's height. -->
+    <section id="notice" class="card pad opening" role="status"><p class="sub">Opening the map…</p></section>
 
     <section id="app" hidden>
       <div class="tally" aria-live="polite"><b id="count">0</b><span id="countLbl">houses lit so far</span><span class="done" id="doneLbl"></span><span class="admin" id="adminTag" hidden>Admin</span></div>
@@ -358,8 +366,9 @@
     // ---- boot: open the map. A saved code (the admin's, or the treat map's) rides
     // along; a stale one is simply dropped, since the map needs none.
     function boot() {
-      // A map-sized placeholder from the start, so the page doesn't jump when the
-      // server answers.
+      // A map-sized placeholder, so the page doesn't jump when the server answers.
+      // The HTML already starts this way; this puts it back for anything that
+      // calls boot() again.
       $("notice").className = "card pad opening"; notice('<p class="sub">Opening the map…</p>');
       api("GET").then(function (j) {
         if (!j.ok && j.error === "code" && code) { code = ""; return api("GET"); }
