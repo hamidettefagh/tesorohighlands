@@ -1,72 +1,63 @@
 {
-  "generatedAt": "2026-11-13T21:28:08.542Z",
-  "weekendOf": "2026-11-13",
+  "generatedAt": "2026-11-20T22:16:15.892Z",
+  "weekendOf": "2026-11-20",
   "model": "claude-haiku-4-5",
-  "intro": "Some solid picks for families and grown-ups around Tesoro Highlands this weekend.",
+  "intro": "This weekend in Tesoro Highlands and beyond: free tours, crafts, light shows, and live music.",
   "picks": [
     {
-      "emoji": "🎄",
+      "emoji": "🎨",
       "day": "Sat",
-      "time": "10 AM",
-      "title": "Jingle Fest '26: Free Holiday Market with 275 vendors, live entertainment, and Santa",
+      "time": "9 AM",
+      "title": "Free Home Depot Kids Workshop: Christmas Car Ornament",
       "price": "free",
-      "note": "275 vendors, live entertainment, plus Santa meet-and-greet",
-      "url": "https://www.jinglefestscv.com/"
+      "note": "Free kids workshop; perfect for young crafters",
+      "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055"
     },
     {
-      "emoji": "🛠️",
+      "emoji": "✨",
       "day": "Sat",
-      "time": "10 AM",
-      "title": "Free Lowe's Kids Workshop: Holiday Engine",
+      "time": "4 PM",
+      "title": "Light Up Main Street in Old Town Newhall",
       "price": "free",
-      "note": "Free holiday craft workshop perfect for young hands",
-      "url": "https://www.lowes.com/l/kids-workshops"
+      "note": "Free family-friendly light display in charming Old Town",
+      "url": "https://rodneyjohnsonestates.com/blog/old-town-newhalls-menu-doesnt-match-its-postcard-anymore"
+    },
+    {
+      "emoji": "🏛️",
+      "day": "Fri",
+      "time": "11 AM",
+      "title": "Hart Mansion Group Tour 11:00a.m.",
+      "price": "free",
+      "note": "Free mansion tours; local history and architecture",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-group-tour-1100am-36627"
     },
     {
       "emoji": "🎭",
-      "day": "Fri",
-      "time": "7 PM",
-      "title": "Trinity Theatre Presents: KTCA Radio Mystery Hour",
-      "price": "$7.18–$23.18",
-      "note": "Local theatre group puts on quirky mystery hour fun",
-      "url": "https://www.eventbrite.com/e/trinity-theatre-presents-ktca-radio-mystery-hour-tickets-2002846971206"
-    },
-    {
-      "emoji": "🎅",
       "day": "Sat",
       "time": "11 AM",
-      "title": "Santa's Arrival Celebration at Valencia Town Center",
-      "price": "free",
-      "note": "Santa's arrival with family activities at Valencia Town Center",
-      "url": "https://www.valenciatowncenter.com/events"
+      "title": "Mean Girls Jr.",
+      "price": "$20",
+      "note": "High school production; family entertainment nearby",
+      "url": "https://www.eventbrite.com/e/mean-girls-jr-tickets-1999738627065"
     },
     {
-      "emoji": "📚",
+      "emoji": "🎁",
       "day": "Sat",
       "time": "11 AM",
-      "title": "Family Storytime",
-      "price": "free",
-      "note": "Perfect Saturday morning for toddlers and early readers",
-      "url": "https://santaclarita.librarycalendar.com/event/family-storytime-37826"
-    },
-    {
-      "emoji": "👻",
-      "day": "Sat",
-      "time": "1 PM",
-      "title": "Tales From the Dark Stacks",
-      "price": "free",
-      "note": "Adults-only spooky book discussion for the season",
-      "url": "https://santaclarita.librarycalendar.com/event/adult-hold-tales-dark-stacks-22910"
+      "title": "SoCal Etsy Guild Market Valencia",
+      "price": "$27.72–$157.34",
+      "note": "Local makers market; support SoCal artisans",
+      "url": "https://www.eventbrite.com/e/socal-etsy-guild-market-valencia-tickets-1998400862776"
     },
     {
       "emoji": "🎵",
       "day": "Sat",
-      "time": "7:30 PM",
-      "title": "The Paul T. Plew Singers in Concert | 2026 Season",
-      "price": "$0–$10",
-      "note": "Community choir concert, budget-friendly way to support local music",
-      "url": "https://www.eventbrite.com/e/the-paul-t-plew-singers-in-concert-2026-season-tickets-2003268377644"
+      "time": "6 PM",
+      "title": "RedRoom 311 Studios Presents:  Sapphire and Paige Christine",
+      "price": "$10",
+      "note": "Live music at local studio; affordable evening out",
+      "url": "https://www.eventbrite.com/e/redroom-311-studios-presents-sapphire-and-paige-christine-tickets-2003749341219"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nSome solid picks for families and grown-ups around Tesoro Highlands this weekend.\n\n🎄 *Sat 10 AM* — Jingle Fest '26: Free Holiday Market with 275 vendors, live entertainment, and Santa (free)\n   275 vendors, live entertainment, plus Santa meet-and-greet\n🛠️ *Sat 10 AM* — Free Lowe's Kids Workshop: Holiday Engine (free)\n   Free holiday craft workshop perfect for young hands\n🎭 *Fri 7 PM* — Trinity Theatre Presents: KTCA Radio Mystery Hour ($7.18–$23.18)\n   Local theatre group puts on quirky mystery hour fun\n🎅 *Sat 11 AM* — Santa's Arrival Celebration at Valencia Town Center (free)\n   Santa's arrival with family activities at Valencia Town Center\n📚 *Sat 11 AM* — Family Storytime (free)\n   Perfect Saturday morning for toddlers and early readers\n👻 *Sat 1 PM* — Tales From the Dark Stacks (free)\n   Adults-only spooky book discussion for the season\n🎵 *Sat 7:30 PM* — The Paul T. Plew Singers in Concert | 2026 Season ($0–$10)\n   Community choir concert, budget-friendly way to support local music\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nThis weekend in Tesoro Highlands and beyond: free tours, crafts, light shows, and live music.\n\n🎨 *Sat 9 AM* — Free Home Depot Kids Workshop: Christmas Car Ornament (free)\n   Free kids workshop; perfect for young crafters\n✨ *Sat 4 PM* — Light Up Main Street in Old Town Newhall (free)\n   Free family-friendly light display in charming Old Town\n🏛️ *Fri 11 AM* — Hart Mansion Group Tour 11:00a.m. (free)\n   Free mansion tours; local history and architecture\n🎭 *Sat 11 AM* — Mean Girls Jr. ($20)\n   High school production; family entertainment nearby\n🎁 *Sat 11 AM* — SoCal Etsy Guild Market Valencia ($27.72–$157.34)\n   Local makers market; support SoCal artisans\n🎵 *Sat 6 PM* — RedRoom 311 Studios Presents:  Sapphire and Paige Christine ($10)\n   Live music at local studio; affordable evening out\n\nFull list → https://tesorohighlands.com/events"
 }
