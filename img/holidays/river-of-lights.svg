@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="A drawing of a winding trail of colored lights through a park at night">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#07102b"/><stop offset=".6" stop-color="#16306a"/><stop offset="1" stop-color="#2c4f96"/></linearGradient>
+    <linearGradient id="lit" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7dd3fc"/><stop offset=".4" stop-color="#a78bfa"/><stop offset=".72" stop-color="#f472b6"/><stop offset="1" stop-color="#fde68a"/></linearGradient>
+  </defs>
+  <rect width="240" height="240" fill="url(#sky)"/>
+  <g fill="#fff">
+    <circle cx="28" cy="24" r="1.6" opacity=".85"/><circle cx="78" cy="13" r="1.2" opacity=".6"/><circle cx="124" cy="30" r="1.6" opacity=".85"/>
+    <circle cx="170" cy="16" r="1.2" opacity=".6"/><circle cx="210" cy="36" r="1.6" opacity=".8"/><circle cx="54" cy="50" r="1.2" opacity=".5"/>
+  </g>
+  <path d="M0 96 Q50 70 104 84 T240 76 V240 H0Z" fill="#0f2250"/>
+  <path d="M0 128 Q70 100 150 114 T240 106 V240 H0Z" fill="#0a1838"/>
+  <!-- trees on the far bank -->
+  <g fill="#050c20">
+    <path d="M24 108 q-14 -4 -12 -21 q2 -16 16 -16 q14 0 15 16 q1 17 -13 21 v14 h-6z"/>
+    <path d="M204 96 q-15 -4 -13 -22 q2 -17 17 -17 q15 0 16 17 q1 18 -13 22 v16 h-7z"/>
+  </g>
+  <!-- the trail: a soft glow underneath, then the lights, smaller as they go back -->
+  <path d="M10 250 C110 226 232 200 170 160 C122 130 52 132 96 104 C120 90 150 92 132 76" fill="none" stroke="url(#lit)" stroke-opacity=".26" stroke-width="34" stroke-linecap="round"/>
+  <path d="M10 250 C110 226 232 200 170 160" fill="none" stroke="url(#lit)" stroke-width="13" stroke-linecap="round" stroke-dasharray=".1 21"/>
+  <path d="M170 160 C122 130 52 132 96 104" fill="none" stroke="url(#lit)" stroke-width="9" stroke-linecap="round" stroke-dasharray=".1 15"/>
+  <path d="M96 104 C120 90 150 92 132 76" fill="none" stroke="#fde68a" stroke-width="5.5" stroke-linecap="round" stroke-dasharray=".1 10"/>
+</svg>

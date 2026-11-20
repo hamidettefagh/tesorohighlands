@@ -66,7 +66,8 @@ functions (some need repo secrets on Vercel).
 /treats      Halloween treat map for the houses behind the gate: neighbors-only
              (needs the code), not in the nav, noindex (see "Halloween treat map")
 /holidays    Holidays 2026: the lights map, a neighbor's guide to family outings near home,
-             and Santa phone lines. Seasonal; items hide themselves after their date (data-until)
+             and Santa phone lines. Seasonal; items hide themselves after their date (data-until).
+             In season it has its own tab in the nav (dates in nav.js: HOLIDAYS)
 /lights      Holiday lights map, Nov 1 through New Year's Day: the same houses, no
              code needed, a tree instead of a pumpkin (see "Holiday lights map")
 ```
@@ -409,6 +410,7 @@ can change it. A phone's token and saved code are shared with the treat map too.
 - **Locally,** `node server.js` serves it at /lights with the same in-memory store
   and codes as the treat map.
 - **Share card:** `node scripts/make-og.mjs --lights` writes `og-lights.jpg`. The Holidays page has its own: `--holidays-card` writes `og-holidays.jpg`. On `/holidays`, anything marked `data-until` drops off the day after that date and `data-from` appears on its date; a group or section with nothing left hides too. A one-time event with `data-date` gets a "Today", "Tomorrow" or "This Saturday" tag when it is under a week away. Add `?today=YYYY-MM-DD` to preview another day.
+- **The Holidays tab and look:** `nav.js` adds a seventh "Holidays" tab between the two dates in its `HOLIDAYS` constant (Pacific time) and marks it on `/lights` too; `th.css` tightens the phone row so seven tabs fit. The dates are spelled out because the page is written for one winter: update both the page and the dates for the next one, or the tab stays away. Home's night-blue Holidays card is `.holdoor` in `th.css`. The page's own colors (`body.hol`: night blue, evergreen, cranberry, bulb gold) and the string of lights on its banner live in `holidays.html`; the bulbs light up once on load and stop within five seconds. Every row has a picture: freely licensed photos (credited in the page's "Photo credits") or drawings in `img/holidays/*.svg`, never a venue's own photo.
 - **Test:** `node scripts/lights.test.mjs` covers the lights map's own choices and
   season, and that the two maps keep their pins apart; the shared rules are tested in
   `scripts/treats.test.mjs`.

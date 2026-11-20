@@ -139,7 +139,7 @@ body.th:not(:has(> .thnav)):not(:has(#th-hero)) > main::before{content:"";displa
 .week{margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:13px 15px 11px;box-shadow:var(--shadow);}
 .week .wkhead{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:4px;}
 .week .wkhead h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:680;}
-.week .wkhead a{font-size:12px;font-weight:640;color:var(--accent);text-decoration:none;white-space:nowrap;}
+.week .wkhead a{font-size:12.5px;font-weight:640;color:var(--accent);text-decoration:none;white-space:nowrap;}
 .wkrow{display:flex;align-items:baseline;gap:10px;padding:5px 0 5px 2px;text-decoration:none;}
 .wkday-head{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
   padding:10px 0 3px;border-top:1px solid var(--line-2);margin-top:4px;}
@@ -168,7 +168,6 @@ body.th:not(:has(> .thnav)):not(:has(#th-hero)) > main::before{content:"";displa
 .tcell .tval{display:block;margin-top:5px;font-size:12.5px;color:var(--ink-2);line-height:1.45;}
 .tcell .tval b{color:var(--ink);}
 .tcell.season{margin-top:12px;border-left:4px solid var(--cau-fg);}
-.tcell.season.lights{border-left-color:#16a34a;}
 /* power check-in during a shutoff ("Is your power back?") — home hero and Fire page */
 .pwask{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px;font-size:13px;color:var(--ink-2);}
 .pwask span{flex-basis:100%;font-weight:640;color:var(--ink);}
@@ -268,6 +267,39 @@ a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:
   .thnav .links a:focus-visible{outline-offset:-3px;}
   .thnav .links .lg{display:none;}
 }
+
+/* ---- The Holidays tab and its door on Home (seasonal, 2026-11-19) ----
+   nav.js adds a seventh tab from November to early January. It is evergreen so it reads
+   as the seasonal one, and the phone row tightens (class n7) so all seven tabs still fit
+   without a sideways scroll down to a 360px screen; at 320px the row scrolls, as it
+   always could, and nav.js brings the current tab into view. */
+:root{--hol:#17603a;--hol-bg:#e4f3ea;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--hol:#7fdca6;--hol-bg:#15291e;}}
+:root[data-theme="dark"]{--hol:#7fdca6;--hol-bg:#15291e;}
+.thnav .links a.hol{color:var(--hol);font-weight:640;gap:5px;}
+.thnav .links a.hol svg.ic{font-size:14px;}
+.thnav .links a.hol[aria-current="page"],.thnav .links a.hol.near{background:var(--hol-bg);color:var(--hol);}
+@media(min-width:721px) and (max-width:860px){.thnav.n7 .links .lg{display:none;}}
+@media(max-width:720px){
+  .thnav.n7 .links{gap:0;}
+  .thnav.n7 .links a{padding:0 3px;}
+}
+@media(max-width:399px){.thnav .links a.hol svg.ic{display:none;}}
+@media(max-width:374px){.thnav.n7 .links a{font-size:12.5px;padding:0 2px;}}
+/* Home's door to the Holidays page: the night blue of the page it opens, under a wire of bulbs. */
+.holdoor{position:relative;display:flex;align-items:center;gap:12px;margin-top:12px;padding:20px 14px 14px;border-radius:var(--radius);overflow:hidden;
+  background:linear-gradient(180deg,#07102b,#16306a);border:1px solid #1e3a6e;box-shadow:var(--shadow);color:#fff;text-decoration:none;}
+.holdoor::before{content:"";position:absolute;left:0;right:0;top:0;height:13px;
+  background:radial-gradient(circle at 12px 6px,#ff6b6b 3px,transparent 3.7px),radial-gradient(circle at 36px 8px,#ffd166 3px,transparent 3.7px),
+    radial-gradient(circle at 60px 6px,#5fe08f 3px,transparent 3.7px),radial-gradient(circle at 84px 8px,#6cb6ff 3px,transparent 3.7px),
+    linear-gradient(rgba(243,227,176,.5),rgba(243,227,176,.5));
+  background-size:96px 13px,96px 13px,96px 13px,96px 13px,100% 1px;background-position:0 0,0 0,0 0,0 0,0 2px;background-repeat:repeat-x,repeat-x,repeat-x,repeat-x,no-repeat;}
+.holdoor::after{content:"";flex:none;width:9px;height:9px;margin:0 6px 0 2px;border-top:2px solid rgba(255,255,255,.85);border-right:2px solid rgba(255,255,255,.85);transform:rotate(45deg);}
+.holdoor:hover{border-color:#fde68a;}
+.holdoor svg.ic{font-size:26px;color:#fde68a;}
+.holdoor .hd{flex:1;min-width:0;}
+.holdoor b{display:block;font-family:var(--font-head);font-size:16.5px;font-weight:800;letter-spacing:-0.02em;line-height:1.25;}
+.holdoor .hd span{display:block;margin-top:2px;font-size:13px;line-height:1.4;color:rgba(255,255,255,.9);}
 
 /* ---- Tap targets: the 40px floor this file promises, actually applied ----
    Measured 2026-09-20: 11-21 controls per page came in under it, five under
@@ -392,7 +424,6 @@ body.th h1,.thnav .brand,.hub-hero .htext,.hub-card h3,.goal h2,.tcell .tbig{fon
 svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-0.16em;flex:none;}
 .tcell .tico{font-size:15px;color:var(--muted);}
 .tcell.ok .tico{color:var(--ok-fg);} .tcell.caution .tico{color:var(--cau-fg);} .tcell.danger .tico{color:var(--dan-fg);}
-.tcell.season.lights .tico{color:#16a34a;}
 .hub-card .ico{width:42px;height:42px;border-radius:12px;background:var(--neu-bg);border:1px solid var(--neu-line);display:grid;place-items:center;font-size:21px;color:var(--ink);}
 @media(max-width:560px){
   .hub-card{grid-template-columns:40px 1fr;}

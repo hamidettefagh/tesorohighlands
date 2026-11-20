@@ -29,19 +29,40 @@
   @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth;}}
   [hidden]{display:none !important;}
   section,details.row{scroll-margin-top:72px;}
-  .th .hub-head.photo{height:clamp(148px,30vw,200px);}
+  /* The page's own colors, taken from its drawings: night blue, evergreen, cranberry, bulb gold.
+     Evergreen replaces the site's charcoal for buttons and links here and nowhere else. */
+  .hol{--night:#0b1a3a;--pine:#17603a;--berry:#a31f1f;--gold:#f6c453;--accent:var(--pine);--on-accent:#fff;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hol{--accent:#7fdca6;--on-accent:#0b1f14;}}
+  :root[data-theme="dark"] .hol{--accent:#7fdca6;--on-accent:#0b1f14;}
 
-  /* The three things that are ours, one tap each. */
+  .th .hub-head.photo{height:clamp(184px,34vw,220px);}
+  .th .hub-head.photo .hh{top:52px;}
+  /* A string of lights along the top of the banner. The bulbs come on one after another when
+     the page opens, flicker once, and then stay lit: it is over in about four seconds, so
+     nothing is still moving while you read. With reduced motion they are simply lit. */
+  .bulbs{position:absolute;z-index:2;left:0;right:0;top:0;height:42px;overflow:hidden;pointer-events:none;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='42' viewBox='0 0 96 42'%3E%3Cpath d='M0 3 Q48 39 96 3' fill='none' stroke='%23f3e3b0' stroke-opacity='.6' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x 0 0/96px 42px;}
+  .bulbs i{position:absolute;top:13px;left:calc(var(--n)*32px + 11.5px);width:9px;height:12px;border-radius:50%/42% 42% 58% 58%;background:var(--c);box-shadow:0 0 9px 1px var(--c);--c:#ff6b6b;--t:0s;}
+  .bulbs i::before{content:"";position:absolute;left:2.5px;top:-3px;width:4px;height:4px;border-radius:1px;background:#0a1228;}
+  .bulbs i:nth-child(3n+2){top:21px;}
+  .bulbs i:nth-child(4n+2){--c:#ffd166;} .bulbs i:nth-child(4n+3){--c:#5fe08f;} .bulbs i:nth-child(4n){--c:#6cb6ff;}
+  .bulbs i:nth-child(5n+2){--t:.25s;} .bulbs i:nth-child(5n+3){--t:.6s;} .bulbs i:nth-child(5n+4){--t:.4s;} .bulbs i:nth-child(5n){--t:.8s;}
+  @media (prefers-reduced-motion:no-preference){
+    .bulbs i{animation:bulb-on .5s ease-out calc(var(--n)*55ms + .15s) both,bulb-tw .7s ease-in-out calc(2.1s + var(--t)) 2 alternate;}
+  }
+  @keyframes bulb-on{from{opacity:.18;}to{opacity:1;}}
+  @keyframes bulb-tw{from{opacity:1;}to{opacity:.4;}}
+
+  /* The three things that are ours, one tap each, in the page's three colors: the night-blue
+     tile opens the map of the night, the cranberry one jumps to the cranberry Santa card. */
   .quick{display:flex;gap:10px;margin-top:12px;}
-  .quick a{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:flex-start;padding:12px 12px 11px;border-radius:14px;background:var(--surface);
-    border:1px solid var(--line);box-shadow:var(--shadow);text-decoration:none;color:var(--ink);}
-  .quick a:hover{border-color:var(--muted);}
-  .quick svg.ic{font-size:21px;margin-bottom:7px;}
+  .quick a{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:flex-start;padding:12px 12px 11px;border-radius:14px;
+    border:1px solid transparent;box-shadow:var(--shadow);text-decoration:none;color:#fff;}
+  .quick a:hover{border-color:var(--gold);}
+  .quick svg.ic{font-size:21px;margin-bottom:7px;color:var(--gold);}
   .quick b{font-family:var(--font-head);font-size:14.5px;letter-spacing:-0.01em;line-height:1.2;}
-  .quick span{font-size:12.5px;color:var(--muted);line-height:1.3;margin-top:2px;}
-  .quick .q-map{background:#0b1a3a;border-color:#1e3a6e;color:#fff;} .quick .q-map span{color:rgba(255,255,255,.82);} .quick .q-map svg.ic{color:#fde68a;}
-  .quick .q-map:hover{border-color:#fde68a;}
-  .quick .q-santa svg.ic{color:var(--dan-fg);} .quick .q-toys svg.ic{color:var(--ok-fg);}
+  .quick span{font-size:12.5px;color:rgba(255,255,255,.88);line-height:1.3;margin-top:2px;}
+  .quick .q-map{background:var(--night);border-color:#1e3a6e;} .quick .q-santa{background:var(--berry);border-color:#b93a3a;} .quick .q-toys{background:var(--pine);border-color:#23794b;}
 
   .sh{margin:30px 2px 10px;}
   .sh h2{font-family:var(--font-head);font-size:19px;font-weight:750;letter-spacing:-0.02em;line-height:1.25;margin:0;color:var(--ink);text-wrap:balance;}
@@ -77,27 +98,21 @@
   .grp:first-child{border-top:0;}
   details.row{border-top:1px solid var(--line-2);}
   details.row:first-child,.grp + details.row{border-top:0;}
-  details.row > summary{display:flex;gap:12px;align-items:center;padding:10px 0;min-height:44px;cursor:pointer;list-style:none;}
+  details.row > summary{display:flex;gap:12px;align-items:center;padding:8px 0;min-height:44px;cursor:pointer;list-style:none;}
   details.row > summary::-webkit-details-marker{display:none;}
   details.row > summary::after{content:"";flex:none;width:8px;height:8px;margin:0 5px 4px 2px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .15s ease;}
   details.row[open] > summary::after{transform:rotate(-135deg);margin-bottom:-4px;}
   details.row > summary:hover .nm{text-decoration:underline;text-underline-offset:2px;}
-  .thumb{flex:none;width:60px;height:60px;border-radius:12px;overflow:hidden;background:var(--neu-bg);display:grid;place-items:center;}
+  .thumb{flex:none;position:relative;width:72px;height:72px;border-radius:12px;overflow:hidden;background:var(--night);}
   .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-  .art{color:#fff;font-size:26px;--a1:#0b1a3a;--a2:#1e3a6e;
-    background:radial-gradient(circle at 20% 22%,rgba(255,255,255,.5) 0 1.5px,transparent 2.5px),radial-gradient(circle at 82% 18%,rgba(253,230,138,.8) 0 1.5px,transparent 2.5px),
-      radial-gradient(circle at 86% 80%,rgba(255,255,255,.4) 0 1.5px,transparent 2.5px),radial-gradient(circle at 14% 84%,rgba(253,230,138,.65) 0 1.5px,transparent 2.5px),linear-gradient(160deg,var(--a1),var(--a2));}
-  .a-gold{--a1:#3b2504;--a2:#a8650c;} .a-violet{--a1:#22104a;--a2:#6b3fc0;} .a-red{--a1:#4a0d0d;--a2:#b02a2a;} .a-teal{--a1:#06303a;--a2:#16808f;}
-  .cal{flex:none;width:60px;height:60px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;text-align:center;}
-  .cal i{display:block;font-style:normal;background:#b02a2a;color:#fff;font-family:var(--font-head);font-size:11px;font-weight:800;line-height:19px;letter-spacing:.09em;text-transform:uppercase;}
-  .cal b{flex:1;display:grid;place-items:center;font-family:var(--font-head);font-size:23px;font-weight:800;letter-spacing:-0.03em;line-height:1;color:var(--ink);}
-  .cal b.r{font-size:15px;letter-spacing:-0.02em;}
-  .cal.tba i{background:#5b6470;}
+  /* A one-time event wears its date as a ribbon across the bottom of its picture. */
+  .thumb .on{position:absolute;left:0;right:0;bottom:0;padding:3px 1px 4px;background:var(--berry);color:#fff;font-family:var(--font-head);font-size:12.5px;font-weight:800;line-height:1.15;letter-spacing:-0.015em;text-align:center;white-space:nowrap;}
+  .thumb .on.tba{background:#4b5563;}
   .bd{flex:1;min-width:0;}
   .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:3px;}
   .tag{display:inline-flex;align-items:center;gap:3px;font-size:12.5px;font-weight:700;line-height:1;padding:3px 8px;border-radius:999px;white-space:nowrap;background:var(--neu-bg);color:var(--neu-fg);}
   .tag.pk{background:var(--cau-bg);color:var(--cau-fg);} .tag.free{background:var(--ok-bg);color:var(--ok-fg);}
-  .tag.now{background:#b02a2a;color:#fff;}   /* "Today", "Tomorrow", "This Saturday": set by the script below */
+  .tag.now{background:var(--berry);color:#fff;}   /* "Today", "Tomorrow", "This Saturday": set by the script below */
   .nm{display:block;font-size:15px;font-weight:650;color:var(--ink);line-height:1.3;letter-spacing:-0.005em;text-wrap:pretty;}
   .sub{display:block;font-size:13px;color:var(--ink-2);line-height:1.45;margin-top:2px;text-wrap:pretty;}
   .sub b{color:var(--ink);font-weight:680;}
@@ -112,12 +127,12 @@
   .go:active,.callbtn:active{transform:translateY(1px);}
   .mini{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line-2);}
   .mini:first-child{border-top:0;padding-top:2px;} .mini:last-child{padding-bottom:0;}
-  .mini .thumb{width:48px;height:48px;border-radius:10px;font-size:21px;}
+  .mini .thumb{width:48px;height:48px;border-radius:10px;}
   .mini b{display:block;}
-  @media (min-width:600px){.dt{padding-left:72px;}}
+  @media (min-width:600px){.dt{padding-left:84px;}}
 
   /* Call Santa: one big number, then the two extras. */
-  .santa{background:#a31f1f;color:#fff;border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);}
+  .santa{background:var(--berry);color:#fff;border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);}
   .santa h3{font-family:var(--font-head);font-size:18px;letter-spacing:-0.015em;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
   .santa h3 span{font-family:var(--font);font-size:12.5px;font-weight:700;letter-spacing:0;background:rgba(255,255,255,.18);border-radius:999px;padding:3px 9px;}
   .santa p{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.93);margin:5px 0 12px;}
@@ -145,10 +160,11 @@
   .credits ul{list-style:none;margin:0;padding:0;font-size:12.5px;color:var(--ink-2);line-height:1.9;} .credits a{color:var(--accent);}
 </style>
 </head>
-<body class="th">
+<body class="th hol">
   <main id="main" tabindex="-1" class="thwrap">
     <div class="hub-head photo">
       <img src="/img/holidays/banner.jpg" width="1200" height="630" alt="" fetchpriority="high" />
+      <div class="bulbs" aria-hidden="true"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i><i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i><i style="--n:11"></i><i style="--n:12"></i><i style="--n:13"></i><i style="--n:14"></i><i style="--n:15"></i><i style="--n:16"></i><i style="--n:17"></i><i style="--n:18"></i><i style="--n:19"></i><i style="--n:20"></i><i style="--n:21"></i><i style="--n:22"></i></div>
       <div class="hh">
         <h1>Holidays 2026</h1>
         <p>Family outings near home, our lights map and Santa’s phone number.</p>
@@ -175,7 +191,7 @@
           <span class="pt"><b>Lights train + Zoo Lights</b><span class="m"><span>35&nbsp;min</span><span>December weeknights</span></span><span class="w">Ride the Griffith Park train at 5&nbsp;PM, then walk Zoo Lights five minutes away.</span></span>
         </a>
         <a class="pick" href="#r-mm" data-until="2027-01-03">
-          <img src="/img/holidays/magic-mountain-800.webp" srcset="/img/holidays/magic-mountain-400.webp 400w, /img/holidays/magic-mountain-560.webp 560w, /img/holidays/magic-mountain-800.webp 800w" sizes="(min-width:700px) 240px, 50vw" width="800" height="600" alt="" loading="lazy" />
+          <img src="/img/holidays/mm-lights-800.webp" srcset="/img/holidays/mm-lights-400.webp 400w, /img/holidays/mm-lights-560.webp 560w, /img/holidays/mm-lights-800.webp 800w" sizes="(min-width:700px) 240px, 50vw" width="800" height="534" alt="" loading="lazy" />
           <span class="n">3</span>
           <span class="pt"><b>Magic Mountain</b><span class="m"><span>10&nbsp;min</span><span data-until="2026-11-25">opens Nov&nbsp;26</span><span data-from="2026-11-26" hidden>Holiday in the Park</span></span><span class="w">Lights, Santa’s Cottage and story time with Mrs. Claus.</span></span>
         </a>
@@ -191,25 +207,25 @@
       <div class="sh"><h2>One-time events</h2><p>Tap any outing for details, tickets and directions.</p></div>
       <div class="list">
         <details class="row" id="r-main" data-date="2026-11-21" data-until="2026-11-21">
-          <summary><span class="cal"><i>Nov</i><b>21</b></span><span class="bd"><span class="tags"><span class="tag pk">★ Our pick</span><span class="tag free">Free</span></span><span class="nm">Light Up Main Street</span><span class="sub"><b>15&nbsp;min</b> · Sat&nbsp;4–&#8288;8&nbsp;PM · Old&nbsp;Town&nbsp;Newhall</span></span></summary>
+          <summary><span class="thumb"><img src="/img/holidays/main-street.svg" width="800" height="450" alt="A drawing of a main street at night with a lit tree and falling snow" loading="lazy" /><span class="on">Nov&nbsp;21</span></span><span class="bd"><span class="tags"><span class="tag pk">★ Our pick</span><span class="tag free">Free</span></span><span class="nm">Light Up Main Street</span><span class="sub"><b>15&nbsp;min</b> · Sat&nbsp;4–&#8288;8&nbsp;PM · Old&nbsp;Town&nbsp;Newhall</span></span></summary>
           <div class="dt"><p>Twenty tons of snow, Santa photos, letters to Santa, crafts and carnival games, plus a quiet, sensory-friendly Chill Zone. The tree lighting is about 5:30&nbsp;PM.</p><p>No tickets. Parking is free, and so is Santa Clarita Transit on routes 4, 5, 6 and 14.</p><div class="acts"><a class="go" href="https://oldtownnewhall.com/" target="_blank" rel="noopener">Old Town Newhall ↗</a><a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=Old%20Town%20Newhall%20Library%2C%20Santa%20Clarita%2C%20CA" target="_blank" rel="noopener">Directions</a></div></div>
         </details>
         <details class="row" id="r-parade" data-date="2026-11-29" data-until="2026-11-29">
-          <summary><span class="cal"><i>Nov</i><b>29</b></span><span class="bd"><span class="tags"><span class="tag free">Free curbside</span></span><span class="nm">Hollywood Christmas Parade</span><span class="sub"><b>40&nbsp;min</b> · Sun&nbsp;evening · Hollywood</span></span></summary>
+          <summary><span class="thumb"><img src="/img/holidays/parade-s.webp" width="192" height="192" alt="The tree of lights on top of the Capitol Records tower in Hollywood" loading="lazy" /><span class="on">Nov&nbsp;29</span></span><span class="bd"><span class="tags"><span class="tag free">Free curbside</span></span><span class="nm">Hollywood Christmas Parade</span><span class="sub"><b>40&nbsp;min</b> · Sun&nbsp;evening · Hollywood</span></span></summary>
           <div class="dt"><p>Floats, balloons and marching bands. The start time isn’t posted yet (6&nbsp;PM in past years). Watching from the curb is free; grandstand seats are sold on the parade’s site.</p><div class="acts"><a class="go" href="https://thehollywoodchristmasparade.org/" target="_blank" rel="noopener">Parade site ↗</a></div></div>
         </details>
         <details class="row" id="r-carol" data-date="2026-12-11" data-until="2026-12-12">
-          <summary><span class="cal"><i>Dec</i><b class="r">11–&#8288;12</b></span><span class="bd"><span class="tags"><span class="tag pk">★ Our pick</span></span><span class="nm">A Christmas Carol on ice, The Cube</span><span class="sub"><b>10&nbsp;min</b> · Fri&nbsp;7&nbsp;PM · Sat&nbsp;noon&nbsp;and&nbsp;5&nbsp;PM</span></span></summary>
+          <summary><span class="thumb"><img src="/img/holidays/ice-show-s.webp" width="192" height="192" alt="A line of skaters on the ice at a Christmas ice show" loading="lazy" /><span class="on">Dec&nbsp;11–&#8288;12</span></span><span class="bd"><span class="tags"><span class="tag pk">★ Our pick</span></span><span class="nm">A Christmas Carol on ice, The Cube</span><span class="sub"><b>10&nbsp;min</b> · Fri&nbsp;7&nbsp;PM · Sat&nbsp;noon&nbsp;and&nbsp;5&nbsp;PM</span></span></summary>
           <div class="dt"><p>Performed by The Cube’s Skating Academy. Tickets are on Eventbrite; kids 2 and under sit free on a lap.</p><div class="acts"><a class="go" href="https://www.thecubesantaclarita.com/" target="_blank" rel="noopener">The Cube ↗</a><a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=The%20Cube%20Ice%20and%20Entertainment%20Center%2C%20Santa%20Clarita%2C%20CA" target="_blank" rel="noopener">Directions</a></div></div>
         </details>
         <details class="row" id="r-nutcracker" data-date="2026-12-19" data-until="2026-12-20">
-          <summary><span class="cal"><i>Dec</i><b class="r">19–&#8288;20</b></span><span class="bd"><span class="nm">The Nutcracker, Santa&nbsp;Clarita&nbsp;Ballet</span><span class="sub"><b>10&nbsp;min</b> · Sat&nbsp;1&nbsp;and&nbsp;7&nbsp;PM · Sun&nbsp;1&nbsp;PM</span></span></summary>
+          <summary><span class="thumb"><img src="/img/holidays/nutcracker-s.webp" width="192" height="192" alt="Dancers in white in the snow scene of a Nutcracker" loading="lazy" /><span class="on">Dec&nbsp;19–&#8288;20</span></span><span class="bd"><span class="nm">The Nutcracker, Santa&nbsp;Clarita&nbsp;Ballet</span><span class="sub"><b>10&nbsp;min</b> · Sat&nbsp;1&nbsp;and&nbsp;7&nbsp;PM · Sun&nbsp;1&nbsp;PM</span></span></summary>
           <div class="dt"><p>The full ballet at College of the Canyons; better for school-age kids than toddlers. Tickets are through the Canyons Performing Arts Center box office.</p><div class="acts"><a class="go" href="tel:+16613625304">Call 661-362-5304</a><a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=Santa%20Clarita%20Performing%20Arts%20Center%2C%20College%20of%20the%20Canyons%2C%20Santa%20Clarita%2C%20CA" target="_blank" rel="noopener">Directions</a></div></div>
         </details>
         <details class="row" id="r-tba" data-until="2026-12-20">
-          <summary><span class="cal tba"><i>Dec</i><b class="r">TBA</b></span><span class="bd"><span class="nm">Three more in Santa Clarita</span><span class="sub">Dates not posted yet: Holiday Light Tour, Barnyard Light Tour, Polar Express photos</span></span></summary>
+          <summary><span class="thumb"><img src="/img/holidays/saugus-engine-s.webp" width="180" height="180" alt="The black steam engine at the Saugus Train Station" loading="lazy" /><span class="on tba">Dec,&nbsp;TBA</span></span><span class="bd"><span class="nm">Three more in Santa Clarita</span><span class="sub">Dates not posted yet: Holiday Light Tour, Barnyard Light Tour, Polar Express photos</span></span></summary>
           <div class="dt">
-            <div class="mini"><span class="thumb art a-gold"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-lightbulb"/></svg></span><div><b>Holiday Light Tour, Santa Clarita Transit</b>Last year Dec&nbsp;12–&#8288;14, $3 or a toiletry donation. A 45-minute ride past the best local displays on decorated buses and a trolley, from McBean Transit Center. <a href="https://santaclaritatransit.com/" target="_blank" rel="noopener">Santa Clarita Transit ↗</a></div></div>
+            <div class="mini"><span class="thumb"><img src="/img/holidays/sc-bus-s.webp" width="192" height="192" alt="A Santa Clarita Transit bus" loading="lazy" /></span><div><b>Holiday Light Tour, Santa Clarita Transit</b>Last year Dec&nbsp;12–&#8288;14, $3 or a toiletry donation. A 45-minute ride past the best local displays on decorated buses and a trolley, from McBean Transit Center. <a href="https://santaclaritatransit.com/" target="_blank" rel="noopener">Santa Clarita Transit ↗</a></div></div>
             <div class="mini"><span class="thumb"><img src="/img/holidays/hart-park-s.webp" width="180" height="180" alt="The old bunk house at William S. Hart Park" loading="lazy" /></span><div><b>Barnyard Light Tour, Hart Park</b>Last year Dec&nbsp;13, 5–&#8288;7:30&nbsp;PM, free. A lit barnyard walk with Santa photos, crafts and the park’s animals.</div></div>
             <div class="mini"><span class="thumb"><img src="/img/holidays/saugus-engine-s.webp" width="180" height="180" alt="The black steam engine at the Saugus Train Station" loading="lazy" /></span><div><b>Polar Express photos, Saugus Train Station</b>Last year Dec&nbsp;6, $25. Photos with a 125-year-old steam engine, plus cocoa, cookies and a gift for each child.</div></div>
           </div>
@@ -230,17 +246,17 @@
           <div class="dt"><p>The train car stays put (screens, fog and motion effects), then you walk a lit village with historic trains, s’mores and Santa. Plan about 90&nbsp;minutes. About $47 adult and $27 child with fees ($39.99 and $19.99 before them); under 3 free. VIP adds a Santa photo and shorter lines. <b>Closed</b> Nov&nbsp;30, Dec&nbsp;7 and 14.</p><div class="acts"><a class="go" href="https://northpolerailway.com/" target="_blank" rel="noopener">North Pole Railway ↗</a><a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=Travel%20Town%20Museum%2C%205200%20Zoo%20Dr%2C%20Los%20Angeles%2C%20CA%2090027" target="_blank" rel="noopener">Directions</a></div></div>
         </details>
         <details class="row" id="r-irvine" data-until="2026-12-30">
-          <summary><span class="thumb art a-red"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-train-front"/></svg></span><span class="bd"><span class="nm">Irvine Park Railroad</span><span class="sub"><b>1&nbsp;hr&nbsp;30</b> · Train of Lights Dec&nbsp;26–&#8288;30 · Christmas Train sold out</span></span></summary>
+          <summary><span class="thumb"><img src="/img/holidays/irvine-s.webp" width="192" height="192" alt="The small steam engine at Irvine Park Railroad" loading="lazy" /></span><span class="bd"><span class="nm">Irvine Park Railroad</span><span class="sub"><b>1&nbsp;hr&nbsp;30</b> · Train of Lights Dec&nbsp;26–&#8288;30 · Christmas Train sold out</span></span></summary>
           <div class="dt"><p>The Christmas Train (Nov&nbsp;27 – Dec&nbsp;23, through a Tunnel of Lights to Santa’s Village) shows as sold out on its site. Its separate Train of Lights runs Dec&nbsp;26–&#8288;30.</p><div class="acts"><a class="go" href="https://www.irvineparkrailroad.com/" target="_blank" rel="noopener">Irvine Park Railroad ↗</a><a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=Irvine%20Park%20Railroad%2C%20Orange%2C%20CA" target="_blank" rel="noopener">Directions</a></div></div>
         </details>
         <details class="row" id="r-polar" data-until="2026-12-31">
-          <summary><span class="thumb art a-teal"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-train-front"/></svg></span><span class="bd"><span class="nm">The Polar Express, Perris</span><span class="sub"><b>1&nbsp;hr&nbsp;45</b> · select&nbsp;dates · $49–&#8288;$88</span></span></summary>
+          <summary><span class="thumb"><img src="/img/holidays/perris-steam-s.webp" width="192" height="192" alt="A black steam locomotive at the railway museum in Perris" loading="lazy" /></span><span class="bd"><span class="nm">The Polar Express, Perris</span><span class="sub"><b>1&nbsp;hr&nbsp;45</b> · select&nbsp;dates · $49–&#8288;$88</span></span></summary>
           <div class="dt"><p>The full Santa-on-a-train production: a one-hour onboard show with Santa, cocoa and the book read aloud. About two hours on site; arrive 60&nbsp;minutes before showtime. Adults $56.25–&#8288;$88.25, ages 2–&#8288;11 $49.25–&#8288;$81.25, under 2 free on a lap.</p><div class="acts"><a class="go" href="https://socalrailway.org/" target="_blank" rel="noopener">Southern California Railway Museum ↗</a><a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=Southern%20California%20Railway%20Museum%2C%20Perris%2C%20CA" target="_blank" rel="noopener">Directions</a></div></div>
         </details>
 
         <h3 class="grp">Light walks</h3>
         <details class="row" id="r-river">
-          <summary><span class="thumb art a-violet"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-sparkles"/></svg></span><span class="bd"><span class="tags"><span class="tag free">Free</span></span><span class="nm">River of Lights, Central Park</span><span class="sub"><b>15&nbsp;min</b> · nightly, dusk to 10&nbsp;PM</span></span></summary>
+          <summary><span class="thumb"><img src="/img/holidays/river-of-lights.svg" width="240" height="240" alt="A drawing of a winding trail of colored lights through a park at night" loading="lazy" /></span><span class="bd"><span class="tags"><span class="tag free">Free</span></span><span class="nm">River of Lights, Central Park</span><span class="sub"><b>15&nbsp;min</b> · nightly, dusk to 10&nbsp;PM</span></span></summary>
           <div class="dt"><p>The park’s light installation. Last December it added holiday light sequences through New Year’s Eve; this year’s holiday version hasn’t been announced yet.</p><div class="acts"><a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=Central%20Park%2C%20Bouquet%20Canyon%20Road%2C%20Santa%20Clarita%2C%20CA" target="_blank" rel="noopener">Directions</a></div></div>
         </details>
         <details class="row" id="r-zoo" data-until="2027-01-10">
@@ -252,13 +268,13 @@
           <div class="dt"><p>The best light walk near home: a mile-long trail in its 10th season, with a new laser show and snowfall finale, glowing stained-glass houses and giant koi. Open 5:30–&#8288;10&nbsp;PM, with timed entry every 30&nbsp;minutes until 8:30&nbsp;PM.</p><p><b>Advance purchase only.</b> Non-members $29–&#8288;$52 adult, $19–&#8288;$37 ages 2–&#8288;12, depending on the night. Holiday market Dec&nbsp;2–&#8288;6.</p><div class="acts"><a class="go" href="https://www.descansogardens.org/" target="_blank" rel="noopener">Descanso Gardens ↗</a><a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=Descanso%20Gardens%2C%20La%20Ca%C3%B1ada%20Flintridge%2C%20CA" target="_blank" rel="noopener">Directions</a></div></div>
         </details>
         <details class="row" id="r-enchant" data-until="2026-12-27">
-          <summary><span class="thumb art"><svg class="ic" aria-hidden="true"><use href="/icons.svg#i-star"/></svg></span><span class="bd"><span class="nm">Enchant, Santa Anita Park</span><span class="sub"><b>50&nbsp;min</b> · Nov&nbsp;20&nbsp;–&nbsp;Dec&nbsp;27</span></span></summary>
+          <summary><span class="thumb"><img src="/img/holidays/enchant-s.webp" width="192" height="192" alt="Reindeer made of golden lights at Enchant" loading="lazy" /></span><span class="bd"><span class="nm">Enchant, Santa Anita Park</span><span class="sub"><b>50&nbsp;min</b> · Nov&nbsp;20&nbsp;–&nbsp;Dec&nbsp;27</span></span></summary>
           <div class="dt"><p>A Christmas light maze, a Santa visit, carolers and a shopping village are included. Skating, the snow slide, carousel, train ride and s’mores are add-ons. Prices are on its ticket site.</p><div class="acts"><a class="go" href="https://enchantchristmas.com/" target="_blank" rel="noopener">Enchant ↗</a><a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=Santa%20Anita%20Park" target="_blank" rel="noopener">Directions</a></div></div>
         </details>
 
         <h3 class="grp">Theme parks</h3>
         <details class="row" id="r-mm" data-until="2027-01-03">
-          <summary><span class="thumb"><img src="/img/holidays/magic-mountain-s.webp" width="187" height="187" alt="A roller coaster loop at Magic Mountain" loading="lazy" /></span><span class="bd"><span class="tags"><span class="tag pk">★ Our pick</span></span><span class="nm">Magic Mountain, Holiday in the Park</span><span class="sub"><b>10&nbsp;min</b> · select dates Nov&nbsp;26 – Jan&nbsp;3</span></span></summary>
+          <summary><span class="thumb"><img src="/img/holidays/mm-lights-s.webp" width="192" height="192" alt="Trees wrapped in colored lights at Magic Mountain’s Holiday in the Park" loading="lazy" /></span><span class="bd"><span class="tags"><span class="tag pk">★ Our pick</span></span><span class="nm">Magic Mountain, Holiday in the Park</span><span class="sub"><b>10&nbsp;min</b> · select dates Nov&nbsp;26 – Jan&nbsp;3</span></span></summary>
           <div class="dt"><p>Light displays, a tree lighting, Santa’s Cottage, story time with Mrs. Claus, a Looney Tunes show, a craft depot, a Tree Lot Maze and a new “Magic of the Holidays” show. Included with a pass or day ticket; s’mores pits and cookie decorating cost extra. Kids 2 and under are free.</p><p><b>Open</b> Nov&nbsp;26–&#8288;29, Dec&nbsp;4–&#8288;6, then daily Dec&nbsp;11 – Jan&nbsp;3. Those dates come from a ticket seller, so check the park calendar.</p><p data-until="2026-11-30"><b>No pass?</b> The Black Friday Silver Pass is $79; buy by Nov&nbsp;30 for a free bring-a-friend ticket, usable through Dec&nbsp;31.</p><div class="acts"><a class="go" href="https://www.sixflags.com/magicmountain/events/holiday-in-the-park" target="_blank" rel="noopener">Magic Mountain ↗</a><a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=Six%20Flags%20Magic%20Mountain%2C%20Valencia%2C%20CA" target="_blank" rel="noopener">Directions</a></div></div>
         </details>
         <details class="row" id="r-universal" data-until="2027-01-03">
@@ -319,14 +335,21 @@
           <li>Griffith Park holiday train: <a href="https://www.flickr.com/photos/32916425@N04/52592588651" target="_blank" rel="noopener">Roller Coaster Philosophy</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a></li>
           <li>L.A. Zoo Lights: <a href="https://www.flickr.com/photos/14376841@N06/49290808428" target="_blank" rel="noopener">channone</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a></li>
           <li>Descanso Gardens: <a href="https://commons.wikimedia.org/wiki/File:Descanso_Gardens_(194726707).jpeg" target="_blank" rel="noopener">Pinguino Kolb</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a></li>
-          <li>Magic Mountain: <a href="https://commons.wikimedia.org/wiki/File:Six_Flags_Magic_Mountain_-_49256408011.jpg" target="_blank" rel="noopener">Roller Coaster Philosophy</a>, <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></li>
+          <li>Magic Mountain, Holiday in the Park: <a href="https://www.flickr.com/photos/32916425@N04/31590984442" target="_blank" rel="noopener">Roller Coaster Philosophy</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a></li>
           <li>The Grinch, Universal Studios Hollywood: <a href="https://www.flickr.com/photos/8062328@N02/5253762852" target="_blank" rel="noopener">armadillo444</a>, <a href="https://creativecommons.org/licenses/by-nc/2.0/" target="_blank" rel="noopener">CC BY-NC 2.0</a></li>
           <li>Disneyland: <a href="https://commons.wikimedia.org/wiki/File:Disneyland_Castle_Christmas_Decorations.jpg" target="_blank" rel="noopener">Justin Ennis</a>, <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></li>
           <li>Knott’s: <a href="https://commons.wikimedia.org/wiki/File:Knott%27s_Merry_Farm_Entrance.jpg" target="_blank" rel="noopener">METRO96</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
           <li>Travel Town: <a href="https://commons.wikimedia.org/wiki/File:%27Travel_Town_Museum%27_29.jpg" target="_blank" rel="noopener">NearEMPTiness</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Capitol Records tower on Hollywood Christmas Parade night: <a href="https://www.flickr.com/photos/21393146@N07/11166529226" target="_blank" rel="noopener">Steve Devol</a>, <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/" target="_blank" rel="noopener">CC BY-NC-SA 2.0</a></li>
+          <li>Christmas ice show (another production, not The Cube’s): <a href="https://www.flickr.com/photos/87719130@N00/4156162261" target="_blank" rel="noopener">greyhound dad</a>, <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/" target="_blank" rel="noopener">CC BY-NC-SA 2.0</a></li>
+          <li>Nutcracker snow scene (another company’s production, not Santa&nbsp;Clarita&nbsp;Ballet’s): <a href="https://www.flickr.com/photos/99058473@N00/5208849238" target="_blank" rel="noopener">gabrielsaldana</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank" rel="noopener">CC BY-SA 2.0</a></li>
+          <li>Irvine Park Railroad: <a href="https://www.flickr.com/photos/56683187@N07/10042219993" target="_blank" rel="noopener">lilbitbeth</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a></li>
+          <li>Steam locomotive at the railway museum in Perris: <a href="https://commons.wikimedia.org/wiki/File:Ventura_County_Railway_Locomotive_No._2_at_the_Orange_Empire_Railway_Museum.jpg" target="_blank" rel="noopener">sodai gomi</a>, <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></li>
+          <li>Enchant (in Washington, D.C.; the same touring show): <a href="https://www.flickr.com/photos/35448539@N00/49186008491" target="_blank" rel="noopener">blakespot</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a></li>
+          <li>Santa Clarita Transit bus: <a href="https://commons.wikimedia.org/wiki/File:Santa_Clarita_Transit_127.jpg" target="_blank" rel="noopener">Ponderosapine210</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
           <li>Saugus Train Station engine and Hart Park: <a href="https://www.flickr.com/photos/34619394@N07/11786466183" target="_blank" rel="noopener">Edward Headington</a>, <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/" target="_blank" rel="noopener">CC BY-NC-SA 2.0</a></li>
         </ul>
-        <p class="note">Freely licensed photos from Flickr and Wikimedia Commons, resized and cropped to fit. Most are from earlier years, so this year’s displays will differ. The Main Street scene and the colored tiles are drawn for this page.</p>
+        <p class="note">Freely licensed photos from Flickr and Wikimedia Commons, resized and cropped to fit. Most are from earlier years, so this year’s displays will differ. The Main Street and River of Lights scenes are drawn for this page.</p>
       </details>
     </div>
 
@@ -369,14 +392,16 @@
     function noon(d) { return Date.parse(d + "T12:00:00Z"); }
     each("[data-date]", function (el) {
       var d0 = el.getAttribute("data-date"), d1 = el.getAttribute("data-until") || d0, n = Math.round((noon(d0) - noon(today)) / 864e5);
-      var label = today >= d0 && today <= d1 ? "Today" : n === 1 ? "Tomorrow" : n > 1 && n < 7 ? "This " + DAYS[new Date(noon(d0)).getUTCDay()] : "";
+      var day = DAYS[new Date(noon(d0)).getUTCDay()];
+      var label = today >= d0 && today <= d1 ? "Today" : n === 1 ? "Tomorrow" : n > 1 && n < 7 ? "This " + day : "";
       if (!label) return;
       var when = el.querySelector(".when"), bd = el.querySelector(".bd");
       if (when) { when.textContent = label; return; }   // the photo tile: the label replaces the date
       if (!bd) return;
       var tags = bd.querySelector(".tags"), t = document.createElement("span");
       if (!tags) { tags = document.createElement("span"); tags.className = "tags"; bd.insertBefore(tags, bd.firstChild); }
-      t.className = "tag now"; t.textContent = label; tags.insertBefore(t, tags.firstChild);
+      // In a row the tag sits beside two others on a phone, so the day is short: "This Sat".
+      t.className = "tag now"; t.textContent = label.replace(day, day.slice(0, 3)); tags.insertBefore(t, tags.firstChild);
     });
     // A link to an outing (#r-...) opens its row.
     function openRow(hash) { var el = hash && hash.charAt(1) && document.getElementById(hash.slice(1)); if (el && el.tagName === "DETAILS" && !el.hidden) el.open = true; }
@@ -403,6 +428,6 @@
     }
   })();
   </script>
-  <script src="/nav.js?v=25" defer></script>
+  <script src="/nav.js?v=26" defer></script>
 </body>
 </html>

@@ -43,6 +43,24 @@
     { href: "/events", label: "Events", on: path === "/events" },
     { href: "/hoa", label: "HOA", on: path === "/hoa" }
   ];
+  // Holidays joins the tabs for the season and leaves by itself. The page is written for
+  // one winter (its dates and prices), so the season is spelled out here instead of "every
+  // December": if nobody updates these two dates, next year the tab simply stays away.
+  // Pacific dates. The lights map (/lights) is part of it, so the tab is lit there too.
+  var HOLIDAYS = { from: "2026-11-01", until: "2027-01-03" };
+  var pacificDay = (function () {
+    try {
+      var o = {};
+      new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit" })
+        .formatToParts(new Date()).forEach(function (p) { o[p.type] = p.value; });
+      return o.year + "-" + o.month + "-" + o.day;
+    } catch (e) { return ""; }
+  })();
+  var isHolidays = path === "/holidays";
+  if (isHolidays || (pacificDay >= HOLIDAYS.from && pacificDay <= HOLIDAYS.until)) {
+    NAV.push({ href: "/holidays", label: "Holidays", on: isHolidays, near: path === "/lights", cls: "hol",
+      icon: '<svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.7 1.7H17Z"/><path d="M12 22v-3"/></svg>' });
+  }
   var BRAND =
     '<svg aria-hidden="true" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#14161b"/><circle cx="43" cy="21" r="6.5" fill="#e8a33d"/><path d="M3 53 L21 29 L31 41 L41 27 L61 53 Z" fill="#e7e9ee"/></svg>';
 
@@ -56,7 +74,7 @@
   }
 
   var nav = document.createElement("nav");
-  nav.className = "thnav";
+  nav.className = "thnav" + (NAV.length > 6 ? " n7" : "");   // n7: th.css tightens the phone row for a seventh tab
   nav.setAttribute("aria-label", "Primary");
   nav.innerHTML =
     '<a class="brand" href="/">' + BRAND + "<span>Tesoro Highlands</span></a>" +
@@ -64,8 +82,9 @@
     NAV.map(function (n) {
       // aria-label carries the full name even when the phone shows the short one.
       var full = n.label + (n.rest || "");
-      return '<a href="' + n.href + '"' + (n.on ? ' aria-current="page"' : "") +
-        (n.rest ? ' aria-label="' + full + '"' : "") + "><span>" + n.label +
+      return '<a href="' + n.href + '"' + (n.cls ? ' class="' + n.cls + (n.near ? " near" : "") + '"' : "") +
+        (n.on ? ' aria-current="page"' : "") +
+        (n.rest ? ' aria-label="' + full + '"' : "") + ">" + (n.icon || "") + "<span>" + n.label +
         (n.rest ? '<span class="lg">' + n.rest + "</span>" : "") + "</span></a>";
     }).join("") +
     "</div>" +
@@ -159,7 +178,7 @@
     return false;
   }
 
-  var CACHE_KEY = "tesoro.status.v25";  // v25: evacuation "our zone" covers the streets — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v26";  // v26: the seasonal Holidays tab (status logic unchanged) — keep in step with nav.js?v=N
   // What the strip last saw about our power. A one-request check runs every
   // minute and redraws the strip only when this changes; the full status check
   // hits nine feeds, so it stays at every 4 minutes.
