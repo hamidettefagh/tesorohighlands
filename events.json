@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T16:15:26.107Z",
+  "generatedAt": "2026-11-22T21:50:13.724Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -82,6 +82,20 @@
       ],
       "repeats": 12,
       "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Santa Clarita Shuffle Scavenger Hunt",
+      "url": "https://www.eventbrite.com/e/santa-clarita-shuffle-scavenger-hunt-tickets-1994864333923",
+      "start": "2026-11-22T13:00",
+      "venue": "Coffee Kiosk",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$25",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-22T21:50:13.724Z"
     },
     {
       "title": "Hart Mansion Tour 1:00p.m.",
@@ -271,18 +285,18 @@
       "added": "2026-11-19T13:03:27.051Z"
     },
     {
-      "title": "Black Friday 21+ Reggaeton HipHop Latin Tech Party",
-      "url": "https://www.eventbrite.com/e/black-friday-21-reggaeton-hiphop-latin-tech-party-tickets-2004417865794",
-      "start": "2026-11-27T21:00",
-      "venue": "El Patron Santa Clarita Valley",
+      "title": "Gratitude With Goats - a Thanksgiving Yoga Session!",
+      "url": "https://www.eventbrite.com/e/gratitude-with-goats-a-thanksgiving-yoga-session-tickets-2005104424309",
+      "start": "2026-11-26T09:00",
+      "venue": "Gilchrist Farm",
       "city": "Santa Clarita",
       "free": false,
-      "price": "$0–$20",
+      "price": "$33.85",
       "audience": [
-        "adults"
+        "kids"
       ],
       "source": "Eventbrite",
-      "added": "2026-11-14T23:54:48.769Z"
+      "added": "2026-11-22T21:50:13.724Z"
     },
     {
       "title": "BLACK FRIDAY THANKSGIVING HANGOVER PARTY!",
@@ -297,6 +311,20 @@
       ],
       "source": "Eventbrite",
       "added": "2026-11-17T13:24:35.323Z"
+    },
+    {
+      "title": "Black Friday 21+ Reggaeton HipHop Latin Tech Party",
+      "url": "https://www.eventbrite.com/e/black-friday-21-reggaeton-hiphop-latin-tech-party-tickets-2004417865794",
+      "start": "2026-11-27T21:00",
+      "venue": "El Patron Santa Clarita Valley",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$0–$20",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-14T23:54:48.769Z"
     },
     {
       "title": "Hart Mansion Group Tour 10:00a.m.",
@@ -849,6 +877,20 @@
       ],
       "source": "SC Performing Arts Center",
       "added": "2026-09-03T04:32:35.375Z"
+    },
+    {
+      "title": "SoCal Etsy Guild Market Valencia",
+      "url": "https://www.eventbrite.com/e/socal-etsy-guild-market-valencia-tickets-2003740846812",
+      "start": "2026-12-12T10:00",
+      "venue": "Valencia Town Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$27.72–$157.34",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-22T21:50:13.724Z"
     },
     {
       "title": "West Ranch High School Studio: A Jazz Band Performance",
