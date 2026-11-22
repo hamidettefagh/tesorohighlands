@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T12:38:05.002Z",
+  "generatedAt": "2026-11-22T06:45:34.053Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -128,20 +128,6 @@
       ],
       "repeats": 5,
       "added": "2026-11-18T17:14:43.965Z"
-    },
-    {
-      "title": "Experience Tesla: Ride & Drive Event!",
-      "url": "https://www.valenciatowncenter.com/event/46414-experience-tesla-ride-drive-event",
-      "start": "2026-11-21T11:00",
-      "venue": "Valencia Town Center",
-      "city": "Valencia",
-      "free": false,
-      "price": null,
-      "audience": [
-        "everyone"
-      ],
-      "source": "Valencia Town Center",
-      "added": "2026-11-19T23:02:31.910Z"
     },
     {
       "title": "Hart Mansion Tour 12:00p.m.",
