@@ -128,7 +128,6 @@
         <div class="ico"><svg class="ic" aria-hidden="true"><use href="#i-fire"/></svg></div>
         <h3>Fire &amp; Emergency</h3>
         <p>Live air quality, fire weather, a nearby-fire map, evacuation status, and a saved go-bag checklist.</p>
-        <span class="cardlive" id="clFire" hidden></span>
         <span class="tag live">Live</span>
       </a>
       <a class="hub-card" href="/weather">
@@ -202,7 +201,7 @@
     if (el && open) el.hidden = false;
   })();
   </script>
-  <script src="/nav.js?v=26" defer></script>
+  <script src="/nav.js?v=27" defer></script>
   <script>
   // "Today" digest: air, fire weather, next events — small live glances.
   (function () {
@@ -220,14 +219,6 @@
     function asofDone(ok) {
       if (ok && !asofOk) { asofOk = true; $("#asof").textContent = "live · checked just now"; }
       if (--asofPending <= 0 && !asofOk) $("#asof").textContent = "live checks unavailable right now";
-    }
-    // The Fire hub card shows a live one-liner built from whichever checks land.
-    var liveBits = { air: null, fw: null };
-    function paintFireCard() {
-      var el = $("#clFire");
-      if (!el || (!liveBits.air && !liveBits.fw)) return;
-      el.innerHTML = "Right now: " + [liveBits.air, liveBits.fw].filter(Boolean).join(" · ");
-      el.hidden = false;
     }
 
     // A hung feed must fail like a dead one, or a tile sits at "—" forever.
@@ -266,8 +257,7 @@
       // Same thresholds as the status line: green only for Good, amber past 100, red past 150.
       $("#tdAir").parentNode.className = "tcell" + (q <= 50 ? " ok" : q <= 100 ? "" : q <= 150 ? " caution" : " danger");
       $("#tdAir").innerHTML = '<b class="tbig">AQI ' + Math.round(q) + '</b><span class="tsub">' + cat + ' <span class="tsrc">· ' + src + "</span></span>";
-      liveBits.air = "<b>AQI " + Math.round(q) + "</b> " + cat.toLowerCase();
-      paintFireCard(); asofDone(true);
+      asofDone(true);
     }).catch(function () { $("#tdAir").textContent = "unavailable right now"; asofDone(false); });
 
     withTimeout(Promise.all([
@@ -299,8 +289,7 @@
       // Green is reserved for rain — Normal is baseline, not good news.
       $("#tdFw").parentNode.className = "tcell" + (lvl === "Extreme" ? " danger" : lvl === "Elevated" ? " caution" : rain ? " ok" : "");
       $("#tdFw").innerHTML = '<b class="tbig">' + lvl + '</b><span class="tsub">' + rain + windTxt + " wind · " + rhTxt + ' humidity <span class="tsrc">· ' + src + "</span></span>";
-      liveBits.fw = (rain ? "raining, " : "") + lvl.toLowerCase() + " fire weather";
-      paintFireCard(); asofDone(true);
+      asofDone(true);
     }).catch(function () { $("#tdFw").textContent = "unavailable right now"; asofDone(false); });
 
     withTimeout(Promise.all([
@@ -412,12 +401,10 @@
     // "New on this site" — a tiny changelog kept in updates.json.
     fetch("/updates.json").then(function (r) { return r.json(); }).then(function (list) {
       if (!Array.isArray(list) || !list.length) return;
-      // Everything from the last three weeks, 3 minimum and 6 maximum — a fixed
-      // three could all land on one busy day and hide the rest of the fortnight.
+      // The newest three only. Six long lines made this the biggest block on the page,
+      // larger than the five section cards above it.
       var dOf = function (s) { var p = String(s || "").split("-"); return p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2]) : null; };
-      var cut = Date.now() - 21 * 86400000;
-      var fresh = list.filter(function (u) { var d = dOf(u.date); return d && d.getTime() >= cut; });
-      $("#snList").innerHTML = (fresh.length < 3 ? list.slice(0, 3) : fresh.slice(0, 6)).map(function (u) {
+      $("#snList").innerHTML = list.slice(0, 3).map(function (u) {
         var dd = dOf(u.date);
         var d = dd ? dd.toLocaleDateString([], { month: "short", day: "numeric" }) : "";
         // updates.json is ours, but same rule as every feed: only real paths/URLs become links.

@@ -58,7 +58,7 @@
   })();
   var isHolidays = path === "/holidays";
   if (isHolidays || (pacificDay >= HOLIDAYS.from && pacificDay <= HOLIDAYS.until)) {
-    NAV.push({ href: "/holidays", label: "Holidays", on: isHolidays, near: path === "/lights", cls: "hol",
+    NAV.push({ href: "/holidays", label: "Holidays", on: isHolidays, near: path === "/lights", cls: "tabhol",
       icon: '<svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.7 1.7H17Z"/><path d="M12 22v-3"/></svg>' });
   }
   var BRAND =
@@ -178,7 +178,7 @@
     return false;
   }
 
-  var CACHE_KEY = "tesoro.status.v26";  // v26: the seasonal Holidays tab (status logic unchanged) — keep in step with nav.js?v=N
+  var CACHE_KEY = "tesoro.status.v27";  // v27: the Holidays tab's class is tabhol, so page styles named .hol can't reach it (status logic unchanged) — keep in step with nav.js?v=N
   // What the strip last saw about our power. A one-request check runs every
   // minute and redraws the strip only when this changes; the full status check
   // hits nine feeds, so it stays at every 4 minutes.

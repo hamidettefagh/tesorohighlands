@@ -157,7 +157,7 @@ body.th:not(:has(> .thnav)):not(:has(#th-hero)) > main::before{content:"";displa
 /* "new on this site" strip */
 .sitenews{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 15px;box-shadow:var(--shadow);}
 .sitenews h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0 0 4px;font-weight:680;}
-.sitenews a{display:block;font-size:12.5px;color:var(--ink-2);text-decoration:none;padding:5px 0;border-top:1px solid var(--line-2);line-height:1.45;}
+.sitenews a{display:block;font-size:12.5px;color:var(--ink-2);text-decoration:none;padding:5px 0;border-top:1px solid var(--line-2);line-height:1.45;min-height:40px;}
 .sitenews a:first-of-type{border-top:0;}
 .sitenews a:hover{color:var(--ink);}
 .sitenews .nd{color:var(--muted);font-weight:640;font-size:11px;margin-right:7px;white-space:nowrap;}
@@ -276,15 +276,15 @@ a:focus-visible,button:focus-visible,[role="checkbox"]:focus-visible,[tabindex]:
 :root{--hol:#17603a;--hol-bg:#e4f3ea;}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--hol:#7fdca6;--hol-bg:#15291e;}}
 :root[data-theme="dark"]{--hol:#7fdca6;--hol-bg:#15291e;}
-.thnav .links a.hol{color:var(--hol);font-weight:640;gap:5px;}
-.thnav .links a.hol svg.ic{font-size:14px;}
-.thnav .links a.hol[aria-current="page"],.thnav .links a.hol.near{background:var(--hol-bg);color:var(--hol);}
+.thnav .links a.tabhol{color:var(--hol);font-weight:640;gap:5px;}
+.thnav .links a.tabhol svg.ic{font-size:14px;}
+.thnav .links a.tabhol[aria-current="page"],.thnav .links a.tabhol.near{background:var(--hol-bg);color:var(--hol);}
 @media(min-width:721px) and (max-width:860px){.thnav.n7 .links .lg{display:none;}}
 @media(max-width:720px){
   .thnav.n7 .links{gap:0;}
   .thnav.n7 .links a{padding:0 3px;}
 }
-@media(max-width:399px){.thnav .links a.hol svg.ic{display:none;}}
+@media(max-width:399px){.thnav .links a.tabhol svg.ic{display:none;}}
 @media(max-width:374px){.thnav.n7 .links a{font-size:12.5px;padding:0 2px;}}
 /* Home's door to the Holidays page: the night blue of the page it opens, under a wire of bulbs. */
 .holdoor{position:relative;display:flex;align-items:center;gap:12px;margin-top:12px;padding:20px 14px 14px;border-radius:var(--radius);overflow:hidden;

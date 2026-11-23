@@ -262,6 +262,12 @@
   footer { max-width:680px; margin:28px auto 64px; padding:18px 16px 0; border-top:1px solid var(--line); color:var(--muted); font-size:11.5px; line-height:1.55; }
   footer .legend { display:flex; gap:16px; margin-bottom:10px; flex-wrap:wrap; }
   footer .legend span { display:flex; align-items:center; gap:6px; }
+  /* The full list of feeds, folded: a long paragraph of agency names is reference, not reading. */
+  footer .srcfold summary { list-style:none; cursor:pointer; min-height:40px; display:flex; align-items:center; font-size:13px; font-weight:600; color:var(--ink-2); }
+  footer .srcfold summary::-webkit-details-marker { display:none; }
+  footer .srcfold summary::after { content:" ▾"; margin-left:4px; color:var(--muted); }
+  footer .srcfold[open] summary::after { content:" ▴"; }
+  footer .srcfold p { margin:2px 0 0; }
   .pill { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:2px 7px; border-radius:999px; }
   .pill.live { background:var(--ok-bg); color:var(--ok-fg); }
   .pill.demo { background:var(--cau-bg); color:var(--cau-fg); }
@@ -709,6 +715,9 @@ footer{font-size:12.5px;}
     <div class="legend">
       <span><span class="pill live">Live</span> real data, refreshed automatically</span>
     </div>
+    <p>This tool does not replace official warnings: always follow CAL FIRE, LA County Fire, and Sheriff orders, and call 911 in an emergency.</p>
+    <details class="srcfold">
+    <summary>Where this data comes from</summary>
     <p id="foot">
       All live: air quality from a neighbor PurpleAir near Tesoro Highlands when available (US AQI, 10-min), then EPA AirNow
       monitors, with modeled backup &amp; hourly outlook via Open-Meteo; fire weather from a neighbor Tempest near Tesoro Highlands
@@ -716,9 +725,8 @@ footer{font-size:12.5px;}
       NIFC / IRWIN national wildfire feed with acreage &amp; containment from CAL FIRE and heat detections from NASA (VIIRS)
       satellites, evacuation status via the Cal OES statewide zone feed (verify your zone at
       Genasys Protect), power outages via the Cal OES statewide utility feed, and earthquakes via USGS. Community notes (water tanks, brush, history) come from neighbors, not an official source.
-      This tool does not replace official warnings — always follow CAL FIRE, LA County Fire, and Sheriff orders, and
-      call 911 in an emergency.
     </p>
+    </details>
   </footer>
 
 <script>
@@ -1892,7 +1900,7 @@ async function boot(){
 boot();
 </script>
 
-<script src="/nav.js?v=26" defer></script>
+<script src="/nav.js?v=27" defer></script>
 
 <!-- Live Fire + Evacuation map (Leaflet + NIFC/WFIGS + Cal OES) -->
 <script>

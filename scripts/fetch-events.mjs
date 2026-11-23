@@ -309,6 +309,15 @@ function pacTitleCase(t) {
   return t.replace(/\s*—\s*/g, ": ").replace(/:\s*:/g, ":").trim();
 }
 
+// Organizers' slips that read badly next to every other event: a listing template's
+// leftover "1. Event title" in front of the real name (seen on Eventbrite, Nov 2026),
+// and titles typed in all caps. A few acronyms stay capitalized.
+function tidyTitle(t) {
+  t = String(t || "").replace(/^\s*\d+\.\s*event title\b[\s:–-]*/i, "").trim();
+  if (/[a-z]/.test(t.replace(/\d+s\b/g, ""))) return t;
+  return pacTitleCase(t).replace(/\b(Scv|Coc|Dj|Nye|Pta|Ymca|Usa)\b/g, (m) => m.toUpperCase());
+}
+
 async function fetchPac() {
   const events = [];
   let ok = false;
@@ -504,6 +513,7 @@ const vtcEvents = (!vtc.ok ? carryForward("Valencia Town Center") : vtc.events).
 
 const seen = new Set();
 const events = [...ebEvents, ...libEvents, ...locEvents, ...pacEvents, ...vtcEvents, ...tips]
+  .map((e) => ({ ...e, title: tidyTitle(e.title) }))
   .filter((e) => {
     const k = e.title.toLowerCase().replace(/\W+/g, " ").trim() + "|" + e.start;
     if (seen.has(k)) return false;
