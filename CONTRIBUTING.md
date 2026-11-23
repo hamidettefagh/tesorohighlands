@@ -75,6 +75,17 @@ site is worth trusting. Internal refactors, dependency bumps and feed refreshes 
 belong there. Only the top three show on the home page, so keep each line to one
 sentence and let the older ones fall off.
 
+**A new page is invisible to search engines until you tell them.**
+`/holidays` had been live for four days when Search Console still said "URL is unknown
+to Google": the sitemap is only re-read every few days. When you add a page that people
+should be able to find: add it to `sitemap.xml`; once it is live run
+`node scripts/indexnow.mjs /your-page` (Bing, DuckDuckGo and others); and ask the owner
+to request indexing in Google Search Console (paste the URL into "Inspect any URL", then
+"Request indexing"). Give the page a `<title>` that says what it is and where, in the
+words people search with ("Tesoro Highlands", plus Valencia or Santa Clarita where it
+fits): the title is the line people see in search results. Pages for residents only
+(`/lights`, `/treats`, `/business`) stay `noindex` and out of the sitemap.
+
 **Measure a page before you call it done.**
 `node scripts/ux-probe.mjs http://localhost:3100/<page>` opens the page at phone width in
 the light and dark themes and fails on what looking at a screenshot misses: text below
