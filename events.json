@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T20:12:23.154Z",
+  "generatedAt": "2026-11-24T04:46:59.213Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
@@ -660,6 +660,20 @@
         "2026-12-05T09:00"
       ],
       "added": "2026-11-20T16:57:09.907Z"
+    },
+    {
+      "title": "Find Your New Best Friend: Pet Adoption Event",
+      "url": "https://www.valenciatowncenter.com/event/46580-find-your-new-best-friend-pet-adoption-event",
+      "start": "2026-12-05T11:00",
+      "venue": "Valencia Town Center",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "Valencia Town Center",
+      "added": "2026-11-24T04:46:59.213Z"
     },
     {
       "title": "Vocal Jazz & Choral Concert: College Of The Canyons Music",
