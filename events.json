@@ -1,38 +1,7 @@
 {
-  "generatedAt": "2026-11-24T04:46:59.213Z",
+  "generatedAt": "2026-11-24T19:29:46.474Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Read to a Dog",
-      "url": "https://santaclarita.librarycalendar.com/event/read-dog-32431",
-      "start": "2026-11-23T16:00",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-23T16:00"
-      ],
-      "added": "2026-11-19T13:03:27.051Z"
-    },
-    {
-      "title": "Full Moon Circle | Release, Reflect & Reconnect",
-      "url": "https://www.eventbrite.com/e/1-event-title-full-moon-circle-release-reflect-reconnect-tickets-2004797777119",
-      "start": "2026-11-23T20:00",
-      "venue": "Grounded Studios",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$36.68",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Eventbrite",
-      "added": "2026-11-23T20:12:23.154Z"
-    },
     {
       "title": "LEGO® Block Party",
       "url": "https://santaclarita.librarycalendar.com/event/legor-block-party-43019",
@@ -601,6 +570,28 @@
         "2026-12-04T10:00"
       ],
       "added": "2026-11-20T16:57:09.907Z"
+    },
+    {
+      "title": "Science Explorers: Anatomy for Kids",
+      "url": "https://santaclarita.librarycalendar.com/event/science-explorers-anatomy-kids-43133",
+      "start": "2026-12-04T15:00",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-12-04T15:00",
+        "2026-12-05T15:00",
+        "2026-12-11T15:00",
+        "2026-12-12T15:00"
+      ],
+      "repeats": 3,
+      "added": "2026-11-24T19:29:46.473Z"
     },
     {
       "title": "Music Bingo Night is Coming to Santa Clarita! @ Dog Haus Biergarten",
