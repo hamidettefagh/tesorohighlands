@@ -1,26 +1,7 @@
 {
-  "generatedAt": "2026-11-24T19:29:46.474Z",
+  "generatedAt": "2026-11-25T14:19:55.226Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "LEGO® Block Party",
-      "url": "https://santaclarita.librarycalendar.com/event/legor-block-party-43019",
-      "start": "2026-11-24T15:30",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "kids"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-24T15:30",
-        "2026-12-08T15:30"
-      ],
-      "repeats": 1,
-      "added": "2026-11-19T13:03:27.051Z"
-    },
     {
       "title": "2026 Stunts Turkey Bowl & Picnic",
       "url": "https://www.eventbrite.com/e/2026-stunts-turkey-bowl-picnic-tickets-2003804320664",
@@ -374,8 +355,10 @@
       ],
       "source": "SC Library",
       "dates": [
-        "2026-12-01T17:30"
+        "2026-12-01T17:30",
+        "2026-12-15T17:30"
       ],
+      "repeats": 1,
       "added": "2026-11-19T13:03:27.051Z"
     },
     {
@@ -753,9 +736,31 @@
       ],
       "source": "SC Library",
       "dates": [
-        "2026-12-08T09:30"
+        "2026-12-08T09:30",
+        "2026-12-15T09:30"
       ],
+      "repeats": 1,
       "added": "2026-11-22T16:15:26.106Z"
+    },
+    {
+      "title": "Storytime",
+      "url": "https://santaclarita.librarycalendar.com/event/storytime-36970",
+      "start": "2026-12-08T09:30",
+      "venue": "Valencia Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-12-08T09:30",
+        "2026-12-09T09:30",
+        "2026-12-15T09:30"
+      ],
+      "repeats": 2,
+      "added": "2026-11-25T14:19:55.225Z"
     },
     {
       "title": "Retinal Imaging Meeting",
