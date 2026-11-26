@@ -1,151 +1,7 @@
 {
-  "generatedAt": "2026-11-25T14:19:55.226Z",
+  "generatedAt": "2026-11-26T13:52:52.334Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "2026 Stunts Turkey Bowl & Picnic",
-      "url": "https://www.eventbrite.com/e/2026-stunts-turkey-bowl-picnic-tickets-2003804320664",
-      "start": "2026-11-25T08:00",
-      "venue": "Central Park",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$39.19–$81.88",
-      "audience": [
-        "everyone"
-      ],
-      "source": "Eventbrite",
-      "added": "2026-11-20T07:16:59.302Z"
-    },
-    {
-      "title": "Hart Mansion Group Tour 11:00a.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-group-tour-1100am-36628",
-      "start": "2026-11-25T11:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-25T11:00",
-        "2026-12-02T11:00",
-        "2026-12-03T11:00",
-        "2026-12-04T11:00",
-        "2026-12-09T11:00",
-        "2026-12-10T11:00"
-      ],
-      "repeats": 5,
-      "added": "2026-11-15T15:39:01.830Z"
-    },
-    {
-      "title": "Hart Mansion Tour 12:00p.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1200pm-36728",
-      "start": "2026-11-25T12:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-25T12:00",
-        "2026-11-28T12:00",
-        "2026-11-29T12:00",
-        "2026-12-02T12:00",
-        "2026-12-03T12:00",
-        "2026-12-04T12:00",
-        "2026-12-05T12:00",
-        "2026-12-06T12:00",
-        "2026-12-09T12:00",
-        "2026-12-10T12:00",
-        "2026-12-11T12:00",
-        "2026-12-12T12:00",
-        "2026-12-13T12:00"
-      ],
-      "repeats": 12,
-      "added": "2026-07-25T09:59:46.269Z"
-    },
-    {
-      "title": "Hart Mansion Tour 1:00p.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-100pm-36806",
-      "start": "2026-11-25T13:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-25T13:00",
-        "2026-11-28T13:00",
-        "2026-11-29T13:00",
-        "2026-12-02T13:00",
-        "2026-12-03T13:00",
-        "2026-12-04T13:00",
-        "2026-12-05T13:00",
-        "2026-12-06T13:00",
-        "2026-12-09T13:00",
-        "2026-12-10T13:00",
-        "2026-12-11T13:00",
-        "2026-12-12T13:00",
-        "2026-12-13T13:00"
-      ],
-      "repeats": 12,
-      "added": "2026-10-20T13:32:46.873Z"
-    },
-    {
-      "title": "Hart Mansion Tour 2:00p.m.",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-200pm-36882",
-      "start": "2026-11-25T14:00",
-      "venue": "William S. Hart Museum",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "everyone"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-25T14:00",
-        "2026-11-28T14:00",
-        "2026-11-29T14:00",
-        "2026-12-02T14:00",
-        "2026-12-03T14:00",
-        "2026-12-04T14:00",
-        "2026-12-05T14:00",
-        "2026-12-06T14:00",
-        "2026-12-09T14:00",
-        "2026-12-10T14:00",
-        "2026-12-11T14:00",
-        "2026-12-12T14:00",
-        "2026-12-13T14:00"
-      ],
-      "repeats": 12,
-      "added": "2026-10-20T13:32:46.873Z"
-    },
-    {
-      "title": "Different Zines, Different Themes",
-      "url": "https://santaclarita.librarycalendar.com/event/different-zines-different-themes-26301",
-      "start": "2026-11-25T18:00",
-      "venue": "Canyon Country Jo Anne Darcy Library",
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "SC Library",
-      "dates": [
-        "2026-11-25T18:00"
-      ],
-      "added": "2026-11-19T13:03:27.051Z"
-    },
     {
       "title": "Gratitude With Goats - a Thanksgiving Yoga Session!",
       "url": "https://www.eventbrite.com/e/gratitude-with-goats-a-thanksgiving-yoga-session-tickets-2005104424309",
@@ -254,6 +110,66 @@
       "added": "2026-11-18T17:14:43.965Z"
     },
     {
+      "title": "Hart Mansion Tour 12:00p.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-1200pm-36729",
+      "start": "2026-11-28T12:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-28T12:00",
+        "2026-11-29T12:00",
+        "2026-12-02T12:00",
+        "2026-12-03T12:00",
+        "2026-12-04T12:00",
+        "2026-12-05T12:00",
+        "2026-12-06T12:00",
+        "2026-12-09T12:00",
+        "2026-12-10T12:00",
+        "2026-12-11T12:00",
+        "2026-12-12T12:00",
+        "2026-12-13T12:00",
+        "2026-12-16T12:00"
+      ],
+      "repeats": 12,
+      "added": "2026-07-25T09:59:46.269Z"
+    },
+    {
+      "title": "Hart Mansion Tour 1:00p.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-100pm-36807",
+      "start": "2026-11-28T13:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-28T13:00",
+        "2026-11-29T13:00",
+        "2026-12-02T13:00",
+        "2026-12-03T13:00",
+        "2026-12-04T13:00",
+        "2026-12-05T13:00",
+        "2026-12-06T13:00",
+        "2026-12-09T13:00",
+        "2026-12-10T13:00",
+        "2026-12-11T13:00",
+        "2026-12-12T13:00",
+        "2026-12-13T13:00",
+        "2026-12-16T13:00"
+      ],
+      "repeats": 12,
+      "added": "2026-10-20T13:32:46.873Z"
+    },
+    {
       "title": "Blank Page Writing Group",
       "url": "https://santaclarita.librarycalendar.com/event/blank-page-writing-group-32584",
       "start": "2026-11-28T13:00",
@@ -269,6 +185,36 @@
         "2026-11-28T13:00"
       ],
       "added": "2026-11-19T13:03:27.051Z"
+    },
+    {
+      "title": "Hart Mansion Tour 2:00p.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-tour-200pm-36883",
+      "start": "2026-11-28T14:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-11-28T14:00",
+        "2026-11-29T14:00",
+        "2026-12-02T14:00",
+        "2026-12-03T14:00",
+        "2026-12-04T14:00",
+        "2026-12-05T14:00",
+        "2026-12-06T14:00",
+        "2026-12-09T14:00",
+        "2026-12-10T14:00",
+        "2026-12-11T14:00",
+        "2026-12-12T14:00",
+        "2026-12-13T14:00",
+        "2026-12-16T14:00"
+      ],
+      "repeats": 12,
+      "added": "2026-10-20T13:32:46.873Z"
     },
     {
       "title": "Hart Mansion Tour 3:00p.m.",
@@ -376,6 +322,29 @@
       "added": "2026-11-05T12:19:18.682Z"
     },
     {
+      "title": "Hart Mansion Group Tour 11:00a.m.",
+      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-group-tour-1100am-36629",
+      "start": "2026-12-02T11:00",
+      "venue": "William S. Hart Museum",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-12-02T11:00",
+        "2026-12-03T11:00",
+        "2026-12-04T11:00",
+        "2026-12-09T11:00",
+        "2026-12-10T11:00",
+        "2026-12-16T11:00"
+      ],
+      "repeats": 5,
+      "added": "2026-11-15T15:39:01.830Z"
+    },
+    {
       "title": "English Conversation Club",
       "url": "https://santaclarita.librarycalendar.com/event/placeholder-english-conversation-club-36286",
       "start": "2026-12-02T11:00",
@@ -389,9 +358,10 @@
       "source": "SC Library",
       "dates": [
         "2026-12-02T11:00",
-        "2026-12-09T11:00"
+        "2026-12-09T11:00",
+        "2026-12-16T11:00"
       ],
-      "repeats": 1,
+      "repeats": 2,
       "added": "2026-11-15T15:39:01.830Z"
     },
     {
@@ -407,8 +377,10 @@
       ],
       "source": "SC Library",
       "dates": [
-        "2026-12-02T12:00"
+        "2026-12-02T12:00",
+        "2026-12-16T12:00"
       ],
+      "repeats": 1,
       "added": "2026-11-16T18:31:04.705Z"
     },
     {
@@ -757,10 +729,28 @@
       "dates": [
         "2026-12-08T09:30",
         "2026-12-09T09:30",
-        "2026-12-15T09:30"
+        "2026-12-15T09:30",
+        "2026-12-16T09:30"
       ],
-      "repeats": 2,
+      "repeats": 3,
       "added": "2026-11-25T14:19:55.225Z"
+    },
+    {
+      "title": "All Together, Now! Winter Wildlife Wreaths!",
+      "url": "https://santaclarita.librarycalendar.com/event/ada-newhall-placeheld-35747",
+      "start": "2026-12-08T11:30",
+      "venue": "Old Town Newhall Library",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "SC Library",
+      "dates": [
+        "2026-12-08T11:30"
+      ],
+      "added": "2026-11-26T13:52:52.333Z"
     },
     {
       "title": "Retinal Imaging Meeting",
