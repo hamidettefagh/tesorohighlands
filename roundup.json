@@ -1,63 +1,54 @@
 {
-  "generatedAt": "2026-11-20T22:16:15.892Z",
-  "weekendOf": "2026-11-20",
+  "generatedAt": "2026-11-27T23:35:46.925Z",
+  "weekendOf": "2026-11-27",
   "model": "claude-haiku-4-5",
-  "intro": "This weekend in Tesoro Highlands and beyond: free tours, crafts, light shows, and live music.",
+  "intro": "Here's what to do this weekend in Tesoro Highlands and around Santa Clarita.",
   "picks": [
     {
-      "emoji": "🎨",
+      "emoji": "🌽",
       "day": "Sat",
-      "time": "9 AM",
-      "title": "Free Home Depot Kids Workshop: Christmas Car Ornament",
+      "time": "8:30 AM",
+      "title": "Old Town Newhall Farmers Market",
       "price": "free",
-      "note": "Free kids workshop; perfect for young crafters",
-      "url": "https://www.homedepot.com/l/Newhall/CA/Santa-Clarita/91355/1055"
-    },
-    {
-      "emoji": "✨",
-      "day": "Sat",
-      "time": "4 PM",
-      "title": "Light Up Main Street in Old Town Newhall",
-      "price": "free",
-      "note": "Free family-friendly light display in charming Old Town",
-      "url": "https://rodneyjohnsonestates.com/blog/old-town-newhalls-menu-doesnt-match-its-postcard-anymore"
+      "note": "Fresh local produce, perfect for Saturday morning",
+      "url": "https://calendar.santaclarita.gov/event/old_town_newhall_farmers_market_199"
     },
     {
       "emoji": "🏛️",
-      "day": "Fri",
-      "time": "11 AM",
-      "title": "Hart Mansion Group Tour 11:00a.m.",
+      "day": "Sat",
+      "time": "10 AM",
+      "title": "Hart Mansion Group Tour 10:00a.m.",
       "price": "free",
-      "note": "Free mansion tours; local history and architecture",
-      "url": "https://santaclarita.librarycalendar.com/event/hart-mansion-group-tour-1100am-36627"
+      "note": "Free mansion tours all weekend, great for families",
+      "url": "https://santaclarita.librarycalendar.com/event/copy-hart-mansion-group-tour-1000am-36550"
+    },
+    {
+      "emoji": "🎉",
+      "day": "Fri",
+      "time": "9 PM",
+      "title": "Black Friday Thanksgiving Hangover Party!",
+      "price": "$23.18–$55.20",
+      "note": "Festive night out for adults looking to unwind",
+      "url": "https://www.eventbrite.com/e/black-friday-thanksgiving-hangover-party-tickets-2004805323691"
+    },
+    {
+      "emoji": "🥬",
+      "day": "Sun",
+      "time": "8:30 AM",
+      "title": "Valencia FivePoint Farmers Market",
+      "price": "free",
+      "note": "Another farmers market option for Sunday shoppers",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market"
     },
     {
       "emoji": "🎭",
-      "day": "Sat",
-      "time": "11 AM",
-      "title": "Mean Girls Jr.",
-      "price": "$20",
-      "note": "High school production; family entertainment nearby",
-      "url": "https://www.eventbrite.com/e/mean-girls-jr-tickets-1999738627065"
-    },
-    {
-      "emoji": "🎁",
-      "day": "Sat",
-      "time": "11 AM",
-      "title": "SoCal Etsy Guild Market Valencia",
-      "price": "$27.72–$157.34",
-      "note": "Local makers market; support SoCal artisans",
-      "url": "https://www.eventbrite.com/e/socal-etsy-guild-market-valencia-tickets-1998400862776"
-    },
-    {
-      "emoji": "🎵",
-      "day": "Sat",
-      "time": "6 PM",
-      "title": "RedRoom 311 Studios Presents:  Sapphire and Paige Christine",
-      "price": "$10",
-      "note": "Live music at local studio; affordable evening out",
-      "url": "https://www.eventbrite.com/e/redroom-311-studios-presents-sapphire-and-paige-christine-tickets-2003749341219"
+      "day": "Fri",
+      "time": "8 PM",
+      "title": "It's a Wonderful Life",
+      "price": "$25",
+      "note": "Classic holiday show for families and older kids",
+      "url": "https://www.canyontheatre.org"
     }
   ],
-  "waText": "🌵 *This weekend in Tesoro Highlands*\nThis weekend in Tesoro Highlands and beyond: free tours, crafts, light shows, and live music.\n\n🎨 *Sat 9 AM* — Free Home Depot Kids Workshop: Christmas Car Ornament (free)\n   Free kids workshop; perfect for young crafters\n✨ *Sat 4 PM* — Light Up Main Street in Old Town Newhall (free)\n   Free family-friendly light display in charming Old Town\n🏛️ *Fri 11 AM* — Hart Mansion Group Tour 11:00a.m. (free)\n   Free mansion tours; local history and architecture\n🎭 *Sat 11 AM* — Mean Girls Jr. ($20)\n   High school production; family entertainment nearby\n🎁 *Sat 11 AM* — SoCal Etsy Guild Market Valencia ($27.72–$157.34)\n   Local makers market; support SoCal artisans\n🎵 *Sat 6 PM* — RedRoom 311 Studios Presents:  Sapphire and Paige Christine ($10)\n   Live music at local studio; affordable evening out\n\nFull list → https://tesorohighlands.com/events"
+  "waText": "🌵 *This weekend in Tesoro Highlands*\nHere's what to do this weekend in Tesoro Highlands and around Santa Clarita.\n\n🌽 *Sat 8:30 AM* — Old Town Newhall Farmers Market (free)\n   Fresh local produce, perfect for Saturday morning\n🏛️ *Sat 10 AM* — Hart Mansion Group Tour 10:00a.m. (free)\n   Free mansion tours all weekend, great for families\n🎉 *Fri 9 PM* — Black Friday Thanksgiving Hangover Party! ($23.18–$55.20)\n   Festive night out for adults looking to unwind\n🥬 *Sun 8:30 AM* — Valencia FivePoint Farmers Market (free)\n   Another farmers market option for Sunday shoppers\n🎭 *Fri 8 PM* — It's a Wonderful Life ($25)\n   Classic holiday show for families and older kids\n\nFull list → https://tesorohighlands.com/events"
 }
