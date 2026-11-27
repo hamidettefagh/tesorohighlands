@@ -1,80 +1,106 @@
 {
-  "generatedAt": "2026-11-26T22:26:52.950Z",
+  "generatedAt": "2026-11-27T22:07:46.485Z",
   "model": "claude-haiku-4-5",
   "note": "AI-assisted event discovery via Claude web search. A supplement to the verified feeds — every item links to the page it was found on. Details can be wrong; always confirm at the source before relying on it.",
   "events": [
     {
-      "title": "It's a Wonderful Life - Canyon Theatre Guild",
-      "url": "https://calendar.santaclarita.gov/canyon_theatre_guild_145",
+      "title": "It's a Wonderful Life",
+      "url": "https://www.canyontheatre.org",
       "start": "2026-11-27T20:00",
       "venue": "Canyon Theatre Guild",
       "city": "Newhall",
       "free": false,
-      "price": null,
+      "price": "$25",
       "audience": [
         "adults",
         "teens"
       ],
       "source": "Web (AI)",
-      "via": "Santa Clarita Community Calendar",
-      "added": "2026-11-26T22:26:52.950Z"
+      "via": "Canyon Theatre Guild Official & Local News",
+      "added": "2026-11-27T22:07:46.485Z"
     },
     {
       "title": "Old Town Newhall Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
+      "url": "https://calendar.santaclarita.gov/event/old_town_newhall_farmers_market_199",
       "start": "2026-11-28T08:30",
-      "venue": "Old Town Newhall Library parking lot, 24500 Main Street",
+      "venue": "Old Town Newhall Library Branch",
       "city": "Newhall",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "teens",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets",
-      "added": "2026-11-26T22:26:52.950Z"
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
     },
     {
       "title": "Valencia FivePoint Farmers Market",
-      "url": "https://www.scvfarmersmarkets.com/",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
       "start": "2026-11-29T08:30",
-      "venue": "Valencia FivePoint Farmers Market, 27426 Navigation Ave",
+      "venue": "Valencia FivePoint",
       "city": "Valencia",
       "free": true,
       "price": "Free",
       "audience": [
-        "kids",
-        "teens",
-        "adults"
+        "everyone"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets",
-      "added": "2026-11-26T22:26:52.950Z"
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
     },
     {
-      "title": "Santa Clarita Certified Farmers Market (Sunday)",
-      "url": "https://www.scvfarmersmarkets.com/",
-      "start": "2026-11-29T08:30",
-      "venue": "College of the Canyons Parking Lot 5, Valencia Blvd & Rockwell Canyon Rd",
-      "city": "Valencia",
+      "title": "Canyon Country Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/canyon_country_farmers_market",
+      "start": "2026-12-02T15:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Canyon Country",
       "free": true,
       "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Holiday in the Park",
+      "url": "https://www.sixflags.com/magicmountain/events",
+      "start": "2026-12-04T10:30",
+      "venue": "Six Flags Magic Mountain",
+      "city": "Valencia",
+      "free": false,
+      "price": null,
       "audience": [
         "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "SCV Farmers Markets",
-      "added": "2026-11-26T22:26:52.950Z"
+      "via": "Six Flags Official",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/old_town_newhall_farmers_market_199",
+      "start": "2026-12-05T08:30",
+      "venue": "Old Town Newhall Library Branch",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
     },
     {
       "title": "Free Home Depot Kids Workshop: Holiday Train",
-      "url": "https://www.homedepot.com/c/kids-workshop",
+      "url": "https://www.homedepot.com/c/Kids_Workshops",
       "start": "2026-12-05T09:00",
-      "venue": "The Home Depot (select stores, call ahead)",
+      "venue": "Home Depot, Golden Triangle Rd",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -82,44 +108,90 @@
         "kids"
       ],
       "source": "Web (AI)",
-      "via": "The Home Depot",
-      "added": "2026-11-26T22:26:52.950Z"
+      "via": "Home Depot Official",
+      "added": "2026-11-27T22:07:46.485Z"
     },
     {
-      "title": "DEAF & ASL Event at Pocock Brewing Company",
-      "url": "https://deafcal.org/venue/pocock-brewing-company/",
-      "start": "2026-12-05T17:00",
-      "venue": "Pocock Brewing Company",
+      "title": "Family Literacy Festival",
+      "url": "https://library.santaclarita.gov/events/",
+      "start": "2026-12-05T09:00",
+      "venue": "Old Town Newhall Library Branch",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
       "audience": [
-        "adults"
+        "kids",
+        "toddlers"
       ],
       "source": "Web (AI)",
-      "via": "Deaf Cal",
-      "added": "2026-11-26T22:26:52.950Z"
+      "via": "Santa Clarita Public Library",
+      "added": "2026-11-27T22:07:46.485Z"
     },
     {
-      "title": "Punchlines At The MAIN - Live Comedy",
+      "title": "Punchlines Comedy at The MAIN",
       "url": "https://www.eventbrite.com/o/the-main-12859302391",
       "start": "2026-12-05T20:00",
       "venue": "The MAIN",
       "city": "Newhall",
       "free": false,
-      "price": "$19.07+",
+      "price": "$19.07",
       "audience": [
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "Eventbrite",
-      "added": "2026-11-26T22:26:52.950Z"
+      "via": "Eventbrite/The MAIN",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-12-06T08:30",
+      "venue": "Valencia FivePoint",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Canyon Country Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/canyon_country_farmers_market",
+      "start": "2026-12-09T15:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Canyon Country",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/old_town_newhall_farmers_market_199",
+      "start": "2026-12-12T08:30",
+      "venue": "Old Town Newhall Library Branch",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
     },
     {
       "title": "Free Lowe's Kids Workshop: Holiday Trolley Car",
-      "url": "https://www.lowes.com/l/services/diy-kids-workshop",
+      "url": "https://www.lowes.com/l/kids-workshops.html",
       "start": "2026-12-12T10:00",
-      "venue": "Lowe's (select stores, call ahead)",
+      "venue": "Lowe's, Bouquet Canyon Rd",
       "city": "Santa Clarita",
       "free": true,
       "price": "Free",
@@ -127,75 +199,162 @@
         "kids"
       ],
       "source": "Web (AI)",
-      "via": "Lowe's",
-      "added": "2026-11-26T22:26:52.950Z"
+      "via": "Lowe's Official",
+      "added": "2026-11-27T22:07:46.485Z"
     },
     {
       "title": "One Christmas Night in Memphis",
       "url": "https://pac.canyons.edu/shows/",
       "start": "2026-12-12T19:00",
-      "venue": "Santa Clarita Performing Arts Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$12-$44",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Performing Arts Center",
-      "added": "2026-11-26T22:26:52.950Z"
-    },
-    {
-      "title": "Santa Clarita Ballet Company - The Nutcracker",
-      "url": "https://pac.canyons.edu/shows/",
-      "start": "2026-12-19T13:00",
-      "venue": "Santa Clarita Performing Arts Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$70+",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Performing Arts Center",
-      "added": "2026-11-26T22:26:52.950Z"
-    },
-    {
-      "title": "Santa Clarita Ballet Company - The Nutcracker",
-      "url": "https://pac.canyons.edu/shows/",
-      "start": "2026-12-20T13:00",
-      "venue": "Santa Clarita Performing Arts Center",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$70+",
-      "audience": [
-        "kids",
-        "teens",
-        "adults"
-      ],
-      "source": "Web (AI)",
-      "via": "Santa Clarita Performing Arts Center",
-      "added": "2026-11-26T22:26:52.950Z"
-    },
-    {
-      "title": "The Fantasticks - Theatre Extempore",
-      "url": "https://santaclarita.gov/blog/2025/11/07/the-main-announces-exciting-2026-season-lineup/",
-      "start": "2027-01-09",
-      "venue": "The MAIN",
-      "city": "Newhall",
+      "venue": "Santa Clarita Performing Arts Center at College of the Canyons",
+      "city": "Valencia",
       "free": false,
       "price": null,
       "audience": [
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Performing Arts Center",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-12-13T08:30",
+      "venue": "Valencia FivePoint",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Canyon Country Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/canyon_country_farmers_market",
+      "start": "2026-12-16T15:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Canyon Country",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/old_town_newhall_farmers_market_199",
+      "start": "2026-12-19T08:30",
+      "venue": "Old Town Newhall Library Branch",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Santa Clarita Ballet Presents The Nutcracker",
+      "url": "https://pac.canyons.edu/shows/",
+      "start": "2026-12-19T13:00",
+      "venue": "Santa Clarita Performing Arts Center at College of the Canyons",
+      "city": "Valencia",
+      "free": false,
+      "price": "$70",
+      "audience": [
+        "kids",
         "teens",
         "adults"
       ],
       "source": "Web (AI)",
-      "via": "City of Santa Clarita",
-      "added": "2026-11-26T22:26:52.950Z"
+      "via": "Santa Clarita Performing Arts Center",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-12-20T08:30",
+      "venue": "Valencia FivePoint",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Santa Clarita Ballet Presents The Nutcracker",
+      "url": "https://pac.canyons.edu/shows/",
+      "start": "2026-12-20T13:00",
+      "venue": "Santa Clarita Performing Arts Center at College of the Canyons",
+      "city": "Valencia",
+      "free": false,
+      "price": "$70",
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Performing Arts Center",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Canyon Country Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/canyon_country_farmers_market",
+      "start": "2026-12-23T15:00",
+      "venue": "Canyon Country Community Center",
+      "city": "Canyon Country",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Old Town Newhall Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/old_town_newhall_farmers_market_199",
+      "start": "2026-12-26T08:30",
+      "venue": "Old Town Newhall Library Branch",
+      "city": "Newhall",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-12-27T08:30",
+      "venue": "Valencia FivePoint",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Web (AI)",
+      "via": "Santa Clarita Community Calendar",
+      "added": "2026-11-27T22:07:46.485Z"
     }
   ]
 }
