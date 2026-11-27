@@ -1,21 +1,7 @@
 {
-  "generatedAt": "2026-11-26T13:52:52.334Z",
+  "generatedAt": "2026-11-27T13:50:29.802Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Gratitude With Goats - a Thanksgiving Yoga Session!",
-      "url": "https://www.eventbrite.com/e/gratitude-with-goats-a-thanksgiving-yoga-session-tickets-2005104424309",
-      "start": "2026-11-26T09:00",
-      "venue": "Gilchrist Farm",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$33.85",
-      "audience": [
-        "kids"
-      ],
-      "source": "Eventbrite",
-      "added": "2026-11-22T21:50:13.724Z"
-    },
     {
       "title": "Black Friday Thanksgiving Hangover Party!",
       "url": "https://www.eventbrite.com/e/black-friday-thanksgiving-hangover-party-tickets-2004805323691",
@@ -62,9 +48,10 @@
         "2026-12-04T10:00",
         "2026-12-05T10:00",
         "2026-12-10T10:00",
-        "2026-12-12T10:00"
+        "2026-12-12T10:00",
+        "2026-12-17T10:00"
       ],
-      "repeats": 5,
+      "repeats": 6,
       "added": "2026-11-17T13:24:35.323Z"
     },
     {
@@ -134,9 +121,10 @@
         "2026-12-11T12:00",
         "2026-12-12T12:00",
         "2026-12-13T12:00",
-        "2026-12-16T12:00"
+        "2026-12-16T12:00",
+        "2026-12-17T12:00"
       ],
-      "repeats": 12,
+      "repeats": 13,
       "added": "2026-07-25T09:59:46.269Z"
     },
     {
@@ -164,9 +152,10 @@
         "2026-12-11T13:00",
         "2026-12-12T13:00",
         "2026-12-13T13:00",
-        "2026-12-16T13:00"
+        "2026-12-16T13:00",
+        "2026-12-17T13:00"
       ],
-      "repeats": 12,
+      "repeats": 13,
       "added": "2026-10-20T13:32:46.873Z"
     },
     {
@@ -211,9 +200,10 @@
         "2026-12-11T14:00",
         "2026-12-12T14:00",
         "2026-12-13T14:00",
-        "2026-12-16T14:00"
+        "2026-12-16T14:00",
+        "2026-12-17T14:00"
       ],
-      "repeats": 12,
+      "repeats": 13,
       "added": "2026-10-20T13:32:46.873Z"
     },
     {
@@ -339,9 +329,10 @@
         "2026-12-04T11:00",
         "2026-12-09T11:00",
         "2026-12-10T11:00",
-        "2026-12-16T11:00"
+        "2026-12-16T11:00",
+        "2026-12-17T11:00"
       ],
-      "repeats": 5,
+      "repeats": 6,
       "added": "2026-11-15T15:39:01.830Z"
     },
     {
