@@ -1,20 +1,42 @@
 {
-  "generatedAt": "2026-11-27T13:50:29.802Z",
+  "generatedAt": "2026-11-28T03:20:31.992Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
     {
-      "title": "Black Friday Thanksgiving Hangover Party!",
-      "url": "https://www.eventbrite.com/e/black-friday-thanksgiving-hangover-party-tickets-2004805323691",
-      "start": "2026-11-27T21:00",
-      "venue": "El patrón mexican bar &grill",
+      "title": "Celebrate Holiday Festivities with Holidays at Hart & Main Pop-Up Bar",
+      "url": "https://calendar.santaclarita.gov/event/celebrate-holiday-festivities-with-holidays-at-hart-main-pop-up-bar",
+      "start": "2026-11-27T17:00",
+      "dates": [
+        "2026-11-27T17:00"
+      ],
+      "repeats": 0,
+      "venue": null,
       "city": "Santa Clarita",
-      "free": false,
-      "price": "$23.18–$55.20",
+      "free": true,
+      "price": "Free",
       "audience": [
         "adults"
       ],
-      "source": "Eventbrite",
-      "added": "2026-11-17T13:24:35.323Z"
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Live Music at Lucky Luke Brewing",
+      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
+      "start": "2026-11-27T18:00",
+      "dates": [
+        "2026-11-27T18:00"
+      ],
+      "repeats": 0,
+      "venue": "Lucky Luke Brewing",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
     },
     {
       "title": "Black Friday 21+ Reggaeton HipHop Latin Tech Party",
@@ -23,12 +45,30 @@
       "venue": "El Patron Santa Clarita Valley",
       "city": "Santa Clarita",
       "free": false,
-      "price": "$0–$20",
+      "price": "$0–$23.18",
       "audience": [
         "adults"
       ],
       "source": "Eventbrite",
       "added": "2026-11-14T23:54:48.769Z"
+    },
+    {
+      "title": "Motorcycles and Coffee",
+      "url": "https://calendar.santaclarita.gov/event/motorcycles-and-coffee",
+      "start": "2026-11-28T09:00",
+      "dates": [
+        "2026-11-28T09:00"
+      ],
+      "repeats": 0,
+      "venue": "KEN AND JOES POWERSPORTS",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
     },
     {
       "title": "Hart Mansion Group Tour 10:00a.m.",
@@ -72,6 +112,20 @@
       ],
       "repeats": 1,
       "added": "2026-11-19T13:03:27.051Z"
+    },
+    {
+      "title": "Santa Clarita Shuffle Scavenger Hunt",
+      "url": "https://www.eventbrite.com/e/santa-clarita-shuffle-scavenger-hunt-tickets-1994864344956",
+      "start": "2026-11-28T11:00",
+      "venue": "Coffee Kiosk",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$25",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-28T03:20:31.991Z"
     },
     {
       "title": "Hart Mansion Tour 11:00a.m.",
@@ -230,6 +284,240 @@
       "added": "2026-11-18T17:14:43.965Z"
     },
     {
+      "title": "Celebrate Holiday Festivities with Holidays at Hart & Main Pop-Up Bar",
+      "url": "https://calendar.santaclarita.gov/event/celebrate-holiday-festivities-with-holidays-at-hart-main-pop-up-bar",
+      "start": "2026-11-28T17:00",
+      "dates": [
+        "2026-11-28T17:00"
+      ],
+      "repeats": 0,
+      "venue": null,
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Greater Thursdays & Saturdays at Greater Pacific Restaurant",
+      "url": "https://calendar.santaclarita.gov/event/great-pacific-oktoberfest",
+      "start": "2026-11-28T17:00",
+      "dates": [
+        "2026-11-28T17:00"
+      ],
+      "repeats": 0,
+      "venue": "Greater Pacific Restaurant",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Country Line Dancing Night at Lucky Luke Brewing",
+      "url": "https://calendar.santaclarita.gov/event/country-line-dancing-night-at-lucky-luke-brewing-5979",
+      "start": "2026-11-28T18:00",
+      "dates": [
+        "2026-11-28T18:00"
+      ],
+      "repeats": 0,
+      "venue": "Lucky Luke Brewing",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Visit The Gentle Barn",
+      "url": "https://calendar.santaclarita.gov/event/visit_the_gentle_barn_5048",
+      "start": "2026-11-29T00:00",
+      "dates": [
+        "2026-11-29T00:00"
+      ],
+      "repeats": 0,
+      "venue": "The Gentle Barn",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "Adults $25, Kids (2-12y) $15, Under 2y No Cost",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Santa Clarita Certified Farmers Market",
+      "url": "https://calendar.santaclarita.gov/event/santa-clarita-certified-farmers-market-5195",
+      "start": "2026-11-29T08:00",
+      "dates": [
+        "2026-11-29T08:00"
+      ],
+      "repeats": 0,
+      "venue": "Santa Clarita Certified Farmers Market",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Thanksgiving 5k",
+      "url": "https://calendar.santaclarita.gov/event/thanksgiving-5k-928",
+      "start": "2026-11-29T08:00",
+      "dates": [
+        "2026-11-29T08:00"
+      ],
+      "repeats": 0,
+      "venue": "Valencia Heritage Park",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$65.00",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Valencia FivePoint Farmers' Market",
+      "url": "https://calendar.santaclarita.gov/event/valencia-fivepoint-farmers-market",
+      "start": "2026-11-29T08:30",
+      "dates": [
+        "2026-11-29T08:30"
+      ],
+      "repeats": 0,
+      "venue": "Valencia FivePoint Farmers' Market",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Celebrate Holiday Festivities with Holidays at Hart & Main Pop-Up Bar",
+      "url": "https://calendar.santaclarita.gov/event/celebrate-holiday-festivities-with-holidays-at-hart-main-pop-up-bar",
+      "start": "2026-11-29T17:00",
+      "dates": [
+        "2026-11-29T17:00"
+      ],
+      "repeats": 0,
+      "venue": null,
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Wolfcreek Brewery Trivia Night",
+      "url": "https://calendar.santaclarita.gov/event/wolfcreek-brewery-trivia-night",
+      "start": "2026-11-30T00:00",
+      "dates": [
+        "2026-11-30T00:00"
+      ],
+      "repeats": 0,
+      "venue": null,
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Fore Newhall Charity Open",
+      "url": "https://calendar.santaclarita.gov/event/fore-newhall-charity-open",
+      "start": "2026-11-30T10:00",
+      "dates": [
+        "2026-11-30T10:00"
+      ],
+      "repeats": 0,
+      "venue": "Oaks Club at Valencia",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "250",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Teen Experience (Afterschool)",
+      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
+      "start": "2026-11-30T15:00",
+      "dates": [
+        "2026-11-30T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Youth Afterschool Program",
+      "url": "https://calendar.santaclarita.gov/event/youth-afterschool-program-328",
+      "start": "2026-11-30T15:00",
+      "dates": [
+        "2026-11-30T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Line Dancing",
+      "url": "https://calendar.santaclarita.gov/event/line-dancing-4264",
+      "start": "2026-11-30T16:00",
+      "dates": [
+        "2026-11-30T16:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
       "title": "Community Jazz Band: College Of The Canyons Music",
       "url": "https://pac.canyons.edu/shows/doo-wop.php",
       "start": "2026-11-30T19:00",
@@ -259,6 +547,42 @@
         "2026-12-01T09:00"
       ],
       "added": "2026-11-19T13:03:27.051Z"
+    },
+    {
+      "title": "Teen Experience (Afterschool)",
+      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
+      "start": "2026-12-01T15:00",
+      "dates": [
+        "2026-12-01T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Youth Afterschool Program",
+      "url": "https://calendar.santaclarita.gov/event/youth-afterschool-program-328",
+      "start": "2026-12-01T15:00",
+      "dates": [
+        "2026-12-01T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
     },
     {
       "title": "Valencia TAB",
@@ -298,6 +622,24 @@
       "added": "2026-11-19T13:03:27.051Z"
     },
     {
+      "title": "Open Mic Night @ Route 66",
+      "url": "https://calendar.santaclarita.gov/event/open-mic-night-route-66",
+      "start": "2026-12-01T18:00",
+      "dates": [
+        "2026-12-01T18:00"
+      ],
+      "repeats": 0,
+      "venue": "Route 66 Classic Grill",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
       "title": "Santa Clarita Social Club Monthly | Foodies + New Friends",
       "url": "https://www.eventbrite.com/e/santa-clarita-social-club-monthly-foodies-new-friends-tickets-1992160276013",
       "start": "2026-12-01T19:00",
@@ -310,6 +652,57 @@
       ],
       "source": "Eventbrite",
       "added": "2026-11-05T12:19:18.682Z"
+    },
+    {
+      "title": "Play N Learn",
+      "url": "https://calendar.santaclarita.gov/event/play-n-learn-2944",
+      "start": "2026-12-02T09:00",
+      "dates": [
+        "2026-12-02T09:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Coffee with a Cop: meet the Sheriff’s Station deputies and ask your questions",
+      "url": "https://www.hometownstation.com/santa-clarita-latest-news/dec-2-coffee-with-a-cop-at-mcdonalds-620405",
+      "start": "2026-12-02T09:00",
+      "venue": "McDonald’s, 27618 The Old Road",
+      "city": "Valencia",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "adults"
+      ],
+      "source": "Neighbor tip",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Beginning Bridge Lessons",
+      "url": "https://calendar.santaclarita.gov/event/beginning-bridge-lessons",
+      "start": "2026-12-02T10:00",
+      "dates": [
+        "2026-12-02T10:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
     },
     {
       "title": "Hart Mansion Group Tour 11:00a.m.",
@@ -375,6 +768,62 @@
       "added": "2026-11-16T18:31:04.705Z"
     },
     {
+      "title": "Nest Healing Art Studio",
+      "url": "https://calendar.santaclarita.gov/event/nest-healing-art-studio-2758",
+      "start": "2026-12-02T13:00",
+      "dates": [
+        "2026-12-02T13:00"
+      ],
+      "repeats": 0,
+      "venue": "ARTree Community Arts Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Teen Experience (Afterschool)",
+      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
+      "start": "2026-12-02T15:00",
+      "dates": [
+        "2026-12-02T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Youth Afterschool Program",
+      "url": "https://calendar.santaclarita.gov/event/youth-afterschool-program-328",
+      "start": "2026-12-02T15:00",
+      "dates": [
+        "2026-12-02T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
       "title": "Canyon Country TAB",
       "url": "https://santaclarita.librarycalendar.com/event/canyon-country-tab-29099",
       "start": "2026-12-02T16:30",
@@ -410,6 +859,60 @@
       "added": "2026-11-20T16:57:09.907Z"
     },
     {
+      "title": "Karaoke Wednesdays at Oggi's",
+      "url": "https://calendar.santaclarita.gov/event/karaoke-wednesdays-at-oggis",
+      "start": "2026-12-02T18:00",
+      "dates": [
+        "2026-12-02T18:00"
+      ],
+      "repeats": 0,
+      "venue": "Oggi's | Sports, Brewhouse & Pizza",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Chinese Dance Classes",
+      "url": "https://calendar.santaclarita.gov/event/chinese-dance-classes",
+      "start": "2026-12-02T19:00",
+      "dates": [
+        "2026-12-02T19:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "adults"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Salsa on One presents Latin Wednesdays",
+      "url": "https://calendar.santaclarita.gov/event/salsa-on-one-presents-latin-wednesdays",
+      "start": "2026-12-02T19:00",
+      "dates": [
+        "2026-12-02T19:00"
+      ],
+      "repeats": 0,
+      "venue": "El Patron Mexican Bar and Grill!",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
       "title": "Mariachi, World Percussion, And North Indian Music Ensembles: College Of The Canyons Music",
       "url": "https://pac.canyons.edu/shows/doo-wop.php",
       "start": "2026-12-02T19:00",
@@ -422,6 +925,60 @@
       ],
       "source": "SC Performing Arts Center",
       "added": "2026-10-13T23:43:27.554Z"
+    },
+    {
+      "title": "PATH TO 2028 - Get Your Business Ready for the Opportunities Ahead!",
+      "url": "https://calendar.santaclarita.gov/event/path-to-2028-get-your-business-ready-for-the-opportunities-ahead",
+      "start": "2026-12-03T12:00",
+      "dates": [
+        "2026-12-03T12:00"
+      ],
+      "repeats": 0,
+      "venue": null,
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "everyone"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Teen Experience (Afterschool)",
+      "url": "https://calendar.santaclarita.gov/event/teen-experience-afterschool",
+      "start": "2026-12-03T15:00",
+      "dates": [
+        "2026-12-03T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "teens"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
+      "title": "Youth Afterschool Program",
+      "url": "https://calendar.santaclarita.gov/event/youth-afterschool-program-328",
+      "start": "2026-12-03T15:00",
+      "dates": [
+        "2026-12-03T15:00"
+      ],
+      "repeats": 0,
+      "venue": "Newhall Community Center",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": null,
+      "audience": [
+        "kids"
+      ],
+      "source": "City of Santa Clarita",
+      "added": "2026-11-28T03:20:31.991Z"
     },
     {
       "title": "Newhall TAB",
@@ -599,6 +1156,22 @@
       "added": "2026-11-20T16:57:09.907Z"
     },
     {
+      "title": "Santa Day at the Sheriff’s Station: a free toy for every child 0–17, plus Santa and deputies",
+      "url": "https://tesorohighlands.com/holidays#r-santaday",
+      "start": "2026-12-05T10:00",
+      "venue": "Santa Clarita Valley Sheriff’s Station, 26201 Golden Valley Road",
+      "city": "Santa Clarita",
+      "free": true,
+      "price": "Free",
+      "audience": [
+        "toddlers",
+        "kids",
+        "teens"
+      ],
+      "source": "Neighbor tip",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
       "title": "Find Your New Best Friend: Pet Adoption Event",
       "url": "https://www.valenciatowncenter.com/event/46580-find-your-new-best-friend-pet-adoption-event",
       "start": "2026-12-05T11:00",
@@ -611,6 +1184,20 @@
       ],
       "source": "Valencia Town Center",
       "added": "2026-11-24T04:46:59.213Z"
+    },
+    {
+      "title": "Come Out & Play: The Holiday Edition",
+      "url": "https://www.eventbrite.com/e/come-out-play-the-holiday-edition-tickets-2004800776089",
+      "start": "2026-12-05T19:00",
+      "venue": "23287 Sierra Hwy",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$41.32–$52",
+      "audience": [
+        "everyone"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-28T03:20:31.991Z"
     },
     {
       "title": "Vocal Jazz & Choral Concert: College Of The Canyons Music",
@@ -786,6 +1373,23 @@
       "added": "2026-09-03T04:32:35.375Z"
     },
     {
+      "title": "Coca-Cola holiday truck visits Six Flags Magic Mountain",
+      "url": "https://www.coca-cola.com/us/en/offerings/holiday-caravan",
+      "start": "2026-12-11T11:00",
+      "venue": "Six Flags Magic Mountain (inside the park last year: bring a ticket or pass)",
+      "city": "Valencia",
+      "free": false,
+      "price": "Park admission",
+      "audience": [
+        "toddlers",
+        "kids",
+        "teens",
+        "adults"
+      ],
+      "source": "Neighbor tip",
+      "added": "2026-11-28T03:20:31.991Z"
+    },
+    {
       "title": "The Cube Presents A Christmas Carol (Fri 7pm Show)",
       "url": "https://www.eventbrite.com/e/the-cube-presents-a-christmas-carol-fri-7pm-show-tickets-2001942986363",
       "start": "2026-12-11T19:00",
@@ -890,7 +1494,7 @@
       "venue": "15112 Sierra Hwy",
       "city": "Santa Clarita",
       "free": false,
-      "price": "$101.08–$103.22",
+      "price": "$71.56–$103.22",
       "audience": [
         "everyone"
       ],
@@ -910,6 +1514,20 @@
       ],
       "source": "Eventbrite",
       "added": "2026-11-05T12:19:18.682Z"
+    },
+    {
+      "title": "Comedy Night at Le Ranch",
+      "url": "https://www.eventbrite.com/e/comedy-night-at-le-ranch-tickets-2004994948865",
+      "start": "2026-12-19T19:00",
+      "venue": "Le Ranch",
+      "city": "Santa Clarita",
+      "free": false,
+      "price": "$12.51–$23.18",
+      "audience": [
+        "adults"
+      ],
+      "source": "Eventbrite",
+      "added": "2026-11-28T03:20:31.991Z"
     },
     {
       "title": "American Red Cross Blood Drive",

@@ -20,6 +20,36 @@
       "free": true,
       "price": "Free",
       "audience": ["kids"]
+    },
+    {
+      "title": "Coffee with a Cop: meet the Sheriff’s Station deputies and ask your questions",
+      "start": "2026-12-02T09:00",
+      "venue": "McDonald’s, 27618 The Old Road",
+      "city": "Valencia",
+      "url": "https://www.hometownstation.com/santa-clarita-latest-news/dec-2-coffee-with-a-cop-at-mcdonalds-620405",
+      "free": true,
+      "price": "Free",
+      "audience": ["adults"]
+    },
+    {
+      "title": "Santa Day at the Sheriff’s Station: a free toy for every child 0–17, plus Santa and deputies",
+      "start": "2026-12-05T10:00",
+      "venue": "Santa Clarita Valley Sheriff’s Station, 26201 Golden Valley Road",
+      "city": "Santa Clarita",
+      "url": "https://tesorohighlands.com/holidays#r-santaday",
+      "free": true,
+      "price": "Free",
+      "audience": ["toddlers", "kids", "teens"]
+    },
+    {
+      "title": "Coca-Cola holiday truck visits Six Flags Magic Mountain",
+      "start": "2026-12-11T11:00",
+      "venue": "Six Flags Magic Mountain (inside the park last year: bring a ticket or pass)",
+      "city": "Valencia",
+      "url": "https://www.coca-cola.com/us/en/offerings/holiday-caravan",
+      "free": false,
+      "price": "Park admission",
+      "audience": ["toddlers", "kids", "teens", "adults"]
     }
   ]
 }
