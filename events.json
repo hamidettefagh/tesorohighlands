@@ -1,57 +1,7 @@
 {
-  "generatedAt": "2026-11-28T03:20:31.992Z",
+  "generatedAt": "2026-11-28T16:52:17.268Z",
   "note": "Attendable events in the Santa Clarita Valley, auto-built from Eventbrite, the Santa Clarita Public Library calendar, the City of Santa Clarita calendar, the Performing Arts Center and Valencia Town Center, plus neighbor tips (event-tips.json), by scripts/fetch-events.mjs. Listings belong to their organizers; details can change — always check the source link.",
   "events": [
-    {
-      "title": "Celebrate Holiday Festivities with Holidays at Hart & Main Pop-Up Bar",
-      "url": "https://calendar.santaclarita.gov/event/celebrate-holiday-festivities-with-holidays-at-hart-main-pop-up-bar",
-      "start": "2026-11-27T17:00",
-      "dates": [
-        "2026-11-27T17:00"
-      ],
-      "repeats": 0,
-      "venue": null,
-      "city": "Santa Clarita",
-      "free": true,
-      "price": "Free",
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-11-28T03:20:31.991Z"
-    },
-    {
-      "title": "Live Music at Lucky Luke Brewing",
-      "url": "https://calendar.santaclarita.gov/event/live-music-at-lucky-luke-brewing",
-      "start": "2026-11-27T18:00",
-      "dates": [
-        "2026-11-27T18:00"
-      ],
-      "repeats": 0,
-      "venue": "Lucky Luke Brewing",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": null,
-      "audience": [
-        "adults"
-      ],
-      "source": "City of Santa Clarita",
-      "added": "2026-11-28T03:20:31.991Z"
-    },
-    {
-      "title": "Black Friday 21+ Reggaeton HipHop Latin Tech Party",
-      "url": "https://www.eventbrite.com/e/black-friday-21-reggaeton-hiphop-latin-tech-party-tickets-2004417865794",
-      "start": "2026-11-27T21:00",
-      "venue": "El Patron Santa Clarita Valley",
-      "city": "Santa Clarita",
-      "free": false,
-      "price": "$0–$23.18",
-      "audience": [
-        "adults"
-      ],
-      "source": "Eventbrite",
-      "added": "2026-11-14T23:54:48.769Z"
-    },
     {
       "title": "Motorcycles and Coffee",
       "url": "https://calendar.santaclarita.gov/event/motorcycles-and-coffee",
@@ -89,9 +39,10 @@
         "2026-12-05T10:00",
         "2026-12-10T10:00",
         "2026-12-12T10:00",
-        "2026-12-17T10:00"
+        "2026-12-17T10:00",
+        "2026-12-18T10:00"
       ],
-      "repeats": 6,
+      "repeats": 7,
       "added": "2026-11-17T13:24:35.323Z"
     },
     {
@@ -176,9 +127,10 @@
         "2026-12-12T12:00",
         "2026-12-13T12:00",
         "2026-12-16T12:00",
-        "2026-12-17T12:00"
+        "2026-12-17T12:00",
+        "2026-12-18T12:00"
       ],
-      "repeats": 13,
+      "repeats": 14,
       "added": "2026-07-25T09:59:46.269Z"
     },
     {
@@ -207,9 +159,10 @@
         "2026-12-12T13:00",
         "2026-12-13T13:00",
         "2026-12-16T13:00",
-        "2026-12-17T13:00"
+        "2026-12-17T13:00",
+        "2026-12-18T13:00"
       ],
-      "repeats": 13,
+      "repeats": 14,
       "added": "2026-10-20T13:32:46.873Z"
     },
     {
@@ -255,9 +208,10 @@
         "2026-12-12T14:00",
         "2026-12-13T14:00",
         "2026-12-16T14:00",
-        "2026-12-17T14:00"
+        "2026-12-17T14:00",
+        "2026-12-18T14:00"
       ],
-      "repeats": 13,
+      "repeats": 14,
       "added": "2026-10-20T13:32:46.873Z"
     },
     {
@@ -723,9 +677,10 @@
         "2026-12-09T11:00",
         "2026-12-10T11:00",
         "2026-12-16T11:00",
-        "2026-12-17T11:00"
+        "2026-12-17T11:00",
+        "2026-12-18T11:00"
       ],
-      "repeats": 6,
+      "repeats": 7,
       "added": "2026-11-15T15:39:01.830Z"
     },
     {
